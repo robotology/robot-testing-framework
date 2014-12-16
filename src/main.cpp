@@ -173,6 +173,7 @@ This file can be edited at src/iCubTest/main.cpp.
 
 #include "TestSet.h"
 #include "testCamera/TestCamera.h"
+#include "testMotors/TestMotors.h"
 
 #include <yarp/dev/Drivers.h>
 
@@ -194,7 +195,6 @@ int main(int argc,char* argv[])
     rf.setVerbose();
     rf.setDefaultContext("RobotTesting");
     rf.setDefaultConfigFile("test.ini");
-    //rf.setDefault("robot","/icub");
     rf.configure(argc,argv);
 
     yarp::os::Bottle references=rf.findGroup("REFERENCES");
@@ -217,9 +217,9 @@ int main(int argc,char* argv[])
         config.fromConfigFile(file);
 
 
-        if (testType=="iCubTestMotors")
+        if (testType=="TestMotors")
         {
-//            ts.addTest(new iCubTestMotors(testRf));
+            ts.addTest(new TestMotors(config));
         }
         else if (testType=="iCubTestMotorsStiction")
         {
