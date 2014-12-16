@@ -93,6 +93,8 @@ int TestSet::run()
             if (!m_apTest[i]->run())
                  m_bSuccess=false;
         
+            m_apTest[i]->release();
+
             m_numTests++;
         }
     }
