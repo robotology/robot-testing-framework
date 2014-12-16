@@ -31,7 +31,6 @@ namespace Logger {
 void report(std::string description);
 void checkTrue(bool flag, std::string description);
 int failures();
-void initialize(std::string filename);
 };
 
 
