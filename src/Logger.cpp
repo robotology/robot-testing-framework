@@ -35,11 +35,11 @@ void Logger::checkTrue(bool flag, const char *msg, ...)
         if (!flag)
         {
             _log.addFailure();
-            _log.log("FAILED " + std::string(buf)+"\n");
+            _log.log("!!FAILED " + std::string(buf)+"\n");
         }
         else
         {
-            _log.log("PASSED " + std::string(buf)+"\n");
+            _log.log("Ok " + std::string(buf)+"\n");
         }
     }
     va_end(args);

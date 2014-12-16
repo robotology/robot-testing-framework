@@ -278,6 +278,7 @@ bool TestMotors::release()
         yarp::os::Time::delay(0.1);
     }
 
+    printf("\n");
     delete [] encoders;
     delete [] done;
 
