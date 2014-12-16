@@ -20,7 +20,6 @@
 
 #include <yarp/os/Value.h>
 
-#include "TestXMLPrinter.h"
 #include "TestSet.h"
 
 #include <stdio.h>
@@ -83,13 +82,13 @@ int TestSet::run()
         //read test name and description
         if (!m_apTest[i]->configure())
         {
-            Logger::report("Failed to configure " + m_apTest[i]->getName() + " \n");
+            Logger::report("Failed to configure %s\n", m_apTest[i]->getName().c_str());
             m_numSkipped++;
         }
         else
         {
-            Logger::report("Running test: "+ m_apTest[i]->getName()+ "\n");
-            Logger::report("Description: " + m_apTest[i]->getDescription() + "\n");
+            Logger::report("Running test: %s\n", m_apTest[i]->getName().c_str());
+            Logger::report("Description: %s\n", m_apTest[i]->getDescription().c_str());
 
             if (!m_apTest[i]->run())
                  m_bSuccess=false;

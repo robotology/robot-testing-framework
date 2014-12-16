@@ -64,7 +64,7 @@ bool TestCamera::run()
         return true;
     }
 
-    report("connecting from " + port.getName() + "to "+ portname+ "\n");
+    Logger::report("connecting from %s to %s\n", port.getName().c_str(), portname.c_str());
     if (!Network::connect(portname, port.getName()))
     {
         checkTrue(false, "could not connect to remote port, camera unavailable");
@@ -91,8 +91,7 @@ bool TestCamera::run()
 
     printf("\n");
     int expectedFrames=TIME*FREQUENCY;
-    //pOutput->expectedFrames=expectedFrames;
-    //pOutput->receivedFrames=frames;
+    Logger::report("Received %d frames, expecting %d\n", frames, expectedFrames);
 
     checkTrue((abs(frames-expectedFrames)<FRAMES_TOLERANCE), "checking number of received frames");
 

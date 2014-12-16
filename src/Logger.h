@@ -13,7 +13,7 @@ public:
         failures=0;
     }
 
-    void log(std::string s)
+    void log(const std::string &s)
     {
         printf("%s", s.c_str());
     }
@@ -28,8 +28,8 @@ public:
 };
 
 namespace Logger {
-void report(std::string description);
-void checkTrue(bool flag, std::string description);
+void report(const char *msg, ...);
+void checkTrue(bool flag, const char *msg, ...);
 int failures();
 };
 
