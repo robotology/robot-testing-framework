@@ -36,7 +36,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -64,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -75,17 +77,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Robot Testing </div>  </div>
+<div class="title">Robot Testing</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>A suite of tests for generic robot platforms.</p>
+<p>A suite of tests for generic robot platforms.</p>
 <h1><a class="anchor" id="intro_sec"></a>
 Description</h1>
 <p>This is a suite of unit tests for YARP robotic platforms. A test can be made of several subtests (i.e. motors, encoders, inertial unit, cameras, force-torque sensors, ...). The subtests are executed in sequential order, and the results are written to std output. The list of test is statically populated, but a configuration file specifies which tests are actually executed. In addition tests may receive parameters from file, this allows to execute the same unit test for different robots or robot part.</p>
 <p>This is a sketch of the steps required to add a test:</p>
 <ul>
 <li>Create a new class deriving from <a class="el" href="class_unit_test.html">UnitTest</a>.</li>
-<li>Implement abstract functions UnitTest::run() (mandatory) and UnitTest::init(), UnitTest::release() (optional)</li>
+<li>Implement abstract functions run() (mandatory) and init(), release() (optional)</li>
 <li>Add test to main.cpp</li>
 <li>Add test and optional parameter file to the main .ini file</li>
 </ul>
@@ -95,7 +97,7 @@ Description</h1>
 <li>report(): report general information on the result of a test</li>
 <li>checkTrue(): check and report result of a test</li>
 </ul>
-<p>Check <a class="el" href="class_test_camera.html">TestCamera</a> for a simple example.</p>
+<p>Check CameraTest for a simple example.</p>
 <h1><a class="anchor" id="lib_sec"></a>
 Libraries</h1>
 <p>YARP_OS YARP_sig YARP_dev YARP_math</p>
@@ -110,25 +112,14 @@ Configuration Files</h1>
 <p>The file consists in a few sections: </p><div class="fragment"><div class="line">[REFERENCES]</div>
 <div class="line">user <span class="stringliteral">&quot;Alice Cooper&quot;</span></div>
 <div class="line">comment <span class="stringliteral">&quot;Testing left and right arms.&quot;</span></div>
-<div class="line"></div>
+<div class="line">outfile /home/user/TestReport3.xml</div>
 <div class="line">[TESTS]</div>
-<div class="line"><a class="code" href="class_test_camera.html">TestCamera</a> right_camera.ini</div>
-<div class="line"><a class="code" href="class_test_camera.html">TestCamera</a> left_camera.ini</div>
+<div class="line">TestCamera right_camera.ini</div>
+<div class="line">TestCamera left_camera.ini</div>
 <div class="line">TestMotors test_right_arm.ini</div>
 <div class="line">TestMotors test_left_arm.ini</div>
-</div><!-- fragment --><ul>
-<li><em>user</em> who executes the test</li>
-<li><em>comment</em> textual comment</li>
-<li><em><a class="el" href="class_test_camera.html">TestCamera</a></em> test type should match identifier used within main.cpp</li>
-<li><em>right_camera.ini</em> test configuration file</li>
-</ul>
-<p>Optionally you can specify an [ENVIRONMENT] section which includes variables that can be expanded when reading each test individual ini files. A typical example is the name of the robot which is used to form port names of tests.</p>
-<p>Example if in the main configuration file you specify this environment:</p>
-<div class="fragment"><div class="line">[ENVIRONMENT]</div>
-<div class="line">robotname icubGazeboSim</div>
-</div><!-- fragment --><p>Then inside right_camera.ini:</p>
-<div class="fragment"><div class="line">portname /${robotname}/cam/right</div>
-</div><!-- fragment --><p>will be expanded to /icubGazeboSim/cam/right</p>
+</div><!-- fragment --><p><em>user</em> who executes the test <em>outfile</em> report file name (this is currently ignored) <em>comment</em> textual comment</p>
+<p><em>TestCamera</em> test type <em>right_camera.ini</em> test configuration file</p>
 <h1><a class="anchor" id="example_sec"></a>
 Example Instantiation of the Module</h1>
 <p>Make sure the simulator is running.</p>
@@ -137,10 +128,10 @@ Example Instantiation of the Module</h1>
 <p>Copyright (C) 2014 RobotCub Consortium and Istituto Italiano di Tecnologia</p>
 <p>CopyPolicy: Released under the terms of the GNU GPL v2.0.</p>
 <p>This file can be edited at src/main.cpp. </p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Feb 1 2015 23:51:36 for robot-testing by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 18 2014 00:13:20 for robot-testing by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
