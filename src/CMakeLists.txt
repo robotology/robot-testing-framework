@@ -15,6 +15,10 @@ source_group("Tests" FILES ${folder_tests})
 include_directories(${YARP_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+### this makes everything go in $ICUB_DIR/lib and $ICUB_DIR/bin
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+message(STATUS "Executables go to ${EXECUTABLE_OUTPUT_PATH}")
+
 add_executable(robot-testing ${folder_source} ${folder_header} ${folder_tests})
 
 target_link_libraries(robot-testing ${YARP_LIBRARIES} icubmod)
