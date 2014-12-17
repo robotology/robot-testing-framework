@@ -1,9 +1,9 @@
 // -*- mode:C++; tab-width:4; c-basic-offset:4; indent-tabs-mode:nil -*-
 
 /* 
- * Copyright (C) 2010 RobotCub Consortium, European Commission FP6 Project IST-004370
- * Author: Alessandro Scalzo
- * email: alessandro.scalzo@iit.it
+ * Copyright (C) 2010-2014 RobotCub Consortium, European Commission FP6 Project IST-004370, Istituto Italiano di Tecnologia
+ * Author: Alessandro Scalzo and Lorenzo Natale
+ * email: alessandro.scalzo@iit.it, lorenzo.natale@iit.it
  * website: www.robotcub.org
  * Permission is granted to copy, distribute, and/or modify this program
  * under the terms of the GNU General Public License, version 2 or any
@@ -21,23 +21,34 @@
 /**
 *
 @ingroup icub_tools
-\defgroup icub_iCubTest iCubTest
+\defgroup icub_robot-testing Robot Testing
 
-iCubTest can be used to test the health of an iCub robotic platform. 
+A suite of tests for generic robot platforms.
 
 \section intro_sec Description
 
-iCubTest supplies automation to iCub robotic platforms testing activity. A test can be made of several subtests 
-involving the iCub parts and components (i.e. motors, encoders, inertial unit, cameras, force-torque sensors, ...).
-The subtests are executed in sequential order, and the results are saved in a .XML test report. A new iCubMyTest 
-procedure can be created by deriving it from the base class iCubTest and implementing the virtual function run() 
-and the constructor.
+This is a suite of unit tests for YARP robotic platforms. A test can be made of several subtests 
+(i.e. motors, encoders, inertial unit, cameras, force-torque sensors, ...).
+The subtests are executed in sequential order, and the results are written to std output. The list of
+test is statically populated, but a configuration file specifies which tests are actually executed. In addition
+tests may receive parameters from file, this allows to execute the same unit test for different robots or robot part.
 
-For example, a subtest can set target position angles for the iCub joints and then check if the robotic platform can
-reach them measuring position errors and taking into account timeouts and other errors.
+This is a sketch of the steps required to add a test:
 
-iCubMyTest can add entries to the main test .XML report. The iCubMyTestReportEntry class will be derived from the base 
-class iCubTestReportEntry implementing the virtual functions print() and printStdio() and the constructor.
+- Create a new class deriving from UnitTest.
+- Implement abstract functions run() (mandatory) and init(), release() (optional)
+- Add test to main.cpp
+- Add test and optional parameter file to the main .ini file
+
+Please add main testing code to run(). Use init() to read parameters (return true/false on success/failure), perform 
+cleanup activities within release().
+
+Use helper functions defined in \ref Logger to report the verify the status of a test:
+
+- report(): report general information on the result of a test
+- checkTrue(): check and report result of a test
+
+Check CameraTest for a simple example.
 
 \section lib_sec Libraries
 
@@ -49,82 +60,11 @@ YARP_math
 \section parameters_sec Parameters
 Provide a comprehensive list of the parameters you can pass to the module. For example:
 
---from mytest.ini: configuration file to use
---robot /icub01: robot name
---user "Alice Cooper": people executing the test
---outfile myReport.xml: report file name
---comment "...": textual comment
+--from <full_path_to_/mytest.ini: configuration file to use
 
-\section portsa_sec Ports Accessed
-
-part: torso, head, left_arm, right_arm, left_leg, right_leg.
-
-/icubXX/part/command:i <br>
-/icubXX/part/rpc:i <br>
-/icubXX/part/state:o
-
-\section portsc_sec Ports Created
-
-part: torso, head, left_arm, right_arm, left_leg, right_leg.
-
-/iCubTest/part/command:o <br>
-/iCubTest/part/rpc:o <br>
-/iCubTest/part/state:i
-
-\section out_data_sec Output Data Files
-
-iCubTest produces a test report file in XML format.
-
-Example:
-
-\code
-<report>
-	<user>Alice Cooper</user>
-	<comment>Testing left and right arms.</comment>
-	<success>NO</success>
-	<failures-total>4</failures-total>
-	<test>
-		<description>Set each joint position to 15.0 degrees</description>
-		<references>
-			<datetime>Wed Jan 20 16:32:39 2010</datetime>
-			<part>00001</part>
-		</references>
-		<outcome>FAILURE</outcome>
-		<failures>2</failures>
-		<output>
-			<name>Joint 0 position</name>
-			<result>SUCCESS</result>
-			<target>15.000000</target>
-			<value>14.036245</value>
-			<rangemin>12.000000</rangemin>
-			<rangemax>18.000000</rangemax>
-		</output>
-		<output>
-			<name>Joint 1 position</name>
-			<result>FAILED: value out of range</result>
-			<target>-30.000000</target>
-			<value>-0.000000</value>
-			<rangemin>-27.000000</rangemin>
-			<rangemax>-33.000000</rangemax>
-		</output>
-            ...
-            ...
-            ...
-    </test>
-    <test>
-        ...
-        ...
-        ...
-    </test>
-    ...
-    ...
-    ...
-</report>
-\endcode
- 
 \section conf_file_sec Configuration Files
 
-iCubTest needs a main configuration and one configuration file for each subtest.
+robot-testing needs a main configuration and one configuration file for each subtest.
 
 The main configuration file consists of the following sections:
 
@@ -134,35 +74,33 @@ The file consists in a few sections:
 user "Alice Cooper"
 comment "Testing left and right arms."
 outfile /home/user/TestReport3.xml
-robot /icub01
 [TESTS]
-iCubTestMotors test_left_arm.ini
-iCubTestMotors test_right_arm.ini
+TestCamera right_camera.ini
+TestCamera left_camera.ini
+TestMotors test_right_arm.ini
+TestMotors test_left_arm.ini
 \endcode
 
-\e robot robot's name
-\e user people executing the test
-\e outfile report file name
+\e user who executes the test
+\e outfile report file name (this is currently ignored)
 \e comment textual comment
 
-\e iCubTestMotors test type 
-\e test_left_arm.ini test configuration file
-
-\section tested_os_sec Tested OS
-
-Linux and Windows.
+\e TestCamera test type 
+\e right_camera.ini test configuration file
 
 \section example_sec Example Instantiation of the Module
 
-iCubTest --from mytest.ini
+Make sure the simulator is running.
 
-\author Alessandro Scalzo
+robot-testing --from <full_path_to>/app/iCubTest/test.ini
 
-Copyright (C) 2008 RobotCub Consortium
+\author Alessandro Scalzo and Lorenzo Natale
+
+Copyright (C) 2014 RobotCub Consortium and Istituto Italiano di Tecnologia
 
 CopyPolicy: Released under the terms of the GNU GPL v2.0.
 
-This file can be edited at src/iCubTest/main.cpp.
+This file can be edited at src/main.cpp.
 **/
 
 

@@ -3,7 +3,7 @@
 
 #include <string>
 
-/* Simple wrapper around a logger, in the future it can include xml printer */
+/** Simple wrapper around a logger. Not for users. In the future it can include xml printer */
 class Log
 {
     int failures;
@@ -27,9 +27,14 @@ public:
     {   return failures; }
 };
 
+/** Contains public helper functions to be used within UnitTest.*/
 namespace Logger {
+/** Report general information. No checks are performed. Message is printf style.*/
 void report(const char *msg, ...);
+/** Check result of a test. If flag is true the test is considered passed. Otherwise
+   the test is considerd failed. Add a message in printf style. */
 void checkTrue(bool flag, const char *msg, ...);
+/** Return total number of failures so far.*/
 int failures();
 };
 
