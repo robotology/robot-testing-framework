@@ -28,9 +28,9 @@ using namespace yarp::os;
 using namespace yarp::sig;
 
 // these values can be parameters if needed but better to keep it simple
-const int TIME=3;
+const int TIME=1;
 const int FREQUENCY=30;
-const int FRAMES_TOLERANCE=10;
+const int FRAMES_TOLERANCE=5;
 
 using namespace Logger;
 
