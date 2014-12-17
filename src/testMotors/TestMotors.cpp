@@ -196,8 +196,8 @@ bool TestMotors::run()
 
     Logger::checkTrue(m_NumJoints==nJoints, "expected number of joints is consistent");
 
+    /////// check individual joints
     Logger::report("Checking individual joints...\n");
-
     for (int joint=0; joint<m_NumJoints; ++joint)
     {
         Logger::report("Checking joint %d\n", joint);
@@ -243,6 +243,70 @@ bool TestMotors::run()
         }
         printf("\n");
         Logger::checkTrue(reached, "reached position");
+    }
+
+    //////// check multiple joints
+    Logger::report("Checking multiple joints...\n");
+    if (m_aRefAcc!=NULL)
+        Logger::checkTrue(iPosition->setRefAccelerations(m_aRefAcc), 
+                "setting reference acceleration on all joints");
+
+    Logger::checkTrue(iPosition->setRefSpeeds(m_aRefVel), 
+            "setting reference speed on all joints");
+
+
+    Logger::checkTrue(iPosition->positionMove(m_aHome), 
+            "moving all joints to home");
+
+    // wait some time
+    double timeStart=yarp::os::Time::now();
+    double timeNow=timeStart;
+    
+    double timeout=m_aTimeout[0];
+    for(int j=0; j<m_NumJoints; j++)
+    {
+        if (timeout<m_aTimeout[j])
+            timeout=m_aTimeout[j];
+    }
+
+    printf("Waiting timeout %.2lf", timeout);
+    bool reached=false;
+    double *encoders;
+    encoders=new double [m_NumJoints];
+    while(timeNow<timeStart+m_aTimeout[0] && !reached)
+        {
+            iEncoders->getEncoders(encoders);
+
+            reached=true;
+            for(int j=0; j<m_NumJoints; j++)
+            {
+                if (encoders[j]<(m_aTargetVal[j]+m_aMinErr[j]) || encoders[j]>(m_aTargetVal[j]+m_aMaxErr[j]))
+                    reached=false;
+            }
+
+            printf(".");
+            timeNow=yarp::os::Time::now();
+            yarp::os::Time::delay(0.1);
+        }
+    delete [] encoders;
+
+    printf("\n");
+    Logger::checkTrue(reached, "reached position");
+
+    if (reached)
+    {
+        bool *done=new bool [m_NumJoints];
+        bool ret=iPosition->checkMotionDone(done);
+
+        bool ok=true;
+        for(int j=0; j<m_NumJoints; j++)
+        {
+            ok=reached&&done[j];
+        }
+
+        Logger::checkTrue(ok&&ret, "checking checkMotionDone");
+
+        delete [] done;
     }
 
     return true;
