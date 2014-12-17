@@ -20,8 +20,7 @@
 
 /**
 *
-@ingroup icub_tools
-\defgroup icub_robot-testing Robot Testing
+\mainpage Robot Testing
 
 A suite of tests for generic robot platforms.
 
@@ -36,7 +35,7 @@ tests may receive parameters from file, this allows to execute the same unit tes
 This is a sketch of the steps required to add a test:
 
 - Create a new class deriving from UnitTest.
-- Implement abstract functions run() (mandatory) and init(), release() (optional)
+- Implement abstract functions UnitTest::run() (mandatory) and UnitTest::init(), UnitTest::release() (optional)
 - Add test to main.cpp
 - Add test and optional parameter file to the main .ini file
 
@@ -48,7 +47,7 @@ Use helper functions defined in \ref Logger to report the verify the status of a
 - report(): report general information on the result of a test
 - checkTrue(): check and report result of a test
 
-Check CameraTest for a simple example.
+Check TestCamera for a simple example.
 
 \section lib_sec Libraries
 
@@ -73,7 +72,7 @@ The file consists in a few sections:
 [REFERENCES]
 user "Alice Cooper"
 comment "Testing left and right arms."
-outfile /home/user/TestReport3.xml
+
 [TESTS]
 TestCamera right_camera.ini
 TestCamera left_camera.ini
@@ -81,12 +80,11 @@ TestMotors test_right_arm.ini
 TestMotors test_left_arm.ini
 \endcode
 
-\e user who executes the test
-\e outfile report file name (this is currently ignored)
-\e comment textual comment
+- \e user who executes the test
+- \e comment textual comment
 
-\e TestCamera test type 
-\e right_camera.ini test configuration file
+- \e TestCamera test type should match identifier used within main.cpp
+- \e right_camera.ini test configuration file
 
 \section example_sec Example Instantiation of the Module
 
