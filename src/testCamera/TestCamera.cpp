@@ -1,6 +1,6 @@
 // -*- mode:C++; tab-width:4; c-basic-offset:4; indent-tabs-mode:nil -*-
 
-/* 
+/*
  * Copyright (C) 2014 iCub Facility, Istituto Italiano di Tecnologia
  * Author: Lorenzo Natale
  * email: lorenzo.natale@iit.it
@@ -17,6 +17,7 @@
  * Public License for more details
 */
 
+#include <cstdlib>
 
 #include "TestCamera.h"
 
@@ -36,7 +37,7 @@ using namespace Logger;
 
 TestCamera::TestCamera(yarp::os::Property& configuration) : UnitTest(configuration)
 {
-    
+
 }
 
 TestCamera::~TestCamera()

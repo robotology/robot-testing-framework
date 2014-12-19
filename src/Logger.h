@@ -1,6 +1,7 @@
 #ifndef __LOGGER__
 #define __LOGGER__
 
+#include <cstdio>
 #include <string>
 
 /** Simple wrapper around a logger. Not for users. In the future it can include xml printer */
