@@ -234,8 +234,7 @@ bool TestMotors::run()
             double pos;
             iEncoders->getEncoder(joint,&pos);
 
-            if (pos>=m_aTargetVal[joint]+m_aMinErr[joint] && pos<=m_aTargetVal[joint]+m_aMaxErr[joint])
-                reached=true;
+            reached=isApproxEqual(pos, m_aTargetVal[joint], m_aMinErr[joint], m_aMaxErr[joint]);
 
             printf(".");
             timeNow=yarp::os::Time::now();
@@ -277,12 +276,7 @@ bool TestMotors::run()
         {
             iEncoders->getEncoders(encoders);
 
-            reached=true;
-            for(int j=0; j<m_NumJoints; j++)
-            {
-                if (encoders[j]<(m_aTargetVal[j]+m_aMinErr[j]) || encoders[j]>(m_aTargetVal[j]+m_aMaxErr[j]))
-                    reached=false;
-            }
+            reached=isApproxEqual(encoders, m_aTargetVal, m_aMinErr, m_aMaxErr, m_NumJoints);
 
             printf(".");
             timeNow=yarp::os::Time::now();
@@ -298,11 +292,7 @@ bool TestMotors::run()
         bool *done=new bool [m_NumJoints];
         bool ret=iPosition->checkMotionDone(done);
 
-        bool ok=true;
-        for(int j=0; j<m_NumJoints; j++)
-        {
-            ok=reached&&done[j];
-        }
+        bool ok=isTrue(done, m_NumJoints);
 
         Logger::checkTrue(ok&&ret, "checking checkMotionDone");
 
@@ -331,11 +321,7 @@ bool TestMotors::release()
 
         iPosition->checkMotionDone(done);
 
-        reached=true;
-        for(int j=0; j<m_NumJoints; j++)
-        {
-            reached=reached&&done[j];
-        }
+        reached=isTrue(done, m_NumJoints);
         
         printf(".");
         timeNow=yarp::os::Time::now();

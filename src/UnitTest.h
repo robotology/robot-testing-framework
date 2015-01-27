@@ -29,6 +29,17 @@
 
 #include <yarp/os/ResourceFinder.h>
 
+#include <yarp/sig/Vector.h>
+
+/*
+* Some helpr functions
+*/
+bool isApproxEqual(const double *left, const double *right, const double *l_thresholds, const double *h_thresholds, int lenght);
+bool isApproxEqual(const double *left, const double *right, const double *thresholds, int lenght);
+bool isApproxEqual(const yarp::sig::Vector &left, const yarp::sig::Vector &right, const yarp::sig::Vector &thresholds);  
+bool isApproxEqual(double left, double right, double l_th, double h_th);
+bool isTrue(const bool *vect, int lenght);
+
 class UnitTest
 {
 public:
