@@ -6,7 +6,10 @@
 set(folder_source TestSet.cpp UnitTest.cpp main.cpp Logger.cpp)
 set(folder_header TestSet.h UnitTest.h Logger.h)
 
-set(folder_tests testCamera/TestCamera.cpp testCamera/TestCamera.h testMotors/TestMotors.cpp testMotors/TestMotors.h)
+set(folder_tests testCamera/TestCamera.cpp testCamera/TestCamera.h 
+    testMotors/TestMotors.cpp testMotors/TestMotors.h
+    testFTSensors/TestFTSensors.h testFTSensors/TestFTSensors.cpp
+)
 
 source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})

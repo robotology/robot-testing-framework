@@ -112,6 +112,7 @@ This file can be edited at src/main.cpp.
 #include "TestSet.h"
 #include "testCamera/TestCamera.h"
 #include "testMotors/TestMotors.h"
+#include "testFTSensors/TestFTSensors.h"
 
 #include <yarp/dev/Drivers.h>
 
@@ -175,6 +176,10 @@ int main(int argc,char* argv[])
         {
             ts.addTest(new TestCamera(config));
             //fprintf(stderr,"iCubTestCamera not yet implemented\n");
+        }
+        else if (testType == "TestFTSensors")
+        {
+            ts.addTest(new TestFTSensors(config));
         }
         else if (testType=="iCubTestInertial")
         {
