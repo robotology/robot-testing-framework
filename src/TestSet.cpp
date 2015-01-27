@@ -91,9 +91,14 @@ int TestSet::run()
             Logger::report("Description: %s\n", m_apTest[i]->getDescription().c_str());
 
             if (!m_apTest[i]->run())
-                 m_bSuccess=false;
-        
-            m_apTest[i]->release();
+            {
+                m_bSuccess=false;
+            }
+            else
+            {
+                //test was successfull, close release
+                m_apTest[i]->release();
+            }
 
             m_numTests++;
         }
