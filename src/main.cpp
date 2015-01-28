@@ -86,6 +86,25 @@ TestMotors test_left_arm.ini
 - \e TestCamera test type should match identifier used within main.cpp
 - \e right_camera.ini test configuration file
 
+Optionally you can specify an [ENVIRONMENT] section which includes variables that
+can be expanded when reading each test individual ini files. A typical example is the 
+name of the robot which is used to form port names of tests.
+
+Example if in the main configuration file you specify this environment:
+
+\code
+[ENVIRONMENT]
+robotname icubGazeboSim
+\endcode
+
+Then inside right_camera.ini:
+
+\code
+portname /${robotname}/cam/right
+\endcode
+
+will be expanded to /icubGazeboSim/cam/right
+
 \section example_sec Example Instantiation of the Module
 
 Make sure the simulator is running.
@@ -135,6 +154,7 @@ int main(int argc,char* argv[])
     rf.configure(argc,argv);
 
     yarp::os::Bottle references=rf.findGroup("REFERENCES");
+    yarp::os::Bottle environment=rf.findGroup("ENVIRONMENT");
     
     TestSet ts;
     ts.init(references);
@@ -151,8 +171,10 @@ int main(int argc,char* argv[])
         std::string file=rf.findFileByName(fileName);
         
         yarp::os::Property config;
-        config.fromConfigFile(file);
 
+        // open test ini file, pass environment with variables inherited from the
+        // main ini file.
+        config.fromConfigFile(file, environment);
 
         if (testType=="TestMotors")
         {
