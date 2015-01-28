@@ -133,11 +133,9 @@ This file can be edited at src/main.cpp.
 
 #include <yarp/dev/Drivers.h>
 
-YARP_DECLARE_DEVICES(icubmod)
 
 int main(int argc,char* argv[])
 {
-    YARP_REGISTER_DEVICES(icubmod)
     yarp::os::Network yarp;
     yarp.setVerbosity(-1);
 

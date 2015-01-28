@@ -24,4 +24,4 @@ message(STATUS "Executables go to ${EXECUTABLE_OUTPUT_PATH}")
 
 add_executable(robot-testing ${folder_source} ${folder_header} ${folder_tests})
 
-target_link_libraries(robot-testing ${YARP_LIBRARIES} icubmod)
+target_link_libraries(robot-testing ${YARP_LIBRARIES})

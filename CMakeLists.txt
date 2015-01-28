@@ -9,6 +9,5 @@ set(PROJECTNAME robot-testing)
 project(${PROJECTNAME})
 
 find_package(YARP)
-find_package(ICUB)
 
 add_subdirectory(src)
