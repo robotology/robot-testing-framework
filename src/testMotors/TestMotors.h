@@ -48,6 +48,7 @@ protected:
     yarp::dev::PolyDriver m_driver;
     yarp::dev::IEncoders *iEncoders;
     yarp::dev::IPositionControl *iPosition;
+    yarp::dev::IPositionControl2 *iPosition2;
     bool m_initialized;
     std::string m_portname;
     int m_NumJoints;
