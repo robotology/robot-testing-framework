@@ -48,3 +48,49 @@ bool UnitTest::configure()
 
     return init(configuration);
 }
+
+bool isApproxEqual(const double *left, const double *right, const double *thresholds, int lenght)
+{
+    return isApproxEqual(left, right, thresholds, thresholds, lenght);
+}
+
+bool isApproxEqual(const double *left, const double *right, const double *l_thresholds, const double *h_thresholds, int lenght)
+{
+    bool reached=true;
+    for(int j=0; j<lenght; j++)
+    {
+        if (left[j]<(right[j]-fabs(l_thresholds[j])) || left[j]>(right[j]+fabs(h_thresholds[j])))
+            reached=false;
+    }
+    return reached;
+}
+
+
+bool isApproxEqual(const yarp::sig::Vector &left, const yarp::sig::Vector &right, const yarp::sig::Vector &thresholds)
+{
+    if (left.size()!=right.size() && right.size()!=thresholds.size())
+        {
+            std::cerr<<"UnitTest.cpp::isApproxEqual vectors must have same size!\n";
+            return false;
+    }
+
+    return isApproxEqual(left.data(), right.data(), thresholds.data(), left.size());
+}
+
+bool isTrue(const bool *vect, int lenght)
+{
+    bool ok=true;
+    for(int j=0; j<lenght; j++)
+    {
+            ok=ok&&vect[j];
+    }
+    return ok;
+}
+
+bool isApproxEqual(double left, double right, double l_th, double h_th)
+{
+    if (left>=right-fabs(l_th) && left<=right+fabs(h_th))
+        return true;
+    else 
+        return false;
+}
