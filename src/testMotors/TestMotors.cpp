@@ -289,14 +289,27 @@ bool TestMotors::run()
 
     if (reached)
     {
-        bool *done=new bool [m_NumJoints];
-        bool ret=iPosition->checkMotionDone(done);
+        bool *done_vector=new bool [m_NumJoints];
 
-        bool ok=isTrue(done, m_NumJoints);
+        // check checkMotionDone.
+        // because the previous movement was approximate, the robot
+        // could still be moving so we need to iterate a few times
 
-        Logger::checkTrue(ok&&ret, "checking checkMotionDone");
+        int times=10;
+        bool doneAll=false;
+        bool ret=false;
+        
+        while(times>0 && !doneAll)
+        {
+            ret=iPosition->checkMotionDone(done_vector);
+            doneAll=isTrue(done_vector, m_NumJoints);
+            if (!doneAll)
+                yarp::os::Time::delay(0.1);
+        }
 
-        delete [] done;
+        Logger::checkTrue(doneAll&&ret, "checking checkMotionDone");
+
+        delete [] done_vector;
     }
 
     return true;
