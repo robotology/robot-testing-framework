@@ -77,16 +77,6 @@ bool isApproxEqual(const yarp::sig::Vector &left, const yarp::sig::Vector &right
     return isApproxEqual(left.data(), right.data(), thresholds.data(), left.size());
 }
 
-bool isTrue(const bool *vect, int lenght)
-{
-    bool ok=true;
-    for(int j=0; j<lenght; j++)
-    {
-            ok=ok&&vect[j];
-    }
-    return ok;
-}
-
 bool isApproxEqual(double left, double right, double l_th, double h_th)
 {
     if (left>=right-fabs(l_th) && left<=right+fabs(h_th))

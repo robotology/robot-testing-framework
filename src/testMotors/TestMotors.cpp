@@ -289,8 +289,6 @@ bool TestMotors::run()
 
     if (reached)
     {
-        bool *done_vector=new bool [m_NumJoints];
-
         // check checkMotionDone.
         // because the previous movement was approximate, the robot
         // could still be moving so we need to iterate a few times
@@ -301,15 +299,12 @@ bool TestMotors::run()
         
         while(times>0 && !doneAll)
         {
-            ret=iPosition->checkMotionDone(done_vector);
-            doneAll=isTrue(done_vector, m_NumJoints);
+            ret=iPosition->checkMotionDone(&doneAll);
             if (!doneAll)
                 yarp::os::Time::delay(0.1);
         }
 
         Logger::checkTrue(doneAll&&ret, "checking checkMotionDone");
-
-        delete [] done_vector;
     }
 
     return true;
@@ -320,30 +315,20 @@ bool TestMotors::release()
     Logger::report("Homing robot\n");
 
     iPosition->positionMove(m_aHome);
-    double *encoders;
-    bool *done;
-    encoders=new double [m_NumJoints];
-    done = new bool [m_NumJoints];
-
+    
     bool reached=false;
     double timeStart=yarp::os::Time::now();
     double timeNow=timeStart;
     while(timeNow<timeStart+m_aTimeout[0] && !reached)
     {
-        iEncoders->getEncoders(encoders);
+        iPosition->checkMotionDone(&reached);
 
-        iPosition->checkMotionDone(done);
-
-        reached=isTrue(done, m_NumJoints);
-        
         printf(".");
         timeNow=yarp::os::Time::now();
         yarp::os::Time::delay(0.1);
     }
 
     printf("\n");
-    delete [] encoders;
-    delete [] done;
 
     return true;
 }
