@@ -24,6 +24,8 @@
 
 #include "Logger.h"
 
+#include <cmath>
+
 UnitTest::UnitTest(yarp::os::Property& config)
 {
    configuration=config;

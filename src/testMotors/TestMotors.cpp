@@ -361,8 +361,7 @@ bool TestMotors::run()
         
         while(times>0 && !doneAll)
         {
-            ret=iPosition2->checkMotionDone(done_vector);
-            doneAll=isTrue(done_vector, m_NumJoints);
+            ret=iPosition2->checkMotionDone(&doneAll);
             if (!doneAll)
                 yarp::os::Time::delay(0.1);
         }
