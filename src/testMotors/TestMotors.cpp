@@ -184,6 +184,7 @@ bool TestMotors::run()
 
     m_driver.view(iEncoders);
     m_driver.view(iPosition);
+    m_driver.view(iPosition2);
 
     ret=iEncoders&&iPosition;
     Logger::checkTrue(ret, "interfaces acquired");
@@ -272,7 +273,7 @@ bool TestMotors::run()
     bool reached=false;
     double *encoders;
     encoders=new double [m_NumJoints];
-    while(timeNow<timeStart+m_aTimeout[0] && !reached)
+    while(timeNow<timeStart+timeout && !reached)
         {
             iEncoders->getEncoders(encoders);
 
@@ -282,7 +283,6 @@ bool TestMotors::run()
             timeNow=yarp::os::Time::now();
             yarp::os::Time::delay(0.1);
         }
-    delete [] encoders;
 
     printf("\n");
     Logger::checkTrue(reached, "reached position");
@@ -306,6 +306,77 @@ bool TestMotors::run()
 
         Logger::checkTrue(doneAll&&ret, "checking checkMotionDone");
     }
+
+    //
+    Logger::report("Now checking group interface");
+
+    //shuffle encoders
+    int *jmap=new int [m_NumJoints];
+    double *swapped_refvel=new double [m_NumJoints];
+    double *swapped_target=new double [m_NumJoints];
+
+    for(int kk=0;kk<m_NumJoints;kk++)
+    {
+        swapped_refvel[kk]=m_aRefVel[m_NumJoints-kk-1];
+        swapped_target[kk]=m_aTargetVal[m_NumJoints-kk-1];
+        jmap[kk]=m_NumJoints-kk-1;
+    }
+
+    Logger::checkTrue(iPosition2->setRefSpeeds(m_NumJoints, jmap, swapped_refvel), 
+            "setting reference speed on all joints using group interface");
+    
+    Logger::checkTrue(iPosition2->positionMove(m_NumJoints, jmap, swapped_target), 
+            "moving all joints to home using group interface");
+
+    timeStart=yarp::os::Time::now();
+    timeNow=timeStart;
+    
+    printf("Waiting timeout %.2lf", timeout);
+    reached=false;
+    while(timeNow<timeStart+timeout && !reached)
+        {
+            iEncoders->getEncoders(encoders);
+
+            reached=isApproxEqual(encoders, m_aTargetVal, m_aMinErr, m_aMaxErr, m_NumJoints);
+
+            printf(".");
+            timeNow=yarp::os::Time::now();
+            yarp::os::Time::delay(0.1);
+        }
+
+    printf("\n");
+    Logger::checkTrue(reached, "reached position");
+
+    if (reached)
+    {
+        bool *done_vector=new bool [m_NumJoints];
+
+        // check checkMotionDone.
+        // because the previous movement was approximate, the robot
+        // could still be moving so we need to iterate a few times
+
+        int times=10;
+        bool doneAll=false;
+        bool ret=false;
+        
+        while(times>0 && !doneAll)
+        {
+            ret=iPosition2->checkMotionDone(done_vector);
+            doneAll=isTrue(done_vector, m_NumJoints);
+            if (!doneAll)
+                yarp::os::Time::delay(0.1);
+        }
+
+        Logger::checkTrue(doneAll&&ret, "checking checkMotionDone");
+
+        delete [] done_vector;
+    }
+
+    //cleanup
+    delete [] jmap;
+    delete [] swapped_refvel;
+    delete [] swapped_target;
+    delete [] encoders;
 
     return true;
 }
