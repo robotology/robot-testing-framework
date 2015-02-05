@@ -170,13 +170,15 @@ bool TestMotors::init(yarp::os::Property& configuration)
 
 bool TestMotors::run()
 {
+    bool doneAll=false;
+    bool ret=false;
+
     yarp::os::Property options;
     options.put("device","remote_controlboard");
     options.put("local",m_portname+"/client");
     options.put("remote",m_portname);
-
-    bool ret=m_driver.open(options);
-
+    
+    ret=m_driver.open(options);
     Logger:: checkTrue(ret, "open device");
 
     if (!ret)
@@ -228,6 +230,10 @@ bool TestMotors::run()
         Logger::checkTrue(iPosition->positionMove(joint, m_aTargetVal[joint]), 
             "moving joint %d to %.2lf", joint, m_aTargetVal[joint]);
 
+        doneAll=false;
+        ret=iPosition->checkMotionDone(&doneAll);
+        Logger::checkTrue(!doneAll&&ret, "checking checkMotionDone returns false after position move");
+
         printf("Waiting timeout %.2lf", m_aTimeout[joint]);
         bool reached=false;
         while(timeNow<timeStart+m_aTimeout[joint] && !reached)
@@ -257,6 +263,11 @@ bool TestMotors::run()
 
     Logger::checkTrue(iPosition->positionMove(m_aHome), 
             "moving all joints to home");
+
+    doneAll=false;
+    // make sure that checkMotionDone return false right after a movement
+    ret=iPosition->checkMotionDone(&doneAll);
+    Logger::checkTrue(!doneAll&&ret, "checking checkMotionDone returns false after position move");
 
     // wait some time
     double timeStart=yarp::os::Time::now();
@@ -304,7 +315,7 @@ bool TestMotors::run()
                 yarp::os::Time::delay(0.1);
         }
 
-        Logger::checkTrue(doneAll&&ret, "checking checkMotionDone");
+        Logger::checkTrue(doneAll&&ret, "checking checkMotionDone returns true");
     }
 
     //
@@ -327,6 +338,9 @@ bool TestMotors::run()
     
     Logger::checkTrue(iPosition2->positionMove(m_NumJoints, jmap, swapped_target), 
             "moving all joints to home using group interface");
+
+    ret=iPosition->checkMotionDone(&doneAll);
+    Logger::checkTrue(!doneAll&&ret, "checking checkMotionDone returns false after position move");
 
     timeStart=yarp::os::Time::now();
     timeNow=timeStart;
