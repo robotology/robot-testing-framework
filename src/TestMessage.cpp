@@ -16,6 +16,8 @@ TestMessage::TestMessage(std::string msg) {
 }
 
 TestMessage::TestMessage(std::string msg, std::string detail) {
+    strMessage = msg;
+    strDetail = detail;
 }
 
 
@@ -23,25 +25,29 @@ TestMessage::~TestMessage() {
 
 }
 
-std::string TestMessage::getMessage() {
-
+const std::string TestMessage::getMessage() {
+    return strMessage;
 }
 
-std::string TestMessage::getDetail() {
-
-}
-
-
-void TestMessage::setSourceLineNumber(int line) {
-
+const std::string TestMessage::getDetail() {
+    return strDetail;
 }
 
 
-int TestMessage::getSourceLineNumber() {
-
+void TestMessage::setSourceLineNumber(unsigned int line) {
+    lineNumber = line;
 }
 
 
-std::string TestMessage::getSourceFileName() {
+unsigned int TestMessage::getSourceLineNumber() {
+    return lineNumber;
+}
 
+
+void TestMessage::setSourceFileName(std::string filename) {
+    strFileName = filename;
+}
+
+const std::string TestMessage::getSourceFileName() {
+    return strFileName;
 }

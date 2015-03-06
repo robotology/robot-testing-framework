@@ -23,8 +23,7 @@ namespace RTF {
  * class TestMessage 
  */
 
-class RTF::TestMessage
-{
+class RTF::TestMessage {
 public:
 
     /**
@@ -44,33 +43,39 @@ public:
     /**
      * @return string
      */
-    std::string getMessage ();
+    const std::string getMessage ();
 
     /**
      * @return string
      */
-    std::string getDetail();
+    const std::string getDetail();
 
 
     /**
      * @param  line
      */
-    void setSourceLineNumber(int line);
+    void setSourceLineNumber(unsigned int line);
 
 
     /**
      * @return int
      */
-    int getSourceLineNumber();
+    unsigned int getSourceLineNumber();
 
+
+    /**
+     * @param string
+     */
+    void setSourceFileName(std::string filename);
 
     /**
      * @return string
      */
-    std::string getSourceFileName();
+    const std::string getSourceFileName();
 
 private:
     unsigned int lineNumber;
+    std::string strFileName;
     std::string strMessage;
     std::string strDetail;
 };
