@@ -15,7 +15,7 @@
 #include <TestMessage.h>
 #include <TestListener.h>
 
-#include <vector>
+#include <set>
 
 namespace RTF {
     class TestResult;
@@ -27,67 +27,89 @@ namespace RTF {
  */
 
 class RTF::TestResult {
-    //typedef std::vector<RTF::TestListener* listener>
+
+    typedef std::set<RTF::TestListener*>  ListenerContainer;
+    typedef std::set<RTF::TestListener*>::iterator ListenerIterator;
+
 
 public:
 
     /**
      * TestResult constructor
      */
-    TestResult() { }
+    TestResult();
 
     /**
      *  TestResult destructor
      */
-    virtual ~TestResult() { }
+    virtual ~TestResult();
 
+    /**
+     * Adding a new listener
+     * @param listener pointer to a TestListener object
+     */
+    void addListener(RTF::TestListener* listener);
+
+    /**
+     * Remove a listener
+     * @param listener pointer to a TestListener object
+     */
+    void removeListener(RTF::TestListener* listener);
+
+    /**
+     * Clear the listener list
+     */
+    void reset();
 
     /**
      * This is called when an error occurred during test run
      * @param test pointer to the corresponding test
      * @param msg  correspoinding error message
      */
-    virtual void addError(RTF::Test* test, RTF::TestMessage msg) {}
+    void addError(const RTF::Test* test, RTF::TestMessage msg);
 
     /**
      * This is called when a failure occurred during test run
      * @param test pointer to the corresponding test
      * @param msg  correspoinding failure message
      */
-    virtual void addFailure(RTF::Test* test, RTF::TestMessage msg) {}
+    void addFailure(const RTF::Test* test, RTF::TestMessage msg);
 
     /**
      * This is called when a Test is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTest(RTF::Test* test) {}
+    void startTest(const RTF::Test* test);
 
     /**
      * This is called when a Test is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTest(RTF::Test* test) {}
+    void endTest(const RTF::Test* test);
 
     /**
      * This is called when a TestSuit is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTestSuit(RTF::Test* test) {}
+    void startTestSuit(const RTF::Test* test);
 
     /**
      * This is called when a TestSuit is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTestSuit(RTF::Test* test) {}
+    void endTestSuit(const RTF::Test *test);
 
     /**
      * This is called when the TestRunner is started
      */
-    virtual void startTestRunner() {}
+    void startTestRunner();
 
     /**
      * This is called when the TestRunner is finished
      */
-    virtual void endTestRunner() {}
+    void endTestRunner();
+
+private:
+    ListenerContainer listeners;
 };
 #endif // _RTF_TESTResult_H

@@ -24,19 +24,34 @@ namespace RTF {
  */
 
 class RTF::TestMessage {
+
 public:
 
     /**
-     * @param  msg
+     * Copy constructor
+     * @param other a TestMessage
      */
-    TestMessage(std::string msg);
+    TestMessage(const TestMessage& other);
 
     /**
-     * @param  msg
-     * @param  detail
+     * @param msg
+     * @param filename
+     * @param line
      */
-    TestMessage (std::string msg, std::string detail);
+    TestMessage(std::string msg,
+                std::string filename="",
+                unsigned int line=0);
 
+    /**
+     * @param msg
+     * @param detail
+     * @param filename
+     * @param line
+     */
+    TestMessage(std::string msg,
+                std::string detail,
+                std::string filename="",
+                unsigned int line=0);
 
     virtual ~TestMessage ();
 

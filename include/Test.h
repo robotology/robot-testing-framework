@@ -30,8 +30,8 @@ public:
      * Test constructor
      * @param  name The test name
      */
-    Test(std::string name) {
-        strName = name;
+    Test(std::string name)
+        : strName(name) {
     }
 
     /**
@@ -46,7 +46,14 @@ public:
      */
     virtual void run(RTF::TestResult &result) = 0;
 
+    /**
+     * @brief succeeded
+     * @return true or false representing whether the test
+     * was successful or not.
+     */
+    virtual bool succeeded() = 0;
+
 private:
-    std::string strName;
+    std::string strName;    
 };
 #endif // _RTF_TEST_H

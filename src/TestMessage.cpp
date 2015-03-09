@@ -11,15 +11,27 @@
 
 using namespace RTF;
 
-TestMessage::TestMessage(std::string msg) {
-    strMessage  = msg;
+TestMessage::TestMessage(const TestMessage& other) {
+    *this = other;
 }
 
-TestMessage::TestMessage(std::string msg, std::string detail) {
+TestMessage::TestMessage(std::string msg,
+                         std::string filename,
+                         unsigned int line) {
+    strMessage = msg;
+    strFileName = filename;
+    lineNumber = line;
+}
+
+TestMessage::TestMessage(std::string msg,
+                         std::string detail,
+                         std::string filename,
+                         unsigned int line) {
     strMessage = msg;
     strDetail = detail;
+    strFileName = filename;
+    lineNumber = line;
 }
-
 
 TestMessage::~TestMessage() {
 

@@ -41,38 +41,38 @@ public:
      * @param test pointer to the corresponding test
      * @param msg  correspoinding error message
      */
-    virtual void addError(RTF::Test* test, RTF::TestMessage msg) {}
+    virtual void addError(const RTF::Test* test, RTF::TestMessage msg) {}
 
     /**
      * This is called when a failure occurred during test run
      * @param test pointer to the corresponding test
      * @param msg  correspoinding failure message
      */
-    virtual void addFailure(RTF::Test* test, RTF::TestMessage msg) {}
+    virtual void addFailure(const RTF::Test* test, RTF::TestMessage msg) {}
 
     /**
      * This is called when a Test is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTest(RTF::Test* test) {}
+    virtual void startTest(const RTF::Test* test) {}
 
     /**
      * This is called when a Test is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTest(RTF::Test* test) {}
+    virtual void endTest(const RTF::Test* test) {}
 
     /**
      * This is called when a TestSuit is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTestSuit(RTF::Test* test) {}
+    virtual void startTestSuit(const RTF::Test* test) {}
 
     /**
      * This is called when a TestSuit is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTestSuit(RTF::Test* test) {}
+    virtual void endTestSuit(const RTF::Test* test) {}
 
     /**
      * This is called when the TestRunner is started

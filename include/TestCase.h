@@ -12,6 +12,7 @@
 #define _RTF_TESTCASE_H
 
 #include <Test.h>
+#include <TestResult.h>
 
 namespace RTF {
     class TestCase;
@@ -29,13 +30,12 @@ public:
      * TestCase constructor
      * @param  name The TestCase name
      */
-    TestCase(std::string name) : RTF::Test(name) { }
+    TestCase(std::string name);
 
     /**
      *  TestCase destructor
      */
-    virtual ~TestCase() { }
-
+    virtual ~TestCase();
 
     /**
      * @brief setup is called before the test run
@@ -48,7 +48,6 @@ public:
      */
     virtual void tearDown();
 
-
     /**
      * @brief run is called by the TestCase class
      * if setup is successfull;
@@ -60,10 +59,25 @@ public:
      * @param result an instance of a TestResult
      * to collect the result of the test.
      */
-    void run(RTF::TestResult &result);
+    void run(TestResult &result);
 
+    /**
+     * @brief succeeded
+     * @return true or false representing whether the test
+     * was successful or not.
+     */
+    bool succeeded();
+
+    /**
+     * @brief getResult returns an instance of TestResult
+     * if run(TestResult &result) has been already called
+     * by a TestRunner
+     * @return an instance of TestResult
+     */
+    RTF::TestResult* getResult();
 
 private:
     RTF::TestResult* result;
+    bool successful;
 };
 #endif // _RTF_TESTCASE_H
