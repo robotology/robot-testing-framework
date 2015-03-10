@@ -49,6 +49,7 @@ void Asserter::check(bool condition,
                      RTF::TestCase* testcase)
 {
     if(!condition) {
+        testcase->failed();
         testcase->getResult()->addFailure(testcase, msg);
     }
 }

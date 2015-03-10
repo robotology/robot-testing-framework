@@ -22,8 +22,8 @@ add_library(${PROJECTNAME} ${folder_source} ${folder_header} )
 target_link_libraries(${PROJECTNAME})
 
 # Create examples
-#option (BUILD_EXAMPLES "Build examples" ON)
-#if (BUILD_EXAMPLES)
-#    add_subdirectory(examples)
-#endif(BUILD_EXAMPLES)
+option (BUILD_EXAMPLES "Build examples" ON)
+if (BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif(BUILD_EXAMPLES)
 

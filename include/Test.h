@@ -40,6 +40,14 @@ public:
     virtual ~Test() { }
 
     /**
+     * @brief getName Getting test name.
+     * @return the name of the test.
+     */
+    const std::string getName() const {
+        return strName;
+    }
+
+    /**
      * the main caller of a test.
      * @param result an instance of a TestResult
      * to collect the result of the test
@@ -51,7 +59,7 @@ public:
      * @return true or false representing whether the test
      * was successful or not.
      */
-    virtual bool succeeded() = 0;
+    virtual bool succeeded() const = 0;
 
 private:
     std::string strName;    

@@ -66,7 +66,13 @@ public:
      * @return true or false representing whether the test
      * was successful or not.
      */
-    bool succeeded();
+    bool succeeded() const;
+
+    /**
+     * @brief failed set the test successful flag to \c false
+     *         which indicates that the test was not successful.
+     */
+    void failed();
 
     /**
      * @brief getResult returns an instance of TestResult

@@ -24,7 +24,11 @@ TestCase::~TestCase() {
 
 }
 
-bool TestCase::succeeded() {
+void TestCase::failed() {
+    successful = false;
+}
+
+bool TestCase::succeeded() const {
     return successful;
 }
 
@@ -48,11 +52,11 @@ void TestCase::run(TestResult &rsl) {
         if (!setup()) {
             result->addError(this, RTF::TestMessage("setup() failed!"));
             successful = false;
+            result->endTest(this);
             return;
         }
         run();
-        tearDown();
-        result->endTest(this);
+        tearDown();        
     }
     catch(RTF::TestFailureException& e) {
         successful = false;
@@ -66,4 +70,5 @@ void TestCase::run(TestResult &rsl) {
         successful = false;
         result->addError(this, RTF::TestMessage(e.what()));
     }
+    result->endTest(this);
 }
