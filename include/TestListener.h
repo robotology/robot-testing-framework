@@ -37,6 +37,14 @@ public:
     virtual ~TestListener() { }
 
     /**
+     * This is called to report any arbitrary message
+     * from tests.
+     * @param test pointer to the corresponding test
+     * @param msg  correspoinding error message
+     */
+    virtual void addReport(const RTF::Test* test, RTF::TestMessage msg) {}
+
+    /**
      * This is called when an error occurred during test run
      * @param test pointer to the corresponding test
      * @param msg  correspoinding error message

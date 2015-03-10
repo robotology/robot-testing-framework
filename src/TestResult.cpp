@@ -40,6 +40,10 @@ void TestResult::reset() {
     listeners.clear();
 }
 
+void TestResult::addReport(const RTF::Test* test, RTF::TestMessage msg) {
+    CALL_LISTENERS(addReport, test, msg);
+}
+
 void TestResult::addError(const RTF::Test* test, RTF::TestMessage msg) {
     CALL_LISTENERS(addError, test, msg);
 }

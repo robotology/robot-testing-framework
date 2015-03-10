@@ -14,7 +14,7 @@
 
 #include <Exception.h>
 #include <TestMessage.h>
-#include <TestResult.h>
+#include <TestCase.h>
 
 namespace RTF {
     class Asserter;
@@ -27,24 +27,61 @@ class RTF::Asserter {
 
     static void fail(RTF::TestMessage msg);
 
-    static void fail(bool shouldFail,
+    static void fail(bool condition,
                        RTF::TestMessage msg);
 
     static void error(RTF::TestMessage msg);
 
-    static void error(bool shouldFail,
+    static void error(bool condition,
                        RTF::TestMessage msg);
-/*
-    static void checkTrue(RTF::TestResult* result,
-                   RTF::TestMessage msg,
-                   bool shouldFail);
-*/
-    //static void
+
+    static void report(RTF::TestMessage msg,
+                        RTF::TestCase* testcase);
+
+    static void check(bool condition,
+                      RTF::TestMessage msg,
+                      RTF::TestCase* testcase);
 };
 
-#define RTF_SOURCELINE()  __LINE__
-#define RTF_SOURCEFILE()  __FILE__
 
-#define RTF_ASSERT_FAILED(message)
+#define RTF_ASSERT_FAIL(message)\
+    ( RTF::Asserter::fail(RTF::TestMessage("assert failed",\
+                                            message,\
+                                            RTF_SOURCEFILE(),\
+                                            RTF_SOURCELINE())) )
+
+
+#define RTF_ASSERT_FAIL_IF(condition, message)\
+    ( RTF::Asserter::fail(condition,\
+                          RTF::TestMessage(std::string("assert failed on (") +\
+                                           std::string(#condition) + ")",\
+                                           message,\
+                                           RTF_SOURCEFILE(),\
+                                           RTF_SOURCELINE())) )
+
+
+#define RTF_ASSERT_ERROR(message)\
+    ( RTF::Asserter::error(RTF::TestMessage("assert error",\
+                                            message,\
+                                            RTF_SOURCEFILE(),\
+                                            RTF_SOURCELINE())) )
+
+
+#define RTF_ASSERT_ERROR_IF(condition, message)\
+    ( RTF::Asserter::error(condition,\
+                          RTF::TestMessage(std::string("assert error on (") +\
+                                           std::string(#condition) + ")",\
+                                           message,\
+                                           RTF_SOURCEFILE(),\
+                                           RTF_SOURCELINE())) )
+
+
+#define RTF_ASSERT_CHECK(condition, message)\
+    ( RTF::Asserter::check(condition,\
+                          RTF::TestMessage(std::string("assert check on (") +\
+                                           std::string(#condition) + ")",\
+                                           message,\
+                                           RTF_SOURCEFILE(),\
+                                           RTF_SOURCELINE())) )
 
 #endif // _RTF_ASSERTER_H

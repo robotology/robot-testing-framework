@@ -95,4 +95,7 @@ private:
     std::string strDetail;
 };
 
+#define RTF_SOURCELINE()  __LINE__
+#define RTF_SOURCEFILE()  __FILE__
+
 #endif // TESTMESSAGE_H

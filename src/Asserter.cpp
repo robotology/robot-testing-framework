@@ -14,35 +14,41 @@
 using namespace RTF;
 
 
-void fail(RTF::TestMessage msg) {
+void Asserter::fail(RTF::TestMessage msg) {
     throw TestFailureException(msg);
 }
 
 
-void fail(bool condition,
-          RTF::TestMessage msg) {
+void Asserter::fail(bool condition,
+                    RTF::TestMessage msg) {
     if(!condition)
         throw TestFailureException(msg);
 }
 
 
-void error(RTF::TestMessage msg) {
+void Asserter::error(RTF::TestMessage msg) {
     throw TestErrorException(msg);
 }
 
 
-void error(bool shouldFail,
-          RTF::TestMessage msg) {
-    if(shouldFail)
+void Asserter::error(bool condition,
+                     RTF::TestMessage msg)
+{
+    if(!condition)
         throw TestErrorException(msg);
 }
 
-/*
-void checkTrue(RTF::TestResult* result,
-               RTF::TestMessage msg,
-               bool condition) {
-    if(!condition)
-        result->addFailure(this, msg);
+void Asserter::report(RTF::TestMessage msg,
+                      RTF::TestCase* testcase)
+{
+    testcase->getResult()->addReport(testcase, msg);
 }
-*/
 
+void Asserter::check(bool condition,
+                     RTF::TestMessage msg,
+                     RTF::TestCase* testcase)
+{
+    if(!condition) {
+        testcase->getResult()->addFailure(testcase, msg);
+    }
+}
