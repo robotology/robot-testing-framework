@@ -21,8 +21,16 @@ namespace RTF {
 
 /**
  * class TestCase
+ * \ingroup key_class
+ *
+ * \brief The base class to implememnt a test case. The user defined test
+ * cases should be inherited from TestCase class and the \c run() method
+ * must be overriden. The \c setup() and \c tearDown() can be also inherited
+ * to implement any initialization or finalization of the test case.
+ *
+ * Here's an example of using a TestCase:
+ * \include examples/simple.cpp
  */
-
 class RTF::TestCase : public RTF::Test {
 public:
 

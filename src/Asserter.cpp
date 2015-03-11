@@ -7,6 +7,8 @@
  *
  */
 
+#include <stdarg.h>
+#include <stdio.h>
 
 #include <Asserter.h>
 #include <Exception.h>
@@ -52,4 +54,17 @@ void Asserter::check(bool condition,
         testcase->failed();
         testcase->getResult()->addFailure(testcase, msg);
     }
+}
+
+std::string Asserter::format(const char* msg, ...) {
+    va_list args;
+    va_start(args, msg);
+    std::string str;
+    if (msg) {
+        char buf[255];
+        int w = vsnprintf(buf, 255, msg, args);
+        str = buf;
+    }
+    va_end(args);
+    return str;
 }

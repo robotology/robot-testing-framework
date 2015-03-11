@@ -11,9 +11,14 @@
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}
                     ../include)
 
-LINK_LIBRARIES(rtf)
+LINK_LIBRARIES(rtf)  
+
 ADD_EXECUTABLE(simple simple.cpp)
 ADD_EXECUTABLE(simple_runner simple_runner.cpp)
 ADD_EXECUTABLE(simple_suit simple_suit.cpp)
 ADD_EXECUTABLE(simple_fixture simple_fixture.cpp)
+
+if(ENABLE_PLUGIN)
+    add_subdirectory(plugin)
+endif(ENABLE_PLUGIN)
 

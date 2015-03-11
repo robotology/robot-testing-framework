@@ -76,7 +76,6 @@
  * \note RTF_ASSERT_REPORT throws error exception if it is not called
  *       within a TestCase class.
  */
-
 #define RTF_ASSERT_REPORT(message)\
     if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
         RTF_ASSERT_ERROR("RTF_ASSERT_REPORT is called outside a TestCase!"); }\

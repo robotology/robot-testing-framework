@@ -20,11 +20,16 @@ namespace RTF {
     class TestRunner;
 }
 
-
 /**
  * class TestRunner
+ * \ingroup key_class
+ *
+ * \brief The TestRunner class runs the tests added as TestCase or TestSuit.
+ * It simply goes through a list of the tests and run them one after each other.
+ *
+ * Here's an example of using a TestRunner:
+ * \include examples/simple_runner.cpp
  */
-
 class RTF::TestRunner {
 
     typedef std::set<RTF::Test*> TestContainer;

@@ -31,12 +31,12 @@ public:
 
     virtual void tearDown() {
         RTF_ASSERT_REPORT("running MyTest::teardown...");
-        RTF_ASSERT_ERROR("cannot tear down!");
+        RTF_ASSERT_ERROR("this is just for example!");
     }
 
     virtual void run() {
 
-        RTF_ASSERT_REPORT("testing integeres");
+        RTF_ASSERT_REPORT("testing integers");
         RTF_ASSERT_CHECK(2<3, "is not smaller");
         RTF_ASSERT_CHECK(5<3, "is not smaller");
     }

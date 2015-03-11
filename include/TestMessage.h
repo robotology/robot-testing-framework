@@ -2,7 +2,7 @@
 
 /*
  * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
+ * Authors: Ali Paikan and Lorenzo Natale
  * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
  *
  */
@@ -33,58 +33,76 @@ public:
      */
     TestMessage(const TestMessage& other);
 
+
     /**
-     * @param msg
-     * @param filename
-     * @param line
+     * @brief TestMessage construct a test message
+     * @param msg the message
+     * @param filename the source file name of the
+     *        code for the corresponding message
+     * @param line the line number of the code for
+     *        the corresponding message
      */
     TestMessage(std::string msg,
                 std::string filename="",
                 unsigned int line=0);
 
     /**
-     * @param msg
-     * @param detail
-     * @param filename
-     * @param line
+     * @brief TestMessage construct a test message
+     * @param msg the message
+     * @param detail the detail of the message
+     * @param filename the source file name of the
+     *        code for the corresponding message
+     * @param line the line number of the code for
+     *        the corresponding message
      */
     TestMessage(std::string msg,
                 std::string detail,
                 std::string filename="",
                 unsigned int line=0);
 
+
     virtual ~TestMessage ();
 
     /**
+     * @brief getMessage return the message string
      * @return string
      */
     const std::string getMessage ();
 
     /**
+     * @brief getMessage return the detail string
      * @return string
      */
     const std::string getDetail();
 
 
     /**
-     * @param  line
+     * @brief setSourceLineNumber set the line number
+     *        of the code for the corresponding message
+     * @param line number
      */
     void setSourceLineNumber(unsigned int line);
 
 
     /**
-     * @return int
+     * @brief getSourceLineNumber
+     * @return the line number of the code for
+     *         the corresponding message
      */
     unsigned int getSourceLineNumber();
 
 
     /**
-     * @param string
+     * @brief setSourceFileName set the source file name
+     *        of the code for the corresponding message
+     * @param filename source file name
      */
     void setSourceFileName(std::string filename);
 
     /**
-     * @return string
+     * @brief getSourceFileName
+     * @return the source file name of the code for
+     *         the corresponding message
      */
     const std::string getSourceFileName();
 

@@ -39,6 +39,14 @@ public:
     static void check(bool condition,
                       RTF::TestMessage msg,
                       RTF::TestCase* testcase);
+
+    /**
+     * @brief format can be used to format data to in
+     *        the same way that \c sprintf formats.
+     * @param msg a format-control string
+     * @return the formated std::string
+     */
+    static std::string format(const char* msg, ...);
 };
 
 #endif // _RTF_ASSERTER_H

@@ -40,6 +40,20 @@ public:
 /**
  * class FixtureManager
  */
+/**
+ * class TestSuit
+ * \ingroup key_class
+ *
+ * \brief The FixtureManager can be used to to setup any fixture which
+ * is required for the tests before executing the tests by a TestSuit.
+ *
+ * The \c fixtureCollapsed method of the FixtureEvents class is used by a
+ * fixture manager to inform any class  which inherited from FixtureEvents
+ * that the corresponding fixture has been collapsed.
+ *
+ * Here's an example of using a FixtureManager:
+ * \include examples/simple_fixture.cpp
+ */
 
 class RTF::FixtureManager {
 public:
@@ -47,7 +61,6 @@ public:
     /**
      * @brief FixtureManager constructor
      * @param dispatcher an instance of FixtureEvents
-     * @param result an instance of TestResult
      */
     FixtureManager(RTF::FixtureEvents* dispatcher) {
         this->dispatcher = dispatcher;

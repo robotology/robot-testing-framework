@@ -1,0 +1,24 @@
+// -*- mode:C++; tab-width:4; c-basic-offset:4; indent-tabs-mode:nil -*-
+
+/*
+ * Copyright (C) 2015 iCub Facility
+ * Authors: Ali Paikan
+ * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ *
+ */
+
+
+/**
+\mainpage Welcome to RTF
+
+
+RTF stands for Robot Testing Framework.  
+
+\li Source code: https://github.com/robotology/yarp
+
+\section Tutorials
+
+\li \ref rtf_plugin_example
+
+ *
+ */

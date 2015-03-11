@@ -24,8 +24,23 @@ namespace RTF {
 
 /**
  * class TestSuit
+ * \ingroup key_class
+ *
+ * \brief The TestSuit holds a group of tests. When the \c run() method of a
+ * TestSuit is called, it executes all its tests. A TestSuit can also has a FixtureManager.
+ * In this case, it calls the \c setup() method of FixtureManager to setup any fixture which
+ * is required for the tests before executing the tests. After running all the tests, the \c tearDown()
+ * method of the FixtureManager is called to tear down the fixture.
+ *
+ * The \c fixtureCollapsed method is used by a fixture manager to inform the test suit
+ * that the corresponding fixture has been collapsed. In this case, an exception is thrown
+ * by the TestSuit and the remaining tests will not be executed any more.  This method can be
+ * also overriden by a subclass if any specific action is required to be taken (such as retrying
+ * to setup the fixture and runing the reamining tests) upon collapsing the fixture.
+ *
+ * Here's an example of using a TestSuit:
+ * \include examples/simple_suit.cpp
  */
-
 class RTF::TestSuit : public RTF::Test, public RTF::FixtureEvents {
 
     typedef std::set<RTF::Test*> TestContainer;

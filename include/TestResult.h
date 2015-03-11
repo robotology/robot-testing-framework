@@ -22,10 +22,18 @@ namespace RTF {
 }
 
 
+
 /**
  * class TestResult
+ * \ingroup key_class
+ *
+ * \brief The TestResult class is used to deliver the test results including
+ * any error and failures produced by tests to any listiners. The listeneres
+ * can be added by \c addListener.
+ *
+ * Here's an example of using a TestResult:
+ * \include examples/simple.cpp
  */
-
 class RTF::TestResult {
 
     typedef std::set<RTF::TestListener*>  ListenerContainer;
