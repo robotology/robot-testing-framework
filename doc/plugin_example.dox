@@ -15,7 +15,7 @@
 \section desc Description
 Test cases can be written as dynamic loadable libraries (e.g., .so, .dll) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
 
-\note The source code of the tutorial can be also found in the \c 'examples/plug-in' folder within the RTF project directory. To compile it, you just need to enable the BUILD_EXAMPLES=ON flag of the cmake (if it is not already enabled) and build the RTF. 
+\note The source code of the tutorial can be also found in the \c 'examples/plugin' folder within the RTF project directory. To compile it, you just need to enable the BUILD_EXAMPLES=ON flag of the cmake (if it is not already enabled) and build the RTF. 
 
 <br>
 \section req Requirements
@@ -52,7 +52,7 @@ Now you can run the test as follows:
 \verbatim
    $ cd build/example/plug-ins
    $ ./run libmytest.so 
-     Loading the plug-in... 
+     Loading the plugin... 
      Staring test runner.
      Test case MyTest started...
      [INFO]  (MyTest) reports: running MyTest::setup...

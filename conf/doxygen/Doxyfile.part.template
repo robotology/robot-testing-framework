@@ -164,6 +164,7 @@ STRIP_FROM_PATH        = @CMAKE_SOURCE_DIR@
 STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/include/ \
                          @CMAKE_SOURCE_DIR@/src/ \
                          @CMAKE_SOURCE_DIR@/extern/sharedlibpp/include/ \
+                         @CMAKE_SOURCE_DIR@/extern/sharedlibpp/src/ \
                          @CMAKE_SOURCE_DIR@/doc
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
