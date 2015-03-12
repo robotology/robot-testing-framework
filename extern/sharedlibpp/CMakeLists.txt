@@ -7,8 +7,10 @@
 
 cmake_minimum_required(VERSION 2.6)
 
-set(PROJECTNAME RTF_sharedlib++)
-project(${PROJECTNAME})
+project(RTF_sharedlib++)
+
+set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
+get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
 
 
 # Create the library 
@@ -17,31 +19,24 @@ file(GLOB_RECURSE folder_header ./include/*.h)
 source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})
 
-include_directories(./include)
-add_library(${PROJECTNAME} STATIC ${folder_source} ${folder_header} )
-target_link_libraries(${PROJECTNAME})
+include_directories(${RTF_TREE_INCLUDE_DIRS})
+add_library(RTF_sharedlib++ SHARED ${folder_source} ${folder_header} )
+target_link_libraries(RTF_sharedlib++)
 
-set(SharedLibPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(SharedLibPP_LIBRARIES "${PROJECTNAME}") #PARENT_SCOPE 
+# choose which header files should be installed 
+set_property(TARGET RTF_sharedlib++ PROPERTY PUBLIC_HEADER ${RTF_TREE_INCLUDE_DIRS})
 
-set_property(GLOBAL APPEND PROPERTY RTF_INCLUDE_DIRS ${SharedLibPP_INCLUDE_DIRS})
-
-set_property(GLOBAL APPEND PROPERTY RTF_LIBRARIES ${SharedLibPP_LIBRARIES})
-IF(NOT WIN32)
-    set_property(GLOBAL APPEND PROPERTY RTF_LIBRARIES dl)
-ENDIF()
-
-
-#install(TARGETS ComanSimUtils EXPORT RTF COMPONENT runtime DESTINATION lib${LIB_SUFFIX})
-#set_property(TARGET ComanSimUtils PROPERTY INCLUDE_DIRS ${COMAMSIM_INCLUDE_DIRS})
-#install(DIRECTORY ${PROJECT_SOURCE_DIR}/ COMPONENT development DESTINATION include/comansim FILES_MATCHING PATTERN "*.h" PATTERN ".*" EXCLUDE)
-
-#install(TARGETS ${PROJECTNAME}
-#        EXPORT RTF
+#install(TARGETS RTF_sharedlib++
+#        EXPORT RTF_sharedlib++
 #        COMPONENT runtime
-#        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-#        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-#        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+#        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-#set_property(GLOBAL APPEND PROPERTY RTF_LIBS ${PROJECTNAME})
+set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_sharedlib++)
+IF(NOT WIN32)
+    set_property(GLOBAL APPEND PROPERTY RTF_LIBS dl)
+ENDIF()
+set_property(TARGET RTF_sharedlib++ PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
 

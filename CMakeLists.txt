@@ -7,9 +7,6 @@
 
 cmake_minimum_required(VERSION 2.6)
 
-set(PROJECTNAME RTF)
-project(${PROJECTNAME})
-
 # Pick up our CMake scripts - they are all in the conf subdirectory.
 set(RTF_MODULE_PATH ${PROJECT_SOURCE_DIR}/conf)
 set(CMAKE_MODULE_PATH ${RTF_MODULE_PATH})
@@ -22,40 +19,28 @@ include(RTFVersion)
 include(RTFDoc)
 
 
-# add some property if needed
-set_property(GLOBAL PROPERTY RTF_INCLUDE_DIRS)
-set_property(GLOBAL PROPERTY RTF_LIBRARIES)
+# add some property to collect some information about 
+# what have been built 
+set_property(GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+set_property(GLOBAL PROPERTY RTF_LIBS)
+
+# add some internally used properties (not for intalling or exporting)
+set_property(GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
+set_property(GLOBAL PROPERTY RTF_INTERNAL_LIBS)
+set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 
-# Create the library 
-file(GLOB folder_source ./src/*.cpp)
-file(GLOB_RECURSE folder_header ./include/*.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
-
-include_directories(./include)
-add_library(${PROJECTNAME} SHARED ${folder_source} ${folder_header} )
-target_link_libraries(${PROJECTNAME})
-
-# Create plugin
+# setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
-if (ENABLE_PLUGIN)
-    add_subdirectory(extern/sharedlibpp)
-endif(ENABLE_PLUGIN)
-
-# Create examples
 option (BUILD_EXAMPLES "Build examples" ON)
-if (BUILD_EXAMPLES)
-    add_subdirectory(examples)
-endif(BUILD_EXAMPLES)
-
-# Create testrunner
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
-if (BUILD_TESTRUNNER)
-    find_package(TinyXML)
-    if(NOT TinyXML_FOUND)
-        add_subdirectory(extern/tinyxml)  
-    endif()
-    add_subdirectory(src/testrunner)
-endif(BUILD_TESTRUNNER)
+
+if(BUILD_TESTRUNNER)
+    set(ENABLE_PLUGIN ON)
+endif()
+
+# adding directories
+add_subdirectory(extern)
+add_subdirectory(src)
+add_subdirectory(examples)
 

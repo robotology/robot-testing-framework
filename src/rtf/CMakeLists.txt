@@ -1,0 +1,36 @@
+#  RobotTestingFramework
+#  Copyright: (C) 2015 Ali Paikan
+#  Authors: Ali Paikan <ali.paikan@gmail.com>
+#
+#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+#
+
+project(RTF)
+
+set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/../../include")
+get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+
+# Create the library 
+file(GLOB folder_source *.cpp)
+file(GLOB_RECURSE folder_header *.h)
+source_group("Source Files" FILES ${folder_source})
+source_group("Header Files" FILES ${folder_header})
+
+include_directories(${RTF_TREE_INCLUDE_DIRS})
+add_library(RTF SHARED ${folder_source} ${folder_header})
+target_link_libraries(RTF)
+
+# choose which header files should be installed 
+set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_TREE_INCLUDE_DIRS})
+
+#install(TARGETS RTF
+#        EXPORT RTF
+#        COMPONENT runtime
+#        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF)
+set_property(TARGET RTF PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
+

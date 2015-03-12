@@ -5,21 +5,30 @@
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
 #
 
+# Build examples
+if (BUILD_EXAMPLES)
+    get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+    get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
 
-# cmake_minimum_required(VERSION 2.6)
+    include_directories(${CMAKE_SOURCE_DIR}
+                        ${RTF_TREE_INCLUDE_DIRS})
+     
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}
-                    ../include)
+    add_executable(simple simple.cpp)
+    target_link_libraries(simple ${RTF_LIBS})
 
-LINK_LIBRARIES(RTF)  
+    add_executable(simple_suit simple_suit.cpp)
+    target_link_libraries(simple_suit ${RTF_LIBS})
 
-ADD_EXECUTABLE(simple simple.cpp)
-ADD_EXECUTABLE(simple_runner simple_runner.cpp)
-ADD_EXECUTABLE(simple_suit simple_suit.cpp)
-ADD_EXECUTABLE(simple_collector simple_collector.cpp)
-ADD_EXECUTABLE(simple_fixture simple_fixture.cpp)
+    add_executable(simple_collector simple_collector.cpp)
+    target_link_libraries(simple_collector ${RTF_LIBS})
 
-if(ENABLE_PLUGIN)
-    add_subdirectory(plugin)
-endif(ENABLE_PLUGIN)
+    add_executable(simple_fixture simple_fixture.cpp)
+    target_link_libraries(simple_fixture ${RTF_LIBS})
+
+    if(ENABLE_PLUGIN)
+        add_subdirectory(plugin)
+    endif(ENABLE_PLUGIN)
+
+endif(BUILD_EXAMPLES)
 

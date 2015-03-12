@@ -8,15 +8,17 @@
 
 # cmake_minimum_required(VERSION 2.6)
 
-get_property(RTF_INCLUDE_DIRS GLOBAL PROPERTY RTF_INCLUDE_DIRS)
-get_property(RTF_LIBRARIES GLOBAL PROPERTY RTF_LIBRARIES)
+get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
 
 
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}
-                    ${RTF_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}
+                    ${RTF_TREE_INCLUDE_DIRS})
 
-ADD_LIBRARY(mytest SHARED MyTest.cpp MyTest.h)
+add_library(mytest SHARED MyTest.cpp MyTest.h)
 
-LINK_LIBRARIES(RTF ${RTF_LIBRARIES})
-ADD_EXECUTABLE(run run.cpp)
+add_executable(run run.cpp)
+target_link_libraries(run ${RTF_LIBS})
+
+
 
