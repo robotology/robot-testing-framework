@@ -35,6 +35,14 @@ This example shows how to use a TestRunner to run the tests.
 
 
 /**
+ * \example simple_collector.cpp
+
+This example shows how to use a TestResultCollector to collect the result of the test run. 
+
+*/
+
+
+/**
  * \example simple_fixture.cpp
 
 This example shows using a FixtureManager to setup any fixture required for a TestSuit.

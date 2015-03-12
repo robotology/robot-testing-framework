@@ -8,18 +8,15 @@
 
 # cmake_minimum_required(VERSION 2.6)
 
+get_property(RTF_INCLUDE_DIRS GLOBAL PROPERTY RTF_INCLUDE_DIRS)
+get_property(RTF_LIBRARIES GLOBAL PROPERTY RTF_LIBRARIES)
+
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}
-                    ../../include
-                    ../../extern/sharedlibpp/include)
+                    ${RTF_INCLUDE_DIRS})
 
 ADD_LIBRARY(mytest SHARED MyTest.cpp MyTest.h)
 
-IF(WIN32)
-    LINK_LIBRARIES(rtf sharedlib++)
-ELSE()
-    LINK_LIBRARIES(rtf sharedlib++ dl)
-ENDIF()
-
+LINK_LIBRARIES(RTF ${RTF_LIBRARIES})
 ADD_EXECUTABLE(run run.cpp)
 

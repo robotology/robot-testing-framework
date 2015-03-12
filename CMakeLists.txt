@@ -7,7 +7,7 @@
 
 cmake_minimum_required(VERSION 2.6)
 
-set(PROJECTNAME rtf)
+set(PROJECTNAME RTF)
 project(${PROJECTNAME})
 
 # Pick up our CMake scripts - they are all in the conf subdirectory.
@@ -20,6 +20,11 @@ include(RTFVersion)
 # Make documentation target, documentation goes in
 #doc subdirectory of build.
 include(RTFDoc)
+
+
+# add some property if needed
+set_property(GLOBAL PROPERTY RTF_INCLUDE_DIRS)
+set_property(GLOBAL PROPERTY RTF_LIBRARIES)
 
 
 # Create the library 
@@ -43,4 +48,14 @@ option (BUILD_EXAMPLES "Build examples" ON)
 if (BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif(BUILD_EXAMPLES)
+
+# Create testrunner
+option (BUILD_TESTRUNNER "Build testrunner utility" ON)
+if (BUILD_TESTRUNNER)
+    find_package(TinyXML)
+    if(NOT TinyXML_FOUND)
+        add_subdirectory(extern/tinyxml)  
+    endif()
+    add_subdirectory(src/testrunner)
+endif(BUILD_TESTRUNNER)
 

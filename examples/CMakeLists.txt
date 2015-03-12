@@ -11,11 +11,12 @@
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}
                     ../include)
 
-LINK_LIBRARIES(rtf)  
+LINK_LIBRARIES(RTF)  
 
 ADD_EXECUTABLE(simple simple.cpp)
 ADD_EXECUTABLE(simple_runner simple_runner.cpp)
 ADD_EXECUTABLE(simple_suit simple_suit.cpp)
+ADD_EXECUTABLE(simple_collector simple_collector.cpp)
 ADD_EXECUTABLE(simple_fixture simple_fixture.cpp)
 
 if(ENABLE_PLUGIN)

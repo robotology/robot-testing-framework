@@ -19,14 +19,23 @@ namespace RTF {
 
 
 /**
- * class ConsoleListener
+ * \brief class ConsoleListener listens to any messages reported by the tests
+ * during the test run, formates them and print them to the standard output.
+ *
+ * \ingroup key_class
+ *
+ * Here's an example of using a ConsoleListener:
+ * \include examples/simple.cpp
  */
-
 class RTF::ConsoleListener : public RTF::TestListener {
 public:
 
     /**
      * ConsoleListener constructor
+     *
+     * @param verbose enables the verbose mode. If \c true, the source file and
+     * the line number where the messages are issued by the tests will be written to
+     * the standard output. The verbose mode is disabled by default.
      */
     ConsoleListener(bool verbose = false);
 

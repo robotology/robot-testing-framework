@@ -2,7 +2,7 @@
 
 /*
  * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan and Lorenzo Natale
+ * Authors: Ali Paikan
  * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
  *
  */
@@ -26,6 +26,11 @@ namespace RTF {
 class RTF::TestMessage {
 
 public:
+
+    /**
+     * @brief TestMessage construct an emty test message
+     */
+    TestMessage();
 
     /**
      * Copy constructor
@@ -61,16 +66,31 @@ public:
                 unsigned int line=0);
 
 
+    /**
+     * @brief ~TestMessage Destructor
+     */
     virtual ~TestMessage ();
 
     /**
-     * @brief getMessage return the message string
+     * @brief setMessage sets the message
+     * @param message the message string
+     */
+    void setMessage(std::string message);
+
+    /**
+     * @brief setDetail sets the detail of the messsage
+     * @param detail the detailed message string
+     */
+    void setDetail(std::string detail);
+
+    /**
+     * @brief getMessage returns the message string
      * @return string
      */
     const std::string getMessage ();
 
     /**
-     * @brief getMessage return the detail string
+     * @brief getMessage returns the detail string
      * @return string
      */
     const std::string getDetail();

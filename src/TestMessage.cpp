@@ -11,6 +11,12 @@
 
 using namespace RTF;
 
+
+TestMessage::TestMessage()
+    : strFileName(""), lineNumber(0) {
+}
+
+
 TestMessage::TestMessage(const TestMessage& other) {
     *this = other;
 }
@@ -35,6 +41,16 @@ TestMessage::TestMessage(std::string msg,
 
 TestMessage::~TestMessage() {
 
+}
+
+
+void TestMessage::setMessage(std::string message) {
+    strMessage = message;
+}
+
+
+void TestMessage::setDetail(std::string detail) {
+    strDetail = detail;
 }
 
 const std::string TestMessage::getMessage() {
