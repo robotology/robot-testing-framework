@@ -7,12 +7,12 @@
 
 project(RTF)
 
-set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/../../include")
+set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
 get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
 
 # Create the library 
-file(GLOB folder_source *.cpp)
-file(GLOB_RECURSE folder_header *.h)
+file(GLOB folder_source src/*.cpp)
+file(GLOB_RECURSE folder_header ./include/*.h)
 source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})
 
@@ -21,15 +21,16 @@ add_library(RTF SHARED ${folder_source} ${folder_header})
 target_link_libraries(RTF)
 
 # choose which header files should be installed 
-set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_TREE_INCLUDE_DIRS})
+file(GLOB RTF_HEADERS ./include/*.h)
+set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_HEADERS})
 
-#install(TARGETS RTF
-#        EXPORT RTF
-#        COMPONENT runtime
-#        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(TARGETS RTF
+        EXPORT RTF
+        COMPONENT runtime
+        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+        LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF)
 set_property(TARGET RTF PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})

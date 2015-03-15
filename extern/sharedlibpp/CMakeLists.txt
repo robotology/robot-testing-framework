@@ -24,15 +24,16 @@ add_library(RTF_sharedlib++ SHARED ${folder_source} ${folder_header} )
 target_link_libraries(RTF_sharedlib++)
 
 # choose which header files should be installed 
-set_property(TARGET RTF_sharedlib++ PROPERTY PUBLIC_HEADER ${RTF_TREE_INCLUDE_DIRS})
+file(GLOB RTF_SHLIB_HEADERS ./include/*.h)
+set_property(TARGET RTF_sharedlib++ PROPERTY PUBLIC_HEADER ${RTF_SHLIB_HEADERS})
 
-#install(TARGETS RTF_sharedlib++
-#        EXPORT RTF_sharedlib++
-#        COMPONENT runtime
-#        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(TARGETS RTF_sharedlib++
+        EXPORT RTF_sharedlib++
+        COMPONENT runtime
+        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+        LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include/sharedlib++)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_sharedlib++)
 IF(NOT WIN32)
