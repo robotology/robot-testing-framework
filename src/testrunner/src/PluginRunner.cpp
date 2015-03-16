@@ -38,7 +38,7 @@ void PluginRunner::reset() {
     plugins.clear();
 }
 
-bool PluginRunner::loadPlugin(std::string filename, const std::string param) {
+PluginRunner::Plugin* PluginRunner::openPlugin(std::string filename) {
     if(verbose)
         cout<<"Loading "<<filename<<endl;
 
@@ -53,7 +53,7 @@ bool PluginRunner::loadPlugin(std::string filename, const std::string param) {
                                         Vocab::decode(plugin->factory.getStatus()).c_str(),
                                         plugin->factory.getLastNativeError().c_str());
         ErrorLogger::Instance().addError(error);
-        return false;
+        return NULL;
     }
 
     // TODO: check if this is neccessary!!!
@@ -66,8 +66,17 @@ bool PluginRunner::loadPlugin(std::string filename, const std::string param) {
                                         filename.c_str());
         ErrorLogger::Instance().addError(error);
         delete plugin;
-        return false;
+        return NULL;
     }
+    return plugin;
+}
+
+bool PluginRunner::loadPlugin(std::string filename,
+                              const std::string param) {
+
+    PluginRunner::Plugin* plugin = openPlugin(filename);
+    if(plugin == NULL)
+        return false;
 
     // keep track of what have been created
     plugins.push_back(plugin);

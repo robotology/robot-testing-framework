@@ -62,12 +62,15 @@ public:
      */
     void reset();
 
-private:
-    bool loadPluginsFromPath(std::string path);
+protected:
+    Plugin* openPlugin(std::string filename);
+    std::vector<Plugin*> plugins;
 
 private:
-    bool verbose;
-    std::vector<Plugin*> plugins;
+    bool loadPluginsFromPath(std::string path);    
+
+private:
+    bool verbose;    
 };
 
 #endif // _RTF_PLUGINRUNNER_H

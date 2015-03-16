@@ -12,6 +12,8 @@
 #define _RTF_SuitRunner_H
 
 #include <string>
+#include <vector>
+#include <TestSuit.h>
 #include <PluginRunner.h>
 
 /**
@@ -54,9 +56,11 @@ public:
 
 private:
     bool loadSuitsFromPath(std::string path);
+    bool compare(const char *first, const char *second);
 
 private:
     bool verbose;    
+    std::vector<RTF::TestSuit*> suits;
 };
 
 #endif // _RTF_SuitRunner_H

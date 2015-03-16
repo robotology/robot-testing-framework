@@ -7,7 +7,7 @@
  *
  */
 
-
+#include <algorithm>
 #include <Asserter.h> // used to format the string message
 #include <SuitRunner.h>
 #include <ErrorLogger.h>
@@ -19,7 +19,8 @@ using namespace std;
 using namespace RTF;
 
 SuitRunner::SuitRunner(bool verbose)
-    :verbose(verbose) {
+    : PluginRunner(verbose),
+      verbose(verbose) {
 }
 
 SuitRunner::~SuitRunner() {
@@ -30,14 +31,10 @@ void SuitRunner::reset() {
     // first clear the test list of the TestRunner
     PluginRunner::reset();
 
-    /*
-    if(verbose)
-        cout<<"Unloading plug-ins"<<endl;
-    // delete all the plugins which was created
-    for(int i=0; i<plugins.size(); i++)
-        delete plugins[i];
-    plugins.clear();
-    */
+    // delete all the suits which was created
+    for(int i=0; i<suits.size(); i++)
+        delete suits[i];
+    suits.clear();
 }
 
 bool SuitRunner::loadSuit(std::string filename) {
@@ -64,7 +61,36 @@ bool SuitRunner::loadSuit(std::string filename) {
         return false;
     }
 
+    if(!compare(root->Value(), "suit")) {
+        if(verbose)
+            cout<<filename<<" is not a test suit file!"<<endl;
+        return false;
+    }
 
+    std::string name = (root->Attribute("name")) ? root->Attribute("name") : "unknown";
+    TestSuit* suit = new TestSuit(name);
+
+    // retrieving test cases
+    for(TiXmlElement* test = root->FirstChildElement(); test;
+        test = test->NextSiblingElement()) {
+        if(compare(test->Value(), "test")) {
+
+            // load the plugin and add it to the suit
+
+            // keep track of the created plugins
+            //plugins.push_back(plugin);
+
+            // set the test case param
+            //plugin->test.getContent().setParam(param);
+
+        }
+    }
+
+    // add the test suit to the TestRunner
+    addTest(suit);
+
+    // keep tracks of the created suits
+    suits.push_back(suit);
     return true;
 }
 
@@ -143,22 +169,18 @@ bool SuitRunner::loadSuitsFromPath(std::string path) {
     return true;
 }
 
-/*
-bool SuitRunner::compare(const std::string &first, const std::string& second)
+inline bool SuitRunner::compare(const char* first, const char* second)
 {
-    if(!szFirst && !szSecond)
-        return true;
-    if( !szFirst || !szSecond)
-        return false;
+    if(!first && !second) return true;
+    if(!first || !second) return false;
 
-    string strFirst(szFirst);
-    string strSecond(szSecond);
+    string strFirst(first);
+    string strSecond(second);
     transform(strFirst.begin(), strFirst.end(), strFirst.begin(),
               (int(*)(int))toupper);
     transform(strSecond.begin(), strSecond.end(), strSecond.begin(),
               (int(*)(int))toupper);
-    if(strFirst == strSecond)
-        return true;
-    return false;
+
+    return (strFirst == strSecond);
 }
-*/
+
