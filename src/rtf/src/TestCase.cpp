@@ -13,10 +13,11 @@
 
 using namespace RTF;
 
-TestCase::TestCase(std::string name)
+TestCase::TestCase(std::string name, std::string param)
     : RTF::Test(name),
-    successful(true),
-    result(NULL)
+      param(param),
+      successful(true),
+      result(NULL)
 {
 }
 
@@ -34,6 +35,14 @@ bool TestCase::succeeded() const {
 
 TestResult* TestCase::getResult() {
     return result;
+}
+
+const std::string TestCase::getParam() {
+    return param;
+}
+
+void TestCase::setParam(const std::string param) {
+    this->param = param;
 }
 
 bool TestCase::setup() {

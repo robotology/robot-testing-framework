@@ -354,6 +354,10 @@ public:
     prog_name=name;
   }
 
+  std::string get_program_name(void){
+      return prog_name;
+  }
+
   bool exist(const std::string &name) const {
     if (options.count(name)==0) throw cmdline_error("there is no flag: --"+name);
     return options.find(name)->second->has_set();

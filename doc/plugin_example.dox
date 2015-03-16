@@ -23,7 +23,7 @@ You do not need nay external library to use the plug-ins. All you need is to sim
 
 \verbatim
    $ cd robot-testing-framework/build
-   $ cmake ../ -DENABLE_plug-in=ON
+   $ cmake ../ -DENABLE_PLUGIN=ON
 \endverbatim
 
 <br>
@@ -50,8 +50,8 @@ Now you can compile and build the plug-in and the runner. You need to link them 
 <br>
 Now you can run the test as follows: 
 \verbatim
-   $ cd build/example/plug-ins
-   $ ./run libmytest.so 
+   $ cd build/bin
+   $ ./simple_run ../lib/libmytest.so 
      Loading the plugin... 
      Staring test runner.
      Test case MyTest started...

@@ -15,10 +15,8 @@ get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
 include_directories(${CMAKE_SOURCE_DIR}
                     ${RTF_TREE_INCLUDE_DIRS})
 
-add_library(mytest SHARED MyTest.cpp MyTest.h)
+add_library(mytest MODULE MyTest.cpp MyTest.h)
 
-add_executable(run run.cpp)
-target_link_libraries(run ${RTF_LIBS})
-
-
+add_executable(simple_run run.cpp)
+target_link_libraries(simple_run ${RTF_LIBS})
 

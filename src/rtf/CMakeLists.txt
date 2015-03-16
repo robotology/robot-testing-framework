@@ -1,5 +1,5 @@
-#  RobotTestingFramework
-#  Copyright: (C) 2015 Ali Paikan
+#  Robot Testing Framework
+#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
 #  Authors: Ali Paikan <ali.paikan@gmail.com>
 #
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
@@ -27,10 +27,10 @@ set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_HEADERS})
 install(TARGETS RTF
         EXPORT RTF
         COMPONENT runtime
-        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-        LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        PUBLIC_HEADER DESTINATION include)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF)
 set_property(TARGET RTF PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})

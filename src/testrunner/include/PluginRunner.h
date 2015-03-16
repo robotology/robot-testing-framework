@@ -43,14 +43,15 @@ public:
     /**
      * @brief loadPlugin loads a single test plugin
      * @param filename the plugin file name
+     * @param param the optional test case parameter
      * @return true or false upon success or failure
      */
-    bool loadPlugin(std::string filename);
+    bool loadPlugin(std::string filename, const std::string param="");
 
     /**
      * @brief loadSinglePlugin loads all plugins from the
      * given path
-     * @param filename the plugin file name
+     * @param path the path to the plugin files
      * @param recursive loads from subfolders if true
      * @return true or false upon success or failure
      */

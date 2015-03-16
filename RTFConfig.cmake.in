@@ -1,0 +1,30 @@
+#  RobotTestingFramework
+#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
+#  Authors: Daniele E. Domenichelli <daniele.domenichelli@iit.it>
+#
+#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+#
+
+set(RTF_VERSION @RTF_VERSION@)
+
+@PACKAGE_INIT@
+
+set_and_check(RTF_INCLUDEDIR "@PACKAGE_RTF_INCLUDEDIR@")
+
+if(NOT TARGET RTF::RTF)
+  include("${CMAKE_CURRENT_LIST_DIR}/RTFTargets.cmake")
+endif()
+
+set(RTF_LIBRARIES RTF::RTF)
+set(RTF_INCLUDE_DIRS "${RTF_INCLUDEDIR}")
+
+if(TARGET RTF::RTF_sharedlib++)
+  set(RTF_SHAREDLIBXX_FOUND TRUE)
+  set_and_check(RTF_SHAREDLIBXX_INCLUDEDIR "@PACKAGE_RTF_SHAREDLIBXX_INCLUDEDIR@")
+  list(APPEND RTF_LIBRARIES RTF::RTF_sharedlib++)
+  list(APPEND RTF_INCLUDE_DIRS "${RTF_SHAREDLIBXX_INCLUDEDIR}")
+else()
+  set(RTF_SHAREDLIBXX_FOUND FALSE)
+endif()
+
+check_required_components(RTF)

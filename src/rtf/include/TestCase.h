@@ -36,9 +36,10 @@ public:
 
     /**
      * TestCase constructor
-     * @param  name The TestCase name
+     * @param name The TestCase name
+     * @param param The optional paramters for the test case
      */
-    TestCase(std::string name);
+    TestCase(std::string name, std::string param="");
 
     /**
      *  TestCase destructor
@@ -90,7 +91,21 @@ public:
      */
     RTF::TestResult* getResult();
 
+    /**
+     * @brief getParam gets the paramters which is set
+     * for the test case
+     * @return a string paramter
+     */
+    const std::string getParam();
+
+    /**
+     * @brief setParam set the optional paramters of the test
+     * @param param the paramter string
+     */
+    void setParam(const std::string param);
+
 private:
+    std::string param;
     RTF::TestResult* result;
     bool successful;
 };

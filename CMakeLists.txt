@@ -1,11 +1,13 @@
-#  RobotTestingFramework
-#  Copyright: (C) 2015 Ali Paikan
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+#  Robot Testing Framework
+#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
+#  Authors: Ali Paikan <ali.paikan@gmail.com>, Daniele E. Domenichelli <daniele.domenichelli@iit.it>
 #
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
 #
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.9)
+
+include(CMakeDependentOption)
 
 # Pick up our CMake scripts - they are all in the conf subdirectory.
 set(RTF_MODULE_PATH ${PROJECT_SOURCE_DIR}/conf)
@@ -18,6 +20,7 @@ include(RTFVersion)
 #doc subdirectory of build.
 include(RTFDoc)
 
+include(InstallBasicPackageFiles)
 
 # add some property to collect some information about 
 # what have been built 
@@ -35,12 +38,35 @@ option (ENABLE_PLUGIN "Enable plugins" ON)
 option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 
+#CMAKE_DEPENDENT_OPTION(USE_FOO "Use Foo" ON
+#                                "USE_BAR;NOT USE_ZOT" OFF)
+
+include(GNUInstallDirs)
+
+#########################################################################
+# Control where libraries and executables are placed during the build
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
+
 if(BUILD_TESTRUNNER)
-    set(ENABLE_PLUGIN ON)
+    set_property(CACHE ENABLE_PLUGIN PROPERTY VALUE ON)
 endif()
 
 # adding directories
 add_subdirectory(extern)
 add_subdirectory(src)
 add_subdirectory(examples)
+
+set(BUILD_RTF_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/rtf/include)
+set(INSTALL_RTF_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+set(BUILD_RTF_SHAREDLIBXX_INCLUDEDIR ${CMAKE_SOURCE_DIR}/extern/sharedlibpp/include)
+set(INSTALL_RTF_SHAREDLIBXX_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+# instalation 
+install_basic_package_files(RTF
+                            VERSION ${RTF_VERSION}
+                            COMPATIBILITY AnyNewerVersion
+                            TARGETS_PROPERTY RTF_LIBS
+                            EXTRA_PATH_VARS_SUFFIX SHAREDLIBXX_INCLUDEDIR)
+
 

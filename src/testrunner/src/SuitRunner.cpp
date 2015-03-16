@@ -9,79 +9,68 @@
 
 
 #include <Asserter.h> // used to format the string message
-#include <PluginRunner.h>
+#include <SuitRunner.h>
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
 #include <iostream>
+#include <tinyxml.h>
 
 using namespace std;
 using namespace RTF;
-using namespace shlibpp;
 
-PluginRunner::PluginRunner(bool verbose)
+SuitRunner::SuitRunner(bool verbose)
     :verbose(verbose) {
 }
 
-PluginRunner::~PluginRunner() {
+SuitRunner::~SuitRunner() {
     reset();
 }
 
-void PluginRunner::reset() {
+void SuitRunner::reset() {
     // first clear the test list of the TestRunner
-    TestRunner::reset();
+    PluginRunner::reset();
 
+    /*
     if(verbose)
         cout<<"Unloading plug-ins"<<endl;
     // delete all the plugins which was created
     for(int i=0; i<plugins.size(); i++)
         delete plugins[i];
     plugins.clear();
+    */
 }
 
-bool PluginRunner::loadPlugin(std::string filename, const std::string param) {
+bool SuitRunner::loadSuit(std::string filename) {
     if(verbose)
         cout<<"Loading "<<filename<<endl;
 
-    // create an instance of plugin class and factory
-    PluginRunner::Plugin* plugin = new PluginRunner::Plugin;
+    ErrorLogger& logger  = ErrorLogger::Instance();
 
-    // load the test case plugin
-    plugin->factory.open(filename.c_str());
-    if(!plugin->factory.isValid()) {
-        string error = Asserter::format("cannot load plugin %s; error (%s) : %s",
-                                        filename.c_str(),
-                                        Vocab::decode(plugin->factory.getStatus()).c_str(),
-                                        plugin->factory.getLastNativeError().c_str());
-        ErrorLogger::Instance().addError(error);
+    // loading xml file
+    TiXmlDocument doc(filename.c_str());
+    if(!doc.LoadFile()) {
+        string error = Asserter::format("Syntax error while loading %s at line %d. (%s)",
+                                        filename.c_str(), doc.ErrorRow(), doc.ErrorDesc());
+        logger.addError(error);        
         return false;
     }
 
-    // TODO: check if this is neccessary!!!
-    //plugin->factory.addRef();
-
-    // create an instance of the test case from the plugin
-    plugin->test.open(plugin->factory);
-    if(!plugin->test.isValid()) {
-        string error = Asserter::format("cannot create an instance of TestCase from %s",
+    //retrieving root element
+    TiXmlElement *root = doc.RootElement();
+    if(!root) {
+        string error = Asserter::format("Syntax error while loading %s. (No root element)",
                                         filename.c_str());
-        ErrorLogger::Instance().addError(error);
-        delete plugin;
+        logger.addError(error);
         return false;
     }
 
-    // keep track of what have been created
-    plugins.push_back(plugin);
 
-    // set the test case param
-    plugin->test.getContent().setParam(param);
-
-    // add the test case to the TestRunner
-    addTest(&plugin->test.getContent());
     return true;
 }
 
-bool PluginRunner::loadMultiplePlugins(std::string path,
+bool SuitRunner::loadMultipleSuits(std::string path,
                                          bool recursive) {    
+    /*
     if(!recursive)
         return loadPluginsFromPath(path);
 
@@ -109,13 +98,14 @@ bool PluginRunner::loadMultiplePlugins(std::string path,
         }
     }
     closedir(dir);
+    */
     return true;
 }
 
-bool PluginRunner::loadPluginsFromPath(std::string path) {
+bool SuitRunner::loadSuitsFromPath(std::string path) {
     if(verbose)
         cout<<"Loading plug-ins from "<<path<<endl;
-
+/*
     if((path.rfind(PATH_SEPERATOR)==string::npos) ||
         (path.rfind(PATH_SEPERATOR)!=path.size()-1))
         path = path + string(PATH_SEPERATOR);
@@ -149,5 +139,26 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
         }
     }
     closedir(dir);
+    */
     return true;
 }
+
+/*
+bool SuitRunner::compare(const std::string &first, const std::string& second)
+{
+    if(!szFirst && !szSecond)
+        return true;
+    if( !szFirst || !szSecond)
+        return false;
+
+    string strFirst(szFirst);
+    string strSecond(szSecond);
+    transform(strFirst.begin(), strFirst.end(), strFirst.begin(),
+              (int(*)(int))toupper);
+    transform(strSecond.begin(), strSecond.end(), strSecond.begin(),
+              (int(*)(int))toupper);
+    if(strFirst == strSecond)
+        return true;
+    return false;
+}
+*/

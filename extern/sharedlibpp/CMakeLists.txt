@@ -1,5 +1,5 @@
 #  Sharedlib++
-#  Copyright: (C) 2015 Ali Paikan
+#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
 #  Authors: Ali Paikan <ali.paikan@gmail.com>
 #
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
@@ -21,23 +21,23 @@ source_group("Header Files" FILES ${folder_header})
 
 include_directories(${RTF_TREE_INCLUDE_DIRS})
 add_library(RTF_sharedlib++ SHARED ${folder_source} ${folder_header} )
-target_link_libraries(RTF_sharedlib++)
+
+if(NOT WIN32)
+  target_link_libraries(RTF_sharedlib++ dl)
+endif()
 
 # choose which header files should be installed 
 file(GLOB RTF_SHLIB_HEADERS ./include/*.h)
 set_property(TARGET RTF_sharedlib++ PROPERTY PUBLIC_HEADER ${RTF_SHLIB_HEADERS})
 
 install(TARGETS RTF_sharedlib++
-        EXPORT RTF_sharedlib++
+        EXPORT RTF
         COMPONENT runtime
-        RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-        LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include/sharedlib++)
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        PUBLIC_HEADER DESTINATION include/sharedlib++)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_sharedlib++)
-IF(NOT WIN32)
-    set_property(GLOBAL APPEND PROPERTY RTF_LIBS dl)
-ENDIF()
 set_property(TARGET RTF_sharedlib++ PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
 
