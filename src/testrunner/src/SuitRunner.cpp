@@ -7,7 +7,6 @@
  *
  */
 
-#include <algorithm>
 #include <Asserter.h> // used to format the string message
 #include <SuitRunner.h>
 #include <ErrorLogger.h>
@@ -28,7 +27,7 @@ SuitRunner::~SuitRunner() {
 }
 
 void SuitRunner::reset() {
-    // first clear the test list of the TestRunner
+    // first reset the PluginRunner
     PluginRunner::reset();
 
     // delete all the suits which was created
@@ -41,21 +40,35 @@ bool SuitRunner::loadSuit(std::string filename) {
     if(verbose)
         cout<<"Loading "<<filename<<endl;
 
-    ErrorLogger& logger  = ErrorLogger::Instance();
+    ErrorLogger& logger = ErrorLogger::Instance();
 
     // loading xml file
     TiXmlDocument doc(filename.c_str());
-    if(!doc.LoadFile()) {
-        string error = Asserter::format("Syntax error while loading %s at line %d. (%s)",
+
+    // it seems TinyXML throw an exception when
+    // trying to open a directory instead of a file!
+    bool bOK;
+    try {
+        bOK = doc.LoadFile();
+    }
+    catch(...) {
+        string error = Asserter::format("Caught an exception while trying to open suit '%s'. (Is it a XML file?)",
+                                        filename.c_str());
+        logger.addError(error);
+        return false;
+    }
+
+    if(!bOK) {
+        string error = Asserter::format("Syntax error while loading '%s' at line %d. (%s)",
                                         filename.c_str(), doc.ErrorRow(), doc.ErrorDesc());
-        logger.addError(error);        
+        logger.addError(error);
         return false;
     }
 
     //retrieving root element
     TiXmlElement *root = doc.RootElement();
     if(!root) {
-        string error = Asserter::format("Syntax error while loading %s. (No root element)",
+        string error = Asserter::format("Syntax error while loading '%s'. (No root element)",
                                         filename.c_str());
         logger.addError(error);
         return false;
@@ -72,33 +85,34 @@ bool SuitRunner::loadSuit(std::string filename) {
 
     // retrieving test cases
     for(TiXmlElement* test = root->FirstChildElement(); test;
-        test = test->NextSiblingElement()) {
-        if(compare(test->Value(), "test")) {
-
+        test = test->NextSiblingElement())
+    {
+        if(compare(test->Value(), "test")) {            
             // load the plugin and add it to the suit
-
-            // keep track of the created plugins
-            //plugins.push_back(plugin);
-
-            // set the test case param
-            //plugin->test.getContent().setParam(param);
-
+            PluginRunner::Plugin* plugin = openPlugin(test->GetText());
+            if(plugin) {
+                // set the test case param
+                if(test->Attribute("param"))
+                    plugin->test.getContent().setParam(test->Attribute("param"));
+                // keep track of the created plugins
+                plugins.push_back(plugin);
+                // add the test to the suit
+                suit->addTest(&plugin->test.getContent());
+            }
         }
     }
 
     // add the test suit to the TestRunner
     addTest(suit);
-
     // keep tracks of the created suits
     suits.push_back(suit);
     return true;
 }
 
 bool SuitRunner::loadMultipleSuits(std::string path,
-                                         bool recursive) {    
-    /*
+                                         bool recursive) {
     if(!recursive)
-        return loadPluginsFromPath(path);
+        return loadSuitsFromPath(path);
 
     // load from subfolders
     if((path.rfind(PATH_SEPERATOR)==string::npos) ||
@@ -112,7 +126,7 @@ bool SuitRunner::loadMultipleSuits(std::string path,
         return false;
     }
 
-    loadPluginsFromPath(path);
+    loadSuitsFromPath(path);
 
     while((entry = readdir(dir))) {
         if((entry->d_type == DT_DIR) &&
@@ -120,18 +134,17 @@ bool SuitRunner::loadMultipleSuits(std::string path,
                 (string(entry->d_name) != string("..")))
         {
             string name = path + string(entry->d_name);
-            loadMultiplePlugins(name, recursive);
+            loadMultipleSuits(name, recursive);
         }
     }
-    closedir(dir);
-    */
+    closedir(dir);    
     return true;
 }
 
 bool SuitRunner::loadSuitsFromPath(std::string path) {
     if(verbose)
-        cout<<"Loading plug-ins from "<<path<<endl;
-/*
+        cout<<"Loading suits from "<<path<<endl;
+
     if((path.rfind(PATH_SEPERATOR)==string::npos) ||
         (path.rfind(PATH_SEPERATOR)!=path.size()-1))
         path = path + string(PATH_SEPERATOR);
@@ -145,42 +158,13 @@ bool SuitRunner::loadSuitsFromPath(std::string path) {
 
     while((entry = readdir(dir))) {
         string name = entry->d_name;
-        if(name.size() > 3) {
-            // check for windows .dll
-            string ext = name.substr(name.size()-3,3);
-            if(ext == "dll")
-                loadPlugin(path+name);
-        }
-        if(name.size() > 2) {
-            // check for unix .so
-            string ext = name.substr(name.size()-2,2);
-            if(ext == "so")
-                loadPlugin(path+name);
-        }
-        if(name.size() > 5) {
-            // check for mac .dylib
-            string ext = name.substr(name.size()-5,5);
-            if(ext == "dylib")
-                loadPlugin(path+name);
+        if(name.size() > 4) {
+            // check for xml file
+            string ext = name.substr(name.size()-4,4);
+            if(compare(ext.c_str(), ".xml"))
+                loadSuit(path+name);
         }
     }
     closedir(dir);
-    */
     return true;
 }
-
-inline bool SuitRunner::compare(const char* first, const char* second)
-{
-    if(!first && !second) return true;
-    if(!first || !second) return false;
-
-    string strFirst(first);
-    string strSecond(second);
-    transform(strFirst.begin(), strFirst.end(), strFirst.begin(),
-              (int(*)(int))toupper);
-    transform(strSecond.begin(), strSecond.end(), strSecond.begin(),
-              (int(*)(int))toupper);
-
-    return (strFirst == strSecond);
-}
-

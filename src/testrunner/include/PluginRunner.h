@@ -22,6 +22,8 @@
  * class PluginRunner
  */
 class PluginRunner : public RTF::TestRunner {
+
+protected:
     class Plugin {
     public:
         shlibpp::SharedLibraryClassFactory<RTF::TestCase> factory;
@@ -64,6 +66,7 @@ public:
 
 protected:
     Plugin* openPlugin(std::string filename);
+    bool compare(const char *first, const char *second);
     std::vector<Plugin*> plugins;
 
 private:

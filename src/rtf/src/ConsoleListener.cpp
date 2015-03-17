@@ -77,7 +77,7 @@ void ConsoleListener::endTest(const RTF::Test* test) {
 }
 
 void ConsoleListener::startTestSuit(const RTF::Test* test) {
-    cout<<BLUE<<"Test suited "<<test->getName()<<" started..."<<ENDC<<endl;
+    cout<<BLUE<<"Test suit "<<test->getName()<<" started..."<<ENDC<<endl;
 }
 
 void ConsoleListener::endTestSuit(const RTF::Test* test) {

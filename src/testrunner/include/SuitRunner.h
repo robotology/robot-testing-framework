@@ -55,8 +55,7 @@ public:
     void reset();
 
 private:
-    bool loadSuitsFromPath(std::string path);
-    bool compare(const char *first, const char *second);
+    bool loadSuitsFromPath(std::string path);    
 
 private:
     bool verbose;    

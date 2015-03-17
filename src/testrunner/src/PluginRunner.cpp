@@ -7,7 +7,7 @@
  *
  */
 
-
+#include <algorithm>
 #include <Asserter.h> // used to format the string message
 #include <PluginRunner.h>
 #include <ErrorLogger.h>
@@ -27,11 +27,9 @@ PluginRunner::~PluginRunner() {
 }
 
 void PluginRunner::reset() {
-    // first clear the test list of the TestRunner
+    // first reset the TestRunner
     TestRunner::reset();
 
-    if(verbose)
-        cout<<"Unloading plug-ins"<<endl;
     // delete all the plugins which was created
     for(int i=0; i<plugins.size(); i++)
         delete plugins[i];
@@ -138,25 +136,42 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
 
     while((entry = readdir(dir))) {
         string name = entry->d_name;
-        if(name.size() > 3) {
+        if(name.size() > 4) {
             // check for windows .dll
-            string ext = name.substr(name.size()-3,3);
-            if(ext == "dll")
+            string ext = name.substr(name.size()-4,4);
+            if(compare(ext.c_str(), ".dll"))
                 loadPlugin(path+name);
         }
-        if(name.size() > 2) {
+        if(name.size() > 3) {
             // check for unix .so
-            string ext = name.substr(name.size()-2,2);
-            if(ext == "so")
+            string ext = name.substr(name.size()-3,3);
+            if(compare(ext.c_str(), ".so"))
                 loadPlugin(path+name);
         }
-        if(name.size() > 5) {
+        if(name.size() > 6) {
             // check for mac .dylib
-            string ext = name.substr(name.size()-5,5);
-            if(ext == "dylib")
+            string ext = name.substr(name.size()-6,6);
+            if(compare(ext.c_str(), ".dylib"))
                 loadPlugin(path+name);
         }
     }
     closedir(dir);
     return true;
 }
+
+bool PluginRunner::compare(const char*first,
+                           const char* second)
+{
+    if(!first && !second) return true;
+    if(!first || !second) return false;
+
+    string strFirst(first);
+    string strSecond(second);
+    transform(strFirst.begin(), strFirst.end(), strFirst.begin(),
+              (int(*)(int))toupper);
+    transform(strSecond.begin(), strSecond.end(), strSecond.begin(),
+              (int(*)(int))toupper);
+
+    return (strFirst == strSecond);
+}
+

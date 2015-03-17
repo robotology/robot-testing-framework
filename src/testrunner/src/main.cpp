@@ -8,15 +8,12 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
 #include <TestResult.h>
-#include <TestRunner.h>
 #include <ConsoleListener.h>
 #include <TestResultCollector.h>
 #include <TextOutputter.h>
 
 #include <cmdline.h>
-#include <PluginRunner.h>
 #include <SuitRunner.h>
 #include <ErrorLogger.h>
 #include <Version.h>
@@ -28,6 +25,8 @@ void reportErrors(void) {
     ErrorLogger& logger  = ErrorLogger::Instance();
     for(int i=0; i<logger.errorCount(); i++)
         cout<<"[testrunner] "<<logger.getLastError()<<endl;
+    for(int i=0; i<logger.warningCount(); i++)
+        cout<<"[testrunner] "<<logger.getLastWarning()<<endl;
 }
 
 void addOptions(cmdline::parser &cmd) {
@@ -82,7 +81,7 @@ int main(int argc, char *argv[]) {
     }
 
     // create a test runner
-    PluginRunner runner(cmd.exist("verbose"));
+    SuitRunner runner(cmd.exist("verbose"));
 
     // load a single plugin
     if(cmd.get<string>("test").size())
@@ -94,6 +93,21 @@ int main(int argc, char *argv[]) {
     // load multiple plugins
     if(cmd.get<string>("tests").size())
         if(!runner.loadMultiplePlugins(cmd.get<string>("tests"),
+                                       cmd.exist("recursive"))) {
+            reportErrors();
+            return 0;
+        }
+
+    // load a single suit
+    if(cmd.get<string>("suit").size())
+        if(!runner.loadSuit(cmd.get<string>("suit"))) {
+            reportErrors();
+            return 0;
+        }
+
+    // load multiple suits
+    if(cmd.get<string>("suits").size())
+        if(!runner.loadMultipleSuits(cmd.get<string>("suits"),
                                        cmd.exist("recursive"))) {
             reportErrors();
             return 0;
@@ -121,5 +135,12 @@ int main(int argc, char *argv[]) {
     TextOutputter outputter(collector);
     outputter.write(cmd.get<string>("output"));
 
+    // print out some simple statistics in verbose mode
+    if(cmd.exist("verbose")) {
+        cout<<endl<<"-------- results ---------"<<endl;
+        cout<<"Total number of tests : "<<collector.testCount()<<endl;
+        cout<<"Number of passed tests: "<<collector.passedCount()<<endl;
+        cout<<"Number of failed tests: "<<collector.failedCount()<<endl;
+    }
     return 0;
 }

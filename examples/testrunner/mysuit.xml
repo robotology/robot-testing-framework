@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suit name="my suit">
+    <test param=""> lib/libmytest.so </test>
+    <!-- you can add more test here... -->
+</suit>
+
