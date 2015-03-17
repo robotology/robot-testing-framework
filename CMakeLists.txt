@@ -20,7 +20,9 @@ include(RTFVersion)
 #doc subdirectory of build.
 include(RTFDoc)
 
+# include some helper functions
 include(InstallBasicPackageFiles)
+include(GNUInstallDirs)
 
 # add some property to collect some information about 
 # what have been built 
@@ -35,13 +37,9 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
-option (BUILD_EXAMPLES "Build examples" ON)
+option (BUILD_EXAMPLES "Build examples" OFF)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 
-#CMAKE_DEPENDENT_OPTION(USE_FOO "Use Foo" ON
-#                                "USE_BAR;NOT USE_ZOT" OFF)
-
-include(GNUInstallDirs)
 
 #########################################################################
 # Control where libraries and executables are placed during the build
@@ -58,15 +56,16 @@ add_subdirectory(extern)
 add_subdirectory(src)
 add_subdirectory(examples)
 
+
+# installation 
 set(BUILD_RTF_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/rtf/include)
 set(INSTALL_RTF_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
-set(BUILD_RTF_SHAREDLIBXX_INCLUDEDIR ${CMAKE_SOURCE_DIR}/extern/sharedlibpp/include)
-set(INSTALL_RTF_SHAREDLIBXX_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
-# instalation 
+set(BUILD_RTF_DLL_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/dll/include)
+set(INSTALL_RTF_DLL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include/dll)
 install_basic_package_files(RTF
                             VERSION ${RTF_VERSION}
                             COMPATIBILITY AnyNewerVersion
                             TARGETS_PROPERTY RTF_LIBS
-                            EXTRA_PATH_VARS_SUFFIX SHAREDLIBXX_INCLUDEDIR)
+                            EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR)
 
 

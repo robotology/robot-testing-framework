@@ -161,10 +161,10 @@ STRIP_FROM_PATH        = @CMAKE_SOURCE_DIR@
 # specify the list of include paths that are normally passed to the compiler
 # using the -I flag.
 
-STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/include/ \
-                         @CMAKE_SOURCE_DIR@/src/ \
-                         @CMAKE_SOURCE_DIR@/extern/sharedlibpp/include/ \
-                         @CMAKE_SOURCE_DIR@/extern/sharedlibpp/src/ \
+STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/src/rtf/include/ \
+                         @CMAKE_SOURCE_DIR@/src/rtf \
+                         @CMAKE_SOURCE_DIR@/src/plugins/dll/include \
+                         @CMAKE_SOURCE_DIR@/src/plugins/dll/src \
                          @CMAKE_SOURCE_DIR@/doc
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
@@ -759,8 +759,8 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = @CMAKE_SOURCE_DIR@/include \
-                         @CMAKE_SOURCE_DIR@/extern/sharedlibpp/include \
+INPUT                  = @CMAKE_SOURCE_DIR@/src/rtf/include \
+                         @CMAKE_SOURCE_DIR@/src/plugins/dll/include \
                          @CMAKE_SOURCE_DIR@/doc
 
 # This tag can be used to specify the character encoding of the source files

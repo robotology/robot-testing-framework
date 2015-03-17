@@ -13,8 +13,7 @@
 #include <ConsoleListener.h>
 #include <TestRunner.h>
 
-#include <SharedLibrary.h>
-#include <SharedLibraryClass.h>
+#include <DllPluginLoader.h>
 
 
 using namespace RTF;
@@ -29,15 +28,12 @@ int main(int argc, char *argv[]) {
 
     // load the test case plugin
     printf("Loading the plugin... \n");
-    shlibpp::SharedLibraryClassFactory<TestCase> factory(argv[1]);
-    if (!factory.isValid()) {
-        printf("error (%s) : %s\n", shlibpp::Vocab::decode(factory.getStatus()).c_str(),
-                                    factory.getLastNativeError().c_str());
+    DllPluginLoader loader;
+    TestCase* test = loader.open(argv[1]);
+    if(test == NULL) {
+        printf("%s\n", loader.getLastError().c_str());
         return 0;
 	}
-
-    // create an instance of the test case from the plugin
-    shlibpp::SharedLibraryClass<TestCase> atest(factory);
 
     // create a test listener to collect the result
     ConsoleListener listener(false);
@@ -48,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     // create a test runner and run the test case
     TestRunner runner;
-    runner.addTest(&atest.getContent());
+    runner.addTest(test);
     runner.run(result);
 
     return 0;

@@ -31,3 +31,7 @@ source_group("Header Files" FILES ${folder_header})
 add_executable(${PROJECTNAME} ${folder_source} ${folder_header})
 target_link_libraries(${PROJECTNAME} ${RTF_LIBS} ${RTF_INTERNAL_LIBS} ${TinyXML_LIBRARIES})
 
+install(TARGETS ${PROJECTNAME}
+        EXPORT ${PROJECTNAME}
+        RUNTIME DESTINATION bin)
+

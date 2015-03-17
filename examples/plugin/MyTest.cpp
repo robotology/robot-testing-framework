@@ -9,13 +9,13 @@
 
 
 #include <TestAssert.h>
-#include <SharedLibraryClass.h>
+#include <Plugin.h>
 
 #include "MyTest.h"
 
 using namespace RTF;
 
-SHLIBPP_DEFINE_DEFAULT_SHARED_CLASS(MyTest)
+PREPARE_PLUGIN(MyTest)
 
 MyTest::MyTest() : TestCase("MyTest") { }
 

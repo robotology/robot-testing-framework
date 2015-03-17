@@ -32,26 +32,29 @@ Create a class which inherited from the TestCase class. Override the \c run() me
 
 \include plugin/MyTest.h
 
-Implement the test body in the \c run() method and add use the \c 'SHLIBPP_DEFINE_DEFAULT_SHARED_CLASS(...)' macro to prepare the plug-in. The macro implements the necessary functionalities to make your test class be accessible from a shared library. 
+Implement the test body in the \c run() method and add use the \c 'PREPARE_PLUGIN(...)' macro to prepare the plug-in. The macro implements the necessary functionalities to make your test class be accessible from a shared library. 
 
 \include plugin/MyTest.cpp
 
 <br>
 \section runner Writing the test runner 
-Your plug-in is almost ready and can be compiled and built. Before doing, that we show how to develop a simple test runner to load the plug-in and run the test. It is quite simple. First create an instance of \c shlibpp::SharedLibraryClassFactory<TestCase> factory to load your test plug-in library (.dll, .so, ...).  Then using the \c shlibpp::SharedLibraryClass<TestCase> create a TestCase instance of your own test case. When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a TestRunner to execute our test: 
+Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::DllPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::DllPluginLoader class and call its \c open() method with the plug-in library (.dll, .so, ...) filename as its paramter.  The RTF::DllPluginLoader loads the library and return a pointer to the RTF::TestCase implemented into the plug-in.
+If the plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::DllPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::DllPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
 
 \include plugin/run.cpp
 
 <br>
 \section build Build and run the test 
-Now you can compile and build the plug-in and the runner. You need to link them against \c rtf and \c sharedlib++ which both of them can be found within the project build directory after compiling RTF. Here we use a simple cmake file to build the plug-in and the runner at the same time. The cmake file can be found in the \c 'example/plug-in' directory within the RTF. So far the path to the header files are set with respect to the 'example/plug-in' folder.  
+Now you can compile and build the plug-in and the runner. There is a Cmake file in the \c examples/plugin folder which helps you to compile and build your test plugin and the simple test runner. Make sure that \c RTF_DIR environment variable is correctly set to point your RTF build or installed directory so that Cmake can find the required modules to configure the project. 
 
 \include plugin/CMakeLists.txt
 <br>
-Now you can run the test as follows: 
+Now you can build and run the test as follows: 
 \verbatim
-   $ cd build/bin
-   $ ./simple_run ../lib/libmytest.so 
+   
+   $ cd examples/plugin; mkdir build
+   $ cd build; cmake ../; make;
+   $ ./simple_run libmytest.so 
      Loading the plugin... 
      Staring test runner.
      Test case MyTest started...
@@ -63,7 +66,6 @@ Now you can run the test as follows:
      Test case MyTest failed!
      Ending test runner.
 \endverbatim
-
 
 */
 

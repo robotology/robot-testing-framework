@@ -6,16 +6,8 @@
 #
 
 
-# Build RTF library
-add_subdirectory(rtf)
-
 # build plugin manager
-add_subdirectory(plugins)
-
-
-# Build testrunner
-if (BUILD_TESTRUNNER)
-    add_subdirectory(testrunner)
-endif(BUILD_TESTRUNNER)
-
+if (ENABLE_PLUGIN OR BUILD_TESTRUNNER)
+    add_subdirectory(dll)
+endif()
 

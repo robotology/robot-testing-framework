@@ -16,7 +16,6 @@
 
 using namespace std;
 using namespace RTF;
-using namespace shlibpp;
 
 PluginRunner::PluginRunner(bool verbose)
     :verbose(verbose) {
@@ -30,60 +29,32 @@ void PluginRunner::reset() {
     // first reset the TestRunner
     TestRunner::reset();
 
-    // delete all the plugins which was created
-    for(int i=0; i<plugins.size(); i++)
-        delete plugins[i];
-    plugins.clear();
+    // delete all the plugin loader which was created
+    for(int i=0; i<dllLoaders.size(); i++)
+        delete dllLoaders[i];
+    dllLoaders.clear();
 }
 
-PluginRunner::Plugin* PluginRunner::openPlugin(std::string filename) {
-    if(verbose)
-        cout<<"Loading "<<filename<<endl;
-
-    // create an instance of plugin class and factory
-    PluginRunner::Plugin* plugin = new PluginRunner::Plugin;
-
-    // load the test case plugin
-    plugin->factory.open(filename.c_str());
-    if(!plugin->factory.isValid()) {
-        string error = Asserter::format("cannot load plugin %s; error (%s) : %s",
-                                        filename.c_str(),
-                                        Vocab::decode(plugin->factory.getStatus()).c_str(),
-                                        plugin->factory.getLastNativeError().c_str());
-        ErrorLogger::Instance().addError(error);
-        return NULL;
-    }
-
-    // TODO: check if this is neccessary!!!
-    //plugin->factory.addRef();
-
-    // create an instance of the test case from the plugin
-    plugin->test.open(plugin->factory);
-    if(!plugin->test.isValid()) {
-        string error = Asserter::format("cannot create an instance of TestCase from %s",
-                                        filename.c_str());
-        ErrorLogger::Instance().addError(error);
-        delete plugin;
-        return NULL;
-    }
-    return plugin;
-}
 
 bool PluginRunner::loadPlugin(std::string filename,
                               const std::string param) {
 
-    PluginRunner::Plugin* plugin = openPlugin(filename);
-    if(plugin == NULL)
+    DllPluginLoader* loader = new DllPluginLoader();
+    TestCase* test = loader->open(filename);
+    if(test == NULL) {
+        ErrorLogger::Instance().addError(loader->getLastError());
         return false;
-
-    // keep track of what have been created
-    plugins.push_back(plugin);
+    }
 
     // set the test case param
-    plugin->test.getContent().setParam(param);
+    test->setParam(param);
 
     // add the test case to the TestRunner
-    addTest(&plugin->test.getContent());
+    addTest(test);
+
+    // keep track of what have been created
+    dllLoaders.push_back(loader);
+
     return true;
 }
 

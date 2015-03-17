@@ -87,17 +87,24 @@ bool SuitRunner::loadSuit(std::string filename) {
     for(TiXmlElement* test = root->FirstChildElement(); test;
         test = test->NextSiblingElement())
     {
-        if(compare(test->Value(), "test")) {            
+        if(compare(test->Value(), "test")) {
+
             // load the plugin and add it to the suit
-            PluginRunner::Plugin* plugin = openPlugin(test->GetText());
-            if(plugin) {
+            DllPluginLoader* loader = new DllPluginLoader();
+            TestCase* testcase = loader->open(test->GetText());
+
+            if(testcase != NULL) {
                 // set the test case param
                 if(test->Attribute("param"))
-                    plugin->test.getContent().setParam(test->Attribute("param"));
-                // keep track of the created plugins
-                plugins.push_back(plugin);
+                    testcase->setParam(test->Attribute("param"));
                 // add the test to the suit
-                suit->addTest(&plugin->test.getContent());
+                suit->addTest(testcase);
+                // keep track of the created plugin loaders
+                dllLoaders.push_back(loader);
+            }
+            else {
+                logger.addError(loader->getLastError());
+                delete loader;
             }
         }
     }

@@ -5,11 +5,6 @@
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
 #
 
-# Build plugin manager
-if (ENABLE_PLUGIN OR BUILD_TESTRUNNER)
-    add_subdirectory(sharedlibpp)
-endif()
-
 # Build TinyXml if it is not available
 if (BUILD_TESTRUNNER)
     find_package(TinyXML)

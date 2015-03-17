@@ -16,19 +16,26 @@ if (BUILD_EXAMPLES)
 
     add_executable(simple simple.cpp)
     target_link_libraries(simple ${RTF_LIBS})
+    install(TARGETS simple
+            EXPORT  simple
+            RUNTIME DESTINATION bin)
 
     add_executable(simple_suit simple_suit.cpp)
     target_link_libraries(simple_suit ${RTF_LIBS})
+    install(TARGETS simple_suit
+            EXPORT  simple_suit
+            RUNTIME DESTINATION bin)
 
     add_executable(simple_collector simple_collector.cpp)
     target_link_libraries(simple_collector ${RTF_LIBS})
+    install(TARGETS simple_collector
+            EXPORT  simple_collector
+            RUNTIME DESTINATION bin)
 
     add_executable(simple_fixture simple_fixture.cpp)
     target_link_libraries(simple_fixture ${RTF_LIBS})
-
-    if(ENABLE_PLUGIN)
-        add_subdirectory(plugin)
-    endif(ENABLE_PLUGIN)
-
+    install(TARGETS simple_fixture
+            EXPORT  simple_fixture
+            RUNTIME DESTINATION bin)
 endif(BUILD_EXAMPLES)
 
