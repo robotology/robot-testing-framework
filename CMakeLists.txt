@@ -37,7 +37,7 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
-option (BUILD_EXAMPLES "Build examples" OFF)
+option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 
 
