@@ -51,20 +51,19 @@ Now you can compile and build the plug-in and the runner. There is a Cmake file 
 <br>
 Now you can build and run the test as follows: 
 \verbatim
-   
-   $ cd examples/plugin; mkdir build
-   $ cd build; cmake ../; make;
-   $ ./simple_run libmytest.so 
-     Loading the plugin... 
-     Staring test runner.
-     Test case MyTest started...
-     [INFO]  (MyTest) reports: running MyTest::setup...
-     [INFO]  (MyTest) reports: testing integers
-     [FAIL]  (MyTest) checking (a<b): 5 is not smaller than 3.
-     [INFO]  (MyTest) reports: running MyTest::teardown...
-     [ERROR] (MyTest) asserts error with exception: this is just for example!
-     Test case MyTest failed!
-     Ending test runner.
+$ cd examples/plugin; mkdir build
+$ cd build; cmake ../; make;
+$ ./simple_run libmytest.so 
+ Loading the plugin... 
+ Staring test runner.
+ Test case MyTest started...
+ [INFO]  (MyTest) reports: running MyTest::setup...
+ [INFO]  (MyTest) reports: testing integers
+ [FAIL]  (MyTest) checking (a<b): 5 is not smaller than 3.
+ [INFO]  (MyTest) reports: running MyTest::teardown...
+ [ERROR] (MyTest) asserts error with exception: this is just for example!
+ Test case MyTest failed!
+ Ending test runner.
 \endverbatim
 
 */
