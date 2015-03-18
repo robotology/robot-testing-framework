@@ -11,11 +11,16 @@
 /**
 \mainpage Welcome to RTF
 
-RTF stands for Robot Testing Framework.It is a generic testing framework for the test driven development of robotic systems. The framework provides functionalities for developing and running unit tests in a language and middleware independent manner. The test cases are developed as independent plug-ins (i.e., using scripting languages or built as dynamically loadable libraries) to be loaded and executed by an automated test runner. Moreover, a fixture manager prepares the setup (e.g., running robot interfaces, simulator) and actively monitors that all the requirements for running the tests are satisfied during the execution of the tests. These  functionalities along with other facilities such as the test result collector, result formatter and remote interface allow for rapid development of test units to cover different levels of testing robotic systems.
+RTF stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the test driven development (TDD) which is initially designed for the robotic systems. However, it can be used for any TDD system. <br> The framework provides functionalities for developing and running unit tests in a language and middleware independent manner. The test cases are developed as independent plug-ins (i.e., using scripting languages or built as dynamically loadable libraries) to be loaded and executed by an automated test runner. Moreover, a fixture manager prepares the setup (e.g., running robot interfaces, simulator) and actively monitors that all the requirements for running the tests are satisfied during the execution of the tests. These  functionalities along with other facilities such as the test result collector, result formatter and remote interface allow for rapid development of test units to cover different levels of system testing.
+
+<br>
+\section Tutorials 
+\li \ref rtf_plugin_example
+\li \ref testrunner
 
 <br>
 \section install Installation
-RTF library does not depend on any external library. The RTF framework has a \c testrunner utility to easily run the test cases which are built as plug-ins. Test cases can be organized in a test suits using a simple XML file. The \c testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the RTF. 
+RTF library does not depend on any external library. The RTF framework has a \c testrunner utility (see \ref testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The \c testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the RTF. 
 
 \subsection compile Compile and Build 
 The installation is easy, straightforward and uses \c Cmake building system.
@@ -56,11 +61,6 @@ There are some examples which are created by building RTF (The \c BUILD_EXAMPLES
     $ ...
 \endverbatim
 
-
-<br>
-\section Tutorials
-
-\li \ref rtf_plugin_example
 
 <br>
 \author Ali Paikan

@@ -20,9 +20,8 @@ namespace RTF {
 
 
 /**
- * class Test
+ * @brief The simplest form of a test unit
  */
-
 class RTF::Test {
 public:
 

@@ -24,11 +24,10 @@ namespace RTF {
 
 
 /**
- * class TestResult
  * \ingroup key_class
  *
  * \brief The TestResult class is used to deliver the test results including
- * any error and failures produced by tests to any listiners. The listeneres
+ * any error and failures produced by tests to any listener. The listeneres
  * can be added by \c addListener.
  *
  * Here's an example of using a TestResult:

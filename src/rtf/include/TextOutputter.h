@@ -20,7 +20,7 @@ namespace RTF {
 }
 
 /**
- * \brief class TextOutputter save the results of the test collected by
+ * \brief Class TextOutputter saves the results of the test collected by
  * a TestResultCollector in a plain text file. The results are
  * written with the same order collected by the TestResultCollector.
  *

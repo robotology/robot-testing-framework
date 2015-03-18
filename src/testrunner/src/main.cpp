@@ -53,7 +53,7 @@ void addOptions(cmdline::parser &cmd) {
             "Search into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
     cmd.add("detail", '\0',
             "Enables verbose mode of test assertions.");
-    cmd.add("verbose", '\0',
+    cmd.add("verbose", 'v',
             "Enables verbose mode.");
     cmd.add("version", '\0',
             "Shows version information.");

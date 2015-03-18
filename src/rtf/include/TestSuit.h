@@ -23,7 +23,6 @@ namespace RTF {
 
 
 /**
- * class TestSuit
  * \ingroup key_class
  *
  * \brief The TestSuit holds a group of tests. When the \c run() method of a

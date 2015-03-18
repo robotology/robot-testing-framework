@@ -20,7 +20,6 @@ namespace RTF {
 
 
 /**
- * class TestCase
  * \ingroup key_class
  *
  * \brief The base class to implememnt a test case. The user defined test

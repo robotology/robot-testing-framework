@@ -20,9 +20,8 @@ namespace RTF {
 
 
 /**
- * class TestListener
+ * @brief The base class of any test result listeners
  */
-
 class RTF::TestListener {
 public:
 

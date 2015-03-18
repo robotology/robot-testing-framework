@@ -19,7 +19,8 @@ namespace RTF {
 }
 
 /**
- * class DllPluginLoader
+ * @brief The DllPluginLoader loads an test case plug-in and
+ * gives the direct access to the TestCase.
  */
 class RTF::DllPluginLoader {
 

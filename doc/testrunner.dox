@@ -1,0 +1,110 @@
+/*
+ * Copyright (C) 2015 iCub Facility
+ * Authors: Ali Paikan
+ * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ *
+ */
+
+/**
+
+@page testrunner Running test case plug-ins using testrunner
+
+\section content Contents
+\li \ref desc
+\li \ref single
+\li \ref multiple
+\li \ref suit
+\li \ref single-suit
+\li \ref multiple-suit
+\li \ref options
+
+<br>
+\section desc Description
+The \c testrunner is a command line tool to load and run multiple tests which has been developed as RTF plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as \c *.so, \c *.dll or *.dylib. The \c testrunner can be used to run a single test case, multiple test cases from a given path, a \ref suit or multiple test suits from a given path.  
+
+<br>
+\section single Running a single test case  
+To run a single test case plug-in, it is enough to give the name of the corresponding plug-ing file to the \c testrunner using \c --test option. For example on a Linux machine:  
+
+\verbatim
+ $ testrunner --verbose --test libmytest.so
+\endverbatim
+
+The \c testrunner follows the platform policy to look for the plug-in file. On a Linux machine, the default folders for the shared libraries and the paths indicated in the \c `LD_LIBRARY_PATH` are searched for the corresponding plug-in. Alternatively, the complete path to the plug-in file can be given to load the corresponding plug-in:
+
+\verbatim
+ $ testrunner --verbose --test ~/my-plugins/libmytest.so
+\endverbatim
+
+The \c `--verbose` enables the verbose mode which allows that the result of the tests to be also written to the standard out put. By default the result of the test are stored in the \c `result.txt` which can be changed by using \c `--output` option. 
+
+<br>
+\section multiple Running all test cases from a given path 
+Multiple test cases can be easily loaded and run using \c `--tests` option. The expected value for this option is a directory where test case plug-ins are stored.  
+
+\verbatim
+ $ testrunner --verbose --tests ~/my-plugins
+\endverbatim
+
+If the \c `--recursive` switch is given with the \c `--tests` option, the sub-folders are also searched for plug-ins. 
+
+<br>
+\section suit Test suit
+By definition, a test suit is a set of test cases which share the same test fixture. In RTF a set of test cases (plug-ins) can be grouped in a test suit using a XML file. Here is an example of test suit:
+
+\htmlonly
+<pre style='color:#000000;background:#eeeeee;'><html><body style='color:#000000; background:#ffffff; '>
+<span style='color:#004a43; '>&lt;?</span><span style='color:#800000; font-weight:bold; '>xml</span><span style='color:#004a43; '> </span><span style='color:#074726; '>version</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#7d0045; '>1.0</span><span style='color:#0000e6; '>"</span><span style='color:#004a43; '> </span><span style='color:#074726; '>encoding</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#0000e6; '>UTF-8</span><span style='color:#0000e6; '>"</span><span style='color:#004a43; '>?></span>
+
+<span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>suit</span> <span style='color:#274796; '>name</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#0000e6; '>my suit</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span>
+    <span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>test</span> <span style='color:#274796; '>param</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"myconf.ini</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span> libtest1.so <span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>test</span><span style='color:#a65700; '>></span>
+    <span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>test</span> <span style='color:#274796; '>param</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span> ~/mytest/libtest2.so <span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>test</span><span style='color:#a65700; '>></span>
+    ...
+<span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>suit</span><span style='color:#a65700; '>></span>
+</pre>
+\endhtmlonly
+
+The example demonstrates a test suit which includes two test cases (\clibmytest1.so and \clibmytest2.so). An optional string parameter can be also specified for each test using \c param attribute in the \c test tag. ​The value of the parameter can be access in the test plug-in implementation using RTF::TestCase::getParam method.<br> Notice that, for \c libtest2.so,  a complete path to the plug-in file is given. Thus, the \c testrunner does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for \c libtest1.so. 
+
+<br>
+\section single-suit Running a single test suit
+A single test suit (XML file) can be run using \c `--suit` option. For example:
+\verbatim
+ $ testrunner --verbose --suit ~/my-suits/suit.xml
+\endverbatim
+
+<br>
+\section multiple-suit Running multiple test suits
+Multiple test suits can be loaded and rune using \c `--suits` option. The expected value for this option is a directory where test suits (XML files) are stored.  
+
+\verbatim
+ $ testrunner --verbose --suits ~/my-suits
+\endverbatim
+
+If the \c `--recursive` switch is given with the \c `--suits` option, the sub-folders are also searched for test suits. 
+
+
+<br>
+\section options The testrunner options  
+Here is the full list of \c testrunner options: 
+
+\verbatim
+usage: testrunner [options] ... 
+options:
+  -t, --test         Runs a single test from the given plugin file. (string [=])
+      --tests        Runs multiple tests from the given folder which contains plugins. (string [=])
+  -s, --suit         Runs a single test suit from the given XMl file. (string [=])
+      --suits        Runs multiple tests from the given folder which contains XML files. (string [=])
+  -o, --output       The output file to save the result (string [=result.txt])
+  -r, --recursive    Search into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
+      --detail       Enables verbose mode of test assertions.
+  -v, --verbose      Enables verbose mode.
+      --version      Shows version information.
+  -?, --help         print this message
+\endverbatim
+
+  
+\author Ali Paikan
+
+*/
+

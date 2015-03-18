@@ -22,7 +22,6 @@ namespace RTF {
 
 
 /**
- * class TestResultCollector
  * \ingroup key_class
  *
  * \brief The TestResultCollector class can be used to store all the events

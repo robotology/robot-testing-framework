@@ -22,6 +22,9 @@ namespace RTF {
     class FixtureException;
 }
 
+/**
+ * @brief The RTF::Exception is a generic exception.
+ */
 class RTF::Exception : public std::exception {
 
 public:

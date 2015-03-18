@@ -20,7 +20,7 @@ namespace RTF {
 
 
 /**
- * class TestMessage 
+ * @brief A formated message with details.
  */
 
 class RTF::TestMessage {

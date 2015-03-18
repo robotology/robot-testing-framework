@@ -38,10 +38,6 @@ public:
 
 
 /**
- * class FixtureManager
- */
-/**
- * class TestSuit
  * \ingroup key_class
  *
  * \brief The FixtureManager can be used to to setup any fixture which
