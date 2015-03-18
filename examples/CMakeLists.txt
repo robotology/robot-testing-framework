@@ -32,6 +32,12 @@ if (BUILD_EXAMPLES)
             EXPORT  simple_collector
             RUNTIME DESTINATION bin)
 
+    add_executable(simple_runner simple_runner.cpp)
+    target_link_libraries(simple_runner ${RTF_LIBS})
+    install(TARGETS simple_runner
+            EXPORT  simple_runner
+            RUNTIME DESTINATION bin)
+
     add_executable(simple_fixture simple_fixture.cpp)
     target_link_libraries(simple_fixture ${RTF_LIBS})
     install(TARGETS simple_fixture

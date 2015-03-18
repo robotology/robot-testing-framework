@@ -37,8 +37,7 @@ void PluginRunner::reset() {
 
 
 bool PluginRunner::loadPlugin(std::string filename,
-                              const std::string param) {
-
+                              const std::string param) {    
     DllPluginLoader* loader = new DllPluginLoader();
     TestCase* test = loader->open(filename);
     if(test == NULL) {

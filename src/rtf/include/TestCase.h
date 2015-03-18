@@ -24,7 +24,7 @@ namespace RTF {
  *
  * \brief The base class to implememnt a test case. The user defined test
  * cases should be inherited from TestCase class and the \c run() method
- * must be overriden. The \c setup() and \c tearDown() can be also inherited
+ * must be overriden. The \c 'setup(int argc, char** argv)' and \c tearDown() can be also inherited
  * to implement any initialization or finalization of the test case.
  *
  * Here's an example of using a TestCase:
@@ -47,9 +47,11 @@ public:
 
     /**
      * @brief setup is called before the test run
+     * @param argc The number of the pasred argument from string paramter
+     * @param argv The arguments which is parsed using string paramter
      * @return true or false depending of the test initialization
      */
-    virtual bool setup();
+    virtual bool setup(int argc, char**argv);
 
     /**
      * @brief tearDown is called after the test run
@@ -102,6 +104,23 @@ public:
      * @param param the paramter string
      */
     void setParam(const std::string param);
+
+private:
+    /**
+     * @brief parseArguments parses a string paramters into argc, argv format
+     * @param azParam Input string parmater
+     * @param argc  The parsed argument count
+     * @param argv The parsed arguments
+     */
+    void parseArguments(char *azParam,
+                        int *argc, char **argv);
+
+    /**
+     * @brief split Splits a line into arguments
+     * @param line A line
+     * @param args Splited arguments
+     */
+    void split(char *line, char **args);
 
 private:
     std::string param;

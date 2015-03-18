@@ -17,7 +17,7 @@ public:
     MyTest();
     virtual ~MyTest();
 
-    virtual bool setup();
+    virtual bool setup(int argc, char** argv);
 
     virtual void tearDown();
 

@@ -43,14 +43,17 @@ void addOptions(cmdline::parser &cmd) {
                     false);
 
     cmd.add<string>("suits", '\0',
-                    "Runs multiple tests from the given folder which contains XML files.",
+                    "Runs multiple test suits from the given folder which contains XML files.",
                     false);
 
     cmd.add<string>("output", 'o',
                     "The output file to save the result",
-                    false, "result.txt");
+                    false, "result.txt");    
+    cmd.add<string>("param", 'p',
+                    "Sets the test case paramerers. (Can be used only with --test option.)",
+                    false);
     cmd.add("recursive", 'r',
-            "Search into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
+            "Searchs into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
     cmd.add("detail", '\0',
             "Enables verbose mode of test assertions.");
     cmd.add("verbose", 'v',
@@ -85,7 +88,8 @@ int main(int argc, char *argv[]) {
 
     // load a single plugin
     if(cmd.get<string>("test").size())
-        if(!runner.loadPlugin(cmd.get<string>("test"))) {
+        if(!runner.loadPlugin(cmd.get<string>("test"),
+                              cmd.get<string>("param"))) {
             reportErrors();
             return 0;
         }

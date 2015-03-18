@@ -21,7 +21,7 @@ MyTest::MyTest() : TestCase("MyTest") { }
 
 MyTest::~MyTest() { }
 
-bool MyTest::setup() {
+bool MyTest::setup(int argc, char** argv) {
     RTF_ASSERT_REPORT("running MyTest::setup...");
     return true;
 }

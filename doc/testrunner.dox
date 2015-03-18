@@ -94,9 +94,10 @@ options:
   -t, --test         Runs a single test from the given plugin file. (string [=])
       --tests        Runs multiple tests from the given folder which contains plugins. (string [=])
   -s, --suit         Runs a single test suit from the given XMl file. (string [=])
-      --suits        Runs multiple tests from the given folder which contains XML files. (string [=])
+      --suits        Runs multiple test suits from the given folder which contains XML files. (string [=])
   -o, --output       The output file to save the result (string [=result.txt])
-  -r, --recursive    Search into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
+  -p, --param        Sets the test case paramerers. (Can be used only with --test option.)
+  -r, --recursive    Searchs into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
       --detail       Enables verbose mode of test assertions.
   -v, --verbose      Enables verbose mode.
       --version      Shows version information.
