@@ -57,7 +57,7 @@ By definition, a test suit is a set of test cases which share the same test fixt
 
 <span style="color: #007700">&lt;suit</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;my suit&quot;</span><span style="color: #007700">&gt;</span>
     <span style="color: #007700">&lt;description&gt;</span> a simple example <span style="color: #007700">&lt;/description&gt;</span>
-    <span style="color: #007700">&lt;environment&gt;</span> simulator <span style="color: #007700">&lt;/environment&gt;</span>
+    <span style="color: #007700">&lt;environment&gt;</span> --robot simulator <span style="color: #007700">&lt;/environment&gt;</span>
 
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>

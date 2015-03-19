@@ -82,7 +82,7 @@
     RTF::Asserter::report(RTF::TestMessage("reports",\
                                             message,\
                                             RTF_SOURCEFILE(),\
-                                            RTF_SOURCELINE()), this)
+                                            RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
 
 
 /** Conditional failure report. RTF_ASSERT_CHECK does not throw any
@@ -104,6 +104,6 @@
                                            std::string(#condition) + ")",\
                                            message,\
                                            RTF_SOURCEFILE(),\
-                                           RTF_SOURCELINE()), this)
+                                           RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
 
 #endif // _RTF_TESTASSERTER_H

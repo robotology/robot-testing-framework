@@ -125,7 +125,7 @@ public:
      */
     const std::string getEnvironment();
 
-private:
+protected:
     /**
      * @brief parseArguments Parses a string paramters into argc, argv format
      * @param azParam Input string parmater
