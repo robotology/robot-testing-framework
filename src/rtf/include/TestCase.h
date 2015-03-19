@@ -79,13 +79,13 @@ public:
     bool succeeded() const;
 
     /**
-     * @brief failed set the test successful flag to \c false
+     * @brief failed Sets the test successful flag to \c false
      *         which indicates that the test was not successful.
      */
     void failed();
 
     /**
-     * @brief getResult returns an instance of TestResult
+     * @brief getResult Returns an instance of TestResult
      * if run(TestResult &result) has been already called
      * by a TestRunner
      * @return an instance of TestResult
@@ -93,21 +93,41 @@ public:
     RTF::TestResult* getResult();
 
     /**
-     * @brief getParam gets the paramters which is set
+     * @brief setParam Sets the optional paramters of the test.
+     * The parameter string is parsed into (argc/argv) format
+     * and will be passed to the test case using setup(int argc, char** argv).
+     * @param param the paramter string
+     */
+    void setParam(const std::string param);
+
+    /**
+     * @brief getParam gets the original paramter string which is set
      * for the test case
      * @return a string paramter
      */
     const std::string getParam();
 
+
     /**
-     * @brief setParam set the optional paramters of the test
-     * @param param the paramter string
+     * @brief setEnvironment Optioanlly specifies the environment in which
+     * the test case is executed. The TestCase class does not
+     * make any use of it. The environment can be used in the implementation
+     * of the test cases to know in which setup (e.g., simulation,
+     * real world environment) the test case is employed.
+     * @param environment The optional environment string
      */
-    void setParam(const std::string param);
+    void setEnvironment(const std::string environment);
+
+    /**
+     * @brief getParam gets the environment string which is set
+     * for the test case
+     * @return A environment string
+     */
+    const std::string getEnvironment();
 
 private:
     /**
-     * @brief parseArguments parses a string paramters into argc, argv format
+     * @brief parseArguments Parses a string paramters into argc, argv format
      * @param azParam Input string parmater
      * @param argc  The parsed argument count
      * @param argv The parsed arguments
@@ -124,6 +144,7 @@ private:
 
 private:
     std::string param;
+    std::string environment;
     RTF::TestResult* result;
     bool successful;
 };

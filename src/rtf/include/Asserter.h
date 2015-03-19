@@ -77,6 +77,7 @@ public:
      * @brief check Checks the given boolean condition
      * and if it is not hold (it is not true) a failure
      * message will be added to the result collector.
+     * @param condition The boolean expression
      * @param msg The corresponding message
      * @param testcase The owner of the message (reporter)
      * @note check does not throw any exception!

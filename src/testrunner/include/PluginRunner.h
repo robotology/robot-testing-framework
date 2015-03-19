@@ -40,7 +40,9 @@ public:
      * @param param the optional test case parameter
      * @return true or false upon success or failure
      */
-    bool loadPlugin(std::string filename, const std::string param="");
+    bool loadPlugin(std::string filename,
+                    const std::string param="",
+                    const std::string environment="");
 
     /**
      * @brief loadSinglePlugin loads all plugins from the

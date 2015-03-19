@@ -50,10 +50,13 @@ void addOptions(cmdline::parser &cmd) {
                     "The output file to save the result",
                     false, "result.txt");    
     cmd.add<string>("param", 'p',
-                    "Sets the test case paramerers. (Can be used only with --test option.)",
+                    "Sets the test case parameters. (Can be used only with --test option.)",
+                    false);
+    cmd.add<string>("environment", 'e',
+                    "Sets the test case environment. (Can be used only with --test option.)",
                     false);
     cmd.add("recursive", 'r',
-            "Searchs into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
+            "Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
     cmd.add("detail", '\0',
             "Enables verbose mode of test assertions.");
     cmd.add("verbose", 'v',
@@ -89,7 +92,8 @@ int main(int argc, char *argv[]) {
     // load a single plugin
     if(cmd.get<string>("test").size())
         if(!runner.loadPlugin(cmd.get<string>("test"),
-                              cmd.get<string>("param"))) {
+                              cmd.get<string>("param"),
+                              cmd.get<string>("environment"))) {
             reportErrors();
             return 0;
         }

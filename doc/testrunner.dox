@@ -53,18 +53,24 @@ If the \c `--recursive` switch is given with the \c `--tests` option, the sub-fo
 By definition, a test suit is a set of test cases which share the same test fixture. In RTF a set of test cases (plug-ins) can be grouped in a test suit using a XML file. Here is an example of test suit:
 
 \htmlonly
-<pre style='color:#000000;background:#eeeeee;'><html><body style='color:#000000; background:#ffffff; '>
-<span style='color:#004a43; '>&lt;?</span><span style='color:#800000; font-weight:bold; '>xml</span><span style='color:#004a43; '> </span><span style='color:#074726; '>version</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#7d0045; '>1.0</span><span style='color:#0000e6; '>"</span><span style='color:#004a43; '> </span><span style='color:#074726; '>encoding</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#0000e6; '>UTF-8</span><span style='color:#0000e6; '>"</span><span style='color:#004a43; '>?></span>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 
-<span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>suit</span> <span style='color:#274796; '>name</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#0000e6; '>my suit</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span>
-    <span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>test</span> <span style='color:#274796; '>param</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"myconf.ini</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span> libtest1.so <span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>test</span><span style='color:#a65700; '>></span>
-    <span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>test</span> <span style='color:#274796; '>param</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span> ~/mytest/libtest2.so <span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>test</span><span style='color:#a65700; '>></span>
+<span style="color: #007700">&lt;suit</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;my suit&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;description&gt;</span> a simple example <span style="color: #007700">&lt;/description&gt;</span>
+    <span style="color: #007700">&lt;environment&gt;</span> simulator <span style="color: #007700">&lt;/environment&gt;</span>
+
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
     ...
-<span style='color:#a65700; '>&lt;/</span><span style='color:#5f5035; '>suit</span><span style='color:#a65700; '>></span>
-</pre>
+<span style="color: #007700">&lt;/suit&gt;</span>
+</pre></div>
 \endhtmlonly
 
-The example demonstrates a test suit which includes two test cases (\clibmytest1.so and \clibmytest2.so). An optional string parameter can be also specified for each test using \c param attribute in the \c test tag. ​The value of the parameter can be access in the test plug-in implementation using RTF::TestCase::getParam method.<br> Notice that, for \c libtest2.so,  a complete path to the plug-in file is given. Thus, the \c testrunner does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for \c libtest1.so. 
+The example demonstrates a test suit which includes two test cases (\c libmytest1.so and \c libmytest2.so). An optional string parameter can be also specified for each test using \c param attribute in the \c test tag. ​The parameter string is parsed into (argc/argv) format and will be passed to the test case using RTF::TestCase::setup(int argc, char** argv). Alternatively, the raw value of the parameter can be access in the test plug-in implementation using RTF::TestCase::getParam method.
+
+The environment can be used in the implementation of the test cases to know in which setup (e.g., simulation, real world environment) the test case is employed. The environment value can also be accessed in the test plug-in implementation using RTF::TestCase::getEnvironment method.
+
+Notice that, for \c libtest2.so,  a complete path to the plug-in file is given. Thus, the \c testrunner does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for \c libtest1.so.
 
 <br>
 \section single-suit Running a single test suit
@@ -96,8 +102,9 @@ options:
   -s, --suit         Runs a single test suit from the given XMl file. (string [=])
       --suits        Runs multiple test suits from the given folder which contains XML files. (string [=])
   -o, --output       The output file to save the result (string [=result.txt])
-  -p, --param        Sets the test case paramerers. (Can be used only with --test option.)
-  -r, --recursive    Searchs into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
+  -p, --param        Sets the test case parameters. (Can be used only with --test option.) (string [=])
+  -e, --environment  Sets the test case environment. (Can be used only with --test option.) (string [=])
+  -r, --recursive    Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
       --detail       Enables verbose mode of test assertions.
   -v, --verbose      Enables verbose mode.
       --version      Shows version information.

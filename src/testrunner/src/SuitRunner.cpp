@@ -80,6 +80,7 @@ bool SuitRunner::loadSuit(std::string filename) {
         return false;
     }
 
+    std::string environment;
     std::string name = (root->Attribute("name")) ? root->Attribute("name") : "unknown";
     TestSuit* suit = new TestSuit(name);
 
@@ -87,13 +88,24 @@ bool SuitRunner::loadSuit(std::string filename) {
     for(TiXmlElement* test = root->FirstChildElement(); test;
         test = test->NextSiblingElement())
     {
-        if(compare(test->Value(), "test")) {
+        if(compare(test->Value(), "description")) {
+            if(test->GetText() != NULL)
+                suit->setDescription(test->GetText());
+        }
+        else if(compare(test->Value(), "environment")) {
+            if(test->GetText() != NULL)
+                environment = test->GetText();
+        }
+        else if(compare(test->Value(), "test") &&
+                test->GetText() != NULL) {
 
             // load the plugin and add it to the suit
             DllPluginLoader* loader = new DllPluginLoader();
             TestCase* testcase = loader->open(test->GetText());
 
             if(testcase != NULL) {
+                // set the test case environment
+                testcase->setEnvironment(environment);
                 // set the test case param
                 if(test->Attribute("param"))
                     testcase->setParam(test->Attribute("param"));

@@ -42,13 +42,23 @@ TestResult* TestCase::getResult() {
     return result;
 }
 
+void TestCase::setParam(const std::string param) {
+    this->param = param;
+}
+
 const std::string TestCase::getParam() {
     return param;
 }
 
-void TestCase::setParam(const std::string param) {
-    this->param = param;
+
+void TestCase::setEnvironment(const std::string environment) {
+    this->environment = environment;
 }
+
+const std::string TestCase::getEnvironment() {
+    return environment;
+}
+
 
 bool TestCase::setup(int argc, char**argv) {
     return true;

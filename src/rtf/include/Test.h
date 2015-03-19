@@ -27,10 +27,13 @@ public:
 
     /**
      * Test constructor
-     * @param  name The test name
+     * @param name The test name
+     * @param description An optional string which describes
+     * the test
      */
-    Test(std::string name)
-        : strName(name) {
+    Test(std::string name,
+         std::string description="")
+        : strName(name), strDescription(description) {
     }
 
     /**
@@ -40,10 +43,27 @@ public:
 
     /**
      * @brief getName Getting test name.
-     * @return the name of the test.
+     * @return The name of the test.
      */
     const std::string getName() const {
         return strName;
+    }
+
+    /**
+     * @brief getDescription Getting test description
+     * @return The description of the test
+     */
+    const std::string getDescription() const {
+        return strDescription;
+    }
+
+    /**
+     * @brief setDescription Sets an optional string which
+     * describes the test.
+     * @param description The description string
+     */
+    void setDescription(const std::string description) {
+        strDescription = description;
     }
 
     /**
@@ -61,6 +81,7 @@ public:
     virtual bool succeeded() const = 0;
 
 private:
-    std::string strName;    
+    std::string strName;
+    std::string strDescription;
 };
 #endif // _RTF_TEST_H

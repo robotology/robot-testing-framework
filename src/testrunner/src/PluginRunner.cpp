@@ -37,7 +37,8 @@ void PluginRunner::reset() {
 
 
 bool PluginRunner::loadPlugin(std::string filename,
-                              const std::string param) {    
+                              const std::string param,
+                              const string environment) {
     DllPluginLoader* loader = new DllPluginLoader();
     TestCase* test = loader->open(filename);
     if(test == NULL) {
@@ -45,8 +46,9 @@ bool PluginRunner::loadPlugin(std::string filename,
         return false;
     }
 
-    // set the test case param
+    // set the test case param and environment
     test->setParam(param);
+    test->setEnvironment(environment);
 
     // add the test case to the TestRunner
     addTest(test);
