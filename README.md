@@ -24,6 +24,7 @@ Compile and Build
 -----------------
 The installation is easy, straightforward and uses Cmake building system.
 ```
+    $ git clone https://github.com/robotology/robot-testing.git
     $ cd robot-testing
     $ mkdir build; cd build
     $ cmake ../; make
