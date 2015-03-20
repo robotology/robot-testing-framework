@@ -36,7 +36,7 @@ and optionally:
 
 Configuration
 -------------
-The only thing you need to configure is the \c RTF_DIR environment variable so that cmake can find RTF libraries and header files.
+The only thing you need to configure is the RTF_DIR environment variable so that cmake can find RTF libraries and header files.
 
 For example on Linux/Mac:
 ```
