@@ -95,11 +95,12 @@ Tutorials</h1>
  </p>
 <h1><a class="anchor" id="install"></a>
 Installation</h1>
-<p><a class="el" href="namespaceRTF.html">RTF</a> library does not depend on any external library. The <a class="el" href="namespaceRTF.html">RTF</a> framework has a <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The <code>testrunner</code> uses TinyXml library for parsing the suit XML files. <a class="el" href="namespaceRTF.html">RTF</a> build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the <a class="el" href="namespaceRTF.html">RTF</a>.</p>
+<p><a class="el" href="namespaceRTF.html">RTF</a> library does not depend on any external library. The <a class="el" href="namespaceRTF.html">RTF</a> framework has a <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The <code>testrunner</code> uses TinyXml library for parsing the suit XML files. <a class="el" href="namespaceRTF.html">RTF</a> build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the <a class="el" href="namespaceRTF.html">RTF</a>. The source code of the <a class="el" href="namespaceRTF.html">RTF</a> is vailable at <a href="https://github.com/robotology/robot-testing">https://github.com/robotology/robot-testing</a>.</p>
 <h2><a class="anchor" id="compile"></a>
 Compile and Build</h2>
 <p>The installation is easy, straightforward and uses <code>Cmake</code> building system. </p>
-<pre class="fragment">    $ cd robot-testing-framework
+<pre class="fragment">    $ git clone https://github.com/robotology/robot-testing.git
+    $ cd robot-testing
     $ mkdir build; cd build
     $ cmake ../; make
 </pre><p>and optionally: </p>
@@ -127,7 +128,7 @@ Running Examples</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 20 2015 12:04:59 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 20 2015 12:19:17 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
