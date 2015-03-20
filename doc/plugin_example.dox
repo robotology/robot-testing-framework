@@ -19,7 +19,7 @@ Test cases can be written as dynamic loadable libraries (e.g., .so, .dll) to be 
 
 <br>
 \section req Requirements
-You do not need nay external library to use the plug-ins. All you need is to simply enable the plug-in system in the RTF and recompile it if it is not already enabled (it should be enabled by default). 
+You do not need any external library to use the plug-ins. All you need is to simply enable the plug-in system in the RTF and recompile it if it is not already enabled (it should be enabled by default). 
 
 \verbatim
    $ cd robot-testing-framework/build
