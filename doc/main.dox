@@ -20,12 +20,13 @@ RTF stands for Robot Testing Framework. It is a generic and multi-platform testi
 
 <br>
 \section install Installation
-RTF library does not depend on any external library. The RTF framework has a \c testrunner utility (see \ref testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The \c testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the RTF. 
+RTF library does not depend on any external library. The RTF framework has a \c testrunner utility (see \ref testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The \c testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the RTF. The source code of the RTF is vailable at https://github.com/robotology/robot-testing. 
 
 \subsection compile Compile and Build 
 The installation is easy, straightforward and uses \c Cmake building system.
 \verbatim
-    $ cd robot-testing-framework
+    $ git clone https://github.com/robotology/robot-testing.git
+    $ cd robot-testing
     $ mkdir build; cd build
     $ cmake ../; make
 \endverbatim
