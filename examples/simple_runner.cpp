@@ -25,20 +25,20 @@ public:
     virtual ~MyTest() { }
 
     virtual bool setup(int argc, char** argv) {
-        RTF_ASSERT_REPORT("running MyTest::setup...");
+        RTF_REPORT("running MyTest::setup...");
         return true;
     }
 
     virtual void tearDown() {
-        RTF_ASSERT_REPORT("running MyTest::teardown...");
+        RTF_REPORT("running MyTest::teardown...");
         RTF_ASSERT_ERROR("this is just for example!");
     }
 
     virtual void run() {
 
-        RTF_ASSERT_REPORT("testing integers");
-        RTF_ASSERT_CHECK(2<3, "is not smaller");
-        RTF_ASSERT_CHECK(5<3, "is not smaller");
+        RTF_REPORT("testing integers");
+        RTF_CHECK(2<3, "is not smaller");
+        RTF_CHECK(5<3, "is not smaller");
     }
 
 };

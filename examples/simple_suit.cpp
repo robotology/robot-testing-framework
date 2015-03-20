@@ -22,8 +22,8 @@ public:
     MyTest1() : TestCase("MyTest1") { }
 
     virtual void run() {
-        RTF_ASSERT_REPORT("testing smaller");
-        RTF_ASSERT_CHECK(3<5, "is not smaller");
+        RTF_REPORT("testing smaller");
+        RTF_CHECK(3<5, "is not smaller");
     }
 };
 
@@ -32,8 +32,8 @@ public:
     MyTest2() : TestCase("MyTest2") { }
 
     virtual void run() {
-        RTF_ASSERT_REPORT("testing equality");
-        RTF_ASSERT_CHECK(5==3, "are not equal");
+        RTF_REPORT("testing equality");
+        RTF_CHECK(5==3, "are not equal");
     }
 };
 
