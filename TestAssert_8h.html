@@ -116,60 +116,12 @@ Macros</h2></td></tr>
 <tr class="memdesc:a8681580ec6406f327e6610f8185378fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assertion with throwing error exception.  <a href="#a8681580ec6406f327e6610f8185378fe"></a><br/></td></tr>
 <tr class="memitem:a21707a2e16b7fd12239bd1b5a670b8d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#a21707a2e16b7fd12239bd1b5a670b8d6">RTF_ASSERT_ERROR_IF</a>(condition, message)</td></tr>
 <tr class="memdesc:a21707a2e16b7fd12239bd1b5a670b8d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional assertion with throwing error exception.  <a href="#a21707a2e16b7fd12239bd1b5a670b8d6"></a><br/></td></tr>
-<tr class="memitem:a44e3bbf35cdf6b3d536cc3f666c6e222"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#a44e3bbf35cdf6b3d536cc3f666c6e222">RTF_ASSERT_REPORT</a>(message)</td></tr>
-<tr class="memdesc:a44e3bbf35cdf6b3d536cc3f666c6e222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reporting a message to the TestResult.  <a href="#a44e3bbf35cdf6b3d536cc3f666c6e222"></a><br/></td></tr>
-<tr class="memitem:afc27ec113cfeeeb3b7de8af680138afb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#afc27ec113cfeeeb3b7de8af680138afb">RTF_ASSERT_CHECK</a>(condition, message)</td></tr>
-<tr class="memdesc:afc27ec113cfeeeb3b7de8af680138afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional failure report.  <a href="#afc27ec113cfeeeb3b7de8af680138afb"></a><br/></td></tr>
+<tr class="memitem:ac36590698946db759e820a603f2be16a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a">RTF_REPORT</a>(message)</td></tr>
+<tr class="memdesc:ac36590698946db759e820a603f2be16a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reporting a message to the TestResult.  <a href="#ac36590698946db759e820a603f2be16a"></a><br/></td></tr>
+<tr class="memitem:a7071aae8589105dfddd8b52b8f302578"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578">RTF_CHECK</a>(condition, message)</td></tr>
+<tr class="memdesc:a7071aae8589105dfddd8b52b8f302578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional failure report.  <a href="#a7071aae8589105dfddd8b52b8f302578"></a><br/></td></tr>
 </table>
 <h2>Macro Definition Documentation</h2>
-<a class="anchor" id="afc27ec113cfeeeb3b7de8af680138afb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RTF_ASSERT_CHECK</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">condition, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">message&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span>(dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>) == 0) {\</div>
-<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_ASSERT_CHECK is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">\</a></div>
-<div class="line"><a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">    RTF::Asserter::check</a>(condition,\</div>
-<div class="line">                          <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>(std::string(<span class="stringliteral">&quot;checking (&quot;</span>) +\</div>
-<div class="line">                                           std::string(#condition) + <span class="stringliteral">&quot;)&quot;</span>,\</div>
-<div class="line">                                           message,\</div>
-<div class="line">                                           <a class="code" href="TestMessage_8h.html#afde60f2763a45ced45c4605771e79deb">RTF_SOURCEFILE</a>(),\</div>
-<div class="line">                                           <a class="code" href="TestMessage_8h.html#a9d3d6cc3eb2a69752c6163b9f7e6c871">RTF_SOURCELINE</a>()), dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>))</div>
-</div><!-- fragment -->
-<p>Conditional failure report. </p>
-<p>RTF_ASSERT_CHECK does not throw any exception. It reports a failure message to the TestResult indiecating that the check on the corresponding condition evaluates to <code>false</code>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Message to be reported as the detail of TestMessage </td></tr>
-    <tr><td class="paramname">condition</td><td>If this condition evaluates to <code>false</code> then the test failed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>RTF_ASSERT_CHECK throws error exception if it is not called within a TestCase class. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a3">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#a2">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a2">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a3">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#a2">simple_suit.cpp</a>.</dd>
-</dl>
-<p>Definition at line <a class="el" href="TestAssert_8h_source.html#l00099">99</a> of file <a class="el" href="TestAssert_8h_source.html">TestAssert.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a8681580ec6406f327e6610f8185378fe"></a>
 <div class="memitem">
 <div class="memproto">
@@ -317,12 +269,60 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a44e3bbf35cdf6b3d536cc3f666c6e222"></a>
+<a class="anchor" id="a7071aae8589105dfddd8b52b8f302578"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define RTF_ASSERT_REPORT</td>
+          <td class="memname">#define RTF_CHECK</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">condition, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span>(dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>) == 0) {\</div>
+<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_CHECK is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">\</a></div>
+<div class="line"><a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">    RTF::Asserter::check</a>(condition,\</div>
+<div class="line">                          <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>(std::string(<span class="stringliteral">&quot;checking (&quot;</span>) +\</div>
+<div class="line">                                           std::string(#condition) + <span class="stringliteral">&quot;)&quot;</span>,\</div>
+<div class="line">                                           message,\</div>
+<div class="line">                                           <a class="code" href="TestMessage_8h.html#afde60f2763a45ced45c4605771e79deb">RTF_SOURCEFILE</a>(),\</div>
+<div class="line">                                           <a class="code" href="TestMessage_8h.html#a9d3d6cc3eb2a69752c6163b9f7e6c871">RTF_SOURCELINE</a>()), dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>))</div>
+</div><!-- fragment -->
+<p>Conditional failure report. </p>
+<p>RTF_ASSERT_CHECK does not throw any exception. It reports a failure message to the TestResult indiecating that the check on the corresponding condition evaluates to <code>false</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Message to be reported as the detail of TestMessage </td></tr>
+    <tr><td class="paramname">condition</td><td>If this condition evaluates to <code>false</code> then the test failed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>RTF_CHECK throws error exception if it is not called within a TestCase class. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a3">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#a2">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a2">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a3">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#a2">simple_suit.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="TestAssert_8h_source.html#l00099">99</a> of file <a class="el" href="TestAssert_8h_source.html">TestAssert.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac36590698946db759e820a603f2be16a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RTF_REPORT</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">message</td><td>)</td>
@@ -331,21 +331,21 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span>(dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>) == 0) {\</div>
-<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_ASSERT_REPORT is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486" title="report report a message to the result collector of the given TestCase">\</a></div>
+<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_REPORT is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486" title="report report a message to the result collector of the given TestCase">\</a></div>
 <div class="line"><a class="code" href="classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486" title="report report a message to the result collector of the given TestCase">    RTF::Asserter::report</a>(<a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>(<span class="stringliteral">&quot;reports&quot;</span>,\</div>
 <div class="line">                                            message,\</div>
 <div class="line">                                            <a class="code" href="TestMessage_8h.html#afde60f2763a45ced45c4605771e79deb">RTF_SOURCEFILE</a>(),\</div>
 <div class="line">                                            <a class="code" href="TestMessage_8h.html#a9d3d6cc3eb2a69752c6163b9f7e6c871">RTF_SOURCELINE</a>()), dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>))</div>
 </div><!-- fragment -->
 <p>Reporting a message to the TestResult. </p>
-<p>RTF_ASSERT_REPORT does not throw any exception. It can be used to report any arbitrary message to the TestResult.</p>
+<p>RTF_REPORT does not throw any exception. It can be used to report any arbitrary message to the TestResult.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>Message to be reported as the detail of TestMessage</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>RTF_ASSERT_REPORT throws error exception if it is not called within a TestCase class. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>RTF_REPORT throws error exception if it is not called within a TestCase class. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a1">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#a1">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a1">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a1">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#a1">simple_suit.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="TestAssert_8h_source.html#l00079">79</a> of file <a class="el" href="TestAssert_8h_source.html">TestAssert.h</a>.</p>
@@ -355,7 +355,7 @@ Macros</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 20 2015 15:08:25 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 20 2015 15:41:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

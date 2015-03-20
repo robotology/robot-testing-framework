@@ -197,22 +197,22 @@ Private Attributes</h2></td></tr>
 <div class="line">    <span class="keyword">virtual</span> ~MyTest() { }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run">setup</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a44e3bbf35cdf6b3d536cc3f666c6e222" title="Reporting a message to the TestResult.">RTF_ASSERT_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a29d510d94fadd07cb9b5b5ad1982dddc" title="tearDown is called after the test run">tearDown</a>() {</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a44e3bbf35cdf6b3d536cc3f666c6e222" title="Reporting a message to the TestResult.">RTF_ASSERT_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
 <div class="line">        <a class="code" href="TestAssert_8h.html#a8681580ec6406f327e6610f8185378fe" title="Assertion with throwing error exception.">RTF_ASSERT_ERROR</a>(<span class="stringliteral">&quot;this is just for example!&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run</a>() {</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a44e3bbf35cdf6b3d536cc3f666c6e222" title="Reporting a message to the TestResult.">RTF_ASSERT_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#afc27ec113cfeeeb3b7de8af680138afb" title="Conditional failure report.">RTF_ASSERT_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578" title="Conditional failure report.">RTF_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
 <div class="line">        <span class="keywordtype">int</span> a = 5;</div>
 <div class="line">        <span class="keywordtype">int</span> b = 3;</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#afc27ec113cfeeeb3b7de8af680138afb" title="Conditional failure report.">RTF_ASSERT_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578" title="Conditional failure report.">RTF_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">};</div>
@@ -764,7 +764,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 20 2015 15:08:25 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 20 2015 15:41:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
