@@ -174,7 +174,7 @@ Writing the plug-in</h1>
 <h1><a class="anchor" id="runner"></a>
 Writing the test runner</h1>
 <dl class="section note"><dt>Note</dt><dd>Basically you do not need to develop a test runner. There the <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) already implemented in <a class="el" href="namespaceRTF.html">RTF</a> which does the job for you. However, the following example is just for your reference and to understand better how a test plug-ing can be loaded and executed from the code.</dd></dl>
-<p>Your plug-in is ready and can be compiled and built. Before doing, that we show how to use <a class="el" href="classRTF_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::DllPluginLoader</a> to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of <code><a class="el" href="classRTF_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::DllPluginLoader</a></code> class and call its <code>open()</code> method with the plug-in library (.dll, .so, ...) filename as its paramter. The <a class="el" href="classRTF_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::DllPluginLoader</a> loads the library and return a pointer to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> implemented into the plug-in. If the plug-in cannot be loaded or it is not an <a class="el" href="namespaceRTF.html">RTF</a> plug-in file, the <a class="el" href="classRTF_1_1DllPluginLoader.html#ad444ccf03e6ebec615ebd4487f9204d1" title="open Loads a test case plugin">RTF::DllPluginLoader::open()</a> returns a null pointer and the error message can be gotten using <a class="el" href="classRTF_1_1DllPluginLoader.html#a71997851fa285db3ad6de24fd5b3d75b" title="getLastError gets the last error if any.">RTF::DllPluginLoader::getLastError()</a>. When you have an instance of your test case, it can be used to run the test as usual (see <a class="el" href="rtf_examples.html">Some examples</a> if you are not familiar with running a test case). In the following example we use a <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">RTF::TestRunner</a> to execute our test:</p>
+<p>Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::DllPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of <code><a class="el" href="classRTF_1_1plugin_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::DllPluginLoader</a></code> class and call its <code>open()</code> method with the plug-in library (.dll, .so, ...) filename as its paramter. The <a class="el" href="classRTF_1_1plugin_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::DllPluginLoader</a> loads the library and return a pointer to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> implemented into the plug-in. If the plug-in cannot be loaded or it is not an <a class="el" href="namespaceRTF.html">RTF</a> plug-in file, the <a class="el" href="classRTF_1_1plugin_1_1DllPluginLoader.html#a970cbc649e157529196a2bbabc1f4fcf" title="open Loads a test case plugin">RTF::plugin::DllPluginLoader::open()</a> returns a null pointer and the error message can be gotten using <a class="el" href="classRTF_1_1plugin_1_1DllPluginLoader.html#a755225668bc1fecd52f02a0d015a3dc0" title="getLastError gets the last error if any.">RTF::plugin::DllPluginLoader::getLastError()</a>. When you have an instance of your test case, it can be used to run the test as usual (see <a class="el" href="rtf_examples.html">Some examples</a> if you are not familiar with running a test case). In the following example we use a <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">RTF::TestRunner</a> to execute our test:</p>
 <div class="fragment"><div class="line"><span class="comment">// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -194,6 +194,7 @@ Writing the test runner</h1>
 <div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span>RTF;</div>
+<div class="line"><span class="keyword">using namespace </span>RTF::plugin;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div>
 <div class="line"></div>
@@ -205,10 +206,10 @@ Writing the test runner</h1>
 <div class="line"></div>
 <div class="line">    <span class="comment">// load the test case plugin</span></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Loading the plugin... \n&quot;</span>);</div>
-<div class="line">    <a class="code" href="classRTF_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">DllPluginLoader</a> loader;</div>
-<div class="line">    <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>* test = loader.<a class="code" href="classRTF_1_1DllPluginLoader.html#ad444ccf03e6ebec615ebd4487f9204d1" title="open Loads a test case plugin">open</a>(argv[1]);</div>
+<div class="line">    <a class="code" href="classRTF_1_1plugin_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">DllPluginLoader</a> loader;</div>
+<div class="line">    <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>* test = loader.<a class="code" href="classRTF_1_1plugin_1_1DllPluginLoader.html#a970cbc649e157529196a2bbabc1f4fcf" title="open Loads a test case plugin">open</a>(argv[1]);</div>
 <div class="line">    <span class="keywordflow">if</span>(test == NULL) {</div>
-<div class="line">        printf(<span class="stringliteral">&quot;%s\n&quot;</span>, loader.<a class="code" href="classRTF_1_1DllPluginLoader.html#a71997851fa285db3ad6de24fd5b3d75b" title="getLastError gets the last error if any.">getLastError</a>().c_str());</div>
+<div class="line">        printf(<span class="stringliteral">&quot;%s\n&quot;</span>, loader.<a class="code" href="classRTF_1_1plugin_1_1DllPluginLoader.html#a755225668bc1fecd52f02a0d015a3dc0" title="getLastError gets the last error if any.">getLastError</a>().c_str());</div>
 <div class="line">        <span class="keywordflow">return</span> 0;</div>
 <div class="line">    }</div>
 <div class="line"></div>
@@ -270,7 +271,7 @@ $ ./simple_run libmytest.so
 </pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 20 2015 15:41:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 21 2015 17:29:55 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

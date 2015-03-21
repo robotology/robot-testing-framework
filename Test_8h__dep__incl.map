@@ -1,15 +1,15 @@
 <map id="src/rtf/include/Test.h" name="src/rtf/include/Test.h">
-<area shape="rect" id="node2" href="$ResultEvent_8h.html" title="src/rtf/include/ResultEvent.h" alt="" coords="13,80,201,107"/>
-<area shape="rect" id="node5" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="237,244,410,271"/>
-<area shape="rect" id="node9" href="$TestListener_8h.html" title="src/rtf/include/TestListener.h" alt="" coords="229,80,417,107"/>
-<area shape="rect" id="node11" href="$TestResult_8h.html" title="src/rtf/include/TestResult.h" alt="" coords="499,162,679,189"/>
-<area shape="rect" id="node13" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="506,326,671,353"/>
-<area shape="rect" id="node14" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="717,244,901,271"/>
-<area shape="rect" id="node3" href="$TestResultCollector_8h.html" title="src/rtf/include/TestResult\lCollector.h" alt="" coords="19,155,188,196"/>
-<area shape="rect" id="node4" href="$TextOutputter_8h.html" title="src/rtf/include/TextOutputter.h" alt="" coords="5,244,201,271"/>
-<area shape="rect" id="node6" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="278,326,443,353"/>
-<area shape="rect" id="node8" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="107,319,254,360"/>
-<area shape="rect" id="node7" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="271,408,451,435"/>
-<area shape="rect" id="node10" href="$ConsoleListener_8h.html" title="src/rtf/include/ConsoleListener.h" alt="" coords="213,162,423,189"/>
-<area shape="rect" id="node12" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="485,244,692,271"/>
+<area shape="rect" id="node3" href="$ResultEvent_8h.html" title="src/rtf/include/ResultEvent.h" alt="" coords="15,83,201,112"/>
+<area shape="rect" id="node9" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="235,256,408,285"/>
+<area shape="rect" id="node17" href="$TestListener_8h.html" title="src/rtf/include/TestListener.h" alt="" coords="229,83,416,112"/>
+<area shape="rect" id="node21" href="$TestResult_8h.html" title="src/rtf/include/TestResult.h" alt="" coords="496,169,675,199"/>
+<area shape="rect" id="node25" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="503,343,668,372"/>
+<area shape="rect" id="node28" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="712,256,896,285"/>
+<area shape="rect" id="node5" href="$TestResultCollector_8h.html" title="src/rtf/include/TestResult\lCollector.h" alt="" coords="19,161,187,207"/>
+<area shape="rect" id="node7" href="$TextOutputter_8h.html" title="src/rtf/include/TextOutputter.h" alt="" coords="5,256,200,285"/>
+<area shape="rect" id="node11" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="276,343,441,372"/>
+<area shape="rect" id="node15" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="105,334,252,381"/>
+<area shape="rect" id="node13" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="269,429,448,459"/>
+<area shape="rect" id="node19" href="$ConsoleListener_8h.html" title="src/rtf/include/ConsoleListener.h" alt="" coords="211,169,421,199"/>
+<area shape="rect" id="node23" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="483,256,688,285"/>
 </map>
