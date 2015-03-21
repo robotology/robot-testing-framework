@@ -60,7 +60,7 @@ public:
 
 protected:
     bool compare(const char *first, const char *second);    
-    std::vector<RTF::DllPluginLoader*> dllLoaders;
+    std::vector<RTF::plugin::DllPluginLoader*> dllLoaders;
 
 private:
     bool loadPluginsFromPath(std::string path);    

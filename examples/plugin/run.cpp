@@ -17,6 +17,7 @@
 
 
 using namespace RTF;
+using namespace RTF::plugin;
 
 int main(int argc, char *argv[]) {
 

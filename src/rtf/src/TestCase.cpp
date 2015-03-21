@@ -70,7 +70,7 @@ void TestCase::tearDown() { }
 
 void TestCase::run(TestResult &rsl) {
     this->result = &rsl;
-    // call setup/run/tearDown
+    // call setup and run
     char *szcmd;
     char **szarg;
     try {
@@ -101,7 +101,6 @@ void TestCase::run(TestResult &rsl) {
             return;
         }
         run();
-        tearDown();        
     }
     catch(RTF::TestFailureException& e) {
         successful = false;
@@ -115,6 +114,20 @@ void TestCase::run(TestResult &rsl) {
         successful = false;
         result->addError(this, RTF::TestMessage(e.what()));
     }
+
+    // call tearDown and catch the error exception
+    try {
+        tearDown();
+    }
+    catch(RTF::TestErrorException& e) {
+        successful = false;
+        result->addError(this, e.message());
+    }
+    catch(std::exception& e) {
+        successful = false;
+        result->addError(this, RTF::TestMessage(e.what()));
+    }
+
     result->endTest(this);
 
     // clear allocated memory for arguments if it is not cleared

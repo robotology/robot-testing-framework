@@ -16,6 +16,7 @@
 
 using namespace std;
 using namespace RTF;
+using namespace RTF::plugin;
 
 SuitRunner::SuitRunner(bool verbose)
     : PluginRunner(verbose),

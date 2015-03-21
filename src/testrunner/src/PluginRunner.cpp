@@ -16,6 +16,7 @@
 
 using namespace std;
 using namespace RTF;
+using namespace RTF::plugin;
 
 PluginRunner::PluginRunner(bool verbose)
     :verbose(verbose) {

@@ -14,6 +14,7 @@
 
 using namespace std;
 using namespace RTF;
+using namespace RTF::plugin;
 using namespace shlibpp;
 
 /**

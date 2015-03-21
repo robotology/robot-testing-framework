@@ -83,8 +83,6 @@ void TestSuit::run(TestResult &rsl) {
             (*it)->run(*result);
             successful &= (*it)->succeeded();
         }
-        // calling test suit teardown
-        tearDown();        
     }
     catch(RTF::TestFailureException& e) {
         successful = false;
@@ -102,6 +100,20 @@ void TestSuit::run(TestResult &rsl) {
         successful = false;
         result->addError(this, RTF::TestMessage(e.what()));
     }
+
+    // call tearDown and catch the error exception
+    try {
+        tearDown();
+    }
+    catch(RTF::TestErrorException& e) {
+        successful = false;
+        result->addError(this, e.message());
+    }
+    catch(std::exception& e) {
+        successful = false;
+        result->addError(this, RTF::TestMessage(e.what()));
+    }
+
     result->endTestSuit(this);
 }
 
