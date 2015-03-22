@@ -32,8 +32,8 @@
 .bx-wrapper .bx-viewport {
 	-moz-box-shadow: 0 0 5px #ccc;
 	-webkit-box-shadow: 0 0 5px #ccc;
-	box-shadow: 0 0 5px #ccc;
-	border:  5px solid #fff;
+	box-shadow: 0 0 0px #ccc;
+	border:  0px solid #fff;
 	left: -5px;
 	background: #fff;
 	
@@ -104,12 +104,12 @@
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-prev {
-	left: 10px;
+	left: -50px;
 	background: url(images/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
-	right: 10px;
+	right: -50px;
 	background: url(images/controls.png) no-repeat -43px -32px;
 }
 
@@ -202,3 +202,4 @@
 	font-size: .85em;
 	padding: 10px;
 }
+
