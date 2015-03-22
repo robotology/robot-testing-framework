@@ -83,6 +83,13 @@ public:
     void setFixtureManager(RTF::FixtureManager* manager);
 
     /**
+     * @brief getFixtureManager gets the fixture manager
+     * for the current suit if it is already set.
+     * @return the fixture manager or NULL if it is not set.
+     */
+    RTF::FixtureManager* getFixtureManager();
+
+    /**
      * @brief fixtureCollapsed is called by a fixture manager
      *        (if it is already setup) to inform the test suit
      *        that the corresponding fixture has been collapsed.

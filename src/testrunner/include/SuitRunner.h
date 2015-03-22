@@ -15,6 +15,7 @@
 #include <vector>
 #include <TestSuit.h>
 #include <PluginRunner.h>
+#include <DllFixturePluginLoader.h>
 
 /**
  * class SuitRunner
@@ -60,6 +61,7 @@ private:
 private:
     bool verbose;    
     std::vector<RTF::TestSuit*> suits;
+    std::vector<RTF::plugin::DllFixturePluginLoader*> fixtureLoaders;
 };
 
 #endif // _RTF_SuitRunner_H

@@ -58,6 +58,7 @@ By definition, a test suit is a set of test cases which share the same test fixt
 <span style="color: #007700">&lt;suit</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;my suit&quot;</span><span style="color: #007700">&gt;</span>
     <span style="color: #007700">&lt;description&gt;</span> a simple example <span style="color: #007700">&lt;/description&gt;</span>
     <span style="color: #007700">&lt;environment&gt;</span> --robot simulator <span style="color: #007700">&lt;/environment&gt;</span>
+    <span style="color: #007700">&lt;fixture</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myfixture.ini&quot;</span><span style="color: #007700">&gt;</span> libfixture.so <span style="color: #007700">&lt;/fixture&gt;</span>
 
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
@@ -70,6 +71,8 @@ The example demonstrates a test suit which includes two test cases (\c libmytest
 
 The environment can be used in the implementation of the test cases to know in which setup (e.g., simulation, real world environment) the test case is employed. The environment value can also be accessed in the test plug-in implementation using RTF::TestCase::getEnvironment method.
 
+If a fixture manager plug-in is specified using \c <fixture> tag, it will be loaded by the \c testrunner and is set for the current test suit. When suit is executed, the fixture manager will be called automatically to setup and monitor the test fixture which is implemented in the fixture plug-in. (Please see the \c examples/fixture-plugin folder for an example of implementing fixture plug-ins.) 
+ 
 Notice that, for \c libtest2.so,  a complete path to the plug-in file is given. Thus, the \c testrunner does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for \c libtest1.so.
 
 <br>

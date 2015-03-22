@@ -123,6 +123,10 @@ void TestSuit::setFixtureManager(RTF::FixtureManager* manager) {
     fixtureManager = manager;
 }
 
+RTF::FixtureManager* TestSuit::getFixtureManager() {
+    return fixtureManager;
+}
+
 void TestSuit::fixtureCollapsed(RTF::TestMessage reason) {
 
     // we do not want to throw any exception here.

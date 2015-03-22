@@ -11,7 +11,6 @@
 #include <SuitRunner.h>
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
-#include <iostream>
 #include <tinyxml.h>
 
 using namespace std;
@@ -35,6 +34,11 @@ void SuitRunner::reset() {
     for(int i=0; i<suits.size(); i++)
         delete suits[i];
     suits.clear();
+
+    // delete all the fixture plugin loader which was created
+    for(int i=0; i<fixtureLoaders.size(); i++)
+        delete fixtureLoaders[i];
+    fixtureLoaders.clear();
 }
 
 bool SuitRunner::loadSuit(std::string filename) {
@@ -96,6 +100,25 @@ bool SuitRunner::loadSuit(std::string filename) {
         else if(compare(test->Value(), "environment")) {
             if(test->GetText() != NULL)
                 environment = test->GetText();
+        }        
+        else if(compare(test->Value(), "fixture") &&
+                test->GetText() != NULL) {
+                // load the fixture manager plugin
+                DllFixturePluginLoader* loader = new DllFixturePluginLoader();
+                FixtureManager* fixture = loader->open(test->GetText());
+                if(fixture != NULL) {
+                    // set the fixture manager param
+                    if(test->Attribute("param"))
+                        fixture->setParam(test->Attribute("param"));
+                    // set the fixture manager for the current suit
+                    suit->setFixtureManager(fixture);
+                    // keep track of the created plugin loaders
+                    fixtureLoaders.push_back(loader);
+                }
+                else {
+                    logger.addError(loader->getLastError());
+                    delete loader;
+                }
         }
         else if(compare(test->Value(), "test") &&
                 test->GetText() != NULL) {
