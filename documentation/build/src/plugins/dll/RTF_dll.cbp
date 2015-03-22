@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="RTF_dll" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\conf\;CMake Files\conf\doxygen\;CMake Files\extern\;CMake Files\src\;CMake Files\src\rtf\;CMake Files\src\plugins\;CMake Files\src\plugins\dll\;CMake Files\src\testrunner\;CMake Files\examples\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="RTF_dll">
+         <Option output="/home/apaikan/Install/robotology/robot-testing/build/lib/libRTF_dll.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/./include/impl" />
+            <Add directory="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include" />
+            <Add directory="/home/apaikan/Install/robotology/robot-testing/src/rtf/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 RTF_dll" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="RTF_dll/fast">
+         <Option output="/home/apaikan/Install/robotology/robot-testing/build/lib/libRTF_dll.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/./include/impl" />
+            <Add directory="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include" />
+            <Add directory="/home/apaikan/Install/robotology/robot-testing/src/rtf/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 RTF_dll/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/apaikan/Install/robotology/robot-testing/build/src/plugins/dll/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/src/DllPluginLoader.cpp">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/src/SharedLibrary.cpp">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/src/SharedLibraryFactory.cpp">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/DllPluginLoader.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/Plugin.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/SharedLibrary.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/SharedLibraryClass.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/SharedLibraryClassApi.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/SharedLibraryClassFactory.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/SharedLibraryFactory.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/Vocab.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/config.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/include/impl/DllPluginLoader_impl.h">
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/RTFConfig.cmake.in">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/RTFConfig.cmake.in">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/RTFVersion.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/RTFDoc.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/InstallBasicPackageFiles.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/GNUInstallDirs.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/CMakePackageConfigHelpers.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/GNUInstallDirs.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/FindTinyXML.cmake">
+          <Option virtualFolder="CMake Files\conf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/doxygen/Doxyfile.part.template">
+          <Option virtualFolder="CMake Files\conf\doxygen\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/conf/doxygen/Doxyfile.part.template">
+          <Option virtualFolder="CMake Files\conf\doxygen\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/extern/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\extern\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/rtf/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\rtf\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\plugins\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\plugins\dll\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/plugins/dll/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\plugins\dll\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/testrunner/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\testrunner\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/src/testrunner/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\testrunner\" />
+      </Unit>
+      <Unit filename="/home/apaikan/Install/robotology/robot-testing/examples/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\examples\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
