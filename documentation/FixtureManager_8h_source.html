@@ -123,31 +123,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html">   54</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">RTF::FixtureManager</a> {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#a17755333efdd4a871c9947e9961e21cf">   61</a></span>&#160;    <a class="code" href="classRTF_1_1FixtureManager.html#a17755333efdd4a871c9947e9961e21cf" title="FixtureManager constructor.">FixtureManager</a>(<a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        this-&gt;dispatcher = <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classRTF_1_1FixtureManager.html#afda34f740520a376bb455429f299b89b" title="FixtureManager constructor The parameter string is parsed into (argc/argv) format and will be passed ...">FixtureManager</a>(std::string <a class="code" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>=<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577">   68</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577" title="FixtureManager destructor.">~FixtureManager</a>() { }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#ade8fd51d3092ffb08684e49c340e324e">   74</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1FixtureManager.html#ade8fd51d3092ffb08684e49c340e324e" title="setup is called before to start the fixture manger">setup</a>() { }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#a47e46882e42b4239db2b0f9191a8b8df">   79</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1FixtureManager.html#a47e46882e42b4239db2b0f9191a8b8df" title="tearDown is called after to stop the fixture manager">tearDown</a>() { }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#a72fa80e907398b7d039ccff2dc521a3e">   86</a></span>&#160;    <a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#a72fa80e907398b7d039ccff2dc521a3e" title="getResult returns an instance of TestResult">getDispatcher</a>() {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">   92</a></span>&#160;    <a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif // _RTF_FixtureManager_H</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="classRTF_1_1FixtureManager.html#afda34f740520a376bb455429f299b89b" title="FixtureManager constructor The parameter string is parsed into (argc/argv) format and will be passed ...">FixtureManager</a>(<a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                   std::string <a class="code" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>=<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577" title="FixtureManager destructor.">~FixtureManager</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1FixtureManager.html#ab7e87237adad6a35ccda8a2c72013d82" title="setup is called by a test suit.">setup</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1FixtureManager.html#ab7e87237adad6a35ccda8a2c72013d82" title="setup is called by a test suit.">setup</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>**argv);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1FixtureManager.html#a47e46882e42b4239db2b0f9191a8b8df" title="tearDown is called after to stop the fixture manager">tearDown</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1FixtureManager.html#abfb50b99cafcd9bd7cb00e0531102e33" title="setDispatcher Sets the FixtureEvents dispatcher">setDispatcher</a>(<a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* dispatcher);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#a72fa80e907398b7d039ccff2dc521a3e" title="getResult returns an instance of FixtureEvents dispatcher">getDispatcher</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1FixtureManager.html#a471ac4fa4a27b211a9c7c5f9f838a1fa" title="setParam Sets the optional paramters of the fixture manager.">setParam</a>(<span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1FixtureManager.html#a29ab0c664fa08c35d170adc45a329e15" title="getParam gets the original paramter string which is set for the fixture manager">getParam</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">  132</a></span>&#160;    std::string <a class="code" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">  133</a></span>&#160;    <a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif // _RTF_FixtureManager_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 21 2015 17:40:17 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 22 2015 17:01:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

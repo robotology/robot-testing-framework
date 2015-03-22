@@ -105,19 +105,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a17755333efdd4a871c9947e9961e21cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a17755333efdd4a871c9947e9961e21cf">FixtureManager</a> (<a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *<a class="el" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>)</td></tr>
-<tr class="memdesc:a17755333efdd4a871c9947e9961e21cf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> constructor.  <a href="#a17755333efdd4a871c9947e9961e21cf"></a><br/></td></tr>
+<tr class="memitem:afda34f740520a376bb455429f299b89b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#afda34f740520a376bb455429f299b89b">FixtureManager</a> (std::string <a class="el" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>=&quot;&quot;)</td></tr>
+<tr class="memdesc:afda34f740520a376bb455429f299b89b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> constructor The parameter string is parsed into (argc/argv) format and will be passed to the fixture manager using <a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4" title="setup is called to start the fixture manger">setup(int argc, char** argv)</a>.  <a href="#afda34f740520a376bb455429f299b89b"></a><br/></td></tr>
+<tr class="memitem:ac6cc8e6a0b491af4022afe34459ac805"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#ac6cc8e6a0b491af4022afe34459ac805">FixtureManager</a> (<a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *<a class="el" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>, std::string <a class="el" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>=&quot;&quot;)</td></tr>
+<tr class="memdesc:ac6cc8e6a0b491af4022afe34459ac805"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> constructor The parameter string is parsed into (argc/argv) format and will be passed to the fixture manager using <a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4" title="setup is called to start the fixture manger">setup(int argc, char** argv)</a>.  <a href="#ac6cc8e6a0b491af4022afe34459ac805"></a><br/></td></tr>
 <tr class="memitem:ae32182b029d4762a840103f5c2218577"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577">~FixtureManager</a> ()</td></tr>
 <tr class="memdesc:ae32182b029d4762a840103f5c2218577"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> destructor.  <a href="#ae32182b029d4762a840103f5c2218577"></a><br/></td></tr>
-<tr class="memitem:ade8fd51d3092ffb08684e49c340e324e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#ade8fd51d3092ffb08684e49c340e324e">setup</a> ()</td></tr>
-<tr class="memdesc:ade8fd51d3092ffb08684e49c340e324e"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup is called before to start the fixture manger  <a href="#ade8fd51d3092ffb08684e49c340e324e"></a><br/></td></tr>
+<tr class="memitem:ab7e87237adad6a35ccda8a2c72013d82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#ab7e87237adad6a35ccda8a2c72013d82">setup</a> ()</td></tr>
+<tr class="memdesc:ab7e87237adad6a35ccda8a2c72013d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup is called by a test suit.  <a href="#ab7e87237adad6a35ccda8a2c72013d82"></a><br/></td></tr>
+<tr class="memitem:a049d7936c5cee0c869a4e09a6b7a3fd4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4">setup</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a049d7936c5cee0c869a4e09a6b7a3fd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup is called to start the fixture manger  <a href="#a049d7936c5cee0c869a4e09a6b7a3fd4"></a><br/></td></tr>
 <tr class="memitem:a47e46882e42b4239db2b0f9191a8b8df"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a47e46882e42b4239db2b0f9191a8b8df">tearDown</a> ()</td></tr>
 <tr class="memdesc:a47e46882e42b4239db2b0f9191a8b8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">tearDown is called after to stop the fixture manager  <a href="#a47e46882e42b4239db2b0f9191a8b8df"></a><br/></td></tr>
+<tr class="memitem:abfb50b99cafcd9bd7cb00e0531102e33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#abfb50b99cafcd9bd7cb00e0531102e33">setDispatcher</a> (<a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *<a class="el" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>)</td></tr>
+<tr class="memdesc:abfb50b99cafcd9bd7cb00e0531102e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">setDispatcher Sets the <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> dispatcher  <a href="#abfb50b99cafcd9bd7cb00e0531102e33"></a><br/></td></tr>
 <tr class="memitem:a72fa80e907398b7d039ccff2dc521a3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a72fa80e907398b7d039ccff2dc521a3e">getDispatcher</a> ()</td></tr>
-<tr class="memdesc:a72fa80e907398b7d039ccff2dc521a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getResult returns an instance of <a class="el" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a>  <a href="#a72fa80e907398b7d039ccff2dc521a3e"></a><br/></td></tr>
+<tr class="memdesc:a72fa80e907398b7d039ccff2dc521a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getResult returns an instance of <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> dispatcher  <a href="#a72fa80e907398b7d039ccff2dc521a3e"></a><br/></td></tr>
+<tr class="memitem:a471ac4fa4a27b211a9c7c5f9f838a1fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a471ac4fa4a27b211a9c7c5f9f838a1fa">setParam</a> (const std::string <a class="el" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a>)</td></tr>
+<tr class="memdesc:a471ac4fa4a27b211a9c7c5f9f838a1fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">setParam Sets the optional paramters of the fixture manager.  <a href="#a471ac4fa4a27b211a9c7c5f9f838a1fa"></a><br/></td></tr>
+<tr class="memitem:a29ab0c664fa08c35d170adc45a329e15"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a29ab0c664fa08c35d170adc45a329e15">getParam</a> ()</td></tr>
+<tr class="memdesc:a29ab0c664fa08c35d170adc45a329e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">getParam gets the original paramter string which is set for the fixture manager  <a href="#a29ab0c664fa08c35d170adc45a329e15"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:aa0c997c44d9e1d2f2fa8b1a96ae2f0b4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4">param</a></td></tr>
 <tr class="memitem:ac0d99e38ec29546de465c4379e610e19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -169,7 +180,7 @@ Private Attributes</h2></td></tr>
 <div class="line">    MyFixture(<a class="code" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">RTF::FixtureEvents</a>* <a class="code" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>)</div>
 <div class="line">        : <a class="code" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a>(dispatcher) { }</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1FixtureManager.html#ade8fd51d3092ffb08684e49c340e324e" title="setup is called before to start the fixture manger">setup</a>() {</div>
+<div class="line">    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1FixtureManager.html#ab7e87237adad6a35ccda8a2c72013d82" title="setup is called by a test suit.">setup</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>**argv) {</div>
 <div class="line">        <span class="comment">// setup and initialize the fixture        </span></div>
 <div class="line">        <span class="comment">// ...</span></div>
 <div class="line">        printf(<span class="stringliteral">&quot;Myfixture setup!\n&quot;</span>);        </div>
@@ -222,37 +233,62 @@ Private Attributes</h2></td></tr>
 </dl>
 <p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00054">54</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 </div><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a17755333efdd4a871c9947e9961e21cf"></a>
+<a class="anchor" id="afda34f740520a376bb455429f299b89b"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RTF::FixtureManager::FixtureManager </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>param</em> = <code>&quot;&quot;</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> constructor The parameter string is parsed into (argc/argv) format and will be passed to the fixture manager using <a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4" title="setup is called to start the fixture manger">setup(int argc, char** argv)</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>fixture manager optional parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac6cc8e6a0b491af4022afe34459ac805"></a>
+<div class="memitem">
+<div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">RTF::FixtureManager::FixtureManager </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *&#160;</td>
-          <td class="paramname"><em>dispatcher</em></td><td>)</td>
+          <td class="paramname"><em>dispatcher</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>param</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> constructor. </p>
+<p><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> constructor The parameter string is parsed into (argc/argv) format and will be passed to the fixture manager using <a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4" title="setup is called to start the fixture manger">setup(int argc, char** argv)</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dispatcher</td><td>an instance of <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> </td></tr>
+    <tr><td class="paramname">param</td><td>fixture manager optional parameters </td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00061">61</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 
 </div>
 </div>
@@ -272,14 +308,12 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p><a class="el" href="classRTF_1_1FixtureManager.html" title="The FixtureManager can be used to to setup any fixture which is required for the tests before executi...">FixtureManager</a> destructor. </p>
-
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00068">68</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 
 </div>
 </div>
@@ -287,9 +321,6 @@ Private Attributes</h2></td></tr>
 <a class="anchor" id="a72fa80e907398b7d039ccff2dc521a3e"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a>* RTF::FixtureManager::getDispatcher </td>
@@ -298,21 +329,100 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>getResult returns an instance of <a class="el" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a> </p>
+<p>getResult returns an instance of <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> dispatcher </p>
 <dl class="section return"><dt>Returns</dt><dd>an instance of <a class="el" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00086">86</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a29ab0c664fa08c35d170adc45a329e15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string RTF::FixtureManager::getParam </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getParam gets the original paramter string which is set for the fixture manager </p>
+<dl class="section return"><dt>Returns</dt><dd>a string paramter </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ade8fd51d3092ffb08684e49c340e324e"></a>
+<a class="anchor" id="abfb50b99cafcd9bd7cb00e0531102e33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RTF::FixtureManager::setDispatcher </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *&#160;</td>
+          <td class="paramname"><em>dispatcher</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setDispatcher Sets the <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> dispatcher </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dispatcher</td><td>an instance of <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> dispatcher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a471ac4fa4a27b211a9c7c5f9f838a1fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RTF::FixtureManager::setParam </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>param</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setParam Sets the optional paramters of the fixture manager. </p>
+<p>The parameter string is parsed into (argc/argv) format and will be passed to the fixture manager using <a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4" title="setup is called to start the fixture manger">setup(int argc, char** argv)</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>the paramter string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab7e87237adad6a35ccda8a2c72013d82"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RTF::FixtureManager::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setup is called by a test suit. </p>
+<p>The <a class="el" href="classRTF_1_1FixtureManager.html#ab7e87237adad6a35ccda8a2c72013d82" title="setup is called by a test suit.">setup()</a> function parses the fixture paramteres and call the <a class="el" href="classRTF_1_1FixtureManager.html#a049d7936c5cee0c869a4e09a6b7a3fd4" title="setup is called to start the fixture manger">setup(int argc, char**argv)</a> which can be ovveriden by the user customized fixture managre. </p>
+<dl class="section return"><dt>Returns</dt><dd>true or false depending of the test initialization </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a049d7936c5cee0c869a4e09a6b7a3fd4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -322,21 +432,37 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual bool RTF::FixtureManager::setup </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>setup is called before to start the fixture manger </p>
-<dl class="section return"><dt>Returns</dt><dd>true or false depending of the test initialization </dd></dl>
-
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00074">74</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
+<p>setup is called to start the fixture manger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of the pasred argument from string paramter </td></tr>
+    <tr><td class="paramname">argv</td><td>The arguments which is parsed using string paramter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true or false depending of the fixture initialization </dd></dl>
 
 </div>
 </div>
@@ -356,14 +482,12 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>tearDown is called after to stop the fixture manager </p>
-
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00079">79</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 
 </div>
 </div>
@@ -386,7 +510,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00092">92</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
+<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00133">133</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa0c997c44d9e1d2f2fa8b1a96ae2f0b4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string RTF::FixtureManager::param</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00132">132</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 
 </div>
 </div>
@@ -396,7 +542,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 21 2015 17:40:17 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 22 2015 17:01:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

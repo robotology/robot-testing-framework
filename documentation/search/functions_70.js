@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parsearguments',['parseArguments',['../classRTF_1_1TestCase.html#ae3ed0a440cb0d083237d534271c523b3',1,'RTF::TestCase']]],
+  ['parse',['parse',['../classRTF_1_1Arguments.html#a8ef6f370c68a641a7b9d2d187b1c5001',1,'RTF::Arguments']]],
   ['passedcount',['passedCount',['../classRTF_1_1TestResultCollector.html#a73549bc3b6d135ecb33993c2b7b53111',1,'RTF::TestResultCollector']]]
 ];

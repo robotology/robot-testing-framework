@@ -142,23 +142,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1TestCase.html#aab71c5f72ffaafed4f27ea1b57c30247" title="getParam gets the environment string which is set for the test case">getEnvironment</a>();</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#ae3ed0a440cb0d083237d534271c523b3" title="parseArguments Parses a string paramters into argc, argv format">parseArguments</a>(<span class="keywordtype">char</span> *azParam,</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        <span class="keywordtype">int</span> *argc, <span class="keywordtype">char</span> **argv);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a8254f687152895d4e1e760360a69503f" title="split Splits a line into arguments">split</a>(<span class="keywordtype">char</span> *line, <span class="keywordtype">char</span> **args);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00146"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129">  146</a></span>&#160;    std::string <a class="code" href="classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129">param</a>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#ae0eb004733000369ffff3e878e922b85">  147</a></span>&#160;    std::string <a class="code" href="classRTF_1_1TestCase.html#ae0eb004733000369ffff3e878e922b85">environment</a>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">  148</a></span>&#160;    <a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">RTF::TestResult</a>* <a class="code" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">result</a>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#ab3952a75451e6e5d2eb7a200fdb908c4">  149</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1TestCase.html#ab3952a75451e6e5d2eb7a200fdb908c4">successful</a>;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;};</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif // _RTF_TESTCASE_H</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129">  129</a></span>&#160;    std::string <a class="code" href="classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129">param</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#ae0eb004733000369ffff3e878e922b85">  130</a></span>&#160;    std::string <a class="code" href="classRTF_1_1TestCase.html#ae0eb004733000369ffff3e878e922b85">environment</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">  131</a></span>&#160;    <a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">RTF::TestResult</a>* <a class="code" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">result</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html#ab3952a75451e6e5d2eb7a200fdb908c4">  132</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1TestCase.html#ab3952a75451e6e5d2eb7a200fdb908c4">successful</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif // _RTF_TESTCASE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 21 2015 17:40:17 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 22 2015 17:01:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

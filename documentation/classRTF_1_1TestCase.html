@@ -91,7 +91,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classRTF_1_1TestCase-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -152,13 +151,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a09711be1e20429a16d53b7a01fc0e210 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDescription Getting test description  <a href="#a09711be1e20429a16d53b7a01fc0e210"></a><br/></td></tr>
 <tr class="memitem:a2b18b07f50f63be9afc5614e71c269a5 inherit pub_methods_classRTF_1_1Test"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Test.html#a2b18b07f50f63be9afc5614e71c269a5">setDescription</a> (const std::string description)</td></tr>
 <tr class="memdesc:a2b18b07f50f63be9afc5614e71c269a5 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">setDescription Sets an optional string which describes the test.  <a href="#a2b18b07f50f63be9afc5614e71c269a5"></a><br/></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:ae3ed0a440cb0d083237d534271c523b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#ae3ed0a440cb0d083237d534271c523b3">parseArguments</a> (char *azParam, int *argc, char **argv)</td></tr>
-<tr class="memdesc:ae3ed0a440cb0d083237d534271c523b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">parseArguments Parses a string paramters into argc, argv format  <a href="#ae3ed0a440cb0d083237d534271c523b3"></a><br/></td></tr>
-<tr class="memitem:a8254f687152895d4e1e760360a69503f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a8254f687152895d4e1e760360a69503f">split</a> (char *line, char **args)</td></tr>
-<tr class="memdesc:a8254f687152895d4e1e760360a69503f"><td class="mdescLeft">&#160;</td><td class="mdescRight">split Splits a line into arguments  <a href="#a8254f687152895d4e1e760360a69503f"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -370,56 +362,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae3ed0a440cb0d083237d534271c523b3"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RTF::TestCase::parseArguments </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>azParam</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>parseArguments Parses a string paramters into argc, argv format </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">azParam</td><td>Input string parmater </td></tr>
-    <tr><td class="paramname">argc</td><td>The parsed argument count </td></tr>
-    <tr><td class="paramname">argv</td><td>The parsed arguments </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a8b650d1b78b73a6fca5a709430e7c255"></a>
 <div class="memitem">
 <div class="memproto">
@@ -573,49 +515,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8254f687152895d4e1e760360a69503f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RTF::TestCase::split </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>split Splits a line into arguments </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">line</td><td>A line </td></tr>
-    <tr><td class="paramname">args</td><td>Splited arguments </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ae915726f3a6ba7b19cc7c3d11544a480"></a>
 <div class="memitem">
 <div class="memproto">
@@ -688,7 +587,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00147">147</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00130">130</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -710,7 +609,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00146">146</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00129">129</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -732,7 +631,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00148">148</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00131">131</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -754,7 +653,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00149">149</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00132">132</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -764,7 +663,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 21 2015 17:40:17 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 22 2015 17:01:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

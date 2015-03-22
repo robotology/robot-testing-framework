@@ -1,0 +1,2 @@
+/home/apaikan/Install/robotology/robot-testing/examples/fixture-plugin/build/CMakeFiles/myfixture.dir
+/home/apaikan/Install/robotology/robot-testing/examples/fixture-plugin/build/CMakeFiles/test.dir

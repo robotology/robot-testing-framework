@@ -7,7 +7,7 @@ var searchData=
   ['fixtureevents',['FixtureEvents',['../classRTF_1_1FixtureEvents.html',1,'RTF']]],
   ['fixtureexception',['FixtureException',['../classRTF_1_1FixtureException.html#a2f88762f09c2a31d397ed0432c496691',1,'RTF::FixtureException::FixtureException(const RTF::TestMessage &amp;msg)'],['../classRTF_1_1FixtureException.html#afe4ae2170a443f450c4dbadac0d49d98',1,'RTF::FixtureException::FixtureException(const FixtureException &amp;other)']]],
   ['fixtureexception',['FixtureException',['../classRTF_1_1FixtureException.html',1,'RTF']]],
-  ['fixturemanager',['fixtureManager',['../classRTF_1_1TestSuit.html#a1fc906df2d4ad616cc64af486863f489',1,'RTF::TestSuit::fixtureManager()'],['../classRTF_1_1FixtureManager.html#a17755333efdd4a871c9947e9961e21cf',1,'RTF::FixtureManager::FixtureManager()']]],
+  ['fixturemanager',['fixtureManager',['../classRTF_1_1TestSuit.html#a1fc906df2d4ad616cc64af486863f489',1,'RTF::TestSuit::fixtureManager()'],['../classRTF_1_1FixtureManager.html#afda34f740520a376bb455429f299b89b',1,'RTF::FixtureManager::FixtureManager(std::string param=&quot;&quot;)'],['../classRTF_1_1FixtureManager.html#ac6cc8e6a0b491af4022afe34459ac805',1,'RTF::FixtureManager::FixtureManager(RTF::FixtureEvents *dispatcher, std::string param=&quot;&quot;)']]],
   ['fixturemanager',['FixtureManager',['../classRTF_1_1FixtureManager.html',1,'RTF']]],
   ['fixturemanager_2eh',['FixtureManager.h',['../FixtureManager_8h.html',1,'']]],
   ['fixturemesssage',['fixtureMesssage',['../classRTF_1_1TestSuit.html#a8f2e5279d10c483a565431b6e966eece',1,'RTF::TestSuit']]],

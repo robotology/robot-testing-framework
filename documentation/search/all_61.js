@@ -5,6 +5,8 @@ var searchData=
   ['addlistener',['addListener',['../classRTF_1_1TestResult.html#a369f56d6cb696d6c519b575b52fc7575',1,'RTF::TestResult']]],
   ['addreport',['addReport',['../classRTF_1_1ConsoleListener.html#ab1da05cb2532b45f96806ef30c4301ba',1,'RTF::ConsoleListener::addReport()'],['../classRTF_1_1TestListener.html#a8bceb1506655cae11978a8d1080037c6',1,'RTF::TestListener::addReport()'],['../classRTF_1_1TestResult.html#adcbc1d0c8a4207b2345edf083c66ca07',1,'RTF::TestResult::addReport()'],['../classRTF_1_1TestResultCollector.html#af1fb6153879fe1b06158d3a2a4a3e515',1,'RTF::TestResultCollector::addReport()']]],
   ['addtest',['addTest',['../classRTF_1_1TestRunner.html#aa5c49855ae97e748d78059811d920293',1,'RTF::TestRunner::addTest()'],['../classRTF_1_1TestSuit.html#a3c921a9ad43369e234b0f73cee8bf7d1',1,'RTF::TestSuit::addTest()']]],
+  ['arguments',['Arguments',['../classRTF_1_1Arguments.html',1,'RTF']]],
+  ['arguments_2eh',['Arguments.h',['../Arguments_8h.html',1,'']]],
   ['asserter',['Asserter',['../classRTF_1_1Asserter.html',1,'RTF']]],
   ['asserter_2eh',['Asserter.h',['../Asserter_8h.html',1,'']]]
 ];

@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/simple_run.dir/run.cpp.o  -o simple_run -rdynamic /home/apaikan/Install/robotology/robot-testing/build/lib/libRTF.so /home/apaikan/Install/robotology/robot-testing/build/lib/libRTF_dll.so -ldl -Wl,-rpath,/home/apaikan/Install/robotology/robot-testing/build/lib 

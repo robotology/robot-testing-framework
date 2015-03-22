@@ -1,6 +1,7 @@
 var searchData=
 [
   ['_7econsolelistener',['~ConsoleListener',['../classRTF_1_1ConsoleListener.html#ab0539cfd62e3bb2ba3141627f707554f',1,'RTF::ConsoleListener']]],
+  ['_7edllfixturepluginloader',['~DllFixturePluginLoader',['../classRTF_1_1plugin_1_1DllFixturePluginLoader.html#a7f489e12ea02d3628c6319bae20e0823',1,'RTF::plugin::DllFixturePluginLoader']]],
   ['_7edllpluginloader',['~DllPluginLoader',['../classRTF_1_1plugin_1_1DllPluginLoader.html#ac00974054b417836f58c9937646f062c',1,'RTF::plugin::DllPluginLoader']]],
   ['_7eexception',['~Exception',['../classRTF_1_1Exception.html#a6a8d12e1729ab8754e065c0893841525',1,'RTF::Exception']]],
   ['_7efixturemanager',['~FixtureManager',['../classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577',1,'RTF::FixtureManager']]],
