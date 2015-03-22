@@ -119,6 +119,7 @@ void TestSuit::run(TestResult &rsl) {
 
 
 void TestSuit::setFixtureManager(RTF::FixtureManager* manager) {
+    manager->setDispatcher(this);
     fixtureManager = manager;
 }
 

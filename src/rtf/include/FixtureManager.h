@@ -56,39 +56,74 @@ public:
 
     /**
      * @brief FixtureManager constructor
+     */
+    FixtureManager(std::string param="");
+
+    /**
+     * @brief FixtureManager constructor
      * @param dispatcher an instance of FixtureEvents
      */
-    FixtureManager(RTF::FixtureEvents* dispatcher) {
-        this->dispatcher = dispatcher;
-    }
+    FixtureManager(RTF::FixtureEvents* dispatcher,
+                   std::string param="");
 
     /**
      *  FixtureManager destructor
      */
-    virtual ~FixtureManager() { }
+    virtual ~FixtureManager();
 
     /**
-     * @brief setup is called before to start the fixture manger
+     * @brief setup is called by a test suit.
+     * The setup() function parses the fixture paramteres
+     * and call the setup(int argc, char**argv) which can be
+     * ovveriden by the user customized fixture managre.
      * @return true or false depending of the test initialization
      */
-    virtual bool setup() { }
+    bool setup();
+
+    /**
+    * @brief setup is called to start the fixture manger
+    * @param argc The number of the pasred argument from string paramter
+    * @param argv The arguments which is parsed using string paramter
+    * @return true or false depending of the fixture initialization
+    */
+   virtual bool setup(int argc, char**argv);
+
 
     /**
      * @brief tearDown is called after to stop the fixture manager
      */
-    virtual void tearDown() { }
+    virtual void tearDown();
 
 
     /**
-     * @brief getResult returns an instance of TestResult
+     * @brief setDispatcher Sets the FixtureEvents dispatcher
+     * @param dispatcher an instance of FixtureEvents dispatcher
+     */
+    void setDispatcher(RTF::FixtureEvents* dispatcher);
+
+    /**
+     * @brief getResult returns an instance of FixtureEvents dispatcher
      * @return an instance of TestResult
      */
-    RTF::FixtureEvents* getDispatcher() {
-        return dispatcher;
-    }
+    RTF::FixtureEvents* getDispatcher();
 
+    /**
+     * @brief setParam Sets the optional paramters of the fixture manager.
+     * The parameter string is parsed into (argc/argv) format
+     * and will be passed to the fixture manager using setup(int argc, char** argv).
+     * @param param the paramter string
+     */
+    void setParam(const std::string param);
+
+    /**
+     * @brief getParam gets the original paramter string which is set
+     * for the fixture manager
+     * @return a string paramter
+     */
+    const std::string getParam();
 
 private:
+    std::string param;
     RTF::FixtureEvents* dispatcher;
 };
 

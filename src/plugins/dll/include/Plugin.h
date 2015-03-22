@@ -13,7 +13,10 @@
 
 #include <SharedLibraryClass.h>
 
-#define RTF_PLUGIN_FACTORY_NAME "rtf_dll_factory"
+#define RTF_PLUGIN_FACTORY_NAME     "rtf_dll_factory"
+#define RTF_FIXTURE_FACTORY_NAME    "rtf_fixture_factory"
+
 #define PREPARE_PLUGIN(classname) SHLIBPP_DEFINE_SHARED_SUBCLASS(rtf_dll_factory, classname, classname)
+#define PREPARE_FIXTURE_PLUGIN(classname) SHLIBPP_DEFINE_SHARED_SUBCLASS(rtf_fixture_factory, classname, classname)
 
 #endif // _RTF_PLUGIN_H

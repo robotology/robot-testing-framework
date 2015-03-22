@@ -43,7 +43,7 @@ public:
     MyFixture(RTF::FixtureEvents* dispatcher)
         : FixtureManager(dispatcher) { }
 
-    bool setup() {
+    bool setup(int argc, char**argv) {
         // setup and initialize the fixture        
         // ...
         printf("Myfixture setup!\n");        

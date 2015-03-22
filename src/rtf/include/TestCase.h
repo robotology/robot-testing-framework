@@ -125,23 +125,6 @@ public:
      */
     const std::string getEnvironment();
 
-protected:
-    /**
-     * @brief parseArguments Parses a string paramters into argc, argv format
-     * @param azParam Input string parmater
-     * @param argc  The parsed argument count
-     * @param argv The parsed arguments
-     */
-    void parseArguments(char *azParam,
-                        int *argc, char **argv);
-
-    /**
-     * @brief split Splits a line into arguments
-     * @param line A line
-     * @param args Splited arguments
-     */
-    void split(char *line, char **args);
-
 private:
     std::string param;
     std::string environment;
