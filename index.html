@@ -581,7 +581,7 @@ public:
     <span style="color:#ff6400">MyFixture</span>(RTF::FixtureEvents* dispatcher)
         : FixtureManager(dispatcher) { }
 
-    <span style="color:#fbde2d">bool</span> <span style="color:#ff6400">setup</span>() {
+    <span style="color:#fbde2d">bool</span> <span style="color:#ff6400">setup</span>(int argc, char** argv) {
         // setup and initialize the fixture        
         // ...
         printf("Myfixture setup!\n");        
