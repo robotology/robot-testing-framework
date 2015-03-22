@@ -56,12 +56,18 @@ public:
 
     /**
      * @brief FixtureManager constructor
+     * The parameter string is parsed into (argc/argv) format
+     * and will be passed to the fixture manager using setup(int argc, char** argv).
+     * @param param fixture manager optional parameters
      */
     FixtureManager(std::string param="");
 
     /**
      * @brief FixtureManager constructor
+     * The parameter string is parsed into (argc/argv) format
+     * and will be passed to the fixture manager using setup(int argc, char** argv).
      * @param dispatcher an instance of FixtureEvents
+     * @param param fixture manager optional parameters
      */
     FixtureManager(RTF::FixtureEvents* dispatcher,
                    std::string param="");
