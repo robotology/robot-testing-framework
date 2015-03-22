@@ -124,6 +124,7 @@ Test suit</h1>
 <span style="color: #007700">&lt;suit</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;my suit&quot;</span><span style="color: #007700">&gt;</span>
     <span style="color: #007700">&lt;description&gt;</span> a simple example <span style="color: #007700">&lt;/description&gt;</span>
     <span style="color: #007700">&lt;environment&gt;</span> --robot simulator <span style="color: #007700">&lt;/environment&gt;</span>
+    <span style="color: #007700">&lt;fixture</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myfixture.ini&quot;</span><span style="color: #007700">&gt;</span> libfixture.so <span style="color: #007700">&lt;/fixture&gt;</span>
 
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
@@ -132,6 +133,7 @@ Test suit</h1>
 </pre></div>
 <p>The example demonstrates a test suit which includes two test cases (<code>libmytest1.so</code> and <code>libmytest2.so</code>). An optional string parameter can be also specified for each test using <code>param</code> attribute in the <code>test</code> tag. ​The parameter string is parsed into (argc/argv) format and will be passed to the test case using <a class="el" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run">RTF::TestCase::setup(int argc, char** argv)</a>. Alternatively, the raw value of the parameter can be access in the test plug-in implementation using <a class="el" href="classRTF_1_1TestCase.html#a027937e46a88eb142cebea7f9e2ac3e8" title="getParam gets the original paramter string which is set for the test case">RTF::TestCase::getParam</a> method.</p>
 <p>The environment can be used in the implementation of the test cases to know in which setup (e.g., simulation, real world environment) the test case is employed. The environment value can also be accessed in the test plug-in implementation using <a class="el" href="classRTF_1_1TestCase.html#aab71c5f72ffaafed4f27ea1b57c30247" title="getParam gets the environment string which is set for the test case">RTF::TestCase::getEnvironment</a> method.</p>
+<p>If a fixture manager plug-in is specified using <code></code> &lt;fixture&gt; tag, it will be loaded by the <code>testrunner</code> and is set for the current test suit. When suit is executed, the fixture manager will be called automatically to setup and monitor the test fixture which is implemented in the fixture plug-in. (Please see the <code>examples/fixture-plugin</code> folder for an example of implementing fixture plug-ins.)</p>
 <p>Notice that, for <code>libtest2.so</code>, a complete path to the plug-in file is given. Thus, the <code>testrunner</code> does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for <code>libtest1.so</code>.</p>
 <p><br/>
  </p>
@@ -169,7 +171,7 @@ options:
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 22 2015 17:01:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 22 2015 21:48:38 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

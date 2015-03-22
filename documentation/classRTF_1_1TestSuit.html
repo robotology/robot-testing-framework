@@ -128,6 +128,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab2cfe4a6c78d621fdb2c4a470987a56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the test list.  <a href="#ab2cfe4a6c78d621fdb2c4a470987a56d"></a><br/></td></tr>
 <tr class="memitem:a9518b89d0d8dbaeb00bb520ff4019c27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestSuit.html#a9518b89d0d8dbaeb00bb520ff4019c27">setFixtureManager</a> (<a class="el" href="classRTF_1_1FixtureManager.html">RTF::FixtureManager</a> *manager)</td></tr>
 <tr class="memdesc:a9518b89d0d8dbaeb00bb520ff4019c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">setFixtureManager setup a fixture manager for the current test suit.  <a href="#a9518b89d0d8dbaeb00bb520ff4019c27"></a><br/></td></tr>
+<tr class="memitem:a4535d4bfb06fbaf79166e923e33e268e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1FixtureManager.html">RTF::FixtureManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestSuit.html#a4535d4bfb06fbaf79166e923e33e268e">getFixtureManager</a> ()</td></tr>
+<tr class="memdesc:a4535d4bfb06fbaf79166e923e33e268e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getFixtureManager gets the fixture manager for the current suit if it is already set.  <a href="#a4535d4bfb06fbaf79166e923e33e268e"></a><br/></td></tr>
 <tr class="memitem:a15077b24461dcf109aaa2e4672b2085d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestSuit.html#a15077b24461dcf109aaa2e4672b2085d">fixtureCollapsed</a> (<a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> reason)</td></tr>
 <tr class="memdesc:a15077b24461dcf109aaa2e4672b2085d"><td class="mdescLeft">&#160;</td><td class="mdescRight">fixtureCollapsed is called by a fixture manager (if it is already setup) to inform the test suit that the corresponding fixture has been collapsed.  <a href="#a15077b24461dcf109aaa2e4672b2085d"></a><br/></td></tr>
 <tr class="memitem:a79dbcf1caf6c81277e5ce99493f59597"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestSuit.html#a79dbcf1caf6c81277e5ce99493f59597">run</a> (<a class="el" href="classRTF_1_1TestResult.html">TestResult</a> &amp;<a class="el" href="classRTF_1_1TestSuit.html#a18095ea5ba23a48b02ec456f1cccbe0d">result</a>)</td></tr>
@@ -396,6 +398,24 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4535d4bfb06fbaf79166e923e33e268e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRTF_1_1FixtureManager.html">RTF::FixtureManager</a>* RTF::TestSuit::getFixtureManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getFixtureManager gets the fixture manager for the current suit if it is already set. </p>
+<dl class="section return"><dt>Returns</dt><dd>the fixture manager or NULL if it is not set. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0b99da65d1c1d06e531929d0caa575af"></a>
 <div class="memitem">
 <div class="memproto">
@@ -611,7 +631,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00133">133</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
+<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00140">140</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
 
 </div>
 </div>
@@ -633,7 +653,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00132">132</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
+<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00139">139</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
 
 </div>
 </div>
@@ -655,7 +675,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00131">131</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
+<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00138">138</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
 
 </div>
 </div>
@@ -677,7 +697,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00129">129</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
+<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00136">136</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
 
 </div>
 </div>
@@ -699,7 +719,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00130">130</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
+<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00137">137</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
 
 </div>
 </div>
@@ -721,7 +741,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00134">134</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
+<p>Definition at line <a class="el" href="TestSuit_8h_source.html#l00141">141</a> of file <a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>.</p>
 
 </div>
 </div>
@@ -731,7 +751,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 22 2015 17:01:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 22 2015 21:48:38 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

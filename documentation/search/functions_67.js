@@ -4,6 +4,7 @@ var searchData=
   ['getdetail',['getDetail',['../classRTF_1_1TestMessage.html#a9316e860cb744eaa8001c911d7f1eaec',1,'RTF::TestMessage']]],
   ['getdispatcher',['getDispatcher',['../classRTF_1_1FixtureManager.html#a72fa80e907398b7d039ccff2dc521a3e',1,'RTF::FixtureManager']]],
   ['getenvironment',['getEnvironment',['../classRTF_1_1TestCase.html#aab71c5f72ffaafed4f27ea1b57c30247',1,'RTF::TestCase']]],
+  ['getfixturemanager',['getFixtureManager',['../classRTF_1_1TestSuit.html#a4535d4bfb06fbaf79166e923e33e268e',1,'RTF::TestSuit']]],
   ['getlasterror',['getLastError',['../classRTF_1_1plugin_1_1DllFixturePluginLoader.html#ae2e62ce22f2b25501761c2d327215bad',1,'RTF::plugin::DllFixturePluginLoader::getLastError()'],['../classRTF_1_1plugin_1_1DllPluginLoader.html#a755225668bc1fecd52f02a0d015a3dc0',1,'RTF::plugin::DllPluginLoader::getLastError()']]],
   ['getmessage',['getMessage',['../classRTF_1_1ResultEvent.html#a4ec030c515208ae79d7426012054d8ac',1,'RTF::ResultEvent::getMessage()'],['../classRTF_1_1TestMessage.html#ad7014eaafae4344ce96d7ec2591ca6e1',1,'RTF::TestMessage::getMessage()']]],
   ['getname',['getName',['../classRTF_1_1Test.html#ae71d25a673d5c8fdd0f7175c2bcdeabf',1,'RTF::Test']]],
