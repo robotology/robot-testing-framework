@@ -49,9 +49,9 @@ Alternatively you can add the RTF 'bin' directory to your system PATH variable.
 
 Tutorials and Examples
 -----------------------
-* Some example codes for using RTF classes. (http://robotology.github.io/robot-testing/examples.html)
-* Using plug-in to develop test cases. (http://robotology.github.io/robot-testing/rtf_plugin_example.html)
-* Running test case plug-ins using testrunner. (http://robotology.github.io/robot-testing/testrunner.html)
+* Some example codes for using RTF classes. (http://robotology.github.io/robot-testing/documentation/examples.html)
+* Using plug-in to develop test cases. (http://robotology.github.io/robot-testing/documentation/rtf_plugin_example.html)
+* Running test case plug-ins using testrunner. (http://robotology.github.io/robot-testing/documentation/testrunner.html)
 
 
 
