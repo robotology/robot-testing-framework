@@ -68,7 +68,7 @@ public:
      * @brief report report a message to the
      * result collector of the given TestSuit
      * @param msg The corresponding message
-     * @param testcase The owner of the message (reporter)
+     * @param testsuit The owner of the message (reporter)
      * @note report does not throw any exception!
      */
     static void report(RTF::TestMessage msg,
