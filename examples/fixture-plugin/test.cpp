@@ -25,8 +25,8 @@ public:
     MyTest1() : TestCase("MyTest1") { }
 
     virtual void run() {
-        RTF_REPORT("testing smaller");
-        RTF_CHECK(3<5, "is not smaller");
+        RTF_TEST_REPORT("testing smaller");
+        RTF_TEST_CHECK(3<5, "is not smaller");
     }
 };
 

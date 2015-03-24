@@ -22,20 +22,20 @@ MyTest::MyTest() : TestCase("MyTest") { }
 MyTest::~MyTest() { }
 
 bool MyTest::setup(int argc, char** argv) {
-    RTF_REPORT("running MyTest::setup...");
+    RTF_TEST_REPORT("running MyTest::setup...");
     return true;
 }
 
 void MyTest::tearDown() {
-    RTF_REPORT("running MyTest::teardown...");
+    RTF_TEST_REPORT("running MyTest::teardown...");
     // assert an arbitray error for example.
     RTF_ASSERT_ERROR("this is just for example!");
 }
 
 void MyTest::run() {
-    RTF_REPORT("testing integers");
-    RTF_CHECK(2<3, "is not smaller");
+    RTF_TEST_REPORT("testing integers");
+    RTF_TEST_CHECK(2<3, "is not smaller");
     int a = 5;
     int b = 3;
-    RTF_CHECK(a<b, Asserter::format("%d is not smaller than %d.", a, b));
+    RTF_TEST_CHECK(a<b, Asserter::format("%d is not smaller than %d.", a, b));
 }

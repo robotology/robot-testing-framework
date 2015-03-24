@@ -21,17 +21,17 @@ TestMessage::TestMessage(const TestMessage& other) {
     *this = other;
 }
 
-TestMessage::TestMessage(std::string msg,
-                         std::string filename,
+TestMessage::TestMessage(const std::string msg,
+                         const std::string filename,
                          unsigned int line) {
     strMessage = msg;
     strFileName = filename;
     lineNumber = line;
 }
 
-TestMessage::TestMessage(std::string msg,
-                         std::string detail,
-                         std::string filename,
+TestMessage::TestMessage(const std::string msg,
+                         const std::string detail,
+                         const std::string filename,
                          unsigned int line) {
     strMessage = msg;
     strDetail = detail;
@@ -44,12 +44,12 @@ TestMessage::~TestMessage() {
 }
 
 
-void TestMessage::setMessage(std::string message) {
+void TestMessage::setMessage(const std::string message) {
     strMessage = message;
 }
 
 
-void TestMessage::setDetail(std::string detail) {
+void TestMessage::setDetail(const std::string detail) {
     strDetail = detail;
 }
 
@@ -72,7 +72,7 @@ unsigned int TestMessage::getSourceLineNumber() {
 }
 
 
-void TestMessage::setSourceFileName(std::string filename) {
+void TestMessage::setSourceFileName(const std::string filename) {
     strFileName = filename;
 }
 

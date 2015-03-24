@@ -47,8 +47,8 @@ public:
      * @param line the line number of the code for
      *        the corresponding message
      */
-    TestMessage(std::string msg,
-                std::string filename="",
+    TestMessage(const std::string msg,
+                const std::string filename="",
                 unsigned int line=0);
 
     /**
@@ -60,9 +60,9 @@ public:
      * @param line the line number of the code for
      *        the corresponding message
      */
-    TestMessage(std::string msg,
-                std::string detail,
-                std::string filename="",
+    TestMessage(const std::string msg,
+                const std::string detail,
+                const std::string filename="",
                 unsigned int line=0);
 
 
@@ -75,13 +75,13 @@ public:
      * @brief setMessage sets the message
      * @param message the message string
      */
-    void setMessage(std::string message);
+    void setMessage(const std::string message);
 
     /**
      * @brief setDetail sets the detail of the messsage
      * @param detail the detailed message string
      */
-    void setDetail(std::string detail);
+    void setDetail(const std::string detail);
 
     /**
      * @brief getMessage returns the message string
@@ -117,7 +117,7 @@ public:
      *        of the code for the corresponding message
      * @param filename source file name
      */
-    void setSourceFileName(std::string filename);
+    void setSourceFileName(const std::string filename);
 
     /**
      * @brief getSourceFileName

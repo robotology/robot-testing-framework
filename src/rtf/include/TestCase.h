@@ -46,7 +46,8 @@ public:
     virtual ~TestCase();
 
     /**
-     * @brief setup is called before the test run
+     * @brief setup is called before the test run.
+     * @note the first value in argv is the name of the current testcases
      * @param argc The number of the pasred argument from string paramter
      * @param argv The arguments which is parsed using string paramter
      * @return true or false depending of the test initialization
