@@ -285,21 +285,21 @@ public:
     <span style="color:#fbde2d">virtual</span> <span style="color:#ff6400">~MyTest</span>() { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">bool</span> <span style="color:#ff6400">setup</span>(int argc, char **argv) {
-        RTF_REPORT("running MyTest::setup...");
+        RTF_TEST_REPORT("running MyTest::setup...");
         return true;
     }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">tearDown</span>() {
-        RTF_REPORT("running MyTest::teardown...");
+        RTF_TEST_REPORT("running MyTest::teardown...");
         RTF_ASSERT_ERROR("this is just for example!");
     }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing integers");
-        RTF_CHECK(2&lt;3, "is not smaller");
+        RTF_TEST_REPORT("testing integers");
+        RTF_TEST_CHECK(2&lt;3, "is not smaller");
         int a = 5;
         int b = 3;
-        RTF_CHECK(a&lt;b, Asserter::format("%d is not smaller than %d.", a, b));
+        RTF_TEST_CHECK(a&lt;b, Asserter::format("%d is not smaller than %d.", a, b));
     }
 
 };
@@ -348,20 +348,20 @@ public:
     <span style="color:#fbde2d">virtual</span> <span style="color:#ff6400">~MyTest</span>() { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">bool</span> <span style="color:#ff6400">setup</span>(int argc, char** argv) {
-        RTF_REPORT("running MyTest::setup...");
+        RTF_TEST_REPORT("running MyTest::setup...");
         return true;
     }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">tearDown</span>() {
-        RTF_REPORT("running MyTest::teardown...");
+        RTF_TEST_REPORT("running MyTest::teardown...");
         RTF_ASSERT_ERROR("this is just for example!");
     }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
 
-        RTF_REPORT("testing integers");
-        RTF_CHECK(2&lt;3, "is not smaller");
-        RTF_CHECK(5&lt;3, "is not smaller");
+        RTF_TEST_REPORT("testing integers");
+        RTF_TEST_CHECK(2&lt;3, "is not smaller");
+        RTF_TEST_CHECK(5&lt;3, "is not smaller");
     }
 
 };
@@ -413,8 +413,8 @@ public:
     <span style="color:#ff6400">MyTest1</span>() : TestCase("MyTest1") { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing smaller");
-        RTF_CHECK(3&lt;5, "is not smaller");
+        RTF_TEST_REPORT("testing smaller");
+        RTF_TEST_CHECK(3&lt;5, "is not smaller");
     }
 };
 
@@ -423,8 +423,8 @@ public:
     <span style="color:#ff6400">MyTest2</span>() : TestCase("MyTest2") { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing equality");
-        RTF_CHECK(5==3, "are not equal");
+        RTF_TEST_REPORT("testing equality");
+        RTF_TEST_CHECK(5==3, "are not equal");
     }
 };
 
@@ -494,8 +494,8 @@ public:
     <span style="color:#ff6400">MyTest1</span>() : TestCase("MyTest1") { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing smaller");
-        RTF_CHECK(3&lt;5, "is not smaller");
+        RTF_TEST_REPORT("testing smaller");
+        RTF_TEST_CHECK(3&lt;5, "is not smaller");
     }
 };
 
@@ -504,8 +504,8 @@ public:
     <span style="color:#ff6400">MyTest2</span>() : TestCase("MyTest2") { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing equality");
-        RTF_CHECK(5==3, "are not equal");
+        RTF_TEST_REPORT("testing equality");
+        RTF_TEST_CHECK(5==3, "are not equal");
     }
 };
 
@@ -561,8 +561,8 @@ public:
     <span style="color:#ff6400">MyTest1</span>() : TestCase("MyTest1") { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing smaller");
-        RTF_CHECK(3&lt;5, "is not smaller");
+        RTF_TEST_REPORT("testing smaller");
+        RTF_TEST_CHECK(3&lt;5, "is not smaller");
     }
 };
 
@@ -571,8 +571,8 @@ public:
     <span style="color:#ff6400">MyTest2</span>() : TestCase("MyTest2") { }
 
     <span style="color:#fbde2d">virtual</span> <span style="color:#fbde2d">void</span> <span style="color:#ff6400">run</span>() {
-        RTF_REPORT("testing equality");
-        RTF_CHECK(3==3, "are not equal");
+        RTF_TEST_REPORT("testing equality");
+        RTF_TEST_CHECK(3==3, "are not equal");
     }
 };
 
