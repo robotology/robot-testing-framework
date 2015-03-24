@@ -112,6 +112,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2bf10a11da2c3d3238f98f5f23a67372"><td class="mdescLeft">&#160;</td><td class="mdescRight">error Throw an error exception with the given message.  <a href="#a2bf10a11da2c3d3238f98f5f23a67372"></a><br/></td></tr>
 <tr class="memitem:a13d1db95e0daff42e0dbbe2f9c733769"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#a13d1db95e0daff42e0dbbe2f9c733769">error</a> (bool condition, <a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg)</td></tr>
 <tr class="memdesc:a13d1db95e0daff42e0dbbe2f9c733769"><td class="mdescLeft">&#160;</td><td class="mdescRight">error Throw an error exception if the condition is not hold (it is not true).  <a href="#a13d1db95e0daff42e0dbbe2f9c733769"></a><br/></td></tr>
+<tr class="memitem:a7b1eaf65d53bbb0b80e6a265f9a84fea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#a7b1eaf65d53bbb0b80e6a265f9a84fea">report</a> (<a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestSuit.html">RTF::TestSuit</a> *testsuit)</td></tr>
+<tr class="memdesc:a7b1eaf65d53bbb0b80e6a265f9a84fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">report report a message to the result collector of the given <a class="el" href="classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests.">TestSuit</a>  <a href="#a7b1eaf65d53bbb0b80e6a265f9a84fea"></a><br/></td></tr>
 <tr class="memitem:ac2cce92fa7246015fa8c75eadc865486"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486">report</a> (<a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *testcase)</td></tr>
 <tr class="memdesc:ac2cce92fa7246015fa8c75eadc865486"><td class="mdescLeft">&#160;</td><td class="mdescRight">report report a message to the result collector of the given <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>  <a href="#ac2cce92fa7246015fa8c75eadc865486"></a><br/></td></tr>
 <tr class="memitem:ae6c87ee3c12c45a55c76f52bce112bba"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba">check</a> (bool condition, <a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *testcase)</td></tr>
@@ -123,7 +125,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>The <a class="el" href="classRTF_1_1Asserter.html" title="The Asserter class is used to throw exception or to report messages/failures to a TestResult...">Asserter</a> class is used to throw exception or to report messages/failures to a <a class="el" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a>. </p>
 <dl class="section note"><dt>Note</dt><dd>There are many usefull macros in the <a class="el" href="TestAssert_8h.html">TestAssert.h</a> which can be used to prepare detailed messages of errors or test failures. </dd></dl>
 
-<p>Definition at line <a class="el" href="Asserter_8h_source.html#l00031">31</a> of file <a class="el" href="Asserter_8h_source.html">Asserter.h</a>.</p>
+<p>Definition at line <a class="el" href="Asserter_8h_source.html#l00032">32</a> of file <a class="el" href="Asserter_8h_source.html">Asserter.h</a>.</p>
 </div><h2>Member Function Documentation</h2>
 <a class="anchor" id="ae6c87ee3c12c45a55c76f52bce112bba"></a>
 <div class="memitem">
@@ -370,6 +372,50 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 </div>
 </div>
+<a class="anchor" id="a7b1eaf65d53bbb0b80e6a265f9a84fea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void RTF::Asserter::report </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1TestSuit.html">RTF::TestSuit</a> *&#160;</td>
+          <td class="paramname"><em>testsuit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>report report a message to the result collector of the given <a class="el" href="classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests.">TestSuit</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The corresponding message </td></tr>
+    <tr><td class="paramname">testsuit</td><td>The owner of the message (reporter) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>report does not throw any exception! </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ac2cce92fa7246015fa8c75eadc865486"></a>
 <div class="memitem">
 <div class="memproto">
@@ -420,7 +466,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 24 2015 17:00:41 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 24 2015 19:00:15 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

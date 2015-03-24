@@ -1,10 +1,10 @@
 <map id="src/rtf/include/TestResult.h" name="src/rtf/include/TestResult.h">
-<area shape="rect" id="node3" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="153,83,359,112"/>
+<area shape="rect" id="node3" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="125,83,331,112"/>
 <area shape="rect" id="node5" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="5,169,171,199"/>
-<area shape="rect" id="node9" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="383,83,556,112"/>
-<area shape="rect" id="node17" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="580,83,764,112"/>
-<area shape="rect" id="node7" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,161,363,207"/>
-<area shape="rect" id="node11" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="387,169,552,199"/>
-<area shape="rect" id="node15" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="576,161,723,207"/>
-<area shape="rect" id="node13" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="380,256,559,285"/>
+<area shape="rect" id="node13" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="355,83,528,112"/>
+<area shape="rect" id="node18" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="552,83,736,112"/>
+<area shape="rect" id="node11" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,161,363,207"/>
+<area shape="rect" id="node7" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="161,256,327,285"/>
+<area shape="rect" id="node9" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="155,333,333,363"/>
+<area shape="rect" id="node16" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="437,161,584,207"/>
 </map>

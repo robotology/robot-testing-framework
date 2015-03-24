@@ -2,7 +2,7 @@ var searchData=
 [
   ['removelistener',['removeListener',['../classRTF_1_1TestResult.html#a1ba0aec9f9a14bff41d10469acd612a1',1,'RTF::TestResult']]],
   ['removetest',['removeTest',['../classRTF_1_1TestRunner.html#a586f27fd331ba5b3a7086a2bd151c6fa',1,'RTF::TestRunner::removeTest()'],['../classRTF_1_1TestSuit.html#a4d7bd59b231950df856249d6d5d599db',1,'RTF::TestSuit::removeTest()']]],
-  ['report',['report',['../classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486',1,'RTF::Asserter']]],
+  ['report',['report',['../classRTF_1_1Asserter.html#a7b1eaf65d53bbb0b80e6a265f9a84fea',1,'RTF::Asserter::report(RTF::TestMessage msg, RTF::TestSuit *testsuit)'],['../classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486',1,'RTF::Asserter::report(RTF::TestMessage msg, RTF::TestCase *testcase)']]],
   ['reset',['reset',['../classRTF_1_1TestResult.html#a1d03c3de62a155abb7a2385a2598c9b5',1,'RTF::TestResult::reset()'],['../classRTF_1_1TestResultCollector.html#a01e9876da64e8799cc83b0614377b46a',1,'RTF::TestResultCollector::reset()'],['../classRTF_1_1TestRunner.html#ae4e7797df83a14d08238d272aa145647',1,'RTF::TestRunner::reset()'],['../classRTF_1_1TestSuit.html#ab2cfe4a6c78d621fdb2c4a470987a56d',1,'RTF::TestSuit::reset()']]],
   ['resultevent',['ResultEvent',['../classRTF_1_1ResultEvent.html#aa8b094a572995c672e217b6adac44080',1,'RTF::ResultEvent::ResultEvent()'],['../classRTF_1_1ResultEvent.html#a5ee472ab4ade13bf3810be64017d4f94',1,'RTF::ResultEvent::ResultEvent(const RTF::Test *test, RTF::TestMessage msg)']]],
   ['resulteventendsuit',['ResultEventEndSuit',['../classRTF_1_1ResultEventEndSuit.html#a1adfbe7726e3eee9fbe570c9cac00d6c',1,'RTF::ResultEventEndSuit']]],

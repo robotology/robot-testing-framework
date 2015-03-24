@@ -1,8 +1,10 @@
 <map id="src/rtf/include/Asserter.h" name="src/rtf/include/Asserter.h">
-<area shape="rect" id="node3" href="$Exception_8h.html" title="Exception.h" alt="" coords="55,83,146,112"/>
-<area shape="rect" id="node7" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="134,315,246,344"/>
-<area shape="rect" id="node12" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="250,83,341,112"/>
-<area shape="rect" id="node14" href="$Test_8h.html" title="Test.h" alt="" coords="358,315,417,344"/>
-<area shape="rect" id="node17" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="247,160,343,189"/>
-<area shape="rect" id="node21" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="291,237,395,267"/>
+<area shape="rect" id="node3" href="$Exception_8h.html" title="Exception.h" alt="" coords="7,83,98,112"/>
+<area shape="rect" id="node7" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="138,392,250,421"/>
+<area shape="rect" id="node12" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="652,160,743,189"/>
+<area shape="rect" id="node27" href="$TestSuit_8h.html" title="TestSuit.h" alt="" coords="292,83,375,112"/>
+<area shape="rect" id="node14" href="$Test_8h.html" title="Test.h" alt="" coords="551,392,610,421"/>
+<area shape="rect" id="node17" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="420,237,516,267"/>
+<area shape="rect" id="node21" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="439,315,543,344"/>
+<area shape="rect" id="node32" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="223,160,346,189"/>
 </map>
