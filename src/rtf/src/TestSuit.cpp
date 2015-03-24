@@ -17,6 +17,7 @@ TestSuit::TestSuit(std::string name)
     : RTF::Test(name),
     successful(true),
     fixtureOK(true),
+    retried(false),
     fixtureMesssage(""),
     fixtureManager(NULL),
     result(NULL)
@@ -37,7 +38,12 @@ void TestSuit::removeTest(RTF::Test* test) {
 }
 
 void TestSuit::reset() {
-    tests.clear();
+    tests.clear();    
+    successful = fixtureOK =  true;
+    retried = false;
+    fixtureMesssage.clear();
+    fixtureManager = NULL;
+    result = NULL;
 }
 
 
@@ -65,6 +71,8 @@ void TestSuit::tearDown() {
 
 void TestSuit::run(TestResult &rsl) {
     this->result = &rsl;    
+    successful = fixtureOK = true;
+    fixtureMesssage.clear();
     try {
         result->startTestSuit(this);
         // calling test suit setup
@@ -115,7 +123,14 @@ void TestSuit::run(TestResult &rsl) {
     }
 
     result->endTestSuit(this);
+
+    //check if we need to retry the test
+    if(!fixtureOK && !retried) {
+        retried = true;
+        run(*result);
+    }
 }
+
 
 
 void TestSuit::setFixtureManager(RTF::FixtureManager* manager) {

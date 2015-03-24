@@ -15,6 +15,7 @@
 #include <Exception.h>
 #include <TestMessage.h>
 #include <TestCase.h>
+#include <TestSuit.h>
 
 namespace RTF {
     class Asserter;
@@ -62,6 +63,16 @@ public:
      */
     static void error(bool condition,
                        RTF::TestMessage msg);
+
+    /**
+     * @brief report report a message to the
+     * result collector of the given TestSuit
+     * @param msg The corresponding message
+     * @param testcase The owner of the message (reporter)
+     * @note report does not throw any exception!
+     */
+    static void report(RTF::TestMessage msg,
+                        RTF::TestSuit* testsuit);
 
     /**
      * @brief report report a message to the

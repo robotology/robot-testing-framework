@@ -79,3 +79,10 @@ void TestMessage::setSourceFileName(const std::string filename) {
 const std::string TestMessage::getSourceFileName() {
     return strFileName;
 }
+
+void TestMessage::clear() {
+    lineNumber = 0;
+    strFileName.clear();
+    strMessage.clear();
+    strDetail.clear();
+}

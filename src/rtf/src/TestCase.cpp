@@ -69,8 +69,9 @@ bool TestCase::setup(int argc, char**argv) {
 void TestCase::tearDown() { }
 
 
-void TestCase::run(TestResult &rsl) {
+void TestCase::run(TestResult &rsl) {    
     this->result = &rsl;
+    successful = true;
     // call setup and run
     char *szcmd;
     char **szarg;

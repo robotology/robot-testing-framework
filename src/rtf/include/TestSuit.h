@@ -136,6 +136,7 @@ private:
     RTF::TestResult* result;
     bool successful;
     bool fixtureOK;
+    bool retried;
     RTF::TestMessage fixtureMesssage;
     RTF::FixtureManager* fixtureManager;
     TestContainer tests;

@@ -126,6 +126,11 @@ public:
      */
     const std::string getSourceFileName();
 
+    /**
+     * @brief clears the test message
+     */
+    void clear();
+
 private:
     unsigned int lineNumber;
     std::string strFileName;
