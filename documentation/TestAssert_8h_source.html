@@ -140,18 +140,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">                                           RTF_SOURCELINE())) )</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a">   79</a></span>&#160;<span class="preprocessor">#define RTF_REPORT(message)\</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f">   79</a></span>&#160;<span class="preprocessor">#define RTF_TEST_REPORT(message)\</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">    if(dynamic_cast&lt;RTF::TestCase*&gt;(this) == 0) {\</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_REPORT is called outside a TestCase!&quot;); }\</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_TEST_REPORT is called outside a TestCase!&quot;); }\</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">    RTF::Asserter::report(RTF::TestMessage(&quot;reports&quot;,\</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">                                            message,\</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">                                            RTF_SOURCEFILE(),\</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">                                            RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this))</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578">   99</a></span>&#160;<span class="preprocessor">#define RTF_CHECK(condition, message)\</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb">   99</a></span>&#160;<span class="preprocessor">#define RTF_TEST_CHECK(condition, message)\</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">    if(dynamic_cast&lt;RTF::TestCase*&gt;(this) == 0) {\</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_CHECK is called outside a TestCase!&quot;); }\</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_TEST_CHECK is called outside a TestCase!&quot;); }\</span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">    RTF::Asserter::check(condition,\</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">                          RTF::TestMessage(std::string(&quot;checking (&quot;) +\</span></div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">                                           std::string(#condition) + &quot;)&quot;,\</span></div>
@@ -163,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 22 2015 21:48:38 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 24 2015 17:00:41 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

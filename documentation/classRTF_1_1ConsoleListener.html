@@ -175,22 +175,22 @@ Private Attributes</h2></td></tr>
 <div class="line">    <span class="keyword">virtual</span> ~MyTest() { }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> setup(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> tearDown() {</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
 <div class="line">        <a class="code" href="TestAssert_8h.html#a8681580ec6406f327e6610f8185378fe" title="Assertion with throwing error exception.">RTF_ASSERT_ERROR</a>(<span class="stringliteral">&quot;this is just for example!&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> run() {</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578" title="Conditional failure report.">RTF_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
 <div class="line">        <span class="keywordtype">int</span> a = 5;</div>
 <div class="line">        <span class="keywordtype">int</span> b = 3;</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578" title="Conditional failure report.">RTF_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">};</div>
@@ -620,7 +620,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 22 2015 21:48:38 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 24 2015 17:00:41 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

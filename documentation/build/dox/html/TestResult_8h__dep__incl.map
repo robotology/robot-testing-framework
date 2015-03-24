@@ -1,9 +1,0 @@
-<map id="src/rtf/include/TestResult.h" name="src/rtf/include/TestResult.h">
-<area shape="rect" id="node3" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="5,83,211,112"/>
-<area shape="rect" id="node5" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="44,169,209,199"/>
-<area shape="rect" id="node7" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="285,83,459,112"/>
-<area shape="rect" id="node15" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="483,83,667,112"/>
-<area shape="rect" id="node9" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="271,169,436,199"/>
-<area shape="rect" id="node13" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="460,161,607,207"/>
-<area shape="rect" id="node11" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="264,256,443,285"/>
-</map>

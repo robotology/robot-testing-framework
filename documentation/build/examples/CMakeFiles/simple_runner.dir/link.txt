@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/simple_runner.dir/simple_runner.cpp.o  -o ../bin/simple_runner -rdynamic ../lib/libRTF.so ../lib/libRTF_dll.so -ldl -Wl,-rpath,/home/apaikan/Install/robotology/robot-testing/build/lib: 

@@ -119,7 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b3736e2100052247ebcd46bff63309a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a0b3736e2100052247ebcd46bff63309a">~TestCase</a> ()</td></tr>
 <tr class="memdesc:a0b3736e2100052247ebcd46bff63309a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> destructor.  <a href="#a0b3736e2100052247ebcd46bff63309a"></a><br/></td></tr>
 <tr class="memitem:a1943f24fe26b3ccfa149d942067c7626"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626">setup</a> (int argc, char **argv)</td></tr>
-<tr class="memdesc:a1943f24fe26b3ccfa149d942067c7626"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup is called before the test run  <a href="#a1943f24fe26b3ccfa149d942067c7626"></a><br/></td></tr>
+<tr class="memdesc:a1943f24fe26b3ccfa149d942067c7626"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup is called before the test run.  <a href="#a1943f24fe26b3ccfa149d942067c7626"></a><br/></td></tr>
 <tr class="memitem:a29d510d94fadd07cb9b5b5ad1982dddc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a29d510d94fadd07cb9b5b5ad1982dddc">tearDown</a> ()</td></tr>
 <tr class="memdesc:a29d510d94fadd07cb9b5b5ad1982dddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">tearDown is called after the test run  <a href="#a29d510d94fadd07cb9b5b5ad1982dddc"></a><br/></td></tr>
 <tr class="memitem:a8b650d1b78b73a6fca5a709430e7c255"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255">run</a> ()=0</td></tr>
@@ -161,7 +161,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The base class to implememnt a test case. </p>
-<p>The user defined test cases should be inherited from <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> class and the <code><a class="el" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run()</a></code> method must be overriden. The <code>'<a class="el" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run">setup(int argc, char** argv)</a>'</code> and <code><a class="el" href="classRTF_1_1TestCase.html#a29d510d94fadd07cb9b5b5ad1982dddc" title="tearDown is called after the test run">tearDown()</a></code> can be also inherited to implement any initialization or finalization of the test case.</p>
+<p>The user defined test cases should be inherited from <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> class and the <code><a class="el" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run()</a></code> method must be overriden. The <code>'<a class="el" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run.">setup(int argc, char** argv)</a>'</code> and <code><a class="el" href="classRTF_1_1TestCase.html#a29d510d94fadd07cb9b5b5ad1982dddc" title="tearDown is called after the test run">tearDown()</a></code> can be also inherited to implement any initialization or finalization of the test case.</p>
 <p>Here's an example of using a <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>: </p>
 <div class="fragment"><div class="line"><span class="comment">// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-</span></div>
 <div class="line"></div>
@@ -188,23 +188,23 @@ Private Attributes</h2></td></tr>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> ~MyTest() { }</div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run">setup</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run.">setup</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a29d510d94fadd07cb9b5b5ad1982dddc" title="tearDown is called after the test run">tearDown</a>() {</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
 <div class="line">        <a class="code" href="TestAssert_8h.html#a8681580ec6406f327e6610f8185378fe" title="Assertion with throwing error exception.">RTF_ASSERT_ERROR</a>(<span class="stringliteral">&quot;this is just for example!&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run</a>() {</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#ac36590698946db759e820a603f2be16a" title="Reporting a message to the TestResult.">RTF_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578" title="Conditional failure report.">RTF_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
 <div class="line">        <span class="keywordtype">int</span> a = 5;</div>
 <div class="line">        <span class="keywordtype">int</span> b = 3;</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a7071aae8589105dfddd8b52b8f302578" title="Conditional failure report.">RTF_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">};</div>
@@ -461,7 +461,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>setParam Sets the optional paramters of the test. </p>
-<p>The parameter string is parsed into (argc/argv) format and will be passed to the test case using <a class="el" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run">setup(int argc, char** argv)</a>. </p>
+<p>The parameter string is parsed into (argc/argv) format and will be passed to the test case using <a class="el" href="classRTF_1_1TestCase.html#a1943f24fe26b3ccfa149d942067c7626" title="setup is called before the test run.">setup(int argc, char** argv)</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">param</td><td>the paramter string </td></tr>
@@ -503,7 +503,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>setup is called before the test run </p>
+<p>setup is called before the test run. </p>
+<dl class="section note"><dt>Note</dt><dd>the first value in argv is the name of the current testcases </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">argc</td><td>The number of the pasred argument from string paramter </td></tr>
@@ -587,7 +588,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00130">130</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00131">131</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -609,7 +610,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00129">129</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00130">130</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -631,7 +632,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00131">131</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00132">132</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -653,7 +654,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00132">132</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00133">133</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -663,7 +664,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 22 2015 21:48:38 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 24 2015 17:00:41 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

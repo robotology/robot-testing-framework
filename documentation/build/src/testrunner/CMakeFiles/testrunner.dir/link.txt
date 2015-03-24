@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/testrunner.dir/src/ErrorLogger.cpp.o CMakeFiles/testrunner.dir/src/main.cpp.o CMakeFiles/testrunner.dir/src/PluginRunner.cpp.o CMakeFiles/testrunner.dir/src/SuitRunner.cpp.o  -o ../../bin/testrunner -rdynamic ../../lib/libRTF.so ../../lib/libRTF_dll.so -ltinyxml -ltinyxml -ldl -Wl,-rpath,/home/apaikan/Install/robotology/robot-testing/build/lib: 
