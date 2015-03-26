@@ -747,18 +747,23 @@ MyTest::MyTest() : TestCase("MyTest") { }
   </div>  
 
   <div class="slide" style="background:#0c1021; height: 350px; overflow-y: scroll;">
-<pre style="background:#0c1021;color:#f8f8f8"><span style="color:#61ce3c">$ testrunner --verbose --test libmytest.so
- Loading the plugin... 
- Staring test runner.
- Test case MyTest started...
- [INFO]  (MyTest) reports: running MyTest::setup...
- [INFO]  (MyTest) reports: testing integers
- [FAIL]  (MyTest) checking (a&lt;b): <span style="color:#d8fa3c">5</span> is not smaller than <span style="color:#d8fa3c">3</span>.
- [INFO]  (MyTest) reports: running MyTest::teardown...
- [ERROR] (MyTest) asserts error with exception: this is just for example!
- Test case MyTest failed!
- Ending test runner.
-</span></pre>
+<pre style="background:#0c1021;color:#f8f8f8"><span style="color:#61ce3c">$ testrunner --verbose --test libmytest.so 
+Staring test runner.
+Test case MyTest started...
+[INFO]  (MyTest) reports: running MyTest::setup...
+[INFO]  (MyTest) reports: testing integers
+[FAIL]  (MyTest) checking (a&lt;b): <span style="color:#d8fa3c">5</span> is not smaller than <span style="color:#d8fa3c">3</span>.
+[INFO]  (MyTest) reports: running MyTest::teardown...
+[ERROR] (MyTest) asserts error with exception: this is just for example!
+Test case MyTest failed!
+Ending test runner.
+
+-------- results ---------
+Total number of tests : <span style="color:#d8fa3c">1</span>
+Number of passed tests: <span style="color:#d8fa3c">0</span>
+Number of failed tests: <span style="color:#d8fa3c">1</span>
+
+</span></pre>  
     <div style="position: absolute; top: 10px; width: 200px; height: 30px; left: 700px; box-shadow: 0 3px 5px 0 rgba(90,90,90,.8);"> 
     <p style="margin-top: 5px; margin-left:5px" align="center">
     <span style="font-size:16px; color:#ffffff;"><strong>Running the test</strong><span>
