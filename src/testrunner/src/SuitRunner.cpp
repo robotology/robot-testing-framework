@@ -12,6 +12,7 @@
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
 #include <tinyxml.h>
+#include <PluginFactory.h>
 
 using namespace std;
 using namespace RTF;
@@ -79,7 +80,7 @@ bool SuitRunner::loadSuit(std::string filename) {
         return false;
     }
 
-    if(!compare(root->Value(), "suit")) {
+    if(!PluginFactory::compare(root->Value(), "suit")) {
         if(verbose)
             cout<<filename<<" is not a test suit file!"<<endl;
         return false;
@@ -93,15 +94,15 @@ bool SuitRunner::loadSuit(std::string filename) {
     for(TiXmlElement* test = root->FirstChildElement(); test;
         test = test->NextSiblingElement())
     {
-        if(compare(test->Value(), "description")) {
+        if(PluginFactory::compare(test->Value(), "description")) {
             if(test->GetText() != NULL)
                 suit->setDescription(test->GetText());
         }
-        else if(compare(test->Value(), "environment")) {
+        else if(PluginFactory::compare(test->Value(), "environment")) {
             if(test->GetText() != NULL)
                 environment = test->GetText();
         }        
-        else if(compare(test->Value(), "fixture") &&
+        else if(PluginFactory::compare(test->Value(), "fixture") &&
                 test->GetText() != NULL) {
                 // load the fixture manager plugin
                 DllFixturePluginLoader* loader = new DllFixturePluginLoader();
@@ -120,11 +121,15 @@ bool SuitRunner::loadSuit(std::string filename) {
                     delete loader;
                 }
         }
-        else if(compare(test->Value(), "test") &&
+        else if(PluginFactory::compare(test->Value(), "test") &&
                 test->GetText() != NULL) {
 
             // load the plugin and add it to the suit
-            DllPluginLoader* loader = new DllPluginLoader();
+            PluginLoader* loader = PluginFactory::create(test->GetText());
+            if(loader == NULL) {
+                ErrorLogger::Instance().addError("cannot create any known plug-in loader for " + filename);
+                return false;
+            }
             TestCase* testcase = loader->open(test->GetText());
 
             if(testcase != NULL) {
@@ -204,7 +209,7 @@ bool SuitRunner::loadSuitsFromPath(std::string path) {
         if(name.size() > 4) {
             // check for xml file
             string ext = name.substr(name.size()-4,4);
-            if(compare(ext.c_str(), ".xml"))
+            if(PluginFactory::compare(ext.c_str(), ".xml"))
                 loadSuit(path+name);
         }
     }

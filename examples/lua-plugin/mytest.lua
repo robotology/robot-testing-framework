@@ -14,13 +14,12 @@
 --
 -- The following methods are for reporting, failure or assertions: 
 --
--- TestCase.setName(...)        : sets the test name
--- TestCase.testReport(...)     : reports a informative message
--- TestCase.testFail(...)       : reports a failure message
--- TestCase.assertError(...)    : throws an error exception with message
--- TestCase.asserFail(...)      : throws a failure exception with message
+-- TestCase.setName(name)             : sets the test name
+-- TestCase.testReport(msg)           : reports a informative message
+-- TestCase.testCheck(condition, msg) : reports a failure message
+-- TestCase.assertError(msg)          : throws an error exception with message
+-- TestCase.asserFail(msg)            : throws a failure exception with message
 --
-
 
 --
 -- setup is called before the test run to setup 
@@ -38,10 +37,10 @@ end
 -- @return Boolean
 --
 TestCase.run = function()
-    TestCase.testReport("Checking integers")
-    if(5>3) then 
-        TestCase.testFail("5 is not smaller than 3.")
-    end    
+    TestCase.testReport("Checking bigger...")
+    TestCase.testCheck(5>3, "5 is not bigger than 3.")
+    TestCase.testReport("Checking smaller...")
+    TestCase.testCheck(5<3, "5 is not smaller than 3.")
 end
 
 

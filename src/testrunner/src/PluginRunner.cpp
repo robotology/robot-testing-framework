@@ -12,6 +12,7 @@
 #include <PluginRunner.h>
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
+#include <PluginFactory.h>
 #include <iostream>
 
 using namespace std;
@@ -40,7 +41,12 @@ void PluginRunner::reset() {
 bool PluginRunner::loadPlugin(std::string filename,
                               const std::string param,
                               const string environment) {
-    DllPluginLoader* loader = new DllPluginLoader();
+    PluginLoader* loader = PluginFactory::create(filename);
+    if(loader == NULL) {
+        ErrorLogger::Instance().addError("cannot create any known plug-in loader for " + filename);
+        return false;
+    }
+
     TestCase* test = loader->open(filename);
     if(test == NULL) {
         ErrorLogger::Instance().addError(loader->getLastError());
@@ -112,39 +118,27 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
         if(name.size() > 4) {
             // check for windows .dll
             string ext = name.substr(name.size()-4,4);
-            if(compare(ext.c_str(), ".dll"))
+            if(PluginFactory::compare(ext.c_str(), ".dll"))
                 loadPlugin(path+name);
+            // check for .lua plugin files
+#ifdef ENABLE_LUA_PLUGIN
+            if(PluginFactory::compare(ext.c_str(), ".lua"))
+                loadPlugin(path+name);
+#endif
         }
         if(name.size() > 3) {
             // check for unix .so
             string ext = name.substr(name.size()-3,3);
-            if(compare(ext.c_str(), ".so"))
+            if(PluginFactory::compare(ext.c_str(), ".so"))
                 loadPlugin(path+name);
         }
         if(name.size() > 6) {
             // check for mac .dylib
             string ext = name.substr(name.size()-6,6);
-            if(compare(ext.c_str(), ".dylib"))
+            if(PluginFactory::compare(ext.c_str(), ".dylib"))
                 loadPlugin(path+name);
         }
     }
     closedir(dir);
     return true;
 }
-
-bool PluginRunner::compare(const char*first,
-                           const char* second)
-{
-    if(!first && !second) return true;
-    if(!first || !second) return false;
-
-    string strFirst(first);
-    string strSecond(second);
-    transform(strFirst.begin(), strFirst.end(), strFirst.begin(),
-              (int(*)(int))toupper);
-    transform(strSecond.begin(), strSecond.end(), strSecond.begin(),
-              (int(*)(int))toupper);
-
-    return (strFirst == strSecond);
-}
-

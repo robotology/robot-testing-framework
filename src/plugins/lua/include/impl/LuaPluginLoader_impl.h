@@ -81,7 +81,8 @@ public:
 
 private:
     bool getLocalFunction(const char *name);
-    bool registerExtraFunctions(void);    
+    bool registerExtraFunctions(void);
+
     // lua accessible fucntions
     static int setName(lua_State* L);
     static int assertError(lua_State* L);

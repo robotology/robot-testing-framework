@@ -9,7 +9,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 
 find_package(RTF)
-find_package(RTF COMPONENTS DLL)
 
 include_directories(${CMAKE_SOURCE_DIR}
                     ${RTF_INCLUDE_DIRS})

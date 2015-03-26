@@ -23,6 +23,11 @@ using namespace RTF::plugin;
 /**
  * @brief LuaPluginLoaderImpl
  */
+#define LUA_TEST_CHECK  "function TestCase.testCheck(condition, message) \
+                           if(not (condition)) then \
+                                TestCase.testFail(tostring(condition), message) \
+                            end \
+                        end"
 
 #if LUA_VERSION_NUM > 501
 const struct luaL_Reg LuaPluginLoaderImpl::luaPluginLib [] = {
@@ -61,10 +66,20 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename) {
 
     // initiate lua state
     L = luaL_newstate();
-    luaL_openlibs(L);
+    luaL_openlibs(L);    
 
-    // register helper functions
+    //lua_getglobal( L, "package" );
+    //lua_getfield( L, -1, "path" ); // get field "path" from table at top of stack (-1)
+    //std::string cur_path = lua_tostring( L, -1 ); // grab path string from top of stack
+
+    // register helper functions and assertions
     registerExtraFunctions();
+    if( luaL_dostring(L, LUA_TEST_CHECK)) {
+        error = Asserter::format("Cannot load LUA_TEST_CHECK because %s",
+                                 lua_tostring(L, -1));
+        close();
+        return NULL;
+    }
 
     if(luaL_loadfile(L, filename.c_str())) {
         error = Asserter::format("Cannot load lua script %s because %s",
@@ -80,9 +95,8 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename) {
         return NULL;
     }
 
-    /**
-     * TODO: make TestCase's element read only!
-     */
+
+     // TODO: make TestCase's element read only!
     lua_pushlightuserdata(L, this);
     lua_setglobal(L, "TestCase_Owner");
 
@@ -255,8 +269,9 @@ int LuaPluginLoaderImpl::testReport(lua_State* L) {
 }
 
 int LuaPluginLoaderImpl::testFail(lua_State* L) {
-    const char *cst = luaL_checkstring(L, 1);
-    if(cst) {
+    const char *cond = luaL_checkstring(L, 1);
+    const char *cst = luaL_checkstring(L, 2);
+    if(cond && cst) {
         lua_getglobal(L, "TestCase_Owner");
         if(!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -266,7 +281,7 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
         RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
-        RTF::Asserter::check(false, RTF::TestMessage("check failed",
+        RTF::Asserter::check(false, RTF::TestMessage("checking ("+string(cond)+")",
                                                cst, owner->getFileName(), 0), (TestCase*)owner);
     }
     return 0;

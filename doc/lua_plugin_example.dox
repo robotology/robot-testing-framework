@@ -1,0 +1,117 @@
+/*
+ * Copyright (C) 2015 iCub Facility
+ * Authors: Ali Paikan
+ * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ *
+ */
+
+/**
+
+@page rtf_lua_plugin_example Using Lua to develop test cases
+
+\author Ali Paikan
+
+<br>
+\section lua-desc Description
+Test cases can be written using Lua scripting language (e.g., .lua) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
+
+\note The source code of the tutorial can be also found in the \c 'examples/lua-plugin' folder within the RTF project directory.
+
+<br>
+\section lua-req Requirements
+You need the Lua development library to use the plug-ins. On most of the Linux distribution it can be easily installed using the package manager (e.g., `   $ sudo apt-get install liblua5.1-0-dev`). If you use Windows, try <a href="https://code.google.com/p/luaforwindows/">Lua for Windows</a>, an easy-to-use distribution of Lua packed with several useful libraries. OSX users can also uses Lua binaries from http://lua-users.org/wiki/LuaBinaries. 
+
+After installing the Lua development package, you need to enable the Lua plug-in system in the RTF and recompile it: 
+
+\verbatim
+   $ cd robot-testing/build
+   $ cmake ../ -DENABLE_LUA_PLUGIN=ON
+\endverbatim
+
+<br>
+\section lua-write Writing the test case in Lua 
+Writing test cases in Lua is simple. All you need is to declare the `TestCase.run()` function and implement you test body. The `TestCase.setup` and `TestCase.tearDown` can be also optionally defined to setup or tear down the user defined fixture. It is also a good practice to provide a name for the test case using `TestCase.setName()`. 
+
+\htmlonly
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">--</span>
+<span style="color: #888888">-- TestCase table is used by the lua plugin loader</span>
+<span style="color: #888888">-- to invoke the corresponding methods:</span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">-- TestCase.setup = function(parameter) ... return true end</span>
+<span style="color: #888888">-- TestCase.run = function() ... end </span>
+<span style="color: #888888">-- TestCase.tearDown = function() ... end </span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">-- The following methods are for reporting, failure or assertions: </span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">-- TestCase.setName(name)             : sets the test name</span>
+<span style="color: #888888">-- TestCase.testReport(msg)           : reports a informative message</span>
+<span style="color: #888888">-- TestCase.testCheck(condition, msg) : reports a failure message</span>
+<span style="color: #888888">-- TestCase.assertError(msg)          : throws an error exception with message</span>
+<span style="color: #888888">-- TestCase.asserFail(msg)            : throws a failure exception with message</span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">-- setup is called before the test run to setup </span>
+<span style="color: #888888">-- user defined fixture</span>
+<span style="color: #888888">-- @return Boolean (true/false uppon success or failure)</span>
+<span style="color: #888888">--</span>
+TestCase.setup = <span style="color: #008800; font-weight: bold">function</span>(parameter)
+    TestCase.setName(<span style="color: #dd2200; background-color: #fff0f0">&quot;MyTest&quot;</span>)
+    TestCase.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Preparing setup...&quot;</span>)
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">true</span>;
+<span style="color: #008800; font-weight: bold">end</span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">-- The implementation of the test goes here</span>
+<span style="color: #888888">-- @return Boolean</span>
+<span style="color: #888888">--</span>
+TestCase.run = <span style="color: #008800; font-weight: bold">function</span>()
+    TestCase.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Checking bigger...&quot;</span>)
+    TestCase.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&gt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is not bigger than 3.&quot;</span>)
+    TestCase.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Checking smaller...&quot;</span>)
+    TestCase.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&lt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is not smaller than 3.&quot;</span>)
+<span style="color: #008800; font-weight: bold">end</span>
+<span style="color: #888888">--</span>
+<span style="color: #888888">-- tearDown is called after the test run to tear down</span>
+<span style="color: #888888">-- user defined fixture</span>
+<span style="color: #888888">--</span>
+TestCase.tearDown = <span style="color: #008800; font-weight: bold">function</span>()
+    TestCase.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Tearing down...&quot;</span>)
+<span style="color: #008800; font-weight: bold">end</span>
+</pre></div>
+
+\endhtmlonly
+
+
+<br>
+\section lua-runner Writing the test runner
+\note Basically you do not need to develop a test runner. There is the \c testrunner utility (see \ref testrunner) already implemented in RTF which does the job for you. However, the following example is just for your reference and to understand better how a Lua test plug-ing can be loaded and executed from the code. 
+
+Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::LuaPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::LuaPluginLoader class and call its \c open() method with the plug-in library (i.e., .lua) filename as its paramter.  The RTF::plugin::LuaPluginLoader loads the library and returns a pointer to the RTF::TestCase implemented into the plug-in.
+If the Lua plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::plugin::LuaPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::LuaPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
+
+\include lua-plugin/run.cpp
+
+<br>
+\section lua-build Building the test runner and run the test 
+Now you can compile and build the the runner. There is a Cmake file in the \c examples/lua-plugin folder which helps you to compile and build your simple test runner. Make sure that \c RTF_DIR environment variable is correctly set to point your RTF build or installed directory so that Cmake can find the required modules to configure the project. 
+
+\include lua-plugin/CMakeLists.txt
+<br>
+Now you can build and run the test as follows: 
+\verbatim
+$ cd examples/lua-plugin; mkdir build
+$ cd build; cmake ../; make;
+$ ./simple_run ../mytest.lua
+Loading the plugin... 
+Staring test runner.
+Test case  started...
+[INFO]  (MyTest) reports: Preparing setup...
+[INFO]  (MyTest) reports: Checking bigger...
+[INFO]  (MyTest) reports: Checking smaller...
+[FAIL]  (MyTest) checking (false): 5 is not smaller than 3.
+[INFO]  (MyTest) reports: Tearing down...
+Test case MyTest failed!
+Ending test runner.
+\endverbatim
+
+*/
+

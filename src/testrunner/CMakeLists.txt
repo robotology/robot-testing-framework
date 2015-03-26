@@ -18,6 +18,7 @@ get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
 get_property(RTF_INTERNAL_DEFS GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 add_definitions(${RTF_INTERNAL_DEFS})
+message(STATUS  ${RTF_INTERNAL_DEFS})
 include_directories(./include
                     ${RTF_TREE_INCLUDE_DIRS}
                     ${TinyXML_INCLUDE_DIRS}

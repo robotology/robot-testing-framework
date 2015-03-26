@@ -15,7 +15,7 @@
 #include <vector>
 #include <TestRunner.h>
 #include <TestCase.h>
-#include <DllPluginLoader.h>
+#include <PluginLoader.h>
 
 /**
  * class PluginRunner
@@ -58,9 +58,8 @@ public:
      */
     void reset();
 
-protected:
-    bool compare(const char *first, const char *second);    
-    std::vector<RTF::plugin::DllPluginLoader*> dllLoaders;
+protected:    
+    std::vector<RTF::plugin::PluginLoader*> dllLoaders;
 
 private:
     bool loadPluginsFromPath(std::string path);    

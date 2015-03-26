@@ -20,7 +20,7 @@
 
 <br>
 \section desc Description
-The \c testrunner is a command line tool to load and run multiple tests which has been developed as RTF plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as \c *.so, \c *.dll or *.dylib. The \c testrunner can be used to run a single test case, multiple test cases from a given path, a \ref suit or multiple test suits from a given path.  
+The \c testrunner is a command line tool to load and run multiple tests which has been developed as RTF plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as \c *.so, \c *.dll or *.dylib or using Lua scripting language (i.e., .lua). The \c testrunner can be used to run a single test case, multiple test cases from a given path, a \ref suit or multiple test suits from a given path.  
 
 <br>
 \section single Running a single test case  
@@ -34,6 +34,12 @@ The \c testrunner follows the platform policy to look for the plug-in file. On a
 
 \verbatim
  $ testrunner --verbose --test ~/my-plugins/libmytest.so
+\endverbatim
+
+In the similar way you can run a test case which has been developed using Lua: 
+
+\verbatim
+ $ testrunner --verbose --test ~/my-plugins/mytest.lua
 \endverbatim
 
 The \c `--verbose` enables the verbose mode which allows that the result of the tests to be also written to the standard out put. By default the result of the test are stored in the \c `result.txt` which can be changed by using \c `--output` option. 
@@ -62,6 +68,7 @@ By definition, a test suit is a set of test cases which share the same test fixt
 
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
     ...
 <span style="color: #007700">&lt;/suit&gt;</span>
 </pre></div>
