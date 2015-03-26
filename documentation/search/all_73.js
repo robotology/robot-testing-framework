@@ -7,6 +7,7 @@ var searchData=
   ['setenvironment',['setEnvironment',['../classRTF_1_1TestCase.html#ae877b688931b581fe06978e32dbdd18c',1,'RTF::TestCase']]],
   ['setfixturemanager',['setFixtureManager',['../classRTF_1_1TestSuit.html#a9518b89d0d8dbaeb00bb520ff4019c27',1,'RTF::TestSuit']]],
   ['setmessage',['setMessage',['../classRTF_1_1TestMessage.html#a53f850d062093aef0d1d2c7bb8f32acd',1,'RTF::TestMessage']]],
+  ['setname',['setName',['../classRTF_1_1Test.html#a5d74150865c78e1ea4ddafaf4b5be953',1,'RTF::Test']]],
   ['setparam',['setParam',['../classRTF_1_1FixtureManager.html#a471ac4fa4a27b211a9c7c5f9f838a1fa',1,'RTF::FixtureManager::setParam()'],['../classRTF_1_1TestCase.html#aabed396eb13fb38b417b18184f57b55c',1,'RTF::TestCase::setParam()']]],
   ['setsourcefilename',['setSourceFileName',['../classRTF_1_1TestMessage.html#aca9e2e2d658dac3c98b64ac5f88068c8',1,'RTF::TestMessage']]],
   ['setsourcelinenumber',['setSourceLineNumber',['../classRTF_1_1TestMessage.html#a86994aac8768f3ad8d9d98bba2e32bd6',1,'RTF::TestMessage']]],

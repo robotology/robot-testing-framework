@@ -1,6 +1,6 @@
 <map id="src/rtf/include/FixtureManager.h" name="src/rtf/include/FixtureManager.h">
-<area shape="rect" id="node3" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="12,92,177,121"/>
-<area shape="rect" id="node9" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="201,83,369,130"/>
-<area shape="rect" id="node5" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="12,179,177,208"/>
-<area shape="rect" id="node7" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="5,256,184,285"/>
+<area shape="rect" id="node2" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="13,87,178,114"/>
+<area shape="rect" id="node5" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="202,80,370,121"/>
+<area shape="rect" id="node3" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="13,169,178,196"/>
+<area shape="rect" id="node4" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="5,244,185,271"/>
 </map>

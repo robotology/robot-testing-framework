@@ -5,6 +5,7 @@ var searchData=
   ['_7edllpluginloader',['~DllPluginLoader',['../classRTF_1_1plugin_1_1DllPluginLoader.html#ac00974054b417836f58c9937646f062c',1,'RTF::plugin::DllPluginLoader']]],
   ['_7eexception',['~Exception',['../classRTF_1_1Exception.html#a6a8d12e1729ab8754e065c0893841525',1,'RTF::Exception']]],
   ['_7efixturemanager',['~FixtureManager',['../classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577',1,'RTF::FixtureManager']]],
+  ['_7epluginloader',['~PluginLoader',['../classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4',1,'RTF::plugin::PluginLoader']]],
   ['_7eresultevent',['~ResultEvent',['../classRTF_1_1ResultEvent.html#a6195901c9ca608998707484c11af6d74',1,'RTF::ResultEvent']]],
   ['_7etest',['~Test',['../classRTF_1_1Test.html#a1c7f9b940e90f4a616d85ed0686f2896',1,'RTF::Test']]],
   ['_7etestcase',['~TestCase',['../classRTF_1_1TestCase.html#a0b3736e2100052247ebcd46bff63309a',1,'RTF::TestCase']]],

@@ -1,10 +1,11 @@
 <map id="src/rtf/include/TestResult.h" name="src/rtf/include/TestResult.h">
-<area shape="rect" id="node3" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="125,83,331,112"/>
-<area shape="rect" id="node5" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="5,169,171,199"/>
-<area shape="rect" id="node13" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="355,83,528,112"/>
-<area shape="rect" id="node18" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="552,83,736,112"/>
-<area shape="rect" id="node11" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,161,363,207"/>
-<area shape="rect" id="node7" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="161,256,327,285"/>
-<area shape="rect" id="node9" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="155,333,333,363"/>
-<area shape="rect" id="node16" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="437,161,584,207"/>
+<area shape="rect" id="node2" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="162,80,369,107"/>
+<area shape="rect" id="node3" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="5,162,171,189"/>
+<area shape="rect" id="node7" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="393,80,567,107"/>
+<area shape="rect" id="node10" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="591,80,775,107"/>
+<area shape="rect" id="node6" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,155,363,196"/>
+<area shape="rect" id="node4" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="205,251,371,278"/>
+<area shape="rect" id="node5" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="198,333,378,360"/>
+<area shape="rect" id="node8" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="438,162,629,189"/>
+<area shape="rect" id="node9" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="527,244,673,285"/>
 </map>
