@@ -1,3 +1,4 @@
 <map id="RTF::plugin::PluginLoader" name="RTF::plugin::PluginLoader">
 <area shape="rect" id="node2" href="$classRTF_1_1plugin_1_1DllPluginLoader.html" title="The DllPluginLoader loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="5,80,195,107"/>
+<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="219,80,413,107"/>
 </map>

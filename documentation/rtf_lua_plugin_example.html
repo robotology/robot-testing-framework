@@ -152,7 +152,7 @@ TestCase.tearDown = <span style="color: #008800; font-weight: bold">function</sp
 <h1><a class="anchor" id="lua-runner"></a>
 Writing the test runner</h1>
 <dl class="section note"><dt>Note</dt><dd>Basically you do not need to develop a test runner. There is the <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) already implemented in <a class="el" href="namespaceRTF.html">RTF</a> which does the job for you. However, the following example is just for your reference and to understand better how a Lua test plug-ing can be loaded and executed from the code.</dd></dl>
-<p>Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::LuaPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of <code>RTF::plugin::LuaPluginLoader</code> class and call its <code>open()</code> method with the plug-in library (i.e., .lua) filename as its paramter. The RTF::plugin::LuaPluginLoader loads the library and returns a pointer to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> implemented into the plug-in. If the Lua plug-in cannot be loaded or it is not an <a class="el" href="namespaceRTF.html">RTF</a> plug-in file, the RTF::plugin::LuaPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::LuaPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see <a class="el" href="rtf_examples.html">Some examples</a> if you are not familiar with running a test case). In the following example we use a <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">RTF::TestRunner</a> to execute our test:</p>
+<p>Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::LuaPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of <code><a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::LuaPluginLoader</a></code> class and call its <code>open()</code> method with the plug-in library (i.e., .lua) filename as its paramter. The <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::LuaPluginLoader</a> loads the library and returns a pointer to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> implemented into the plug-in. If the Lua plug-in cannot be loaded or it is not an <a class="el" href="namespaceRTF.html">RTF</a> plug-in file, the <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#a42558aa785b5b69895cced4dc2de4c87" title="open Loads a test case plugin">RTF::plugin::LuaPluginLoader::open()</a> returns a null pointer and the error message can be gotten using <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#abd2c50caafd583366694118a24f0f2ca" title="getLastError gets the last error if any.">RTF::plugin::LuaPluginLoader::getLastError()</a>. When you have an instance of your test case, it can be used to run the test as usual (see <a class="el" href="rtf_examples.html">Some examples</a> if you are not familiar with running a test case). In the following example we use a <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">RTF::TestRunner</a> to execute our test:</p>
 <div class="fragment"><div class="line"><span class="comment">// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -168,7 +168,7 @@ Writing the test runner</h1>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">ConsoleListener.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestRunner_8h.html">TestRunner.h</a>&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;LuaPluginLoader.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="LuaPluginLoader_8h.html">LuaPluginLoader.h</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span>RTF;</div>
@@ -184,10 +184,10 @@ Writing the test runner</h1>
 <div class="line"></div>
 <div class="line">    <span class="comment">// load the test case plugin</span></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Loading the plugin... \n&quot;</span>);</div>
-<div class="line">    LuaPluginLoader loader;</div>
-<div class="line">    <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>* test = loader.open(argv[1]);</div>
+<div class="line">    <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">LuaPluginLoader</a> loader;</div>
+<div class="line">    <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>* test = loader.<a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#a42558aa785b5b69895cced4dc2de4c87" title="open Loads a test case plugin">open</a>(argv[1]);</div>
 <div class="line">    <span class="keywordflow">if</span>(test == NULL) {</div>
-<div class="line">        printf(<span class="stringliteral">&quot;%s\n&quot;</span>, loader.getLastError().c_str());</div>
+<div class="line">        printf(<span class="stringliteral">&quot;%s\n&quot;</span>, loader.<a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#abd2c50caafd583366694118a24f0f2ca" title="getLastError gets the last error if any.">getLastError</a>().c_str());</div>
 <div class="line">        <span class="keywordflow">return</span> 0;</div>
 <div class="line">    }</div>
 <div class="line"></div>
@@ -247,7 +247,7 @@ Ending test runner.
 </pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 16:46:48 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
