@@ -21,8 +21,9 @@ namespace RTF {
 }
 
 /**
- * @brief The PluginLoader loads an test case plug-in and
- * gives the direct access to the TestCase.
+ * @brief The PluginLoader is an abstract class for loading a test case plug-in and
+ * gives the direct access to the TestCase. The PluginLoader class needs to be implemented 
+ * by a plugin-specific loader. 
  */
 class RTF::plugin::PluginLoader {
 

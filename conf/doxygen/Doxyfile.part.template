@@ -164,7 +164,9 @@ STRIP_FROM_PATH        = @CMAKE_SOURCE_DIR@
 STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/src/rtf/include/ \
                          @CMAKE_SOURCE_DIR@/src/rtf \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include \
+                         @CMAKE_SOURCE_DIR@/src/plugins/lua/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/src \
+                         @CMAKE_SOURCE_DIR@/src/plugins/lua/src \
                          @CMAKE_SOURCE_DIR@/doc
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
@@ -761,6 +763,7 @@ WARN_LOGFILE           =
 
 INPUT                  = @CMAKE_SOURCE_DIR@/src/rtf/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include \
+                         @CMAKE_SOURCE_DIR@/src/plugins/lua/include \
                          @CMAKE_SOURCE_DIR@/doc
 
 # This tag can be used to specify the character encoding of the source files
@@ -803,7 +806,8 @@ EXCLUDE                = @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibrar
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibraryFactory.h \ 
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/Vocab.h \ 
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/config.h \
-                         @CMAKE_SOURCE_DIR@/src/plugins/dll/include/impl/DllPluginLoader_impl.h
+                         @CMAKE_SOURCE_DIR@/src/plugins/dll/include/impl/DllPluginLoader_impl.h \
+                         @CMAKE_SOURCE_DIR@/src/plugins/lua/include/impl/LuaPluginLoader_impl.h
 
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
