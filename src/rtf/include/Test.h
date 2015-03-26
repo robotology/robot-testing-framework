@@ -80,6 +80,15 @@ public:
      */
     virtual bool succeeded() const = 0;
 
+protected:
+    /**
+     * @brief setName setting the test name
+     * @param name the test name
+     */
+    void setName(std::string name) {
+        strName = name;
+    }
+
 private:
     std::string strName;
     std::string strDescription;

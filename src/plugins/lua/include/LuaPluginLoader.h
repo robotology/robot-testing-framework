@@ -8,8 +8,8 @@
  */
 
 
-#ifndef _RTF_DLLPLUGINLOADER_H
-#define _RTF_DLLPLUGINLOADER_H
+#ifndef _RTF_LUAPLUGINLOADER_H
+#define _RTF_LUAPLUGINLOADER_H
 
 #include <string>
 #include <TestCase.h>
@@ -17,27 +17,27 @@
 
 namespace RTF {
     namespace plugin {
-        class DllPluginLoader;
+        class LuaPluginLoader;
     }
 }
 
 /**
- * @brief The DllPluginLoader loads an test case plug-in and
+ * @brief The LuaPluginLoader loads an test case plug-in and
  * gives the direct access to the TestCase.
  */
-class RTF::plugin::DllPluginLoader : RTF::plugin::PluginLoader{
+class RTF::plugin::LuaPluginLoader : public RTF::plugin::PluginLoader {
 
 public:
 
     /**
-     * DllPluginLoader constructor
+     * LuaPluginLoader constructor
      */
-    DllPluginLoader();
+    LuaPluginLoader();
 
     /**
-     *  DllPluginLoader destructor
+     *  LuaPluginLoader destructor
      */
-    virtual ~DllPluginLoader();
+    virtual ~LuaPluginLoader();
 
     /**
      * @brief open Loads a test case plugin
@@ -63,4 +63,4 @@ private:
     void* implementaion;
 };
 
-#endif // _RTF_DLLPLUGINLOADER_H
+#endif // _RTF_LUAPLUGINLOADER_H

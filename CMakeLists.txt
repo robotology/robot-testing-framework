@@ -38,6 +38,7 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
+option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
 option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 
@@ -63,10 +64,12 @@ set(BUILD_RTF_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/rtf/include)
 set(INSTALL_RTF_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
 set(BUILD_RTF_DLL_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/dll/include)
 set(INSTALL_RTF_DLL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include/dll)
+set(BUILD_RTF_LUA_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/lua/include)
+set(INSTALL_RTF_LUA_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include/lua)
+
 install_basic_package_files(RTF
                             VERSION ${RTF_VERSION}
                             COMPATIBILITY AnyNewerVersion
                             TARGETS_PROPERTY RTF_LIBS
-                            EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR)
-
+                            EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR LUA_INCLUDEDIR)
 

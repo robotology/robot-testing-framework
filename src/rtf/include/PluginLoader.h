@@ -8,36 +8,35 @@
  */
 
 
-#ifndef _RTF_DLLPLUGINLOADER_H
-#define _RTF_DLLPLUGINLOADER_H
+#ifndef _RTF_PLUGINLOADER_H
+#define _RTF_PLUGINLOADER_H
 
 #include <string>
 #include <TestCase.h>
-#include <PluginLoader.h>
 
 namespace RTF {
     namespace plugin {
-        class DllPluginLoader;
+        class PluginLoader;
     }
 }
 
 /**
- * @brief The DllPluginLoader loads an test case plug-in and
+ * @brief The PluginLoader loads an test case plug-in and
  * gives the direct access to the TestCase.
  */
-class RTF::plugin::DllPluginLoader : RTF::plugin::PluginLoader{
+class RTF::plugin::PluginLoader {
 
 public:
 
     /**
-     * DllPluginLoader constructor
+     * PluginLoader constructor
      */
-    DllPluginLoader();
+    PluginLoader() { }
 
     /**
-     *  DllPluginLoader destructor
+     *  PluginLoader destructor
      */
-    virtual ~DllPluginLoader();
+    virtual ~PluginLoader() { }
 
     /**
      * @brief open Loads a test case plugin
@@ -45,22 +44,20 @@ public:
      * @return A pointer to the test case loaded from the
      * plugin or a null pointer in case of failure.
      */
-    RTF::TestCase* open(const std::string filename);
+    virtual RTF::TestCase* open(const std::string filename) = 0;
 
     /**
      * @brief close Unloads the plugin and deletes any
      * allocated memory.
      */
-    void close();
+    virtual void close() = 0;
 
     /**
      * @brief getLastError gets the last error if any.
      * @return returns the last error string.
      */
-    const std::string getLastError();
-
-private:
-    void* implementaion;
+    virtual const std::string getLastError() = 0;
 };
 
-#endif // _RTF_DLLPLUGINLOADER_H
+#endif // _RTF_PLUGINLOADER_H
+
