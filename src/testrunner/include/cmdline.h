@@ -36,7 +36,7 @@
 #include <typeinfo>
 #include <cstring>
 #include <algorithm>
-#include <cxxabi.h>
+//#include <cxxabi.h>
 #include <cstdlib>
 
 namespace cmdline{
@@ -104,11 +104,12 @@ Target lexical_cast(const Source &arg)
 
 static inline std::string demangle(const std::string &name)
 {
-  int status=0;
-  char *p=abi::__cxa_demangle(name.c_str(), 0, 0, &status);
-  std::string ret(p);
-  free(p);
-  return ret;
+  //int status=0;
+  //char *p=abi::__cxa_demangle(name.c_str(), 0, 0, &status);
+  //std::string ret(p);
+  //free(p);
+  //return ret;
+    return name;
 }
 
 template <class T>
