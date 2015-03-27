@@ -18,7 +18,12 @@ source_group("Header Files" FILES ${folder_header})
 
 include_directories(${RTF_TREE_INCLUDE_DIRS})
 
-add_library(RTF STATIC ${folder_source} ${folder_header})
+if(WIN32)
+    add_library(RTF STATIC ${folder_source} ${folder_header})
+else()
+    add_library(RTF SHARED ${folder_source} ${folder_header})
+endif()
+
 target_link_libraries(RTF)
 
 # choose which header files should be installed 
