@@ -14,15 +14,14 @@ for rapid development of test units to cover different levels of system testing.
 Installation
 ------------
 RTF library does not depend on any external library. The RTF framework has a testrunner utility (see Running test case plug-ins
-using testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a
-simple XML files. The testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation
+using testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using simple XML files. The testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation
 of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered
 with the RTF.
 
 
 Compile and Build
 -----------------
-The installation is easy, straightforward and uses Cmake building system.
+The installation is easy, straightforward and uses the CMake build system.
 ```
     $ git clone https://github.com/robotology/robot-testing.git
     $ cd robot-testing
@@ -37,7 +36,7 @@ and optionally:
 
 Configuration
 -------------
-The only thing you need to configure is the RTF_DIR environment variable so that cmake can find RTF libraries and header files.
+The only thing you need to configure is the RTF_DIR environment variable so that CMake can find RTF libraries and header files.
 
 For example on Linux/Mac:
 ```
