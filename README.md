@@ -65,5 +65,5 @@ Documentation
 
 Authors
 -------
-* Ali Paikan (alipaikan.com)
+* Ali Paikan ([*personal page*](alipaikan.com))
 
