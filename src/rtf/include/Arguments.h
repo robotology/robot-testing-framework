@@ -11,6 +11,7 @@
 #ifndef _RTF_ARGUMENTS_H
 #define _RTF_ARGUMENTS_H
 
+#include <rtf_config.h>
 
 namespace RTF {
     class Arguments;
@@ -30,7 +31,7 @@ public:
      * @param argc  The parsed argument count
      * @param argv The parsed arguments
      */
-    static void parse(char *azParam,
+    static RTF_API void parse(char *azParam,
                       int *argc, char **argv);
 
 private:
@@ -39,7 +40,7 @@ private:
      * @param line A line
      * @param args Splited arguments
      */
-    static void split(char *line, char **args);
+    static RTF_API void split(char *line, char **args);
 
 };
 #endif // _RTF_ARGUMENTS_H

@@ -11,7 +11,7 @@
 #ifndef _RTF_ASSERTER_H
 #define _RTF_ASSERTER_H
 
-
+#include <rtf_config.h>
 #include <Exception.h>
 #include <TestMessage.h>
 #include <TestCase.h>
@@ -37,7 +37,7 @@ public:
      * given message.
      * @param msg The corresponding failure message
      */
-    static void fail(RTF::TestMessage msg);
+    static RTF_API void fail(RTF::TestMessage msg);
 
     /**
      * @brief fail Throw a failure exception if the
@@ -45,7 +45,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding failure message
      */
-    static void fail(bool condition,
+    static RTF_API void fail(bool condition,
                        RTF::TestMessage msg);
 
     /**
@@ -53,7 +53,7 @@ public:
      * given message.
      * @param msg The corresponding error message
      */
-    static void error(RTF::TestMessage msg);
+    static RTF_API void error(RTF::TestMessage msg);
 
     /**
      * @brief error Throw an error exception if the
@@ -61,7 +61,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding error message
      */
-    static void error(bool condition,
+    static RTF_API void error(bool condition,
                        RTF::TestMessage msg);
 
     /**
@@ -71,7 +71,7 @@ public:
      * @param testsuit The owner of the message (reporter)
      * @note report does not throw any exception!
      */
-    static void report(RTF::TestMessage msg,
+    static RTF_API void report(RTF::TestMessage msg,
                         RTF::TestSuit* testsuit);
 
     /**
@@ -81,7 +81,7 @@ public:
      * @param testcase The owner of the message (reporter)
      * @note report does not throw any exception!
      */
-    static void report(RTF::TestMessage msg,
+    static RTF_API void report(RTF::TestMessage msg,
                         RTF::TestCase* testcase);
 
     /**
@@ -93,7 +93,7 @@ public:
      * @param testcase The owner of the message (reporter)
      * @note check does not throw any exception!
      */
-    static void check(bool condition,
+    static RTF_API void check(bool condition,
                       RTF::TestMessage msg,
                       RTF::TestCase* testcase);
 
@@ -103,7 +103,7 @@ public:
      * @param msg a format-control string
      * @return the formated std::string
      */
-    static std::string format(const char* msg, ...);
+    static RTF_API std::string format(const char* msg, ...);
 };
 
 #endif // _RTF_ASSERTER_H

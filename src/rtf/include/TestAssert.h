@@ -11,7 +11,7 @@
 #ifndef _RTF_TESTASSERTER_H
 #define _RTF_TESTASSERTER_H
 
-
+#include <rtf_config.h>
 #include <Asserter.h>
 
 

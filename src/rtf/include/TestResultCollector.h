@@ -11,6 +11,7 @@
 #ifndef _RTF_TESTRESULTCOLLECTOR_H
 #define _RTF_TESTRESULTCOLLECTOR_H
 
+#include <rtf_config.h>
 #include <TestListener.h>
 #include <ResultEvent.h>
 
@@ -32,7 +33,7 @@ namespace RTF {
  * Here's an example of using a TestResultCollector:
  * \include examples/simple_collector.cpp
  */
-class RTF::TestResultCollector : public RTF::TestListener {
+class RTF_API RTF::TestResultCollector : public RTF::TestListener {
 
 public:
     typedef std::vector<RTF::ResultEvent*> EventResultContainer;

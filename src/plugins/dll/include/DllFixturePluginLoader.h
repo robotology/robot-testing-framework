@@ -11,6 +11,7 @@
 #ifndef _RTF_DLLFIXTUREPLUGINLOADER_H
 #define _RTF_DLLFIXTUREPLUGINLOADER_H
 
+#include <rtf_dll_config.h>
 #include <string>
 #include <FixtureManager.h>
 
@@ -24,7 +25,7 @@ namespace RTF {
  * @brief The DllFixturePluginLoader loads an test case plug-in and
  * gives the direct access to the TestCase.
  */
-class RTF::plugin::DllFixturePluginLoader {
+class SHLIBPP_EXPORT RTF::plugin::DllFixturePluginLoader {
 
 public:
 

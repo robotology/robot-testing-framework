@@ -24,6 +24,8 @@ include(RTFDoc)
 # include some helper functions
 include(InstallBasicPackageFiles)
 include(GNUInstallDirs)
+include (GenerateExportHeader)
+
 
 # add some property to collect some information about 
 # what have been built 

@@ -13,6 +13,7 @@
 #include <PlatformDir.h>
 #include <tinyxml.h>
 #include <PluginFactory.h>
+#include <DllFixturePluginLoader.h>
 
 using namespace std;
 using namespace RTF;

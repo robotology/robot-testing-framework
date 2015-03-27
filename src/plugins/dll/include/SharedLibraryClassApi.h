@@ -13,7 +13,7 @@
 #include <string.h>
 #include <string>
 
-#include "config.h"
+#include "rtf_dll_config.h"
 
 
 namespace shlibpp {

@@ -17,7 +17,8 @@ source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})
 
 include_directories(${RTF_TREE_INCLUDE_DIRS})
-add_library(RTF SHARED ${folder_source} ${folder_header})
+
+add_library(RTF STATIC ${folder_source} ${folder_header})
 target_link_libraries(RTF)
 
 # choose which header files should be installed 

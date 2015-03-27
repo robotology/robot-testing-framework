@@ -7,10 +7,14 @@
  *
  */
 
+#if defined(WIN32)
+#	pragma once
+#endif 
 
 #ifndef _RTF_PLUGINLOADER_H
 #define _RTF_PLUGINLOADER_H
 
+#include <rtf_config.h>
 #include <string>
 #include <TestCase.h>
 
@@ -25,7 +29,7 @@ namespace RTF {
  * gives the direct access to the TestCase. The PluginLoader class needs to be implemented 
  * by a plugin-specific loader. 
  */
-class RTF::plugin::PluginLoader {
+class RTF_API RTF::plugin::PluginLoader {
 
 public:
 

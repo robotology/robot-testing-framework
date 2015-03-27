@@ -11,6 +11,7 @@
 #ifndef _RTF_RESULTEVENT_H
 #define _RTF_RESULTEVENT_H
 
+#include <rtf_config.h>
 #include <Test.h>
 #include <TestMessage.h>
 
@@ -31,7 +32,7 @@ namespace RTF {
  * to collect the result of the tests and the corresponding messages
  * issued during the test run.
  */
-class RTF::ResultEvent {
+class RTF_API RTF::ResultEvent {
 public:
     /**
      * @brief ResultEvent constructor
@@ -79,7 +80,7 @@ private:
 /**
  * @brief The ResultEventReport class keeps a test report event
  */
-class RTF::ResultEventReport : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventReport : public RTF::ResultEvent {
 public:
     ResultEventReport(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
@@ -89,7 +90,7 @@ public:
 /**
  * @brief The ResultEventError class keeps a test error event
  */
-class RTF::ResultEventError : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventError : public RTF::ResultEvent {
 public:
     ResultEventError(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
@@ -98,7 +99,7 @@ public:
 /**
  * @brief The ResultEventFailure class keeps a failure event
  */
-class RTF::ResultEventFailure : public ResultEvent {
+class RTF_API RTF::ResultEventFailure : public ResultEvent {
 public:
    ResultEventFailure(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
@@ -107,7 +108,7 @@ public:
 /**
  * @brief The ResultEventStartTest class keeps a test starting event
  */
-class RTF::ResultEventStartTest : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventStartTest : public RTF::ResultEvent {
 public:
     ResultEventStartTest(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
@@ -116,7 +117,7 @@ public:
 /**
  * @brief The ResultEventEndTest class keeps a test ending event
  */
-class RTF::ResultEventEndTest : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventEndTest : public RTF::ResultEvent {
 public:
     ResultEventEndTest(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
@@ -125,7 +126,7 @@ public:
 /**
  * @brief The ResultEventStartSuit class keeps a test suit starting event
  */
-class RTF::ResultEventStartSuit : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventStartSuit : public RTF::ResultEvent {
 public:
     ResultEventStartSuit(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
@@ -135,7 +136,7 @@ public:
 /**
  * @brief The ResultEventEndSuit class keeps a test suit ending event
  */
-class RTF::ResultEventEndSuit : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventEndSuit : public RTF::ResultEvent {
 public:
     ResultEventEndSuit(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}

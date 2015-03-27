@@ -11,7 +11,7 @@
 #ifndef _RTF_EXCEPTION_H
 #define _RTF_EXCEPTION_H
 
-
+#include <rtf_config.h>
 #include <exception>
 #include <TestMessage.h>
 
@@ -25,7 +25,7 @@ namespace RTF {
 /**
  * @brief The RTF::Exception is a generic exception.
  */
-class RTF::Exception : public std::exception {
+class RTF_API RTF::Exception : public std::exception {
 
 public:
 
@@ -73,7 +73,7 @@ private:
  * @brief The RTF::FailureException class
  * Failure exception is used when a test or subtests fail.
  */
-class RTF::TestFailureException : public RTF::Exception {
+class RTF_API RTF::TestFailureException : public RTF::Exception {
 public:
     TestFailureException(const RTF::TestMessage& msg)
         : Exception(msg) { }
@@ -87,7 +87,7 @@ public:
  * Error exception is used when test breakdown
  * due to an error in setup, teardown or any configuration.
  */
-class RTF::TestErrorException : public RTF::Exception {
+class RTF_API RTF::TestErrorException : public RTF::Exception {
 public:
     TestErrorException(const RTF::TestMessage& msg)
         : Exception(msg) { }
@@ -102,7 +102,7 @@ public:
  * Ficture exception is used when a there is a
  * probleme during fixture setup.
  */
-class RTF::FixtureException : public RTF::Exception {
+class RTF_API RTF::FixtureException : public RTF::Exception {
 public:
     FixtureException(const RTF::TestMessage& msg)
         : Exception(msg) { }

@@ -30,7 +30,7 @@ include_directories(${RTF_TREE_INCLUDE_DIRS}
                     ./include/impl
                     ${LUA_INCLUDE_DIR})
 
-add_library(RTF_lua SHARED ${folder_source} ${folder_header} )
+add_library(RTF_lua STATIC ${folder_source} ${folder_header} )
 target_link_libraries(RTF_lua ${LUA_LIBRARY})
 
 

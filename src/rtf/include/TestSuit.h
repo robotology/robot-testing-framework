@@ -11,6 +11,7 @@
 #ifndef _RTF_TESTSUIT_H
 #define _RTF_TESTSUIT_H
 
+#include <rtf_config.h>
 #include <Test.h>
 #include <TestResult.h>
 #include <TestMessage.h>
@@ -40,7 +41,7 @@ namespace RTF {
  * Here's an example of using a TestSuit:
  * \include examples/simple_suit.cpp
  */
-class RTF::TestSuit : public RTF::Test, public RTF::FixtureEvents {
+class RTF_API RTF::TestSuit : public RTF::Test, public RTF::FixtureEvents {
 
     typedef std::set<RTF::Test*> TestContainer;
     typedef std::set<RTF::Test*>::iterator TestIterator;

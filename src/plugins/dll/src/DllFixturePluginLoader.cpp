@@ -8,6 +8,7 @@
  */
 
 #include <Plugin.h>
+#include <TestCase.h>
 #include <DllFixturePluginLoader.h>
 #include <DllPluginLoader_impl.h>
 

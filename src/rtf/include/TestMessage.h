@@ -11,7 +11,7 @@
 #ifndef _RTF_TESTMESSAGE_H
 #define _RTF_TESTMESSAGE_H
 
-
+#include <rtf_config.h>
 #include <string>
 
 namespace RTF {
@@ -23,7 +23,7 @@ namespace RTF {
  * @brief A formated message with details.
  */
 
-class RTF::TestMessage {
+class RTF_API RTF::TestMessage {
 
 public:
 

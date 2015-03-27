@@ -12,9 +12,9 @@
 #define _RTF_DLLPLUGINLOADERIMPL_H
 
 #include <Plugin.h>
-#include <Asserter.h> // used to format the string message
 #include <SharedLibrary.h>
 #include <SharedLibraryClass.h>
+#include <string>
 
 /**
  * class DllPluginLoaderImpl
@@ -60,15 +60,15 @@ public:
         // load the test case plugin
         plugin->factory.open(filename.c_str(), factory_name.c_str());
         if(!plugin->factory.isValid()) {
-            if(plugin->factory.getStatus() == VOCAB4('f','a','c','t'))
-                error = RTF::Asserter::format("cannot load plugin %s; (it is not an RTF %s plugin!)",
-                                                filename.c_str(),
-                                              (factory_name==RTF_PLUGIN_FACTORY_NAME)?"test case":"fixture manager");
-            else
-                error = RTF::Asserter::format("cannot load plugin %s; error (%s) : %s",
-                                                filename.c_str(),
-                                                shlibpp::Vocab::decode(plugin->factory.getStatus()).c_str(),
-                                                plugin->factory.getLastNativeError().c_str());
+            if(plugin->factory.getStatus() == VOCAB4('f','a','c','t')) {
+				std::string plug_type = (factory_name==RTF_PLUGIN_FACTORY_NAME) ? "test case" : "fixture manager";
+				error = "cannot load plugin " + filename + "; (it is not an RTF " +  plug_type + " plugin!)";
+			}
+           else {
+			   error = "cannot load plugin " + filename + "; error (" +
+				   shlibpp::Vocab::decode(plugin->factory.getStatus()) + ") : " + 
+				   plugin->factory.getLastNativeError(); 
+		   }
             delete plugin;
             plugin = NULL;
             return NULL;
@@ -80,8 +80,8 @@ public:
         // create an instance of the test case from the plugin
         plugin->test.open(plugin->factory);
         if(!plugin->test.isValid()) {
-            error = RTF::Asserter::format("cannot create an instance of TestCase from %s",
-                                            filename.c_str());
+            //error = RTF::Asserter::format("cannot create an instance of TestCase from %s",
+            //                                filename.c_str());
             delete plugin;
             plugin = NULL;
             return NULL;

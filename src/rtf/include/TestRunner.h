@@ -11,6 +11,7 @@
 #ifndef _RTF_TESTRUNNER_H
 #define _RTF_TESTRUNNER_H
 
+#include <rtf_config.h>
 #include <Test.h>
 #include <TestResult.h>
 
@@ -29,7 +30,7 @@ namespace RTF {
  * Here's an example of using a TestRunner:
  * \include examples/simple_runner.cpp
  */
-class RTF::TestRunner {
+class RTF_API RTF::TestRunner {
 
     typedef std::set<RTF::Test*> TestContainer;
     typedef std::set<RTF::Test*>::iterator TestIterator;

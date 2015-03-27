@@ -15,6 +15,7 @@ include_directories(${CMAKE_SOURCE_DIR}
                     ${RTF_INCLUDE_DIRS})
 
 add_library(myfixture MODULE MyFixManager.cpp MyFixManager.h)
+target_link_libraries(myfixture ${RTF_LIBRARIES})
 
 add_executable(test test.cpp)
 target_link_libraries(test ${RTF_LIBRARIES})

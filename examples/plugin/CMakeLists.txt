@@ -15,6 +15,7 @@ include_directories(${CMAKE_SOURCE_DIR}
                     ${RTF_INCLUDE_DIRS})
 
 add_library(mytest MODULE MyTest.cpp MyTest.h)
+target_link_libraries(mytest ${RTF_LIBRARIES})
 
 add_executable(simple_run run.cpp)
 target_link_libraries(simple_run ${RTF_LIBRARIES})

@@ -11,6 +11,7 @@
 #ifndef _RTF_DLLPLUGINLOADER_H
 #define _RTF_DLLPLUGINLOADER_H
 
+#include <rtf_config.h>
 #include <string>
 #include <TestCase.h>
 #include <PluginLoader.h>
@@ -25,7 +26,7 @@ namespace RTF {
  * @brief The DllPluginLoader loads an test case plug-in and
  * gives the direct access to the TestCase.
  */
-class RTF::plugin::DllPluginLoader : public RTF::plugin::PluginLoader {
+class RTF_EXPORT RTF::plugin::DllPluginLoader : public RTF::plugin::PluginLoader {
 
 public:
 

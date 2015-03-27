@@ -146,7 +146,7 @@ bool LuaPluginLoaderImpl::setup(int argc, char**argv) {
         }
 
         // converting the results
-        bool result = lua_toboolean(L, -1);
+        bool result = (bool) lua_toboolean(L, -1);
         lua_pop(L, 1);
         return result;
     }
