@@ -136,8 +136,7 @@ protected:
 private:
     RTF::TestResult* result;
     bool successful;
-    bool fixtureOK;
-    bool retried;
+    bool fixtureOK;    
     RTF::TestMessage fixtureMesssage;
     RTF::FixtureManager* fixtureManager;
     TestContainer tests;

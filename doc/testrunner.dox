@@ -67,6 +67,7 @@ By definition, a test suit is a set of test cases which share the same test fixt
     <span style="color: #007700">&lt;fixture</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myfixture.ini&quot;</span><span style="color: #007700">&gt;</span> libfixture.so <span style="color: #007700">&lt;/fixture&gt;</span>
 
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;dll&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
     ...
@@ -81,6 +82,8 @@ The environment can be used in the implementation of the test cases to know in w
 If a fixture manager plug-in is specified using \c <fixture> tag, it will be loaded by the \c testrunner and is set for the current test suit. When suit is executed, the fixture manager will be called automatically to setup and monitor the test fixture which is implemented in the fixture plug-in. (Please see the \c examples/fixture-plugin folder for an example of implementing fixture plug-ins.) 
  
 Notice that, for \c libtest2.so,  a complete path to the plug-in file is given. Thus, the \c testrunner does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for \c libtest1.so.
+
+The `testrunner` usually checks for the extension of the plug-in file name to recognize the type of the plug-in. There is also possibility to explicitly indicate the type of the plug-in using the `type` attribute. For example if `type="dll"`, then the plug-in test should be given without the extension. Depending on which platform (Windows, Linux or Mac) the test is running, the `testrunner` looks for the correct (shared library) plug-in name (.dll, .so or .dylib). 
 
 <br>
 \section single-suit Running a single test suit

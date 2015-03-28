@@ -125,13 +125,29 @@ bool SuitRunner::loadSuit(std::string filename) {
         else if(PluginFactory::compare(test->Value(), "test") &&
                 test->GetText() != NULL) {
 
-            // load the plugin and add it to the suit
-            PluginLoader* loader = PluginFactory::create(test->GetText());
-            if(loader == NULL) {
-                ErrorLogger::Instance().addError("cannot create any known plug-in loader for " + filename);
-                return false;
+            PluginLoader* loader;
+            std::string pluginName = test->GetText();
+            if(test->Attribute("type")) {
+                loader = PluginFactory::createByType(test->Attribute("type"));
+                if(PluginFactory::compare(test->Attribute("type"), "dll")) {
+#ifdef _WIN32
+                   pluginName =  pluginName + ".dll";
+#elif __APPLE__
+                    pluginName =  pluginName + ".dylib";
+#else
+                    pluginName =  pluginName + ".so";
+#endif
+                }
             }
-            TestCase* testcase = loader->open(test->GetText());
+            else
+                loader = PluginFactory::createByName(test->GetText());
+
+            if(loader == NULL) {
+                ErrorLogger::Instance().addError("cannot create any known plug-in loader for " +
+                                                 pluginName);
+                continue;
+            }
+            TestCase* testcase = loader->open(pluginName);
 
             if(testcase != NULL) {
                 // set the test case environment

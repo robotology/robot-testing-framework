@@ -16,8 +16,7 @@ using namespace RTF;
 TestSuit::TestSuit(std::string name)
     : RTF::Test(name),
     successful(true),
-    fixtureOK(true),
-    retried(false),
+    fixtureOK(true),    
     fixtureMesssage(""),
     fixtureManager(NULL),
     result(NULL)
@@ -39,8 +38,7 @@ void TestSuit::removeTest(RTF::Test* test) {
 
 void TestSuit::reset() {
     tests.clear();    
-    successful = fixtureOK =  true;
-    retried = false;
+    successful = fixtureOK =  true;    
     fixtureMesssage.clear();
     fixtureManager = NULL;
     result = NULL;
@@ -85,9 +83,18 @@ void TestSuit::run(TestResult &rsl) {
 
         // calling all test's run
         for (TestIterator it=tests.begin(); it!=tests.end(); ++it) {
-            // throw an exception if fixture is not okay
-            if(!fixtureOK)
-                throw FixtureException(fixtureMesssage);
+            // restart the fixture if it has been collapsed
+            if(!fixtureOK) {
+                successful = false;
+                result->addError(this, fixtureMesssage);
+                result->addReport(this, TestMessage("reports",
+                                                    "restaring fixture setup",
+                                                    RTF_SOURCEFILE(),
+                                                    RTF_SOURCELINE()));
+                tearDown();
+                if(!setup())
+                    throw FixtureException(RTF::TestMessage("setup() failed!"));
+            }
             (*it)->run(*result);
             successful &= (*it)->succeeded();
         }
@@ -123,14 +130,7 @@ void TestSuit::run(TestResult &rsl) {
     }
 
     result->endTestSuit(this);
-
-    //check if we need to retry the test
-    if(!fixtureOK && !retried) {
-        retried = true;
-        run(*result);
-    }
 }
-
 
 
 void TestSuit::setFixtureManager(RTF::FixtureManager* manager) {

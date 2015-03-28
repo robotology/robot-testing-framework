@@ -27,7 +27,17 @@ class PluginFactory {
 
 public:
 
-    static RTF::plugin::PluginLoader* create(std::string name) {
+    static RTF::plugin::PluginLoader* createByType(std::string type) {
+        if(compare(type.c_str(), "dll"))
+            return new RTF::plugin::DllPluginLoader();
+#ifdef ENABLE_LUA_PLUGIN
+        if(compare(type.c_str(), "lua"))
+            return new RTF::plugin::LuaPluginLoader();
+#endif
+        return NULL;
+    }
+
+    static RTF::plugin::PluginLoader* createByName(std::string name) {
         if(name.size() > 3) {
             // check for windows .dll
             std::string ext = name.substr(name.size()-4,4);

@@ -41,7 +41,7 @@ void PluginRunner::reset() {
 bool PluginRunner::loadPlugin(std::string filename,
                               const std::string param,
                               const string environment) {
-    PluginLoader* loader = PluginFactory::create(filename);
+    PluginLoader* loader = PluginFactory::createByName(filename);
     if(loader == NULL) {
         ErrorLogger::Instance().addError("cannot create any known plug-in loader for " + filename);
         return false;
