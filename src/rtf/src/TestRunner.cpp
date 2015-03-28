@@ -13,7 +13,8 @@
 using namespace RTF;
 
 
-TestRunner::TestRunner() { }
+TestRunner::TestRunner()
+    : current(NULL) { }
 
 
 TestRunner::~TestRunner() {
@@ -36,8 +37,20 @@ void TestRunner::reset() {
 
 
 void TestRunner::run(RTF::TestResult &result) {
+    interrupted = false;
     result.startTestRunner();
-    for (TestIterator it=tests.begin(); it!=tests.end(); ++it)
+    for (TestIterator it=tests.begin(); it!=tests.end(); ++it) {
+        if(interrupted)
+            break;
+        current = *it;
         (*it)->run(result);
+    }
     result.endTestRunner();
+    current = NULL;
+}
+
+void TestRunner::interrupt() {
+    if(current)
+        current->interrupt();
+    interrupted = true;
 }

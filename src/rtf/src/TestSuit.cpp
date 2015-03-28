@@ -19,9 +19,8 @@ TestSuit::TestSuit(std::string name)
     fixtureOK(true),    
     fixtureMesssage(""),
     fixtureManager(NULL),
-    result(NULL)
-{
-}
+    result(NULL),
+    current(NULL) { }
 
 TestSuit::~TestSuit() {
 
@@ -70,6 +69,7 @@ void TestSuit::tearDown() {
 void TestSuit::run(TestResult &rsl) {
     this->result = &rsl;    
     successful = fixtureOK = true;
+    interrupted = false;
     fixtureMesssage.clear();
     try {
         result->startTestSuit(this);
@@ -83,6 +83,11 @@ void TestSuit::run(TestResult &rsl) {
 
         // calling all test's run
         for (TestIterator it=tests.begin(); it!=tests.end(); ++it) {
+            current = *it;
+            // interrupted?
+            if(interrupted)
+                throw TestFailureException(RTF::TestMessage("interrupted!"));
+
             // restart the fixture if it has been collapsed
             if(!fixtureOK) {
                 successful = false;
@@ -130,6 +135,7 @@ void TestSuit::run(TestResult &rsl) {
     }
 
     result->endTestSuit(this);
+    current = NULL;
 }
 
 
@@ -150,4 +156,10 @@ void TestSuit::fixtureCollapsed(RTF::TestMessage reason) {
     // by the TestSuit.
     fixtureOK = false;
     fixtureMesssage = reason;
+}
+
+void TestSuit::interrupt() {
+    if(current)
+        current->interrupt();
+    interrupted = true;
 }

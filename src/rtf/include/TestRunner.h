@@ -72,7 +72,14 @@ public:
      */
     void run(TestResult &result);
 
+    /**
+     * @brief interrupt interrupts the current test run
+     */
+    void interrupt();
+
 private:
     TestContainer tests;
+    RTF::Test* current;
+    bool interrupted;
 };
 #endif // _RTF_TESTRUNNER_H

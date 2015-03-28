@@ -75,6 +75,11 @@ public:
     virtual void run(RTF::TestResult &result) = 0;
 
     /**
+     * @brief interrupt interrupts the current test run
+     */
+    virtual void interrupt() { }
+
+    /**
      * @brief succeeded
      * @return true or false representing whether the test
      * was successful or not.

@@ -107,6 +107,11 @@ public:
     virtual void run(TestResult &result);
 
     /**
+     * @brief interrupt interrupts the current test run
+     */
+    virtual void interrupt();
+
+    /**
      * @brief succeeded
      * @return true or false representing whether the test
      * was successful or not.
@@ -134,9 +139,11 @@ protected:
     virtual void tearDown();
 
 private:
+    RTF::Test* current;
     RTF::TestResult* result;
     bool successful;
     bool fixtureOK;    
+    bool interrupted;
     RTF::TestMessage fixtureMesssage;
     RTF::FixtureManager* fixtureManager;
     TestContainer tests;
