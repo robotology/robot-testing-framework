@@ -107,7 +107,16 @@ bool SuitRunner::loadSuit(std::string filename) {
                 test->GetText() != NULL) {
                 // load the fixture manager plugin
                 DllFixturePluginLoader* loader = new DllFixturePluginLoader();
-                FixtureManager* fixture = loader->open(test->GetText());
+                std::string pluginName = test->GetText();
+
+#ifdef _WIN32
+                pluginName =  pluginName + ".dll";
+#elif __APPLE__
+                pluginName =  pluginName + ".dylib";
+#else
+                pluginName =  pluginName + ".so";
+#endif
+                FixtureManager* fixture = loader->open(pluginName);
                 if(fixture != NULL) {
                     // set the fixture manager param
                     if(test->Attribute("param"))
