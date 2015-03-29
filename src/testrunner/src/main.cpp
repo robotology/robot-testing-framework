@@ -19,7 +19,7 @@
 #include <Version.h>
 
 #if defined(WIN32)
-
+    #include <windows.h> 
 #else
     #include <unistd.h>
     #include <sys/types.h>
@@ -85,10 +85,27 @@ void signalHandler(int signum) {
         currentRunner->interrupt();
 }
 
+#if defined(WIN32)
+BOOL CtrlHandler( DWORD fdwCtrlType ) { 
+  switch( fdwCtrlType ) { 
+    // Handle the CTRL-C signal. 
+    case CTRL_C_EVENT:
+		signalHandler(0);
+		return(TRUE);
+    case CTRL_BREAK_EVENT: 
+		signalHandler(0);
+      return TRUE; 
+    default: 
+      return FALSE; 
+  } 
+} 
+#endif
+
 int main(int argc, char *argv[]) {
 
 // setup signal handler to cathc ctrl+c
 #if defined(WIN32)
+	 SetConsoleCtrlHandler((PHANDLER_ROUTINE) CtrlHandler, TRUE);
 #else
     struct sigaction new_action, old_action;
     new_action.sa_handler = signalHandler;
