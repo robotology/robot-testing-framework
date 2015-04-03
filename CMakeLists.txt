@@ -43,6 +43,7 @@ option (ENABLE_PLUGIN "Enable plugins" ON)
 option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
 option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
+option (ENABLE_WEB_LISTENER "Enable web listener" OFF)
 
 
 #########################################################################

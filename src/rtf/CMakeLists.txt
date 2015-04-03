@@ -9,26 +9,102 @@ project(RTF)
 
 set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
 get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
+get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
+get_property(RTF_INTERNAL_DEFS GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 # Create the library 
-file(GLOB folder_source src/*.cpp)
-file(GLOB_RECURSE folder_header ./include/*.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
+if(ENABLE_WEB_LISTENER)
+    set(RTF_HDRS
+        include/Arguments.h
+        include/Asserter.h
+        include/ConsoleListener.h
+        include/Exception.h
+        include/FixtureManager.h
+        include/PluginLoader.h
+        include/ResultEvent.h
+        include/rtf_config.h
+        include/TestAssert.h
+        include/TestCase.h
+        include/Test.h
+        include/TestListener.h
+        include/TestMessage.h
+        include/TestResultCollector.h
+        include/TestResult.h
+        include/TestRunner.h
+        include/TestSuit.h
+        include/TextOutputter.h
+        include/WebProgressListener.h)
 
-include_directories(${RTF_TREE_INCLUDE_DIRS})
+     set(RTF_SRCS 
+        src/Arguments.cpp
+        src/Asserter.cpp
+        src/ConsoleListener.cpp
+        src/FixtureManager.cpp
+        src/TestCase.cpp
+        src/TestMessage.cpp
+        src/TestResultCollector.cpp
+        src/TestResult.cpp
+        src/TestRunner.cpp
+        src/TestSuit.cpp
+        src/TextOutputter.cpp
+        src/WebProgressListener.cpp)
 
-if(WIN32)
-    add_library(RTF STATIC ${folder_source} ${folder_header})
+    add_definitions("-DMONGOOSE_ENABLE_THREADS")
+
 else()
-    add_library(RTF SHARED ${folder_source} ${folder_header})
+    set(RTF_HDRS
+        include/Arguments.h
+        include/Asserter.h
+        include/ConsoleListener.h
+        include/Exception.h
+        include/FixtureManager.h
+        include/PluginLoader.h
+        include/ResultEvent.h
+        include/rtf_config.h
+        include/TestAssert.h
+        include/TestCase.h
+        include/Test.h
+        include/TestListener.h
+        include/TestMessage.h
+        include/TestResultCollector.h
+        include/TestResult.h
+        include/TestRunner.h
+        include/TestSuit.h
+        include/TextOutputter.h)
+
+     set(RTF_SRCS 
+        src/Arguments.cpp
+        src/Asserter.cpp
+        src/ConsoleListener.cpp
+        src/FixtureManager.cpp
+        src/TestCase.cpp
+        src/TestMessage.cpp
+        src/TestResultCollector.cpp
+        src/TestResult.cpp
+        src/TestRunner.cpp
+        src/TestSuit.cpp
+        src/TextOutputter.cpp)       
 endif()
 
-target_link_libraries(RTF)
+
+include_directories(${RTF_TREE_INCLUDE_DIRS}
+                    ${RTF_INTERNAL_INCLUDE_DIRS})
+
+if(WIN32)
+    add_library(RTF STATIC ${RTF_SRCS} ${RTF_HDRS})
+else()
+    add_library(RTF SHARED ${RTF_SRCS} ${RTF_HDRS})
+endif()
+
+if(ENABLE_WEB_LISTENER)
+    target_link_libraries(RTF RTF_mongoose)
+else()
+    target_link_libraries(RTF)
+endif()
 
 # choose which header files should be installed 
-file(GLOB RTF_HEADERS ./include/*.h)
-set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_HEADERS})
+set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_HDRS})
 
 install(TARGETS RTF
         EXPORT RTF

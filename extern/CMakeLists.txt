@@ -16,3 +16,7 @@ if (BUILD_TESTRUNNER)
     set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_LIBS ${TinyXML_LIBRARIES})
 endif()
 
+if(ENABLE_WEB_LISTENER)
+    add_subdirectory(mongoose)
+endif()
+

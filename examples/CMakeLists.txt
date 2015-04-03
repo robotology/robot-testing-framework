@@ -43,5 +43,14 @@ if (BUILD_EXAMPLES)
     install(TARGETS simple_fixture
             EXPORT  simple_fixture
             RUNTIME DESTINATION bin)
+
+    if(ENABLE_WEB_LISTENER)
+        add_executable(simple_web simple_web.cpp)
+        target_link_libraries(simple_web ${RTF_LIBS})
+        install(TARGETS simple_web
+                EXPORT  simple_web
+                RUNTIME DESTINATION bin)
+    endif()
+
 endif(BUILD_EXAMPLES)
 
