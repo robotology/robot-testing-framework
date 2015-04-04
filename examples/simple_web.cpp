@@ -8,6 +8,9 @@
  */
 
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
 #include <TestCase.h>
 #include <TestResult.h>
 #include <TestRunner.h>
@@ -17,6 +20,7 @@
 #include <TestAssert.h>
 
 #ifdef _WIN32
+	#include <Windows.h>
 #else
     #include <unistd.h>
 #endif
@@ -28,10 +32,12 @@ public:
     MyTest1() : TestCase("MyTest1") { }
 
     virtual void run() {
-        for (int i=0; i< 10; i++) {
-            RTF_TEST_REPORT("testing smaller");
-            RTF_TEST_CHECK(3<5, "is not smaller");
-            RTF_TEST_CHECK(3>5, "is not bigger");
+		srand(time(NULL));
+        for (int i=0; i< 20; i++) {
+			int a = rand() % 10;
+			int b = rand() % 10;
+            RTF_TEST_REPORT("testing smaller...");
+            RTF_TEST_CHECK(a<b, "is not smaller");
 #ifdef _WIN32
             Sleep(1000);
 #else
@@ -46,8 +52,18 @@ public:
     MyTest2() : TestCase("MyTest2") { }
 
     virtual void run() {
-        RTF_TEST_REPORT("testing equality");
-        RTF_TEST_CHECK(5==3, "are not equal");
+		srand(time(NULL));
+        for (int i=0; i< 20; i++) {
+			int a = rand() % 10;
+			int b = rand() % 10;
+            RTF_TEST_REPORT("testing equality...");
+            RTF_TEST_CHECK(a==b, "are not equal");
+#ifdef _WIN32
+            Sleep(1000);
+#else
+            sleep(1);
+#endif
+		}
     }
 };
 

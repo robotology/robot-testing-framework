@@ -101,8 +101,12 @@ WebProgressListenerImpl::~WebProgressListenerImpl() {
 
 void WebProgressListenerImpl::update(void *param) {
     WebProgressListenerImpl* web = (WebProgressListenerImpl*) param;
-    while(!web->shouldStop)
+    while(!web->shouldStop) {
         mg_poll_server(web->server, 1000);
+#ifdef _WIN32
+		Sleep(1000);
+#endif
+	}
 }
 
 
