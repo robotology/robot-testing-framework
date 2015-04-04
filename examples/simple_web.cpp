@@ -28,7 +28,7 @@ public:
     MyTest1() : TestCase("MyTest1") { }
 
     virtual void run() {
-        for (int i=0; i< 20; i++) {
+        for (int i=0; i< 10; i++) {
             RTF_TEST_REPORT("testing smaller");
             RTF_TEST_CHECK(3<5, "is not smaller");
             RTF_TEST_CHECK(3>5, "is not bigger");

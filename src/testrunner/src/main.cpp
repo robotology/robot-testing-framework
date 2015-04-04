@@ -18,6 +18,10 @@
 #include <ErrorLogger.h>
 #include <Version.h>
 
+#if defined(ENABLE_WEB_LISTENER)
+    #include <WebProgressListener.h>
+#endif
+
 #if defined(WIN32)
     #include <windows.h> 
 #else
@@ -67,9 +71,14 @@ void addOptions(cmdline::parser &cmd) {
     cmd.add<string>("environment", 'e',
                     "Sets the test case environment. (Can be used only with --test option.)",
                     false);
+    cmd.add("web-reporter", 'w',
+            "Enables web reporter");
+    cmd.add<int>("web-port", '\0',
+                    "Sets the web reporter server port. (The default port number is 8080.)",
+                    false, 8080);
     cmd.add("recursive", 'r',
             "Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
-    cmd.add("detail", '\0',
+    cmd.add("detail", 'd',
             "Enables verbose mode of test assertions.");
     cmd.add("verbose", 'v',
             "Enables verbose mode.");
@@ -191,6 +200,19 @@ int main(int argc, char *argv[]) {
     ConsoleListener listener(cmd.exist("detail"));
     if(cmd.exist("verbose"))
         result.addListener(&listener);
+
+    // create web listener
+#if defined(ENABLE_WEB_LISTENER)
+    WebProgressListener webListener(cmd.get<int>("web-port"),
+                                    cmd.exist("detail"));
+#endif
+    if(cmd.exist("web-reporter")) {
+#if defined(ENABLE_WEB_LISTENER)
+        result.addListener(&webListener);
+#else
+        cout<<"Web reporter is not enabled! (please build RTF with ENABLE_WEB_LISTENER.)"<<endl;
+#endif
+    }
 
     // create a test runner and run the test case
     runner.run(result);

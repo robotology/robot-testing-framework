@@ -9,13 +9,15 @@ project(${PROJECTNAME})
 
 set(mongoose_SRCS
     src/mongoose.c
+    src/tinythread.cpp
 )
 
 set(mongoose_HDRS
     src/mongoose.h
+    src/tinythread.h
 )
 
-add_definitions("-DMONGOOSE_ENABLE_THREADS")
+#add_definitions("-DMONGOOSE_ENABLE_THREADS")
 if(WIN32)
     add_library(${PROJECTNAME} STATIC ${mongoose_SRCS})
 else()
@@ -26,7 +28,7 @@ set_target_properties(${PROJECTNAME} PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 
 set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_LIBS ${PROJECTNAME})
-set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_DEFS "-DMONGOOSE_ENABLE_THREADS")
+#set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_DEFS "-DMONGOOSE_ENABLE_THREADS")
 
 install(TARGETS ${PROJECTNAME}
         EXPORT RTF
@@ -35,3 +37,4 @@ install(TARGETS ${PROJECTNAME}
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS ${PROJECTNAME})
+

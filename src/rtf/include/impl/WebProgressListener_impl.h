@@ -8,41 +8,43 @@
  */
 
 
-#ifndef _RTF_WEBPROGRESSLISTENER_H
-#define _RTF_WEBPROGRESSLISTENER_H
+#ifndef _RTF_WEBPROGRESSLISTENER_IMPL_H
+#define _RTF_WEBPROGRESSLISTENER_IMPL_H
 
 #include <rtf_config.h>
 #include <TestListener.h>
+#include <mongoose.h>
+#include <tinythread.h>
 
 namespace RTF {
-    class WebProgressListener;
+    class WebProgressListenerImpl;
 }
 
 
 /**
- * \brief class WebProgressListener listens to any messages reported by the tests
+ * \brief class WebProgressListenerImpl listens to any messages reported by the tests
  * during the test run, formates them sends them to the web clients.
  *
  * \ingroup key_class
  *
  */
-class RTF_API RTF::WebProgressListener : public RTF::TestListener {
+class RTF_API RTF::WebProgressListenerImpl : public RTF::TestListener {
 public:
 
     /**
-     * WebProgressListener constructor
+     * WebProgressListenerImpl constructor
      * @param port the server port number. default is 8080
      * @param verbose enables the verbose mode. If \c true, the source file and
      * the line number where the messages are issued by the tests will be written to
      * the standard output. The verbose mode is disabled by default.
      */
-    WebProgressListener(unsigned int port=8080,
+    WebProgressListenerImpl(unsigned int port=8080,
                         bool verbose = false);
 
     /**
-     *  WebProgressListener destructor
+     *  WebProgressListenerImpl destructor
      */
-    virtual ~WebProgressListener();
+    virtual ~WebProgressListenerImpl();
 
     /**
      * This is called to report any arbitrary message
@@ -100,7 +102,20 @@ public:
      */
     virtual void endTestRunner();
 
+public:
+    struct mg_server *server;
+    tthread::mutex critical;
+    //bool stopRefresh;
+    //bool serverBusy;
+    bool shouldStop;
+    std::string html;
+
 private:
-    void* implement;
+    static void update(void *param);
+
+private:
+    tthread::thread *updater;
+    bool verbose;
+    unsigned int port;    
 };
-#endif // _RTF_WEBPROGRESSLISTENER_H
+#endif // _RTF_WEBPROGRESSLISTENER_IMPL_H

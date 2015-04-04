@@ -35,6 +35,9 @@ if(ENABLE_WEB_LISTENER)
         include/TestSuit.h
         include/TextOutputter.h
         include/WebProgressListener.h)
+        
+     set(RTF_HDRS_IMPL
+        include/impl/WebProgressListener_impl.h)
 
      set(RTF_SRCS 
         src/Arguments.cpp
@@ -50,8 +53,9 @@ if(ENABLE_WEB_LISTENER)
         src/TextOutputter.cpp
         src/WebProgressListener.cpp)
 
-    add_definitions("-DMONGOOSE_ENABLE_THREADS")
-
+     include_directories(${PROJECT_SOURCE_DIR}/include/impl
+                        ${RTF_TREE_INCLUDE_DIRS}
+                        ${RTF_INTERNAL_INCLUDE_DIRS})
 else()
     set(RTF_HDRS
         include/Arguments.h
@@ -73,6 +77,8 @@ else()
         include/TestSuit.h
         include/TextOutputter.h)
 
+     set(RTF_HDRS_IMPL )
+
      set(RTF_SRCS 
         src/Arguments.cpp
         src/Asserter.cpp
@@ -84,17 +90,17 @@ else()
         src/TestResult.cpp
         src/TestRunner.cpp
         src/TestSuit.cpp
-        src/TextOutputter.cpp)       
+        src/TextOutputter.cpp)
+
+     include_directories(${RTF_TREE_INCLUDE_DIRS}
+                        ${RTF_INTERNAL_INCLUDE_DIRS})           
 endif()
 
 
-include_directories(${RTF_TREE_INCLUDE_DIRS}
-                    ${RTF_INTERNAL_INCLUDE_DIRS})
-
 if(WIN32)
-    add_library(RTF STATIC ${RTF_SRCS} ${RTF_HDRS})
+    add_library(RTF STATIC ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
 else()
-    add_library(RTF SHARED ${RTF_SRCS} ${RTF_HDRS})
+    add_library(RTF SHARED ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
 endif()
 
 if(ENABLE_WEB_LISTENER)
