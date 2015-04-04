@@ -12,10 +12,14 @@
 #include <TestResult.h>
 #include <TestRunner.h>
 #include <TestSuit.h>
+#include <ConsoleListener.h>
 #include <WebProgressListener.h>
 #include <TestAssert.h>
 
-#include <unistd.h>
+#ifdef _WIN32
+#else
+    #include <unistd.h>
+#endif
 
 using namespace RTF;
 
@@ -28,7 +32,11 @@ public:
             RTF_TEST_REPORT("testing smaller");
             RTF_TEST_CHECK(3<5, "is not smaller");
             RTF_TEST_CHECK(3>5, "is not bigger");
-            sleep(2);
+#ifdef _WIN32
+            Sleep(1000);
+#else
+            sleep(1);
+#endif
         }
     }
 };
@@ -47,11 +55,13 @@ public:
 int main(int argc, char** argv)
 {
     // create a test listener to collect the result
-    WebProgressListener listener(8080, false);
+    ConsoleListener console(false);
+    WebProgressListener web(8080, false);
 
-    // create a test result and add the listeners
+    // create a test result sand add the listeners
     TestResult result;
-    result.addListener(&listener);
+    result.addListener(&console);
+    result.addListener(&web);
 
     // create a test suit and the test cases
     TestSuit suit("MyTestSuit");

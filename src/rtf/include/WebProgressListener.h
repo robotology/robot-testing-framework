@@ -106,13 +106,18 @@ public:
      */
     std::string getHtml();
 
+    bool isDone();
+    bool setBusy(bool flag);
+
 private:
     static void *update(void *server);
 
 private:
     bool verbose;
+    bool done;
+    bool busy;
     unsigned int port;
-    static void* implement;
+    static void* implement;    
     std::string html;
 };
 #endif // _RTF_WEBPROGRESSLISTENER_H
