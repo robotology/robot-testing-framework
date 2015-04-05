@@ -62,6 +62,7 @@ static std::string html_page =
 "    xmlhttp.onreadystatechange=function() {\n"
 "        if (xmlhttp.readyState==4 && xmlhttp.status==200) {\n"
 "            document.getElementById(\"result\").innerHTML=xmlhttp.responseText;\n"
+"            document.getElementById(\"result\").scrollTop = document.getElementById(\"result\").scrollHeight;"
 "        }\n"
 "    }\n"
 "    xmlhttp.open(\"GET\",document.URL+\"update\",true);\n"

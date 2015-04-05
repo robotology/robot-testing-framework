@@ -799,7 +799,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibrary.h \ 
+EXCLUDE                = @CMAKE_SOURCE_DIR@/src/rtf/include/impl/WebProgressListener_impl.h \ 
+                         @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibrary.h \ 
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibraryClass.h \ 
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibraryClassApi.h \ 
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/SharedLibraryClassFactory.h \ 

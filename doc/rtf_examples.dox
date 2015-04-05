@@ -49,3 +49,10 @@ This example shows using a FixtureManager to setup any fixture required for a Te
 
 */
 
+/**
+ * \example simple_web.cpp
+
+This example shows how to use RTF::WebListener to report the results and monitor the tests from a web browser.
+
+*/
+
