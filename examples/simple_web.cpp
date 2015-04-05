@@ -92,5 +92,4 @@ int main(int argc, char** argv)
     runner.run(result);
 
     return 0;
-
 }

@@ -106,7 +106,7 @@ public:
     struct mg_server *server;
     tthread::mutex critical;
     bool shouldStop;
-    std::string html;
+    std::string result;
 
 private:
     WebProgressListenerImpl(WebProgressListenerImpl const&);    // Don't Implement
