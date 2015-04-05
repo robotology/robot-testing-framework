@@ -118,6 +118,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae4e7797df83a14d08238d272aa145647"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the test list.  <a href="#ae4e7797df83a14d08238d272aa145647"></a><br/></td></tr>
 <tr class="memitem:ab6d88869bdedcb60d65dc0435522360f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestRunner.html#ab6d88869bdedcb60d65dc0435522360f">run</a> (<a class="el" href="classRTF_1_1TestResult.html">TestResult</a> &amp;result)</td></tr>
 <tr class="memdesc:ab6d88869bdedcb60d65dc0435522360f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run all the tests in the list.  <a href="#ab6d88869bdedcb60d65dc0435522360f"></a><br/></td></tr>
+<tr class="memitem:ad307bfed8fff0b8e268f7f7474348d08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestRunner.html#ad307bfed8fff0b8e268f7f7474348d08">interrupt</a> ()</td></tr>
+<tr class="memdesc:ad307bfed8fff0b8e268f7f7474348d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt interrupts the current test run  <a href="#ad307bfed8fff0b8e268f7f7474348d08"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -128,6 +130,8 @@ Private Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a5650ec06e3b55b044b17ee510f33288a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1TestRunner.html#a41da5493106ad2741aa7f330261fd863">TestContainer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestRunner.html#a5650ec06e3b55b044b17ee510f33288a">tests</a></td></tr>
+<tr class="memitem:a639891437b24bbd875a1e60dce787c55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1Test.html">RTF::Test</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestRunner.html#a639891437b24bbd875a1e60dce787c55">current</a></td></tr>
+<tr class="memitem:a9fa989e591649111881b9adbd725a18e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestRunner.html#a9fa989e591649111881b9adbd725a18e">interrupted</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> class runs the tests added as <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> or <a class="el" href="classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests.">TestSuit</a>. </p>
@@ -149,7 +153,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">ConsoleListener.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">TestAssert.h</a>&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">using namespace </span>RTF;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>;</div>
 <div class="line"></div>
 <div class="line"><span class="keyword">class </span>MyTest : <span class="keyword">public</span> <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -196,9 +200,9 @@ Private Attributes</h2></td></tr>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line"></div>
 <div class="line">}</div>
-</div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_collector_8cpp-example.html#_a8">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#_a11">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#_a7">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#_a7">simple_suit.cpp</a>.</dd>
+</div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_collector_8cpp-example.html#_a9">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#_a12">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#_a8">simple_runner.cpp</a>, <a class="el" href="simple_suit_8cpp-example.html#_a8">simple_suit.cpp</a>, and <a class="el" href="simple_web_8cpp-example.html#_a9">simple_web.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00032">32</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
+<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00033">33</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
 </div><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a41da5493106ad2741aa7f330261fd863"></a>
 <div class="memitem">
@@ -218,7 +222,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00034">34</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
+<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00035">35</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
 
 </div>
 </div>
@@ -240,7 +244,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00035">35</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
+<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00036">36</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
 
 </div>
 </div>
@@ -309,8 +313,25 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_collector_8cpp-example.html#a9">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a12">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a8">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#a8">simple_suit.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_collector_8cpp-example.html#a10">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a13">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a9">simple_runner.cpp</a>, <a class="el" href="simple_suit_8cpp-example.html#a9">simple_suit.cpp</a>, and <a class="el" href="simple_web_8cpp-example.html#a10">simple_web.cpp</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ad307bfed8fff0b8e268f7f7474348d08"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RTF::TestRunner::interrupt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interrupt interrupts the current test run </p>
+
 </div>
 </div>
 <a class="anchor" id="a586f27fd331ba5b3a7086a2bd151c6fa"></a>
@@ -375,11 +396,55 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_collector_8cpp-example.html#a10">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a13">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a9">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#a9">simple_suit.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_collector_8cpp-example.html#a11">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a14">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a10">simple_runner.cpp</a>, <a class="el" href="simple_suit_8cpp-example.html#a10">simple_suit.cpp</a>, and <a class="el" href="simple_web_8cpp-example.html#a11">simple_web.cpp</a>.</dd>
 </dl>
 </div>
 </div>
 <h2>Member Data Documentation</h2>
+<a class="anchor" id="a639891437b24bbd875a1e60dce787c55"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRTF_1_1Test.html">RTF::Test</a>* RTF::TestRunner::current</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00082">82</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9fa989e591649111881b9adbd725a18e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RTF::TestRunner::interrupted</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00083">83</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a5650ec06e3b55b044b17ee510f33288a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -398,7 +463,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00075">75</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
+<p>Definition at line <a class="el" href="TestRunner_8h_source.html#l00081">81</a> of file <a class="el" href="TestRunner_8h_source.html">TestRunner.h</a>.</p>
 
 </div>
 </div>
@@ -408,7 +473,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -98,9 +98,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">ConsoleListener.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">TestAssert.h</a>&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">using namespace </span>RTF;</div>
+<div class="line"><span class="keyword">using namespace </span><a name="_a0"></a><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>;</div>
 <div class="line"></div>
-<div class="line"><span class="keyword">class </span>MyTest : <span class="keyword">public</span> <a name="_a0"></a><a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> {</div>
+<div class="line"><span class="keyword">class </span>MyTest : <span class="keyword">public</span> <a name="_a1"></a><a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    MyTest() : <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>(<span class="stringliteral">&quot;MyTest&quot;</span>) {</div>
 <div class="line"></div>
@@ -109,19 +109,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keyword">virtual</span> ~MyTest() { }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> setup(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
-<div class="line">        <a name="a1"></a><a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
+<div class="line">        <a name="a2"></a><a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::setup...&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> tearDown() {</div>
 <div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;running MyTest::teardown...&quot;</span>);</div>
-<div class="line">        <a name="a2"></a><a class="code" href="TestAssert_8h.html#a8681580ec6406f327e6610f8185378fe" title="Assertion with throwing error exception.">RTF_ASSERT_ERROR</a>(<span class="stringliteral">&quot;this is just for example!&quot;</span>);</div>
+<div class="line">        <a name="a3"></a><a class="code" href="TestAssert_8h.html#a8681580ec6406f327e6610f8185378fe" title="Assertion with throwing error exception.">RTF_ASSERT_ERROR</a>(<span class="stringliteral">&quot;this is just for example!&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> run() {</div>
 <div class="line"></div>
 <div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
-<div class="line">        <a name="a3"></a><a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
+<div class="line">        <a name="a4"></a><a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
 <div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(5&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
@@ -130,17 +130,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// create a test listener to collect the result</span></div>
-<div class="line">    <a name="_a4"></a><a class="code" href="classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run...">ConsoleListener</a> listener(<span class="keyword">false</span>);</div>
+<div class="line">    <a name="_a5"></a><a class="code" href="classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run...">ConsoleListener</a> listener(<span class="keyword">false</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// create a test result and add the listeners</span></div>
-<div class="line">    <a name="_a5"></a><a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a> result;</div>
-<div class="line">    result.<a name="a6"></a><a class="code" href="classRTF_1_1TestResult.html#a369f56d6cb696d6c519b575b52fc7575" title="Adding a new listener.">addListener</a>(&amp;listener);</div>
+<div class="line">    <a name="_a6"></a><a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a> result;</div>
+<div class="line">    result.<a name="a7"></a><a class="code" href="classRTF_1_1TestResult.html#a369f56d6cb696d6c519b575b52fc7575" title="Adding a new listener.">addListener</a>(&amp;listener);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// create a test runner</span></div>
-<div class="line">    <a name="_a7"></a><a class="code" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> runner;</div>
+<div class="line">    <a name="_a8"></a><a class="code" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> runner;</div>
 <div class="line">    MyTest atest;</div>
-<div class="line">    runner.<a name="a8"></a><a class="code" href="classRTF_1_1TestRunner.html#aa5c49855ae97e748d78059811d920293" title="Adding a new test.">addTest</a>(&amp;atest);</div>
-<div class="line">    runner.<a name="a9"></a><a class="code" href="classRTF_1_1TestRunner.html#ab6d88869bdedcb60d65dc0435522360f" title="Run all the tests in the list.">run</a>(result);</div>
+<div class="line">    runner.<a name="a9"></a><a class="code" href="classRTF_1_1TestRunner.html#aa5c49855ae97e748d78059811d920293" title="Adding a new test.">addTest</a>(&amp;atest);</div>
+<div class="line">    runner.<a name="a10"></a><a class="code" href="classRTF_1_1TestRunner.html#ab6d88869bdedcb60d65dc0435522360f" title="Run all the tests in the list.">run</a>(result);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line"></div>
@@ -148,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

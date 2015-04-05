@@ -7,5 +7,6 @@ var searchData=
   ['resulteventfailure',['ResultEventFailure',['../classRTF_1_1ResultEventFailure.html',1,'RTF']]],
   ['resulteventreport',['ResultEventReport',['../classRTF_1_1ResultEventReport.html',1,'RTF']]],
   ['resulteventstartsuit',['ResultEventStartSuit',['../classRTF_1_1ResultEventStartSuit.html',1,'RTF']]],
-  ['resulteventstarttest',['ResultEventStartTest',['../classRTF_1_1ResultEventStartTest.html',1,'RTF']]]
+  ['resulteventstarttest',['ResultEventStartTest',['../classRTF_1_1ResultEventStartTest.html',1,'RTF']]],
+  ['rtf',['RTF',['../classRTF.html',1,'']]]
 ];

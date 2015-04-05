@@ -100,40 +100,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _RTF_PLUGINLOADER_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _RTF_PLUGINLOADER_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#if defined(WIN32)</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#   pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif </span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">TestCase.h</a>&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>RTF {</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="namespaceRTF_1_1plugin.html">   18</a></span>&#160;    <span class="keyword">namespace </span>plugin {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">class </span><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html" title="The PluginLoader is an abstract class for loading a test case plug-in and gives the direct access to ...">PluginLoader</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html" title="The PluginLoader is an abstract class for loading a test case plug-in and gives the direct access to ...">RTF::plugin::PluginLoader</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a5376d1c5fe9a40730e744cebacf606f8">   35</a></span>&#160;    <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a5376d1c5fe9a40730e744cebacf606f8" title="PluginLoader constructor.">PluginLoader</a>() { }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4">   40</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4" title="PluginLoader destructor.">~PluginLoader</a>() { }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a>* <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a08a3e1ca28d563118a619d95e1922292" title="open Loads a test case plugin">open</a>(<span class="keyword">const</span> std::string filename) = 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a1858a4202c4d3586bc388283df9f0f8d" title="close Unloads the plugin and deletes any allocated memory.">close</a>() = 0;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#af25cd597a4aae1eac7b37ee1aedafb7c" title="getLastError gets the last error if any.">getLastError</a>() = 0;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif // _RTF_PLUGINLOADER_H</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _RTF_PLUGINLOADER_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="PluginLoader_8h.html#aabb1a7e793b89626c4699bb42a571c65">   15</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _RTF_PLUGINLOADER_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="rtf__config_8h.html">rtf_config.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">TestCase.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="namespaceRTF_1_1plugin.html">   22</a></span>&#160;    <span class="keyword">namespace </span>plugin {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">class </span><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html" title="The PluginLoader is an abstract class for loading a test case plug-in and gives the direct access to ...">PluginLoader</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html">   32</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html" title="The PluginLoader is an abstract class for loading a test case plug-in and gives the direct access to ...">RTF::plugin::PluginLoader</a> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a5376d1c5fe9a40730e744cebacf606f8">   39</a></span>&#160;    <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a5376d1c5fe9a40730e744cebacf606f8" title="PluginLoader constructor.">PluginLoader</a>() { }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4">   44</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4" title="PluginLoader destructor.">~PluginLoader</a>() { }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a>* <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a08a3e1ca28d563118a619d95e1922292" title="open Loads a test case plugin">open</a>(<span class="keyword">const</span> std::string filename) = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#a1858a4202c4d3586bc388283df9f0f8d" title="close Unloads the plugin and deletes any allocated memory.">close</a>() = 0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1plugin_1_1PluginLoader.html#af25cd597a4aae1eac7b37ee1aedafb7c" title="getLastError gets the last error if any.">getLastError</a>() = 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif // _RTF_PLUGINLOADER_H</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

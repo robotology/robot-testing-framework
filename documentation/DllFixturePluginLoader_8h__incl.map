@@ -1,7 +1,9 @@
 <map id="src/plugins/dll/include/DllFixturePluginLoader.h" name="src/plugins/dll/include/DllFixturePluginLoader.h">
-<area shape="rect" id="node3" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="101,95,224,121"/>
-<area shape="rect" id="node4" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="161,169,258,196"/>
-<area shape="rect" id="node6" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="216,319,328,345"/>
-<area shape="rect" id="node5" href="$Test_8h.html" title="Test.h" alt="" coords="105,319,164,345"/>
-<area shape="rect" id="node7" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="157,244,262,271"/>
+<area shape="rect" id="node3" href="$rtf__dll__config_8h.html" title="rtf_dll_config.h" alt="" coords="157,101,263,131"/>
+<area shape="rect" id="node7" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="287,101,410,131"/>
+<area shape="rect" id="node9" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="33,411,118,440"/>
+<area shape="rect" id="node12" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="161,179,257,208"/>
+<area shape="rect" id="node19" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="195,333,307,363"/>
+<area shape="rect" id="node15" href="$Test_8h.html" title="Test.h" alt="" coords="113,333,171,363"/>
+<area shape="rect" id="node23" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="42,256,146,285"/>
 </map>

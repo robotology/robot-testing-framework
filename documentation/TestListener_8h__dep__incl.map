@@ -1,16 +1,17 @@
 <map id="src/rtf/include/TestListener.h" name="src/rtf/include/TestListener.h">
-<area shape="rect" id="node2" href="$ConsoleListener_8h.html" title="src/rtf/include/ConsoleListener.h" alt="" coords="125,87,336,114"/>
-<area shape="rect" id="node3" href="$TestResult_8h.html" title="src/rtf/include/TestResult.h" alt="" coords="361,87,541,114"/>
-<area shape="rect" id="node14" href="$TestResultCollector_8h.html" title="src/rtf/include/TestResult\lCollector.h" alt="" coords="674,80,843,121"/>
-<area shape="rect" id="node4" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="133,169,339,196"/>
-<area shape="rect" id="node5" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="5,251,171,278"/>
-<area shape="rect" id="node9" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="364,169,537,196"/>
-<area shape="rect" id="node13" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="561,169,745,196"/>
-<area shape="rect" id="node8" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,244,363,285"/>
-<area shape="rect" id="node6" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="120,341,285,367"/>
-<area shape="rect" id="node7" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="113,423,293,449"/>
-<area shape="rect" id="node10" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="489,251,679,278"/>
-<area shape="rect" id="node11" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="400,333,547,375"/>
-<area shape="rect" id="node12" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="618,333,769,375"/>
-<area shape="rect" id="node15" href="$TextOutputter_8h.html" title="src/rtf/include/TextOutputter.h" alt="" coords="770,169,966,196"/>
+<area shape="rect" id="node3" href="$ConsoleListener_8h.html" title="src/rtf/include/ConsoleListener.h" alt="" coords="127,92,337,121"/>
+<area shape="rect" id="node5" href="$TestResult_8h.html" title="src/rtf/include/TestResult.h" alt="" coords="361,92,540,121"/>
+<area shape="rect" id="node31" href="$TestResultCollector_8h.html" title="src/rtf/include/TestResult\lCollector.h" alt="" coords="564,83,732,130"/>
+<area shape="rect" id="node35" href="$WebProgressListener_8h.html" title="src/rtf/include/WebProgress\lListener.h" alt="" coords="756,83,940,130"/>
+<area shape="rect" id="node7" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="135,179,340,208"/>
+<area shape="rect" id="node9" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="5,265,171,295"/>
+<area shape="rect" id="node17" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="364,179,537,208"/>
+<area shape="rect" id="node28" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="561,179,745,208"/>
+<area shape="rect" id="node15" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,257,363,303"/>
+<area shape="rect" id="node11" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="120,361,285,391"/>
+<area shape="rect" id="node13" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="113,448,292,477"/>
+<area shape="rect" id="node20" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="488,265,677,295"/>
+<area shape="rect" id="node22" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="400,353,547,399"/>
+<area shape="rect" id="node24" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="616,353,765,399"/>
+<area shape="rect" id="node33" href="$TextOutputter_8h.html" title="src/rtf/include/TextOutputter.h" alt="" coords="769,179,964,208"/>
 </map>

@@ -1,6 +1,7 @@
 <map id="src/rtf/include/FixtureManager.h" name="src/rtf/include/FixtureManager.h">
-<area shape="rect" id="node3" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="97,80,195,107"/>
-<area shape="rect" id="node5" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="121,229,233,256"/>
-<area shape="rect" id="node4" href="$Test_8h.html" title="Test.h" alt="" coords="25,229,83,256"/>
-<area shape="rect" id="node6" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="48,155,153,181"/>
+<area shape="rect" id="node3" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="49,315,134,344"/>
+<area shape="rect" id="node7" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="161,83,257,112"/>
+<area shape="rect" id="node14" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="232,237,344,267"/>
+<area shape="rect" id="node10" href="$Test_8h.html" title="Test.h" alt="" coords="141,237,200,267"/>
+<area shape="rect" id="node18" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="40,160,144,189"/>
 </map>

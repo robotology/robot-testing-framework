@@ -90,13 +90,14 @@ Contents</h1>
 <li><a class="el" href="testrunner.html#suit">Test suit</a> </li>
 <li><a class="el" href="testrunner.html#single-suit">Running a single test suit</a> </li>
 <li><a class="el" href="testrunner.html#multiple-suit">Running multiple test suits</a> </li>
+<li><a class="el" href="testrunner.html#weblistener">Monitoring tests from your browser</a> </li>
 <li><a class="el" href="testrunner.html#options">The testrunner options</a></li>
 </ul>
 <p><br/>
  </p>
 <h1><a class="anchor" id="desc"></a>
 Description</h1>
-<p>The <code>testrunner</code> is a command line tool to load and run multiple tests which has been developed as <a class="el" href="namespaceRTF.html">RTF</a> plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as <code>*</code>.so, <code>*</code>.dll or *.dylib or using Lua scripting language (i.e., .lua). The <code>testrunner</code> can be used to run a single test case, multiple test cases from a given path, a <a class="el" href="testrunner.html#suit">Test suit</a> or multiple test suits from a given path.</p>
+<p>The <code>testrunner</code> is a command line tool to load and run multiple tests which has been developed as <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as <code>*</code>.so, <code>*</code>.dll or *.dylib or using Lua scripting language (i.e., .lua). The <code>testrunner</code> can be used to run a single test case, multiple test cases from a given path, a <a class="el" href="testrunner.html#suit">Test suit</a> or multiple test suits from a given path.</p>
 <p><br/>
  </p>
 <h1><a class="anchor" id="single"></a>
@@ -119,7 +120,7 @@ Running all test cases from a given path</h1>
  </p>
 <h1><a class="anchor" id="suit"></a>
 Test suit</h1>
-<p>By definition, a test suit is a set of test cases which share the same test fixture. In <a class="el" href="namespaceRTF.html">RTF</a> a set of test cases (plug-ins) can be grouped in a test suit using a XML file. Here is an example of test suit:</p>
+<p>By definition, a test suit is a set of test cases which share the same test fixture. In <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> a set of test cases (plug-ins) can be grouped in a test suit using a XML file. Here is an example of test suit:</p>
  
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 
@@ -128,7 +129,8 @@ Test suit</h1>
     <span style="color: #007700">&lt;environment&gt;</span> --robot simulator <span style="color: #007700">&lt;/environment&gt;</span>
     <span style="color: #007700">&lt;fixture</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myfixture.ini&quot;</span><span style="color: #007700">&gt;</span> libfixture.so <span style="color: #007700">&lt;/fixture&gt;</span>
 
-    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1.so <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;dll&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
     ...
@@ -138,6 +140,7 @@ Test suit</h1>
 <p>The environment can be used in the implementation of the test cases to know in which setup (e.g., simulation, real world environment) the test case is employed. The environment value can also be accessed in the test plug-in implementation using <a class="el" href="classRTF_1_1TestCase.html#aab71c5f72ffaafed4f27ea1b57c30247" title="getParam gets the environment string which is set for the test case">RTF::TestCase::getEnvironment</a> method.</p>
 <p>If a fixture manager plug-in is specified using <code></code> &lt;fixture&gt; tag, it will be loaded by the <code>testrunner</code> and is set for the current test suit. When suit is executed, the fixture manager will be called automatically to setup and monitor the test fixture which is implemented in the fixture plug-in. (Please see the <code>examples/fixture-plugin</code> folder for an example of implementing fixture plug-ins.)</p>
 <p>Notice that, for <code>libtest2.so</code>, a complete path to the plug-in file is given. Thus, the <code>testrunner</code> does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for <code>libtest1.so</code>.</p>
+<p>The <code>testrunner</code> usually checks for the extension of the plug-in file name to recognize the type of the plug-in. There is also possibility to explicitly indicate the type of the plug-in using the <code>type</code> attribute. For example if <code>type="dll"</code>, then the plug-in test should be given without the extension. Depending on which platform (Windows, Linux or Mac) the test is running, the <code>testrunner</code> looks for the correct (shared library) plug-in name (.dll, .so or .dylib).</p>
 <p><br/>
  </p>
 <h1><a class="anchor" id="single-suit"></a>
@@ -153,28 +156,38 @@ Running multiple test suits</h1>
 </pre><p>If the <code><code>--recursive</code></code> switch is given with the <code><code>--suits</code></code> option, the sub-folders are also searched for test suits.</p>
 <p><br/>
  </p>
+<h1><a class="anchor" id="weblistener"></a>
+Monitoring tests from your browser</h1>
+<p>The <code>testrunner</code> uses <a class="el" href="classRTF_1_1WebProgressListener.html" title="class WebProgressListener listens to any messages reported by the tests during the test run...">RTF::WebProgressListener</a> to provide a simple web server which allows you to monitor the test's running progress from a browser. To do that, you need to run a test/suite by the <code>testrunner</code> using <code>--web-reporter</code> option.</p>
+<pre class="fragment"> $ testrunner --web-reporter --verbose --suits ~/my-suits
+</pre><p>Then open a web browser and type <code><a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></code> or the remote address where the <code>testrunner</code> has been launched. You can also change the <code>testrunner</code> default port by using <code>--web-port &lt;port number&gt;</code> option.</p>
+<p>Notice that, the web reporting functionality may not be available by default and you need to enable it when building the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> by turning on the <code>ENABLE_WEB_LISTENER</code> from the cmake.</p>
+<p><br/>
+ </p>
 <h1><a class="anchor" id="options"></a>
 The testrunner options</h1>
 <p>Here is the full list of <code>testrunner</code> options:</p>
 <pre class="fragment">usage: testrunner [options] ... 
 options:
-  -t, --test         Runs a single test from the given plugin file. (string [=])
-      --tests        Runs multiple tests from the given folder which contains plugins. (string [=])
-  -s, --suit         Runs a single test suit from the given XMl file. (string [=])
-      --suits        Runs multiple test suits from the given folder which contains XML files. (string [=])
-  -o, --output       The output file to save the result (string [=result.txt])
-  -p, --param        Sets the test case parameters. (Can be used only with --test option.) (string [=])
-  -e, --environment  Sets the test case environment. (Can be used only with --test option.) (string [=])
-  -r, --recursive    Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
-      --detail       Enables verbose mode of test assertions.
-  -v, --verbose      Enables verbose mode.
-      --version      Shows version information.
-  -?, --help         print this message
+  -t, --test            Runs a single test from the given plugin file. (string [=])
+      --tests           Runs multiple tests from the given folder which contains plugins. (string [=])
+  -s, --suit            Runs a single test suit from the given XMl file. (string [=])
+      --suits           Runs multiple test suits from the given folder which contains XML files. (string [=])
+  -o, --output          The output file to save the result (string [=result.txt])
+  -p, --param           Sets the test case parameters. (Can be used only with --test option.) (string [=])
+  -e, --environment     Sets the test case environment. (Can be used only with --test option.) (string [=])
+  -w, --web-reporter    Enables web reporter
+      --web-port        Sets the web reporter server port. (The default port number is 8080.) (i [=8080])
+  -r, --recursive       Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
+  -d, --detail          Enables verbose mode of test assertions.
+  -v, --verbose         Enables verbose mode.
+      --version         Shows version information.
+  -?, --help            print this message
 </pre><dl class="section author"><dt>Author</dt><dd>Ali Paikan </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

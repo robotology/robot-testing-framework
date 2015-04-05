@@ -87,13 +87,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1><a class="anchor" id="lua-desc"></a>
 Description</h1>
 <p>Test cases can be written using Lua scripting language (e.g., .lua) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we show how this can be done.</p>
-<dl class="section note"><dt>Note</dt><dd>The source code of the tutorial can be also found in the <code>'examples/lua-plugin'</code> folder within the <a class="el" href="namespaceRTF.html">RTF</a> project directory.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The source code of the tutorial can be also found in the <code>'examples/lua-plugin'</code> folder within the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> project directory.</dd></dl>
 <p><br/>
  </p>
 <h1><a class="anchor" id="lua-req"></a>
 Requirements</h1>
 <p>You need the Lua development library to use the plug-ins. On most of the Linux distribution it can be easily installed using the package manager (e.g., <code>$ sudo apt-get install liblua5.1-0-dev</code>). If you use Windows, try <a href="https://code.google.com/p/luaforwindows/">Lua for Windows</a>, an easy-to-use distribution of Lua packed with several useful libraries. OSX users can also uses Lua binaries from <a href="http://lua-users.org/wiki/LuaBinaries">http://lua-users.org/wiki/LuaBinaries</a>.</p>
-<p>After installing the Lua development package, you need to enable the Lua plug-in system in the <a class="el" href="namespaceRTF.html">RTF</a> and recompile it:</p>
+<p>After installing the Lua development package, you need to enable the Lua plug-in system in the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> and recompile it:</p>
 <pre class="fragment">   $ cd robot-testing/build
    $ cmake ../ -DENABLE_LUA_PLUGIN=ON
 </pre><p><br/>
@@ -151,8 +151,8 @@ TestCase.tearDown = <span style="color: #008800; font-weight: bold">function</sp
  </p>
 <h1><a class="anchor" id="lua-runner"></a>
 Writing the test runner</h1>
-<dl class="section note"><dt>Note</dt><dd>Basically you do not need to develop a test runner. There is the <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) already implemented in <a class="el" href="namespaceRTF.html">RTF</a> which does the job for you. However, the following example is just for your reference and to understand better how a Lua test plug-ing can be loaded and executed from the code.</dd></dl>
-<p>Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::LuaPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of <code><a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::LuaPluginLoader</a></code> class and call its <code>open()</code> method with the plug-in library (i.e., .lua) filename as its paramter. The <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::LuaPluginLoader</a> loads the library and returns a pointer to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> implemented into the plug-in. If the Lua plug-in cannot be loaded or it is not an <a class="el" href="namespaceRTF.html">RTF</a> plug-in file, the <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#a42558aa785b5b69895cced4dc2de4c87" title="open Loads a test case plugin">RTF::plugin::LuaPluginLoader::open()</a> returns a null pointer and the error message can be gotten using <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#abd2c50caafd583366694118a24f0f2ca" title="getLastError gets the last error if any.">RTF::plugin::LuaPluginLoader::getLastError()</a>. When you have an instance of your test case, it can be used to run the test as usual (see <a class="el" href="rtf_examples.html">Some examples</a> if you are not familiar with running a test case). In the following example we use a <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">RTF::TestRunner</a> to execute our test:</p>
+<dl class="section note"><dt>Note</dt><dd>Basically you do not need to develop a test runner. There is the <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) already implemented in <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> which does the job for you. However, the following example is just for your reference and to understand better how a Lua test plug-ing can be loaded and executed from the code.</dd></dl>
+<p>Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::LuaPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of <code><a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::LuaPluginLoader</a></code> class and call its <code>open()</code> method with the plug-in library (i.e., .lua) filename as its paramter. The <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF::plugin::LuaPluginLoader</a> loads the library and returns a pointer to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> implemented into the plug-in. If the Lua plug-in cannot be loaded or it is not an <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> plug-in file, the <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#a42558aa785b5b69895cced4dc2de4c87" title="open Loads a test case plugin">RTF::plugin::LuaPluginLoader::open()</a> returns a null pointer and the error message can be gotten using <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#abd2c50caafd583366694118a24f0f2ca" title="getLastError gets the last error if any.">RTF::plugin::LuaPluginLoader::getLastError()</a>. When you have an instance of your test case, it can be used to run the test as usual (see <a class="el" href="rtf_examples.html">Some examples</a> if you are not familiar with running a test case). In the following example we use a <a class="el" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">RTF::TestRunner</a> to execute our test:</p>
 <div class="fragment"><div class="line"><span class="comment">// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
@@ -171,7 +171,7 @@ Writing the test runner</h1>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="LuaPluginLoader_8h.html">LuaPluginLoader.h</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"></div>
-<div class="line"><span class="keyword">using namespace </span>RTF;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>;</div>
 <div class="line"><span class="keyword">using namespace </span>RTF::plugin;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div>
@@ -210,7 +210,7 @@ Writing the test runner</h1>
  </p>
 <h1><a class="anchor" id="lua-build"></a>
 Building the test runner and run the test</h1>
-<p>Now you can compile and build the the runner. There is a Cmake file in the <code>examples/lua-plugin</code> folder which helps you to compile and build your simple test runner. Make sure that <code>RTF_DIR</code> environment variable is correctly set to point your <a class="el" href="namespaceRTF.html">RTF</a> build or installed directory so that Cmake can find the required modules to configure the project.</p>
+<p>Now you can compile and build the the runner. There is a Cmake file in the <code>examples/lua-plugin</code> folder which helps you to compile and build your simple test runner. Make sure that <code>RTF_DIR</code> environment variable is correctly set to point your <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> build or installed directory so that Cmake can find the required modules to configure the project.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#  RTF</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#  Copyright: (C) 2015 Ali Paikan</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#  Authors: Ali Paikan &lt;ali.paikan@gmail.com&gt;</span></div>
@@ -221,7 +221,7 @@ Building the test runner and run the test</h1>
 <div class="line"></div>
 <div class="line">cmake_minimum_required(VERSION 2.8.9)</div>
 <div class="line"></div>
-<div class="line">find_package(RTF)</div>
+<div class="line">find_package(<a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>)</div>
 <div class="line"></div>
 <div class="line">include_directories(${CMAKE_SOURCE_DIR}</div>
 <div class="line">                    ${RTF_INCLUDE_DIRS})</div>
@@ -247,7 +247,7 @@ Ending test runner.
 </pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

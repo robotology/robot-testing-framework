@@ -1,11 +1,12 @@
 <map id="src/rtf/include/TestAssert.h" name="src/rtf/include/TestAssert.h">
-<area shape="rect" id="node2" href="$Asserter_8h.html" title="Asserter.h" alt="" coords="195,80,278,107"/>
-<area shape="rect" id="node3" href="$Exception_8h.html" title="Exception.h" alt="" coords="10,155,100,181"/>
-<area shape="rect" id="node5" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="140,453,252,480"/>
-<area shape="rect" id="node7" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="658,229,748,256"/>
-<area shape="rect" id="node12" href="$TestSuit_8h.html" title="TestSuit.h" alt="" coords="295,155,378,181"/>
-<area shape="rect" id="node8" href="$Test_8h.html" title="Test.h" alt="" coords="556,453,615,480"/>
-<area shape="rect" id="node9" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="424,304,521,331"/>
-<area shape="rect" id="node10" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="442,379,548,405"/>
-<area shape="rect" id="node13" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="226,229,348,256"/>
+<area shape="rect" id="node3" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="659,547,744,576"/>
+<area shape="rect" id="node5" href="$Asserter_8h.html" title="Asserter.h" alt="" coords="672,83,755,112"/>
+<area shape="rect" id="node8" href="$Exception_8h.html" title="Exception.h" alt="" coords="819,392,909,421"/>
+<area shape="rect" id="node13" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="523,469,635,499"/>
+<area shape="rect" id="node19" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="5,237,96,267"/>
+<area shape="rect" id="node38" href="$TestSuit_8h.html" title="TestSuit.h" alt="" coords="565,160,648,189"/>
+<area shape="rect" id="node22" href="$Test_8h.html" title="Test.h" alt="" coords="171,469,229,499"/>
+<area shape="rect" id="node26" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="328,315,424,344"/>
+<area shape="rect" id="node31" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="221,392,325,421"/>
+<area shape="rect" id="node44" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="616,237,739,267"/>
 </map>

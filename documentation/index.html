@@ -78,13 +78,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Welcome to <a class="el" href="namespaceRTF.html">RTF</a> </div>  </div>
+<div class="title">Welcome to <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="image">
 <img src="rtf.png" alt="rtf.png"/>
 </div>
-<p><a class="el" href="namespaceRTF.html">RTF</a> stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the test driven development (TDD) which is initially designed for the robotic systems. However, it can be used for any TDD system. <br/>
+<p><a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the test driven development (TDD) which is initially designed for the robotic systems. However, it can be used for any TDD system. <br/>
  The framework provides functionalities for developing and running unit tests in a language and middleware independent manner. The test cases are developed as independent plug-ins (i.e., using scripting languages or built as dynamically loadable libraries) to be loaded and executed by an automated test runner. Moreover, a fixture manager prepares the setup (e.g., running robot interfaces, simulator) and actively monitors that all the requirements for running the tests are satisfied during the execution of the tests. These functionalities along with other facilities such as the test result collector, result formatter and remote interface allow for rapid development of test units to cover different levels of system testing.</p>
 <p><br/>
  </p>
@@ -99,7 +99,7 @@ Tutorials</h1>
  </p>
 <h1><a class="anchor" id="install"></a>
 Installation</h1>
-<p><a class="el" href="namespaceRTF.html">RTF</a> library does not depend on any external library. The <a class="el" href="namespaceRTF.html">RTF</a> framework has a <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The <code>testrunner</code> uses TinyXml library for parsing the suit XML files. <a class="el" href="namespaceRTF.html">RTF</a> build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the <a class="el" href="namespaceRTF.html">RTF</a>. The source code of the <a class="el" href="namespaceRTF.html">RTF</a> is vailable at <a href="https://github.com/robotology/robot-testing">https://github.com/robotology/robot-testing</a>.</p>
+<p><a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> library does not depend on any external library. The <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> framework has a <code>testrunner</code> utility (see <a class="el" href="testrunner.html">Running test case plug-ins using testrunner</a>) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using a simple XML files. The <code>testrunner</code> uses TinyXml library for parsing the suit XML files. <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> build system check for the installation of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered with the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>. The source code of the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> is vailable at <a href="https://github.com/robotology/robot-testing">https://github.com/robotology/robot-testing</a>.</p>
 <h2><a class="anchor" id="compile"></a>
 Compile and Build</h2>
 <p>The installation is easy, straightforward and uses <code>Cmake</code> building system. </p>
@@ -111,16 +111,16 @@ Compile and Build</h2>
 <pre class="fragment">    $ make install
 </pre><h2><a class="anchor" id="conf"></a>
 Configuration</h2>
-<p>The only thing you need to configure is the RTF_DIR environment variable so that cmake can find <a class="el" href="namespaceRTF.html">RTF</a> libraries and header files.</p>
+<p>The only thing you need to configure is the RTF_DIR environment variable so that cmake can find <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> libraries and header files.</p>
 <p>For example on Linux/Mac: </p>
 <pre class="fragment">    $ echo 'export RTF_DIR=&lt;path to the RTF build director&gt;' &gt;&gt; ~/.bashrc
-</pre><p>Alternatively you can add the <a class="el" href="namespaceRTF.html">RTF</a> <code>'bin'</code> directory to your system PATH variable. </p>
+</pre><p>Alternatively you can add the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> <code>'bin'</code> directory to your system PATH variable. </p>
 <pre class="fragment">    $ echo 'export PATH=$PATH:&lt;path to the RTF bin director&gt;' &gt;&gt; ~/.bashrc
 </pre><p><br/>
  </p>
 <h1><a class="anchor" id="example"></a>
 Running Examples</h1>
-<p>There are some examples which are created by building <a class="el" href="namespaceRTF.html">RTF</a> (The <code>BUILD_EXAMPLES=ON</code> should be enabled in the Cmake). After building the <a class="el" href="namespaceRTF.html">RTF</a>, you can run these examples from <code>build/bin</code> directory. </p>
+<p>There are some examples which are created by building <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> (The <code>BUILD_EXAMPLES=ON</code> should be enabled in the Cmake). After building the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>, you can run these examples from <code>build/bin</code> directory. </p>
 <pre class="fragment">    $ cd build/bin
     $ ./simple
     $ ./simle_suit
@@ -132,7 +132,7 @@ Running Examples</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

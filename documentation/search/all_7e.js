@@ -1,8 +1,8 @@
 var searchData=
 [
   ['_7econsolelistener',['~ConsoleListener',['../classRTF_1_1ConsoleListener.html#ab0539cfd62e3bb2ba3141627f707554f',1,'RTF::ConsoleListener']]],
-  ['_7edllfixturepluginloader',['~DllFixturePluginLoader',['../classRTF_1_1plugin_1_1DllFixturePluginLoader.html#a7f489e12ea02d3628c6319bae20e0823',1,'RTF::plugin::DllFixturePluginLoader']]],
-  ['_7edllpluginloader',['~DllPluginLoader',['../classRTF_1_1plugin_1_1DllPluginLoader.html#ac00974054b417836f58c9937646f062c',1,'RTF::plugin::DllPluginLoader']]],
+  ['_7edllfixturepluginloader',['~DllFixturePluginLoader',['../classRTF.html#a7d4766837c32ea4438af824833263455',1,'RTF']]],
+  ['_7edllpluginloader',['~DllPluginLoader',['../classRTF.html#ae725df62321af3fe636c2fa75f5ae084',1,'RTF']]],
   ['_7eexception',['~Exception',['../classRTF_1_1Exception.html#a6a8d12e1729ab8754e065c0893841525',1,'RTF::Exception']]],
   ['_7efixturemanager',['~FixtureManager',['../classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577',1,'RTF::FixtureManager']]],
   ['_7eluapluginloader',['~LuaPluginLoader',['../classRTF_1_1plugin_1_1LuaPluginLoader.html#a8c6a7a858db53011209e1a9c552e9ec3',1,'RTF::plugin::LuaPluginLoader']]],
@@ -16,5 +16,6 @@ var searchData=
   ['_7etestresultcollector',['~TestResultCollector',['../classRTF_1_1TestResultCollector.html#adaaf5910febf61eb9282e528fd7a3c05',1,'RTF::TestResultCollector']]],
   ['_7etestrunner',['~TestRunner',['../classRTF_1_1TestRunner.html#ac23e80ae3e41129366ed20808be3cc84',1,'RTF::TestRunner']]],
   ['_7etestsuit',['~TestSuit',['../classRTF_1_1TestSuit.html#ae5f9d929a81c783a7f18f6ed33c5aa3c',1,'RTF::TestSuit']]],
-  ['_7etextoutputter',['~TextOutputter',['../classRTF_1_1TextOutputter.html#a362b341d1cd45784446310eb2663479a',1,'RTF::TextOutputter']]]
+  ['_7etextoutputter',['~TextOutputter',['../classRTF_1_1TextOutputter.html#a362b341d1cd45784446310eb2663479a',1,'RTF::TextOutputter']]],
+  ['_7ewebprogresslistener',['~WebProgressListener',['../classRTF_1_1WebProgressListener.html#a52eb863d5b81ab6ac9c7489c426f7e96',1,'RTF::WebProgressListener']]]
 ];

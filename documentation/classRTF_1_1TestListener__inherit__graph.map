@@ -1,4 +1,5 @@
 <map id="RTF::TestListener" name="RTF::TestListener">
-<area shape="rect" id="node2" href="$classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run..." alt="" coords="5,80,156,107"/>
-<area shape="rect" id="node3" href="$classRTF_1_1TestResultCollector.html" title="The TestResultCollector class can be used to store all the events issued by the test cases..." alt="" coords="180,80,352,107"/>
+<area shape="rect" id="node3" href="$classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run..." alt="" coords="5,83,155,112"/>
+<area shape="rect" id="node5" href="$classRTF_1_1TestResultCollector.html" title="The TestResultCollector class can be used to store all the events issued by the test cases..." alt="" coords="179,83,349,112"/>
+<area shape="rect" id="node7" href="$classRTF_1_1WebProgressListener.html" title="class WebProgressListener listens to any messages reported by the tests during the test run..." alt="" coords="373,83,555,112"/>
 </map>

@@ -104,18 +104,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _RTF_EXCEPTION_H</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _RTF_EXCEPTION_H</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="rtf__config_8h.html">rtf_config.h</a>&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestMessage_8h.html">TestMessage.h</a>&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>RTF {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">class </span>Exception;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">class </span>TestFailureException;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">class </span>TestErrorException;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">class </span>FixtureException;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classRTF_1_1Exception.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="classRTF_1_1Exception.html">   28</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> : <span class="keyword">public</span> std::exception {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
@@ -150,7 +150,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="classRTF_1_1TestFailureException.html">   76</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1TestFailureException.html" title="The RTF::FailureException class Failure exception is used when a test or subtests fail...">RTF::TestFailureException</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> {</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="classRTF_1_1TestFailureException.html">   76</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1TestFailureException.html" title="The RTF::FailureException class Failure exception is used when a test or subtests fail...">RTF::TestFailureException</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="classRTF_1_1TestFailureException.html#ad28be97a837f6fae9cb68817ec823e8d">   78</a></span>&#160;    <a class="code" href="classRTF_1_1TestFailureException.html#ad28be97a837f6fae9cb68817ec823e8d">TestFailureException</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>&amp; msg)</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        : <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">Exception</a>(msg) { }</div>
@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        : <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">Exception</a>(other) { }</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classRTF_1_1TestErrorException.html">   90</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1TestErrorException.html" title="The RTF::TestErrorException class Error exception is used when test breakdown due to an error in setu...">RTF::TestErrorException</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> {</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classRTF_1_1TestErrorException.html">   90</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1TestErrorException.html" title="The RTF::TestErrorException class Error exception is used when test breakdown due to an error in setu...">RTF::TestErrorException</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="classRTF_1_1TestErrorException.html#a838978160490a3be12c486357ec87f18">   92</a></span>&#160;    <a class="code" href="classRTF_1_1TestErrorException.html#a838978160490a3be12c486357ec87f18">TestErrorException</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>&amp; msg)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        : <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">Exception</a>(msg) { }</div>
@@ -169,7 +169,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;};</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureException.html">  105</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1FixtureException.html" title="The RTF::FixtureException class Ficture exception is used when a there is a probleme during fixture s...">RTF::FixtureException</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> {</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureException.html">  105</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1FixtureException.html" title="The RTF::FixtureException class Ficture exception is used when a there is a probleme during fixture s...">RTF::FixtureException</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">RTF::Exception</a> {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="classRTF_1_1FixtureException.html#a2f88762f09c2a31d397ed0432c496691">  107</a></span>&#160;    <a class="code" href="classRTF_1_1FixtureException.html#a2f88762f09c2a31d397ed0432c496691">FixtureException</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>&amp; msg)</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        : <a class="code" href="classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception.">Exception</a>(msg) { }</div>
@@ -182,7 +182,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

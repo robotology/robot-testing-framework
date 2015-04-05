@@ -104,62 +104,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _RTF_TESTRESULT_H</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _RTF_TESTRESULT_H</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Test_8h.html">Test.h</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestMessage_8h.html">TestMessage.h</a>&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestListener_8h.html">TestListener.h</a>&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>RTF {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">class </span>TestResult;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="rtf__config_8h.html">rtf_config.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Test_8h.html">Test.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestMessage_8h.html">TestMessage.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestListener_8h.html">TestListener.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">class </span>TestResult;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">RTF::TestResult</a> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html#abf750aa6c70e67e72cc95d4033c7582d">   38</a></span>&#160;    <span class="keyword">typedef</span> std::set&lt;RTF::TestListener*&gt;  <a class="code" href="classRTF_1_1TestResult.html#abf750aa6c70e67e72cc95d4033c7582d">ListenerContainer</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html#a6ee3c7e92ededbbf1d2673343e060372">   39</a></span>&#160;    <span class="keyword">typedef</span> std::set&lt;RTF::TestListener*&gt;::iterator <a class="code" href="classRTF_1_1TestResult.html#a6ee3c7e92ededbbf1d2673343e060372">ListenerIterator</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html">   37</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">RTF::TestResult</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html#abf750aa6c70e67e72cc95d4033c7582d">   39</a></span>&#160;    <span class="keyword">typedef</span> std::set&lt;RTF::TestListener*&gt;  <a class="code" href="classRTF_1_1TestResult.html#abf750aa6c70e67e72cc95d4033c7582d">ListenerContainer</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html#a6ee3c7e92ededbbf1d2673343e060372">   40</a></span>&#160;    <span class="keyword">typedef</span> std::set&lt;RTF::TestListener*&gt;::iterator <a class="code" href="classRTF_1_1TestResult.html#a6ee3c7e92ededbbf1d2673343e060372">ListenerIterator</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classRTF_1_1TestResult.html#aca75111cb865277a28340d5deab50735" title="TestResult constructor.">TestResult</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1TestResult.html#a827f49c58a8683e0cf4671d4693f89b7" title="TestResult destructor.">~TestResult</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a369f56d6cb696d6c519b575b52fc7575" title="Adding a new listener.">addListener</a>(<a class="code" href="classRTF_1_1TestListener.html" title="The base class of any test result listeners.">RTF::TestListener</a>* listener);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a1ba0aec9f9a14bff41d10469acd612a1" title="Remove a listener.">removeListener</a>(<a class="code" href="classRTF_1_1TestListener.html" title="The base class of any test result listeners.">RTF::TestListener</a>* listener);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a1d03c3de62a155abb7a2385a2598c9b5" title="Clear the listener list.">reset</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#adcbc1d0c8a4207b2345edf083c66ca07" title="This is called to report any arbitrary message from tests.">addReport</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test, <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#afcee913205ed362de291165e8aa2ec43" title="This is called when an error occurred during test run.">addError</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test, <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a2493df21c9fa846f1163db5f90f66947" title="This is called when a failure occurred during test run.">addFailure</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test, <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a7f4f6ee0b69b2544bc0b633f7ae9fa53" title="This is called when a Test is started.">startTest</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a7354a848e29ede753f1d412a266463d1" title="This is called when a Test is finished.">endTest</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a36828c256df8a6bc3747ce19e98196ba" title="This is called when a TestSuit is started.">startTestSuit</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a51a7a5f5b0a75a58b346943fa0d9f7ea" title="This is called when a TestSuit is finished.">endTestSuit</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a> *test);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#ad2f8bbbeafd1b4f29636d31ea6d1ced3" title="This is called when the TestRunner is started.">startTestRunner</a>();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#ab6e24385f1373b0a66c9c52a851a3f26" title="This is called when the TestRunner is finished.">endTestRunner</a>();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html#ac11c3a94f8e738ca347cb81cbcff8087">  128</a></span>&#160;    <a class="code" href="classRTF_1_1TestResult.html#abf750aa6c70e67e72cc95d4033c7582d">ListenerContainer</a> <a class="code" href="classRTF_1_1TestResult.html#ac11c3a94f8e738ca347cb81cbcff8087">listeners</a>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;};</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif // _RTF_TESTResult_H</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classRTF_1_1TestResult.html#aca75111cb865277a28340d5deab50735" title="TestResult constructor.">TestResult</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1TestResult.html#a827f49c58a8683e0cf4671d4693f89b7" title="TestResult destructor.">~TestResult</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a369f56d6cb696d6c519b575b52fc7575" title="Adding a new listener.">addListener</a>(<a class="code" href="classRTF_1_1TestListener.html" title="The base class of any test result listeners.">RTF::TestListener</a>* listener);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a1ba0aec9f9a14bff41d10469acd612a1" title="Remove a listener.">removeListener</a>(<a class="code" href="classRTF_1_1TestListener.html" title="The base class of any test result listeners.">RTF::TestListener</a>* listener);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a1d03c3de62a155abb7a2385a2598c9b5" title="Clear the listener list.">reset</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#adcbc1d0c8a4207b2345edf083c66ca07" title="This is called to report any arbitrary message from tests.">addReport</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test, <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#afcee913205ed362de291165e8aa2ec43" title="This is called when an error occurred during test run.">addError</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test, <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a2493df21c9fa846f1163db5f90f66947" title="This is called when a failure occurred during test run.">addFailure</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test, <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a7f4f6ee0b69b2544bc0b633f7ae9fa53" title="This is called when a Test is started.">startTest</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a7354a848e29ede753f1d412a266463d1" title="This is called when a Test is finished.">endTest</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a36828c256df8a6bc3747ce19e98196ba" title="This is called when a TestSuit is started.">startTestSuit</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a>* test);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#a51a7a5f5b0a75a58b346943fa0d9f7ea" title="This is called when a TestSuit is finished.">endTestSuit</a>(<span class="keyword">const</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a> *test);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#ad2f8bbbeafd1b4f29636d31ea6d1ced3" title="This is called when the TestRunner is started.">startTestRunner</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestResult.html#ab6e24385f1373b0a66c9c52a851a3f26" title="This is called when the TestRunner is finished.">endTestRunner</a>();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="code" href="classRTF_1_1TestResult.html#ac11c3a94f8e738ca347cb81cbcff8087">  129</a></span>&#160;    <a class="code" href="classRTF_1_1TestResult.html#abf750aa6c70e67e72cc95d4033c7582d">ListenerContainer</a> <a class="code" href="classRTF_1_1TestResult.html#ac11c3a94f8e738ca347cb81cbcff8087">listeners</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;};</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif // _RTF_TESTResult_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:35:26 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
