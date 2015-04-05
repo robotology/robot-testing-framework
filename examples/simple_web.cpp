@@ -33,7 +33,7 @@ public:
 
     virtual void run() {
 		srand(time(NULL));
-        for (int i=0; i< 20; i++) {
+        for (int i=0; i< 10; i++) {
 			int a = rand() % 10;
 			int b = rand() % 10;
             RTF_TEST_REPORT("testing smaller...");
@@ -53,7 +53,7 @@ public:
 
     virtual void run() {
 		srand(time(NULL));
-        for (int i=0; i< 20; i++) {
+        for (int i=0; i< 5; i++) {
 			int a = rand() % 10;
 			int b = rand() % 10;
             RTF_TEST_REPORT("testing equality...");

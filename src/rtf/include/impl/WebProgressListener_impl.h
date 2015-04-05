@@ -22,24 +22,24 @@ namespace RTF {
 
 
 /**
- * \brief class WebProgressListenerImpl listens to any messages reported by the tests
+ * \brief Singleton class WebProgressListenerImpl listens to any messages reported by the tests
  * during the test run, formates them sends them to the web clients.
  *
  * \ingroup key_class
  *
  */
-class RTF_API RTF::WebProgressListenerImpl : public RTF::TestListener {
+class RTF_API RTF::WebProgressListenerImpl {
 public:
 
     /**
-     * WebProgressListenerImpl constructor
+     * create Creates an instance of WebProgressListenerImpl class
      * @param port the server port number. default is 8080
      * @param verbose enables the verbose mode. If \c true, the source file and
      * the line number where the messages are issued by the tests will be written to
      * the standard output. The verbose mode is disabled by default.
      */
-    WebProgressListenerImpl(unsigned int port=8080,
-                        bool verbose = false);
+    static WebProgressListenerImpl& create(unsigned int port=8080,
+                                    bool verbose = false);
 
     /**
      *  WebProgressListenerImpl destructor
@@ -102,16 +102,21 @@ public:
      */
     virtual void endTestRunner();
 
-public:
+public:    
     struct mg_server *server;
     tthread::mutex critical;
-    //bool stopRefresh;
-    //bool serverBusy;
     bool shouldStop;
     std::string html;
 
 private:
+    WebProgressListenerImpl(WebProgressListenerImpl const&);    // Don't Implement
+    void operator=(WebProgressListenerImpl const&);             // Don't implement
+    WebProgressListenerImpl(unsigned int port,
+                            bool verbose);
+    std::string encode(const std::string& data);
     static void update(void *param);
+    static int handler(struct mg_connection *conn,
+                          enum mg_event ev);
 
 private:
     tthread::thread *updater;

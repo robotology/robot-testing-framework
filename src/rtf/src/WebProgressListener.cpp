@@ -8,15 +8,9 @@
  */
 
 #include <string.h>
-#include <iostream>
 #include <Asserter.h>
 #include <WebProgressListener.h>
 #include <WebProgressListener_impl.h>
-
-#ifdef _WIN32
-#else
-    #include <unistd.h>
-#endif
 
 using namespace std;
 using namespace RTF;
@@ -33,8 +27,55 @@ using namespace RTF;
 #define MSG_REPORT  GREEN "[INFO]  " ENDC
 
 
+RTF::WebProgressListenerImpl &WebProgressListenerImpl::create(unsigned int port,
+                                                         bool verbose) {
+    static WebProgressListenerImpl instance(port, verbose);
+    return instance;
+}
 
-static int ev_handler(struct mg_connection *conn, enum mg_event ev) {
+WebProgressListenerImpl::WebProgressListenerImpl(unsigned int port,
+                                         bool verbose) {    
+    this->verbose = verbose;
+    this->port = port;
+    server = mg_create_server(this, WebProgressListenerImpl::handler);
+    if(server) {
+        std::string port_str = Asserter::format("%d", port);
+        mg_set_option(server,
+                      "listening_port", port_str.c_str());
+        shouldStop = false;
+        updater = new tthread::thread(update, this);
+    }
+}
+
+WebProgressListenerImpl::~WebProgressListenerImpl() {    
+    shouldStop = true;
+    // stop the pooling thread
+    if(updater) {        
+        updater->join();
+        delete updater;
+        updater = NULL;
+    }
+    // delete the web server
+    if(server) {
+        // ensure the last message delivery (?)
+        mg_poll_server(server, 1000);
+        mg_destroy_server(&server);
+        server = NULL;
+    }
+}
+
+void WebProgressListenerImpl::update(void *param) {
+    WebProgressListenerImpl* web = (WebProgressListenerImpl*) param;
+    while(!web->shouldStop) {
+        mg_poll_server(web->server, 1000);
+#ifdef _WIN32
+		Sleep(1000);
+#endif
+	}
+}
+
+int WebProgressListenerImpl::handler(struct mg_connection *conn,
+                                        enum mg_event ev) {
     WebProgressListenerImpl* web = (WebProgressListenerImpl*) conn->server_param;
     if(ev == MG_REQUEST) {
         std::string data;
@@ -70,53 +111,29 @@ static int ev_handler(struct mg_connection *conn, enum mg_event ev) {
         return MG_FALSE;
 }
 
-
-WebProgressListenerImpl::WebProgressListenerImpl(unsigned int port,
-                                         bool verbose) {    
-    this->verbose = verbose;
-    this->port = port;
-    server = mg_create_server(this, ev_handler);
-    if(server) {
-        std::string port_str = Asserter::format("%d", port);
-        mg_set_option(server,
-                      "listening_port", port_str.c_str());
-        shouldStop = false;
-        updater = new tthread::thread(update, this);
+std::string WebProgressListenerImpl::encode(const std::string& data) {
+    std::string buffer;
+    buffer.reserve(data.size());
+    for(size_t pos = 0; pos != data.size(); ++pos) {
+        switch(data[pos]) {
+            case '&':  buffer.append("&amp;");       break;
+            case '\"': buffer.append("&quot;");      break;
+            case '\'': buffer.append("&apos;");      break;
+            case '<':  buffer.append("&lt;");        break;
+            case '>':  buffer.append("&gt;");        break;
+            default:   buffer.append(&data[pos], 1); break;
+        }
     }
+    return buffer;
 }
-
-WebProgressListenerImpl::~WebProgressListenerImpl() {    
-    // stop the pooling thread
-    if(updater) {
-        shouldStop = true;
-        updater->join();
-        delete updater;
-    }
-    // delete the web server
-    if(server) {
-          mg_destroy_server(&server);
-          server = NULL;
-    }
-}
-
-void WebProgressListenerImpl::update(void *param) {
-    WebProgressListenerImpl* web = (WebProgressListenerImpl*) param;
-    while(!web->shouldStop) {
-        mg_poll_server(web->server, 1000);
-#ifdef _WIN32
-		Sleep(1000);
-#endif
-	}
-}
-
 
 void WebProgressListenerImpl::addReport(const RTF::Test* test,
                                 RTF::TestMessage msg) {
     string text = Asserter::format("<br> %s (%s) %s : %s.",
                                   MSG_REPORT,
-                                  test->getName().c_str(),
-                                  msg.getMessage().c_str(),
-                                  msg.getDetail().c_str());
+                                  encode(test->getName()).c_str(),
+                                  encode(msg.getMessage()).c_str(),
+                                  encode(msg.getDetail()).c_str());
     critical.lock();
     html += text;
     critical.unlock();
@@ -128,9 +145,9 @@ void WebProgressListenerImpl::addError(const RTF::Test* test,
                                RTF::TestMessage msg) {
     string text = Asserter::format("<br> %s (%s) %s : %s.",
                                   MSG_ERROR,
-                                  test->getName().c_str(),
-                                  msg.getMessage().c_str(),
-                                  msg.getDetail().c_str());
+                                  encode(test->getName()).c_str(),
+                                  encode(msg.getMessage()).c_str(),
+                                  encode(msg.getDetail()).c_str());
     critical.lock();
     html += text;
     critical.unlock();
@@ -140,9 +157,9 @@ void WebProgressListenerImpl::addFailure(const RTF::Test* test,
                                  RTF::TestMessage msg) {
     string text = Asserter::format("<br> %s (%s) %s : %s.",
                                   MSG_FAIL,
-                                  test->getName().c_str(),
-                                  msg.getMessage().c_str(),
-                                  msg.getDetail().c_str());
+                                  encode(test->getName()).c_str(),
+                                  encode(msg.getMessage()).c_str(),
+                                  encode(msg.getDetail()).c_str());
     critical.lock();
     html += text;
     critical.unlock();
@@ -151,8 +168,8 @@ void WebProgressListenerImpl::addFailure(const RTF::Test* test,
 void WebProgressListenerImpl::startTest(const RTF::Test* test) {
     string text = Asserter::format("<br> %s Test case %s started... %s",
                                   BLUE,
-                                  test->getName().c_str(),
-                                  ENDC);
+                                  encode(test->getName()).c_str(),
+                                  ENDC);    
     critical.lock();
     html += text;
     critical.unlock();
@@ -161,9 +178,9 @@ void WebProgressListenerImpl::startTest(const RTF::Test* test) {
 void WebProgressListenerImpl::endTest(const RTF::Test* test) {
     string text = Asserter::format("<br> %s Test case %s %s %s",
                                   BLUE,
-                                  test->getName().c_str(),
+                                  encode(test->getName()).c_str(),
                                   (test->succeeded()) ? "passed!" : "failed!",
-                                  ENDC);
+                                  ENDC);    
     critical.lock();
     html += text;
     critical.unlock();
@@ -172,8 +189,8 @@ void WebProgressListenerImpl::endTest(const RTF::Test* test) {
 void WebProgressListenerImpl::startTestSuit(const RTF::Test* test) {
     string text = Asserter::format("<br> %s Test suite %s started... %s",
                                   BLUE,
-                                  test->getName().c_str(),
-                                  ENDC);
+                                  encode(test->getName()).c_str(),
+                                  ENDC);    
     critical.lock();
     html += text;
     critical.unlock();
@@ -182,9 +199,9 @@ void WebProgressListenerImpl::startTestSuit(const RTF::Test* test) {
 void WebProgressListenerImpl::endTestSuit(const RTF::Test* test) {
     string text = Asserter::format("<br> %s Test suite %s %s %s",
                                   BLUE,
-                                  test->getName().c_str(),
+                                  encode(test->getName()).c_str(),
                                   (test->succeeded()) ? "passed!" : "failed!",
-                                  ENDC);
+                                  ENDC);    
     critical.lock();
     html += text;
     critical.unlock();
@@ -192,7 +209,7 @@ void WebProgressListenerImpl::endTestSuit(const RTF::Test* test) {
 
 void WebProgressListenerImpl::startTestRunner() {
     string text = Asserter::format("<br> %s Staring test runner. %s",
-                                  BLUE, ENDC);
+                                  BLUE, ENDC);    
     critical.lock();
     html += text;
     critical.unlock();
@@ -200,7 +217,7 @@ void WebProgressListenerImpl::startTestRunner() {
 
 void WebProgressListenerImpl::endTestRunner() {
     string text = Asserter::format("<br> %s Ending test runner. %s",
-                                  BLUE, ENDC);
+                                  BLUE, ENDC);    
     critical.lock();
     html += text;
     critical.unlock();
@@ -213,13 +230,10 @@ void WebProgressListenerImpl::endTestRunner() {
  */
 WebProgressListener::WebProgressListener(unsigned int port,
                                              bool verbose) {
-    implement = new WebProgressListenerImpl(port, verbose);
+    implement = & WebProgressListenerImpl::create(port, verbose);
 }
 
 WebProgressListener::~WebProgressListener() {
-    if(implement)
-        delete ((WebProgressListener*)implement);
-    implement = NULL;
 }
 
 void WebProgressListener::addReport(const RTF::Test* test,
