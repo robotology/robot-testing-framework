@@ -15,7 +15,6 @@
 #include <TestResult.h>
 #include <TestRunner.h>
 #include <TestSuit.h>
-#include <ConsoleListener.h>
 #include <WebProgressListener.h>
 #include <TestAssert.h>
 
@@ -53,7 +52,7 @@ public:
 
     virtual void run() {
 		srand(time(NULL));
-        for (int i=0; i< 5; i++) {
+        for (int i=0; i< 10; i++) {
 			int a = rand() % 10;
 			int b = rand() % 10;
             RTF_TEST_REPORT("testing equality...");
@@ -70,14 +69,13 @@ public:
 
 int main(int argc, char** argv)
 {
-    // create a test listener to collect the result
-    ConsoleListener console(false);
+    // create a test listener to collect the result    
     WebProgressListener web(8080, false);
 
     // create a test result sand add the listeners
-    TestResult result;
-    result.addListener(&console);
+    TestResult result;    
     result.addListener(&web);
+    printf("To see the test result, open a web browser and type 'http://127.0.0.1:8080'...\n");
 
     // create a test suit and the test cases
     TestSuit suit("MyTestSuit");
@@ -89,7 +87,6 @@ int main(int argc, char** argv)
     // create a test runner
     TestRunner runner;    
     runner.addTest(&suit);
-    runner.run(result);
-
+    runner.run(result);    
     return 0;
 }
