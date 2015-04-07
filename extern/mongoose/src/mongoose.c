@@ -90,6 +90,7 @@
 #include <signal.h>
 
 #ifdef _WIN32
+#define FD_SETSIZE      1024
 #ifdef _MSC_VER
 #pragma comment(lib, "ws2_32.lib")    // Linking with winsock library
 #include <BaseTsd.h>
