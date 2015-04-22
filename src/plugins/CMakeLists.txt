@@ -11,7 +11,13 @@ if (ENABLE_PLUGIN OR BUILD_TESTRUNNER)
     add_subdirectory(dll)
 endif()
 
-# build plugin manager
+# build Lua plugin manager
 if (ENABLE_LUA_PLUGIN)
     add_subdirectory(lua)
 endif()
+
+# build Python plugin manager
+if (ENABLE_PYTHON_PLUGIN)
+    add_subdirectory(python)
+endif()
+

@@ -7,7 +7,6 @@
  *
  */
 
-#include <iostream>
 #include <lua.hpp>
 #include <Plugin.h>
 #include <Asserter.h>

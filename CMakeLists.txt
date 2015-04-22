@@ -41,6 +41,7 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
 option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
+option (ENABLE_PYTHON_PLUGIN "Enable Pyhton plugins" OFF)
 option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 option (ENABLE_WEB_LISTENER "Enable web listener" OFF)
@@ -69,10 +70,12 @@ set(BUILD_RTF_DLL_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/dll/include)
 set(INSTALL_RTF_DLL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include/dll)
 set(BUILD_RTF_LUA_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/lua/include)
 set(INSTALL_RTF_LUA_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include/lua)
+set(BUILD_RTF_PYTHON_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/python/include)
+set(INSTALL_RTF_PYTHON_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include/python)
 
 install_basic_package_files(RTF
                             VERSION ${RTF_VERSION}
                             COMPATIBILITY AnyNewerVersion
                             TARGETS_PROPERTY RTF_LIBS
-                            EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR LUA_INCLUDEDIR)
+                            EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR LUA_INCLUDEDIR PYTHON_INCLUDEDIR)
 

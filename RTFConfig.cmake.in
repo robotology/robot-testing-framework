@@ -36,5 +36,14 @@ else()
   set(RTF_LUA_FOUND FALSE)
 endif()
 
+if(TARGET RTF::RTF_python)
+  set(RTF_PYTHON_FOUND TRUE)
+  set_and_check(RTF_PYTHON_INCLUDEDIR "@PACKAGE_RTF_PYTHON_INCLUDEDIR@")
+  list(APPEND RTF_LIBRARIES RTF::RTF_python)
+  list(APPEND RTF_INCLUDE_DIRS "${RTF_PYTHON_INCLUDEDIR}")
+else()
+  set(RTF_PYTHON_FOUND FALSE)
+endif()
+
 check_required_components(RTF)
 
