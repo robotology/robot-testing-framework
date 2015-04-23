@@ -1,0 +1,30 @@
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+env:
+  - TRAVIS_BUILD_TYPE=Debug
+  - TRAVIS_BUILD_TYPE=Release
+
+before_script:
+  # install a recent cmake and lua 5.1 
+  - sudo add-apt-repository -y ppa:robotology/ppa
+  - sudo apt-get update
+  - sudo apt-get install cmake liblua5.1-dev
+  
+  # configure robot-testing framework
+  - mkdir build 
+  - cd build 
+  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..
+  
+script: 
+  - make
+  # test install/uninstall
+  - sudo make install
+  - sudo make uninstall
+
+notifications:
+  email:
+    - pegua1@gmail.com
