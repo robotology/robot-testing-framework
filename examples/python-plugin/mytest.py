@@ -21,18 +21,18 @@
  TestCase.asserFail(msg)            : throws a failure exception with message
 '''
 
+import rtf
+
 class TestCase:
     def setup(self, param):
         print 'Seting up ...'
+        rtf.setName("Ali")
         return True
-    
+
     def tearDown(self):
         print 'tearing Down ...'
 
 
     def run(self):
         print 'Running ...'
-
-
-
-
+        

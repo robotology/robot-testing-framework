@@ -28,6 +28,13 @@ using namespace RTF::plugin;
  * @brief PythonPluginLoaderImpl
  */
 
+
+PyMethodDef PythonPluginLoaderImpl::testPythonMethods[] = {
+     {"setName", PythonPluginLoaderImpl::setName, METH_VARARGS, "Setting the test name."},
+     {NULL, NULL, 0, NULL}
+};
+
+
 PythonPluginLoaderImpl::PythonPluginLoaderImpl()
     : TestCase(""), pyName(NULL) {
 
@@ -68,10 +75,16 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     char* name = strdup(filename.c_str());
     string dname = dirname(dir);
     string bname = basename(name);
-#endif
+#endif    
+
+    // register the extended methods
+    (void) Py_InitModule("rtf", testPythonMethods);
+    //PyCObject_FromVoidPtr
+
     PyRun_SimpleString("import sys");
     string sys_path = "sys.path.append(\"" + dname + "\")";
     PyRun_SimpleString(sys_path.c_str());
+
 
     // remove the file extention if exist
     int lastindex = bname.find_last_of(".");
@@ -118,7 +131,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
          error = Asserter::format("TestCase is not defined as a class");
          close();
          return NULL;
-     }
+     }     
 
     return this;
 }
@@ -152,7 +165,7 @@ std::string PythonPluginLoaderImpl::getPythonErrorString() {
     Py_XDECREF(pyString);
 
     if (traceback != NULL && PyTraceBack_Check(traceback)) {
-        strError = "traceback";
+        strError = "Syntax Error!";
     }
     Py_XDECREF(type);
     Py_XDECREF(value);
@@ -173,12 +186,16 @@ const std::string PythonPluginLoaderImpl::getFileName() {
 }
 
 bool PythonPluginLoaderImpl::setup(int argc, char**argv) {
-    char method[] = "setup";
-    PyObject* arglist = PyList_New(argc);
+    PyObject* func = PyObject_GetAttrString(pyInstance, "setup");
+    if(func == NULL)
+        return true;
+
+
+    PyObject* arglist = PyTuple_New(argc);
     if(arglist == NULL) {
         error = Asserter::format("Cannot create arguments because %s",
                                   getPythonErrorString().c_str());
-        return false;
+        RTF_ASSERT_ERROR(error);
     }
     for (int i=0; i<argc; i++) {
         PyObject *str = PyString_FromString(argv[i]);
@@ -186,26 +203,40 @@ bool PythonPluginLoaderImpl::setup(int argc, char**argv) {
             Py_DECREF(arglist);
             error = Asserter::format("Cannot create arguments because %s",
                                       getPythonErrorString().c_str());
-            return false;
+            RTF_ASSERT_ERROR(error);
         }
-        PyList_SET_ITEM(arglist, i, str);
+        PyTuple_SetItem(arglist, i, str);
     }
 
-    //PyObject_CallFunction()
-    PyObject* pyValue = PyObject_CallMethod(pyInstance, method, NULL);
+    PyObject* pyValue = PyObject_CallObject(func, arglist);
     if(pyValue == NULL) {
-        error = Asserter::format("Cannot call the run() method because %s",
+        error = Asserter::format("Cannot call the setup() method because %s",
                                   getPythonErrorString().c_str());
-        return false;
+        Py_DECREF(arglist);
+        RTF_ASSERT_ERROR(error);
     }
 
+    // TODO: ensure the return value type
+    bool ret = (PyObject_IsTrue(pyValue) == 1);
     Py_DECREF(arglist);
     Py_DECREF(pyValue);
-    return true;
+    return ret;
 }
 
 void PythonPluginLoaderImpl::tearDown() {
+    PyObject* func = PyObject_GetAttrString(pyInstance, "tearDown");
+    if(func == NULL)
+        return;
 
+    char method[] = "tearDown";
+    PyObject* pyValue = PyObject_CallMethod(pyInstance, method, NULL);
+    if(pyValue == NULL) {
+        error = Asserter::format("Cannot call the tearDown() method because %s",
+                                  getPythonErrorString().c_str());
+        RTF_ASSERT_ERROR(error);
+    }
+
+    Py_DECREF(pyValue);
 }
 
 void PythonPluginLoaderImpl::run() {
@@ -214,17 +245,25 @@ void PythonPluginLoaderImpl::run() {
     if(pyValue == NULL) {
         error = Asserter::format("Cannot call the run() method because %s",
                                   getPythonErrorString().c_str());
+        RTF_ASSERT_ERROR(error);
     }
-    else
-        Py_DECREF(pyValue);
+
+    Py_DECREF(pyValue);
+}
+
+
+PyObject* PythonPluginLoaderImpl::setName(PyObject* self,
+                                          PyObject* args) {
+    const char* name;
+    if (!PyArg_ParseTuple(args, "s", &name)) {
+        RTF_ASSERT_ERROR(Asserter::format("setName() is called with the wrong paramters."));
+    }
+    //Test::setName(name);
+    Py_RETURN_NONE;
 }
 
 
 /*
-int PythonPluginLoaderImpl::setName(lua_State* L) {
-    return 0;
-}
-
 int PythonPluginLoaderImpl::assertError(lua_State* L) {
     return 0;
 }

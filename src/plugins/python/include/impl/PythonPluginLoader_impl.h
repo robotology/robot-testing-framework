@@ -77,9 +77,13 @@ public:
 
     virtual void run();
 
+public:
+    static PyObject* setName(PyObject* self, PyObject* args);
 
 private:
     std::string getPythonErrorString();
+    //static PyObject* setName(PyObject* self, PyObject* args);
+
 
 private:    
     std::string filename;
@@ -90,6 +94,7 @@ private:
     PyObject *pyDict;
     PyObject *pyClass;
     PyObject* pyInstance;
+    static PyMethodDef testPythonMethods[];
 };
 
 #endif // _RTF_PYTHONPLUGINLOADER_IMPL_H
