@@ -79,13 +79,17 @@ public:
 
 
 private:
-    PyObject *pyName;
-    PyObject *pyModule;
-    PyObject *pyDict;
+    std::string getPythonErrorString();
 
 private:    
     std::string filename;
     std::string error;    
+
+    PyObject *pyName;
+    PyObject *pyModule;    
+    PyObject *pyDict;
+    PyObject *pyClass;
+    PyObject* pyInstance;
 };
 
 #endif // _RTF_PYTHONPLUGINLOADER_IMPL_H

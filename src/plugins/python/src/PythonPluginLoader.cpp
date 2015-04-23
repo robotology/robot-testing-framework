@@ -73,50 +73,91 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     string sys_path = "sys.path.append(\"" + dname + "\")";
     PyRun_SimpleString(sys_path.c_str());
 
-    // catch errors
-    PyObject *ptype, *pvalue, *ptraceback;
-    PyErr_Fetch(&ptype, &pvalue, &ptraceback);
-    PyErr_Clear();
-
     // remove the file extention if exist
     int lastindex = bname.find_last_of(".");
     string rawname = bname.substr(0, lastindex);
 
-    // Build the name object
-    printf("rawname: %s\n", rawname.c_str());
-    pyName = PyString_FromString(rawname.c_str());
-    printf("loading %s ...\n", filename.c_str());
+    // Build the name object    
+    pyName = PyString_FromString(rawname.c_str());    
     if(pyName == NULL) {
         error = Asserter::format("Cannot load %s because %s",
-                                 filename.c_str(), PyString_AsString(pvalue));
+                                 filename.c_str(), getPythonErrorString().c_str());
         close();
         return NULL;
     }
 
-    // Load the module object
+    // Load the module object        
     pyModule = PyImport_Import(pyName);
     if(pyModule == NULL) {
-        //error = Asserter::format("Cannot load %s because %s",
-        //                         filename.c_str(), PyString_AsString(pvalue));
-        PyErr_Print();
+        error = Asserter::format("Cannot load %s because %s",
+                                 filename.c_str(), getPythonErrorString().c_str());
         close();
         return NULL;
     }
-/*
+
     // pyDict is a borrowed reference
     pyDict = PyModule_GetDict(pyModule);
     if(pyDict == NULL) {
         error = Asserter::format("Cannot load %s because %s",
-                                 filename.c_str(), PyString_AsString(pvalue));
+                                 filename.c_str(), getPythonErrorString().c_str());
         close();
         return NULL;
     }
-*/
 
-    Py_XDECREF(ptype);
-    Py_XDECREF(pvalue);
-    Py_XDECREF(ptraceback);
+    // Build the name of a callable class
+    pyClass = PyDict_GetItemString(pyDict, "TestCase");
+    if(pyClass == NULL) {
+        error = Asserter::format("Cannot find any instance of class TestCase");
+        close();
+        return NULL;
+    }
+
+     // Create an instance of the class
+     if (!PyCallable_Check(pyClass) ||
+             (pyInstance = PyObject_CallObject(pyClass, NULL)) == NULL) {
+         error = Asserter::format("TestCase is not defined as a class");
+         close();
+         return NULL;
+     }
+
     return this;
+}
+
+std::string PythonPluginLoaderImpl::getPythonErrorString() {
+    std::string strError;
+    // Extra paranoia...
+    if (!PyErr_Occurred())
+      return strError;
+
+    //PyErr_Print();
+    PyObject *type , *value, *traceback, *pyString;
+    type = value = traceback = pyString = NULL;
+
+    PyErr_Fetch(&type, &value, &traceback);
+    PyErr_Clear();
+    if (value != NULL &&
+            (pyString=PyObject_Str(value))!=NULL &&
+            (PyString_Check(pyString))) {
+      strError = PyString_AsString(pyString);
+    } else
+      strError = "<unknown exception value>";
+    Py_XDECREF(pyString);
+
+    if (type != NULL &&
+            (pyString=PyObject_Str(type))!=NULL &&
+            (PyString_Check(pyString)))
+      strError += string("; ") + PyString_AsString(pyString);
+    else
+      strError = " <unknown exception type>";
+    Py_XDECREF(pyString);
+
+    if (traceback != NULL && PyTraceBack_Check(traceback)) {
+        strError = "traceback";
+    }
+    Py_XDECREF(type);
+    Py_XDECREF(value);
+    Py_XDECREF(traceback);
+    return strError;
 }
 
 void PythonPluginLoaderImpl::setTestName(const std::string name) {
@@ -124,7 +165,6 @@ void PythonPluginLoaderImpl::setTestName(const std::string name) {
 }
 
 const std::string PythonPluginLoaderImpl::getLastError() {
-
     return error;
 }
 
@@ -133,19 +173,50 @@ const std::string PythonPluginLoaderImpl::getFileName() {
 }
 
 bool PythonPluginLoaderImpl::setup(int argc, char**argv) {
+    char method[] = "setup";
+    PyObject* arglist = PyList_New(argc);
+    if(arglist == NULL) {
+        error = Asserter::format("Cannot create arguments because %s",
+                                  getPythonErrorString().c_str());
+        return false;
+    }
+    for (int i=0; i<argc; i++) {
+        PyObject *str = PyString_FromString(argv[i]);
+        if (str == NULL) {
+            Py_DECREF(arglist);
+            error = Asserter::format("Cannot create arguments because %s",
+                                      getPythonErrorString().c_str());
+            return false;
+        }
+        PyList_SET_ITEM(arglist, i, str);
+    }
 
+    //PyObject_CallFunction()
+    PyObject* pyValue = PyObject_CallMethod(pyInstance, method, NULL);
+    if(pyValue == NULL) {
+        error = Asserter::format("Cannot call the run() method because %s",
+                                  getPythonErrorString().c_str());
+        return false;
+    }
+
+    Py_DECREF(arglist);
+    Py_DECREF(pyValue);
     return true;
 }
 
-// TODO: in the Lua test plugin, the teardown will not be called
-//       after any exception. This is not coherent with the c++
-//       implementaion of test cases.
 void PythonPluginLoaderImpl::tearDown() {
 
 }
 
 void PythonPluginLoaderImpl::run() {
-
+    char method[] = "run";
+    PyObject* pyValue = PyObject_CallMethod(pyInstance, method, NULL);
+    if(pyValue == NULL) {
+        error = Asserter::format("Cannot call the run() method because %s",
+                                  getPythonErrorString().c_str());
+    }
+    else
+        Py_DECREF(pyValue);
 }
 
 

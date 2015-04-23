@@ -21,7 +21,18 @@
  TestCase.asserFail(msg)            : throws a failure exception with message
 '''
 
-def multiply():
-    c = 12345*6789
-    print 'The result of 12345 x 6789 :', c
-    return c
+class TestCase:
+    def setup(self, param):
+        print 'Seting up ...'
+        return True
+    
+    def tearDown(self):
+        print 'tearing Down ...'
+
+
+    def run(self):
+        print 'Running ...'
+
+
+
+
