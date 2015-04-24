@@ -113,12 +113,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classRTF_1_1Test.html">   26</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classRTF_1_1Test.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> <a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>::<a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">Test</a> {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="classRTF_1_1Test.html#a3d64286008ed71ad2ba01df8029d834f">   35</a></span>&#160;    <a class="code" href="classRTF_1_1Test.html#a3d64286008ed71ad2ba01df8029d834f" title="Test constructor.">Test</a>(std::string name,</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;         std::string description=<span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        : <a class="code" href="classRTF_1_1Test.html#a37bb74fb27e55f96242ba9d8a4b77a4d">strName</a>(name), <a class="code" href="classRTF_1_1Test.html#afdd171bcfa171758a5d97911a93bbe6c">strDescription</a>(description) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        : strName(name), strDescription(description) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classRTF_1_1Test.html#a1c7f9b940e90f4a616d85ed0686f2896">   43</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1Test.html#a1c7f9b940e90f4a616d85ed0686f2896" title="Test destructor.">~Test</a>() { }</div>
@@ -132,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classRTF_1_1Test.html#a2b18b07f50f63be9afc5614e71c269a5">   66</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Test.html#a2b18b07f50f63be9afc5614e71c269a5" title="setDescription Sets an optional string which describes the test.">setDescription</a>(<span class="keyword">const</span> std::string description) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="classRTF_1_1Test.html#afdd171bcfa171758a5d97911a93bbe6c">strDescription</a> = description;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        strDescription = description;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Test.html#a896b74bd9aa985aadb6a14f85d4796a3" title="the main caller of a test.">run</a>(<a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">RTF::TestResult</a> &amp;result) = 0;</div>
@@ -143,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="classRTF_1_1Test.html#a5d74150865c78e1ea4ddafaf4b5be953">   94</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Test.html#a5d74150865c78e1ea4ddafaf4b5be953" title="setName setting the test name">setName</a>(std::string name) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="classRTF_1_1Test.html#a37bb74fb27e55f96242ba9d8a4b77a4d">strName</a> = name;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        strName = name;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">private</span>:</div>
@@ -154,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 24 2015 18:17:30 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

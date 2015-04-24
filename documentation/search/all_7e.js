@@ -7,6 +7,7 @@ var searchData=
   ['_7efixturemanager',['~FixtureManager',['../classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577',1,'RTF::FixtureManager']]],
   ['_7eluapluginloader',['~LuaPluginLoader',['../classRTF_1_1plugin_1_1LuaPluginLoader.html#a8c6a7a858db53011209e1a9c552e9ec3',1,'RTF::plugin::LuaPluginLoader']]],
   ['_7epluginloader',['~PluginLoader',['../classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4',1,'RTF::plugin::PluginLoader']]],
+  ['_7epythonpluginloader',['~PythonPluginLoader',['../classRTF_1_1plugin_1_1PythonPluginLoader.html#aef9dd45cb8def909fcfc09e773eca630',1,'RTF::plugin::PythonPluginLoader']]],
   ['_7eresultevent',['~ResultEvent',['../classRTF_1_1ResultEvent.html#a6195901c9ca608998707484c11af6d74',1,'RTF::ResultEvent']]],
   ['_7etest',['~Test',['../classRTF_1_1Test.html#a1c7f9b940e90f4a616d85ed0686f2896',1,'RTF::Test']]],
   ['_7etestcase',['~TestCase',['../classRTF_1_1TestCase.html#a0b3736e2100052247ebcd46bff63309a',1,'RTF::TestCase']]],

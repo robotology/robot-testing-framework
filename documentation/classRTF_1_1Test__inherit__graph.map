@@ -1,4 +1,4 @@
 <map id="RTF::Test" name="RTF::Test">
-<area shape="rect" id="node3" href="$classRTF_1_1TestCase.html" title="The base class to implememnt a test case." alt="" coords="5,83,117,112"/>
-<area shape="rect" id="node5" href="$classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests." alt="" coords="141,83,245,112"/>
+<area shape="rect" id="node2" href="$classRTF_1_1TestCase.html" title="The base class to implememnt a test case." alt="" coords="5,80,119,107"/>
+<area shape="rect" id="node3" href="$classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests." alt="" coords="143,80,248,107"/>
 </map>

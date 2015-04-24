@@ -97,7 +97,7 @@ Contents</h1>
  </p>
 <h1><a class="anchor" id="desc"></a>
 Description</h1>
-<p>The <code>testrunner</code> is a command line tool to load and run multiple tests which has been developed as <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as <code>*</code>.so, <code>*</code>.dll or *.dylib or using Lua scripting language (i.e., .lua). The <code>testrunner</code> can be used to run a single test case, multiple test cases from a given path, a <a class="el" href="testrunner.html#suit">Test suit</a> or multiple test suits from a given path.</p>
+<p>The <code>testrunner</code> is a command line tool to load and run multiple tests which has been developed as <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as <code>*</code>.so, <code>*</code>.dll or *.dylib or using Lua, Python scripting languages (i.e., .lua, .py). The <code>testrunner</code> can be used to run a single test case, multiple test cases from a given path, a <a class="el" href="testrunner.html#suit">Test suit</a> or multiple test suits from a given path.</p>
 <p><br/>
  </p>
 <h1><a class="anchor" id="single"></a>
@@ -106,8 +106,9 @@ Running a single test case</h1>
 <pre class="fragment"> $ testrunner --verbose --test libmytest.so
 </pre><p>The <code>testrunner</code> follows the platform policy to look for the plug-in file. On a Linux machine, the default folders for the shared libraries and the paths indicated in the <code><code>LD_LIBRARY_PATH</code></code> are searched for the corresponding plug-in. Alternatively, the complete path to the plug-in file can be given to load the corresponding plug-in:</p>
 <pre class="fragment"> $ testrunner --verbose --test ~/my-plugins/libmytest.so
-</pre><p>In the similar way you can run a test case which has been developed using Lua:</p>
+</pre><p>In the similar way you can run a test case which has been developed using Lua or Python:</p>
 <pre class="fragment"> $ testrunner --verbose --test ~/my-plugins/mytest.lua
+ $ testrunner --verbose --test ~/my-plugins/mytest.py
 </pre><p>The <code><code>--verbose</code></code> enables the verbose mode which allows that the result of the tests to be also written to the standard out put. By default the result of the test are stored in the <code><code>result.txt</code></code> which can be changed by using <code><code>--output</code></code> option.</p>
 <p><br/>
  </p>
@@ -133,6 +134,7 @@ Test suit</h1>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;dll&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test4.py <span style="color: #007700">&lt;/test&gt;</span>
     ...
 <span style="color: #007700">&lt;/suit&gt;</span>
 </pre></div>
@@ -187,7 +189,7 @@ options:
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 24 2015 18:17:30 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

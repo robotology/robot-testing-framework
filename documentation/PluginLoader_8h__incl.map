@@ -1,8 +1,8 @@
 <map id="src/rtf/include/PluginLoader.h" name="src/rtf/include/PluginLoader.h">
-<area shape="rect" id="node3" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="347,392,432,421"/>
-<area shape="rect" id="node7" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="240,83,331,112"/>
-<area shape="rect" id="node10" href="$Test_8h.html" title="Test.h" alt="" coords="83,315,141,344"/>
-<area shape="rect" id="node14" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="237,160,333,189"/>
-<area shape="rect" id="node18" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="185,315,297,344"/>
-<area shape="rect" id="node22" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="144,237,248,267"/>
+<area shape="rect" id="node2" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="350,379,437,405"/>
+<area shape="rect" id="node4" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="243,80,333,107"/>
+<area shape="rect" id="node5" href="$Test_8h.html" title="Test.h" alt="" coords="83,304,141,331"/>
+<area shape="rect" id="node6" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="239,155,337,181"/>
+<area shape="rect" id="node7" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="187,304,299,331"/>
+<area shape="rect" id="node8" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="145,229,250,256"/>
 </map>

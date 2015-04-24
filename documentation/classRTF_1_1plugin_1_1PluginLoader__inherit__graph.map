@@ -1,3 +1,4 @@
 <map id="RTF::plugin::PluginLoader" name="RTF::plugin::PluginLoader">
-<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="5,83,200,112"/>
+<area shape="rect" id="node2" href="$classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="5,87,200,114"/>
+<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1PythonPluginLoader.html" title="The PythonPluginLoader loads a Python test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="225,80,399,121"/>
 </map>

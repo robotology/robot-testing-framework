@@ -113,10 +113,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html">   34</a></span>&#160;<span class="keyword">class  </span><a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="classRTF_1_1TestCase.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> <a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>::<a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> : <span class="keyword">public</span> <a class="code" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">RTF::Test</a> {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classRTF_1_1TestCase.html#a5ccf64165baad7019933e1d5d01e7b4a" title="TestCase constructor.">TestCase</a>(std::string name, std::string <a class="code" href="classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129">param</a>=<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classRTF_1_1TestCase.html#a5ccf64165baad7019933e1d5d01e7b4a" title="TestCase constructor.">TestCase</a>(std::string name, std::string param=<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classRTF_1_1TestCase.html#a0b3736e2100052247ebcd46bff63309a" title="TestCase destructor.">~TestCase</a>();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
@@ -124,22 +124,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a29d510d94fadd07cb9b5b5ad1982dddc" title="tearDown is called after the test run">tearDown</a>();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run</a>() = 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Test.html#a896b74bd9aa985aadb6a14f85d4796a3" title="the main caller of a test.">run</a>() = 0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run</a>(<a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a> &amp;<a class="code" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">result</a>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Test.html#a896b74bd9aa985aadb6a14f85d4796a3" title="the main caller of a test.">run</a>(<a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">TestResult</a> &amp;result);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1TestCase.html#ae915726f3a6ba7b19cc7c3d11544a480" title="succeeded">succeeded</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1Test.html#a54866a401ad646a33ed1f35ece8b031c" title="succeeded">succeeded</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#abada534584d846f8df7b4c3be8a9e11f" title="failed Sets the test successful flag to false which indicates that the test was not successful...">failed</a>();</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classRTF_1_1TestResult.html" title="The TestResult class is used to deliver the test results including any error and failures produced by...">RTF::TestResult</a>* <a class="code" href="classRTF_1_1TestCase.html#adddd8b0724c3f773dd64e1906f2988b7" title="getResult Returns an instance of TestResult if run(TestResult &amp;result) has been already called by a T...">getResult</a>();</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#aabed396eb13fb38b417b18184f57b55c" title="setParam Sets the optional paramters of the test.">setParam</a>(<span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129">param</a>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#aabed396eb13fb38b417b18184f57b55c" title="setParam Sets the optional paramters of the test.">setParam</a>(<span class="keyword">const</span> std::string param);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1TestCase.html#a027937e46a88eb142cebea7f9e2ac3e8" title="getParam gets the original paramter string which is set for the test case">getParam</a>();</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#ae877b688931b581fe06978e32dbdd18c" title="setEnvironment Optioanlly specifies the environment in which the test case is executed.">setEnvironment</a>(<span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1TestCase.html#ae0eb004733000369ffff3e878e922b85">environment</a>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1TestCase.html#ae877b688931b581fe06978e32dbdd18c" title="setEnvironment Optioanlly specifies the environment in which the test case is executed.">setEnvironment</a>(<span class="keyword">const</span> std::string environment);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="classRTF_1_1TestCase.html#aab71c5f72ffaafed4f27ea1b57c30247" title="getParam gets the environment string which is set for the test case">getEnvironment</a>();</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
@@ -153,7 +153,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 5 2015 21:44:21 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 24 2015 18:17:30 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

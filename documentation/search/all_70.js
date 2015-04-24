@@ -9,5 +9,9 @@ var searchData=
   ['pluginloader',['PluginLoader',['../classRTF_1_1plugin_1_1PluginLoader.html',1,'RTF::plugin']]],
   ['pluginloader_2eh',['PluginLoader.h',['../PluginLoader_8h.html',1,'']]],
   ['prepare_5ffixture_5fplugin',['PREPARE_FIXTURE_PLUGIN',['../Plugin_8h.html#a88c20e173a35b3ee9988cc25a619dcda',1,'Plugin.h']]],
-  ['prepare_5fplugin',['PREPARE_PLUGIN',['../Plugin_8h.html#aea9255164a127f83491527a5484c29f8',1,'Plugin.h']]]
+  ['prepare_5fplugin',['PREPARE_PLUGIN',['../Plugin_8h.html#aea9255164a127f83491527a5484c29f8',1,'Plugin.h']]],
+  ['python_5fplugin_5fexample_2edox',['python_plugin_example.dox',['../python__plugin__example_8dox.html',1,'']]],
+  ['pythonpluginloader',['PythonPluginLoader',['../classRTF_1_1plugin_1_1PythonPluginLoader.html',1,'RTF::plugin']]],
+  ['pythonpluginloader',['PythonPluginLoader',['../classRTF_1_1plugin_1_1PythonPluginLoader.html#ab777a8c2b382907ec1161370ed516bee',1,'RTF::plugin::PythonPluginLoader']]],
+  ['pythonpluginloader_2eh',['PythonPluginLoader.h',['../PythonPluginLoader_8h.html',1,'']]]
 ];
