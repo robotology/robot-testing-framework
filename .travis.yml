@@ -23,7 +23,6 @@ script:
   - make
   # test install/uninstall
   - sudo make install
-  - sudo make uninstall
 
 notifications:
   email:
