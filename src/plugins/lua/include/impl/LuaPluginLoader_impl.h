@@ -82,6 +82,7 @@ public:
 private:
     bool getLocalFunction(const char *name);
     bool registerExtraFunctions(void);
+    std::string extractFileName(const std::string& path);
 
     // lua accessible fucntions
     static int setName(lua_State* L);

@@ -18,6 +18,7 @@ RTF stands for Robot Testing Framework. It is a generic and multi-platform testi
 \section Tutorials 
 \li \ref rtf_plugin_example
 \li \ref rtf_lua_plugin_example
+\li \ref rtf_python_plugin_example
 \li \ref testrunner
 
 <br>

@@ -138,6 +138,14 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
             if(PluginFactory::compare(ext.c_str(), ".dylib"))
                 loadPlugin(path+name);
         }
+#ifdef ENABLE_PYTHON_PLUGIN
+            // check for .py
+        if(name.size() > 2) {
+            string ext = name.substr(name.size()-3,3);
+             if(PluginFactory::compare(ext.c_str(), ".py"))
+                 loadPlugin(path+name);
+        }
+#endif
     }
     closedir(dir);
     return true;

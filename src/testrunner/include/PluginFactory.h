@@ -19,6 +19,9 @@
 #ifdef ENABLE_LUA_PLUGIN
     #include <LuaPluginLoader.h>
 #endif
+#ifdef ENABLE_PYTHON_PLUGIN
+    #include <PythonPluginLoader.h>
+#endif
 
 /**
  * class PluginFactory
@@ -38,6 +41,14 @@ public:
     }
 
     static RTF::plugin::PluginLoader* createByName(std::string name) {
+#ifdef ENABLE_PYTHON_PLUGIN
+            // check for .py
+        if(name.size() > 2) {
+            std::string ext = name.substr(name.size()-3,3);
+             if(PluginFactory::compare(ext.c_str(), ".py"))
+                 return new RTF::plugin::PythonPluginLoader();
+        }
+#endif
         if(name.size() > 3) {
             // check for windows .dll
             std::string ext = name.substr(name.size()-4,4);

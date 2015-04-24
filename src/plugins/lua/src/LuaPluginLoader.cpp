@@ -118,6 +118,8 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename) {
     }
     lua_pop(L,1);
 
+    setTestName(extractFileName(filename));
+
     return this;
 }
 
@@ -286,6 +288,17 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
     return 0;
 }
 
+std::string LuaPluginLoaderImpl::extractFileName(const std::string& path) {
+
+#ifdef _WIN32
+    size_t i = path.rfind('\\', s.length());
+#else
+   size_t i = path.rfind('/', path.length());
+#endif
+   if(i != string::npos)
+      return(path.substr(i+1, path.length()-i));
+   return(path);
+}
 
 /**
  * @brief LuaPluginLoader

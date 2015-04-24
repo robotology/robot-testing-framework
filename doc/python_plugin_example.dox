@@ -1,0 +1,116 @@
+/*
+ * Copyright (C) 2015 iCub Facility
+ * Authors: Ali Paikan
+ * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ *
+ */
+
+/**
+
+@page rtf_python_plugin_example Using Python to develop test cases
+
+\author Ali Paikan
+
+<br>
+\section python-desc Description
+Test cases can be written using Pyhton scripting language (e.g., .py) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
+
+\note The source code of the tutorial can be also found in the \c 'examples/python-plugin' folder within the RTF project directory.
+
+<br>
+\section python-req Requirements
+You need the Python development library to use the plug-ins. On most of the Linux distribution it can be easily installed using the package manager (e.g., `   $ sudo apt-get install python-dev`). If you use Windows, try <a href="https://www.python.org/downloads/windows/">Python Releases for Windows</a>. OSX users can also follow the instruction from http://docs.python-guide.org/en/latest/starting/install/osx/. 
+
+After installing the Python development package, you need to enable the Python plug-in system in the RTF and recompile it: 
+
+\verbatim
+   $ cd robot-testing/build
+   $ cmake ../ -DENABLE_PYTHON_PLUGIN=ON
+\endverbatim
+
+<br>
+\section python-write Writing the test case in Python 
+Writing test cases in Python is simple. All you need is to declare a `TestCase` class and implement your test functional code inside the `run()` method. The `setup()` and `tearDown()` can be also optionally defined to setup or tear down the user defined fixture. By default, the name of the test case is the name of its plug-in file. This cane be changed by using using `setName()`.
+
+\htmlonly
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #a31515">&#39;&#39;&#39;</span>
+<span style="color: #a31515"> rtf module is automatically imported by the python plugin loader</span>
+<span style="color: #a31515"> to invoke the corresponding test case methods. To develop a new </span>
+<span style="color: #a31515"> test case simply implement the following class; (setup and tearDown </span>
+<span style="color: #a31515"> methods are optional) :</span>
+
+<span style="color: #a31515"> class TestCase:</span>
+<span style="color: #a31515">     def setup(self, param):</span>
+<span style="color: #a31515">         return True</span>
+
+<span style="color: #a31515">     def run(self):</span>
+
+<span style="color: #a31515">     def tearDown(self):</span>
+
+
+<span style="color: #a31515"> The following methods are for reporting, failure or assertions: </span>
+
+<span style="color: #a31515"> rtf.setName(name)             : sets the test name (defualt is the test filename)</span>
+<span style="color: #a31515"> rtf.testReport(msg)           : reports a informative message</span>
+<span style="color: #a31515"> rtf.testCheck(condition, msg) : reports a failure message</span>
+<span style="color: #a31515"> rtf.assertError(msg)          : throws an error exception with message</span>
+<span style="color: #a31515"> rtf.asserFail(msg)            : throws a failure exception with message</span>
+<span style="color: #a31515">&#39;&#39;&#39;</span>
+
+<span style="color: #0000ff">class</span> <span style="color: #2b91af">TestCase</span>:
+    <span style="color: #008000"># setup is called before the test&#39;s run to setup </span>
+    <span style="color: #008000"># the user defined fixture</span>
+    <span style="color: #008000"># @return Boolean (True/False uppon success or failure)</span>
+    <span style="color: #0000ff">def</span> setup(self, param):
+        rtf.testReport(<span style="color: #a31515">&quot;Preparing setup...&quot;</span>)
+        <span style="color: #0000ff">return</span> True
+   
+    <span style="color: #008000"># The implementation of the test goes here</span>
+    <span style="color: #0000ff">def</span> run(self):
+        rtf.testReport(<span style="color: #a31515">&quot;Checking bigger...&quot;</span>)
+        rtf.testCheck(5&gt;3, <span style="color: #a31515">&quot;5 is not bigger than 3.&quot;</span>)
+        rtf.testReport(<span style="color: #a31515">&quot;Checking smaller...&quot;</span>)
+        rtf.testCheck(5&lt;3, <span style="color: #a31515">&quot;5 is not smaller than 3.&quot;</span>)
+
+    <span style="color: #008000"># tearDown is called after the test&#39;s run to tear down</span>
+    <span style="color: #008000"># the user defined fixture</span>
+    <span style="color: #0000ff">def</span> tearDown(self):
+        rtf.testReport(<span style="color: #a31515">&quot;Tearing down...&quot;</span>)
+</pre></div>
+\endhtmlonly
+
+
+<br>
+\section python-runner Writing the test runner
+\note Basically you do not need to develop a test runner. There is the \c testrunner utility (see \ref testrunner) already implemented in RTF which does the job for you. However, the following example is just for your reference and to understand better how a Python test plug-ing can be loaded and executed from the code. 
+
+Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::PythonPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::PythonPluginLoader class and call its \c open() method with the plug-in library (i.e., .py) filename as its parameter.  The RTF::plugin::PythonPluginLoader loads the library and returns a pointer to the RTF::TestCase implemented into the plug-in.
+If the Python plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::plugin::PythonPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::PythonPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
+
+\include python-plugin/run.cpp
+
+<br>
+\section python-build Building the test runner and run the test 
+Now you can compile and build the the runner. There is a Cmake file in the \c examples/python-plugin folder which helps you to compile and build your simple test runner. Make sure that \c RTF_DIR environment variable is correctly set to point your RTF build or installed directory so that Cmake can find the required modules to configure the project. 
+
+\include python-plugin/CMakeLists.txt
+<br>
+Now you can build and run the test as follows: 
+\verbatim
+$ cd examples/python-plugin; mkdir build
+$ cd build; cmake ../; make;
+$ ./simple_run ../mytest.py
+Loading the plugin... 
+Staring test runner.
+Test case  started...
+[INFO]  (MyTest) reports: Preparing setup...
+[INFO]  (MyTest) reports: Checking bigger...
+[INFO]  (MyTest) reports: Checking smaller...
+[FAIL]  (MyTest) checking (False): 5 is not smaller than 3.
+[INFO]  (MyTest) reports: Tearing down...
+Test case MyTest failed!
+Ending test runner.
+\endverbatim
+
+*/
+

@@ -14,7 +14,7 @@
 --
 -- The following methods are for reporting, failure or assertions: 
 --
--- TestCase.setName(name)             : sets the test name
+-- TestCase.setName(name)             : sets the test name (defualt is the test filename)
 -- TestCase.testReport(msg)           : reports a informative message
 -- TestCase.testCheck(condition, msg) : reports a failure message
 -- TestCase.assertError(msg)          : throws an error exception with message
@@ -22,19 +22,17 @@
 --
 
 --
--- setup is called before the test run to setup 
--- user defined fixture
+-- setup is called before the test's run to setup 
+-- the user defined fixture
 -- @return Boolean (true/false uppon success or failure)
 --
 TestCase.setup = function(parameter)
-    TestCase.setName("MyTest")
     TestCase.testReport("Preparing setup...")
     return true;
 end
 
 --
 -- The implementation of the test goes here
--- @return Boolean
 --
 TestCase.run = function()
     TestCase.testReport("Checking bigger...")
@@ -45,8 +43,8 @@ end
 
 
 --
--- tearDown is called after the test run to tear down
--- user defined fixture
+-- tearDown is called after the test's run to tear down
+-- the user defined fixture
 --
 TestCase.tearDown = function()
     TestCase.testReport("Tearing down...")

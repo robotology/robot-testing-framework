@@ -143,14 +143,15 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
         return NULL;
     }
 
-     // Create an instance of the class
-     if (!PyCallable_Check(pyClass) ||
+    // Create an instance of the class
+    if (!PyCallable_Check(pyClass) ||
              (pyInstance = PyObject_CallObject(pyClass, NULL)) == NULL) {
          error = Asserter::format("TestCase is not defined as a class");
          close();
          return NULL;
-     }     
-    setTestName(rawname);
+    }
+
+    setTestName(bname);
     return this;
 }
 
@@ -345,7 +346,7 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
         RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
     }
     //const char* str_cond = PyString_AsString(cond);
-    char str_cond[] = "...";
+    char str_cond[] = "False";
     RTF::Asserter::check(PyObject_IsTrue(cond), RTF::TestMessage("checking ("+string(str_cond)+")",
                                            message, impl->getFileName(), 0), (TestCase*)impl);
     Py_RETURN_NONE;
