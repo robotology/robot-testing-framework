@@ -21,18 +21,19 @@
  TestCase.asserFail(msg)            : throws a failure exception with message
 '''
 
-import rtf
+#import rtf
 
 class TestCase:
     def setup(self, param):
         print 'Seting up ...'
-        rtf.setName("Ali")
+        '''rtf.setName("Ali")'''
+        '''rtf.assertError("problem happend")'''
         return True
 
     def tearDown(self):
         print 'tearing Down ...'
 
-
     def run(self):
-        print 'Running ...'
+        rtf.testReport("Checking bigger...")
+        rtf.testCheck(5<3, "5 is not bigger than 3.")
         

@@ -79,11 +79,13 @@ public:
 
 public:
     static PyObject* setName(PyObject* self, PyObject* args);
+    static PyObject* assertError(PyObject* self, PyObject* args);
+    static PyObject* assertFail(PyObject* self, PyObject* args);
+    static PyObject* testReport(PyObject* self, PyObject* args);
+    static PyObject* testCheck(PyObject* self, PyObject* args);
 
 private:
     std::string getPythonErrorString();
-    //static PyObject* setName(PyObject* self, PyObject* args);
-
 
 private:    
     std::string filename;
@@ -94,6 +96,8 @@ private:
     PyObject *pyDict;
     PyObject *pyClass;
     PyObject* pyInstance;
+    PyObject *pyModuleRTF;
+    PyObject* pyCapsuleRTF;
     static PyMethodDef testPythonMethods[];
 };
 

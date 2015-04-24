@@ -31,13 +31,17 @@ using namespace RTF::plugin;
 
 PyMethodDef PythonPluginLoaderImpl::testPythonMethods[] = {
      {"setName", PythonPluginLoaderImpl::setName, METH_VARARGS, "Setting the test name."},
+     {"assertError", PythonPluginLoaderImpl::assertError, METH_VARARGS, "Error assertion."},
+     {"assertFail", PythonPluginLoaderImpl::assertFail, METH_VARARGS, "Failure assertion."},
+     {"testReport", PythonPluginLoaderImpl::testReport, METH_VARARGS, "report a test message."},
+     {"testCheck", PythonPluginLoaderImpl::testCheck, METH_VARARGS, "report failure message with condition."},
      {NULL, NULL, 0, NULL}
 };
 
 
 PythonPluginLoaderImpl::PythonPluginLoaderImpl()
-    : TestCase(""), pyName(NULL) {
-
+    : TestCase(""){
+    pyName = pyModule =  pyModuleRTF = pyCapsuleRTF = NULL;
 }
 
 PythonPluginLoaderImpl::~PythonPluginLoaderImpl() {
@@ -46,6 +50,14 @@ PythonPluginLoaderImpl::~PythonPluginLoaderImpl() {
 
 void PythonPluginLoaderImpl::close() {
     // Clean up
+    if(pyCapsuleRTF) {
+        Py_DECREF(pyCapsuleRTF);
+        pyName = NULL;
+    }
+    if(pyModuleRTF) {
+        Py_DECREF(pyModuleRTF);
+        pyName = NULL;
+    }
     if(pyModule) {
          Py_DECREF(pyModule);
          pyModule = NULL;
@@ -77,14 +89,9 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     string bname = basename(name);
 #endif    
 
-    // register the extended methods
-    (void) Py_InitModule("rtf", testPythonMethods);
-    //PyCObject_FromVoidPtr
-
     PyRun_SimpleString("import sys");
     string sys_path = "sys.path.append(\"" + dname + "\")";
     PyRun_SimpleString(sys_path.c_str());
-
 
     // remove the file extention if exist
     int lastindex = bname.find_last_of(".");
@@ -107,6 +114,17 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
         close();
         return NULL;
     }
+
+
+    // store the current instance of PythonPluginLoaderImpl
+    // register the extended methods and import the 'rtf'
+    PyObject* pyCapsuleRTF = PyCapsule_New(this, "PythonPluginLoaderImpl", NULL);
+    //(void) Py_InitModule("rtf", testPythonMethods);
+    Py_InitModule4("rtf", testPythonMethods, (char *)NULL,
+                   pyCapsuleRTF, PYTHON_API_VERSION);
+    PyObject *pyModuleRTF = PyImport_Import(PyString_FromString("rtf"));
+    PyModule_AddObject(pyModuleRTF, "PythonPluginLoaderImpl", pyCapsuleRTF);
+    PyModule_AddObject(pyModule, "rtf", pyModuleRTF);
 
     // pyDict is a borrowed reference
     pyDict = PyModule_GetDict(pyModule);
@@ -132,7 +150,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
          close();
          return NULL;
      }     
-
+    setTestName(rawname);
     return this;
 }
 
@@ -255,31 +273,84 @@ void PythonPluginLoaderImpl::run() {
 PyObject* PythonPluginLoaderImpl::setName(PyObject* self,
                                           PyObject* args) {
     const char* name;
+    PythonPluginLoaderImpl* impl =
+            (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
     if (!PyArg_ParseTuple(args, "s", &name)) {
         RTF_ASSERT_ERROR(Asserter::format("setName() is called with the wrong paramters."));
     }
-    //Test::setName(name);
+    impl->setTestName(name);
     Py_RETURN_NONE;
 }
 
 
-/*
-int PythonPluginLoaderImpl::assertError(lua_State* L) {
-    return 0;
+
+PyObject* PythonPluginLoaderImpl::assertError(PyObject* self,
+                                              PyObject* args) {
+    const char* message;
+    PythonPluginLoaderImpl* impl =
+            (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+
+    if (!PyArg_ParseTuple(args, "s", &message)) {
+        RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+    }
+    //impl->close();
+    RTF::Asserter::error(RTF::TestMessage("asserts error with exception",
+                                          message, impl->getFileName(), 0));
+    Py_RETURN_NONE;
 }
 
-int PythonPluginLoaderImpl::assertFail(lua_State* L) {
-    return 0;
+
+PyObject* PythonPluginLoaderImpl::assertFail(PyObject* self,
+                                              PyObject* args) {
+    const char* message;
+    PythonPluginLoaderImpl* impl =
+            (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+
+    if (!PyArg_ParseTuple(args, "s", &message)) {
+        RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+    }
+    RTF::Asserter::fail(RTF::TestMessage("asserts failure with exception",
+                                          message, impl->getFileName(), 0));
+    Py_RETURN_NONE;
 }
 
-int PythonPluginLoaderImpl::testReport(lua_State* L) {
-    return 0;
+
+PyObject* PythonPluginLoaderImpl::testReport(PyObject* self,
+                                              PyObject* args) {
+    const char* message;
+    PythonPluginLoaderImpl* impl =
+            (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+
+    if (!PyArg_ParseTuple(args, "s", &message)) {
+        RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+    }
+    RTF::Asserter::report(RTF::TestMessage("reports",
+                                           message, impl->getFileName(), 0), (TestCase*)impl);
+    Py_RETURN_NONE;
 }
 
-int PythonPluginLoaderImpl::testFail(lua_State* L) {
-    return 0;
+PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
+                                            PyObject* args) {
+    const char* message;
+    PyObject* cond;
+    PythonPluginLoaderImpl* impl =
+            (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+
+    if (!PyArg_ParseTuple(args, "Os", &cond, &message)) {
+        RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+    }
+    //const char* str_cond = PyString_AsString(cond);
+    char str_cond[] = "...";
+    RTF::Asserter::check(PyObject_IsTrue(cond), RTF::TestMessage("checking ("+string(str_cond)+")",
+                                           message, impl->getFileName(), 0), (TestCase*)impl);
+    Py_RETURN_NONE;
 }
-*/
+
 
 /**
  * @brief PythonPluginLoader
