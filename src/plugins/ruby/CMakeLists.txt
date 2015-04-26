@@ -28,7 +28,8 @@ source_group("Header Files" FILES ${folder_header})
 include_directories(${RTF_TREE_INCLUDE_DIRS}
                     ${RTF_INTERNAL_INCLUDE_DIRS}
                     ./include/impl
-                    ${RUBY_INCLUDE_DIR})
+                    ${RUBY_INCLUDE_DIR}
+                    ${RUBY_CONFIG_INCLUDE_DIR})
 if(WIN32)
     add_library(RTF_ruby STATIC ${folder_source} ${folder_header} )
 else()

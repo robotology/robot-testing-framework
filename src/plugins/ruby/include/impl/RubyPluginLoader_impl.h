@@ -13,6 +13,7 @@
 
 #include <string>
 #include <TestCase.h>
+#include <ruby.h>
 
 namespace RTF {
     namespace plugin {
