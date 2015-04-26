@@ -21,3 +21,8 @@ if (ENABLE_PYTHON_PLUGIN)
     add_subdirectory(python)
 endif()
 
+# build Ruby plugin manager
+if (ENABLE_RUBY_PLUGIN)
+    add_subdirectory(ruby)
+endif()
+
