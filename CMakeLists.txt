@@ -38,14 +38,19 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_LIBS)
 set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
 
+
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
 option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
 option (ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
-option (ENABLE_YARP "Enable yarp integration" OFF)
 option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 option (ENABLE_WEB_LISTENER "Enable web listener" OFF)
+
+# middleware specific options
+find_package(YARP)
+# automatically build YARP integration if yarp is found
+option (ENABLE_YARP "Enable yarp integration" ${YARP_FOUND})
 
 
 #########################################################################
