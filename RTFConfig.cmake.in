@@ -45,5 +45,11 @@ else()
   set(RTF_PYTHON_FOUND FALSE)
 endif()
 
+set(RTF_YARP_FOUND @RTF_HAS_YARP@)
+if(RTF_YARP_FOUND)
+  set_and_check(RTF_YARP_INCLUDEDIR "@PACKAGE_RTF_YARP_INCLUDEDIR@")
+  list(APPEND RTF_INCLUDE_DIRS "${RTF_YARP_INCLUDEDIR}")
+endif()
+
 check_required_components(RTF)
 

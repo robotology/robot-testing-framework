@@ -12,10 +12,10 @@ add_subdirectory(rtf)
 # build plugin manager
 add_subdirectory(plugins)
 
-
 # Build testrunner
 if (BUILD_TESTRUNNER)
     add_subdirectory(testrunner)
 endif(BUILD_TESTRUNNER)
 
-
+# Build middleware specific extentions
+add_subdirectory(middleware)
