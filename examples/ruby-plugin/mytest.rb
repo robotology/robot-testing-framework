@@ -33,11 +33,13 @@ class TestCase
     # @return Boolean (True/False uppon success or failure)
     def setup(param)
         #rtf::testReport("Preparing setup...")
+        print "Setting up...\n"
         return true
     end
 
     # The implementation of the test goes here
     def run
+        print "Running\n"
         #rtf::testReport("Checking bigger...")
         #rtf::testCheck(5>3, "5 is not bigger than 3.")
         #rtf::testReport("Checking smaller...")
@@ -47,6 +49,7 @@ class TestCase
     # tearDown is called after the test's run to tear down
     # the user defined fixture
     def tearDown
+        print "Tearing down...\n"
         #rtf::testReport("Tearing down...")
     end
 end

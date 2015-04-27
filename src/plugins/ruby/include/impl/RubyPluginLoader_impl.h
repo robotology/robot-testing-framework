@@ -82,9 +82,19 @@ private:
     bool getLocalFunction(const char *name);
     std::string extractFileName(const std::string& path);
 
+    static VALUE wrapSetup(VALUE args);
+    static VALUE protectedSetup(VALUE testcase, ID id, VALUE param,
+                               RubyPluginLoaderImpl* impl);
+    static VALUE wrapRun(VALUE args);
+    static VALUE protectedRun(VALUE testcase, ID id,
+                               RubyPluginLoaderImpl* impl);
+    static VALUE wrapTearDown(VALUE args);
+    static VALUE protectedTearDown(VALUE testcase, ID id,
+                               RubyPluginLoaderImpl* impl);
 private:
     std::string filename;
     std::string error;    
+    VALUE testcase;
 };
 
 #endif // _RTF_RUBYPLUGINLOADER_IMPL_H
