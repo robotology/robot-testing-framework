@@ -47,11 +47,6 @@ option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 option (ENABLE_WEB_LISTENER "Enable web listener" OFF)
 
-# middleware specific options
-find_package(YARP)
-# automatically build YARP integration if yarp is found
-option (ENABLE_YARP "Enable yarp integration" ${YARP_FOUND})
-
 
 #########################################################################
 # Control where libraries and executables are placed during the build

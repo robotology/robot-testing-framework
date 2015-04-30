@@ -5,6 +5,10 @@
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
 #
 
+#middleware specific options
+find_package(YARP)
+# automatically build YARP integration if yarp is found
+option (ENABLE_YARP "Enable yarp integration" ${YARP_FOUND})
 
 # build yarp specific extensions
 if (ENABLE_YARP)
