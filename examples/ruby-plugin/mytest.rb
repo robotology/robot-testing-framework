@@ -32,8 +32,9 @@ class TestCase
     # the user defined fixture
     # @return Boolean (True/False uppon success or failure)
     def setup(param)
-        #rtf::testReport("Preparing setup...")
         print "Setting up...\n"
+        setName("MyTest")
+        #rtf::testReport("Preparing setup...")
         return true
     end
 

@@ -78,9 +78,12 @@ public:
     virtual void run();
 
 
-private:
-    bool getLocalFunction(const char *name);
+private:    
     std::string extractFileName(const std::string& path);
+
+    static RubyPluginLoaderImpl* getImpFromRuby();
+    static std::string getRubyErrorMessage();
+    static std::string getRubyBackTrace();
 
     static VALUE wrapSetup(VALUE args);
     static VALUE protectedSetup(VALUE testcase, ID id, VALUE param,
@@ -90,11 +93,15 @@ private:
                                RubyPluginLoaderImpl* impl);
     static VALUE wrapTearDown(VALUE args);
     static VALUE protectedTearDown(VALUE testcase, ID id,
-                               RubyPluginLoaderImpl* impl);
+                               RubyPluginLoaderImpl* impl);    
+
+    static VALUE setName(VALUE self, VALUE obj);
+
 private:
     std::string filename;
     std::string error;    
     VALUE testcase;
+    VALUE rtfModule;
 };
 
 #endif // _RTF_RUBYPLUGINLOADER_IMPL_H
