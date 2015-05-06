@@ -18,4 +18,6 @@ if (BUILD_TESTRUNNER)
 endif(BUILD_TESTRUNNER)
 
 # Build middleware specific extentions
-add_subdirectory(middleware)
+if (ENABLE_MIDDLEWARE_PLUGINS)
+    add_subdirectory(middleware)
+endif(ENABLE_MIDDLEWARE_PLUGINS)
