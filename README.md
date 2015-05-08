@@ -53,6 +53,10 @@ Tutorials and Examples
 * [*Using plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_plugin_example.html)
 
 * [*Using Lua plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_lua_plugin_example.html)
+
+* [*Using Pyhton plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_python_plugin_example.html)
+
+* [*Using Ruby plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_ruby_plugin_example.html)
  
 * [*Running test case plug-ins using testrunner*](http://robotology.github.io/robot-testing/documentation/testrunner.html)
 
