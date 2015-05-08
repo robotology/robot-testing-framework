@@ -139,10 +139,18 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
                 loadPlugin(path+name);
         }
 #ifdef ENABLE_PYTHON_PLUGIN
-            // check for .py
+        // check for .py
         if(name.size() > 2) {
             string ext = name.substr(name.size()-3,3);
              if(PluginFactory::compare(ext.c_str(), ".py"))
+                 loadPlugin(path+name);
+        }
+#endif
+#ifdef ENABLE_RUBY_PLUGIN
+        // check for .rb
+        if(name.size() > 2) {
+            string ext = name.substr(name.size()-3,3);
+             if(PluginFactory::compare(ext.c_str(), ".rb"))
                  loadPlugin(path+name);
         }
 #endif

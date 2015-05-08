@@ -166,9 +166,11 @@ STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/src/rtf/include/ \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/lua/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/python/include \
+                         @CMAKE_SOURCE_DIR@/src/plugins/ruby/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/src \
                          @CMAKE_SOURCE_DIR@/src/plugins/lua/src \
                          @CMAKE_SOURCE_DIR@/src/plugins/python/src \
+                         @CMAKE_SOURCE_DIR@/src/plugins/ruby/src \
                          @CMAKE_SOURCE_DIR@/doc
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
@@ -767,6 +769,7 @@ INPUT                  = @CMAKE_SOURCE_DIR@/src/rtf/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/lua/include \
                          @CMAKE_SOURCE_DIR@/src/plugins/python/include \
+                         @CMAKE_SOURCE_DIR@/src/plugins/ruby/include \
                          @CMAKE_SOURCE_DIR@/doc
 
 # This tag can be used to specify the character encoding of the source files
@@ -812,7 +815,8 @@ EXCLUDE                = @CMAKE_SOURCE_DIR@/src/rtf/include/impl/WebProgressList
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/config.h \
                          @CMAKE_SOURCE_DIR@/src/plugins/dll/include/impl/DllPluginLoader_impl.h \
                          @CMAKE_SOURCE_DIR@/src/plugins/lua/include/impl/LuaPluginLoader_impl.h \
-                         @CMAKE_SOURCE_DIR@/src/plugins/python/include/impl/PythonPluginLoader_impl.h
+                         @CMAKE_SOURCE_DIR@/src/plugins/python/include/impl/PythonPluginLoader_impl.h \
+                         @CMAKE_SOURCE_DIR@/src/plugins/ruby/include/impl/RubyPluginLoader_impl.h
 
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or

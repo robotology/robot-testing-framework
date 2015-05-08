@@ -13,7 +13,7 @@
 
 <br>
 \section python-desc Description
-Test cases can be written using Pyhton scripting language (e.g., .py) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
+Test cases can be written using Python scripting language (e.g., .py) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
 
 \note The source code of the tutorial can be also found in the \c 'examples/python-plugin' folder within the RTF project directory.
 
@@ -84,7 +84,7 @@ Writing test cases in Python is simple. All you need is to declare a `TestCase` 
 \section python-runner Writing the test runner
 \note Basically you do not need to develop a test runner. There is the \c testrunner utility (see \ref testrunner) already implemented in RTF which does the job for you. However, the following example is just for your reference and to understand better how a Python test plug-ing can be loaded and executed from the code. 
 
-Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::PythonPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::PythonPluginLoader class and call its \c open() method with the plug-in library (i.e., .py) filename as its parameter.  The RTF::plugin::PythonPluginLoader loads the library and returns a pointer to the RTF::TestCase implemented into the plug-in.
+Your plug-in is ready and can be simply executed using the \c testrunner utility. However, we show how to use RTF::PythonPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::PythonPluginLoader class and call its \c open() method with the plug-in library (i.e., .py) filename as its parameter.  The RTF::plugin::PythonPluginLoader loads the library and returns a pointer to the RTF::TestCase implemented into the plug-in.
 If the Python plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::plugin::PythonPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::PythonPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
 
 \include python-plugin/run.cpp

@@ -96,6 +96,10 @@ private:
                                RubyPluginLoaderImpl* impl);    
 
     static VALUE setName(VALUE self, VALUE obj);
+    static VALUE assertError(VALUE self, VALUE obj);
+    static VALUE assertFail(VALUE self, VALUE obj);
+    static VALUE testReport(VALUE self, VALUE obj);
+    static VALUE testCheck(VALUE self, VALUE cond, VALUE message);
 
 private:
     std::string filename;

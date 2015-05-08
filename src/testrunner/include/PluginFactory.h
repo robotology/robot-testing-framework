@@ -22,6 +22,9 @@
 #ifdef ENABLE_PYTHON_PLUGIN
     #include <PythonPluginLoader.h>
 #endif
+#ifdef ENABLE_RUBY_PLUGIN
+    #include <RubyPluginLoader.h>
+#endif
 
 /**
  * class PluginFactory
@@ -37,16 +40,33 @@ public:
         if(compare(type.c_str(), "lua"))
             return new RTF::plugin::LuaPluginLoader();
 #endif
+#ifdef ENABLE_PYTHON_PLUGIN
+        if(compare(type.c_str(), "python"))
+            return new RTF::plugin::PythonPluginLoader();
+#endif
+#ifdef ENABLE_RUBY_PLUGIN
+        if(compare(type.c_str(), "ruby"))
+            return new RTF::plugin::RubyPluginLoader();
+#endif
         return NULL;
     }
 
     static RTF::plugin::PluginLoader* createByName(std::string name) {
 #ifdef ENABLE_PYTHON_PLUGIN
-            // check for .py
+        // check for .py
         if(name.size() > 2) {
             std::string ext = name.substr(name.size()-3,3);
              if(PluginFactory::compare(ext.c_str(), ".py"))
                  return new RTF::plugin::PythonPluginLoader();
+        }
+#endif
+
+#ifdef ENABLE_RUBY_PLUGIN
+        // check for .rb
+        if(name.size() > 2) {
+            std::string ext = name.substr(name.size()-3,3);
+             if(PluginFactory::compare(ext.c_str(), ".rb"))
+                 return new RTF::plugin::RubyPluginLoader();
         }
 #endif
         if(name.size() > 3) {
