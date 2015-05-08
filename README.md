@@ -54,7 +54,7 @@ Tutorials and Examples
 
 * [*Using Lua plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_lua_plugin_example.html)
 
-* [*Using Pyhton plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_python_plugin_example.html)
+* [*Using Python plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_python_plugin_example.html)
 
 * [*Using Ruby plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_ruby_plugin_example.html)
  
