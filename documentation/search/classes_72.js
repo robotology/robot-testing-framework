@@ -8,5 +8,6 @@ var searchData=
   ['resulteventreport',['ResultEventReport',['../classRTF_1_1ResultEventReport.html',1,'RTF']]],
   ['resulteventstartsuit',['ResultEventStartSuit',['../classRTF_1_1ResultEventStartSuit.html',1,'RTF']]],
   ['resulteventstarttest',['ResultEventStartTest',['../classRTF_1_1ResultEventStartTest.html',1,'RTF']]],
-  ['rtf',['RTF',['../classRTF.html',1,'']]]
+  ['rtf',['RTF',['../classRTF.html',1,'']]],
+  ['rubypluginloader',['RubyPluginLoader',['../classRTF_1_1plugin_1_1RubyPluginLoader.html',1,'RTF::plugin']]]
 ];

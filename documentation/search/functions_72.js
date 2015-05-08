@@ -12,5 +12,6 @@ var searchData=
   ['resulteventreport',['ResultEventReport',['../classRTF_1_1ResultEventReport.html#a3f299f8035d348b6eca5597e6add957e',1,'RTF::ResultEventReport']]],
   ['resulteventstartsuit',['ResultEventStartSuit',['../classRTF_1_1ResultEventStartSuit.html#a62931551b7877c785dd526d35831f742',1,'RTF::ResultEventStartSuit']]],
   ['resulteventstarttest',['ResultEventStartTest',['../classRTF_1_1ResultEventStartTest.html#af6b3d1bb59855987cb6bea38201860d2',1,'RTF::ResultEventStartTest']]],
+  ['rubypluginloader',['RubyPluginLoader',['../classRTF_1_1plugin_1_1RubyPluginLoader.html#ab142c40fcc7600fee45d9136b73d85e4',1,'RTF::plugin::RubyPluginLoader']]],
   ['run',['run',['../classRTF_1_1Test.html#a896b74bd9aa985aadb6a14f85d4796a3',1,'RTF::Test::run()'],['../classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255',1,'RTF::TestCase::run()=0'],['../classRTF_1_1TestCase.html#a4fd64b649b6599d368c208750ec4bc36',1,'RTF::TestCase::run(TestResult &amp;result)'],['../classRTF_1_1TestRunner.html#ab6d88869bdedcb60d65dc0435522360f',1,'RTF::TestRunner::run()'],['../classRTF_1_1TestSuit.html#a79dbcf1caf6c81277e5ce99493f59597',1,'RTF::TestSuit::run()']]]
 ];

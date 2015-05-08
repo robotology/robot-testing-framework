@@ -1,13 +1,14 @@
 <map id="src/rtf/include/TestResult.h" name="src/rtf/include/TestResult.h">
-<area shape="rect" id="node2" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="114,80,321,107"/>
-<area shape="rect" id="node3" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="197,162,363,189"/>
-<area shape="rect" id="node7" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="396,80,569,107"/>
-<area shape="rect" id="node12" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="593,80,777,107"/>
-<area shape="rect" id="node6" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="5,155,173,196"/>
-<area shape="rect" id="node4" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="196,251,361,278"/>
-<area shape="rect" id="node5" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="189,333,369,360"/>
-<area shape="rect" id="node8" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="546,162,737,189"/>
-<area shape="rect" id="node9" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="385,244,532,285"/>
-<area shape="rect" id="node10" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="557,244,707,285"/>
-<area shape="rect" id="node11" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/PythonPluginLoader.h" alt="" coords="731,244,930,285"/>
+<area shape="rect" id="node2" href="$FixtureManager_8h.html" title="src/rtf/include/FixtureManager.h" alt="" coords="175,80,382,107"/>
+<area shape="rect" id="node3" href="$TestSuit_8h.html" title="src/rtf/include/TestSuit.h" alt="" coords="5,162,171,189"/>
+<area shape="rect" id="node7" href="$TestCase_8h.html" title="src/rtf/include/TestCase.h" alt="" coords="411,80,584,107"/>
+<area shape="rect" id="node13" href="$TestRunner_8h.html" title="src/rtf/include/TestRunner.h" alt="" coords="608,80,792,107"/>
+<area shape="rect" id="node6" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/DllFixturePluginLoader.h" alt="" coords="195,155,363,196"/>
+<area shape="rect" id="node4" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="77,251,243,278"/>
+<area shape="rect" id="node5" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="70,333,250,360"/>
+<area shape="rect" id="node8" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="539,162,730,189"/>
+<area shape="rect" id="node9" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="475,244,621,285"/>
+<area shape="rect" id="node10" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="646,244,797,285"/>
+<area shape="rect" id="node11" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/PythonPluginLoader.h" alt="" coords="821,244,1019,285"/>
+<area shape="rect" id="node12" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/RubyPluginLoader.h" alt="" coords="291,244,450,285"/>
 </map>
