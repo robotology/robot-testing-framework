@@ -1,9 +1,9 @@
 <map id="src/rtf/include/TestCase.h" name="src/rtf/include/TestCase.h">
-<area shape="rect" id="node2" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="74,80,239,107"/>
-<area shape="rect" id="node4" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="427,80,617,107"/>
-<area shape="rect" id="node5" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="210,155,357,196"/>
-<area shape="rect" id="node6" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="381,155,532,196"/>
-<area shape="rect" id="node7" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/PythonPluginLoader.h" alt="" coords="556,155,755,196"/>
-<area shape="rect" id="node8" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/RubyPluginLoader.h" alt="" coords="779,155,937,196"/>
-<area shape="rect" id="node3" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="5,162,185,189"/>
+<area shape="rect" id="node3" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="72,83,237,112"/>
+<area shape="rect" id="node7" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="424,83,613,112"/>
+<area shape="rect" id="node9" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="208,161,355,207"/>
+<area shape="rect" id="node11" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="379,161,528,207"/>
+<area shape="rect" id="node13" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/PythonPluginLoader.h" alt="" coords="552,161,749,207"/>
+<area shape="rect" id="node15" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/RubyPluginLoader.h" alt="" coords="773,161,931,207"/>
+<area shape="rect" id="node5" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="5,169,184,199"/>
 </map>

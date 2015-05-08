@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classRTF_1_1plugin_1_1PluginLoader.html" title="The PluginLoader is an abstract class for loading a test case plug&#45;in and gives the direct access to ..." alt="" coords="5,64,179,91"/>
-<area shape="rect" id="node2" href="$classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="231,5,426,32"/>
-<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1PythonPluginLoader.html" title="The PythonPluginLoader loads a Python test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="241,57,416,98"/>
-<area shape="rect" id="node4" href="$classRTF_1_1plugin_1_1RubyPluginLoader.html" title="The RubyPluginLoader loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="227,123,431,149"/>
+<area shape="rect" id="node1" href="$classRTF_1_1plugin_1_1PluginLoader.html" title="The PluginLoader is an abstract class for loading a test case plug&#45;in and gives the direct access to ..." alt="" coords="5,67,179,96"/>
+<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1LuaPluginLoader.html" title="The LuaPluginLoader loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="232,5,427,35"/>
+<area shape="rect" id="node5" href="$classRTF_1_1plugin_1_1PythonPluginLoader.html" title="The PythonPluginLoader loads a Python test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="243,58,416,105"/>
+<area shape="rect" id="node7" href="$classRTF_1_1plugin_1_1RubyPluginLoader.html" title="The RubyPluginLoader loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="228,128,431,157"/>
 </map>

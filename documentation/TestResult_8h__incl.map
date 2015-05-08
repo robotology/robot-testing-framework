@@ -1,6 +1,6 @@
 <map id="src/rtf/include/TestResult.h" name="src/rtf/include/TestResult.h">
-<area shape="rect" id="node2" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="22,229,108,256"/>
-<area shape="rect" id="node3" href="$Test_8h.html" title="Test.h" alt="" coords="82,155,141,181"/>
-<area shape="rect" id="node5" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="165,155,277,181"/>
-<area shape="rect" id="node6" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="30,80,135,107"/>
+<area shape="rect" id="node3" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="22,237,107,267"/>
+<area shape="rect" id="node5" href="$Test_8h.html" title="Test.h" alt="" coords="82,160,140,189"/>
+<area shape="rect" id="node10" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="164,160,276,189"/>
+<area shape="rect" id="node14" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="30,83,134,112"/>
 </map>

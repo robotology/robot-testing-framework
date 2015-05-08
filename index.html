@@ -811,13 +811,13 @@ Number of failed tests: <span style="color:#d8fa3c">1</span>
 <span style="color:#aeaeae">-- TestCase.run = function() ... end </span>
 <span style="color:#aeaeae">-- TestCase.tearDown = function() ... end </span>
 <span style="color:#aeaeae">--</span>
-<span style="color:#aeaeae">-- The following methods are for reporting, failure or assertions: </span>
+<span style="color:#aeaeae">-- The following methods are for reporting, failures or assertions: </span>
 <span style="color:#aeaeae">--</span>
-<span style="color:#aeaeae">-- TestCase.setName(name)             : sets the test name</span>
-<span style="color:#aeaeae">-- TestCase.testReport(msg)           : reports a informative message</span>
-<span style="color:#aeaeae">-- TestCase.testCheck(condition, msg) : reports a failure message</span>
-<span style="color:#aeaeae">-- TestCase.assertError(msg)          : throws an error exception with message</span>
-<span style="color:#aeaeae">-- TestCase.asserFail(msg)            : throws a failure exception with message</span>
+<span style="color:#aeaeae">-- RTF.setName(name)             : sets the test name</span>
+<span style="color:#aeaeae">-- RTF.testReport(msg)           : reports a informative message</span>
+<span style="color:#aeaeae">-- RTF.testCheck(condition, msg) : reports a failure message</span>
+<span style="color:#aeaeae">-- RTF.assertError(msg)          : throws an error exception with message</span>
+<span style="color:#aeaeae">-- RTF.asserFail(msg)            : throws a failure exception with message</span>
 <span style="color:#aeaeae">--</span>
 
 <span style="color:#aeaeae">--</span>
@@ -826,8 +826,8 @@ Number of failed tests: <span style="color:#d8fa3c">1</span>
 <span style="color:#aeaeae">-- @return Boolean (true/false uppon success or failure)</span>
 <span style="color:#aeaeae">--</span>
 TestCase.setup <span style="color:#fbde2d">=</span> <span style="color:#fbde2d">function</span>(parameter)
-    TestCase.setName(<span style="color:#61ce3c">"MyTest"</span>)
-    TestCase.testReport(<span style="color:#61ce3c">"Preparing setup..."</span>)
+    RTF.setName(<span style="color:#61ce3c">"MyTest"</span>)
+    RTF.testReport(<span style="color:#61ce3c">"Preparing setup..."</span>)
     <span style="color:#fbde2d">return</span> <span style="color:#d8fa3c">true</span>;
 <span style="color:#fbde2d">end</span>
 
@@ -836,10 +836,10 @@ TestCase.setup <span style="color:#fbde2d">=</span> <span style="color:#fbde2d">
 <span style="color:#aeaeae">-- @return Boolean</span>
 <span style="color:#aeaeae">--</span>
 TestCase.run <span style="color:#fbde2d">=</span> <span style="color:#fbde2d">function</span>()
-    TestCase.testReport(<span style="color:#61ce3c">"Checking bigger..."</span>)
-    TestCase.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">></span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not bigger than 3."</span>)
-    TestCase.testReport(<span style="color:#61ce3c">"Checking smaller..."</span>)
-    TestCase.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">&lt;</span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not smaller than 3."</span>)
+    RTF.testReport(<span style="color:#61ce3c">"Checking bigger..."</span>)
+    RTF.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">></span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not bigger than 3."</span>)
+    RTF.testReport(<span style="color:#61ce3c">"Checking smaller..."</span>)
+    RTF.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">&lt;</span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not smaller than 3."</span>)
 <span style="color:#fbde2d">end</span>
 
 
@@ -848,7 +848,7 @@ TestCase.run <span style="color:#fbde2d">=</span> <span style="color:#fbde2d">fu
 <span style="color:#aeaeae">-- user defined fixture</span>
 <span style="color:#aeaeae">--</span>
 TestCase.tearDown <span style="color:#fbde2d">=</span> <span style="color:#fbde2d">function</span>()
-    TestCase.testReport(<span style="color:#61ce3c">"Tearing down..."</span>)
+    RTF.testReport(<span style="color:#61ce3c">"Tearing down..."</span>)
 <span style="color:#fbde2d">end</span>
 
 </pre>  
@@ -861,7 +861,7 @@ TestCase.tearDown <span style="color:#fbde2d">=</span> <span style="color:#fbde2
 
   <div class="slide" style="background:#0c1021; height: 350px; overflow-y: scroll;">
 <pre style="background:#0c1021;color:#f8f8f8"><span style="color:#61ce3c">'''
- rtf module is automatically imported by the python plugin loader
+ RTF module is automatically imported by the python plugin loader
  to invoke the corresponding test case methods. To develop a new 
  test case simply implement the following class; (setup and tearDown 
  methods are optional) :
@@ -877,11 +877,11 @@ TestCase.tearDown <span style="color:#fbde2d">=</span> <span style="color:#fbde2
 
  The following methods are for reporting, failure or assertions: 
 
- rtf.setName(name)             : sets the test name (defualt is the test filename)
- rtf.testReport(msg)           : reports a informative message
- rtf.testCheck(condition, msg) : reports a failure message
- rtf.assertError(msg)          : throws an error exception with message
- rtf.asserFail(msg)            : throws a failure exception with message
+ RTF.setName(name)             : sets the test name (defualt is the test filename)
+ RTF.testReport(msg)           : reports a informative message
+ RTF.testCheck(condition, msg) : reports a failure message
+ RTF.assertError(msg)          : throws an error exception with message
+ RTF.asserFail(msg)            : throws a failure exception with message
 '''</span>
 
 <span style="color:#fbde2d">class</span> <span style="color:#ff6400">TestCase</span>:
@@ -889,20 +889,20 @@ TestCase.tearDown <span style="color:#fbde2d">=</span> <span style="color:#fbde2
     <span style="color:#aeaeae"># the user defined fixture</span>
     <span style="color:#aeaeae"># @return Boolean (True/False uppon success or failure)</span>
     <span style="color:#fbde2d">def</span> <span style="color:#ff6400">setup</span>(self, param):
-        rtf.testReport(<span style="color:#61ce3c">"Preparing setup..."</span>)
+        RTF.testReport(<span style="color:#61ce3c">"Preparing setup..."</span>)
         <span style="color:#fbde2d">return</span> <span style="color:#d8fa3c">True</span>
    
     <span style="color:#aeaeae"># The implementation of the test goes here</span>
     <span style="color:#fbde2d">def</span> <span style="color:#ff6400">run</span>(self):
-        rtf.testReport(<span style="color:#61ce3c">"Checking bigger..."</span>)
-        rtf.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">></span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not bigger than 3."</span>)
-        rtf.testReport(<span style="color:#61ce3c">"Checking smaller..."</span>)
-        rtf.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">&lt;</span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not smaller than 3."</span>)
+        RTF.testReport(<span style="color:#61ce3c">"Checking bigger..."</span>)
+        RTF.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">></span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not bigger than 3."</span>)
+        RTF.testReport(<span style="color:#61ce3c">"Checking smaller..."</span>)
+        RTF.testCheck(<span style="color:#d8fa3c">5</span><span style="color:#fbde2d">&lt;</span><span style="color:#d8fa3c">3</span>, <span style="color:#61ce3c">"5 is not smaller than 3."</span>)
 
     <span style="color:#aeaeae"># tearDown is called after the test's run to tear down</span>
     <span style="color:#aeaeae"># the user defined fixture</span>
     <span style="color:#fbde2d">def</span> <span style="color:#ff6400">tearDown</span>(self):
-        rtf.testReport(<span style="color:#61ce3c">"Tearing down..."</span>)
+        RTF.testReport(<span style="color:#61ce3c">"Tearing down..."</span>)
 
 </pre> 
     <div style="position: absolute; top: 10px; width: 200px; height: 30px; left: 700px; box-shadow: 0 3px 5px 0 rgba(90,90,90,.8);"> 

@@ -1,8 +1,8 @@
 <map id="src/rtf/include/TestSuit.h" name="src/rtf/include/TestSuit.h">
-<area shape="rect" id="node2" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="233,379,319,405"/>
-<area shape="rect" id="node3" href="$Test_8h.html" title="Test.h" alt="" coords="215,304,273,331"/>
-<area shape="rect" id="node5" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="173,155,270,181"/>
-<area shape="rect" id="node6" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="348,304,460,331"/>
-<area shape="rect" id="node9" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="491,80,613,107"/>
-<area shape="rect" id="node7" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="259,229,365,256"/>
+<area shape="rect" id="node3" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="232,392,317,421"/>
+<area shape="rect" id="node5" href="$Test_8h.html" title="Test.h" alt="" coords="212,315,271,344"/>
+<area shape="rect" id="node10" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="173,160,269,189"/>
+<area shape="rect" id="node14" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="345,315,457,344"/>
+<area shape="rect" id="node26" href="$FixtureManager_8h.html" title="FixtureManager.h" alt="" coords="488,83,611,112"/>
+<area shape="rect" id="node18" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="259,237,363,267"/>
 </map>
