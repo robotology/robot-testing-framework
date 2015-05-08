@@ -22,9 +22,9 @@ using namespace RTF::plugin;
 /**
  * @brief LuaPluginLoaderImpl
  */
-#define LUA_TEST_CHECK  "function TestCase.testCheck(condition, message) \
+#define LUA_TEST_CHECK  "function RTF.testCheck(condition, message) \
                            if(not (condition)) then \
-                                TestCase.testFail(tostring(condition), message) \
+                                RTF.testFail(tostring(condition), message) \
                             end \
                         end"
 
@@ -73,6 +73,8 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename) {
 
     // register helper functions and assertions
     registerExtraFunctions();
+    lua_newtable(L);
+    lua_setglobal(L, "TestCase");
     if( luaL_dostring(L, LUA_TEST_CHECK)) {
         error = Asserter::format("Cannot load LUA_TEST_CHECK because %s",
                                  lua_tostring(L, -1));
@@ -191,9 +193,9 @@ bool LuaPluginLoaderImpl::registerExtraFunctions()
     lua_newtable(L);
     luaL_setfuncs (L, LuaPluginLoaderImpl::luaPluginLib, 0);
     lua_pushvalue(L, -1);
-    lua_setglobal(L, "TestCase");
+    lua_setglobal(L, "RTF");
 #else
-    luaL_register(L, "TestCase", LuaPluginLoaderImpl::luaPluginLib);
+    luaL_register(L, "RTF", LuaPluginLoaderImpl::luaPluginLib);
 #endif
     return true;
 }

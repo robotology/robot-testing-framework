@@ -124,7 +124,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
                    pyCapsuleRTF, PYTHON_API_VERSION);
     PyObject *pyModuleRTF = PyImport_Import(PyString_FromString("rtf"));
     PyModule_AddObject(pyModuleRTF, "PythonPluginLoaderImpl", pyCapsuleRTF);
-    PyModule_AddObject(pyModule, "rtf", pyModuleRTF);
+    PyModule_AddObject(pyModule, "RTF", pyModuleRTF);
 
     // pyDict is a borrowed reference
     pyDict = PyModule_GetDict(pyModule);

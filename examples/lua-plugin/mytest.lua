@@ -5,20 +5,20 @@
 --
  
 --
--- TestCase table is used by the lua plugin loader
+-- The TestCase table is used by the lua plugin loader
 -- to invoke the corresponding methods:
 --
 -- TestCase.setup = function(options) ... return true end
 -- TestCase.run = function() ... end 
 -- TestCase.tearDown = function() ... end 
 --
--- The following methods are for reporting, failure or assertions: 
+-- The following methods are for reporting, failures or assertions: 
 --
--- TestCase.setName(name)             : sets the test name (defualt is the test filename)
--- TestCase.testReport(msg)           : reports a informative message
--- TestCase.testCheck(condition, msg) : reports a failure message
--- TestCase.assertError(msg)          : throws an error exception with message
--- TestCase.asserFail(msg)            : throws a failure exception with message
+-- RTF.setName(name)             : sets the test name (defualt is the test filename)
+-- RTF.testReport(msg)           : reports a informative message
+-- RTF.testCheck(condition, msg) : reports a failure message
+-- RTF.assertError(msg)          : throws an error exception with message
+-- RTF.asserFail(msg)            : throws a failure exception with message
 --
 
 --
@@ -27,7 +27,7 @@
 -- @return Boolean (true/false uppon success or failure)
 --
 TestCase.setup = function(parameter)
-    TestCase.testReport("Preparing setup...")
+    RTF.testReport("Preparing setup...")
     return true;
 end
 
@@ -35,10 +35,10 @@ end
 -- The implementation of the test goes here
 --
 TestCase.run = function()
-    TestCase.testReport("Checking bigger...")
-    TestCase.testCheck(5>3, "5 is not bigger than 3.")
-    TestCase.testReport("Checking smaller...")
-    TestCase.testCheck(5<3, "5 is not smaller than 3.")
+    RTF.testReport("Checking bigger...")
+    RTF.testCheck(5>3, "5 is not bigger than 3.")
+    RTF.testReport("Checking smaller...")
+    RTF.testCheck(5<3, "5 is not smaller than 3.")
 end
 
 
@@ -47,6 +47,7 @@ end
 -- the user defined fixture
 --
 TestCase.tearDown = function()
-    TestCase.testReport("Tearing down...")
+    print('here')
+    RTF.testReport("Tearing down...")
 end
 

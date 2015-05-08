@@ -50,11 +50,11 @@ Writing test cases in Python is simple. All you need is to declare a `TestCase` 
 
 <span style="color: #a31515"> The following methods are for reporting, failure or assertions: </span>
 
-<span style="color: #a31515"> rtf.setName(name)             : sets the test name (defualt is the test filename)</span>
-<span style="color: #a31515"> rtf.testReport(msg)           : reports a informative message</span>
-<span style="color: #a31515"> rtf.testCheck(condition, msg) : reports a failure message</span>
-<span style="color: #a31515"> rtf.assertError(msg)          : throws an error exception with message</span>
-<span style="color: #a31515"> rtf.asserFail(msg)            : throws a failure exception with message</span>
+<span style="color: #a31515"> RTF.setName(name)             : sets the test name (defualt is the test filename)</span>
+<span style="color: #a31515"> RTF.testReport(msg)           : reports a informative message</span>
+<span style="color: #a31515"> RTF.testCheck(condition, msg) : reports a failure message</span>
+<span style="color: #a31515"> RTF.assertError(msg)          : throws an error exception with message</span>
+<span style="color: #a31515"> RTF.asserFail(msg)            : throws a failure exception with message</span>
 <span style="color: #a31515">&#39;&#39;&#39;</span>
 
 <span style="color: #0000ff">class</span> <span style="color: #2b91af">TestCase</span>:
@@ -62,20 +62,20 @@ Writing test cases in Python is simple. All you need is to declare a `TestCase` 
     <span style="color: #008000"># the user defined fixture</span>
     <span style="color: #008000"># @return Boolean (True/False uppon success or failure)</span>
     <span style="color: #0000ff">def</span> setup(self, param):
-        rtf.testReport(<span style="color: #a31515">&quot;Preparing setup...&quot;</span>)
+        RTF.testReport(<span style="color: #a31515">&quot;Preparing setup...&quot;</span>)
         <span style="color: #0000ff">return</span> True
    
     <span style="color: #008000"># The implementation of the test goes here</span>
     <span style="color: #0000ff">def</span> run(self):
-        rtf.testReport(<span style="color: #a31515">&quot;Checking bigger...&quot;</span>)
-        rtf.testCheck(5&gt;3, <span style="color: #a31515">&quot;5 is not bigger than 3.&quot;</span>)
-        rtf.testReport(<span style="color: #a31515">&quot;Checking smaller...&quot;</span>)
-        rtf.testCheck(5&lt;3, <span style="color: #a31515">&quot;5 is not smaller than 3.&quot;</span>)
+        RTF.testReport(<span style="color: #a31515">&quot;Checking bigger...&quot;</span>)
+        RTF.testCheck(5&gt;3, <span style="color: #a31515">&quot;5 is not bigger than 3.&quot;</span>)
+        RTF.testReport(<span style="color: #a31515">&quot;Checking smaller...&quot;</span>)
+        RTF.testCheck(5&lt;3, <span style="color: #a31515">&quot;5 is not smaller than 3.&quot;</span>)
 
     <span style="color: #008000"># tearDown is called after the test&#39;s run to tear down</span>
     <span style="color: #008000"># the user defined fixture</span>
     <span style="color: #0000ff">def</span> tearDown(self):
-        rtf.testReport(<span style="color: #a31515">&quot;Tearing down...&quot;</span>)
+        RTF.testReport(<span style="color: #a31515">&quot;Tearing down...&quot;</span>)
 </pre></div>
 \endhtmlonly
 
