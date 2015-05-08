@@ -42,13 +42,9 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
 option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
-<<<<<<< HEAD
 option (ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
-option (ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
-=======
-option (ENABLE_PYTHON_PLUGIN "Enable Pyhton plugins" OFF)
 option (ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
->>>>>>> master
+option (ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
 option (BUILD_EXAMPLES "Build examples" ON)
 option (BUILD_TESTRUNNER "Build testrunner utility" ON)
 option (ENABLE_WEB_LISTENER "Enable web listener" OFF)
