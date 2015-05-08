@@ -85,7 +85,7 @@
                                             RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
 
 
-/** Conditional failure report. RTF_ASSERT_CHECK does not throw any
+/** Conditional failure report. RTF_TEST_CHECK does not throw any
  *  exception. It reports a failure message to the TestResult indiecating
  *  that the check on the corresponding condition evaluates to \c false.
  * \ingroup Test Assertions
