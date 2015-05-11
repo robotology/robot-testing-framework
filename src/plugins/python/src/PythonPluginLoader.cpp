@@ -8,11 +8,11 @@
  */
 
 
-#include <PythonPluginLoader_impl.h>
-#include <PythonPluginLoader.h>
-#include <Plugin.h>
-#include <Asserter.h>
-#include <TestAssert.h>
+#include <rtf/python/impl/PythonPluginLoader_impl.h>
+#include <rtf/python/PythonPluginLoader.h>
+#include <rtf/dll/Plugin.h>
+#include <rtf/Asserter.h>
+#include <rtf/TestAssert.h>
 
 #ifdef _WIN32
     #include <stdlib.h>
@@ -87,7 +87,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     char* name = strdup(filename.c_str());
     string dname = dirname(dir);
     string bname = basename(name);
-#endif    
+#endif
 
     PyRun_SimpleString("import sys");
     string sys_path = "sys.path.append(\"" + dname + "\")";
@@ -97,8 +97,8 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     int lastindex = bname.find_last_of(".");
     string rawname = bname.substr(0, lastindex);
 
-    // Build the name object    
-    pyName = PyString_FromString(rawname.c_str());    
+    // Build the name object
+    pyName = PyString_FromString(rawname.c_str());
     if(pyName == NULL) {
         error = Asserter::format("Cannot load %s because %s",
                                  filename.c_str(), getPythonErrorString().c_str());
@@ -106,7 +106,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
         return NULL;
     }
 
-    // Load the module object        
+    // Load the module object
     pyModule = PyImport_Import(pyName);
     if(pyModule == NULL) {
         error = Asserter::format("Cannot load %s because %s",

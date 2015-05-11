@@ -11,8 +11,8 @@
 #include <errno.h>
 #include <fstream>
 
-#include <TextOutputter.h>
-#include <ResultEvent.h>
+#include <rtf/TextOutputter.h>
+#include <rtf/ResultEvent.h>
 
 using namespace RTF;
 using namespace std;

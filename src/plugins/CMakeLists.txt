@@ -25,4 +25,3 @@ endif()
 if (ENABLE_RUBY_PLUGIN)
     add_subdirectory(ruby)
 endif()
-

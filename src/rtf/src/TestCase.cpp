@@ -7,10 +7,10 @@
  *
  */
 
-#include <TestMessage.h>
-#include <TestCase.h>
-#include <Exception.h>
-#include <Arguments.h>
+#include <rtf/TestMessage.h>
+#include <rtf/TestCase.h>
+#include <rtf/Exception.h>
+#include <rtf/Arguments.h>
 
 #include <string.h>
 
@@ -69,7 +69,7 @@ bool TestCase::setup(int argc, char**argv) {
 void TestCase::tearDown() { }
 
 
-void TestCase::run(TestResult &rsl) {    
+void TestCase::run(TestResult &rsl) {
     this->result = &rsl;
     successful = true;
     // call setup and run

@@ -13,9 +13,9 @@
 
 #include <string>
 #include <vector>
-#include <TestSuit.h>
+#include <rtf/TestSuit.h>
 #include <PluginRunner.h>
-#include <DllFixturePluginLoader.h>
+#include <rtf/dll/DllFixturePluginLoader.h>
 
 /**
  * class SuitRunner
@@ -56,10 +56,10 @@ public:
     void reset();
 
 private:
-    bool loadSuitsFromPath(std::string path);    
+    bool loadSuitsFromPath(std::string path);
 
 private:
-    bool verbose;    
+    bool verbose;
     std::vector<RTF::TestSuit*> suits;
     std::vector<RTF::plugin::DllFixturePluginLoader*> fixtureLoaders;
 };

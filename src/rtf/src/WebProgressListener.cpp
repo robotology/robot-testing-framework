@@ -8,9 +8,9 @@
  */
 
 #include <string.h>
-#include <Asserter.h>
-#include <WebProgressListener.h>
-#include <WebProgressListener_impl.h>
+#include <rtf/Asserter.h>
+#include <rtf/WebProgressListener.h>
+#include <rtf/impl/WebProgressListener_impl.h>
 
 using namespace std;
 using namespace RTF;

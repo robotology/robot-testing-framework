@@ -7,9 +7,9 @@
  *
  */
 
-#include <Plugin.h>
-#include <DllPluginLoader.h>
-#include <DllPluginLoader_impl.h>
+#include <rtf/dll/Plugin.h>
+#include <rtf/dll/DllPluginLoader.h>
+#include <rtf/dll/impl/DllPluginLoader_impl.h>
 
 using namespace std;
 using namespace RTF;

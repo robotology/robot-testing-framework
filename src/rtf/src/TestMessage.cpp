@@ -7,7 +7,7 @@
  *
  */
 
-#include <TestMessage.h>
+#include <rtf/TestMessage.h>
 
 using namespace RTF;
 

@@ -7,13 +7,13 @@
  *
  */
 
-#include <Asserter.h> // used to format the string message
+#include <rtf/Asserter.h> // used to format the string message
 #include <SuitRunner.h>
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
 #include <tinyxml.h>
 #include <PluginFactory.h>
-#include <DllFixturePluginLoader.h>
+#include <rtf/dll/DllFixturePluginLoader.h>
 
 using namespace std;
 using namespace RTF;
@@ -102,7 +102,7 @@ bool SuitRunner::loadSuit(std::string filename) {
         else if(PluginFactory::compare(test->Value(), "environment")) {
             if(test->GetText() != NULL)
                 environment = test->GetText();
-        }        
+        }
         else if(PluginFactory::compare(test->Value(), "fixture") &&
                 test->GetText() != NULL) {
                 // load the fixture manager plugin
@@ -211,7 +211,7 @@ bool SuitRunner::loadMultipleSuits(std::string path,
             loadMultipleSuits(name, recursive);
         }
     }
-    closedir(dir);    
+    closedir(dir);
     return true;
 }
 

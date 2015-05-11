@@ -15,10 +15,10 @@ find_package(YARP REQUIRED)
 set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
 get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
 
-set(RTF_YARP_PUBLIC_HDRS include/YarpTestCase.h)
+set(RTF_YARP_PUBLIC_HDRS include/rtf/yarp/YarpTestCase.h)
 
 install(FILES ${RTF_YARP_PUBLIC_HDRS}
-        DESTINATION include)
+        DESTINATION include/rtf/yarp)
 
 #add yarp fixture plugin
 add_subdirectory(fixture-ymanager)

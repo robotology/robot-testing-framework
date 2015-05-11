@@ -8,7 +8,7 @@
  */
 
 #include <iostream>
-#include <ConsoleListener.h>
+#include <rtf/ConsoleListener.h>
 
 using namespace std;
 using namespace RTF;

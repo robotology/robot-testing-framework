@@ -7,16 +7,16 @@
  *
  */
 
-#include <TestMessage.h>
-#include <TestSuit.h>
-#include <Exception.h>
+#include <rtf/TestMessage.h>
+#include <rtf/TestSuit.h>
+#include <rtf/Exception.h>
 
 using namespace RTF;
 
 TestSuit::TestSuit(std::string name)
     : RTF::Test(name),
     successful(true),
-    fixtureOK(true),    
+    fixtureOK(true),
     fixtureMesssage(""),
     fixtureManager(NULL),
     result(NULL),
@@ -36,8 +36,8 @@ void TestSuit::removeTest(RTF::Test* test) {
 }
 
 void TestSuit::reset() {
-    tests.clear();    
-    successful = fixtureOK =  true;    
+    tests.clear();
+    successful = fixtureOK =  true;
     fixtureMesssage.clear();
     fixtureManager = NULL;
     result = NULL;
@@ -67,7 +67,7 @@ void TestSuit::tearDown() {
 
 
 void TestSuit::run(TestResult &rsl) {
-    this->result = &rsl;    
+    this->result = &rsl;
     successful = fixtureOK = true;
     interrupted = false;
     fixtureMesssage.clear();

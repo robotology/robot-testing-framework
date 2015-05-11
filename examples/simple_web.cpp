@@ -11,12 +11,12 @@
 #include <time.h>
 #include <stdlib.h>
 
-#include <TestCase.h>
-#include <TestResult.h>
-#include <TestRunner.h>
-#include <TestSuit.h>
-#include <WebProgressListener.h>
-#include <TestAssert.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/TestRunner.h>
+#include <rtf/TestSuit.h>
+#include <rtf/WebProgressListener.h>
+#include <rtf/TestAssert.h>
 
 #ifdef _WIN32
 	#include <Windows.h>
@@ -69,11 +69,11 @@ public:
 
 int main(int argc, char** argv)
 {
-    // create a test listener to collect the result    
+    // create a test listener to collect the result
     WebProgressListener web(8080, false);
 
     // create a test result sand add the listeners
-    TestResult result;    
+    TestResult result;
     result.addListener(&web);
     printf("To see the test result, open a web browser and type 'http://127.0.0.1:8080'...\n");
 
@@ -85,8 +85,8 @@ int main(int argc, char** argv)
     suit.addTest(&test2);
 
     // create a test runner
-    TestRunner runner;    
+    TestRunner runner;
     runner.addTest(&suit);
-    runner.run(result);    
+    runner.run(result);
     return 0;
 }

@@ -10,8 +10,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include <Asserter.h>
-#include <Exception.h>
+#include <rtf/Asserter.h>
+#include <rtf/Exception.h>
 
 using namespace RTF;
 
