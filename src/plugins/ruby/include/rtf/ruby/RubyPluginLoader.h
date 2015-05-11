@@ -12,8 +12,8 @@
 #define _RTF_RUBYPLUGINLOADER_H
 
 #include <string>
-#include <TestCase.h>
-#include <PluginLoader.h>
+#include <rtf/TestCase.h>
+#include <rtf/PluginLoader.h>
 
 namespace RTF {
     namespace plugin {

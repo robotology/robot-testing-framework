@@ -7,11 +7,11 @@
  *
  */
 
-#include <Plugin.h>
-#include <Asserter.h>
-#include <TestAssert.h>
-#include <RubyPluginLoader.h>
-#include <RubyPluginLoader_impl.h>
+#include <rtf/dll/Plugin.h>
+#include <rtf/Asserter.h>
+#include <rtf/TestAssert.h>
+#include <rtf/ruby/RubyPluginLoader.h>
+#include <rtf/ruby/impl/RubyPluginLoader_impl.h>
 
 using namespace std;
 using namespace RTF;
@@ -30,7 +30,7 @@ RubyPluginLoaderImpl::~RubyPluginLoaderImpl() {
     close();
 }
 
-void RubyPluginLoaderImpl::close() {    
+void RubyPluginLoaderImpl::close() {
     ruby_cleanup(0);
 }
 
@@ -39,13 +39,13 @@ VALUE RubyPluginLoaderImpl::wrapSetup(VALUE args) {
     VALUE *values = (VALUE *) args;
     VALUE setup = values[0];
     ID id_setup = values[1];
-    VALUE param = values[2];    
+    VALUE param = values[2];
     return rb_funcall(setup, id_setup, 1, param);
 }
 
 VALUE RubyPluginLoaderImpl::protectedSetup(VALUE testcase, ID id,
                                            VALUE param, RubyPluginLoaderImpl* impl) {
-    int state;    
+    int state;
     VALUE args[3];
     args[0] = testcase;
     args[1] = id;
@@ -101,7 +101,7 @@ VALUE RubyPluginLoaderImpl::protectedTearDown(VALUE testcase, ID id,
     return state;
 }
 
-TestCase* RubyPluginLoaderImpl::open(const std::string filename) {    
+TestCase* RubyPluginLoaderImpl::open(const std::string filename) {
     this->filename = filename;
     string bname = extractFileName(filename);
     RUBY_INIT_STACK;

@@ -8,13 +8,13 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
-#include <TestResult.h>
-#include <TestSuit.h>
-#include <ConsoleListener.h>
-#include <TestRunner.h>
-#include <TestAssert.h>
-#include <DllFixturePluginLoader.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/TestSuit.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestRunner.h>
+#include <rtf/TestAssert.h>
+#include <rtf/dll/DllFixturePluginLoader.h>
 
 
 using namespace RTF;

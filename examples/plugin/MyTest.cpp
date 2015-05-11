@@ -8,8 +8,8 @@
  */
 
 
-#include <TestAssert.h>
-#include <Plugin.h>
+#include <rtf/TestAssert.h>
+#include <rtf/dll/Plugin.h>
 
 #include "MyTest.h"
 

@@ -7,7 +7,6 @@
  *
  */
 
-
 #include <rtf/python/impl/PythonPluginLoader_impl.h>
 #include <rtf/python/PythonPluginLoader.h>
 #include <rtf/dll/Plugin.h>

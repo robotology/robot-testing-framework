@@ -23,7 +23,7 @@
     #include <rtf/python/PythonPluginLoader.h>
 #endif
 #ifdef ENABLE_RUBY_PLUGIN
-    #include <rtf/python/RubyPluginLoader.h>
+    #include <rtf/ruby/RubyPluginLoader.h>
 #endif
 
 /**

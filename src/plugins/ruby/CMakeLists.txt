@@ -19,7 +19,7 @@ get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
 get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
 get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
 
-# Create the library 
+# Create the library
 file(GLOB folder_source ./src/*.cpp)
 file(GLOB_RECURSE folder_header ./include/*.h ./include/impl/*.h)
 source_group("Source Files" FILES ${folder_source})
@@ -39,8 +39,8 @@ endif()
 target_link_libraries(RTF_ruby ${RUBY_LIBRARY})
 
 
-# choose which header files should be installed 
-file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/*.h)
+# choose which header files should be installed
+file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/ruby/*.h)
 set_property(TARGET RTF_ruby PROPERTY PUBLIC_HEADER ${RTF_DLL_HEADERS})
 
 install(TARGETS RTF_ruby
@@ -49,7 +49,7 @@ install(TARGETS RTF_ruby
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/ruby)
+        PUBLIC_HEADER DESTINATION include/rtf/ruby)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_ruby)
 set_property(TARGET RTF_ruby PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})

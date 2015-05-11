@@ -12,7 +12,7 @@
 #define _RTF_RUBYPLUGINLOADER_IMPL_H
 
 #include <string>
-#include <TestCase.h>
+#include <rtf/TestCase.h>
 #include <ruby.h>
 
 namespace RTF {
@@ -78,7 +78,7 @@ public:
     virtual void run();
 
 
-private:    
+private:
     std::string extractFileName(const std::string& path);
 
     static RubyPluginLoaderImpl* getImpFromRuby();
@@ -93,7 +93,7 @@ private:
                                RubyPluginLoaderImpl* impl);
     static VALUE wrapTearDown(VALUE args);
     static VALUE protectedTearDown(VALUE testcase, ID id,
-                               RubyPluginLoaderImpl* impl);    
+                               RubyPluginLoaderImpl* impl);
 
     static VALUE setName(VALUE self, VALUE obj);
     static VALUE assertError(VALUE self, VALUE obj);
@@ -103,7 +103,7 @@ private:
 
 private:
     std::string filename;
-    std::string error;    
+    std::string error;
     VALUE testcase;
     VALUE rtfModule;
 };
