@@ -26,6 +26,7 @@ before_script:
   - sudo ldconfig
   - cd ../..
   
+  - cd robot-testing
   # configure robot-testing framework
   - mkdir build 
   - cd build 
