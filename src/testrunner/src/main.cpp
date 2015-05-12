@@ -7,7 +7,9 @@
  *
  */
 
+#include <cstdlib>
 #include <stdio.h>
+
 #include <rtf/TestResult.h>
 #include <rtf/ConsoleListener.h>
 #include <rtf/TestResultCollector.h>
@@ -160,7 +162,7 @@ int main(int argc, char *argv[]) {
                               cmd.get<string>("param"),
                               cmd.get<string>("environment"))) {
             reportErrors();
-            return 0;
+            return EXIT_FAILURE;
         }
 
     // load multiple plugins
@@ -168,14 +170,14 @@ int main(int argc, char *argv[]) {
         if(!runner.loadMultiplePlugins(cmd.get<string>("tests"),
                                        cmd.exist("recursive"))) {
             reportErrors();
-            return 0;
+            return EXIT_FAILURE;
         }
 
     // load a single suit
     if(cmd.get<string>("suit").size())
         if(!runner.loadSuit(cmd.get<string>("suit"))) {
             reportErrors();
-            return 0;
+            return EXIT_FAILURE;
         }
 
     // load multiple suits
@@ -183,7 +185,7 @@ int main(int argc, char *argv[]) {
         if(!runner.loadMultipleSuits(cmd.get<string>("suits"),
                                        cmd.exist("recursive"))) {
             reportErrors();
-            return 0;
+            return EXIT_FAILURE;
         }
 
     // report any warning or errors
@@ -229,5 +231,12 @@ int main(int argc, char *argv[]) {
         cout<<"Number of failed tests: "<<collector.failedCount()<<endl;
     }
     currentRunner = NULL;
-    return 0;
+
+    int exitCode;
+    if( collector.failedCount() == 0 ) {
+        exitCode = EXIT_SUCCESS;
+    } else {
+        exitCode = EXIT_FAILURE;
+    }
+    return exitCode;
 }
