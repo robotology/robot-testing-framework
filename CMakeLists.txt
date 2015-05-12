@@ -37,7 +37,10 @@ set_property(GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
 set_property(GLOBAL PROPERTY RTF_INTERNAL_LIBS)
 set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
-
+# setting default compilation to release/optmized
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, recommanded options are: Debug or Release" FORCE)
+endif()
 
 # setting options
 option (ENABLE_PLUGIN "Enable plugins" ON)
