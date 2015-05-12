@@ -35,7 +35,7 @@ endif()
 
 
 # choose which header files should be installed
-file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/RTF/*.h)
+file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/dll/*.h)
 set_property(TARGET RTF_dll PROPERTY PUBLIC_HEADER ${RTF_DLL_HEADERS})
 
 install(TARGETS RTF_dll
@@ -44,7 +44,7 @@ install(TARGETS RTF_dll
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/RTF/dll)
+        PUBLIC_HEADER DESTINATION include/rtf/dll)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_dll)
 set_property(TARGET RTF_dll PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
