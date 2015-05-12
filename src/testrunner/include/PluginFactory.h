@@ -13,17 +13,17 @@
 
 #include <string>
 #include <algorithm>
-#include <PluginLoader.h>
-#include <DllPluginLoader.h>
+#include <rtf/PluginLoader.h>
+#include <rtf/dll/DllPluginLoader.h>
 
 #ifdef ENABLE_LUA_PLUGIN
-    #include <LuaPluginLoader.h>
+    #include <rtf/lua/LuaPluginLoader.h>
 #endif
 #ifdef ENABLE_PYTHON_PLUGIN
-    #include <PythonPluginLoader.h>
+    #include <rtf/python/PythonPluginLoader.h>
 #endif
 #ifdef ENABLE_RUBY_PLUGIN
-    #include <RubyPluginLoader.h>
+    #include <rtf/ruby/RubyPluginLoader.h>
 #endif
 
 /**

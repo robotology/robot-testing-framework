@@ -13,33 +13,33 @@ get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS
 get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
 get_property(RTF_INTERNAL_DEFS GLOBAL PROPERTY RTF_INTERNAL_DEFS)
 
-# Create the library 
+# Create the library
 if(ENABLE_WEB_LISTENER)
     set(RTF_HDRS
-        include/Arguments.h
-        include/Asserter.h
-        include/ConsoleListener.h
-        include/Exception.h
-        include/FixtureManager.h
-        include/PluginLoader.h
-        include/ResultEvent.h
-        include/rtf_config.h
-        include/TestAssert.h
-        include/TestCase.h
-        include/Test.h
-        include/TestListener.h
-        include/TestMessage.h
-        include/TestResultCollector.h
-        include/TestResult.h
-        include/TestRunner.h
-        include/TestSuit.h
-        include/TextOutputter.h
-        include/WebProgressListener.h)
-        
-     set(RTF_HDRS_IMPL
-        include/impl/WebProgressListener_impl.h)
+        include/rtf/Arguments.h
+        include/rtf/Asserter.h
+        include/rtf/ConsoleListener.h
+        include/rtf/Exception.h
+        include/rtf/FixtureManager.h
+        include/rtf/PluginLoader.h
+        include/rtf/ResultEvent.h
+        include/rtf/rtf_config.h
+        include/rtf/TestAssert.h
+        include/rtf/TestCase.h
+        include/rtf/Test.h
+        include/rtf/TestListener.h
+        include/rtf/TestMessage.h
+        include/rtf/TestResultCollector.h
+        include/rtf/TestResult.h
+        include/rtf/TestRunner.h
+        include/rtf/TestSuit.h
+        include/rtf/TextOutputter.h
+        include/rtf/WebProgressListener.h)
 
-     set(RTF_SRCS 
+     set(RTF_HDRS_IMPL
+        include/rtf/impl/WebProgressListener_impl.h)
+
+     set(RTF_SRCS
         src/Arguments.cpp
         src/Asserter.cpp
         src/ConsoleListener.cpp
@@ -58,28 +58,28 @@ if(ENABLE_WEB_LISTENER)
                         ${RTF_INTERNAL_INCLUDE_DIRS})
 else()
     set(RTF_HDRS
-        include/Arguments.h
-        include/Asserter.h
-        include/ConsoleListener.h
-        include/Exception.h
-        include/FixtureManager.h
-        include/PluginLoader.h
-        include/ResultEvent.h
-        include/rtf_config.h
-        include/TestAssert.h
-        include/TestCase.h
-        include/Test.h
-        include/TestListener.h
-        include/TestMessage.h
-        include/TestResultCollector.h
-        include/TestResult.h
-        include/TestRunner.h
-        include/TestSuit.h
-        include/TextOutputter.h)
+        include/rtf/Arguments.h
+        include/rtf/Asserter.h
+        include/rtf/ConsoleListener.h
+        include/rtf/Exception.h
+        include/rtf/FixtureManager.h
+        include/rtf/PluginLoader.h
+        include/rtf/ResultEvent.h
+        include/rtf/rtf_config.h
+        include/rtf/TestAssert.h
+        include/rtf/TestCase.h
+        include/rtf/Test.h
+        include/rtf/TestListener.h
+        include/rtf/TestMessage.h
+        include/rtf/TestResultCollector.h
+        include/rtf/TestResult.h
+        include/rtf/TestRunner.h
+        include/rtf/TestSuit.h
+        include/rtf/TextOutputter.h)
 
      set(RTF_HDRS_IMPL )
 
-     set(RTF_SRCS 
+     set(RTF_SRCS
         src/Arguments.cpp
         src/Asserter.cpp
         src/ConsoleListener.cpp
@@ -93,7 +93,7 @@ else()
         src/TextOutputter.cpp)
 
      include_directories(${RTF_TREE_INCLUDE_DIRS}
-                        ${RTF_INTERNAL_INCLUDE_DIRS})           
+                        ${RTF_INTERNAL_INCLUDE_DIRS})
 endif()
 
 
@@ -109,7 +109,7 @@ else()
     target_link_libraries(RTF)
 endif()
 
-# choose which header files should be installed 
+# choose which header files should be installed
 set_property(TARGET RTF PROPERTY PUBLIC_HEADER ${RTF_HDRS})
 
 install(TARGETS RTF
@@ -118,7 +118,7 @@ install(TARGETS RTF
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include)
+        PUBLIC_HEADER DESTINATION include/rtf)
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF)
 set_property(TARGET RTF PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})

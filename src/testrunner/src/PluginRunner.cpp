@@ -8,7 +8,7 @@
  */
 
 #include <algorithm>
-#include <Asserter.h> // used to format the string message
+#include <rtf/Asserter.h> // used to format the string message
 #include <PluginRunner.h>
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
@@ -67,7 +67,7 @@ bool PluginRunner::loadPlugin(std::string filename,
 }
 
 bool PluginRunner::loadMultiplePlugins(std::string path,
-                                         bool recursive) {    
+                                         bool recursive) {
     if(!recursive)
         return loadPluginsFromPath(path);
 

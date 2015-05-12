@@ -8,11 +8,11 @@
  */
 
 #include <lua.hpp>
-#include <Plugin.h>
-#include <Asserter.h>
-#include <TestAssert.h>
-#include <LuaPluginLoader.h>
-#include <LuaPluginLoader_impl.h>
+#include "rtf/dll/Plugin.h"
+#include "rtf/Asserter.h"
+#include "rtf/TestAssert.h"
+#include "rtf/lua/LuaPluginLoader.h"
+#include "rtf/lua/impl/LuaPluginLoader_impl.h"
 
 using namespace std;
 using namespace RTF;
@@ -65,7 +65,7 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename) {
 
     // initiate lua state
     L = luaL_newstate();
-    luaL_openlibs(L);    
+    luaL_openlibs(L);
 
     //lua_getglobal( L, "package" );
     //lua_getfield( L, -1, "path" ); // get field "path" from table at top of stack (-1)

@@ -8,10 +8,10 @@
  */
 
 #include <stdio.h>
-#include <TestResult.h>
-#include <ConsoleListener.h>
-#include <TestResultCollector.h>
-#include <TextOutputter.h>
+#include <rtf/TestResult.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestResultCollector.h>
+#include <rtf/TextOutputter.h>
 
 #include <cmdline.h>
 #include <SuitRunner.h>
@@ -19,11 +19,11 @@
 #include <Version.h>
 
 #if defined(ENABLE_WEB_LISTENER)
-    #include <WebProgressListener.h>
+    #include <rtf/WebProgressListener.h>
 #endif
 
 #if defined(WIN32)
-    #include <windows.h> 
+    #include <windows.h>
 #else
     #include <unistd.h>
     #include <sys/types.h>
@@ -64,7 +64,7 @@ void addOptions(cmdline::parser &cmd) {
 
     cmd.add<string>("output", 'o',
                     "The output file to save the result",
-                    false, "result.txt");    
+                    false, "result.txt");
     cmd.add<string>("param", 'p',
                     "Sets the test case parameters. (Can be used only with --test option.)",
                     false);
@@ -95,19 +95,19 @@ void signalHandler(int signum) {
 }
 
 #if defined(WIN32)
-BOOL CtrlHandler( DWORD fdwCtrlType ) { 
-  switch( fdwCtrlType ) { 
-    // Handle the CTRL-C signal. 
+BOOL CtrlHandler( DWORD fdwCtrlType ) {
+  switch( fdwCtrlType ) {
+    // Handle the CTRL-C signal.
     case CTRL_C_EVENT:
 		signalHandler(0);
 		return(TRUE);
-    case CTRL_BREAK_EVENT: 
+    case CTRL_BREAK_EVENT:
 		signalHandler(0);
-      return TRUE; 
-    default: 
-      return FALSE; 
-  } 
-} 
+      return TRUE;
+    default:
+      return FALSE;
+  }
+}
 #endif
 
 int main(int argc, char *argv[]) {

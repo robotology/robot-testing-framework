@@ -8,7 +8,7 @@
  */
 
 
-#include <TestRunner.h>
+#include <rtf/TestRunner.h>
 
 using namespace RTF;
 

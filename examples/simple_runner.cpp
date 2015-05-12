@@ -8,11 +8,11 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
-#include <TestResult.h>
-#include <TestRunner.h>
-#include <ConsoleListener.h>
-#include <TestAssert.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/TestRunner.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestAssert.h>
 
 using namespace RTF;
 

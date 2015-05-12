@@ -8,12 +8,12 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
-#include <TestResult.h>
-#include <ConsoleListener.h>
-#include <TestRunner.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestRunner.h>
 
-#include <RubyPluginLoader.h>
+#include <rtf/ruby/RubyPluginLoader.h>
 
 
 using namespace RTF;

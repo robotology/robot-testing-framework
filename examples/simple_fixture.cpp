@@ -8,13 +8,13 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
-#include <TestResult.h>
-#include <TestRunner.h>
-#include <TestSuit.h>
-#include <FixtureManager.h>
-#include <ConsoleListener.h>
-#include <TestAssert.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/TestRunner.h>
+#include <rtf/TestSuit.h>
+#include <rtf/FixtureManager.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestAssert.h>
 
 using namespace RTF;
 
@@ -44,9 +44,9 @@ public:
         : FixtureManager(dispatcher) { }
 
     bool setup(int argc, char**argv) {
-        // setup and initialize the fixture        
+        // setup and initialize the fixture
         // ...
-        printf("Myfixture setup!\n");        
+        printf("Myfixture setup!\n");
         // return true if everything is fine.
         return true;
     }
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
     suit.addTest(&test2);
 
     // create a test runner and run the tests
-    TestRunner runner;    
+    TestRunner runner;
     runner.addTest(&suit);
     runner.run(result);
 

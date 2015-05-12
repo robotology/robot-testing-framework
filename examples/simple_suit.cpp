@@ -8,12 +8,12 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
-#include <TestResult.h>
-#include <TestRunner.h>
-#include <TestSuit.h>
-#include <ConsoleListener.h>
-#include <TestAssert.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/TestRunner.h>
+#include <rtf/TestSuit.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestAssert.h>
 
 using namespace RTF;
 
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
     suit.addTest(&test2);
 
     // create a test runner
-    TestRunner runner;    
+    TestRunner runner;
     runner.addTest(&suit);
     runner.run(result);
 

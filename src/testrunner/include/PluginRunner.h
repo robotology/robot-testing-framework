@@ -13,9 +13,9 @@
 
 #include <string>
 #include <vector>
-#include <TestRunner.h>
-#include <TestCase.h>
-#include <PluginLoader.h>
+#include <rtf/TestRunner.h>
+#include <rtf/TestCase.h>
+#include <rtf/PluginLoader.h>
 
 /**
  * class PluginRunner
@@ -58,14 +58,14 @@ public:
      */
     void reset();
 
-protected:    
+protected:
     std::vector<RTF::plugin::PluginLoader*> dllLoaders;
 
 private:
-    bool loadPluginsFromPath(std::string path);    
+    bool loadPluginsFromPath(std::string path);
 
 private:
-    bool verbose;    
+    bool verbose;
 };
 
 #endif // _RTF_PLUGINRUNNER_H

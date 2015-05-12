@@ -8,10 +8,10 @@
  */
 
 #include <stdio.h>
-#include <TestCase.h>
-#include <TestResult.h>
-#include <ConsoleListener.h>
-#include <TestAssert.h>
+#include <rtf/TestCase.h>
+#include <rtf/TestResult.h>
+#include <rtf/ConsoleListener.h>
+#include <rtf/TestAssert.h>
 
 using namespace RTF;
 

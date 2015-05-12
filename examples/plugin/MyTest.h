@@ -10,7 +10,7 @@
 #ifndef _MYTEST_H_
 #define _MYTEST_H_
 
-#include <TestCase.h>
+#include <rtf/TestCase.h>
 
 class MyTest : public RTF::TestCase {
 public:

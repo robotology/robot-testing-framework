@@ -8,7 +8,7 @@
  */
 
 
-#include <TestResultCollector.h>
+#include <rtf/TestResultCollector.h>
 
 using namespace RTF;
 

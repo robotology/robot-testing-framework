@@ -7,10 +7,10 @@
  *
  */
 
-#include <Plugin.h>
-#include <TestCase.h>
-#include <DllFixturePluginLoader.h>
-#include <DllPluginLoader_impl.h>
+#include <rtf/dll/Plugin.h>
+#include <rtf/TestCase.h>
+#include <rtf/dll/DllFixturePluginLoader.h>
+#include <rtf/dll/impl/DllPluginLoader_impl.h>
 
 using namespace std;
 using namespace RTF;
