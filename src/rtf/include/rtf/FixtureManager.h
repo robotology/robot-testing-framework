@@ -88,9 +88,9 @@ public:
     bool setup();
 
     /**
-    * @brief setup is called to start the fixture manger
-    * @param argc The number of the pasred argument from string paramter
-    * @param argv The arguments which is parsed using string paramter
+    * @brief setup is called to start the fixture manager
+    * @param argc The number of the pasred argument from string parameter
+    * @param argv The arguments which is parsed using string parameter
     * @return true or false depending of the fixture initialization
     */
    virtual bool setup(int argc, char**argv);
@@ -118,14 +118,14 @@ public:
      * @brief setParam Sets the optional paramters of the fixture manager.
      * The parameter string is parsed into (argc/argv) format
      * and will be passed to the fixture manager using setup(int argc, char** argv).
-     * @param param the paramter string
+     * @param param the parameter string
      */
     void setParam(const std::string param);
 
     /**
-     * @brief getParam gets the original paramter string which is set
+     * @brief getParam gets the original parameter string which is set
      * for the fixture manager
-     * @return a string paramter
+     * @return a string parameter
      */
     const std::string getParam();
 
