@@ -82,7 +82,7 @@ public:
      * @brief setup is called by a test suit.
      * The setup() function parses the fixture paramteres
      * and call the setup(int argc, char**argv) which can be
-     * ovveriden by the user customized fixture managre.
+     * ovveriden by the user customized fixture manager.
      * @return true or false depending of the test initialization
      */
     bool setup();
