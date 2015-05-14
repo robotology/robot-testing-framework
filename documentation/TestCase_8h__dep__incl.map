@@ -1,9 +1,12 @@
-<map id="src/rtf/include/TestCase.h" name="src/rtf/include/TestCase.h">
-<area shape="rect" id="node3" href="$Asserter_8h.html" title="src/rtf/include/Asserter.h" alt="" coords="72,83,237,112"/>
-<area shape="rect" id="node7" href="$PluginLoader_8h.html" title="src/rtf/include/PluginLoader.h" alt="" coords="424,83,613,112"/>
-<area shape="rect" id="node9" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="208,161,355,207"/>
-<area shape="rect" id="node11" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="379,161,528,207"/>
-<area shape="rect" id="node13" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/PythonPluginLoader.h" alt="" coords="552,161,749,207"/>
-<area shape="rect" id="node15" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/RubyPluginLoader.h" alt="" coords="773,161,931,207"/>
-<area shape="rect" id="node5" href="$TestAssert_8h.html" title="src/rtf/include/TestAssert.h" alt="" coords="5,169,184,199"/>
+<map id="src/rtf/include/rtf/TestCase.h" name="src/rtf/include/rtf/TestCase.h">
+<area shape="rect" id="node2" href="$Asserter_8h.html" title="src/rtf/include/rtf\l/Asserter.h" alt="" coords="39,109,156,151"/>
+<area shape="rect" id="node4" href="$PluginLoader_8h.html" title="src/rtf/include/rtf\l/PluginLoader.h" alt="" coords="449,109,567,151"/>
+<area shape="rect" id="node5" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/rtf/dll/DllPluginLoader.h" alt="" coords="146,221,307,262"/>
+<area shape="rect" id="node6" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/rtf/lua/LuaPluginLoader.h" alt="" coords="332,221,503,262"/>
+<area shape="rect" id="node7" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/rtf/python\l/PythonPluginLoader.h" alt="" coords="527,213,681,269"/>
+<area shape="rect" id="node8" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/rtf/ruby/RubyPluginLoader.h" alt="" coords="705,221,893,262"/>
+<area shape="rect" id="node9" href="$LuaPluginLoader__impl_8h.html" title="src/plugins/lua/include\l/rtf/lua/impl/LuaPluginLoader\l_impl.h" alt="" coords="692,102,879,158"/>
+<area shape="rect" id="node10" href="$PythonPluginLoader__impl_8h.html" title="src/plugins/python\l/include/rtf/python\l/impl/PythonPluginLoader\l_impl.h" alt="" coords="903,95,1073,165"/>
+<area shape="rect" id="node11" href="$RubyPluginLoader__impl_8h.html" title="src/plugins/ruby/include\l/rtf/ruby/impl/RubyPluginLoader_impl.h" alt="" coords="1098,109,1345,151"/>
+<area shape="rect" id="node3" href="$TestAssert_8h.html" title="src/rtf/include/rtf\l/TestAssert.h" alt="" coords="5,221,123,262"/>
 </map>

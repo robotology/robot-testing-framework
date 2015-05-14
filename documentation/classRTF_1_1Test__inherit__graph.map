@@ -1,4 +1,7 @@
 <map id="RTF::Test" name="RTF::Test">
-<area shape="rect" id="node3" href="$classRTF_1_1TestCase.html" title="The base class to implememnt a test case." alt="" coords="5,83,117,112"/>
-<area shape="rect" id="node5" href="$classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests." alt="" coords="141,83,245,112"/>
+<area shape="rect" id="node2" href="$classRTF_1_1TestCase.html" title="The base class to implememnt a test case." alt="" coords="136,64,249,91"/>
+<area shape="rect" id="node6" href="$classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests." alt="" coords="140,115,245,141"/>
+<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="303,5,521,32"/>
+<area shape="rect" id="node4" href="$classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html" title="The PythonPluginLoaderImpl loads a Pthyon test case plug&#45;in and gives the direct access to the TestCa..." alt="" coords="325,57,499,98"/>
+<area shape="rect" id="node5" href="$classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html" title="The RubyPluginLoaderImpl loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="297,123,527,149"/>
 </map>

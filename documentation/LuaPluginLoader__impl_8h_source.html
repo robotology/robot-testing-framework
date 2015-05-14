@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>RTF: src/plugins/lua/include/impl/LuaPluginLoader_impl.h Source File</title>
+<title>RTF: src/plugins/lua/include/rtf/lua/impl/LuaPluginLoader_impl.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">RTF
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">Robot Testing Framework</div>
   </td>
@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7020b8b7abcceffa3f9f7a2d24718f16.html">plugins</a></li><li class="navelem"><a class="el" href="dir_ee6aa1c688a3b9fb588e8125e26298d2.html">lua</a></li><li class="navelem"><a class="el" href="dir_6623960b7f50849ad20fae10cadcf3bb.html">include</a></li><li class="navelem"><a class="el" href="dir_8664899186d6286e583035270da2add0.html">impl</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_5e48bdcffbc5a804048038cd3eb31fd1.html">src</a></li><li class="navelem"><a class="el" href="dir_b4ec1b4cea0ecbcf2326473669dd7567.html">plugins</a></li><li class="navelem"><a class="el" href="dir_33a79a97d8a46f1662465b1cf548b7ac.html">lua</a></li><li class="navelem"><a class="el" href="dir_6e73cf5ffb493d324d4a464ed4b34f96.html">include</a></li><li class="navelem"><a class="el" href="dir_919c0b6fde982d6ff3f7471e1565eddb.html">rtf</a></li><li class="navelem"><a class="el" href="dir_36cc724b49d34b11f974e2319330b8d3.html">lua</a></li><li class="navelem"><a class="el" href="dir_d45cb0582ebc2d90018672a01fdd3574.html">impl</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -105,11 +105,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _RTF_LUAPLUGINLOADER_IMPL_H</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">TestCase.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">rtf/TestCase.h</a>&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;lua.h&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;lualib.h&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>RTF {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">namespace </span>plugin {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">class </span>LuaPluginLoaderImpl;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
@@ -143,30 +143,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a8dd959cf753f8e17acd12e3ca71480cc">getLocalFunction</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0d800951d39a0e1f5d709406ccae3b43">registerExtraFunctions</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// lua accessible fucntions</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a08602abf72772c79798da96726f6990a">setName</a>(lua_State* <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">L</a>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ab379cf66b292151ecd5fb5a5f2f4e8ea">assertError</a>(lua_State* L);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a69f6b84cfd846cba4de886234837c3cc">assertFail</a>(lua_State* L);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#abeb6d23d5745ed8fb447e4ee40c380d9">testReport</a>(lua_State* L);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#af21eed7960e26fe271c01fc5c0748ad9">testFail</a>(lua_State* L);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">   94</a></span>&#160;    lua_State *<a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">L</a>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">   95</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">filename</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">   96</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">error</a>;    </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#if LUA_VERSION_NUM &gt; 501</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_Reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">  100</a></span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span>};</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif // _RTF_LUAPLUGINLOADER_IMPL_H</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a6b9b78be81295c979c6cdcc62f1b98bf">extractFileName</a>(<span class="keyword">const</span> std::string&amp; path);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// lua accessible fucntions</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a08602abf72772c79798da96726f6990a">setName</a>(lua_State* <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">L</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ab379cf66b292151ecd5fb5a5f2f4e8ea">assertError</a>(lua_State* L);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a69f6b84cfd846cba4de886234837c3cc">assertFail</a>(lua_State* L);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#abeb6d23d5745ed8fb447e4ee40c380d9">testReport</a>(lua_State* L);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#af21eed7960e26fe271c01fc5c0748ad9">testFail</a>(lua_State* L);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">   95</a></span>&#160;    lua_State *<a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">L</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">   96</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">filename</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">   97</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">error</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#if LUA_VERSION_NUM &gt; 501</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_Reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">  101</a></span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif // _RTF_LUAPLUGINLOADER_IMPL_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:30:32 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 14 2015 17:24:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

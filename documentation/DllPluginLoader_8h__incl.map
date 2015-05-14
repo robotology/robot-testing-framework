@@ -1,9 +1,9 @@
-<map id="src/plugins/dll/include/DllPluginLoader.h" name="src/plugins/dll/include/DllPluginLoader.h">
-<area shape="rect" id="node3" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="408,488,493,517"/>
-<area shape="rect" id="node7" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="265,179,356,208"/>
-<area shape="rect" id="node29" href="$PluginLoader_8h.html" title="PluginLoader.h" alt="" coords="212,101,319,131"/>
-<area shape="rect" id="node10" href="$Test_8h.html" title="Test.h" alt="" coords="128,411,187,440"/>
-<area shape="rect" id="node14" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="263,256,359,285"/>
-<area shape="rect" id="node18" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="301,411,413,440"/>
-<area shape="rect" id="node22" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="259,333,363,363"/>
+<map id="src/plugins/dll/include/rtf/dll/DllPluginLoader.h" name="src/plugins/dll/include/rtf/dll/DllPluginLoader.h">
+<area shape="rect" id="node2" href="$rtf__config_8h.html" title="rtf/rtf_config.h" alt="" coords="418,468,521,495"/>
+<area shape="rect" id="node4" href="$TestCase_8h.html" title="rtf/TestCase.h" alt="" coords="267,169,373,196"/>
+<area shape="rect" id="node10" href="$PluginLoader_8h.html" title="rtf/PluginLoader.h" alt="" coords="207,95,331,121"/>
+<area shape="rect" id="node5" href="$Test_8h.html" title="rtf/Test.h" alt="" coords="120,393,195,420"/>
+<area shape="rect" id="node6" href="$TestResult_8h.html" title="rtf/TestResult.h" alt="" coords="263,244,377,271"/>
+<area shape="rect" id="node7" href="$TestMessage_8h.html" title="rtf/TestMessage.h" alt="" coords="304,393,432,420"/>
+<area shape="rect" id="node8" href="$TestListener_8h.html" title="rtf/TestListener.h" alt="" coords="259,319,381,345"/>
 </map>

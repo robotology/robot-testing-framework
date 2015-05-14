@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Class <a class="el" href="classRTF_1_1TextOutputter.html" title="Class TextOutputter saves the results of the test collected by a TestResultCollector in a plain text ...">TextOutputter</a> saves the results of the test collected by a <a class="el" href="classRTF_1_1TestResultCollector.html" title="The TestResultCollector class can be used to store all the events issued by the test cases...">TestResultCollector</a> in a plain text file.  
  <a href="classRTF_1_1TextOutputter.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="TextOutputter_8h_source.html">TextOutputter.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="TextOutputter_8h_source.html">rtf/TextOutputter.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -131,14 +131,14 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">TestCase.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResult_8h.html">TestResult.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestRunner_8h.html">TestRunner.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestSuit_8h.html">TestSuit.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">ConsoleListener.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">TestAssert.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResultCollector_8h.html">TestResultCollector.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TextOutputter_8h.html">TextOutputter.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">rtf/TestCase.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResult_8h.html">rtf/TestResult.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestRunner_8h.html">rtf/TestRunner.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestSuit_8h.html">rtf/TestSuit.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">rtf/ConsoleListener.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">rtf/TestAssert.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResultCollector_8h.html">rtf/TestResultCollector.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TextOutputter_8h.html">rtf/TextOutputter.h</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>;</div>
 <div class="line"></div>
@@ -185,7 +185,7 @@ Private Attributes</h2></td></tr>
 <div class="line">    suit.addTest(&amp;test2);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// create a test runner</span></div>
-<div class="line">    <a class="code" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> runner;    </div>
+<div class="line">    <a class="code" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> runner;</div>
 <div class="line">    runner.<a class="code" href="classRTF_1_1TestRunner.html#aa5c49855ae97e748d78059811d920293" title="Adding a new test.">addTest</a>(&amp;suit);</div>
 <div class="line">    runner.<a class="code" href="classRTF_1_1TestRunner.html#ab6d88869bdedcb60d65dc0435522360f" title="Run all the tests in the list.">run</a>(result);</div>
 <div class="line"></div>
@@ -348,12 +348,12 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rtf/include/<a class="el" href="TextOutputter_8h_source.html">TextOutputter.h</a></li>
+<li>src/rtf/include/rtf/<a class="el" href="TextOutputter_8h_source.html">TextOutputter.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 8 2015 23:04:29 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 14 2015 17:24:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">RTF
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">Robot Testing Framework</div>
   </td>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>The <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug-in and gives the direct access to the TestCase...">LuaPluginLoaderImpl</a> loads an test case plug-in and gives the direct access to the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>.  
  <a href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="LuaPluginLoader__impl_8h_source.html">impl/LuaPluginLoader_impl.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="LuaPluginLoader__impl_8h_source.html">rtf/lua/impl/LuaPluginLoader_impl.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for RTF::plugin::LuaPluginLoaderImpl:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -169,11 +169,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a09711be1e20429a16d53b7a01fc0e210 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDescription Getting test description  <a href="#a09711be1e20429a16d53b7a01fc0e210"></a><br/></td></tr>
 <tr class="memitem:a2b18b07f50f63be9afc5614e71c269a5 inherit pub_methods_classRTF_1_1Test"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Test.html#a2b18b07f50f63be9afc5614e71c269a5">setDescription</a> (const std::string description)</td></tr>
 <tr class="memdesc:a2b18b07f50f63be9afc5614e71c269a5 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">setDescription Sets an optional string which describes the test.  <a href="#a2b18b07f50f63be9afc5614e71c269a5"></a><br/></td></tr>
+<tr class="memitem:a30892286dc88264d428b66bec47283c2 inherit pub_methods_classRTF_1_1Test"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Test.html#a30892286dc88264d428b66bec47283c2">interrupt</a> ()</td></tr>
+<tr class="memdesc:a30892286dc88264d428b66bec47283c2 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt interrupts the current test run  <a href="#a30892286dc88264d428b66bec47283c2"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8dd959cf753f8e17acd12e3ca71480cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a8dd959cf753f8e17acd12e3ca71480cc">getLocalFunction</a> (const char *name)</td></tr>
 <tr class="memitem:a0d800951d39a0e1f5d709406ccae3b43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0d800951d39a0e1f5d709406ccae3b43">registerExtraFunctions</a> (void)</td></tr>
+<tr class="memitem:a6b9b78be81295c979c6cdcc62f1b98bf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a6b9b78be81295c979c6cdcc62f1b98bf">extractFileName</a> (const std::string &amp;path)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -309,6 +312,30 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>close Unloads the plugin and deletes any allocated memory. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6b9b78be81295c979c6cdcc62f1b98bf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string RTF::plugin::LuaPluginLoaderImpl::extractFileName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -637,7 +664,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00096">96</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
+<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00097">97</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
 
 </div>
 </div>
@@ -659,7 +686,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00095">95</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
+<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00096">96</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
 
 </div>
 </div>
@@ -681,7 +708,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00094">94</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
+<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00095">95</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
 
 </div>
 </div>
@@ -703,17 +730,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00100">100</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
+<p>Definition at line <a class="el" href="LuaPluginLoader__impl_8h_source.html#l00101">101</a> of file <a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/plugins/lua/include/impl/<a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a></li>
+<li>src/plugins/lua/include/rtf/lua/impl/<a class="el" href="LuaPluginLoader__impl_8h_source.html">LuaPluginLoader_impl.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2015 17:30:32 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 14 2015 17:24:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

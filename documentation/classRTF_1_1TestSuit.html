@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>The <a class="el" href="classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests.">TestSuit</a> holds a group of tests.  
  <a href="classRTF_1_1TestSuit.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="TestSuit_8h_source.html">TestSuit.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="TestSuit_8h_source.html">rtf/TestSuit.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for RTF::TestSuit:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -111,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classRTF_1_1TestSuit__inherit__graph.png" border="0" usemap="#RTF_1_1TestSuit_inherit__map" alt="Inheritance graph"/></div>
 <map name="RTF_1_1TestSuit_inherit__map" id="RTF_1_1TestSuit_inherit__map">
-<area shape="rect" id="node2" href="classRTF_1_1Test.html" title="The simplest form of a test unit." alt="" coords="5,5,88,35"/><area shape="rect" id="node4" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents" alt="" coords="112,5,248,35"/></map>
+<area shape="rect" id="node2" href="classRTF_1_1Test.html" title="The simplest form of a test unit." alt="" coords="5,5,88,32"/><area shape="rect" id="node3" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents" alt="" coords="113,5,250,32"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
@@ -194,12 +194,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">TestCase.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResult_8h.html">TestResult.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestRunner_8h.html">TestRunner.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestSuit_8h.html">TestSuit.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">ConsoleListener.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">TestAssert.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">rtf/TestCase.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResult_8h.html">rtf/TestResult.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestRunner_8h.html">rtf/TestRunner.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestSuit_8h.html">rtf/TestSuit.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">rtf/ConsoleListener.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">rtf/TestAssert.h</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>;</div>
 <div class="line"></div>
@@ -241,7 +241,7 @@ Private Attributes</h2></td></tr>
 <div class="line">    suit.addTest(&amp;test2);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// create a test runner</span></div>
-<div class="line">    <a class="code" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> runner;    </div>
+<div class="line">    <a class="code" href="classRTF_1_1TestRunner.html" title="The TestRunner class runs the tests added as TestCase or TestSuit.">TestRunner</a> runner;</div>
 <div class="line">    runner.<a class="code" href="classRTF_1_1TestRunner.html#aa5c49855ae97e748d78059811d920293" title="Adding a new test.">addTest</a>(&amp;suit);</div>
 <div class="line">    runner.<a class="code" href="classRTF_1_1TestRunner.html#ab6d88869bdedcb60d65dc0435522360f" title="Run all the tests in the list.">run</a>(result);</div>
 <div class="line"></div>
@@ -824,12 +824,12 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rtf/include/<a class="el" href="TestSuit_8h_source.html">TestSuit.h</a></li>
+<li>src/rtf/include/rtf/<a class="el" href="TestSuit_8h_source.html">TestSuit.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 8 2015 23:04:29 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 14 2015 17:24:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

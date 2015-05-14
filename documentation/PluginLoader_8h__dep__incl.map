@@ -1,6 +1,6 @@
-<map id="src/rtf/include/PluginLoader.h" name="src/rtf/include/PluginLoader.h">
-<area shape="rect" id="node3" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/DllPluginLoader.h" alt="" coords="5,83,152,130"/>
-<area shape="rect" id="node5" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/LuaPluginLoader.h" alt="" coords="176,83,325,130"/>
-<area shape="rect" id="node7" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/PythonPluginLoader.h" alt="" coords="349,83,547,130"/>
-<area shape="rect" id="node9" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/RubyPluginLoader.h" alt="" coords="571,83,728,130"/>
+<map id="src/rtf/include/rtf/PluginLoader.h" name="src/rtf/include/rtf/PluginLoader.h">
+<area shape="rect" id="node2" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/rtf/dll/DllPluginLoader.h" alt="" coords="5,102,167,143"/>
+<area shape="rect" id="node3" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/rtf/lua/LuaPluginLoader.h" alt="" coords="191,102,362,143"/>
+<area shape="rect" id="node4" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/rtf/python\l/PythonPluginLoader.h" alt="" coords="387,95,540,151"/>
+<area shape="rect" id="node5" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/rtf/ruby/RubyPluginLoader.h" alt="" coords="564,102,752,143"/>
 </map>

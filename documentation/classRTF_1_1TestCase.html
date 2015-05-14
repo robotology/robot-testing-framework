@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>The base class to implememnt a test case.  
  <a href="classRTF_1_1TestCase.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="TestCase_8h_source.html">TestCase.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="TestCase_8h_source.html">rtf/TestCase.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for RTF::TestCase:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classRTF_1_1TestCase__inherit__graph.png" border="0" usemap="#RTF_1_1TestCase_inherit__map" alt="Inheritance graph"/></div>
 <map name="RTF_1_1TestCase_inherit__map" id="RTF_1_1TestCase_inherit__map">
-<area shape="rect" id="node2" href="classRTF_1_1Test.html" title="The simplest form of a test unit." alt="" coords="20,5,103,35"/></map>
+<area shape="rect" id="node3" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="303,5,521,32"/><area shape="rect" id="node4" href="classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html" title="The PythonPluginLoaderImpl loads a Pthyon test case plug&#45;in and gives the direct access to the TestCa..." alt="" coords="325,57,499,98"/><area shape="rect" id="node5" href="classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html" title="The RubyPluginLoaderImpl loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="297,123,527,149"/><area shape="rect" id="node2" href="classRTF_1_1Test.html" title="The simplest form of a test unit." alt="" coords="5,64,88,91"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
@@ -181,10 +181,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">TestCase.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResult_8h.html">TestResult.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">ConsoleListener.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">TestAssert.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestCase_8h.html">rtf/TestCase.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestResult_8h.html">rtf/TestResult.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="ConsoleListener_8h.html">rtf/ConsoleListener.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="TestAssert_8h.html">rtf/TestAssert.h</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span><a class="code" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a>;</div>
 <div class="line"></div>
@@ -393,6 +393,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>run is called by the <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> class if setup is successfull; </p>
 
+<p>Implemented in <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a56501b2825a2e1af2cc07025c0874189">RTF::plugin::LuaPluginLoaderImpl</a>, <a class="el" href="classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html#adf6f7b2660f6d3e875dc2e1a0a4654b3">RTF::plugin::PythonPluginLoaderImpl</a>, and <a class="el" href="classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html#a45cdbed5d4f8a2b992f85d5636224a47">RTF::plugin::RubyPluginLoaderImpl</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a4fd64b649b6599d368c208750ec4bc36"></a>
@@ -522,6 +524,8 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true or false depending of the test initialization </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a656a7021751977b58c44ae3142cbfbf3">RTF::plugin::LuaPluginLoaderImpl</a>, <a class="el" href="classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html#a6993dd5a0a5a42591231ebd9aa0468e7">RTF::plugin::PythonPluginLoaderImpl</a>, and <a class="el" href="classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html#afc64af10a719cd3f511dac0e23ea7e2f">RTF::plugin::RubyPluginLoaderImpl</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ae915726f3a6ba7b19cc7c3d11544a480"></a>
@@ -574,6 +578,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>tearDown is called after the test run </p>
+
+<p>Reimplemented in <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a8c065344278a90c296283d2ca1a71479">RTF::plugin::LuaPluginLoaderImpl</a>, <a class="el" href="classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html#a7753fb2fd44fe199637452799e087f7b">RTF::plugin::PythonPluginLoaderImpl</a>, and <a class="el" href="classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html#ab3b6b9d9c3a78045446191c78e43a84b">RTF::plugin::RubyPluginLoaderImpl</a>.</p>
 
 </div>
 </div>
@@ -667,12 +673,12 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/rtf/include/<a class="el" href="TestCase_8h_source.html">TestCase.h</a></li>
+<li>src/rtf/include/rtf/<a class="el" href="TestCase_8h_source.html">TestCase.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 8 2015 23:04:29 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 14 2015 17:24:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

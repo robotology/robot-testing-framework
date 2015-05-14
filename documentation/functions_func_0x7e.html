@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">RTF
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">Robot Testing Framework</div>
   </td>
@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -105,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
 <li>~ConsoleListener()
-: <a class="el" href="classRTF.html#a0ffb79d68e471ccf1280068b05664b04">RTF</a>
+: <a class="el" href="classRTF_1_1ConsoleListener.html#ab0539cfd62e3bb2ba3141627f707554f">RTF::ConsoleListener</a>
 </li>
 <li>~DllFixturePluginLoader()
 : <a class="el" href="classRTF.html#a7d4766837c32ea4438af824833263455">RTF</a>
@@ -127,8 +128,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>~DllPluginLoader()
 : <a class="el" href="classRTF.html#ae725df62321af3fe636c2fa75f5ae084">RTF</a>
 </li>
+<li>~DllPluginLoaderImpl()
+: <a class="el" href="classDllPluginLoaderImpl.html#ac188eee322bff93e6cd5810d8fb53f2b">DllPluginLoaderImpl&lt; T &gt;</a>
+</li>
 <li>~Exception()
-: <a class="el" href="classRTF.html#a437e307d7daa6956de04459bcf8ff2a3">RTF</a>
+: <a class="el" href="classRTF_1_1Exception.html#a6a8d12e1729ab8754e065c0893841525">RTF::Exception</a>
 </li>
 <li>~FixtureManager()
 : <a class="el" href="classRTF_1_1FixtureManager.html#ae32182b029d4762a840103f5c2218577">RTF::FixtureManager</a>
@@ -136,50 +140,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>~LuaPluginLoader()
 : <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoader.html#a8c6a7a858db53011209e1a9c552e9ec3">RTF::plugin::LuaPluginLoader</a>
 </li>
+<li>~LuaPluginLoaderImpl()
+: <a class="el" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ad84f4058363dc0048d24cf9aeac1ae23">RTF::plugin::LuaPluginLoaderImpl</a>
+</li>
 <li>~PluginLoader()
-: <a class="el" href="classRTF.html#a7ece8c7fb894a423be789444295e576c">RTF</a>
+: <a class="el" href="classRTF_1_1plugin_1_1PluginLoader.html#a8884f6f156df17aa74d7802df16e85c4">RTF::plugin::PluginLoader</a>
+</li>
+<li>~PythonPluginLoader()
+: <a class="el" href="classRTF_1_1plugin_1_1PythonPluginLoader.html#aef9dd45cb8def909fcfc09e773eca630">RTF::plugin::PythonPluginLoader</a>
+</li>
+<li>~PythonPluginLoaderImpl()
+: <a class="el" href="classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html#aa99c2d70557cc5c7989b687f73f72cd8">RTF::plugin::PythonPluginLoaderImpl</a>
 </li>
 <li>~ResultEvent()
-: <a class="el" href="classRTF.html#ae3a02da487a1629acc098dcf143ed636">RTF</a>
+: <a class="el" href="classRTF_1_1ResultEvent.html#a6195901c9ca608998707484c11af6d74">RTF::ResultEvent</a>
+</li>
+<li>~RubyPluginLoader()
+: <a class="el" href="classRTF_1_1plugin_1_1RubyPluginLoader.html#a1968fa2e27059603fc419ac1dbe112e5">RTF::plugin::RubyPluginLoader</a>
+</li>
+<li>~RubyPluginLoaderImpl()
+: <a class="el" href="classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html#a53d798790c9e4471d0bf708a8fb7eddb">RTF::plugin::RubyPluginLoaderImpl</a>
+</li>
+<li>~SharedLibrary()
+: <a class="el" href="classshlibpp_1_1SharedLibrary.html#a703314cb4720f19fa332245622df747c">shlibpp::SharedLibrary</a>
+</li>
+<li>~SharedLibraryClass()
+: <a class="el" href="classshlibpp_1_1SharedLibraryClass.html#ac1a7030c458c2fbd6eb05b84244cd143">shlibpp::SharedLibraryClass&lt; T &gt;</a>
+</li>
+<li>~SharedLibraryFactory()
+: <a class="el" href="classshlibpp_1_1SharedLibraryFactory.html#a5a06b3072c775e0a5d91eae13d333068">shlibpp::SharedLibraryFactory</a>
 </li>
 <li>~Test()
-: <a class="el" href="classRTF.html#a7c5e0d5275aa0c83e6f4da84cc2ec834">RTF</a>
+: <a class="el" href="classRTF_1_1Test.html#a1c7f9b940e90f4a616d85ed0686f2896">RTF::Test</a>
 </li>
 <li>~TestCase()
-: <a class="el" href="classRTF.html#af8d63858efa5b17eaae9ec3d7d92a9d3">RTF</a>
+: <a class="el" href="classRTF_1_1TestCase.html#a0b3736e2100052247ebcd46bff63309a">RTF::TestCase</a>
 </li>
 <li>~TestListener()
-: <a class="el" href="classRTF.html#a4790855fd11e6b88a79555670de1994d">RTF</a>
+: <a class="el" href="classRTF_1_1TestListener.html#a60e74c46a5b009bc5d77021b6a826db7">RTF::TestListener</a>
 </li>
 <li>~TestMessage()
-: <a class="el" href="classRTF.html#a42a48cf0740fe2dc5fae92c2a92b4429">RTF</a>
+: <a class="el" href="classRTF_1_1TestMessage.html#a3998797caa3afb9cb888ab8067236ec1">RTF::TestMessage</a>
 </li>
 <li>~TestResult()
-: <a class="el" href="classRTF.html#ad7d6d4da8c138d8f4991c6a406c7efe4">RTF</a>
+: <a class="el" href="classRTF_1_1TestResult.html#a827f49c58a8683e0cf4671d4693f89b7">RTF::TestResult</a>
 </li>
 <li>~TestResultCollector()
-: <a class="el" href="classRTF.html#a1da93bc621138c6c4b1dc2789526c34e">RTF</a>
+: <a class="el" href="classRTF_1_1TestResultCollector.html#adaaf5910febf61eb9282e528fd7a3c05">RTF::TestResultCollector</a>
 </li>
 <li>~TestRunner()
-: <a class="el" href="classRTF.html#a4fc2377068dc65285e98de06b9af48dd">RTF</a>
+: <a class="el" href="classRTF_1_1TestRunner.html#ac23e80ae3e41129366ed20808be3cc84">RTF::TestRunner</a>
 </li>
 <li>~TestSuit()
-: <a class="el" href="classRTF.html#a3efb3f49a353e98a0c5f6879ba960ab4">RTF</a>
+: <a class="el" href="classRTF_1_1TestSuit.html#ae5f9d929a81c783a7f18f6ed33c5aa3c">RTF::TestSuit</a>
 </li>
 <li>~TextOutputter()
-: <a class="el" href="classRTF.html#ad337cb5b236d748c7996ac43f3a10293">RTF</a>
+: <a class="el" href="classRTF_1_1TextOutputter.html#a362b341d1cd45784446310eb2663479a">RTF::TextOutputter</a>
 </li>
 <li>~WebProgressListener()
-: <a class="el" href="classRTF.html#a6161af0cc78186ab85621b6777ab7570">RTF</a>
+: <a class="el" href="classRTF_1_1WebProgressListener.html#a52eb863d5b81ab6ac9c7489c426f7e96">RTF::WebProgressListener</a>
 </li>
 <li>~WebProgressListenerImpl()
-: <a class="el" href="classRTF.html#ad66bdf6225f024b033a9c60c6bbffdd2">RTF</a>
+: <a class="el" href="classRTF_1_1WebProgressListenerImpl.html#a23993c2a878e11acf23b2cfde9686cf9">RTF::WebProgressListenerImpl</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 5 2015 21:33:40 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 14 2015 17:24:11 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -1,9 +1,9 @@
-<map id="src/plugins/ruby/include/RubyPluginLoader.h" name="src/plugins/ruby/include/RubyPluginLoader.h">
-<area shape="rect" id="node5" href="$TestCase_8h.html" title="TestCase.h" alt="" coords="195,179,285,208"/>
-<area shape="rect" id="node28" href="$PluginLoader_8h.html" title="PluginLoader.h" alt="" coords="96,101,203,131"/>
-<area shape="rect" id="node7" href="$rtf__config_8h.html" title="rtf_config.h" alt="" coords="359,488,444,517"/>
-<area shape="rect" id="node9" href="$Test_8h.html" title="Test.h" alt="" coords="128,411,187,440"/>
-<area shape="rect" id="node13" href="$TestResult_8h.html" title="TestResult.h" alt="" coords="247,256,343,285"/>
-<area shape="rect" id="node17" href="$TestMessage_8h.html" title="TestMessage.h" alt="" coords="296,411,408,440"/>
-<area shape="rect" id="node21" href="$TestListener_8h.html" title="TestListener.h" alt="" coords="195,333,299,363"/>
+<map id="src/plugins/ruby/include/rtf/ruby/RubyPluginLoader.h" name="src/plugins/ruby/include/rtf/ruby/RubyPluginLoader.h">
+<area shape="rect" id="node3" href="$TestCase_8h.html" title="rtf/TestCase.h" alt="" coords="203,169,309,196"/>
+<area shape="rect" id="node10" href="$PluginLoader_8h.html" title="rtf/PluginLoader.h" alt="" coords="94,95,218,121"/>
+<area shape="rect" id="node4" href="$rtf__config_8h.html" title="rtf/rtf_config.h" alt="" coords="366,468,469,495"/>
+<area shape="rect" id="node5" href="$Test_8h.html" title="rtf/Test.h" alt="" coords="120,393,195,420"/>
+<area shape="rect" id="node6" href="$TestResult_8h.html" title="rtf/TestResult.h" alt="" coords="251,244,365,271"/>
+<area shape="rect" id="node7" href="$TestMessage_8h.html" title="rtf/TestMessage.h" alt="" coords="301,393,429,420"/>
+<area shape="rect" id="node8" href="$TestListener_8h.html" title="rtf/TestListener.h" alt="" coords="195,319,317,345"/>
 </map>

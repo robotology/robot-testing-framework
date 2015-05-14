@@ -9,5 +9,6 @@ var searchData=
   ['resulteventstartsuit',['ResultEventStartSuit',['../classRTF_1_1ResultEventStartSuit.html',1,'RTF']]],
   ['resulteventstarttest',['ResultEventStartTest',['../classRTF_1_1ResultEventStartTest.html',1,'RTF']]],
   ['rtf',['RTF',['../classRTF.html',1,'']]],
-  ['rubypluginloader',['RubyPluginLoader',['../classRTF_1_1plugin_1_1RubyPluginLoader.html',1,'RTF::plugin']]]
+  ['rubypluginloader',['RubyPluginLoader',['../classRTF_1_1plugin_1_1RubyPluginLoader.html',1,'RTF::plugin']]],
+  ['rubypluginloaderimpl',['RubyPluginLoaderImpl',['../classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html',1,'RTF::plugin']]]
 ];
