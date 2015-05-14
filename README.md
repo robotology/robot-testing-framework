@@ -70,5 +70,5 @@ Authors
 -------
 * Ali Paikan ([*personal page*](http://alipaikan.com))
 * Silvio Traversaro ([*personal page*](http://www.iit.it/en/people/silvio-traversaro.html))
-* Lorenzo Natale ([*personal page*](http://http://nat.liralab.it/))
+* Lorenzo Natale ([*personal page*](http://nat.liralab.it/))
 
