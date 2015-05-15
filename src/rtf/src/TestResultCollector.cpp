@@ -14,6 +14,7 @@ using namespace RTF;
 
 TestResultCollector::TestResultCollector() {
     nPasses = nFailures = nTests = 0;
+    nSuitPasses = nSuitFailures = nTestSuits = 0;
 }
 
 TestResultCollector::~TestResultCollector() {
@@ -39,6 +40,18 @@ unsigned int TestResultCollector::failedCount() {
 
 unsigned int TestResultCollector::passedCount() {
     return nPasses;
+}
+
+unsigned int TestResultCollector::suitCount() {
+    return nTestSuits;
+}
+
+unsigned int TestResultCollector::failedSuitCount() {
+    return nSuitFailures;
+}
+
+unsigned int TestResultCollector::passedSuitCount() {
+    return nSuitPasses;
 }
 
 TestResultCollector::EventResultContainer& TestResultCollector::getResults() {
@@ -70,22 +83,22 @@ void TestResultCollector::startTest(const RTF::Test* test) {
 
 
 void TestResultCollector::endTest(const RTF::Test* test) {
-    if(test->succeeded())
-        nPasses++;
-    else
-        nFailures++;
+    (test->succeeded()) ?  nPasses++ : nFailures++;
     events.push_back(new ResultEventEndTest(test,
                                             TestMessage("ended")));
 }
 
 
 void TestResultCollector::startTestSuit(const RTF::Test* test) {
+    nTestSuits++;
     events.push_back(new ResultEventStartSuit(test,
                                               TestMessage("started")));
 }
 
 
 void TestResultCollector::endTestSuit(const RTF::Test* test) {
+
+    (test->succeeded()) ?  nSuitPasses++ : nSuitFailures++;
     events.push_back(new ResultEventEndSuit(test,
                                             TestMessage("ended")));
 }

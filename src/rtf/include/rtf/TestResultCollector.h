@@ -78,6 +78,24 @@ public:
     unsigned int passedCount();
 
     /**
+     * @brief suitCount gets the number of test suits.
+     * @return the number of test suits
+     */
+    unsigned int suitCount();
+
+    /**
+     * @brief failedCount gets the number of failed test suits.
+     * @return the number of failed test suits.
+     */
+    unsigned int failedSuitCount();
+
+    /**
+     * @brief passedCount gets the number of passed test suits.
+     * @return the number of passed test suits.
+     */
+    unsigned int passedSuitCount();
+
+    /**
      * @brief getResults return any result event caught by
      * the TestResultCollector. The events are stored in the
      * ResultEvent format which can be type casted to any subtype event
@@ -138,5 +156,8 @@ private:
     unsigned int nTests;
     unsigned int nFailures;
     unsigned int nPasses;
+    unsigned int nTestSuits;
+    unsigned int nSuitFailures;
+    unsigned int nSuitPasses;
 };
 #endif // _RTF_TESTRESULTCOLLECTOR_H

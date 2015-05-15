@@ -224,19 +224,25 @@ int main(int argc, char *argv[]) {
     outputter.write(cmd.get<string>("output"));
 
     // print out some simple statistics in verbose mode
-    if(cmd.exist("verbose")) {
-        cout<<endl<<"-------- results ---------"<<endl;
-        cout<<"Total number of tests : "<<collector.testCount()<<endl;
-        cout<<"Number of passed tests: "<<collector.passedCount()<<endl;
-        cout<<"Number of failed tests: "<<collector.failedCount()<<endl;
+    if(cmd.exist("verbose")) {        
+        cout<<endl<<"---------- results -----------"<<endl;
+        if(collector.suitCount()) {
+        cout<<"Total number of test suites  : "<<collector.suitCount()<<endl;
+        cout<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
+        cout<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+        }
+        cout<<"Total number of test cases   : "<<collector.testCount()<<endl;
+        cout<<"Number of passed test cases  : "<<collector.passedCount()<<endl;
+        cout<<"Number of failed test cases  : "<<collector.failedCount()<<endl;
     }
     currentRunner = NULL;
 
     int exitCode;
-    if( collector.failedCount() == 0 ) {
+    if( (collector.failedCount() == 0)  &&
+        (collector.failedSuitCount() == 0))
         exitCode = EXIT_SUCCESS;
-    } else {
+    else
         exitCode = EXIT_FAILURE;
-    }
+
     return exitCode;
 }
