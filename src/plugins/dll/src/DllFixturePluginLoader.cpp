@@ -21,27 +21,27 @@ using namespace shlibpp;
  * @brief DllFixturePluginLoader
  */
 DllFixturePluginLoader::DllFixturePluginLoader()
-    : implementaion(NULL) { }
+    : implementation(NULL) { }
 
 DllFixturePluginLoader::~DllFixturePluginLoader() {
     close();
 }
 
 void DllFixturePluginLoader::close() {
-    if(implementaion)
-        delete ((DllPluginLoaderImpl<TestCase>*)implementaion);
-    implementaion = NULL;
+    if(implementation)
+        delete ((DllPluginLoaderImpl<TestCase>*)implementation);
+    implementation = NULL;
 }
 
 FixtureManager* DllFixturePluginLoader::open(const std::string filename) {
     close();
-    implementaion = new DllPluginLoaderImpl<FixtureManager>();
-    return ((DllPluginLoaderImpl<FixtureManager>*)implementaion)->open(filename,
+    implementation = new DllPluginLoaderImpl<FixtureManager>();
+    return ((DllPluginLoaderImpl<FixtureManager>*)implementation)->open(filename,
                                                                  RTF_FIXTURE_FACTORY_NAME);
 }
 
 const std::string DllFixturePluginLoader::getLastError() {
-    if(implementaion)
-        return ((DllPluginLoaderImpl<FixtureManager>*)implementaion)->getLastError();
+    if(implementation)
+        return ((DllPluginLoaderImpl<FixtureManager>*)implementation)->getLastError();
     return string("");
 }

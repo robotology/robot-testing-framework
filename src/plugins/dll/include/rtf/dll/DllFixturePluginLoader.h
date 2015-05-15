@@ -60,7 +60,7 @@ public:
     const std::string getLastError();
 
 private:
-    void* implementaion;
+    void* implementation;
 };
 
 #endif // _RTF_DLLFIXTUREPLUGINLOADER_H

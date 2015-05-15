@@ -96,3 +96,5 @@ install_basic_package_files(RTF
                                                    RUBY_INCLUDEDIR
                                                    YARP_INCLUDEDIR)
 
+# add uninstall target
+include(AddUninstallTarget)
