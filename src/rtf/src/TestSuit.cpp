@@ -55,7 +55,7 @@ TestResult* TestSuit::getResult() {
 bool TestSuit::setup() {
     bool ret = true;
     if(fixtureManager != NULL)
-        ret = fixtureManager->setup();
+        ret = fixtureManager->setup();    
     return ret;
 }
 
@@ -99,6 +99,7 @@ void TestSuit::run(TestResult &rsl) {
                 tearDown();
                 if(!setup())
                     throw FixtureException(RTF::TestMessage("setup() failed!"));
+                fixtureOK = true;
             }
             (*it)->run(*result);
             successful &= (*it)->succeeded();
