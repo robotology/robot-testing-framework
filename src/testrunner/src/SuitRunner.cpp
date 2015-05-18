@@ -129,6 +129,9 @@ bool SuitRunner::loadSuit(std::string filename) {
                 else {
                     logger.addError(loader->getLastError());
                     delete loader;
+                    // stop going on if the fixture manager cannot be loaded
+                    delete suit;
+                    return false;
                 }
         }
         else if(PluginFactory::compare(test->Value(), "test") &&
