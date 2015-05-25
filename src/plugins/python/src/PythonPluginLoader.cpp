@@ -79,8 +79,20 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
 
     // extending python system path
 #ifdef _WIN32
-    string dname = ".";
-    string bname = filename;
+
+	char drive[_MAX_DRIVE];
+	char dir[_MAX_DIR];
+	char fname[_MAX_FNAME];
+	char ext[_MAX_EXT];
+	_splitpath_s(filename.c_str(), 
+				 drive, _MAX_DRIVE,
+				 dir, _MAX_DIR, 
+				 fname, _MAX_FNAME,
+				 ext, _MAX_EXT);
+    string dname = string(drive) + string(dir);
+	for(size_t i=0; i<dname.size(); i++)
+		dname[i] = (dname[i] == '\\') ? '/' : dname[i];
+    string bname = fname;
 #else
     char* dir = strdup(filename.c_str());
     char* name = strdup(filename.c_str());
@@ -93,7 +105,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     PyRun_SimpleString(sys_path.c_str());
 
     // remove the file extention if exist
-    int lastindex = bname.find_last_of(".");
+    size_t lastindex = bname.find_last_of(".");
     string rawname = bname.substr(0, lastindex);
 
     // Build the name object
@@ -275,7 +287,7 @@ PyObject* PythonPluginLoaderImpl::setName(PyObject* self,
     const char* name;
     PythonPluginLoaderImpl* impl =
             (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
-    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl != NULL, "The setName cannot find the instance of PythonPluginLoaderImpl");
     if (!PyArg_ParseTuple(args, "s", &name)) {
         RTF_ASSERT_ERROR(Asserter::format("setName() is called with the wrong paramters."));
     }
@@ -290,7 +302,7 @@ PyObject* PythonPluginLoaderImpl::assertError(PyObject* self,
     const char* message;
     PythonPluginLoaderImpl* impl =
             (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
-    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl != NULL, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (!PyArg_ParseTuple(args, "s", &message)) {
         RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
@@ -307,7 +319,7 @@ PyObject* PythonPluginLoaderImpl::assertFail(PyObject* self,
     const char* message;
     PythonPluginLoaderImpl* impl =
             (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
-    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl != NULL, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (!PyArg_ParseTuple(args, "s", &message)) {
         RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
@@ -323,7 +335,7 @@ PyObject* PythonPluginLoaderImpl::testReport(PyObject* self,
     const char* message;
     PythonPluginLoaderImpl* impl =
             (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
-    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl != NULL, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (!PyArg_ParseTuple(args, "s", &message)) {
         RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
@@ -339,7 +351,7 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
     PyObject* cond;
     PythonPluginLoaderImpl* impl =
             (PythonPluginLoaderImpl*) PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
-    RTF_ASSERT_ERROR_IF(impl, "The setName cannot find the instance of PythonPluginLoaderImpl");
+    RTF_ASSERT_ERROR_IF(impl != NULL, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (!PyArg_ParseTuple(args, "Os", &cond, &message)) {
         RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
