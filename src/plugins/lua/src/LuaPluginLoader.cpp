@@ -293,7 +293,7 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
 std::string LuaPluginLoaderImpl::extractFileName(const std::string& path) {
 
 #ifdef _WIN32
-    size_t i = path.rfind('\\', s.length());
+    size_t i = path.rfind('\\', path.length());
 #else
    size_t i = path.rfind('/', path.length());
 #endif
