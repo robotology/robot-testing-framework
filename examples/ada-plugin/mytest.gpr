@@ -1,0 +1,46 @@
+Project MyTest is
+
+    RTF_SrcDir := external("RTF_DIR");
+   
+   ----------------
+   -- Attributes --
+   ----------------   
+   -- set the library  attributes
+   for Library_Name use "mytest";
+   for Library_Interface use ("mytest");
+   for Library_Dir use "./plugin";
+   for Library_Kind use "dynamic";
+   for Object_Dir use "./build";
+
+
+   -- set the source files and language attributes
+   for Languages use ("Ada", "C++");   
+   for Source_Dirs use ("./src", 
+                        RTF_SrcDir & "/src/plugins/ada/src_ada", 
+                        RTF_SrcDir & "/src/plugins/ada/src_cpp");
+
+   --------------
+   -- Packages --
+   --------------
+   package Naming is
+      for Specification_Suffix ("C++") use ".h";
+      for Implementation_Suffix ("C++") use ".cpp";
+   end Naming;
+  
+   package Compiler is
+      --  This attributes contains the switches used by default for the Ada
+      --for Default_Switches ("Ada") use ("-O2", "-gnat05", "-gnatwcfkmruv");
+      for Default_Switches ("Ada") use ("-O2", "-gnatwcfkmruv");
+      --  This attributes contains the switches used by default for the C++
+      for Default_Switches ("C++") use ("-O2", 
+                                        "-I" & RTF_SrcDIR & "src/rtf/include",
+                                        "-I" & RTF_SrcDIR & "src/plugins/dll/include");
+   end Compiler;
+
+   package Binder is
+      for Objects_Path ("Ada") use "ADA_OBJECTS_PATH"; 
+      for Objects_Path_File ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+    end Binder;
+
+end MyTest;
+
