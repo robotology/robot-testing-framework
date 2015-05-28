@@ -41,6 +41,12 @@ public:
     ConsoleListener(bool verbose = false);
 
     /**
+     * @brief hideUncriticalMessages hides the tests report messages and
+     * only shows the test assertion failure and error messages.
+     */
+    void hideUncriticalMessages();
+
+    /**
      *  ConsoleListener destructor
      */
     virtual ~ConsoleListener();
@@ -103,5 +109,6 @@ public:
 
 private:
     bool verbose;
+    bool hideUncritical;
 };
 #endif // _RTF_CONSOLELISTENER_H

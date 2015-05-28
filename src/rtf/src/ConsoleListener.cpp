@@ -35,13 +35,20 @@ using namespace RTF;
 
 ConsoleListener::ConsoleListener(bool verbose) {
     this->verbose = verbose;
+    hideUncritical = false;
 }
 
 ConsoleListener::~ConsoleListener() {
 }
 
+void ConsoleListener::hideUncriticalMessages() {
+    hideUncritical = true;
+}
+
 void ConsoleListener::addReport(const RTF::Test* test,
                                 RTF::TestMessage msg) {
+    if(hideUncritical) return;
+
     cout<<MSG_REPORT<<"("<<test->getName()<<") "
         <<msg.getMessage()<<": "<<msg.getDetail()<<endl;
     if(verbose && msg.getSourceLineNumber() != 0)
@@ -65,10 +72,14 @@ void ConsoleListener::addFailure(const RTF::Test* test,
 }
 
 void ConsoleListener::startTest(const RTF::Test* test) {
+    if(hideUncritical) return;
+
     cout<<BLUE<<"Test case "<<test->getName()<<" started..."<<ENDC<<endl;
 }
 
 void ConsoleListener::endTest(const RTF::Test* test) {
+    if(hideUncritical) return;
+
     cout<<BLUE<<"Test case "<<test->getName();
     if(test->succeeded())
         cout<<" passed!"<<ENDC<<endl;
@@ -77,10 +88,14 @@ void ConsoleListener::endTest(const RTF::Test* test) {
 }
 
 void ConsoleListener::startTestSuit(const RTF::Test* test) {
+    if(hideUncritical) return;
+
     cout<<BLUE<<"Test suit "<<test->getName()<<" started..."<<ENDC<<endl;
 }
 
 void ConsoleListener::endTestSuit(const RTF::Test* test) {
+    if(hideUncritical) return;
+
     cout<<BLUE<<"Test suit "<<test->getName();
     if(test->succeeded())
         cout<<" passed!"<<ENDC<<endl;
@@ -89,10 +104,14 @@ void ConsoleListener::endTestSuit(const RTF::Test* test) {
 }
 
 void ConsoleListener::startTestRunner() {
+    if(hideUncritical) return;
+
     cout<<BLUE<<"Staring test runner."<<ENDC<<endl;
 }
 
 void ConsoleListener::endTestRunner() {
+    if(hideUncritical) return;
+
     cout<<BLUE<<"Ending test runner."<<ENDC<<endl;
 }
 
