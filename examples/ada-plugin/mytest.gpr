@@ -33,8 +33,8 @@ Project MyTest is
       for Default_Switches ("Ada") use ("-O2", "-gnatwcfkmruv");
       --  This attributes contains the switches used by default for the C++
       for Default_Switches ("C++") use ("-O2", 
-                                        "-I" & RTF_SrcDIR & "src/rtf/include",
-                                        "-I" & RTF_SrcDIR & "src/plugins/dll/include");
+                                        "-I" & RTF_SrcDIR & "/src/rtf/include",
+                                        "-I" & RTF_SrcDIR & "/src/plugins/dll/include");
    end Compiler;
 
    package Binder is
