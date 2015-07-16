@@ -107,7 +107,10 @@ public:
     tthread::mutex critical;
     bool shouldStop;
     std::string result;
-
+    std::string suit_name;
+    unsigned int nTests;
+    unsigned int nFailures;
+    unsigned int nPasses;
 private:
     WebProgressListenerImpl(WebProgressListenerImpl const&);    // Don't Implement
     void operator=(WebProgressListenerImpl const&);             // Don't implement
