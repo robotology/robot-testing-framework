@@ -14,6 +14,8 @@ find_package(RTF COMPONENTS DLL)
 include_directories(${CMAKE_SOURCE_DIR}
                     ${RTF_INCLUDE_DIRS})
 
+set(CMAKE_SHARED_MODULE_PREFIX "")
+
 add_library(myfixture MODULE MyFixManager.cpp MyFixManager.h)
 target_link_libraries(myfixture ${RTF_LIBRARIES})
 
