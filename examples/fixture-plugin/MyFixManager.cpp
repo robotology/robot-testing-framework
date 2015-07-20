@@ -8,7 +8,7 @@
  */
 
 #include <stdio.h>
-#include <Plugin.h>
+#include <rtf/dll/Plugin.h>
 #include "MyFixManager.h"
 
 using namespace RTF;

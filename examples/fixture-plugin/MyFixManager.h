@@ -10,7 +10,7 @@
 #ifndef _MYFIXMANAGER_H_
 #define _MYFIXMANAGER_H_
 
-#include <FixtureManager.h>
+#include <rtf/FixtureManager.h>
 
 class MyFixManager : public RTF::FixtureManager {
 public:
