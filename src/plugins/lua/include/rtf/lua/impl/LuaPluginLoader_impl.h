@@ -90,6 +90,7 @@ private:
     static int assertFail(lua_State* L);
     static int testReport(lua_State* L);
     static int testFail(lua_State* L);
+    static int getTestEnvironment(lua_State* L);
 
 private:
     lua_State *L;

@@ -38,6 +38,7 @@ const struct luaL_reg LuaPluginLoaderImpl::luaPluginLib [] = {
     {"assertFail", LuaPluginLoaderImpl::assertFail},
     {"testReport", LuaPluginLoaderImpl::testReport},
     {"testFail", LuaPluginLoaderImpl::testFail},
+    {"getEnvironment", LuaPluginLoaderImpl::getTestEnvironment},
     {NULL, NULL}
 };
 
@@ -289,6 +290,21 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
     }
     return 0;
 }
+
+int LuaPluginLoaderImpl::getTestEnvironment(lua_State* L) {
+    lua_getglobal(L, "TestCase_Owner");
+    if(!lua_islightuserdata(L, -1)) {
+        lua_pop(L, 1);
+        RTF_ASSERT_ERROR("Cannot get TestCase_Owner");
+        return 0;
+    }
+    LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+    lua_pop(L, 1);
+    RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+    lua_pushstring(L, owner->getEnvironment().c_str());
+    return 1;
+}
+
 
 std::string LuaPluginLoaderImpl::extractFileName(const std::string& path) {
 

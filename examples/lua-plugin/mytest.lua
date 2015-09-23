@@ -28,6 +28,7 @@
 --
 TestCase.setup = function(parameter)
     RTF.testReport("Preparing setup...")
+    RTF.testReport("Env: "..RTF.getEnvironment());
     return true;
 end
 
@@ -47,7 +48,6 @@ end
 -- the user defined fixture
 --
 TestCase.tearDown = function()
-    print('here')
     RTF.testReport("Tearing down...")
 end
 
