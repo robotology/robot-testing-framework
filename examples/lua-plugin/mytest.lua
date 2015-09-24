@@ -19,6 +19,7 @@
 -- RTF.testCheck(condition, msg) : reports a failure message
 -- RTF.assertError(msg)          : throws an error exception with message
 -- RTF.asserFail(msg)            : throws a failure exception with message
+-- RTF.getEnvironment()          : returns the test environment params
 --
 
 --
@@ -28,7 +29,6 @@
 --
 TestCase.setup = function(parameter)
     RTF.testReport("Preparing setup...")
-    RTF.testReport("Env: "..RTF.getEnvironment());
     return true;
 end
 
