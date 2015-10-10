@@ -27,7 +27,7 @@ namespace RTF {
  *
  * \brief The TestResultCollector class can be used to store all the events
  * issued by the test cases, suits and runner during the test run.
- * The collected events later can be used by a porpoper result formatter
+ * The collected events later can be used by a proper result formatter
  * to be exported as HTML, XML or other desired formats.
  *
  * Here's an example of using a TestResultCollector:
