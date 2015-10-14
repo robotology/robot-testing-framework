@@ -68,5 +68,7 @@ var searchData=
   ['structuresize',['structureSize',['../structshlibpp_1_1SharedLibraryClassApi.html#a32f772d83f8f21cbfc36f584a943fb3d',1,'shlibpp::SharedLibraryClassApi']]],
   ['succeeded',['succeeded',['../classRTF_1_1Test.html#a54866a401ad646a33ed1f35ece8b031c',1,'RTF::Test::succeeded()'],['../classRTF_1_1TestCase.html#ae915726f3a6ba7b19cc7c3d11544a480',1,'RTF::TestCase::succeeded()'],['../classRTF_1_1TestSuit.html#aad431ddc77f51f5729fca9aabf82a623',1,'RTF::TestSuit::succeeded()']]],
   ['successful',['successful',['../classRTF_1_1TestCase.html#ab3952a75451e6e5d2eb7a200fdb908c4',1,'RTF::TestCase::successful()'],['../classRTF_1_1TestSuit.html#aaf1f386a15bfd9d6b53ec3cbf827fa42',1,'RTF::TestSuit::successful()']]],
+  ['suit_5fname',['suit_name',['../classRTF_1_1WebProgressListenerImpl.html#a32c0db037b1dc130958e3bf0d25c2731',1,'RTF::WebProgressListenerImpl']]],
+  ['suitcount',['suitCount',['../classRTF_1_1TestResultCollector.html#a227eb94cbaaefd03b85755ff068292f4',1,'RTF::TestResultCollector']]],
   ['systemversion',['systemVersion',['../structshlibpp_1_1SharedLibraryClassApi.html#a828de04a577d6df49df1150b0303769c',1,'shlibpp::SharedLibraryClassApi']]]
 ];

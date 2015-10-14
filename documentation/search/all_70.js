@@ -3,6 +3,7 @@ var searchData=
   ['param',['param',['../classRTF_1_1FixtureManager.html#aa0c997c44d9e1d2f2fa8b1a96ae2f0b4',1,'RTF::FixtureManager::param()'],['../classRTF_1_1TestCase.html#a14df982a625d761cec0da240db85c129',1,'RTF::TestCase::param()']]],
   ['parse',['parse',['../classRTF_1_1Arguments.html#a8ef6f370c68a641a7b9d2d187b1c5001',1,'RTF::Arguments']]],
   ['passedcount',['passedCount',['../classRTF_1_1TestResultCollector.html#a73549bc3b6d135ecb33993c2b7b53111',1,'RTF::TestResultCollector']]],
+  ['passedsuitcount',['passedSuitCount',['../classRTF_1_1TestResultCollector.html#a84ef8c1378064405b037d724e7390d54',1,'RTF::TestResultCollector']]],
   ['pfactory',['pfactory',['../classshlibpp_1_1SharedLibraryClass.html#a47820b130f4df89316e765dceed4057f',1,'shlibpp::SharedLibraryClass']]],
   ['plugin',['Plugin',['../classDllPluginLoaderImpl_1_1Plugin.html',1,'DllPluginLoaderImpl']]],
   ['plugin',['plugin',['../classDllPluginLoaderImpl.html#a48ec02830791ad63d3495cd846c43ce2',1,'DllPluginLoaderImpl']]],

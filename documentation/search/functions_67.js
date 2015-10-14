@@ -25,5 +25,6 @@ var searchData=
   ['getsourcelinenumber',['getSourceLineNumber',['../classRTF_1_1TestMessage.html#a407ca9501e62b49d5221be34afaa5386',1,'RTF::TestMessage']]],
   ['getstatus',['getStatus',['../classshlibpp_1_1SharedLibraryFactory.html#a16e5c3523012c8277f7c9bce5cc0321b',1,'shlibpp::SharedLibraryFactory']]],
   ['getsymbol',['getSymbol',['../classshlibpp_1_1SharedLibrary.html#a5fd81949eb514a9e8053f623d222618c',1,'shlibpp::SharedLibrary']]],
-  ['gettest',['getTest',['../classRTF_1_1ResultEvent.html#af88e75bc1504c743b2cb8397a4a01b77',1,'RTF::ResultEvent']]]
+  ['gettest',['getTest',['../classRTF_1_1ResultEvent.html#af88e75bc1504c743b2cb8397a4a01b77',1,'RTF::ResultEvent']]],
+  ['gettestenvironment',['getTestEnvironment',['../classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a85c975427031853617fc502f966c5f0c',1,'RTF::plugin::LuaPluginLoaderImpl']]]
 ];

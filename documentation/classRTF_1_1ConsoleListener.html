@@ -116,6 +116,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3886d9ac85129885c30df93f882d48b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1ConsoleListener.html#a3886d9ac85129885c30df93f882d48b2">ConsoleListener</a> (bool <a class="el" href="classRTF_1_1ConsoleListener.html#a37a7ee3c7d05bf6242499d574945be66">verbose</a>=false)</td></tr>
 <tr class="memdesc:a3886d9ac85129885c30df93f882d48b2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run...">ConsoleListener</a> constructor.  <a href="#a3886d9ac85129885c30df93f882d48b2"></a><br/></td></tr>
+<tr class="memitem:aac8e71b7d751cb76853b0bc85dc03b45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1ConsoleListener.html#aac8e71b7d751cb76853b0bc85dc03b45">hideUncriticalMessages</a> ()</td></tr>
+<tr class="memdesc:aac8e71b7d751cb76853b0bc85dc03b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">hideUncriticalMessages hides the tests report messages and only shows the test assertion failure and error messages.  <a href="#aac8e71b7d751cb76853b0bc85dc03b45"></a><br/></td></tr>
 <tr class="memitem:ab0539cfd62e3bb2ba3141627f707554f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1ConsoleListener.html#ab0539cfd62e3bb2ba3141627f707554f">~ConsoleListener</a> ()</td></tr>
 <tr class="memdesc:ab0539cfd62e3bb2ba3141627f707554f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run...">ConsoleListener</a> destructor.  <a href="#ab0539cfd62e3bb2ba3141627f707554f"></a><br/></td></tr>
 <tr class="memitem:ab1da05cb2532b45f96806ef30c4301ba"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1ConsoleListener.html#ab1da05cb2532b45f96806ef30c4301ba">addReport</a> (const <a class="el" href="classRTF_1_1Test.html">RTF::Test</a> *test, <a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg)</td></tr>
@@ -145,6 +147,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a37a7ee3c7d05bf6242499d574945be66"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1ConsoleListener.html#a37a7ee3c7d05bf6242499d574945be66">verbose</a></td></tr>
+<tr class="memitem:ad7651db3772dd120b8b67a64bb742e13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1ConsoleListener.html#ad7651db3772dd120b8b67a64bb742e13">hideUncritical</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>class <a class="el" href="classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run...">ConsoleListener</a> listens to any messages reported by the tests during the test run, formates them and print them to the standard output. </p>
@@ -496,6 +499,23 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aac8e71b7d751cb76853b0bc85dc03b45"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RTF::ConsoleListener::hideUncriticalMessages </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>hideUncriticalMessages hides the tests report messages and only shows the test assertion failure and error messages. </p>
+
+</div>
+</div>
 <a class="anchor" id="a1615d502c46f2e6e5406430455e1626f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -592,6 +612,28 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2>Member Data Documentation</h2>
+<a class="anchor" id="ad7651db3772dd120b8b67a64bb742e13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RTF::ConsoleListener::hideUncritical</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="ConsoleListener_8h_source.html#l00112">112</a> of file <a class="el" href="ConsoleListener_8h_source.html">ConsoleListener.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a37a7ee3c7d05bf6242499d574945be66"></a>
 <div class="memitem">
 <div class="memproto">
@@ -610,7 +652,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConsoleListener_8h_source.html#l00105">105</a> of file <a class="el" href="ConsoleListener_8h_source.html">ConsoleListener.h</a>.</p>
+<p>Definition at line <a class="el" href="ConsoleListener_8h_source.html#l00111">111</a> of file <a class="el" href="ConsoleListener_8h_source.html">ConsoleListener.h</a>.</p>
 
 </div>
 </div>
@@ -620,7 +662,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 14 2015 17:24:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 14 2015 16:45:48 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
