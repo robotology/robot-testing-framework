@@ -14,6 +14,7 @@
 #include <rtf/ConsoleListener.h>
 #include <rtf/TestResultCollector.h>
 #include <rtf/TextOutputter.h>
+#include <JUnitOutputter.h>
 
 #include <cmdline.h>
 #include <SuitRunner.h>
@@ -65,8 +66,12 @@ void addOptions(cmdline::parser &cmd) {
                     false);
 
     cmd.add<string>("output", 'o',
-                    "The output file to save the result",
-                    false, "result.txt");
+                    "The output file to save the result. Default is result.txt",
+                    false, "");
+    cmd.add<string>("output-type", '\0',
+                    "The output file type (text, junit)",
+                    false, "text");
+
     cmd.add<string>("param", 'p',
                     "Sets the test case parameters. (Can be used only with --test option.)",
                     false);
@@ -220,9 +225,23 @@ int main(int argc, char *argv[]) {
     // create a test runner and run the test case
     runner.run(result);
 
-    // store the results in a text file
-    TextOutputter outputter(collector);
-    outputter.write(cmd.get<string>("output"));
+    // store the results
+    string outptType = cmd.get<string>("output-type");
+    if (outptType == "text") {
+        TextOutputter outputter(collector, cmd.exist("detail"));
+        string output = (cmd.get<string>("output").size() == 0) ? "result.txt" : cmd.get<string>("output");
+        RTF::TestMessage msg;
+        if(!outputter.write(output, &msg))
+            cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
+    } else if (outptType == "junit") {
+        JUnitOutputter outputter(collector, cmd.exist("detail"));
+        string output = (cmd.get<string>("output").size() == 0) ? "result.xml" : cmd.get<string>("output");
+        RTF::TestMessage msg;
+        if(!outputter.write(output, &msg)) {
+            cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
+        }
+    }else
+        cout<<endl<<"Results are not saved! Unknown output type "<<outptType<<"."<<endl;
 
     // print out some simple statistics
     cout<<endl<<"---------- results -----------"<<endl;
