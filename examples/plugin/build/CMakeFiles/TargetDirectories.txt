@@ -1,2 +1,0 @@
-/home/apaikan/Install/robotology/robot-testing/examples/plugin/build/CMakeFiles/mytest.dir
-/home/apaikan/Install/robotology/robot-testing/examples/plugin/build/CMakeFiles/simple_run.dir
