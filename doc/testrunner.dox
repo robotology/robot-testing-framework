@@ -130,7 +130,8 @@ options:
       --tests           Runs multiple tests from the given folder which contains plugins. (string [=])
   -s, --suit            Runs a single test suit from the given XMl file. (string [=])
       --suits           Runs multiple test suits from the given folder which contains XML files. (string [=])
-  -o, --output          The output file to save the result (string [=result.txt])
+  -o, --output          The output file to save the result. Default is result.txt (string [=])
+      --output-type     The output file type (text, junit) (string [=text])
   -p, --param           Sets the test case parameters. (Can be used only with --test option.) (string [=])
   -e, --environment     Sets the test case environment. (Can be used only with --test option.) (string [=])
   -w, --web-reporter    Enables web reporter
@@ -141,7 +142,6 @@ options:
       --version         Shows version information.
   -?, --help            print this message
 \endverbatim
-
   
 \author Ali Paikan
 
