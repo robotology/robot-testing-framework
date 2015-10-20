@@ -151,7 +151,7 @@ bool LuaPluginLoaderImpl::setup(int argc, char**argv) {
 
         // converting the results
         bool result = (bool) lua_toboolean(L, -1);
-        lua_pop(L, 1);
+        lua_pop(L, 1); // pop the result from Lua stack
         return result;
     }
 
@@ -169,7 +169,6 @@ void LuaPluginLoaderImpl::tearDown() {
             RTF_ASSERT_ERROR(error);
         }
     }
-    lua_pop(L, 1);
 }
 
 void LuaPluginLoaderImpl::run() {
@@ -179,7 +178,6 @@ void LuaPluginLoaderImpl::run() {
             RTF_ASSERT_ERROR(error);
         }
     }
-    lua_pop(L, 1);
 }
 
 bool LuaPluginLoaderImpl::getLocalFunction(const char *name) {
