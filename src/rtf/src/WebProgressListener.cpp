@@ -134,7 +134,7 @@ static std::string html_page =
 "<div style=\"position:relative; padding:5px; float:center;\"> <h4 id=\"suit_name\" style=\"text-align: center; margin:0;\" class=\"font_h4\">Robot Testing Framework</h4></div>\n"
 "</div>\n"
 "<div class=\"my_window\" style=\"top:75px; height:90%; padding:5px\"><div id=\"result\" style=\"top:0px; height:96%; overflow-y:scroll; background:#ffffff;\"></div>\n"
-"<table style=\"width:100%\"><tr><td width=\"90%\"><canvas id=\"progress\" height=\"20\"></canvas></td><td align=\"right\"><input align=\"right\" type=\"checkbox\" id=\"autoscroll\" checked/> auto scroll</div></td></tr></table>\n"
+"<table style=\"width:100%\"><tr><td width=\"90%\"><canvas id=\"progress\" width=\"1000px\" height=\"20px\" style=\"width:1000px; height:20px\" ></canvas></td><td align=\"right\"><input align=\"right\" type=\"checkbox\" id=\"autoscroll\" checked/> auto scroll</div></td></tr></table>\n"
 //"<div style=\"top:94%; position:absolute; padding-left:20px;\">\n"
 //"<p class=\"font_1\">(C) 2015 iCub Facility, Istituto Italiano di Tecnologia</p>\n"
 //"</div>\n"
