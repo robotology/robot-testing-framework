@@ -85,11 +85,33 @@
                                             RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
 
 
-/** Conditional failure report. RTF_TEST_CHECK does not throw any
+/** Conditional failure report. RTF_TEST_FAIL_IF does not throw any
  *  exception. It reports a failure message to the TestResult indiecating
  *  that the check on the corresponding condition evaluates to \c false.
  * \ingroup Test Assertions
  * \param message Message to be reported as the detail of TestMessage
+ * \param condition If this condition evaluates to \c false then the
+ *                  test failed.
+ *
+ * \note RTF_TEST_FAIL_IF throws error exception if it is not called
+ *       within a TestCase class.
+ */
+#define RTF_TEST_FAIL_IF(condition, message)\
+    if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
+        RTF_ASSERT_ERROR("RTF_TEST_FAIL_IF is called outside a TestCase!"); }\
+    RTF::Asserter::testFail(condition,\
+                          RTF::TestMessage(std::string("checking (") +\
+                                           std::string(#condition) + ")",\
+                                           message,\
+                                           RTF_SOURCEFILE(),\
+                                           RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
+
+/** RTF_TEST_CHECK combines RTF_TEST_REPORT and RTF_TEST_FAIL_IF.
+ * It does not throw any exception. It always reports the message (comment)
+ * and marks the current check as [PASSED] or [FAILED] respectively
+ * if the conditoin evalutes to \c true or \c false.
+ * \ingroup Test Assertions
+ * \param message Message to be reported as the comment for the current check
  * \param condition If this condition evaluates to \c false then the
  *                  test failed.
  *
@@ -99,10 +121,9 @@
 #define RTF_TEST_CHECK(condition, message)\
     if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
         RTF_ASSERT_ERROR("RTF_TEST_CHECK is called outside a TestCase!"); }\
-    RTF::Asserter::check(condition,\
-                          RTF::TestMessage(std::string("checking (") +\
-                                           std::string(#condition) + ")",\
-                                           message,\
+    RTF::Asserter::testCheck(condition,\
+                          RTF::TestMessage(message,\
+                                           std::string("(") + std::string(#condition) + ")",\
                                            RTF_SOURCEFILE(),\
                                            RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
 

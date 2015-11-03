@@ -36,10 +36,10 @@ public:
     virtual void run() {
 
         RTF_TEST_REPORT("testing integers");
-        RTF_TEST_CHECK(2<3, "is not smaller");
+        RTF_TEST_FAIL_IF(2<3, "is not smaller");
         int a = 5;
         int b = 3;
-        RTF_TEST_CHECK(a<b, Asserter::format("%d is not smaller than %d.", a, b));
+        RTF_TEST_FAIL_IF(a<b, Asserter::format("%d is not smaller than %d.", a, b));
     }
 
 };

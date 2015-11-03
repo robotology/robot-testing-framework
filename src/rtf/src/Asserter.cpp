@@ -52,7 +52,7 @@ void Asserter::report(RTF::TestMessage msg,
     testsuit->getResult()->addReport(testsuit, msg);
 }
 
-void Asserter::check(bool condition,
+void Asserter::testFail(bool condition,
                      RTF::TestMessage msg,
                      RTF::TestCase* testcase)
 {
@@ -60,6 +60,18 @@ void Asserter::check(bool condition,
         testcase->failed();
         testcase->getResult()->addFailure(testcase, msg);
     }
+}
+
+void Asserter::testCheck(bool condition,
+                     RTF::TestMessage msg,
+                     RTF::TestCase* testcase)
+{
+    if(!condition) {
+        testcase->failed();
+        testcase->getResult()->addFailure(testcase, msg);
+    }
+    else
+        Asserter::report(msg, testcase);
 }
 
 std::string Asserter::format(const char* msg, ...) {

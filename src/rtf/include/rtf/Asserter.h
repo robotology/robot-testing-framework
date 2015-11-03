@@ -85,15 +85,29 @@ public:
                         RTF::TestCase* testcase);
 
     /**
-     * @brief check Checks the given boolean condition
+     * @brief Checks the given boolean condition
      * and if it is not hold (it is not true) a failure
      * message will be added to the result collector.
      * @param condition The boolean expression
      * @param msg The corresponding message
      * @param testcase The owner of the message (reporter)
-     * @note check does not throw any exception!
+     * @note This does not throw any exception!
      */
-    static RTF_API void check(bool condition,
+    static RTF_API void testFail(bool condition,
+                      RTF::TestMessage msg,
+                      RTF::TestCase* testcase);
+
+    /**
+     * @brief Checks the given boolean condition
+     * and if it is not hold (it is not true) a failure
+     * message will be added to the result collector;
+     * otherwise only the message will be reported.
+     * @param condition The boolean expression
+     * @param msg The corresponding message
+     * @param testcase The owner of the message (reporter)
+     * @note This does not throw any exception!
+     */
+    static RTF_API void testCheck(bool condition,
                       RTF::TestMessage msg,
                       RTF::TestCase* testcase);
 

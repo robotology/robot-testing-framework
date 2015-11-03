@@ -36,7 +36,7 @@ public:
 			int a = rand() % 10;
 			int b = rand() % 10;
             RTF_TEST_REPORT("testing smaller...");
-            RTF_TEST_CHECK(a<b, "is not smaller");
+            RTF_TEST_FAIL_IF(a<b, "is not smaller");
 #ifdef _WIN32
             Sleep(1000);
 #else
@@ -56,7 +56,7 @@ public:
 			int a = rand() % 10;
 			int b = rand() % 10;
             RTF_TEST_REPORT("testing equality...");
-            RTF_TEST_CHECK(a==b, "are not equal");
+            RTF_TEST_FAIL_IF(a==b, "are not equal");
 #ifdef _WIN32
             Sleep(1000);
 #else

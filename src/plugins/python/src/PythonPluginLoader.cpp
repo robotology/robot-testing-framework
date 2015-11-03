@@ -358,7 +358,7 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
     }
     //const char* str_cond = PyString_AsString(cond);
     char str_cond[] = "False";
-    RTF::Asserter::check(PyObject_IsTrue(cond), RTF::TestMessage("checking ("+string(str_cond)+")",
+    RTF::Asserter::testFail(PyObject_IsTrue(cond), RTF::TestMessage("checking ("+string(str_cond)+")",
                                            message, impl->getFileName(), 0), (TestCase*)impl);
     Py_RETURN_NONE;
 }

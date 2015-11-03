@@ -283,7 +283,7 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
         RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
-        RTF::Asserter::check(false, RTF::TestMessage("checking ("+string(cond)+")",
+        RTF::Asserter::testFail(false, RTF::TestMessage("checking ("+string(cond)+")",
                                                cst, owner->getFileName(), 0), (TestCase*)owner);
     }
     return 0;

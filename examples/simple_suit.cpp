@@ -23,7 +23,7 @@ public:
 
     virtual void run() {
         RTF_TEST_REPORT("testing smaller");
-        RTF_TEST_CHECK(3<5, "is not smaller");
+        RTF_TEST_FAIL_IF(3<5, "is not smaller");
     }
 };
 
@@ -33,7 +33,7 @@ public:
 
     virtual void run() {
         RTF_TEST_REPORT("testing equality");
-        RTF_TEST_CHECK(5==3, "are not equal");
+        RTF_TEST_FAIL_IF(5==3, "are not equal");
     }
 };
 
