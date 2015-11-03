@@ -119,8 +119,10 @@ Macros</h2></td></tr>
 <tr class="memdesc:a21707a2e16b7fd12239bd1b5a670b8d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional assertion with throwing error exception.  <a href="#a21707a2e16b7fd12239bd1b5a670b8d6"></a><br/></td></tr>
 <tr class="memitem:a2deaf215be70aa3ce0b5d0490fb4157f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f">RTF_TEST_REPORT</a>(message)</td></tr>
 <tr class="memdesc:a2deaf215be70aa3ce0b5d0490fb4157f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reporting a message to the TestResult.  <a href="#a2deaf215be70aa3ce0b5d0490fb4157f"></a><br/></td></tr>
+<tr class="memitem:abfd93ae7969802373a02be166636c0a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#abfd93ae7969802373a02be166636c0a0">RTF_TEST_FAIL_IF</a>(condition, message)</td></tr>
+<tr class="memdesc:abfd93ae7969802373a02be166636c0a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional failure report.  <a href="#abfd93ae7969802373a02be166636c0a0"></a><br/></td></tr>
 <tr class="memitem:a209a2cb5ed9b31c21f51941fb84354bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb">RTF_TEST_CHECK</a>(condition, message)</td></tr>
-<tr class="memdesc:a209a2cb5ed9b31c21f51941fb84354bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conditional failure report.  <a href="#a209a2cb5ed9b31c21f51941fb84354bb"></a><br/></td></tr>
+<tr class="memdesc:a209a2cb5ed9b31c21f51941fb84354bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">RTF_TEST_CHECK combines RTF_TEST_REPORT and RTF_TEST_FAIL_IF.  <a href="#a209a2cb5ed9b31c21f51941fb84354bb"></a><br/></td></tr>
 </table>
 <h2>Macro Definition Documentation</h2>
 <a class="anchor" id="a8681580ec6406f327e6610f8185378fe"></a>
@@ -294,8 +296,55 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span>(dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>) == 0) {\</div>
-<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_TEST_CHECK is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">\</a></div>
-<div class="line"><a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">    RTF::Asserter::check</a>(condition,\</div>
+<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_TEST_CHECK is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#ad1ecbf06e113a0109658aefa46b7de4b" title="Checks the given boolean condition and if it is not hold (it is not true) a failure message will be a...">\</a></div>
+<div class="line"><a class="code" href="classRTF_1_1Asserter.html#ad1ecbf06e113a0109658aefa46b7de4b" title="Checks the given boolean condition and if it is not hold (it is not true) a failure message will be a...">    RTF::Asserter::testCheck</a>(condition,\</div>
+<div class="line">                          <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>(<span class="stringliteral">&quot;checks&quot;</span>,\</div>
+<div class="line">                                           message,\</div>
+<div class="line">                                           <a class="code" href="TestMessage_8h.html#afde60f2763a45ced45c4605771e79deb">RTF_SOURCEFILE</a>(),\</div>
+<div class="line">                                           <a class="code" href="TestMessage_8h.html#a9d3d6cc3eb2a69752c6163b9f7e6c871">RTF_SOURCELINE</a>()), dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>))</div>
+</div><!-- fragment -->
+<p>RTF_TEST_CHECK combines RTF_TEST_REPORT and RTF_TEST_FAIL_IF. </p>
+<p>It does not throw any exception. It always reports the message (comment) and marks the current check as [PASSED] or [FAILED] respectively if the conditoin evalutes to <code>true</code> or <code>false</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Message to be reported as the comment for the current check </td></tr>
+    <tr><td class="paramname">condition</td><td>If this condition evaluates to <code>false</code> then the test failed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>RTF_TEST_CHECK throws error exception if it is not called within a TestCase class. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a4">simple.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="TestAssert_8h_source.html#l00121">121</a> of file <a class="el" href="TestAssert_8h_source.html">TestAssert.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abfd93ae7969802373a02be166636c0a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RTF_TEST_FAIL_IF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">condition, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span>(dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>) == 0) {\</div>
+<div class="line">        RTF_ASSERT_ERROR(<span class="stringliteral">&quot;RTF_TEST_FAIL_IF is called outside a TestCase!&quot;</span>); }<a class="code" href="classRTF_1_1Asserter.html#a1ae381b8d0afb6cd164f586c5c567ca4" title="Checks the given boolean condition and if it is not hold (it is not true) a failure message will be a...">\</a></div>
+<div class="line"><a class="code" href="classRTF_1_1Asserter.html#a1ae381b8d0afb6cd164f586c5c567ca4" title="Checks the given boolean condition and if it is not hold (it is not true) a failure message will be a...">    RTF::Asserter::testFail</a>(condition,\</div>
 <div class="line">                          <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a>(std::string(<span class="stringliteral">&quot;checking (&quot;</span>) +\</div>
 <div class="line">                                           std::string(#condition) + <span class="stringliteral">&quot;)&quot;</span>,\</div>
 <div class="line">                                           message,\</div>
@@ -303,7 +352,7 @@ Macros</h2></td></tr>
 <div class="line">                                           <a class="code" href="TestMessage_8h.html#a9d3d6cc3eb2a69752c6163b9f7e6c871">RTF_SOURCELINE</a>()), dynamic_cast&lt;RTF::TestCase*&gt;(<span class="keyword">this</span>))</div>
 </div><!-- fragment -->
 <p>Conditional failure report. </p>
-<p>RTF_TEST_CHECK does not throw any exception. It reports a failure message to the TestResult indiecating that the check on the corresponding condition evaluates to <code>false</code>.</p>
+<p>RTF_TEST_FAIL_IF does not throw any exception. It reports a failure message to the TestResult indiecating that the check on the corresponding condition evaluates to <code>false</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>Message to be reported as the detail of TestMessage </td></tr>
@@ -311,8 +360,8 @@ Macros</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>RTF_TEST_CHECK throws error exception if it is not called within a TestCase class. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a4">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#a3">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a3">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a4">simple_runner.cpp</a>, <a class="el" href="simple_suit_8cpp-example.html#a3">simple_suit.cpp</a>, and <a class="el" href="simple_web_8cpp-example.html#a3">simple_web.cpp</a>.</dd>
+<dl class="section note"><dt>Note</dt><dd>RTF_TEST_FAIL_IF throws error exception if it is not called within a TestCase class. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a5">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#a3">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#a3">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#a4">simple_runner.cpp</a>, <a class="el" href="simple_suit_8cpp-example.html#a3">simple_suit.cpp</a>, and <a class="el" href="simple_web_8cpp-example.html#a3">simple_web.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="TestAssert_8h_source.html#l00099">99</a> of file <a class="el" href="TestAssert_8h_source.html">TestAssert.h</a>.</p>
 
@@ -356,7 +405,7 @@ Macros</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 14 2015 16:45:48 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 3 2015 15:40:06 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

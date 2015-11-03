@@ -116,8 +116,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7b1eaf65d53bbb0b80e6a265f9a84fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">report report a message to the result collector of the given <a class="el" href="classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests.">TestSuit</a>  <a href="#a7b1eaf65d53bbb0b80e6a265f9a84fea"></a><br/></td></tr>
 <tr class="memitem:ac2cce92fa7246015fa8c75eadc865486"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#ac2cce92fa7246015fa8c75eadc865486">report</a> (<a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *testcase)</td></tr>
 <tr class="memdesc:ac2cce92fa7246015fa8c75eadc865486"><td class="mdescLeft">&#160;</td><td class="mdescRight">report report a message to the result collector of the given <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a>  <a href="#ac2cce92fa7246015fa8c75eadc865486"></a><br/></td></tr>
-<tr class="memitem:ae6c87ee3c12c45a55c76f52bce112bba"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba">check</a> (bool condition, <a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *testcase)</td></tr>
-<tr class="memdesc:ae6c87ee3c12c45a55c76f52bce112bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">check Checks the given boolean condition and if it is not hold (it is not true) a failure message will be added to the result collector.  <a href="#ae6c87ee3c12c45a55c76f52bce112bba"></a><br/></td></tr>
+<tr class="memitem:a1ae381b8d0afb6cd164f586c5c567ca4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#a1ae381b8d0afb6cd164f586c5c567ca4">testFail</a> (bool condition, <a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *testcase)</td></tr>
+<tr class="memdesc:a1ae381b8d0afb6cd164f586c5c567ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the given boolean condition and if it is not hold (it is not true) a failure message will be added to the result collector.  <a href="#a1ae381b8d0afb6cd164f586c5c567ca4"></a><br/></td></tr>
+<tr class="memitem:ad1ecbf06e113a0109658aefa46b7de4b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#ad1ecbf06e113a0109658aefa46b7de4b">testCheck</a> (bool condition, <a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a> msg, <a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *testcase)</td></tr>
+<tr class="memdesc:ad1ecbf06e113a0109658aefa46b7de4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the given boolean condition and if it is not hold (it is not true) a failure message will be added to the result collector; otherwise only the message will be reported.  <a href="#ad1ecbf06e113a0109658aefa46b7de4b"></a><br/></td></tr>
 <tr class="memitem:ae63417e9ea214df2dd39b48936c01f8f"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f">format</a> (const char *msg,...)</td></tr>
 <tr class="memdesc:ae63417e9ea214df2dd39b48936c01f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">format can be used to format data to in the same way that <code>sprintf</code> formats.  <a href="#ae63417e9ea214df2dd39b48936c01f8f"></a><br/></td></tr>
 </table>
@@ -127,57 +129,6 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Asserter_8h_source.html#l00032">32</a> of file <a class="el" href="Asserter_8h_source.html">Asserter.h</a>.</p>
 </div><h2>Member Function Documentation</h2>
-<a class="anchor" id="ae6c87ee3c12c45a55c76f52bce112bba"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void RTF::Asserter::check </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>condition</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a>&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *&#160;</td>
-          <td class="paramname"><em>testcase</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>check Checks the given boolean condition and if it is not hold (it is not true) a failure message will be added to the result collector. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">condition</td><td>The boolean expression </td></tr>
-    <tr><td class="paramname">msg</td><td>The corresponding message </td></tr>
-    <tr><td class="paramname">testcase</td><td>The owner of the message (reporter) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>check does not throw any exception! </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a2bf10a11da2c3d3238f98f5f23a67372"></a>
 <div class="memitem">
 <div class="memproto">
@@ -368,7 +319,7 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the formated std::string </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a5">simple.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#a6">simple.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -460,13 +411,115 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad1ecbf06e113a0109658aefa46b7de4b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void RTF::Asserter::testCheck </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *&#160;</td>
+          <td class="paramname"><em>testcase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks the given boolean condition and if it is not hold (it is not true) a failure message will be added to the result collector; otherwise only the message will be reported. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td>The boolean expression </td></tr>
+    <tr><td class="paramname">msg</td><td>The corresponding message </td></tr>
+    <tr><td class="paramname">testcase</td><td>The owner of the message (reporter) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This does not throw any exception! </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1ae381b8d0afb6cd164f586c5c567ca4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void RTF::Asserter::testFail </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1TestMessage.html">RTF::TestMessage</a>&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classRTF_1_1TestCase.html">RTF::TestCase</a> *&#160;</td>
+          <td class="paramname"><em>testcase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks the given boolean condition and if it is not hold (it is not true) a failure message will be added to the result collector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td>The boolean expression </td></tr>
+    <tr><td class="paramname">msg</td><td>The corresponding message </td></tr>
+    <tr><td class="paramname">testcase</td><td>The owner of the message (reporter) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This does not throw any exception! </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/rtf/include/rtf/<a class="el" href="Asserter_8h_source.html">Asserter.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 14 2015 16:45:48 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 3 2015 15:40:07 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

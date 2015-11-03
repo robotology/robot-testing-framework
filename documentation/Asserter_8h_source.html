@@ -133,18 +133,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">static</span> <a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Asserter.html#a7b1eaf65d53bbb0b80e6a265f9a84fea" title="report report a message to the result collector of the given TestSuit">report</a>(<a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a>* testcase);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">static</span> <a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Asserter.html#ae6c87ee3c12c45a55c76f52bce112bba" title="check Checks the given boolean condition and if it is not hold (it is not true) a failure message wil...">check</a>(<span class="keywordtype">bool</span> condition,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">static</span> <a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Asserter.html#a1ae381b8d0afb6cd164f586c5c567ca4" title="Checks the given boolean condition and if it is not hold (it is not true) a failure message will be a...">testFail</a>(<span class="keywordtype">bool</span> condition,</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                      <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg,</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                      <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a>* testcase);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">static</span> <a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> std::string <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">format</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg, ...);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif // _RTF_ASSERTER_H</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">static</span> <a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1Asserter.html#ad1ecbf06e113a0109658aefa46b7de4b" title="Checks the given boolean condition and if it is not hold (it is not true) a failure message will be a...">testCheck</a>(<span class="keywordtype">bool</span> condition,</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                      <a class="code" href="classRTF_1_1TestMessage.html" title="A formated message with details.">RTF::TestMessage</a> msg,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                      <a class="code" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">RTF::TestCase</a>* testcase);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">static</span> <a class="code" href="rtf__config_8h.html#a2804c6d13b241f39d44b8cc73e37cd69">RTF_API</a> std::string <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">format</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* msg, ...);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif // _RTF_ASSERTER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 14 2015 16:45:48 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 3 2015 15:40:06 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

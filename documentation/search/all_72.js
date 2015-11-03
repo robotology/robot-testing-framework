@@ -54,6 +54,7 @@ var searchData=
   ['rtf_5fsourcefile',['RTF_SOURCEFILE',['../TestMessage_8h.html#afde60f2763a45ced45c4605771e79deb',1,'TestMessage.h']]],
   ['rtf_5fsourceline',['RTF_SOURCELINE',['../TestMessage_8h.html#a9d3d6cc3eb2a69752c6163b9f7e6c871',1,'TestMessage.h']]],
   ['rtf_5ftest_5fcheck',['RTF_TEST_CHECK',['../TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb',1,'TestAssert.h']]],
+  ['rtf_5ftest_5ffail_5fif',['RTF_TEST_FAIL_IF',['../TestAssert_8h.html#abfd93ae7969802373a02be166636c0a0',1,'TestAssert.h']]],
   ['rtf_5ftest_5freport',['RTF_TEST_REPORT',['../TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f',1,'TestAssert.h']]],
   ['rtfmodule',['rtfModule',['../classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html#a23979940ea7edf48aa389378b8c7bfb5',1,'RTF::plugin::RubyPluginLoaderImpl']]],
   ['ruby_5fplugin_5fexample_2edox',['ruby_plugin_example.dox',['../ruby__plugin__example_8dox.html',1,'']]],

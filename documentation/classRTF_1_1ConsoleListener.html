@@ -188,12 +188,11 @@ Private Attributes</h2></td></tr>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> run() {</div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f" title="Reporting a message to the TestResult.">RTF_TEST_REPORT</a>(<span class="stringliteral">&quot;testing integers&quot;</span>);</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;is not smaller&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="RTF_TEST_CHECK combines RTF_TEST_REPORT and RTF_TEST_FAIL_IF.">RTF_TEST_CHECK</a>(2&lt;3, <span class="stringliteral">&quot;two is less than three&quot;</span>);</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="RTF_TEST_CHECK combines RTF_TEST_REPORT and RTF_TEST_FAIL_IF.">RTF_TEST_CHECK</a>(2==3, <span class="stringliteral">&quot;two is equal to three&quot;</span>);</div>
 <div class="line">        <span class="keywordtype">int</span> a = 5;</div>
 <div class="line">        <span class="keywordtype">int</span> b = 3;</div>
-<div class="line">        <a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb" title="Conditional failure report.">RTF_TEST_CHECK</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
+<div class="line">        <a class="code" href="TestAssert_8h.html#abfd93ae7969802373a02be166636c0a0" title="Conditional failure report.">RTF_TEST_FAIL_IF</a>(a&lt;b, <a class="code" href="classRTF_1_1Asserter.html#ae63417e9ea214df2dd39b48936c01f8f" title="format can be used to format data to in the same way that sprintf formats.">Asserter::format</a>(<span class="stringliteral">&quot;%d is not smaller than %d.&quot;</span>, a, b));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">};</div>
@@ -215,7 +214,7 @@ Private Attributes</h2></td></tr>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line"></div>
 <div class="line">}</div>
-</div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#_a6">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#_a4">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#_a8">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#_a5">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#_a4">simple_suit.cpp</a>.</dd>
+</div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_8cpp-example.html#_a7">simple.cpp</a>, <a class="el" href="simple_collector_8cpp-example.html#_a4">simple_collector.cpp</a>, <a class="el" href="simple_fixture_8cpp-example.html#_a8">simple_fixture.cpp</a>, <a class="el" href="simple_runner_8cpp-example.html#_a5">simple_runner.cpp</a>, and <a class="el" href="simple_suit_8cpp-example.html#_a4">simple_suit.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="ConsoleListener_8h_source.html#l00031">31</a> of file <a class="el" href="ConsoleListener_8h_source.html">ConsoleListener.h</a>.</p>
 </div><h2>Constructor &amp; Destructor Documentation</h2>
@@ -662,7 +661,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 14 2015 16:45:48 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 3 2015 15:40:07 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
