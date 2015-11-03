@@ -122,8 +122,8 @@
     if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
         RTF_ASSERT_ERROR("RTF_TEST_CHECK is called outside a TestCase!"); }\
     RTF::Asserter::testCheck(condition,\
-                          RTF::TestMessage(message,\
-                                           std::string("(") + std::string(#condition) + ")",\
+                          RTF::TestMessage("checks",\
+                                           message,\
                                            RTF_SOURCEFILE(),\
                                            RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
 
