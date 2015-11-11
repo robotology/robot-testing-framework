@@ -17,7 +17,8 @@ get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
 
 set(RTF_YARP_PUBLIC_HDRS 
      include/rtf/yarp/YarpTestCase.h
-     include/rtf/yarp/YarpTestAsserter.h)
+     include/rtf/yarp/YarpTestAsserter.h
+    include/rtf/yarp/JointsPosMotion.h)
 
 install(FILES ${RTF_YARP_PUBLIC_HDRS}
         DESTINATION include/rtf/yarp)
