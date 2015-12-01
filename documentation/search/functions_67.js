@@ -17,6 +17,7 @@ var searchData=
   ['getparam',['getParam',['../classRTF_1_1FixtureManager.html#a29ab0c664fa08c35d170adc45a329e15',1,'RTF::FixtureManager::getParam()'],['../classRTF_1_1TestCase.html#a027937e46a88eb142cebea7f9e2ac3e8',1,'RTF::TestCase::getParam()']]],
   ['getpythonerrorstring',['getPythonErrorString',['../classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html#a8ee97f62225108b3c36b5fc5be7e0506',1,'RTF::plugin::PythonPluginLoaderImpl']]],
   ['getreferencecount',['getReferenceCount',['../classshlibpp_1_1SharedLibraryFactory.html#aa7b8da65ce5c1aee94731f6824ad8597',1,'shlibpp::SharedLibraryFactory']]],
+  ['getrepetition',['getRepetition',['../classRTF_1_1TestCase.html#a673e142b132fb72625c8ceef0cf73cfc',1,'RTF::TestCase']]],
   ['getresult',['getResult',['../classRTF_1_1TestCase.html#adddd8b0724c3f773dd64e1906f2988b7',1,'RTF::TestCase::getResult()'],['../classRTF_1_1TestSuit.html#a0b99da65d1c1d06e531929d0caa575af',1,'RTF::TestSuit::getResult()']]],
   ['getresults',['getResults',['../classRTF_1_1TestResultCollector.html#a2a1bcc298776b2acb132ce7a2cc2b2dd',1,'RTF::TestResultCollector']]],
   ['getrubybacktrace',['getRubyBackTrace',['../classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html#ae04c713af2d3a76ff842640c504ab721',1,'RTF::plugin::RubyPluginLoaderImpl']]],

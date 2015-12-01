@@ -140,6 +140,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae877b688931b581fe06978e32dbdd18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">setEnvironment Optioanlly specifies the environment in which the test case is executed.  <a href="#ae877b688931b581fe06978e32dbdd18c"></a><br/></td></tr>
 <tr class="memitem:aab71c5f72ffaafed4f27ea1b57c30247"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#aab71c5f72ffaafed4f27ea1b57c30247">getEnvironment</a> ()</td></tr>
 <tr class="memdesc:aab71c5f72ffaafed4f27ea1b57c30247"><td class="mdescLeft">&#160;</td><td class="mdescRight">getParam gets the environment string which is set for the test case  <a href="#aab71c5f72ffaafed4f27ea1b57c30247"></a><br/></td></tr>
+<tr class="memitem:a296abcc8f175bb726324fe2a8fbb9d5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a296abcc8f175bb726324fe2a8fbb9d5a">setRepetition</a> (unsigned int rep)</td></tr>
+<tr class="memdesc:a296abcc8f175bb726324fe2a8fbb9d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">setRepetition sets the run repetition by default the <a class="el" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run()</a> method is called only once; The number of test runs (e.g., for stress testing) can be set using this function.  <a href="#a296abcc8f175bb726324fe2a8fbb9d5a"></a><br/></td></tr>
+<tr class="memitem:a673e142b132fb72625c8ceef0cf73cfc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a673e142b132fb72625c8ceef0cf73cfc">getRepetition</a> ()</td></tr>
+<tr class="memdesc:a673e142b132fb72625c8ceef0cf73cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">getRepetition gets the tun repetition  <a href="#a673e142b132fb72625c8ceef0cf73cfc"></a><br/></td></tr>
 <tr class="inherit_header pub_methods_classRTF_1_1Test"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classRTF_1_1Test')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="classRTF_1_1Test.html">RTF::Test</a></td></tr>
 <tr class="memitem:a3d64286008ed71ad2ba01df8029d834f inherit pub_methods_classRTF_1_1Test"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Test.html#a3d64286008ed71ad2ba01df8029d834f">Test</a> (std::string name, std::string description=&quot;&quot;)</td></tr>
 <tr class="memdesc:a3d64286008ed71ad2ba01df8029d834f inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">Test</a> constructor.  <a href="#a3d64286008ed71ad2ba01df8029d834f"></a><br/></td></tr>
@@ -160,6 +164,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae0eb004733000369ffff3e878e922b85"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#ae0eb004733000369ffff3e878e922b85">environment</a></td></tr>
 <tr class="memitem:afaeba8ffd9dad99711e30daa8d2dea9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1TestResult.html">RTF::TestResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">result</a></td></tr>
 <tr class="memitem:ab3952a75451e6e5d2eb7a200fdb908c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#ab3952a75451e6e5d2eb7a200fdb908c4">successful</a></td></tr>
+<tr class="memitem:a80f7a690a8d124aac4b4932a60338afe"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a80f7a690a8d124aac4b4932a60338afe">repetition</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -351,6 +356,24 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a673e142b132fb72625c8ceef0cf73cfc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int RTF::TestCase::getRepetition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getRepetition gets the tun repetition </p>
+<dl class="section return"><dt>Returns</dt><dd>the number of repetitions </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="adddd8b0724c3f773dd64e1906f2988b7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -480,6 +503,30 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a296abcc8f175bb726324fe2a8fbb9d5a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RTF::TestCase::setRepetition </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>rep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setRepetition sets the run repetition by default the <a class="el" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">run()</a> method is called only once; The number of test runs (e.g., for stress testing) can be set using this function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rep</td><td>number of repetitions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a1943f24fe26b3ccfa149d942067c7626"></a>
 <div class="memitem">
 <div class="memproto">
@@ -601,7 +648,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00132">132</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00146">146</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -623,7 +670,29 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00131">131</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00145">145</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a80f7a690a8d124aac4b4932a60338afe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int RTF::TestCase::repetition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00149">149</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -645,7 +714,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00133">133</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00147">147</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -667,7 +736,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00134">134</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
+<p>Definition at line <a class="el" href="TestCase_8h_source.html#l00148">148</a> of file <a class="el" href="TestCase_8h_source.html">TestCase.h</a>.</p>
 
 </div>
 </div>
@@ -677,7 +746,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2015 15:40:07 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 1 2015 18:06:03 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

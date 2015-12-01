@@ -91,6 +91,7 @@ Contents</h1>
 <li><a class="el" href="testrunner.html#single-suit">Running a single test suit</a> </li>
 <li><a class="el" href="testrunner.html#multiple-suit">Running multiple test suits</a> </li>
 <li><a class="el" href="testrunner.html#weblistener">Monitoring tests from your browser</a> </li>
+<li><a class="el" href="testrunner.html#stress-test">Using RTF for stress testing</a> </li>
 <li><a class="el" href="testrunner.html#options">The testrunner options</a></li>
 </ul>
 <p><br/>
@@ -134,7 +135,7 @@ Test suit</h1>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;dll&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
-    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">repetition=</span><span style="background-color: #fff0f0">&quot;5&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test4.py <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test5.rb <span style="color: #007700">&lt;/test&gt;</span>
     ...
@@ -168,6 +169,12 @@ Monitoring tests from your browser</h1>
 <p>Notice that, the web reporting functionality may not be available by default and you need to enable it when building the <a class="el" href="classRTF.html" title="The DllFixturePluginLoader loads an test case plug-in and gives the direct access to the TestCase...">RTF</a> by turning on the <code>ENABLE_WEB_LISTENER</code> from the cmake.</p>
 <p><br/>
  </p>
+<h1><a class="anchor" id="stress-test"></a>
+Using RTF for stress testing</h1>
+<p>For stress testing, it is possible to repeat a test case for desired iterations. This can be easily done by providing the number of the test runs as the parameter (e.g., <code>--repetition 5</code>) for the <code>testrunner</code> or setting as the attribute of the test case within a test suite XML file. The <code>testrunner</code> repeats running the test for the desired iterations if the test does not fail. Notice that, only the <code><a class="el" href="classRTF_1_1TestCase.html#a8b650d1b78b73a6fca5a709430e7c255" title="run is called by the TestCase class if setup is successfull;">RTF::TestCase::run()</a></code> will be called repeatedly.</p>
+<pre class="fragment"> $ testrunner --verbose --test ~/my-plugins/mytest.lua --repetition 5
+</pre><p><br/>
+ </p>
 <h1><a class="anchor" id="options"></a>
 The testrunner options</h1>
 <p>Here is the full list of <code>testrunner</code> options:</p>
@@ -181,6 +188,7 @@ options:
       --output-type     The output file type (text, junit) (string [=text])
   -p, --param           Sets the test case parameters. (Can be used only with --test option.) (string [=])
   -e, --environment     Sets the test case environment. (Can be used only with --test option.) (string [=])
+      --repetition      Sets the test run repetition. (Can be used only with --test option.) (j [=0])
   -w, --web-reporter    Enables web reporter
       --web-port        Sets the web reporter server port. (The default port number is 8080.) (i [=8080])
   -r, --recursive       Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
@@ -192,7 +200,7 @@ options:
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2015 15:40:07 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 1 2015 18:06:03 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
