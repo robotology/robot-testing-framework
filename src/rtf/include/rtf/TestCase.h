@@ -127,10 +127,25 @@ public:
      */
     const std::string getEnvironment();
 
+    /**
+     * @brief setRepetition sets the run repetition
+     * by default the run() method is called only once; The number of test runs
+     * (e.g., for stress testing) can be set using this function.
+     * @param rep number of repetitions
+     */
+    void setRepetition(unsigned int rep);
+
+    /**
+     * @brief getRepetition gets the tun repetition
+     * @return the number of repetitions
+     */
+    unsigned int getRepetition();
+
 private:
     std::string param;
     std::string environment;
     RTF::TestResult* result;
     bool successful;
+    unsigned int repetition;
 };
 #endif // _RTF_TESTCASE_H

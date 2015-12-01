@@ -41,6 +41,7 @@ public:
      * @return true or false upon success or failure
      */
     bool loadPlugin(std::string filename,
+                    const unsigned int repetition,
                     const std::string param="",
                     const std::string environment="");
 

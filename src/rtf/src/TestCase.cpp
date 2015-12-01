@@ -23,7 +23,8 @@ TestCase::TestCase(std::string name, std::string param)
     : RTF::Test(name),
       param(param),
       successful(true),
-      result(NULL)
+      result(NULL),
+      repetition(0)
 {
 }
 
@@ -59,6 +60,15 @@ void TestCase::setEnvironment(const std::string environment) {
 const std::string TestCase::getEnvironment() {
     return environment;
 }
+
+void TestCase::setRepetition(unsigned int rep) {
+    repetition = rep;
+}
+
+unsigned int TestCase::getRepetition() {
+    return repetition;
+}
+
 
 
 bool TestCase::setup(int argc, char**argv) {
@@ -102,7 +112,9 @@ void TestCase::run(TestResult &rsl) {
             }
             return;
         }
-        run();
+
+        for(int rep=0; rep<=repetition && successful; rep++)
+            run();
     }
     catch(RTF::TestFailureException& e) {
         successful = false;

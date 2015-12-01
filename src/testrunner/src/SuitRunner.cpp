@@ -167,6 +167,20 @@ bool SuitRunner::loadSuit(std::string filename) {
                 // set the test case param
                 if(test->Attribute("param"))
                     testcase->setParam(test->Attribute("param"));
+                // set the test case repetition
+                if(test->Attribute("repetition")) {
+                    char *endptr;
+                    unsigned int rep = (unsigned int) strtol(test->Attribute("repetition"), &endptr, 10);
+                    if (endptr == 0 && rep >= 0) {
+                        testcase->setRepetition(rep);
+                    }
+                    else {
+                        string error = Asserter::format("Invalid repetition attribute while loading '%s' at line %d. (%s)",
+                                                        filename.c_str(), doc.ErrorRow(), doc.ErrorDesc());
+                        logger.addError(error);
+                        continue;
+                    }
+                }
                 // add the test to the suit
                 suit->addTest(testcase);
                 // keep track of the created plugin loaders

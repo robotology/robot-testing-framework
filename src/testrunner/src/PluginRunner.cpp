@@ -39,6 +39,7 @@ void PluginRunner::reset() {
 
 
 bool PluginRunner::loadPlugin(std::string filename,
+                              const unsigned int repetition,
                               const std::string param,
                               const string environment) {
     PluginLoader* loader = PluginFactory::createByName(filename);
@@ -56,6 +57,7 @@ bool PluginRunner::loadPlugin(std::string filename,
     // set the test case param and environment
     test->setParam(param);
     test->setEnvironment(environment);
+    test->setRepetition(repetition);
 
     // add the test case to the TestRunner
     addTest(test);
@@ -119,31 +121,31 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
             // check for windows .dll
             string ext = name.substr(name.size()-4,4);
             if(PluginFactory::compare(ext.c_str(), ".dll"))
-                loadPlugin(path+name);
+                loadPlugin(path+name, 0);
             // check for .lua plugin files
 #ifdef ENABLE_LUA_PLUGIN
             if(PluginFactory::compare(ext.c_str(), ".lua"))
-                loadPlugin(path+name);
+                loadPlugin(path+name, 0);
 #endif
         }
         if(name.size() > 3) {
             // check for unix .so
             string ext = name.substr(name.size()-3,3);
             if(PluginFactory::compare(ext.c_str(), ".so"))
-                loadPlugin(path+name);
+                loadPlugin(path+name, 0);
         }
         if(name.size() > 6) {
             // check for mac .dylib
             string ext = name.substr(name.size()-6,6);
             if(PluginFactory::compare(ext.c_str(), ".dylib"))
-                loadPlugin(path+name);
+                loadPlugin(path+name, 0);
         }
 #ifdef ENABLE_PYTHON_PLUGIN
         // check for .py
         if(name.size() > 2) {
             string ext = name.substr(name.size()-3,3);
              if(PluginFactory::compare(ext.c_str(), ".py"))
-                 loadPlugin(path+name);
+                 loadPlugin(path+name, 0);
         }
 #endif
 #ifdef ENABLE_RUBY_PLUGIN
@@ -151,7 +153,7 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
         if(name.size() > 2) {
             string ext = name.substr(name.size()-3,3);
              if(PluginFactory::compare(ext.c_str(), ".rb"))
-                 loadPlugin(path+name);
+                 loadPlugin(path+name,0);
         }
 #endif
     }

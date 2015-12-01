@@ -78,6 +78,9 @@ void addOptions(cmdline::parser &cmd) {
     cmd.add<string>("environment", 'e',
                     "Sets the test case environment. (Can be used only with --test option.)",
                     false);
+    cmd.add<unsigned int>("repetition", '\0',
+                    "Sets the test run repetition. (Can be used only with --test option.)",
+                    false, 0);
     cmd.add("web-reporter", 'w',
             "Enables web reporter");
     cmd.add<int>("web-port", '\0',
@@ -164,6 +167,7 @@ int main(int argc, char *argv[]) {
     // load a single plugin
     if(cmd.get<string>("test").size())
         if(!runner.loadPlugin(cmd.get<string>("test"),
+                              cmd.get<unsigned int>("repetition"),
                               cmd.get<string>("param"),
                               cmd.get<string>("environment"))) {
             reportErrors();
