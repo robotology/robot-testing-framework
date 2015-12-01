@@ -17,6 +17,7 @@
 \li \ref single-suit
 \li \ref multiple-suit
 \li \ref weblistener
+\li \ref stress-test
 \li \ref options
 
 <br>
@@ -72,7 +73,7 @@ By definition, a test suit is a set of test cases which share the same test fixt
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myconf.ini&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;dll&quot;</span><span style="color: #007700">&gt;</span> libtest1 <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/libtest2.so <span style="color: #007700">&lt;/test&gt;</span>
-    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
+    <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">repetition=</span><span style="background-color: #fff0f0">&quot;5&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test3.lua <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test4.py <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test5.rb <span style="color: #007700">&lt;/test&gt;</span>
     ...
@@ -120,6 +121,16 @@ Then open a web browser and type `http://127.0.0.1:8080` or the remote address w
 Notice that, the web reporting functionality may not be available by default and you need to enable it when building the RTF by turning on the `ENABLE_WEB_LISTENER` from the cmake. 
 
 <br>
+\section stress-test Using RTF for stress testing
+For stress testing, it is possible to repeat a test case for desired iterations. This can be easily done by providing the number of the test runs as the parameter (e.g., `--repetition 5`) for the `testrunner` or setting as the attribute of the test case within a test suite XML file. The `testrunner` repeats running the test for the desired iterations if the test does not fail. Notice that, only the `RTF::TestCase::run()` will be called repeatedly.   
+
+\verbatim
+ $ testrunner --verbose --test ~/my-plugins/mytest.lua --repetition 5
+\endverbatim
+
+
+
+<br>
 \section options The testrunner options  
 Here is the full list of \c testrunner options: 
 
@@ -134,6 +145,7 @@ options:
       --output-type     The output file type (text, junit) (string [=text])
   -p, --param           Sets the test case parameters. (Can be used only with --test option.) (string [=])
   -e, --environment     Sets the test case environment. (Can be used only with --test option.) (string [=])
+      --repetition      Sets the test run repetition. (Can be used only with --test option.) (j [=0])
   -w, --web-reporter    Enables web reporter
       --web-port        Sets the web reporter server port. (The default port number is 8080.) (i [=8080])
   -r, --recursive       Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
