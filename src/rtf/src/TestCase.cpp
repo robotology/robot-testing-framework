@@ -13,11 +13,33 @@
 #include <rtf/Arguments.h>
 
 #include <string.h>
+#include <csignal>
 
 #define C_MAXARGS           128         // max number of the command parametes
 
 using namespace RTF;
 using namespace std;
+
+
+/**
+ * In case of any abnormal behaviour of the test case
+ * catch the abortion signal and add the proper messege
+ * to the result collector.
+ */
+static RTF::TestCase* _currentTestCase = NULL;
+static void run_signal_handler(int) {
+    if(_currentTestCase) {
+        _currentTestCase->getResult()->addError(_currentTestCase,
+                                                RTF::TestMessage("asserts error with exception",
+                                                                 "Terminated due to segmentation violation/abortion within the test case!",
+                                                                 RTF_SOURCEFILE(), RTF_SOURCELINE()));
+        _currentTestCase->getResult()->endTest(_currentTestCase);
+    }
+    std::signal(SIGSEGV, SIG_DFL);
+    std::signal(SIGABRT, SIG_DFL);
+    throw TestErrorException(RTF::TestMessage("Terminated due to segmentation violation or abort signal!"));
+}
+
 
 TestCase::TestCase(std::string name, std::string param)
     : RTF::Test(name),
@@ -26,6 +48,7 @@ TestCase::TestCase(std::string name, std::string param)
       result(NULL),
       repetition(0)
 {
+    _currentTestCase = this;
 }
 
 TestCase::~TestCase() {
@@ -85,6 +108,9 @@ void TestCase::run(TestResult &rsl) {
     // call setup and run
     char *szcmd;
     char **szarg;
+
+    std::signal(SIGSEGV, run_signal_handler);
+    std::signal(SIGABRT, run_signal_handler);
     try {
         result->startTest(this);
 
@@ -141,6 +167,9 @@ void TestCase::run(TestResult &rsl) {
         successful = false;
         result->addError(this, RTF::TestMessage(e.what()));
     }
+
+    std::signal(SIGSEGV, SIG_DFL);
+    std::signal(SIGABRT, SIG_DFL);
 
     result->endTest(this);
 

@@ -43,6 +43,13 @@ void Asserter::error(bool condition,
 void Asserter::report(RTF::TestMessage msg,
                       RTF::TestCase* testcase)
 {
+    if(testcase == 0) {
+        RTF::Asserter::error(RTF::TestMessage("asserts error with exception",
+                                              "Asserter::report is called outside a TestCase!",
+                                              msg.getSourceFileName(),
+                                              msg.getSourceLineNumber()));
+        return;
+    }
     testcase->getResult()->addReport(testcase, msg);
 }
 
@@ -56,6 +63,13 @@ void Asserter::testFail(bool condition,
                      RTF::TestMessage msg,
                      RTF::TestCase* testcase)
 {
+    if(testcase == 0) {
+        RTF::Asserter::error(RTF::TestMessage("asserts error with exception",
+                                              "Asserter::testFail is called outside a TestCase!",
+                                              msg.getSourceFileName(),
+                                              msg.getSourceLineNumber()));
+        return;
+    }
     if(!condition) {
         testcase->failed();
         testcase->getResult()->addFailure(testcase, msg);
@@ -66,6 +80,13 @@ void Asserter::testCheck(bool condition,
                      RTF::TestMessage msg,
                      RTF::TestCase* testcase)
 {
+    if(testcase == 0) {
+        RTF::Asserter::error(RTF::TestMessage("asserts error with exception",
+                                              "Asserter::testCheck is called outside a TestCase!",
+                                              msg.getSourceFileName(),
+                                              msg.getSourceLineNumber()));
+        return;
+    }
     if(!condition) {
         testcase->failed();
         testcase->getResult()->addFailure(testcase, msg);

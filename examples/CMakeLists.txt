@@ -14,41 +14,41 @@ if (BUILD_EXAMPLES)
                         ${RTF_TREE_INCLUDE_DIRS})
      
 
-    add_executable(simple simple.cpp)
-    target_link_libraries(simple RTF)
-    install(TARGETS simple
-            EXPORT  simple
+    add_executable(rtf_simple simple.cpp)
+    target_link_libraries(rtf_simple RTF)
+    install(TARGETS rtf_simple
+            EXPORT  rtf_simple
             RUNTIME DESTINATION bin)
 
-    add_executable(simple_suit simple_suit.cpp)
-    target_link_libraries(simple_suit RTF)
-    install(TARGETS simple_suit
-            EXPORT  simple_suit
+    add_executable(rtf_simple_suit simple_suit.cpp)
+    target_link_libraries(rtf_simple_suit RTF)
+    install(TARGETS rtf_simple_suit
+            EXPORT  rtf_simple_suit
             RUNTIME DESTINATION bin)
 
-    add_executable(simple_collector simple_collector.cpp)
-    target_link_libraries(simple_collector RTF)
-    install(TARGETS simple_collector
-            EXPORT  simple_collector
+    add_executable(rtf_simple_collector simple_collector.cpp)
+    target_link_libraries(rtf_simple_collector RTF)
+    install(TARGETS rtf_simple_collector
+            EXPORT  rtf_simple_collector
             RUNTIME DESTINATION bin)
 
-    add_executable(simple_runner simple_runner.cpp)
-    target_link_libraries(simple_runner RTF)
-    install(TARGETS simple_runner
-            EXPORT  simple_runner
+    add_executable(rtf_simple_runner simple_runner.cpp)
+    target_link_libraries(rtf_simple_runner RTF)
+    install(TARGETS rtf_simple_runner
+            EXPORT  rtf_simple_runner
             RUNTIME DESTINATION bin)
 
-    add_executable(simple_fixture simple_fixture.cpp)
-    target_link_libraries(simple_fixture RTF)
-    install(TARGETS simple_fixture
-            EXPORT  simple_fixture
+    add_executable(rtf_simple_fixture simple_fixture.cpp)
+    target_link_libraries(rtf_simple_fixture RTF)
+    install(TARGETS rtf_simple_fixture
+            EXPORT  rtf_simple_fixture
             RUNTIME DESTINATION bin)
 
     if(ENABLE_WEB_LISTENER)
-        add_executable(simple_web simple_web.cpp)
-        target_link_libraries(simple_web RTF)
-        install(TARGETS simple_web
-                EXPORT  simple_web
+        add_executable(rtf_simple_web simple_web.cpp)
+        target_link_libraries(rtf_simple_web RTF)
+        install(TARGETS rtf_simple_web
+                EXPORT  rtf_simple_web
                 RUNTIME DESTINATION bin)
     endif()
 

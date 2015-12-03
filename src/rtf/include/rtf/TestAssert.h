@@ -77,12 +77,10 @@
  *       within a TestCase class.
  */
 #define RTF_TEST_REPORT(message)\
-    if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
-        RTF_ASSERT_ERROR("RTF_TEST_REPORT is called outside a TestCase!"); }\
-    RTF::Asserter::report(RTF::TestMessage("reports",\
+    ( RTF::Asserter::report(RTF::TestMessage("reports",\
                                             message,\
                                             RTF_SOURCEFILE(),\
-                                            RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
+                                            RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this)) )
 
 
 /** Conditional failure report. RTF_TEST_FAIL_IF does not throw any
@@ -97,14 +95,12 @@
  *       within a TestCase class.
  */
 #define RTF_TEST_FAIL_IF(condition, message)\
-    if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
-        RTF_ASSERT_ERROR("RTF_TEST_FAIL_IF is called outside a TestCase!"); }\
-    RTF::Asserter::testFail(condition,\
+    ( RTF::Asserter::testFail(condition,\
                           RTF::TestMessage(std::string("checking (") +\
                                            std::string(#condition) + ")",\
                                            message,\
                                            RTF_SOURCEFILE(),\
-                                           RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
+                                           RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this)) )
 
 /** RTF_TEST_CHECK combines RTF_TEST_REPORT and RTF_TEST_FAIL_IF.
  * It does not throw any exception. It always reports the message (comment)
@@ -119,12 +115,10 @@
  *       within a TestCase class.
  */
 #define RTF_TEST_CHECK(condition, message)\
-    if(dynamic_cast<RTF::TestCase*>(this) == 0) {\
-        RTF_ASSERT_ERROR("RTF_TEST_CHECK is called outside a TestCase!"); }\
-    RTF::Asserter::testCheck(condition,\
+    ( RTF::Asserter::testCheck(condition,\
                           RTF::TestMessage("checks",\
                                            message,\
                                            RTF_SOURCEFILE(),\
-                                           RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this))
+                                           RTF_SOURCELINE()), dynamic_cast<RTF::TestCase*>(this)) )
 
 #endif // _RTF_TESTASSERTER_H
