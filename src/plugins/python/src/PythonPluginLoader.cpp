@@ -357,8 +357,8 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
         RTF_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
     }
     //const char* str_cond = PyString_AsString(cond);
-    char str_cond[] = "False";
-    RTF::Asserter::testFail(PyObject_IsTrue(cond), RTF::TestMessage("checking ("+string(str_cond)+")",
+    //char str_cond[] = "False";
+    RTF::Asserter::testCheck(PyObject_IsTrue(cond), RTF::TestMessage("checks",
                                            message, impl->getFileName(), 0), (TestCase*)impl);
     Py_RETURN_NONE;
 }

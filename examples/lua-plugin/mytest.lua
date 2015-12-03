@@ -38,7 +38,6 @@ end
 --
 TestCase.run = function()
     RTF.testCheck(5>3, "5 is bigger than 3")
-    RTF.testCheck(5==3, "5 is equal to 3")
     RTF.testCheck(5<3, "5 is less than 3")
 end
 

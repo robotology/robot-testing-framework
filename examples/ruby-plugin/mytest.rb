@@ -22,7 +22,7 @@
 #
 # RTF::setName(name)             : sets the test name (defualt is the test filename)
 # RTF::testReport(msg)           : reports a informative message
-# RTF::testCheck(condition, msg) : reports a failure message
+# RTF::testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false
 # RTF::assertError(msg)          : throws an error exception with message
 # RTF::asserFail(msg)            : throws a failure exception with message
 #
@@ -38,10 +38,8 @@ class TestCase
 
     # The implementation of the test goes here
     def run
-        RTF::testReport("Checking bigger...")
-        RTF::testCheck(5>3, "5 is not bigger than 3.")
-        RTF::testReport("Checking smaller...")
-        RTF::testCheck(5<3, "5 is not smaller than 3.")
+        RTF::testCheck(5>3, "5 is bigger than 3.")
+        RTF::testCheck(5<3, "5 is smaller than 3.")
     end
 
     # tearDown is called after the test's run to tear down

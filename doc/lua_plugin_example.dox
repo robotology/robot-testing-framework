@@ -45,7 +45,7 @@ Writing test cases in Lua is simple. All you need is to declare the `TestCase.ru
 <span style="color: #888888">--</span>
 <span style="color: #888888">-- RTF.setName(name)             : sets the test name</span>
 <span style="color: #888888">-- RTF.testReport(msg)           : reports a informative message</span>
-<span style="color: #888888">-- RTF.testCheck(condition, msg) : reports a failure message</span>
+<span style="color: #888888">-- RTF.testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false</span>
 <span style="color: #888888">-- RTF.assertError(msg)          : throws an error exception with message</span>
 <span style="color: #888888">-- RTF.asserFail(msg)            : throws a failure exception with message</span>
 <span style="color: #888888">--</span>
@@ -64,10 +64,8 @@ TestCase.setup = <span style="color: #008800; font-weight: bold">function</span>
 <span style="color: #888888">-- @return Boolean</span>
 <span style="color: #888888">--</span>
 TestCase.run = <span style="color: #008800; font-weight: bold">function</span>()
-    RTF.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Checking bigger...&quot;</span>)
-    RTF.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&gt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is not bigger than 3.&quot;</span>)
-    RTF.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Checking smaller...&quot;</span>)
-    RTF.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&lt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is not smaller than 3.&quot;</span>)
+    RTF.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&gt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is bigger than 3.&quot;</span>)
+    RTF.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&lt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is smaller than 3.&quot;</span>)
 <span style="color: #008800; font-weight: bold">end</span>
 <span style="color: #888888">--</span>
 <span style="color: #888888">-- tearDown is called after the test run to tear down</span>
@@ -104,11 +102,10 @@ $ ./simple_run ../mytest.lua
 Loading the plugin... 
 Staring test runner.
 Test case  started...
-[INFO]  (MyTest) reports: Preparing setup...
-[INFO]  (MyTest) reports: Checking bigger...
-[INFO]  (MyTest) reports: Checking smaller...
-[FAIL]  (MyTest) checking (false): 5 is not smaller than 3.
-[INFO]  (MyTest) reports: Tearing down...
+[INFO]  (mytest.lua) reports: Preparing setup...
+[INFO]  (mytest.lua) checks: 5 is bigger than 3
+[FAIL]  (mytest.lua) checks: 5 is less than 3
+[INFO]  (mytest.lua) reports: Tearing down...
 Test case MyTest failed!
 Ending test runner.
 \endverbatim

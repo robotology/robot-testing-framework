@@ -217,8 +217,8 @@ VALUE RubyPluginLoaderImpl::testCheck(VALUE self, VALUE cond, VALUE message) {
     char* msg = StringValueCStr(message);
     RubyPluginLoaderImpl* impl = RubyPluginLoaderImpl::getImpFromRuby();
     RTF_ASSERT_ERROR_IF(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
-    std::string str_cond = "false";
-    RTF::Asserter::testFail(RTEST(cond), RTF::TestMessage("checking ("+string(str_cond)+")",
+    //std::string str_cond = "false";
+    RTF::Asserter::testCheck(RTEST(cond), RTF::TestMessage("checks",
                                            msg, impl->getFileName(), 0), (TestCase*)impl);
     return self;
 }
