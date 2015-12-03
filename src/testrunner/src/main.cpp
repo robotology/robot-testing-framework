@@ -42,9 +42,9 @@ using namespace std;
 
 void reportErrors(void) {
     ErrorLogger& logger  = ErrorLogger::Instance();
-    for(int i=0; i<logger.errorCount(); i++)
+    for(unsigned int i=0; i<logger.errorCount(); i++)
         cout<<"[testrunner] "<<logger.getLastError()<<endl;
-    for(int i=0; i<logger.warningCount(); i++)
+    for(unsigned int i=0; i<logger.warningCount(); i++)
         cout<<"[testrunner] "<<logger.getLastWarning()<<endl;
 }
 

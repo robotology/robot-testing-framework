@@ -139,7 +139,7 @@ void TestCase::run(TestResult &rsl) {
             return;
         }
 
-        for(int rep=0; rep<=repetition && successful; rep++)
+        for(unsigned int rep=0; rep<=repetition && successful; rep++)
             run();
     }
     catch(RTF::TestFailureException& e) {

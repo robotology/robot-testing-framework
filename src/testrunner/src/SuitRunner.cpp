@@ -33,12 +33,12 @@ void SuitRunner::reset() {
     PluginRunner::reset();
 
     // delete all the suits which was created
-    for(int i=0; i<suits.size(); i++)
+    for(unsigned int i=0; i<suits.size(); i++)
         delete suits[i];
     suits.clear();
 
     // delete all the fixture plugin loader which was created
-    for(int i=0; i<fixtureLoaders.size(); i++)
+    for(unsigned int i=0; i<fixtureLoaders.size(); i++)
         delete fixtureLoaders[i];
     fixtureLoaders.clear();
 }

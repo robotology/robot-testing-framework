@@ -32,7 +32,7 @@ void PluginRunner::reset() {
     TestRunner::reset();
 
     // delete all the plugin loader which was created
-    for(int i=0; i<dllLoaders.size(); i++)
+    for(unsigned int i=0; i<dllLoaders.size(); i++)
         delete dllLoaders[i];
     dllLoaders.clear();
 }
