@@ -151,24 +151,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a69f6b84cfd846cba4de886234837c3cc">assertFail</a>(lua_State* L);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#abeb6d23d5745ed8fb447e4ee40c380d9">testReport</a>(lua_State* L);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#af21eed7960e26fe271c01fc5c0748ad9">testFail</a>(lua_State* L);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a85c975427031853617fc502f966c5f0c">getTestEnvironment</a>(lua_State* L);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">   96</a></span>&#160;    lua_State *<a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">L</a>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">   97</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">filename</a>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">   98</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">error</a>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#if LUA_VERSION_NUM &gt; 501</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_Reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">  102</a></span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span>};</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif // _RTF_LUAPLUGINLOADER_IMPL_H</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a2ab9c875ea5661c885835b21f1844436">testCheck</a>(lua_State* L);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a85c975427031853617fc502f966c5f0c">getTestEnvironment</a>(lua_State* L);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">   97</a></span>&#160;    lua_State *<a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a006fa8e5adca36a5162ae74129c55489">L</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">   98</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a7e2e4a3ad95cc5d6989143a617790f11">filename</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">   99</a></span>&#160;    std::string <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#ace38c508e26b88ca9ee8cd3bf948a263">error</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#if LUA_VERSION_NUM &gt; 501</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_Reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">  103</a></span>&#160;<span class="preprocessor"></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>luaL_reg <a class="code" href="classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html#a0a9fbbb5364fd937aefb31fa502d9bb2">luaPluginLib</a>[];</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif // _RTF_LUAPLUGINLOADER_IMPL_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 18:06:03 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 3 2015 16:54:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

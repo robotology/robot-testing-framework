@@ -141,38 +141,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#a2deaf215be70aa3ce0b5d0490fb4157f">   79</a></span>&#160;<span class="preprocessor">#define RTF_TEST_REPORT(message)\</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">    if(dynamic_cast&lt;RTF::TestCase*&gt;(this) == 0) {\</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_TEST_REPORT is called outside a TestCase!&quot;); }\</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">    RTF::Asserter::report(RTF::TestMessage(&quot;reports&quot;,\</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">                                            message,\</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">                                            RTF_SOURCEFILE(),\</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">                                            RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this))</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#abfd93ae7969802373a02be166636c0a0">   99</a></span>&#160;<span class="preprocessor">#define RTF_TEST_FAIL_IF(condition, message)\</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">    if(dynamic_cast&lt;RTF::TestCase*&gt;(this) == 0) {\</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_TEST_FAIL_IF is called outside a TestCase!&quot;); }\</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">    RTF::Asserter::testFail(condition,\</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">                          RTF::TestMessage(std::string(&quot;checking (&quot;) +\</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">                                           std::string(#condition) + &quot;)&quot;,\</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">                                           message,\</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">                                           RTF_SOURCEFILE(),\</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">                                           RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this))</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb">  121</a></span>&#160;<span class="preprocessor">#define RTF_TEST_CHECK(condition, message)\</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">    if(dynamic_cast&lt;RTF::TestCase*&gt;(this) == 0) {\</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">        RTF_ASSERT_ERROR(&quot;RTF_TEST_CHECK is called outside a TestCase!&quot;); }\</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">    RTF::Asserter::testCheck(condition,\</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">                          RTF::TestMessage(&quot;checks&quot;,\</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">                                           message,\</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">                                           RTF_SOURCEFILE(),\</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">                                           RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this))</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif // _RTF_TESTASSERTER_H</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">    ( RTF::Asserter::report(RTF::TestMessage(&quot;reports&quot;,\</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">                                            message,\</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">                                            RTF_SOURCEFILE(),\</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">                                            RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this)) )</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#abfd93ae7969802373a02be166636c0a0">   97</a></span>&#160;<span class="preprocessor">#define RTF_TEST_FAIL_IF(condition, message)\</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">    ( RTF::Asserter::testFail(condition,\</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">                          RTF::TestMessage(std::string(&quot;checking (&quot;) +\</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">                                           std::string(#condition) + &quot;)&quot;,\</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">                                           message,\</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">                                           RTF_SOURCEFILE(),\</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">                                           RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this)) )</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="code" href="TestAssert_8h.html#a209a2cb5ed9b31c21f51941fb84354bb">  117</a></span>&#160;<span class="preprocessor">#define RTF_TEST_CHECK(condition, message)\</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">    ( RTF::Asserter::testCheck(condition,\</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">                          RTF::TestMessage(&quot;checks&quot;,\</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">                                           message,\</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">                                           RTF_SOURCEFILE(),\</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">                                           RTF_SOURCELINE()), dynamic_cast&lt;RTF::TestCase*&gt;(this)) )</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif // _RTF_TESTASSERTER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 18:06:03 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 3 2015 16:54:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

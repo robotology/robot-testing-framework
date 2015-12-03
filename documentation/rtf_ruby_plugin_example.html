@@ -122,7 +122,7 @@ Writing the test case in Ruby</h1>
 <span style="color: #408080; font-style: italic">#</span>
 <span style="color: #408080; font-style: italic"># RTF::setName(name)             : sets the test name (defualt is the test filename)</span>
 <span style="color: #408080; font-style: italic"># RTF::testReport(msg)           : reports a informative message</span>
-<span style="color: #408080; font-style: italic"># RTF::testCheck(condition, msg) : reports a failure message</span>
+<span style="color: #408080; font-style: italic"># RTF::testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false</span>
 <span style="color: #408080; font-style: italic"># RTF::assertError(msg)          : throws an error exception with message</span>
 <span style="color: #408080; font-style: italic"># RTF::asserFail(msg)            : throws a failure exception with message</span>
 <span style="color: #408080; font-style: italic">#</span>
@@ -138,10 +138,8 @@ Writing the test case in Ruby</h1>
 
     <span style="color: #408080; font-style: italic"># The implementation of the test goes here</span>
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">run</span>
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testReport</span>(<span style="color: #BA2121">&quot;Checking bigger...&quot;</span>)
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&gt;3</span>, <span style="color: #BA2121">&quot;5 is not bigger than 3.&quot;</span>)
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testReport</span>(<span style="color: #BA2121">&quot;Checking smaller...&quot;</span>)
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&lt;3</span>, <span style="color: #BA2121">&quot;5 is not smaller than 3.&quot;</span>)
+        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&gt;3</span>, <span style="color: #BA2121">&quot;5 is bigger than 3.&quot;</span>)
+        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&lt;3</span>, <span style="color: #BA2121">&quot;5 is smaller than 3.&quot;</span>)
     <span style="color: #008000; font-weight: bold">end</span>
 
     <span style="color: #408080; font-style: italic"># tearDown is called after the test&#39;s run to tear down</span>
@@ -241,17 +239,16 @@ $ ./simple_run ../mytest.rb
 Loading the plugin... 
 Staring test runner.
 Test case  started...
-[INFO]  (MyTest) reports: Preparing setup...
-[INFO]  (MyTest) reports: Checking bigger...
-[INFO]  (MyTest) reports: Checking smaller...
-[FAIL]  (MyTest) checking (False): 5 is not smaller than 3.
-[INFO]  (MyTest) reports: Tearing down...
+[INFO]  (mytest.rb) reports: Preparing setup...
+[INFO]  (mytest.rb) checks: 5 is bigger than 3.
+[FAIL]  (mytest.rb) checks: 5 is smaller than 3.
+[INFO]  (mytest.rb) reports: Tearing down...
 Test case MyTest failed!
 Ending test runner.
 </pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 18:06:03 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 3 2015 16:54:24 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
