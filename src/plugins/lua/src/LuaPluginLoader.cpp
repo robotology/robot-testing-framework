@@ -22,7 +22,7 @@ using namespace RTF::plugin;
 /**
  * @brief LuaPluginLoaderImpl
  */
-#define LUA_TEST_CHECK  "function RTF.testCheck(condition, message) \
+#define LUA_TEST_CHECK  "function RTF.testFailIf(condition, message) \
                            if(not (condition)) then \
                                 RTF.testFail(tostring(condition), message) \
                             end \
@@ -38,6 +38,7 @@ const struct luaL_reg LuaPluginLoaderImpl::luaPluginLib [] = {
     {"assertFail", LuaPluginLoaderImpl::assertFail},
     {"testReport", LuaPluginLoaderImpl::testReport},
     {"testFail", LuaPluginLoaderImpl::testFail},
+    {"testCheck", LuaPluginLoaderImpl::testCheck},
     {"getEnvironment", LuaPluginLoaderImpl::getTestEnvironment},
     {NULL, NULL}
 };
@@ -284,6 +285,25 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
         lua_pop(L, 1);
         RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
         RTF::Asserter::testFail(false, RTF::TestMessage("checking ("+string(cond)+")",
+                                               cst, owner->getFileName(), 0), (TestCase*)owner);
+    }
+    return 0;
+}
+
+int LuaPluginLoaderImpl::testCheck(lua_State* L) {
+    const char *cst = luaL_checkstring(L, 2);
+    if(lua_isboolean( L, 1) && cst) {
+        bool cond = lua_toboolean(L, 1);
+        lua_getglobal(L, "TestCase_Owner");
+        if(!lua_islightuserdata(L, -1)) {
+            lua_pop(L, 1);
+            RTF_ASSERT_ERROR("Cannot get TestCase_Owner");
+            return 0;
+        }
+        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        lua_pop(L, 1);
+        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF::Asserter::testCheck(cond, RTF::TestMessage("checks",
                                                cst, owner->getFileName(), 0), (TestCase*)owner);
     }
     return 0;
