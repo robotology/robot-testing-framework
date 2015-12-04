@@ -105,6 +105,8 @@ void TestCase::tearDown() { }
 void TestCase::run(TestResult &rsl) {
     this->result = &rsl;
     successful = true;
+    interrupted = false;
+
     // call setup and run
     char *szcmd;
     char **szarg;
@@ -139,8 +141,9 @@ void TestCase::run(TestResult &rsl) {
             return;
         }
 
-        for(unsigned int rep=0; rep<=repetition && successful; rep++)
+        for(unsigned int rep=0; rep<=repetition && successful && !interrupted; rep++) {
             run();
+        }
     }
     catch(RTF::TestFailureException& e) {
         successful = false;
@@ -182,4 +185,11 @@ void TestCase::run(TestResult &rsl) {
         delete [] szarg;
         szarg = NULL;
     }
+}
+
+void TestCase::interrupt() {
+    interrupted = true;
+    result->addReport(this, RTF::TestMessage("TestCase interrupted",
+                                             "An interrupt signal received",
+                                             RTF_SOURCEFILE(), RTF_SOURCELINE()));
 }

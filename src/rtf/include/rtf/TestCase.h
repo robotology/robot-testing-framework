@@ -67,6 +67,11 @@ public:
 	virtual void run() = 0;
 
     /**
+     * @brief interrupt interrupts the current test run
+     */
+    virtual void interrupt();
+
+    /**
      * the main caller of a TestCase inherited from Test Class.
      * @param result an instance of a TestResult
      * to collect the result of the test.
@@ -146,6 +151,7 @@ private:
     std::string environment;
     RTF::TestResult* result;
     bool successful;
+    bool interrupted;
     unsigned int repetition;
 };
 #endif // _RTF_TESTCASE_H
