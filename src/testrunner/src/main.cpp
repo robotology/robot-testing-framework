@@ -99,7 +99,13 @@ void addOptions(cmdline::parser &cmd) {
 
 static TestRunner* currentRunner = NULL;
 void signalHandler(int signum) {
-    cout<<endl<<"[testrunner] interrupted..."<<endl<<endl;
+    static int interuptCount = 1;
+    cout<<endl<<"[testrunner] ("<<interuptCount<<") interrupted..."<<endl<<endl;
+    if(interuptCount++ > 3) {
+        cout<<endl<<"[testrunner] killing the tests (interrupted for more than 3 times)!"<<endl<<endl;
+        exit(EXIT_FAILURE);
+    }
+
     if(currentRunner)
         currentRunner->interrupt();
 }
