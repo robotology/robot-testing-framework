@@ -65,7 +65,16 @@ extern "C" void rtf_test_report(char* message) {
 
 extern "C" void rtf_test_check(unsigned int condtion, char* message) {
     RTF_ASSERT_ERROR_IF(testInstance, "testInstance is surprisingly NULL!");
-    RTF::Asserter::check(condtion != 0, RTF::TestMessage("reports",
+    RTF::Asserter::testCheck(condtion != 0, RTF::TestMessage("checks",
+                                            message,
+                                            RTF_SOURCEFILE(),
+                                            RTF_SOURCELINE()), testInstance);   
+}
+
+
+extern "C" void rtf_test_fail_if(unsigned int condtion, char* message) {
+    RTF_ASSERT_ERROR_IF(testInstance, "testInstance is surprisingly NULL!");
+    RTF::Asserter::testFail(condtion != 0, RTF::TestMessage("checking condition",
                                             message,
                                             RTF_SOURCEFILE(),
                                             RTF_SOURCELINE()), testInstance);   

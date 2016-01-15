@@ -44,5 +44,15 @@ package body RTF.Asserter is
         TestCheck_Wrapper(Cond, To_C(Message));
     end;
 
+    procedure TestFailIf(Condition: Boolean; 
+                        Message : String) is
+    Cond : Interfaces.C.unsigned := 1; 
+    begin 
+        if not Condition then 
+            Cond := 0;
+        end if;   
+        TestFailIf_Wrapper(Cond, To_C(Message));
+    end;
+
 end RTF.Asserter;
 

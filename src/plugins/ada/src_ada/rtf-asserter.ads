@@ -44,6 +44,8 @@ package RTF.Asserter is
     procedure TestReport(Message : String);
     procedure TestCheck(Condition: Boolean;
                         Message : String);
+    procedure TestFailIf(Condition: Boolean;
+                        Message : String);
 
 private       
     procedure TestReport_Wrapper(Message : Interfaces.C.char_array);
@@ -52,6 +54,12 @@ private
     procedure TestCheck_Wrapper(Condition : Interfaces.C.unsigned;
                                 Message : Interfaces.C.char_array);
     pragma Import (C, TestCheck_Wrapper, "rtf_test_check");
+
+
+    procedure TestFailIf_Wrapper(Condition : Interfaces.C.unsigned;
+                                Message : Interfaces.C.char_array);
+    pragma Import (C, TestFailIf_Wrapper, "rtf_test_fail_if");
+
 
     procedure Error_Wrapper(Message : Interfaces.C.char_array);
     pragma Import (C, Error_Wrapper, "rtf_assert_error");
