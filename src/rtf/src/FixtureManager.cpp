@@ -48,6 +48,11 @@ bool FixtureManager::setup(int argc, char**argv) {
 void FixtureManager::tearDown() { }
 
 
+bool FixtureManager::check() {
+    return true;
+}
+
+
 void FixtureManager::setDispatcher(RTF::FixtureEvents* dispatcher) {
     this->dispatcher = dispatcher;
 }

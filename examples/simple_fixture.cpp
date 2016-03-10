@@ -51,6 +51,10 @@ public:
         return true;
     }
 
+    bool check() {
+        printf("Myfixture checking ...\n");
+        return true;
+    }
 
     void tearDown() {
         // uninitialize the fixture

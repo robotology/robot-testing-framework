@@ -95,12 +95,18 @@ public:
     */
    virtual bool setup(int argc, char**argv);
 
-
     /**
      * @brief tearDown is called after to stop the fixture manager
      */
     virtual void tearDown();
 
+    /**
+     * @brief check if the fixture is okay. This is called
+     * automatically from the corresponding test suit to ensure
+     * the correctness of the fixture before running each test case.
+     * @return true or false depending of correctness of the fixture
+     */
+    virtual bool check();
 
     /**
      * @brief setDispatcher Sets the FixtureEvents dispatcher

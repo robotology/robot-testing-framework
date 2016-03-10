@@ -88,10 +88,20 @@ void TestSuit::run(TestResult &rsl) {
             if(interrupted)
                 throw TestFailureException(RTF::TestMessage("interrupted!"));
 
+            if(!fixtureOK)
+                result->addError(this, fixtureMesssage);
+
+            if(fixtureManager && !fixtureManager->check()) {
+                result->addError(this, TestMessage("Fixture collapsed",
+                                                   "check() failed",
+                                                   RTF_SOURCEFILE(),
+                                                   RTF_SOURCELINE()));
+                fixtureOK = false;
+            }
+
             // restart the fixture if it has been collapsed
             if(!fixtureOK) {
                 successful = false;
-                result->addError(this, fixtureMesssage);
                 result->addReport(this, TestMessage("reports",
                                                     "restaring fixture setup",
                                                     RTF_SOURCEFILE(),
@@ -99,6 +109,11 @@ void TestSuit::run(TestResult &rsl) {
                 tearDown();
                 if(!setup())
                     throw FixtureException(RTF::TestMessage("setup() failed!"));
+                if(fixtureManager && !fixtureManager->check())
+                    throw FixtureException(TestMessage("Fixture collapsed",
+                                                       "check() failed",
+                                                       RTF_SOURCEFILE(),
+                                                       RTF_SOURCELINE()));
                 fixtureOK = true;
             }
             (*it)->run(*result);
