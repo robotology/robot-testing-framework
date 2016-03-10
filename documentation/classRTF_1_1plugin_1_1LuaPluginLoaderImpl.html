@@ -142,6 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5ccf64165baad7019933e1d5d01e7b4a inherit pub_methods_classRTF_1_1TestCase"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> constructor.  <a href="#a5ccf64165baad7019933e1d5d01e7b4a"></a><br/></td></tr>
 <tr class="memitem:a0b3736e2100052247ebcd46bff63309a inherit pub_methods_classRTF_1_1TestCase"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a0b3736e2100052247ebcd46bff63309a">~TestCase</a> ()</td></tr>
 <tr class="memdesc:a0b3736e2100052247ebcd46bff63309a inherit pub_methods_classRTF_1_1TestCase"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> destructor.  <a href="#a0b3736e2100052247ebcd46bff63309a"></a><br/></td></tr>
+<tr class="memitem:a1dc2d9875c20e88d0f21f6fadf597c5a inherit pub_methods_classRTF_1_1TestCase"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a1dc2d9875c20e88d0f21f6fadf597c5a">interrupt</a> ()</td></tr>
+<tr class="memdesc:a1dc2d9875c20e88d0f21f6fadf597c5a inherit pub_methods_classRTF_1_1TestCase"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt interrupts the current test run  <a href="#a1dc2d9875c20e88d0f21f6fadf597c5a"></a><br/></td></tr>
 <tr class="memitem:a4fd64b649b6599d368c208750ec4bc36 inherit pub_methods_classRTF_1_1TestCase"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#a4fd64b649b6599d368c208750ec4bc36">run</a> (<a class="el" href="classRTF_1_1TestResult.html">TestResult</a> &amp;<a class="el" href="classRTF_1_1TestCase.html#afaeba8ffd9dad99711e30daa8d2dea9d">result</a>)</td></tr>
 <tr class="memdesc:a4fd64b649b6599d368c208750ec4bc36 inherit pub_methods_classRTF_1_1TestCase"><td class="mdescLeft">&#160;</td><td class="mdescRight">the main caller of a <a class="el" href="classRTF_1_1TestCase.html" title="The base class to implememnt a test case.">TestCase</a> inherited from <a class="el" href="classRTF_1_1Test.html" title="The simplest form of a test unit.">Test</a> Class.  <a href="#a4fd64b649b6599d368c208750ec4bc36"></a><br/></td></tr>
 <tr class="memitem:ae915726f3a6ba7b19cc7c3d11544a480 inherit pub_methods_classRTF_1_1TestCase"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1TestCase.html#ae915726f3a6ba7b19cc7c3d11544a480">succeeded</a> () const </td></tr>
@@ -173,8 +175,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a09711be1e20429a16d53b7a01fc0e210 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDescription Getting test description  <a href="#a09711be1e20429a16d53b7a01fc0e210"></a><br/></td></tr>
 <tr class="memitem:a2b18b07f50f63be9afc5614e71c269a5 inherit pub_methods_classRTF_1_1Test"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Test.html#a2b18b07f50f63be9afc5614e71c269a5">setDescription</a> (const std::string description)</td></tr>
 <tr class="memdesc:a2b18b07f50f63be9afc5614e71c269a5 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">setDescription Sets an optional string which describes the test.  <a href="#a2b18b07f50f63be9afc5614e71c269a5"></a><br/></td></tr>
-<tr class="memitem:a30892286dc88264d428b66bec47283c2 inherit pub_methods_classRTF_1_1Test"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1Test.html#a30892286dc88264d428b66bec47283c2">interrupt</a> ()</td></tr>
-<tr class="memdesc:a30892286dc88264d428b66bec47283c2 inherit pub_methods_classRTF_1_1Test"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt interrupts the current test run  <a href="#a30892286dc88264d428b66bec47283c2"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -794,7 +794,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 3 2015 16:54:25 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 10 2016 13:48:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

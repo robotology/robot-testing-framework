@@ -117,6 +117,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a049d7936c5cee0c869a4e09a6b7a3fd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">setup is called to start the fixture manager  <a href="#a049d7936c5cee0c869a4e09a6b7a3fd4"></a><br/></td></tr>
 <tr class="memitem:a47e46882e42b4239db2b0f9191a8b8df"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a47e46882e42b4239db2b0f9191a8b8df">tearDown</a> ()</td></tr>
 <tr class="memdesc:a47e46882e42b4239db2b0f9191a8b8df"><td class="mdescLeft">&#160;</td><td class="mdescRight">tearDown is called after to stop the fixture manager  <a href="#a47e46882e42b4239db2b0f9191a8b8df"></a><br/></td></tr>
+<tr class="memitem:a9465ed693a756a90c0b22b7b17e432ef"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a9465ed693a756a90c0b22b7b17e432ef">check</a> ()</td></tr>
+<tr class="memdesc:a9465ed693a756a90c0b22b7b17e432ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the fixture is okay.  <a href="#a9465ed693a756a90c0b22b7b17e432ef"></a><br/></td></tr>
 <tr class="memitem:abfb50b99cafcd9bd7cb00e0531102e33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#abfb50b99cafcd9bd7cb00e0531102e33">setDispatcher</a> (<a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *<a class="el" href="classRTF_1_1FixtureManager.html#ac0d99e38ec29546de465c4379e610e19">dispatcher</a>)</td></tr>
 <tr class="memdesc:abfb50b99cafcd9bd7cb00e0531102e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">setDispatcher Sets the <a class="el" href="classRTF_1_1FixtureEvents.html" title="class FixtureEvents">FixtureEvents</a> dispatcher  <a href="#abfb50b99cafcd9bd7cb00e0531102e33"></a><br/></td></tr>
 <tr class="memitem:a72fa80e907398b7d039ccff2dc521a3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRTF_1_1FixtureEvents.html">RTF::FixtureEvents</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRTF_1_1FixtureManager.html#a72fa80e907398b7d039ccff2dc521a3e">getDispatcher</a> ()</td></tr>
@@ -188,6 +190,10 @@ Private Attributes</h2></td></tr>
 <div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
 <div class="line"></div>
+<div class="line">    <span class="keywordtype">bool</span> <a class="code" href="classRTF_1_1FixtureManager.html#a9465ed693a756a90c0b22b7b17e432ef" title="check if the fixture is okay.">check</a>() {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Myfixture checking ...\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">void</span> <a class="code" href="classRTF_1_1FixtureManager.html#a47e46882e42b4239db2b0f9191a8b8df" title="tearDown is called after to stop the fixture manager">tearDown</a>() {</div>
 <div class="line">        <span class="comment">// uninitialize the fixture</span></div>
@@ -318,6 +324,33 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2>Member Function Documentation</h2>
+<a class="anchor" id="a9465ed693a756a90c0b22b7b17e432ef"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool RTF::FixtureManager::check </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>check if the fixture is okay. </p>
+<p>This is called automatically from the corresponding test suit to ensure the correctness of the fixture before running each test case. </p>
+<dl class="section return"><dt>Returns</dt><dd>true or false depending of correctness of the fixture </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a72fa80e907398b7d039ccff2dc521a3e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -510,7 +543,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00134">134</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
+<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00140">140</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 
 </div>
 </div>
@@ -532,7 +565,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00133">133</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
+<p>Definition at line <a class="el" href="FixtureManager_8h_source.html#l00139">139</a> of file <a class="el" href="FixtureManager_8h_source.html">FixtureManager.h</a>.</p>
 
 </div>
 </div>
@@ -542,7 +575,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 3 2015 16:54:25 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 10 2016 13:48:10 for RTF by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
