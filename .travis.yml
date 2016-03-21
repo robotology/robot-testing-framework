@@ -1,19 +1,32 @@
+sudo: required
+dist: trusty
+
 language: cpp
 
 compiler:
   - gcc
   - clang
+  
+os:
+  - linux
+  - osx
 
 env:
   - TRAVIS_BUILD_TYPE=Debug
   - TRAVIS_BUILD_TYPE=Release
-
-before_script:
-  # install a recent cmake, lua 5.1, ruby and python 
-  - sudo add-apt-repository -y ppa:robotology/ppa
-  - sudo apt-get update
-  - sudo apt-get install cmake liblua5.1-dev python-dev ruby-dev libace-dev libgsl0-dev
   
+before_install:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap homebrew/x11; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap homebrew/science; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
+install:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install yarp --only-dependencies; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml python ruby lua51; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev ruby-dev libace-dev libgsl0-dev; fi
+  - python --version 
+  
+before_script:
   - cd ..
   # install yarp
   - git clone https://github.com/robotology/yarp
@@ -23,14 +36,14 @@ before_script:
   - cmake -DCREATE_LIB_MATH:BOOL=ON -DCREATE_SHARED_LIBRARY:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  ..
   - make
   - sudo make install
-  - sudo ldconfig
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ldconfig; fi
   - cd ../..
   
   - cd robot-testing
   # configure robot-testing framework
   - mkdir build 
   - cd build 
-  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_RUBY_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON -DENABLE_MIDDLEWARE_PLUGINS:BOOL=ON ..
+  - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DRTF_USE_PYTHON_VERSION=2 -DENABLE_RUBY_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON -DENABLE_MIDDLEWARE_PLUGINS:BOOL=ON ..
   
 script: 
   - make
