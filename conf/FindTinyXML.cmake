@@ -1,42 +1,39 @@
-# Try to find the TinyXML library.
-# Once done this will define the following variables:
-# Try to find the TinyXML library
-# TinyXML_FOUND - system has TinyXML
-# TinyXML_INCLUDE_DIRS - TinyXML include directory
-# TinyXML_LIBRARY_DIRS - TinyXML library directory
-# TinyXML_LIBRARIES - TinyXML libraries
-
-# Copyright (C) 2012  iCub Facility, Istituto Italiano di Tecnologia
-# Author: Daniele E. Domenichelli <daniele.domenichelli@iit.it>
+#.rst:
+# FindTinyXML
+# -----------
 #
-# CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Try to find the TinyXML library.
+# Once done this will define the following variables::
+#
+#  TinyXML_FOUND         - System has TinyXML
+#  TinyXML_INCLUDE_DIRS  - TinyXML include directory
+#  TinyXML_LIBRARIES     - TinyXML libraries
+#  TinyXML_DEFINITIONS   - Additional compiler flags for TinyXML
+#  TinyXML_VERSION       - TinyXML version
+#  TinyXML_MAJOR_VERSION - TinyXML major version
+#  TinyXML_MINOR_VERSION - TinyXML minor version
+#  TinyXML_PATCH_VERSION - TinyXML patch version
 
-if(NOT WIN32)
-    find_package(PkgConfig)
-    if(PKG_CONFIG_FOUND)
-        if(TinyXML_FIND_VERSION)
-            if(TinyXML_FIND_VERSION_EXACT)
-                pkg_check_modules(PC_TINYXML QUIET tinyxml=${TinyXML_FIND_VERSION})
-            else(TinyXML_FIND_VERSION_EXACT)
-                pkg_check_modules(PC_TINYXML QUIET tinyxml>=${TinyXML_FIND_VERSION})
-            endif(TinyXML_FIND_VERSION_EXACT)
-        else(TinyXML_FIND_VERSION)
-            pkg_check_modules(PC_TINYXML QUIET tinyxml)
-        endif(TinyXML_FIND_VERSION)
-    endif(PKG_CONFIG_FOUND)
-endif(NOT WIN32)
+#=============================================================================
+# Copyright 2012-2013  iCub Facility, Istituto Italiano di Tecnologia
+#   Authors: Daniele E. Domenichelli <daniele.domenichelli@iit.it>
+#
+# Distributed under the OSI-approved BSD License (the "License");
+# see accompanying file Copyright.txt for details.
+#
+# This software is distributed WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the License for more information.
+#=============================================================================
+# (To distribute this file outside of YCM, substitute the full
+#  License text for the above reference.)
 
-set(TinyXML_INCLUDE_DIRS ${PC_TINYXML_INCLUDE_DIRS} CACHE PATH "TinyXML include directory" FORCE)
-set(TinyXML_LIBRARY_DIRS ${PC_TINYXML_LIBRARY_DIRS} CACHE PATH "TinyXML library directory" FORCE)
-set(TinyXML_LIBRARIES ${PC_TINYXML_LIBRARIES} CACHE STRING "TinyXML libraries" FORCE)
 
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(TinyXML
-                                  DEFAULT_MSG
-                                  TinyXML_LIBRARIES
-)
+include(StandardFindModule)
+standard_find_module(TinyXML tinyxml)
 
-set(TinyXML_FOUND ${TINYXML_FOUND})
-
-mark_as_advanced(TinyXML_INCLUDE_DIRS TinyXML_LIBRARY_DIRS TinyXML_LIBRARIES)
-
+# Set package properties if FeatureSummary was included
+if(COMMAND set_package_properties)
+    set_package_properties(TinyXML PROPERTIES DESCRIPTION "A small, simple XML parser for the C++ language"
+                                              URL "http://www.grinninglizard.com/tinyxml/index.html")
+endif()
