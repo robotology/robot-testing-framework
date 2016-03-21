@@ -20,7 +20,7 @@ before_install:
   
   # On linux install a recent cmake, lua 5.1, ruby and python 
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; sudo add-apt-repository -y ppa:robotology/ppa; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; sudo apt-get update -qq; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; sudo apt-get update; fi
 
 install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install yarp --only-dependencies; fi
