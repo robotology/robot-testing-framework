@@ -35,7 +35,7 @@ before_script:
   - cmake -DCREATE_LIB_MATH:BOOL=ON -DCREATE_SHARED_LIBRARY:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  ..
   - make
   - sudo make install
-  - sudo ldconfig
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ldconfig; fi
   - cd ../..
   
   - cd robot-testing
