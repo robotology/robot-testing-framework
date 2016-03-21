@@ -47,7 +47,7 @@ else()
 endif()
 
 link_libraries(${PYTHON_LIBRARY})
-target_link_libraries(RTF_python ${PYTHON_LIBRARY})
+target_link_libraries(RTF_python ${RTF_LIBS} ${PYTHON_LIBRARY})
 
 # choose which header files should be installed
 file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/python/*.h)

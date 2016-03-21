@@ -36,7 +36,7 @@ else()
     add_library(RTF_ruby SHARED ${folder_source} ${folder_header} )
 endif()
 
-target_link_libraries(RTF_ruby ${RUBY_LIBRARY})
+target_link_libraries(RTF_ruby ${RTF_LIBS} ${RUBY_LIBRARY})
 
 
 # choose which header files should be installed

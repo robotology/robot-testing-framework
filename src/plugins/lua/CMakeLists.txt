@@ -35,7 +35,7 @@ else()
     add_library(RTF_lua SHARED ${folder_source} ${folder_header} )
 endif()
 
-target_link_libraries(RTF_lua ${LUA_LIBRARY})
+target_link_libraries(RTF_lua ${RTF_LIBS} ${LUA_LIBRARY})
 
 
 # choose which header files should be installed
