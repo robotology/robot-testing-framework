@@ -14,7 +14,9 @@ install:
 
   - ps: >-
       $dwntool = New-Object System.Net.WebClient
+      
       $Stoploop = $false
+      
       do {
           try {
             $dwntool.DownloadFile('https://github.com/robotology/yarp/releases/download/v2.3.64/yarp_2.3.64_v12_x86_1.exe','c:\dev\yarp.exe')
@@ -25,6 +27,7 @@ install:
           }
       }
       While ($Stoploop -eq $false)
+      
   - cmd: start "" /WAIT "c:\dev\yarp.exe" /S
   - cmd: timeout 10
   - cmd: dir "c:\Program Files (x86)\robotology"
