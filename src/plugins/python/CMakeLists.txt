@@ -11,12 +11,14 @@ project(RTF_python)
 
 
 # option (RTF_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use")
-set(RTF_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use" )
+set(RTF_USE_PYTHON_VERSION "2" CACHE STRING "Specify python version to use (only Python 2 is supported at the moment)" )
 
 #find_package(PythonInterp ${YARP_USE_PYTHON_VERSION} REQUIRED)
 if(RTF_USE_PYTHON_VERSION)
+    find_package(PythonInterp ${RTF_USE_PYTHON_VERSION} REQUIRED)
     find_package(PythonLibs ${RTF_USE_PYTHON_VERSION} EXACT REQUIRED)
 else()
+    find_package(PythonInterp REQUIRED)
     find_package(PythonLibs REQUIRED)
 endif()
 
