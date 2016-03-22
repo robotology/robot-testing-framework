@@ -1,0 +1,43 @@
+version: 1.0.{build}
+
+clone_folder: c:\dev\RTF
+
+environment:
+  ACE_ROOT:          c:/Program Files (x86)/robotology/ace-6.1.1
+  GSL_DIR:           c:/Program Files (x86)/robotology/gsl-1.14
+  Qt5_DIR:           c:/Program Files (x86)/robotology/Qt-5.4.1_v12_x86
+  YARP_DIR:          c:/Program Files (x86)/robotology/yarp-2.3.64
+
+install:
+  # to install unzipper do: "cinst 7zip.commandline -x86"
+  # the format is: "7z x c:\path-to-archive\archive.zip -oc:\path-where-unzip -y > nul"
+
+  - ps: >-
+      $dwntool = New-Object System.Net.WebClient
+      
+      $Stoploop = $false
+      
+      do {
+          try {
+            $dwntool.DownloadFile('https://github.com/robotology/yarp/releases/download/v2.3.64/yarp_2.3.64_v12_x86_1.exe','c:\dev\yarp.exe')
+            $Stoploop = $true
+          }
+          catch {
+            Start-Sleep -Seconds 15
+          }
+      }
+      While ($Stoploop -eq $false)
+      
+  - cmd: start "" /WAIT "c:\dev\yarp.exe" /S
+  - cmd: timeout 10
+  - cmd: dir "c:\Program Files (x86)\robotology"
+
+
+build:
+
+build_script:
+  - cd c:\dev\RTF
+  - md build
+  - cd build
+  - cmake -G"Visual Studio 12" ..
+  - msbuild /m /p:Configuration=Release /p:Platform="Win32" RTF.sln
