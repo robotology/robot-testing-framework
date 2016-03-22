@@ -86,12 +86,6 @@ public:
             if(PluginFactory::compare(ext.c_str(), ".so"))
                 return new RTF::plugin::DllPluginLoader();
         }
-        if(name.size() > 6) {
-            // check for mac .dylib
-            std::string ext = name.substr(name.size()-6,6);
-            if(PluginFactory::compare(ext.c_str(), ".dylib"))
-                return new RTF::plugin::DllPluginLoader();
-        }
         return NULL;
     }
 

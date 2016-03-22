@@ -111,8 +111,6 @@ bool SuitRunner::loadSuit(std::string filename) {
 
 #ifdef _WIN32
                 pluginName =  pluginName + ".dll";
-#elif __APPLE__
-                pluginName =  pluginName + ".dylib";
 #else
                 pluginName =  pluginName + ".so";
 #endif
