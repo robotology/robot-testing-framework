@@ -56,6 +56,8 @@ endif()
 
 set(RTF_YARP_FOUND @RTF_HAS_YARP@)
 if(RTF_YARP_FOUND)
+  # todo: change to find_dependency when CMake 3.0 will be the minimum version
+  find_package(YARP QUIET)
   set_and_check(RTF_YARP_INCLUDEDIR "@PACKAGE_RTF_YARP_INCLUDEDIR@")
   list(APPEND RTF_LIBRARIES RTF::RTF_yarp_utility)
   list(APPEND RTF_INCLUDE_DIRS "${RTF_YARP_INCLUDEDIR}")
