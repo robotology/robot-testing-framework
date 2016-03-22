@@ -49,6 +49,7 @@ before_script:
 script: 
   - make
   # test install/uninstall
+  - ctest --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
   - sudo make install
 
 notifications:
