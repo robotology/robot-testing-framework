@@ -13,6 +13,7 @@
 
 #include <rtf/TestCase.h>
 #include <rtf/TestResult.h>
+#include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
 #include <rtf/TestSuit.h>
 #include <rtf/WebProgressListener.h>
@@ -72,9 +73,14 @@ int main(int argc, char** argv)
     // create a test listener to collect the result
     WebProgressListener web(8080, false);
 
+    // create a collector to get computer readable
+    // test results
+    TestResultCollector collector;
+
     // create a test result sand add the listeners
     TestResult result;
     result.addListener(&web);
+    result.addListener(&collector);
     printf("To see the test result, open a web browser and type 'http://127.0.0.1:8080'...\n");
 
     // create a test suit and the test cases
@@ -88,5 +94,7 @@ int main(int argc, char** argv)
     TestRunner runner;
     runner.addTest(&suit);
     runner.run(result);
-    return 0;
+
+    // return the number of failed tests
+    return collector.failedCount();
 }

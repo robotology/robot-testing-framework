@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <rtf/TestCase.h>
 #include <rtf/TestResult.h>
+#include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
 #include <rtf/ConsoleListener.h>
 #include <rtf/TestAssert.h>
@@ -48,9 +49,14 @@ int main(int argc, char** argv)
     // create a test listener to collect the result
     ConsoleListener listener(false);
 
+    // create a collector to get computer readable
+    // test results
+    TestResultCollector collector;
+
     // create a test result and add the listeners
     TestResult result;
     result.addListener(&listener);
+    result.addListener(&collector);
 
     // create a test runner
     TestRunner runner;
@@ -58,6 +64,7 @@ int main(int argc, char** argv)
     runner.addTest(&atest);
     runner.run(result);
 
-    return 0;
+    // return the number of failed tests
+    return collector.failedCount();
 
 }

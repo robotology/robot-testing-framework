@@ -7,9 +7,11 @@
  *
  */
 
+#include <iostream>
 #include <stdio.h>
 #include <rtf/TestCase.h>
 #include <rtf/TestResult.h>
+#include <rtf/TestResultCollector.h>
 #include <rtf/ConsoleListener.h>
 #include <rtf/TestAssert.h>
 
@@ -46,17 +48,23 @@ public:
 int main(int argc, char** argv)
 {
     // create a test listener to collect the result
-    // and enbale the verbose mode
+    // and enable the verbose mode
     ConsoleListener listener(true);
+
+    // create a collector to get computer readable
+    // test results
+    TestResultCollector collector;
 
     // create a test result and add the listeners
     TestResult result;
     result.addListener(&listener);
+    result.addListener(&collector);
 
     // calling a test case
     MyTest atest;
     atest.TestCase::run(result);
 
-    return 0;
-
+    // return 0 if the test passed
+    // otherwise the number of failed test
+    return collector.failedCount();
 }
