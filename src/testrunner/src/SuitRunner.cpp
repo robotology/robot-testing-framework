@@ -142,8 +142,6 @@ bool SuitRunner::loadSuit(std::string filename) {
                 if(PluginFactory::compare(test->Attribute("type"), "dll")) {
 #ifdef _WIN32
                    pluginName =  pluginName + ".dll";
-#elif __APPLE__
-                    pluginName =  pluginName + ".dylib";
 #else
                     pluginName =  pluginName + ".so";
 #endif
