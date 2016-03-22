@@ -11,12 +11,14 @@ project(RTF_python)
 
 
 # option (RTF_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use")
-set(RTF_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use" )
+set(RTF_USE_PYTHON_VERSION "2" CACHE STRING "Specify python version to use (only Python 2 is supported at the moment)" )
 
 #find_package(PythonInterp ${YARP_USE_PYTHON_VERSION} REQUIRED)
 if(RTF_USE_PYTHON_VERSION)
+    find_package(PythonInterp ${RTF_USE_PYTHON_VERSION} REQUIRED)
     find_package(PythonLibs ${RTF_USE_PYTHON_VERSION} EXACT REQUIRED)
 else()
+    find_package(PythonInterp REQUIRED)
     find_package(PythonLibs REQUIRED)
 endif()
 
@@ -45,7 +47,7 @@ else()
 endif()
 
 link_libraries(${PYTHON_LIBRARY})
-target_link_libraries(RTF_python ${PYTHON_LIBRARY})
+target_link_libraries(RTF_python ${RTF_LIBS} ${PYTHON_LIBRARY})
 
 # choose which header files should be installed
 file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/python/*.h)
