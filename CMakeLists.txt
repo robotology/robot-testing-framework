@@ -66,6 +66,11 @@ endif()
 # adding directories
 add_subdirectory(extern)
 add_subdirectory(src)
+
+
+# examples are also used as tests
+enable_testing()
+
 add_subdirectory(examples)
 
 

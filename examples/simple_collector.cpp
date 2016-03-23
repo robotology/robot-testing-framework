@@ -54,7 +54,7 @@ int main(int argc, char** argv)
     result.addListener(&collector);
 
 
-    // create a test suit and the test cases
+    // create a test suite and the test cases
     TestSuit suit("MyTestSuit");
     MyTest1 test1;
     MyTest2 test2;
@@ -75,6 +75,8 @@ int main(int argc, char** argv)
     // store the results in a text file
     TextOutputter outputter(collector);
     outputter.write("./result.txt");
-    return 0;
+
+    // return the number of failed tests
+    return collector.failedCount();
 
 }

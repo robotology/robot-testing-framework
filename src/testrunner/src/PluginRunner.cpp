@@ -134,12 +134,6 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
             if(PluginFactory::compare(ext.c_str(), ".so"))
                 loadPlugin(path+name, 0);
         }
-        if(name.size() > 6) {
-            // check for mac .dylib
-            string ext = name.substr(name.size()-6,6);
-            if(PluginFactory::compare(ext.c_str(), ".dylib"))
-                loadPlugin(path+name, 0);
-        }
 #ifdef ENABLE_PYTHON_PLUGIN
         // check for .py
         if(name.size() > 2) {
