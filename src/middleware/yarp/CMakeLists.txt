@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.8.9)
 
 project(RTF_yarp)
 
-find_package(YARP REQUIRED)
+find_package(YARP 2.3.64.14 REQUIRED)
 
 set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
 get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
