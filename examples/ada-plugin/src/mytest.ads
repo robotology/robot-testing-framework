@@ -13,5 +13,8 @@ package MyTest is
     procedure Create;
     pragma Export (C, Create, RTF.Test_Create_Symbol);
 
+private
+    function RandomNumber (n: in Positive) return Integer;
+
 end MyTest;
 
