@@ -24,7 +24,7 @@ include(RTFDoc)
 # include some helper functions
 include(InstallBasicPackageFiles)
 include(GNUInstallDirs)
-include (GenerateExportHeader)
+include(GenerateExportHeader)
 
 
 # add some property to collect some information about
@@ -43,14 +43,14 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # setting options
-option (ENABLE_PLUGIN "Enable plugins" ON)
-option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
-option (ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
-option (ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
-option (ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
-option (BUILD_EXAMPLES "Build examples" ON)
-option (BUILD_TESTRUNNER "Build testrunner utility" ON)
-option (ENABLE_WEB_LISTENER "Enable web listener" ON)
+option(ENABLE_PLUGIN "Enable plugins" ON)
+option(ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
+option(ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
+option(ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
+option(ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
+option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTRUNNER "Build testrunner utility" ON)
+option(ENABLE_WEB_LISTENER "Enable web listener" ON)
 
 
 #########################################################################
