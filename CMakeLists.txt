@@ -26,6 +26,14 @@ include(InstallBasicPackageFiles)
 include(GNUInstallDirs)
 include(GenerateExportHeader)
 
+# enable RPATH
+option(ENABLE_RPATH "Enable RPATH for this library" ON)
+mark_as_advanced(ENABLE_RPATH)
+include(AddInstallRPATHSupport)
+add_install_rpath_support(BIN_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}"
+                          LIB_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}"
+                          DEPENDS ENABLE_RPATH
+                          USE_LINK_PATH)
 
 # add some property to collect some information about
 # what have been built
