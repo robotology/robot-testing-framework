@@ -17,36 +17,35 @@ env:
   
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap homebrew/x11; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap robotology/cask; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap homebrew/science; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
 install:
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew upgrade cmake; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install yarp --only-dependencies; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml python ruby lua51; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev ruby-dev libace-dev libgsl0-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew outdated cmake || brew upgrade cmake; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then if !  brew ls --versions python > /dev/null; then brew install python; fi; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install yarp; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml ruby lua51; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev ruby-dev libace-dev libeigen3-dev; fi
   - python --version 
   
 before_script:
-  - cd ..
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd ..; fi
   # install yarp
-  - git clone https://github.com/robotology/yarp
-  - cd yarp
-  - mkdir build
-  - cd build
-  - cmake -DCREATE_LIB_MATH:BOOL=ON -DCREATE_SHARED_LIBRARY:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  ..
-  - make
-  - sudo make install
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then git clone https://github.com/robotology/yarp; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd yarp; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then mkdir build; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd build; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cmake -DCREATE_LIB_MATH:BOOL=ON -DCREATE_SHARED_LIBRARY:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  ..; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo make install; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ldconfig; fi
-  - cd ../..
-  
-  - cd robot-testing
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cd ../../robot-testing; fi
+
+script:
   # configure robot-testing framework
   - mkdir build 
   - cd build 
   - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_RUBY_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON -DENABLE_MIDDLEWARE_PLUGINS:BOOL=ON ..
-  
-script: 
   - make
   # test install/uninstall
   - ctest --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
