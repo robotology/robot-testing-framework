@@ -167,7 +167,7 @@ bool SuitRunner::loadSuit(std::string filename) {
                 if(test->Attribute("repetition")) {
                     char *endptr;
                     unsigned int rep = (unsigned int) strtol(test->Attribute("repetition"), &endptr, 10);
-                    if (endptr == 0 && rep >= 0) {
+                    if (endptr == 0) {
                         testcase->setRepetition(rep);
                     }
                     else {
