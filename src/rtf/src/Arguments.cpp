@@ -14,7 +14,6 @@
 #define C_MAXARGS           128         // max number of the command parametes
 
 using namespace RTF;
-using namespace std;
 
 void Arguments::split(char *line, char **args)
 {
@@ -34,7 +33,7 @@ void Arguments::split(char *line, char **args)
 }
 
 void Arguments::parse(char *azParam ,
-                               int *argc, char **argv)
+                      int *argc, char **argv)
 {
     char *pNext = azParam;
     size_t i;
