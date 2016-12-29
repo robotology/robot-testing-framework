@@ -5,10 +5,8 @@
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
 #
 
-
 # cmake_minimum_required(VERSION 2.6)
-set(PROJECTNAME testrunner)
-project(${PROJECTNAME})
+project(testrunner)
 
 
 get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
@@ -31,10 +29,9 @@ file(GLOB_RECURSE folder_header ./include/*.h)
 source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})
 
-add_executable(${PROJECTNAME} ${folder_source} ${folder_header})
-target_link_libraries(${PROJECTNAME} ${RTF_LIBS} ${RTF_INTERNAL_LIBS} ${TinyXML_LIBRARIES})
+add_executable(${PROJECT_NAME} ${folder_source} ${folder_header})
+target_link_libraries(${PROJECT_NAME} ${RTF_LIBS} ${RTF_INTERNAL_LIBS} ${TinyXML_LIBRARIES})
 
-install(TARGETS ${PROJECTNAME}
-        EXPORT ${PROJECTNAME}
+install(TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}
         RUNTIME DESTINATION bin)
-

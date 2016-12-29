@@ -40,7 +40,7 @@ add_install_rpath_support(BIN_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BIND
 set_property(GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
 set_property(GLOBAL PROPERTY RTF_LIBS)
 
-# add some internally used properties (not for intalling or exporting)
+# add some internally used properties (not for installing or exporting)
 set_property(GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
 set_property(GLOBAL PROPERTY RTF_INTERNAL_LIBS)
 set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
@@ -98,8 +98,7 @@ set(INSTALL_RTF_YARP_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
 get_property(RTF_HAS_YARP GLOBAL PROPERTY RTF_HAS_YARP)
 
 
-
-install_basic_package_files(RTF
+install_basic_package_files(${PROJECT_NAME}
                             VERSION ${RTF_VERSION}
                             COMPATIBILITY AnyNewerVersion
                             TARGETS_PROPERTY RTF_LIBS
