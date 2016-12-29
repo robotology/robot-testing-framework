@@ -24,8 +24,16 @@ include(RTFDoc)
 # include some helper functions
 include(InstallBasicPackageFiles)
 include(GNUInstallDirs)
-include (GenerateExportHeader)
+include(GenerateExportHeader)
 
+# enable RPATH
+option(ENABLE_RPATH "Enable RPATH for this library" ON)
+mark_as_advanced(ENABLE_RPATH)
+include(AddInstallRPATHSupport)
+add_install_rpath_support(BIN_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}"
+                          LIB_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}"
+                          DEPENDS ENABLE_RPATH
+                          USE_LINK_PATH)
 
 # add some property to collect some information about
 # what have been built
@@ -43,14 +51,14 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # setting options
-option (ENABLE_PLUGIN "Enable plugins" ON)
-option (ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
-option (ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
-option (ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
-option (ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
-option (BUILD_EXAMPLES "Build examples" ON)
-option (BUILD_TESTRUNNER "Build testrunner utility" ON)
-option (ENABLE_WEB_LISTENER "Enable web listener" ON)
+option(ENABLE_PLUGIN "Enable plugins" ON)
+option(ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
+option(ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
+option(ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
+option(ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
+option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTRUNNER "Build testrunner utility" ON)
+option(ENABLE_WEB_LISTENER "Enable web listener" ON)
 
 
 #########################################################################
