@@ -87,7 +87,7 @@ int main(int argc, char** argv)
 
     // create a fixture manager for the test suit
     MyFixture fixture(&suit);
-    suit.setFixtureManager(&fixture);
+    suit.addFixtureManager(&fixture);
 
     // creates test cases and add them to the suit
     MyTest1 test1;

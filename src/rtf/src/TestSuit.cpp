@@ -17,8 +17,7 @@ TestSuit::TestSuit(std::string name)
     : RTF::Test(name),
     successful(true),
     fixtureOK(true),
-    fixtureMesssage(""),
-    fixtureManager(NULL),
+    fixtureMesssage(""),    
     result(NULL),
     current(NULL) { }
 
@@ -38,8 +37,7 @@ void TestSuit::removeTest(RTF::Test* test) {
 void TestSuit::reset() {
     tests.clear();
     successful = fixtureOK =  true;
-    fixtureMesssage.clear();
-    fixtureManager = NULL;
+    fixtureMesssage.clear();    
     result = NULL;
 }
 
@@ -54,15 +52,17 @@ TestResult* TestSuit::getResult() {
 
 bool TestSuit::setup() {
     bool ret = true;
-    if(fixtureManager != NULL)
-        ret = fixtureManager->setup();    
+    FixtureIterator itr;
+    for(itr=fixtureManagers.begin(); (itr!=fixtureManagers.end()) && ret; itr++)
+        ret &= (*itr)->setup();
     return ret;
 }
 
 
 void TestSuit::tearDown() {
-    if(fixtureManager != NULL)
-        fixtureManager->tearDown();
+    FixtureIterator itr;
+    for(itr=fixtureManagers.begin(); itr!=fixtureManagers.end(); itr++)
+        (*itr)->tearDown();
 }
 
 
@@ -91,7 +91,11 @@ void TestSuit::run(TestResult &rsl) {
             if(!fixtureOK)
                 result->addError(this, fixtureMesssage);
 
-            if(fixtureManager && !fixtureManager->check()) {
+            bool checkOk = true;
+            FixtureIterator itr;
+            for(itr=fixtureManagers.begin(); (itr!=fixtureManagers.end()) && checkOk; itr++)
+                checkOk &= (*itr)->check();
+            if(!checkOk) {
                 result->addError(this, TestMessage("Fixture collapsed",
                                                    "check() failed",
                                                    RTF_SOURCEFILE(),
@@ -109,7 +113,12 @@ void TestSuit::run(TestResult &rsl) {
                 tearDown();
                 if(!setup())
                     throw FixtureException(RTF::TestMessage("setup() failed!"));
-                if(fixtureManager && !fixtureManager->check())
+
+                bool checkOk = true;
+                FixtureIterator itr;
+                for(itr=fixtureManagers.begin(); (itr!=fixtureManagers.end()) && checkOk; itr++)
+                    checkOk &= (*itr)->check();
+                if(!checkOk)
                     throw FixtureException(TestMessage("Fixture collapsed",
                                                        "check() failed",
                                                        RTF_SOURCEFILE(),
@@ -155,13 +164,9 @@ void TestSuit::run(TestResult &rsl) {
 }
 
 
-void TestSuit::setFixtureManager(RTF::FixtureManager* manager) {
+void TestSuit::addFixtureManager(RTF::FixtureManager* manager) {
     manager->setDispatcher(this);
-    fixtureManager = manager;
-}
-
-RTF::FixtureManager* TestSuit::getFixtureManager() {
-    return fixtureManager;
+    fixtureManagers.insert(manager);
 }
 
 void TestSuit::fixtureCollapsed(RTF::TestMessage reason) {

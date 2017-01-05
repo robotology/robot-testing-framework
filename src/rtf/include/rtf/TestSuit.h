@@ -45,6 +45,8 @@ class RTF_API RTF::TestSuit : public RTF::Test, public RTF::FixtureEvents {
 
     typedef std::set<RTF::Test*> TestContainer;
     typedef std::set<RTF::Test*>::iterator TestIterator;
+    typedef std::set<RTF::FixtureManager*> FixtureContainer;
+    typedef std::set<RTF::FixtureManager*>::iterator FixtureIterator;
 
 public:
 
@@ -77,18 +79,11 @@ public:
     void reset();
 
     /**
-     * @brief setFixtureManager  setup a fixture manager for
+     * @brief addFixtureManager  add a fixture manager for
      * the current test suit.
      * @param manager an instance of FixtureManager
      */
-    void setFixtureManager(RTF::FixtureManager* manager);
-
-    /**
-     * @brief getFixtureManager gets the fixture manager
-     * for the current suit if it is already set.
-     * @return the fixture manager or NULL if it is not set.
-     */
-    RTF::FixtureManager* getFixtureManager();
+    void addFixtureManager(RTF::FixtureManager* manager);
 
     /**
      * @brief fixtureCollapsed is called by a fixture manager
@@ -145,7 +140,7 @@ private:
     bool fixtureOK;
     bool interrupted;
     RTF::TestMessage fixtureMesssage;
-    RTF::FixtureManager* fixtureManager;
+    FixtureContainer fixtureManagers;
     TestContainer tests;
 };
 #endif // _RTF_TESTSUIT_H

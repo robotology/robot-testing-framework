@@ -120,7 +120,7 @@ bool SuitRunner::loadSuit(std::string filename) {
                     if(test->Attribute("param"))
                         fixture->setParam(test->Attribute("param"));
                     // set the fixture manager for the current suit
-                    suit->setFixtureManager(fixture);
+                    suit->addFixtureManager(fixture);
                     // keep track of the created plugin loaders
                     fixtureLoaders.push_back(loader);
                 }
