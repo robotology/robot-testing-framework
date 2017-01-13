@@ -1,0 +1,30 @@
+Test case MultiTestCases started...
+[INFO]  (MultiTestCases) checks: Checking suit count
+[INFO]  (MultiTestCases) checks: Checking passed suit count
+[INFO]  (MultiTestCases) checks: Checking failed suit count
+[INFO]  (MultiTestCases) checks: Checking tests count
+[INFO]  (MultiTestCases) checks: Checking passed test count
+[INFO]  (MultiTestCases) checks: Checking failed test count
+Test case MultiTestCases passed!
+Test case SingleTestCase started...
+[INFO]  (SingleTestCase) checks: Checking passed count
+[INFO]  (SingleTestCase) checks: Checking failed count
+Test case SingleTestCase passed!
+Test case MultiTestCases started...
+[INFO]  (MultiTestCases) checks: Checking tests count
+[INFO]  (MultiTestCases) checks: Checking passed count
+[INFO]  (MultiTestCases) checks: Checking failed count
+Test case MultiTestCases passed!
+Test case FixtureManager started...
+[INFO]  (FixtureManager) checks: Checking suit count
+[INFO]  (FixtureManager) checks: Checking passed suit count
+[INFO]  (FixtureManager) checks: Checking failed suit count
+[INFO]  (FixtureManager) checks: Checking tests count
+[INFO]  (FixtureManager) checks: Checking passed test count
+[INFO]  (FixtureManager) checks: Checking failed test count
+Test case FixtureManager passed!
+
+---------- summary -----------
+Total number of test cases   : 4
+Number of passed test cases  : 4
+Number of failed test cases  : 0
