@@ -26,7 +26,7 @@ TextOutputter::TextOutputter(RTF::TestResultCollector& collector, bool verbose)
 
 TextOutputter::~TextOutputter() { }
 
-bool TextOutputter::write(std::string filename,
+bool TextOutputter::write(std::string filename, bool summary,
                           RTF::TestMessage* errorMsg) {
     if(filename.empty()) {
         if(errorMsg != NULL) {
@@ -108,6 +108,19 @@ bool TextOutputter::write(std::string filename,
            }
        }
     } // end for
+
+    if(summary) {
+        // write some simple statistics
+        outputter<<endl<<"---------- summary -----------"<<endl;
+        if(collector.suitCount()) {
+            outputter<<"Total number of test suites  : "<<collector.suitCount()<<endl;
+            outputter<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
+            outputter<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+        }
+        outputter<<"Total number of test cases   : "<<collector.testCount()<<endl;
+        outputter<<"Number of passed test cases  : "<<collector.passedCount()<<endl;
+        outputter<<"Number of failed test cases  : "<<collector.failedCount()<<endl;
+    }
 
     outputter.close();
     return true;

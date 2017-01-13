@@ -58,7 +58,7 @@ public:
      * in case of failure. It can be left unassigned if it is not required.
      * @return true or false uppoun success or failure
      */
-    bool write(std::string filename,
+    bool write(std::string filename, bool summary,
                RTF::TestMessage* errorMsg=NULL);
 
 private:

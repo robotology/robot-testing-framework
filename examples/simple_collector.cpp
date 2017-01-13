@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 
     // store the results in a text file
     TextOutputter outputter(collector);
-    outputter.write("./result.txt");
+    outputter.write("./result.txt", true);
 
     // return the number of failed tests
     return collector.failedCount();

@@ -241,7 +241,7 @@ int main(int argc, char *argv[]) {
         TextOutputter outputter(collector, cmd.exist("detail"));
         string output = (cmd.get<string>("output").size() == 0) ? "result.txt" : cmd.get<string>("output");
         RTF::TestMessage msg;
-        if(!outputter.write(output, &msg))
+        if(!outputter.write(output, true, &msg))
             cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
     } else if (outptType == "junit") {
         JUnitOutputter outputter(collector, cmd.exist("detail"));
