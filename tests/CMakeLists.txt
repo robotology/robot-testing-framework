@@ -24,7 +24,7 @@ if (BUILD_TESTS)
 
     # running test units
     add_test(NAME tests
-         COMMAND ${TESTRUNNER_PATH} -v --tests ./bin/tests
+         COMMAND ${TESTRUNNER_PATH} -v --tests ${TEST_TARGET_PATH}
          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endif()
 
