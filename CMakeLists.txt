@@ -58,7 +58,7 @@ option(ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
 option(ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
 option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TESTRUNNER "Build testrunner utility" ON)
-option(BUILD_TESTS "Build tests" ON)
+#option(BUILD_TESTS "Build tests" ON)
 option(ENABLE_WEB_LISTENER "Enable web listener" ON)
 
 

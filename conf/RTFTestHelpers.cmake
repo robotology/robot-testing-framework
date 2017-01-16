@@ -7,8 +7,9 @@
 # Copyright 2017 Ali Paikan <ali.paikan@gmail.com>
 #
 
-macro(ENABLE_RTF_TESTS)
+include(CTest)
 
+macro(ENABLE_RTF_TESTS)    
     get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
     get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
 

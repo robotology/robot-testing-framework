@@ -7,9 +7,10 @@
 
 
 # build tests
-if (BUILD_TESTS AND BUILD_TESTRUNNER)
+include(RTFTestHelpers)
 
-    include(RTFTestHelpers)
+if (BUILD_TESTING AND BUILD_TESTRUNNER)
+    # enable RTF testing 
     ENABLE_RTF_TESTS()
 
     # adding c++ tests
