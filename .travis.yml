@@ -48,7 +48,7 @@ script:
   - cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_RUBY_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON -DENABLE_MIDDLEWARE_PLUGINS:BOOL=ON ..
   - make
   # test install/uninstall
-  - ctest --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
+  - ctest --verbose --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
   - sudo make install
 
 notifications:
