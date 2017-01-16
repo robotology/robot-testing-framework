@@ -30,7 +30,7 @@ endmacro()
 
 macro(ADD_RTF_CPPTEST TESTNAME SOURCES)
     add_library(${TESTNAME} MODULE ${SOURCES})
-    target_link_libraries(${TESTNAME} ${RTF_LIBRARIES})
+    target_link_libraries(${TESTNAME} ${RTF_LIBS})
 endmacro()
 
 macro(ADD_RTF_LUATEST SOURCE)
