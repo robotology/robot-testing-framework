@@ -7,24 +7,16 @@
 
 
 # build tests
-if (BUILD_TESTS)
-    set(TESTRUNNER_PATH ${CMAKE_BINARY_DIR}/bin/testrunner)
-    # set the output plugin directory to collect all tests
-    set(TEST_TARGET_PATH ${CMAKE_BINARY_DIR}/bin/tests)
+if (BUILD_TESTS AND BUILD_TESTRUNNER)
+
+    include(RTFTestHelpers)
+    ENABLE_RTF_TESTS()
 
     # adding c++ tests
-    if (ENABLE_PLUGIN)        
-        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${TEST_TARGET_PATH})
-        set(CMAKE_SHARED_MODULE_PREFIX "")
-        add_subdirectory(basic)
-    endif()
+    add_subdirectory(basic)
 
     # adding lua tests
     add_subdirectory(lua)
 
-    # running test units
-    add_test(NAME tests
-         COMMAND ${TESTRUNNER_PATH} -v --tests ${TEST_TARGET_PATH}
-         WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endif()
 

@@ -8,6 +8,6 @@
 
 # adding lua tests
 if (ENABLE_LUA_PLUGIN)
-    configure_file(LuaTestCase.lua ${TEST_TARGET_PATH}/LuaTestCase.lua COPYONLY)
+    ADD_RTF_LUATEST(LuaTestCase.lua)
 endif()
 
