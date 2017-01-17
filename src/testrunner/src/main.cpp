@@ -65,6 +65,9 @@ void addOptions(cmdline::parser &cmd) {
                     "Runs multiple test suits from the given folder which contains XML files.",
                     false);
 
+    cmd.add("no-output", '\0',
+            "Avoids generating any output file");
+
     cmd.add<string>("output", 'o',
                     "The output file to save the result. Default is result.txt",
                     false, "");
@@ -219,14 +222,16 @@ int main(int argc, char *argv[]) {
     if(!cmd.exist("verbose"))
         listener.hideUncriticalMessages();
 
-    // create web listener
+    // create web listener if enabled
 #if defined(ENABLE_WEB_LISTENER)
-    WebProgressListener webListener(cmd.get<int>("web-port"),
-                                    cmd.exist("detail"));
+    WebProgressListener* webListener = NULL;
 #endif
+
     if(cmd.exist("web-reporter")) {
 #if defined(ENABLE_WEB_LISTENER)
-        result.addListener(&webListener);
+        webListener = new WebProgressListener(cmd.get<int>("web-port"),
+                                              cmd.exist("detail"));
+        result.addListener(webListener);
 #else
         cout<<"Web reporter is not enabled! (please build RTF with ENABLE_WEB_LISTENER.)"<<endl;
 #endif
@@ -236,22 +241,24 @@ int main(int argc, char *argv[]) {
     runner.run(result);
 
     // store the results
-    string outptType = cmd.get<string>("output-type");
-    if (outptType == "text") {
-        TextOutputter outputter(collector, cmd.exist("detail"));
-        string output = (cmd.get<string>("output").size() == 0) ? "result.txt" : cmd.get<string>("output");
-        RTF::TestMessage msg;
-        if(!outputter.write(output, true, &msg))
-            cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
-    } else if (outptType == "junit") {
-        JUnitOutputter outputter(collector, cmd.exist("detail"));
-        string output = (cmd.get<string>("output").size() == 0) ? "result.xml" : cmd.get<string>("output");
-        RTF::TestMessage msg;
-        if(!outputter.write(output, &msg)) {
-            cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
-        }
-    }else
-        cout<<endl<<"Results are not saved! Unknown output type "<<outptType<<"."<<endl;
+    if(!cmd.exist("no-output")) {
+        string outptType = cmd.get<string>("output-type");
+        if (outptType == "text") {
+            TextOutputter outputter(collector, cmd.exist("detail"));
+            string output = (cmd.get<string>("output").size() == 0) ? "result.txt" : cmd.get<string>("output");
+            RTF::TestMessage msg;
+            if(!outputter.write(output, true, &msg))
+                cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
+        } else if (outptType == "junit") {
+            JUnitOutputter outputter(collector, cmd.exist("detail"));
+            string output = (cmd.get<string>("output").size() == 0) ? "result.xml" : cmd.get<string>("output");
+            RTF::TestMessage msg;
+            if(!outputter.write(output, &msg)) {
+                cout<<endl<<msg.getMessage()<<". "<<msg.getDetail()<<endl;
+            }
+        }else
+            cout<<endl<<"Results are not saved! Unknown output type "<<outptType<<"."<<endl;
+    }
 
     // print out some simple statistics
     cout<<endl<<"---------- results -----------"<<endl;
@@ -272,6 +279,11 @@ int main(int argc, char *argv[]) {
         exitCode = EXIT_SUCCESS;
     else
         exitCode = EXIT_FAILURE;
+
+#if defined(ENABLE_WEB_LISTENER)
+    if(webListener)
+        delete webListener;
+#endif
 
     return exitCode;
 }

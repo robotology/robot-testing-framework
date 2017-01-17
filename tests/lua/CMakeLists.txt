@@ -7,7 +7,16 @@
 
 
 # adding lua tests
-if (ENABLE_LUA_PLUGIN)
+if(ENABLE_LUA_PLUGIN)
+
+    # LuaPlugin depends on LuaTestCase.lua
+    ADD_RTF_CPPTEST(NAME LuaPlugin
+                    SRCS LuaPlugin.cpp
+                    PARAM "${TEST_TARGET_PATH}/LuaTestCase.lua"
+                    ENV "bar")
+
+    # LuaTestCase
     ADD_RTF_LUATEST(LuaTestCase.lua)
+
 endif()
 

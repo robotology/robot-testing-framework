@@ -8,16 +8,16 @@
 if (ENABLE_PLUGIN)        
 
     # SingleTestCase
-    ADD_RTF_CPPTEST(SingleTestCase SingleTestCase.cpp)
+    ADD_RTF_CPPTEST(NAME SingleTestCase SRCS SingleTestCase.cpp)
 
     # SingleTestCase
-    ADD_RTF_CPPTEST(MultiTestCases MultiTestCases.cpp)
+    ADD_RTF_CPPTEST(NAME MultiTestCases SRCS MultiTestCases.cpp)
 
     # SingleTestSuite
-    ADD_RTF_CPPTEST(SingleTestSuite SingleTestSuite.cpp)   
+    ADD_RTF_CPPTEST(NAME SingleTestSuite SRCS SingleTestSuite.cpp)
 
     # SingleTestSuite
-    ADD_RTF_CPPTEST(FixtureManager FixtureManager.cpp)
+    ADD_RTF_CPPTEST(NAME FixtureManager SRCS FixtureManager.cpp)
 
 endif()
 
