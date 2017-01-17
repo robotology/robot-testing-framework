@@ -8,8 +8,8 @@
 ## manually increase tweak number when required. Set to zero when
 # bumping VERSION_PATCH
 set(RTF_VERSION_MAJOR "1")
-set(RTF_VERSION_MINOR "0")
-set(RTF_VERSION_PATCH "1")
+set(RTF_VERSION_MINOR "1")
+set(RTF_VERSION_PATCH "0")
 set(RTF_VERSION_TWEAK "0")
 set(RTF_VERSION_STRING "")
 
