@@ -55,7 +55,6 @@ option(ENABLE_PLUGIN "Enable plugins" ON)
 option(ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
 option(ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
 option(ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
-option(ENABLE_MIDDLEWARE_PLUGINS "Enable middleware dependent plugins" OFF)
 option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TESTRUNNER "Build testrunner utility" ON)
 #option(BUILD_TESTS "Build tests" ON)
@@ -95,9 +94,6 @@ set(BUILD_RTF_PYTHON_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/python/include)
 set(INSTALL_RTF_PYTHON_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
 set(BUILD_RTF_RUBY_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/ruby/include)
 set(INSTALL_RTF_RUBY_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
-set(BUILD_RTF_YARP_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/middleware/yarp/include)
-set(INSTALL_RTF_YARP_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
-get_property(RTF_HAS_YARP GLOBAL PROPERTY RTF_HAS_YARP)
 
 
 install_basic_package_files(${PROJECT_NAME}
@@ -107,8 +103,7 @@ install_basic_package_files(${PROJECT_NAME}
                             EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR
                                                    LUA_INCLUDEDIR
                                                    PYTHON_INCLUDEDIR
-                                                   RUBY_INCLUDEDIR
-                                                   YARP_INCLUDEDIR)
+                                                   RUBY_INCLUDEDIR)
 
 # add uninstall target
 include(AddUninstallTarget)
