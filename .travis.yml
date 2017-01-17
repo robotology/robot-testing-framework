@@ -51,6 +51,9 @@ script:
   - ctest --verbose --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
   - sudo make install
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  
 notifications:
   email:
     - pegua1@gmail.com
