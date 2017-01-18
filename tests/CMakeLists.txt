@@ -19,5 +19,8 @@ if (BUILD_TESTING AND BUILD_TESTRUNNER)
     # adding lua tests
     add_subdirectory(lua)
 
+    # adding python tests
+    add_subdirectory(python)
+
 endif()
 
