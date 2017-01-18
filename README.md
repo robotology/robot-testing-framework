@@ -72,3 +72,6 @@ Authors
 * Silvio Traversaro ([*personal page*](http://www.iit.it/en/people/silvio-traversaro.html))
 * Lorenzo Natale ([*personal page*](http://nat.liralab.it/))
 
+Status
+------
+[![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
