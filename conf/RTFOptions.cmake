@@ -56,26 +56,8 @@ endif()
 
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-#    set(RTF_DEBUG_CONFIGURATIONS "Debug" "RelWithDebInfo")
-#    set(CMAKE_C_FLAGS_PROFILE "-pg -g3 -ggdb -fno-inline -ftest-coverage -fprofile-arcs -DNDEBUG" CACHE STRING "Flags used by the compiler during profile builds.")
-#    set(CMAKE_CXX_FLAGS_PROFILE "-pg -g3 -ggdb -fno-inline -ftest-coverage -fprofile-arcs -DNDEBUG" CACHE STRING "Flags used by the compiler during profile builds.")
-#    set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "Flags used by the linker during profile builds.")
-#    set(CMAKE_MODULE_LINKER_FLAGS_PROFILE "" CACHE STRING "Flags used by the linker during profile builds.")
-#    set(CMAKE_SHARED_LINKER_FLAGS_PROFILE "" CACHE STRING "Flags used by the linker during profile builds.")
-#    set(CMAKE_STATIC_LINKER_FLAGS_PROFILE "" CACHE STRING "Flags used by the linker during profile builds.")
-
-#    mark_as_advanced(CMAKE_C_FLAGS_PROFILE
-#                   CMAKE_CXX_FLAGS_PROFILE)
-#                   CMAKE_EXE_LINKER_FLAGS_PROFILE
-#                   CMAKE_MODULE_LINKER_FLAGS_PROFILE
-#                   CMAKE_SHARED_LINKER_FLAGS_PROFILE
-#                   CMAKE_STATIC_LINKER_FLAGS_PROFILE)
-#    list(APPEND RTF_DEBUG_CONFIGURATIONS "Profile")
-# Let CMake know which configurations are the debug ones, so that it can
-# link the right library when both optimized and debug library are found
-# set_property(GLOBAL PROPERTY DEBUG_CONFIGURATIONS ${RTF_DEBUG_CONFIGURATIONS})
-
     option(ENABLE_CODE_PROFILING "Enable code coverage profiling (only for GNUCXX)" OFF)
+    mark_as_advanced(ENABLE_CODE_PROFILING)
     if(ENABLE_CODE_PROFILING)
         set(CMAKE_BUILD_TYPE "Coverage" CACHE STRING "Choose the type of build, recommanded options are: Debug or Release" FORCE)
         include(CodeCoverage)
