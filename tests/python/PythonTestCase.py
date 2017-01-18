@@ -39,7 +39,7 @@ class TestCase:
     # The implementation of the test goes here
     def run(self):
         RTF.testCheck(5>3, "Cheking RTF.testCheck")
-        #RTF.testReport("Cheking RTF.testFailIf")
+        RTF.testReport("Cheking RTF.Report")
         #RTF.testFailIf(, "testFailIf")
 
     # tearDown is called after the test's run to tear down

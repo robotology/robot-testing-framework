@@ -11,23 +11,23 @@
 #include <rtf/TestAssert.h>
 #include <rtf/TestRunner.h>
 #include <rtf/dll/Plugin.h>
-#include <rtf/python/PythonPluginLoader.h>
+#include <rtf/ruby/RubyPluginLoader.h>
 #include <rtf/TestResultCollector.h>
 
 using namespace RTF;
 using namespace RTF::plugin;
 
-class PythonPlugin : public RTF::TestCase {
+class RubyPlugin : public RTF::TestCase {
 private:
-    PythonPluginLoader loader;
+    RubyPluginLoader loader;
     TestCase* test;
 
 public:
-    PythonPlugin() : TestCase("PythonPlugin") {}
+    RubyPlugin() : TestCase("RubyPlugin") {}
 
     virtual bool setup(int argc, char**argv) {
-        RTF_ASSERT_ERROR_IF(argc>=2, "Missing python test file as argument");
-        RTF_TEST_REPORT(Asserter::format("Loading python file %s", argv[1]));
+        RTF_ASSERT_ERROR_IF(argc>=2, "Missing ruby test file as argument");
+        RTF_TEST_REPORT(Asserter::format("Loading ruby file %s", argv[1]));
         test = loader.open(argv[1]);
         RTF_ASSERT_ERROR_IF(test!=NULL, Asserter::format("Cannot load %s", argv[1]));
         return true;
@@ -50,4 +50,4 @@ public:
     }
 };
 
-PREPARE_PLUGIN(PythonPlugin)
+PREPARE_PLUGIN(RubyPlugin)

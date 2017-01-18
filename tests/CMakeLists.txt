@@ -22,5 +22,8 @@ if (BUILD_TESTING AND BUILD_TESTRUNNER)
     # adding python tests
     add_subdirectory(python)
 
+    # adding python tests
+    add_subdirectory(ruby)
+
 endif()
 

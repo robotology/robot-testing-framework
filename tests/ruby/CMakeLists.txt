@@ -6,17 +6,17 @@
 #
 
 
-# adding python tests
-if(ENABLE_PYTHON_PLUGIN)
+# adding ruby tests
+if(ENABLE_RUBY_PLUGIN)
 
-    # PythonPlugin depends on PythonTestCase.py
-    ADD_RTF_CPPTEST(NAME PythonPlugin
-                    SRCS PythonPlugin.cpp
-                    PARAM "${TEST_TARGET_PATH}/PythonTestCase.py"
+    # RubtPlugin depends on RubyTestCase.rb
+    ADD_RTF_CPPTEST(NAME RubyPlugin
+                    SRCS RubyPlugin.cpp
+                    PARAM "${TEST_TARGET_PATH}/RubyTestCase.rb"
                     ENV "bar")
 
     # LuaTestCase
-    ADD_RTF_PYTHONTEST(PythonTestCase.py)
+    ADD_RTF_RUBYTEST(RubyTestCase.rb)
 
 endif()
 
