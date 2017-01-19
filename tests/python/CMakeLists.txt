@@ -6,17 +6,17 @@
 #
 
 
-# adding lua tests
-if(ENABLE_LUA_PLUGIN)
+# adding python tests
+if(ENABLE_PYTHON_PLUGIN)
 
-    # LuaPlugin depends on LuaTestCase.lua
-    ADD_RTF_CPPTEST(NAME LuaPlugin
-                    SRCS LuaPlugin.cpp
-                    PARAM "${TEST_TARGET_PATH}/LuaTestCase.lua"
+    # PythonPlugin depends on PythonTestCase.py
+    ADD_RTF_CPPTEST(NAME PythonPlugin
+                    SRCS PythonPlugin.cpp
+                    PARAM "${TEST_TARGET_PATH}/PythonTestCase.py"
                     ENV "bar")
 
     # LuaTestCase
-    ADD_RTF_LUATEST(LuaTestCase.lua)
+    ADD_RTF_PYTHONTEST(PythonTestCase.py)
 
 endif()
 

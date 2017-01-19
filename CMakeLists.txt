@@ -8,7 +8,6 @@
 cmake_minimum_required(VERSION 3.0)
 project(RTF)
 
-include(CMakeDependentOption)
 
 # Pick up our CMake scripts - they are all in the conf subdirectory.
 set(RTF_MODULE_PATH ${PROJECT_SOURCE_DIR}/conf)
@@ -26,50 +25,8 @@ include(InstallBasicPackageFiles)
 include(GNUInstallDirs)
 include(GenerateExportHeader)
 
-# enable RPATH
-option(ENABLE_RPATH "Enable RPATH for this library" ON)
-mark_as_advanced(ENABLE_RPATH)
-include(AddInstallRPATHSupport)
-add_install_rpath_support(BIN_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}"
-                          LIB_DIRS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}"
-                          DEPENDS ENABLE_RPATH
-                          USE_LINK_PATH)
-
-# add some property to collect some information about
-# what have been built
-set_property(GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
-set_property(GLOBAL PROPERTY RTF_LIBS)
-
-# add some internally used properties (not for installing or exporting)
-set_property(GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
-set_property(GLOBAL PROPERTY RTF_INTERNAL_LIBS)
-set_property(GLOBAL PROPERTY RTF_INTERNAL_DEFS)
-
-# setting default compilation to release/optmized
-if(NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, recommanded options are: Debug or Release" FORCE)
-endif()
-
-# setting options
-option(ENABLE_PLUGIN "Enable plugins" ON)
-option(ENABLE_LUA_PLUGIN "Enable Lua plugins" OFF)
-option(ENABLE_PYTHON_PLUGIN "Enable Python plugins" OFF)
-option(ENABLE_RUBY_PLUGIN "Enable Ruby plugins" OFF)
-option(BUILD_EXAMPLES "Build examples" ON)
-option(BUILD_TESTRUNNER "Build testrunner utility" ON)
-#option(BUILD_TESTS "Build tests" ON)
-option(ENABLE_WEB_LISTENER "Enable web listener" ON)
-
-
-#########################################################################
-# Control where libraries and executables are placed during the build
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
-
-if(BUILD_TESTRUNNER)
-    set_property(CACHE ENABLE_PLUGIN PROPERTY VALUE ON)
-endif()
+# include RTF Options
+include(RTFOptions)
 
 # adding directories
 add_subdirectory(extern)
@@ -107,3 +64,4 @@ install_basic_package_files(${PROJECT_NAME}
 
 # add uninstall target
 include(AddUninstallTarget)
+

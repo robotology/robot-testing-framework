@@ -6,17 +6,17 @@
 #
 
 
-# adding lua tests
-if(ENABLE_LUA_PLUGIN)
+# adding ruby tests
+if(ENABLE_RUBY_PLUGIN)
 
-    # LuaPlugin depends on LuaTestCase.lua
-    ADD_RTF_CPPTEST(NAME LuaPlugin
-                    SRCS LuaPlugin.cpp
-                    PARAM "${TEST_TARGET_PATH}/LuaTestCase.lua"
+    # RubtPlugin depends on RubyTestCase.rb
+    ADD_RTF_CPPTEST(NAME RubyPlugin
+                    SRCS RubyPlugin.cpp
+                    PARAM "${TEST_TARGET_PATH}/RubyTestCase.rb"
                     ENV "bar")
 
     # LuaTestCase
-    ADD_RTF_LUATEST(LuaTestCase.lua)
+    ADD_RTF_RUBYTEST(RubyTestCase.rb)
 
 endif()
 

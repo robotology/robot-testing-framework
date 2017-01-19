@@ -17,15 +17,13 @@ env:
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap robotology/cask; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew tap homebrew/science; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
 
 install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew outdated cmake || brew upgrade cmake; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then if !  brew ls --versions python > /dev/null; then brew install python; fi; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml ruby lua51; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev ruby-dev libace-dev libeigen3-dev; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml lua51; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev; fi
   - python --version
 
 script:
