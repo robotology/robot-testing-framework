@@ -27,6 +27,37 @@ macro(ENABLE_RTF_TESTS)
     #     WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endmacro()
 
+function(ADD_CPPTEST)
+    # set(options )
+    set(oneValueArgs NAME PARAM)
+    set(multiValueArgs SRCS LIBS)
+    cmake_parse_arguments(ADD_CPPTEST "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+
+    set(TEST_LIBS RTF RTF_dll)
+    if(ENABLE_LUA_PLUGIN)
+        set(TEST_LIBS ${TEST_LIBS} RTF_lua)
+    endif()
+    if(ENABLE_PYTHON_PLUGIN)
+        set(TEST_LIBS ${TEST_LIBS} RTF_python)
+    endif()
+
+    if(ENABLE_RUBY_PLUGIN)
+        set(TEST_LIBS ${TEST_LIBS} RTF_ruby)
+    endif()
+
+    set(TEST_LIBS ${TEST_LIBS} ${ADD_CPPTEST_LIBS})
+
+    add_executable(${ADD_CPPTEST_NAME} ${ADD_CPPTEST_SRCS})
+    target_link_libraries(${ADD_CPPTEST_NAME} ${TEST_LIBS})
+    set_target_properties(${ADD_CPPTEST_NAME}
+                          PROPERTIES
+                            RUNTIME_OUTPUT_DIRECTORY "${TEST_TARGET_PATH}")
+    # adding test unit
+     add_test(NAME ${ADD_CPPTEST_NAME}
+              WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+              COMMAND ${ADD_CPPTEST_NAME} ${ADD_CPPTEST_PARAM})
+ endfunction()
+
 
 function(ADD_RTF_CPPTEST)
     # set(options )

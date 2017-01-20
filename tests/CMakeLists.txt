@@ -13,7 +13,10 @@ if (BUILD_TESTING AND BUILD_TESTRUNNER)
     # enable RTF testing 
     ENABLE_RTF_TESTS()
 
-    # adding c++ tests
+    # adding api c++ tests
+    add_subdirectory(api)
+
+    # adding basic tests
     add_subdirectory(basic)
 
     # adding lua tests
