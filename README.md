@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
+[![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
+[![AUR](https://img.shields.io/aur/license/yaourt.svg)](http://robotology.github.io/robot-testing/index.html)
+
 Robot Testing Framework (RTF)
 ============================
 RTF stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the test driven development (TDD)
@@ -71,9 +75,3 @@ Authors
 * Ali Paikan ([*personal page*](http://alipaikan.com))
 * Silvio Traversaro ([*personal page*](http://www.iit.it/en/people/silvio-traversaro.html))
 * Lorenzo Natale ([*personal page*](http://nat.liralab.it/))
-
-Status
-------
-[![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
-
-[![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
