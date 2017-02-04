@@ -52,7 +52,7 @@ script:
   # test install/uninstall
   #- ctest --verbose --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
   - make test
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; make RTF_coverage ; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then  make RTF_coverage ; fi
   - sudo make install
 
 after_success:  
