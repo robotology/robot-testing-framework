@@ -1,7 +1,7 @@
 # RTFTestHelpers
 # -------------------------
 #
-# Helpers functions for creating tests 
+# Helpers functions for creating tests
 
 #=============================================================================
 # Copyright 2017 Ali Paikan <ali.paikan@gmail.com>
@@ -10,7 +10,7 @@
 include(CTest)
 include(CMakeParseArguments)
 
-macro(ENABLE_RTF_TESTS)    
+macro(ENABLE_RTF_TESTS)
     get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
     #get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
     include_directories(${CMAKE_SOURCE_DIR}
@@ -87,7 +87,7 @@ function(ADD_RTF_CPPTEST)
 
     # adding test unit
      add_test(NAME ${ADD_RTF_CPPTEST_NAME}
-         COMMAND ${TESTRUNNER_PATH} -v -p ${ADD_RTF_CPPTEST_PARAM} -e ${ADD_RTF_CPPTEST_ENV} --test $<TARGET_FILE:${ADD_RTF_CPPTEST_NAME}>
+         COMMAND ${TESTRUNNER_PATH} -v --no-output --no-summary -p ${ADD_RTF_CPPTEST_PARAM} -e ${ADD_RTF_CPPTEST_ENV} --test $<TARGET_FILE:${ADD_RTF_CPPTEST_NAME}>
          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endfunction()
 
@@ -95,7 +95,7 @@ macro(ADD_RTF_TEST_SCRIPT SOURCE)
     configure_file(${SOURCE} ${TEST_TARGET_PATH}/${SOURCE} COPYONLY)
     # adding test unit
     add_test(NAME ${SOURCE}
-         COMMAND ${TESTRUNNER_PATH} -v --test ${TEST_TARGET_PATH}/${SOURCE}
+         COMMAND ${TESTRUNNER_PATH} -v --no-output --no-summary --test ${TEST_TARGET_PATH}/${SOURCE}
          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endmacro()
 
@@ -110,4 +110,3 @@ endmacro()
 macro(ADD_RTF_RUBYTEST SOURCE)
     ADD_RTF_TEST_SCRIPT(${SOURCE})
 endmacro()
-

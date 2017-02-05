@@ -68,6 +68,9 @@ void addOptions(cmdline::parser &cmd) {
     cmd.add("no-output", '\0',
             "Avoids generating any output file");
 
+    cmd.add("no-summary", '\0',
+                    "Avoids reporting test summary");
+
     cmd.add<string>("output", 'o',
                     "The output file to save the result. Default is result.txt",
                     false, "");
@@ -260,16 +263,18 @@ int main(int argc, char *argv[]) {
             cout<<endl<<"Results are not saved! Unknown output type "<<outptType<<"."<<endl;
     }
 
-    // print out some simple statistics
-    cout<<endl<<"---------- results -----------"<<endl;
-    if(collector.suitCount()) {
-    cout<<"Total number of test suites  : "<<collector.suitCount()<<endl;
-    cout<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
-    cout<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+    if(!cmd.exist("no-summary")) {
+        // print out some simple statistics
+        cout<<endl<<"---------- results -----------"<<endl;
+        if(collector.suitCount()) {
+        cout<<"Total number of test suites  : "<<collector.suitCount()<<endl;
+        cout<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
+        cout<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+        }
+        cout<<"Total number of test cases   : "<<collector.testCount()<<endl;
+        cout<<"Number of passed test cases  : "<<collector.passedCount()<<endl;
+        cout<<"Number of failed test cases  : "<<collector.failedCount()<<endl;
     }
-    cout<<"Total number of test cases   : "<<collector.testCount()<<endl;
-    cout<<"Number of passed test cases  : "<<collector.passedCount()<<endl;
-    cout<<"Number of failed test cases  : "<<collector.failedCount()<<endl;
 
     currentRunner = NULL;
 
