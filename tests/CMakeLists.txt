@@ -10,7 +10,7 @@
 include(RTFTestHelpers)
 
 if (BUILD_TESTING)
-    # enable RTF testing 
+    # enable RTF testing
     ENABLE_RTF_TESTS()
 
     # adding api c++ tests
@@ -19,6 +19,9 @@ if (BUILD_TESTING)
     if (BUILD_TESTRUNNER)
         # adding basic tests
         add_subdirectory(basic)
+
+        # adding basic tests
+        add_subdirectory(fixture)
 
         # adding lua tests
         add_subdirectory(lua)
@@ -30,4 +33,3 @@ if (BUILD_TESTING)
         add_subdirectory(ruby)
     endif()
 endif()
-

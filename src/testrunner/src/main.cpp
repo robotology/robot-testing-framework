@@ -169,7 +169,7 @@ int main(int argc, char *argv[]) {
             !cmd.get<string>("suit").size() &&
             !cmd.get<string>("suits").size()) {
         cout<<cmd.usage();
-        return 0;
+		return EXIT_FAILURE;
     }
 
     // create a test runner

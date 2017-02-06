@@ -87,7 +87,7 @@ function(ADD_RTF_CPPTEST)
 
     # adding test unit
      add_test(NAME ${ADD_RTF_CPPTEST_NAME}
-         COMMAND ${TESTRUNNER_PATH} -v --no-output --no-summary -p ${ADD_RTF_CPPTEST_PARAM} -e ${ADD_RTF_CPPTEST_ENV} --test $<TARGET_FILE:${ADD_RTF_CPPTEST_NAME}>
+         COMMAND ${TESTRUNNER_PATH} -v --no-output --no-summary -p ${ADD_RTF_CPPTEST_PARAM} -e "${ADD_RTF_CPPTEST_ENV}" --test $<TARGET_FILE:${ADD_RTF_CPPTEST_NAME}>
          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endfunction()
 
