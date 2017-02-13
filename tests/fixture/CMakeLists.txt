@@ -11,7 +11,7 @@ if (ENABLE_PLUGIN)
     # Build a ficture plugin
     set(CMAKE_SHARED_MODULE_PREFIX "")
     add_library(myfixture MODULE MyFixManager.cpp MyFixManager.h)
-    target_link_libraries(myfixture ${RTF_LIBS})
+    target_link_libraries(myfixture RTF RTF_dll)
 
     # add the FixturePluginLoader test
     if (UNIX)
