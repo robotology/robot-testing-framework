@@ -9,7 +9,14 @@ cmake_minimum_required(VERSION 3.0)
 
 project(RTF_lua)
 
-find_package(Lua51 REQUIRED)
+find_package(Lua)
+if(NOT LUA_FOUND)
+    find_package(Lua53)
+elseif(NOT LUA_FOUND)
+    find_package(Lua52)
+elseif(NOT LUA_FOUND)
+    find_package(Lua51 REQUIRED)
+endif()
 
 set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_DEFS " -DENABLE_LUA_PLUGIN")
 set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
@@ -52,4 +59,3 @@ install(TARGETS RTF_lua
 
 set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_lua)
 set_property(TARGET RTF_lua PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
-

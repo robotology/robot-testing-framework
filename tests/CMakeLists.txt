@@ -9,21 +9,27 @@
 # build tests
 include(RTFTestHelpers)
 
-if (BUILD_TESTING AND BUILD_TESTRUNNER)
-    # enable RTF testing 
+if (BUILD_TESTING)
+    # enable RTF testing
     ENABLE_RTF_TESTS()
 
-    # adding c++ tests
-    add_subdirectory(basic)
+    # adding api c++ tests
+    add_subdirectory(api)
 
-    # adding lua tests
-    add_subdirectory(lua)
+    if (BUILD_TESTRUNNER)
+        # adding basic tests
+        add_subdirectory(basic)
 
-    # adding python tests
-    add_subdirectory(python)
+        # adding basic tests
+        add_subdirectory(fixture)
 
-    # adding python tests
-    add_subdirectory(ruby)
+        # adding lua tests
+        add_subdirectory(lua)
 
+        # adding python tests
+        add_subdirectory(python)
+
+        # adding python tests
+        add_subdirectory(ruby)
+    endif()
 endif()
-
