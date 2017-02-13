@@ -44,12 +44,19 @@ Configuration
 -------------
 The only thing you need to configure is the RTF_DIR environment variable so that CMake can find RTF libraries and header files.
 
-For example on Linux/Mac:
+- on Linux/Mac:
 ```
     $ echo 'export RTF_DIR=<path to the RTF build director>' >> ~/.bashrc
+    $ echo 'export PATH=$PATH:$RTF_DIR/bin' >> ~/.bashrc
 ```
 
-Alternatively you can add the RTF 'bin' directory to your system PATH variable.
+- on Windows:
+```
+    C:\> setx.exe RTF_DIR "<path to the RTF build director>"
+    C:\> setx.exe PATH "%PATH%;%RTF_DIR%/<Release/Debug>/bin"
+```
+
+*Notice:* If you have **not** installed RTF in the statndard system path (e.g., on Linx without `make install`) then You need to exapnd your system `PATH` environment variable. 
 
 
 Tutorials and Examples
