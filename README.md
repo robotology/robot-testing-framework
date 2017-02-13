@@ -13,8 +13,9 @@ test cases are developed as independent plug-ins (i.e., using scripting language
 loaded and executed by an automated test runner. Moreover, a fixture manager prepares the setup (e.g., running robot interfaces,
 simulator) and actively monitors that all the requirements for running the tests are satisfied during the execution of the tests.
 These functionalities along with other facilities such as the test result collector, result formatter and remote interface allow
-for rapid development of test units to cover different levels of system testing.
+for rapid development of test units to cover different levels of system testing (see the block diagram). 
 
+![rtf-arch](/doc/rtf_arch.png)
 
 
 Installation
