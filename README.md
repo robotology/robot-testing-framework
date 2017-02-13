@@ -27,18 +27,16 @@ with the RTF.
 
 Compile and Build
 -----------------
-The installation is easy, straightforward and uses the CMake build system.
+- **On Linux/Mac:** The installation is easy, straightforward and uses the CMake build system.
 ```
     $ git clone https://github.com/robotology/robot-testing.git
     $ cd robot-testing
     $ mkdir build; cd build
     $ cmake ../; make
+    $ make install  # Optional!
 ```
 
-and optionally:
-```
-    $ make install
-```
+- **On Windows:** The installation is easy, straightforward and uses the CMake build system. Get [Cmake for windows](https://cmake.org/download/) if you have not yet installed. Then simply run the Cmake and, set the project (robot-testing) root folder and the desired build folder. Configure and generate project solution for your favorite IDE (e.g. Visual Studio 13). Then open the solution from your IDE and build the project.   
 
 Configuration
 -------------
