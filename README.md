@@ -1,6 +1,8 @@
+[![Release](https://img.shields.io/badge/Release-1.0.1-blue.svg)](http://robotology.github.io/robot-testing/index.html)
+[![License](https://img.shields.io/badge/Licence-LGPL-blue.svg)](http://robotology.github.io/robot-testing/index.html)
 [![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
 [![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
-[![AUR](https://img.shields.io/aur/license/yaourt.svg)](http://robotology.github.io/robot-testing/index.html)
+
 
 Robot Testing Framework (RTF)
 ============================
@@ -22,33 +24,43 @@ using testrunner) to easily run the test cases which are built as plug-ins. Test
 of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered
 with the RTF.
 
-
-Compile and Build
------------------
-The installation is easy, straightforward and uses the CMake build system.
+- **On Linux/Mac:** The installation is easy, straightforward and uses the CMake build system.
 ```
     $ git clone https://github.com/robotology/robot-testing.git
     $ cd robot-testing
     $ mkdir build; cd build
     $ cmake ../; make
+    $ make install  # Optional!
 ```
 
-and optionally:
-```
-    $ make install
-```
+- **On Windows:** The installation is easy, straightforward and uses the CMake build system. Get [Cmake for windows](https://cmake.org/download/) if you have not yet installed. Then simply run the Cmake and, set the project (robot-testing) root folder and the desired build folder. Configure and generate project solution for your favorite IDE (e.g. Visual Studio 13). Then open the solution from your IDE and build the project.   
 
 Configuration
 -------------
 The only thing you need to configure is the RTF_DIR environment variable so that CMake can find RTF libraries and header files.
 
-For example on Linux/Mac:
+- on Linux/Mac:
 ```
     $ echo 'export RTF_DIR=<path to the RTF build director>' >> ~/.bashrc
+    $ echo 'export PATH=$PATH:$RTF_DIR/bin' >> ~/.bashrc
 ```
 
-Alternatively you can add the RTF 'bin' directory to your system PATH variable.
+- on Windows:
+```
+    C:\> setx.exe RTF_DIR "<path to the RTF build director>"
+    C:\> setx.exe PATH "%PATH%;%RTF_DIR%/<Release/Debug>/bin"
+```
 
+*Notice:* If you have **not** installed RTF in the statndard system path (e.g., on Linx without `make install`) then You need to exapnd your system `PATH` environment variable. 
+
+
+Enabling Python, Ruby, Lua, ... Plugins 
+----------------------------------------
+To use RTF with other languages, 
+ - first you need to install their development packages (e.g. for Python on Linux you need `python-dev`, for Ruby: `ruby-dev` or for Lua: `liblua5.x-dev`). 
+ - then you can enable the desired language into RTF Cmake (e.g. ENABLE_PYTHON_PLUGIN=ON for enabling python)
+ - compile and build RTF 
+ 
 
 Tutorials and Examples
 -----------------------
