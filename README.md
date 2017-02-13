@@ -3,10 +3,17 @@
 [![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
 [![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
 
+[![Language](https://img.shields.io/badge/Language-C%2B%2B-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-ADA-blue.svg)](https://github.com/robotology/robot-testing/tree/master/examples/ada-plugin)
+[![Language](https://img.shields.io/badge/Language-Python-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_python_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-Ruby-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_ruby_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-Lua-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_lua_plugin_example.html)
+
+
 
 Robot Testing Framework (RTF)
 ============================
-RTF stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the test driven development (TDD)
+RTF stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the [test driven development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development)
 which is initially designed for the robotic systems. However, it can be used for any TDD system.
 The framework provides functionalities for developing and running unit tests in a language and middleware independent manner. The
 test cases are developed as independent plug-ins (i.e., using scripting languages or built as dynamically loadable libraries) to be
