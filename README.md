@@ -1,6 +1,8 @@
+[![Release](https://img.shields.io/badge/Release-1.0.1-blue.svg)](http://robotology.github.io/robot-testing/index.html)
+[![AUR](https://img.shields.io/aur/license/yaourt.svg)](http://robotology.github.io/robot-testing/index.html)
 [![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
 [![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
-[![AUR](https://img.shields.io/aur/license/yaourt.svg)](http://robotology.github.io/robot-testing/index.html)
+
 
 Robot Testing Framework (RTF)
 ============================
