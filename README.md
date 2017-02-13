@@ -24,9 +24,6 @@ using testrunner) to easily run the test cases which are built as plug-ins. Test
 of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered
 with the RTF.
 
-
-Compile and Build
------------------
 - **On Linux/Mac:** The installation is easy, straightforward and uses the CMake build system.
 ```
     $ git clone https://github.com/robotology/robot-testing.git
@@ -56,6 +53,14 @@ The only thing you need to configure is the RTF_DIR environment variable so that
 
 *Notice:* If you have **not** installed RTF in the statndard system path (e.g., on Linx without `make install`) then You need to exapnd your system `PATH` environment variable. 
 
+
+Enabling Python, Ruby, Lua, ... Plugins 
+----------------------------------------
+To use RTF with other languages, 
+ - first you need to install their development packages (e.g. for Python on Linux you need `python-dev`, for Ruby: `ruby-dev` or for Lua: `liblua5.x-dev`). 
+ - then you can enable the desired language into RTF Cmake (e.g. ENABLE_PYTHON_PLUGIN=ON for enabling python)
+ - compile and build RTF 
+ 
 
 Tutorials and Examples
 -----------------------
