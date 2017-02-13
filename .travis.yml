@@ -29,8 +29,7 @@ install:
 
 before_script:
   - python --version
-  - ruby --version
-  - lua -v
+  - ruby --version  
 
 script:
   # configure robot-testing framework
