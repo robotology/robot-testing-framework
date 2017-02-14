@@ -5,14 +5,14 @@ the RTF `testrunner`.
 Compilation
 -----------
 Build the project using gnat build system by specifying
-the RTF root directory in `RTF_DIR`. For example: 
+the RTF root directory in `RTF_ROOT`. For example: 
 
 ```
     $ mkdir build plugin
-    $ gprbuild -P mytest.gpr -XRTF_DIR=/home/foo/robot-testing
+    $ gprbuild -P mytest.gpr -XRTF_ROOT=/home/foo/robot-testing
 ```
 
-Alternatively you can set the `RTF_DIR` environment variable
+Alternatively you can set the `RTF_ROOT` environment variable
 to point to the RTF root directory; then build the plug-in: 
 
 ```
