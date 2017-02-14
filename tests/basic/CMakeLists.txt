@@ -19,5 +19,10 @@ if (ENABLE_PLUGIN)
     # SingleTestSuite
     ADD_RTF_CPPTEST(NAME FixtureManager SRCS FixtureManager.cpp)
 
+    if (UNIX)
+        # WebProgListener
+        ADD_RTF_CPPTEST(NAME WebProgListener SRCS WebProgListener.cpp)
+    endif (UNIX)
+
 endif()
 
