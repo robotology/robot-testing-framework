@@ -3,18 +3,26 @@
 [![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
 [![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
 
+[![Language](https://img.shields.io/badge/Language-C%2B%2B-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-ADA-blue.svg)](https://github.com/robotology/robot-testing/tree/master/examples/ada-plugin)
+[![Language](https://img.shields.io/badge/Language-Python-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_python_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-Ruby-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_ruby_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-Lua-blue.svg)](http://robotology.github.io/robot-testing/documentation/rtf_lua_plugin_example.html)
+
+
 
 Robot Testing Framework (RTF)
 ============================
-RTF stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the test driven development (TDD)
+RTF stands for Robot Testing Framework. It is a generic and multi-platform testing framework for the [test driven development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development)
 which is initially designed for the robotic systems. However, it can be used for any TDD system.
 The framework provides functionalities for developing and running unit tests in a language and middleware independent manner. The
 test cases are developed as independent plug-ins (i.e., using scripting languages or built as dynamically loadable libraries) to be
 loaded and executed by an automated test runner. Moreover, a fixture manager prepares the setup (e.g., running robot interfaces,
 simulator) and actively monitors that all the requirements for running the tests are satisfied during the execution of the tests.
 These functionalities along with other facilities such as the test result collector, result formatter and remote interface allow
-for rapid development of test units to cover different levels of system testing.
+for rapid development of test units to cover different levels of system testing (see the block diagram). 
 
+![rtf-arch](/doc/rtf_arch.png)
 
 
 Installation

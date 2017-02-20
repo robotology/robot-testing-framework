@@ -1,6 +1,6 @@
 Project MyTest is
 
-    RTF_SrcDir := external("RTF_DIR");
+    RTF_SrcDir := external("RTF_ROOT");
    
    ----------------
    -- Attributes --
