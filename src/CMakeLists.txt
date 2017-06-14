@@ -16,8 +16,3 @@ add_subdirectory(plugins)
 if (BUILD_TESTRUNNER)
     add_subdirectory(testrunner)
 endif(BUILD_TESTRUNNER)
-
-# Build middleware specific extentions
-if (ENABLE_MIDDLEWARE_PLUGINS)
-    add_subdirectory(middleware)
-endif(ENABLE_MIDDLEWARE_PLUGINS)

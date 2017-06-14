@@ -23,33 +23,21 @@ before_install:
 install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew outdated cmake || brew upgrade cmake; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then if !  brew ls --versions python > /dev/null; then brew install python; fi; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml lua51 ace eigen; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev libace-dev libeigen3-dev lcov; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml lua51; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev lcov; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo gem install coveralls-lcov; fi
-  - python --version
 
 before_script:
-  - cd ..
-  # install yarp
-  - git clone https://github.com/robotology/yarp
-  - cd yarp
-  - mkdir build
-  - cd build
-  - cmake -DCREATE_LIB_MATH:BOOL=ON -DCREATE_SHARED_LIBRARY:BOOL=ON -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE}  ..
-  - make
-  - sudo make install
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ldconfig; fi
-  - cd ../../robot-testing
+  - python --version
+  - ruby --version  
 
 script:
   # configure robot-testing framework
   - mkdir build
   - cd build
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cmake -DENABLE_CODE_PROFILING=ON -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON -DENABLE_MIDDLEWARE_PLUGINS:BOOL=ON ..; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON -DENABLE_MIDDLEWARE_PLUGINS:BOOL=ON ..; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cmake -DENABLE_CODE_PROFILING:BOOL=ON -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ];   then cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi
   - make
-  # test install/uninstall
-  #- ctest --verbose --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
   - make test
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then  make RTF_coverage ; fi
   - sudo make install
@@ -61,3 +49,4 @@ after_success:
 notifications:
   email:
     - pegua1@gmail.com
+    - ali.paikan@gmail.com
