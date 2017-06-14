@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/badge/Release-1.0.1-blue.svg)](http://robotology.github.io/robot-testing/index.html)
+[![Release](https://img.shields.io/github/tag/robotology/robot-testing.svg?label=Release)](https://github.com/robotology/robot-testing/tags)
 [![License](https://img.shields.io/badge/Licence-LGPL-blue.svg)](http://robotology.github.io/robot-testing/index.html)
 [![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
 [![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
