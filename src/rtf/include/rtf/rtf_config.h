@@ -69,4 +69,10 @@
 //#define RTF_API RTF_EXPORT
 #define RTF_API 
 
+#if (__cplusplus >= 201103L)
+#  define RTF_NORETURN [[noreturn]]
+#else
+#  define RTF_NORETURN
+#endif
+
 #endif //_RTF_CONFIG_
