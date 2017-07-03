@@ -37,7 +37,7 @@ public:
      * given message.
      * @param msg The corresponding failure message
      */
-    static RTF_API void fail(RTF::TestMessage msg);
+    static RTF_API void fail RTF_NORETURN (RTF::TestMessage msg);
 
     /**
      * @brief fail Throw a failure exception if the
@@ -45,7 +45,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding failure message
      */
-    static RTF_API void fail(bool condition,
+    static RTF_API void fail RTF_NORETURN (bool condition,
                        RTF::TestMessage msg);
 
     /**
@@ -53,7 +53,7 @@ public:
      * given message.
      * @param msg The corresponding error message
      */
-    static RTF_API void error(RTF::TestMessage msg);
+    static RTF_API void error RTF_NORETURN (RTF::TestMessage msg);
 
     /**
      * @brief error Throw an error exception if the
@@ -61,7 +61,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding error message
      */
-    static RTF_API void error(bool condition,
+    static RTF_API void error RTF_NORETURN (bool condition,
                        RTF::TestMessage msg);
 
     /**

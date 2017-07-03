@@ -1,0 +1,10 @@
+version: 1.2.{build}
+
+clone_folder: c:\dev\RTF
+
+build_script:
+  - cd c:\dev\RTF
+  - md build
+  - cd build
+  - cmake -G"Visual Studio 12" ..
+  - msbuild /m /p:Configuration=Release /p:Platform="Win32" RTF.sln
