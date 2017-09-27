@@ -26,12 +26,15 @@ TestSuite::~TestSuite() {
 }
 
 void TestSuite::addTest(RTF::Test* test) {
-    tests.insert(test);
+    tests.push_back(test);
 }
 
 
 void TestSuite::removeTest(RTF::Test* test) {
-    tests.erase(test);
+    for (int i = 0; i < tests.size(); i++)
+    {
+        if(tests[i] == test) tests.erase(tests.begin()+i);
+    }
 }
 
 void TestSuite::reset() {
@@ -166,7 +169,7 @@ void TestSuite::run(TestResult &rsl) {
 
 void TestSuite::addFixtureManager(RTF::FixtureManager* manager) {
     manager->setDispatcher(this);
-    fixtureManagers.insert(manager);
+    fixtureManagers.push_back(manager);
 }
 
 void TestSuite::fixtureCollapsed(RTF::TestMessage reason) {

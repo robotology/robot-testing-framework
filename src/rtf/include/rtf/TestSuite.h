@@ -16,7 +16,7 @@
 #include <rtf/TestResult.h>
 #include <rtf/TestMessage.h>
 #include <rtf/FixtureManager.h>
-#include <set>
+#include <vector>
 
 namespace RTF {
     class TestSuite;
@@ -43,10 +43,10 @@ namespace RTF {
  */
 class RTF_API RTF::TestSuite : public RTF::Test, public RTF::FixtureEvents {
 
-    typedef std::set<RTF::Test*> TestContainer;
-    typedef std::set<RTF::Test*>::iterator TestIterator;
-    typedef std::set<RTF::FixtureManager*> FixtureContainer;
-    typedef std::set<RTF::FixtureManager*>::iterator FixtureIterator;
+    typedef std::vector<RTF::Test*> TestContainer;
+    typedef std::vector<RTF::Test*>::iterator TestIterator;
+    typedef std::vector<RTF::FixtureManager*> FixtureContainer;
+    typedef std::vector<RTF::FixtureManager*>::iterator FixtureIterator;
 
 public:
 
