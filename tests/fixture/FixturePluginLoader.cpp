@@ -15,7 +15,7 @@
 
 #include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 #include <rtf/dll/DllFixturePluginLoader.h>
 
 using namespace RTF;
@@ -30,30 +30,30 @@ public:
     }
 };
 
-class MyTestSuit : public TestSuit {
+class MyTestSuite : public TestSuite {
 public:
-	MyTestSuit() : TestSuit("MyTestSuit") { }
+    MyTestSuite() : TestSuite("MyTestSuite") { }
 
-	virtual void fixtureCollapsed(RTF::TestMessage reason) {
-		colapseReason = reason.getMessage();
-	}
-public: 
-	std::string colapseReason;
+    virtual void fixtureCollapsed(RTF::TestMessage reason) {
+        colapseReason = reason.getMessage();
+    }
+public:
+    std::string colapseReason;
 };
 
 class MyFixturePluginLoader : public RTF::TestCase {
-	std::string fixtureFilename;
+    std::string fixtureFilename;
 
 public:
-	MyFixturePluginLoader() : TestCase("FixturePluginLoader") {}
+    MyFixturePluginLoader() : TestCase("FixturePluginLoader") {}
 
-	virtual bool setup(int argc, char**argv)  {
-		RTF_TEST_REPORT(Asserter::format("argc %d", argc));
-		RTF_ASSERT_ERROR_IF(argc >= 1, "missing fixture filename in the paramater");
-		fixtureFilename = argv[1];
-		RTF_TEST_REPORT(fixtureFilename);
-		return true;
-	}
+    virtual bool setup(int argc, char**argv)  {
+        RTF_TEST_REPORT(Asserter::format("argc %d", argc));
+        RTF_ASSERT_ERROR_IF(argc >= 1, "missing fixture filename in the paramater");
+        fixtureFilename = argv[1];
+        RTF_TEST_REPORT(fixtureFilename);
+        return true;
+    }
 
     virtual void run() {
         TestResultCollector collector;
@@ -64,54 +64,54 @@ public:
 
         MyTest1 test1;
 
-        // create a test suits
-        MyTestSuit suit;
+        // create a test suites
+        MyTestSuite suite;
 
         // create a fixture manager from the plugin for the test suit
-		RTF_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
-		DllFixturePluginLoader* loader = new DllFixturePluginLoader();
-		FixtureManager* fixture = loader->open(fixtureFilename);
-		RTF_ASSERT_FAIL_IF(fixture, loader->getLastError());
+        RTF_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
+        DllFixturePluginLoader* loader = new DllFixturePluginLoader();
+        FixtureManager* fixture = loader->open(fixtureFilename);
+        RTF_ASSERT_FAIL_IF(fixture, loader->getLastError());
 
-        suit.addFixtureManager(fixture);		
-        suit.addTest(&test1);
+        suite.addFixtureManager(fixture);
+        suite.addTest(&test1);
 
-		RTF_TEST_FAIL_IF(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suit), "FixtureEvents dispatcher is not set");
-		fixture->setParam("MY_FIXTURE_TEST_PARAM");
+        RTF_TEST_FAIL_IF(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
+        fixture->setParam("MY_FIXTURE_TEST_PARAM");
 
         // create a test runner
         TestRunner runner;
-        runner.addTest(&suit);
+        runner.addTest(&suite);
         runner.run(result);
-		
-		RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_SETUP") != NULL &&
-			std::string(getenv("MY_FIXTURE_TEST_SETUP")) == "OK",
-			"Checking FixtureManager::setup()");
 
-		RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_CHECK") != NULL &&
-			std::string(getenv("MY_FIXTURE_TEST_CHECK")) == "OK",
-			"Checking FixtureManager::check()");
+        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_SETUP") != NULL &&
+            std::string(getenv("MY_FIXTURE_TEST_SETUP")) == "OK",
+            "Checking FixtureManager::setup()");
 
-		RTF_TEST_CHECK(suit.colapseReason == "COLAPSED", "FixtureManager::fixtureCollapsed()");
+        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_CHECK") != NULL &&
+            std::string(getenv("MY_FIXTURE_TEST_CHECK")) == "OK",
+            "Checking FixtureManager::check()");
 
-		RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_TEARDOWN") != NULL &&
-			std::string(getenv("MY_FIXTURE_TEST_TEARDOWN")) == "OK",
-			"Checking FixtureManager::tearDown()");
+        RTF_TEST_CHECK(suite.colapseReason == "COLAPSED", "FixtureManager::fixtureCollapsed()");
 
-//		delete fixture;
-//		delete loader;
-//		RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_DELETE") != NULL &&
-//			std::string(getenv("MY_FIXTURE_TEST_DELETE")) == "OK",
-//			"Checking deleteing FixtureManager");
+        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_TEARDOWN") != NULL &&
+            std::string(getenv("MY_FIXTURE_TEST_TEARDOWN")) == "OK",
+            "Checking FixtureManager::tearDown()");
 
-        //RTF_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));		
-        RTF_TEST_CHECK(collector.suitCount() == 1, "Checking suit count");
-        RTF_TEST_CHECK(collector.passedSuitCount() == 1, "Checking passed suit count");
-        RTF_TEST_CHECK(collector.failedSuitCount() == 0, "Checking failed suit count");
+//        delete fixture;
+//        delete loader;
+//        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_DELETE") != NULL &&
+//            std::string(getenv("MY_FIXTURE_TEST_DELETE")) == "OK",
+//            "Checking deleteing FixtureManager");
+
+        //RTF_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
+        RTF_TEST_CHECK(collector.suiteCount() == 1, "Checking suite count");
+        RTF_TEST_CHECK(collector.passedSuiteCount() == 1, "Checking passed suite count");
+        RTF_TEST_CHECK(collector.failedSuiteCount() == 0, "Checking failed suite count");
         RTF_TEST_CHECK(collector.testCount() == 1, "Checking tests count");
         RTF_TEST_CHECK(collector.passedCount() == 1, "Checking passed test count");
         RTF_TEST_CHECK(collector.failedCount() == 0, "Checking failed test count");
-		
+
     }
 };
 

@@ -80,18 +80,18 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename) {
     // extending python system path
 #ifdef _WIN32
 
-	char drive[_MAX_DRIVE];
-	char dir[_MAX_DIR];
-	char fname[_MAX_FNAME];
-	char ext[_MAX_EXT];
-	_splitpath_s(filename.c_str(), 
-				 drive, _MAX_DRIVE,
-				 dir, _MAX_DIR, 
-				 fname, _MAX_FNAME,
-				 ext, _MAX_EXT);
+    char drive[_MAX_DRIVE];
+    char dir[_MAX_DIR];
+    char fname[_MAX_FNAME];
+    char ext[_MAX_EXT];
+    _splitpath_s(filename.c_str(),
+                 drive, _MAX_DRIVE,
+                 dir, _MAX_DIR,
+                 fname, _MAX_FNAME,
+                 ext, _MAX_EXT);
     string dname = string(drive) + string(dir);
-	for(size_t i=0; i<dname.size(); i++)
-		dname[i] = (dname[i] == '\\') ? '/' : dname[i];
+    for(size_t i=0; i<dname.size(); i++)
+        dname[i] = (dname[i] == '\\') ? '/' : dname[i];
     string bname = fname;
 #else
     char* dir = strdup(filename.c_str());

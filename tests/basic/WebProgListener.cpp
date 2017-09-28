@@ -12,7 +12,7 @@
 #include <rtf/dll/Plugin.h>
 #include <rtf/WebProgressListener.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 
 #include <sstream>
 
@@ -59,16 +59,16 @@ public:
         TestResult result;
         result.addListener(&web);
 
-        // create a test suit and the test cases
-        TestSuit suit("MyTestSuit");
+        // create a test suite and the test cases
+        TestSuite suite("MyTestSuite");
         MyTest1 test1;
         MyTest2 test2;
-        suit.addTest(&test1);
-        suit.addTest(&test2);
+        suite.addTest(&test1);
+        suite.addTest(&test2);
 
         // create a test runner
         TestRunner runner;
-        runner.addTest(&suit);
+        runner.addTest(&suite);
         runner.run(result);
 
         // checking the web socket
@@ -112,7 +112,7 @@ public:
 
         RTF_TEST_CHECK(line.size()>2,"Cheking the json result size returned by web listener");
         line = line.substr(0, line.size()-1);
-        RTF_TEST_CHECK(line=="{\"name\":\"MyTestSuit\",\"ntest\":2,\"nfail\":1,\"npass\":1}",
+        RTF_TEST_CHECK(line=="{\"name\":\"MyTestSuite\",\"ntest\":2,\"nfail\":1,\"npass\":1}",
                        "Cheking the json result returned by web listener");
         close(sockfd);
     }

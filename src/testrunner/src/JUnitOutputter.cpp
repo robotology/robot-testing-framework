@@ -37,23 +37,23 @@ bool JUnitOutputter::write(std::string filename,
         return false;
     }
 
-    TiXmlDocument doc;   
+    TiXmlDocument doc;
     TiXmlElement* root = new TiXmlElement("testsuites");
-    root->SetAttribute("suites", collector.suitCount());
+    root->SetAttribute("suites", collector.suiteCount());
     root->SetAttribute("tests", collector.testCount());
     root->SetAttribute("failures", collector.failedCount());
     doc.LinkEndChild(root);
 
-    TiXmlElement* testsuit = NULL;
+    TiXmlElement* testsuite = NULL;
     TiXmlElement* testcase = NULL;
     string classname;
 
     // If there is not any test suite, add one!
-    if(collector.suitCount() == 0) {
+    if(collector.suiteCount() == 0) {
         classname = "default";
-        testsuit = new TiXmlElement("testsuite");
-        testsuit->SetAttribute("name", classname.c_str());
-        root->LinkEndChild(testsuit);
+        testsuite = new TiXmlElement("testsuite");
+        testsuite->SetAttribute("name", classname.c_str());
+        root->LinkEndChild(testsuite);
     }
 
     TestResultCollector::EventResultIterator itr;
@@ -64,22 +64,22 @@ bool JUnitOutputter::write(std::string filename,
        ResultEvent* e = *itr;
 
        // start suit
-       if(dynamic_cast<ResultEventStartSuit*>(e)) {
+       if(dynamic_cast<ResultEventStartSuite*>(e)) {
            classname = e->getTest()->getName();
-           testsuit = new TiXmlElement("testsuite");
-           testsuit->SetAttribute("name", classname.c_str());
-           root->LinkEndChild(testsuit);
+           testsuite = new TiXmlElement("testsuite");
+           testsuite->SetAttribute("name", classname.c_str());
+           root->LinkEndChild(testsuite);
        }
        // end suit
-       //else if(dynamic_cast<ResultEventEndSuit*>(e)) { }
+       //else if(dynamic_cast<ResultEventEndSuite*>(e)) { }
 
-       // start test case       
+       // start test case
        else if(dynamic_cast<ResultEventStartTest*>(e)) {
-           if(testsuit == NULL) continue;
+           if(testsuite == NULL) continue;
            testcase = new TiXmlElement("testcase");
            testcase->SetAttribute("name", e->getTest()->getName());
            testcase->SetAttribute("classname", classname+"."+e->getTest()->getName());
-           testsuit->LinkEndChild(testcase);
+           testsuite->LinkEndChild(testcase);
            errorMessages.clear();
            failureMessages.clear();
            reportsMessages.clear();

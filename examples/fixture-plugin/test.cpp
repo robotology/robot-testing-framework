@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <rtf/TestCase.h>
 #include <rtf/TestResult.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 #include <rtf/ConsoleListener.h>
 #include <rtf/TestRunner.h>
 #include <rtf/TestAssert.h>
@@ -33,11 +33,11 @@ public:
 
 int main(int argc, char *argv[]) {
 
-	if(argc < 2) {
+    if(argc < 2) {
         printf("Usage: %s <fixcture manager plugin file name>\n", argv[0]);
         printf("for example: %s libmyfixture.so\n", argv[0]);
-		return 0;
-	}
+        return 0;
+    }
 
     // load the test case plugin
     printf("Loading the fixture manager plugin... \n");
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     if(fixture == NULL) {
         printf("%s\n", loader.getLastError().c_str());
         return 0;
-	}
+    }
 
     // create a test listener to collect the result
     ConsoleListener listener(false);
@@ -55,19 +55,19 @@ int main(int argc, char *argv[]) {
     TestResult result;
     result.addListener(&listener);
 
-    // create a test suit
-    TestSuit suit("MyTestSuit");
+    // create a test suite
+    TestSuite suite("MyTestSuite");
 
-    // set the fixture manager for the test suit
-    suit.setFixtureManager(fixture);
+    // set the fixture manager for the test suite
+    suite.setFixtureManager(fixture);
 
-    // creates test cases and add them to the suit
+    // creates test cases and add them to the suite
     MyTest1 test1;
-    suit.addTest(&test1);
+    suite.addTest(&test1);
 
     // create a test runner and run the tests
     TestRunner runner;
-    runner.addTest(&suit);
+    runner.addTest(&suite);
     runner.run(result);
 
     return 0;

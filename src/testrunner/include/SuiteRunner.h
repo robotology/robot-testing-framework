@@ -8,47 +8,47 @@
  */
 
 
-#ifndef _RTF_SuitRunner_H
-#define _RTF_SuitRunner_H
+#ifndef _RTF_SuiteRunner_H
+#define _RTF_SuiteRunner_H
 
 #include <string>
 #include <vector>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 #include <PluginRunner.h>
 #include <rtf/dll/DllFixturePluginLoader.h>
 
 /**
- * class SuitRunner
+ * class SuiteRunner
  */
-class SuitRunner : public PluginRunner {
+class SuiteRunner : public PluginRunner {
 
 public:
 
     /**
-     * SuitRunner constructor
+     * SuiteRunner constructor
      */
-    SuitRunner(bool verbose=false);
+    SuiteRunner(bool verbose=false);
 
     /**
-     *  SuitRunner destructor
+     *  SuiteRunner destructor
      */
-    virtual ~SuitRunner();
+    virtual ~SuiteRunner();
 
     /**
-     * @brief loadSuit loads a single test suit (xml file)
+     * @brief loadSuite loads a single test suite (xml file)
      * @param filename the xml file name
      * @return true or false upon success or failure
      */
-    bool loadSuit(std::string filename);
+    bool loadSuite(std::string filename);
 
     /**
-     * @brief loadMultipleSuits loads all test suits from the
+     * @brief loadMultipleSuites loads all test suites from the
      * given path
-     * @param path the path to the test suits xml files
+     * @param path the path to the test suites xml files
      * @param recursive loads from subfolders if true
      * @return true or false upon success or failure
      */
-    bool loadMultipleSuits(std::string path, bool recursive=false);
+    bool loadMultipleSuites(std::string path, bool recursive=false);
 
     /**
      * Clear the test list
@@ -56,12 +56,12 @@ public:
     void reset();
 
 private:
-    bool loadSuitsFromPath(std::string path);
+    bool loadSuitesFromPath(std::string path);
 
 private:
     bool verbose;
-    std::vector<RTF::TestSuit*> suits;
+    std::vector<RTF::TestSuite*> suites;
     std::vector<RTF::plugin::DllFixturePluginLoader*> fixtureLoaders;
 };
 
-#endif // _RTF_SuitRunner_H
+#endif // _RTF_SuiteRunner_H

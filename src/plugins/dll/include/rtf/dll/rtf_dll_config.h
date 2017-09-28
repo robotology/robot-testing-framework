@@ -12,8 +12,8 @@
 #define _SHLIBPP_CONFIG_
 
 #if defined(WIN32)
-#	define SHLIBPP_FILTER_API
-#endif 
+#    define SHLIBPP_FILTER_API
+#endif
 
 #if defined _WIN32 || defined __CYGWIN__
 #  define SHLIBPP_HELPER_DLL_IMPORT __declspec(dllimport)

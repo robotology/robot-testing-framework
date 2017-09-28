@@ -12,8 +12,8 @@
 #define _RTF_CONFIG_
 
 #if defined(WIN32)
-#	define RTF_FILTER_API
-#endif 
+#    define RTF_FILTER_API
+#endif
 
 #if defined _WIN32 || defined __CYGWIN__
 #  define RTF_HELPER_DLL_IMPORT __declspec(dllimport)
@@ -67,7 +67,7 @@
 
 //  always export symbols
 //#define RTF_API RTF_EXPORT
-#define RTF_API 
+#define RTF_API
 
 #if (__cplusplus >= 201103L)
 #  define RTF_NORETURN //TODO [[noreturn]] see issue #66

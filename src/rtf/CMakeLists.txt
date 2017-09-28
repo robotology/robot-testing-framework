@@ -30,7 +30,7 @@ if(ENABLE_WEB_LISTENER)
         include/rtf/TestResultCollector.h
         include/rtf/TestResult.h
         include/rtf/TestRunner.h
-        include/rtf/TestSuit.h
+        include/rtf/TestSuite.h
         include/rtf/TextOutputter.h
         include/rtf/WebProgressListener.h)
 
@@ -47,7 +47,7 @@ if(ENABLE_WEB_LISTENER)
         src/TestResultCollector.cpp
         src/TestResult.cpp
         src/TestRunner.cpp
-        src/TestSuit.cpp
+        src/TestSuite.cpp
         src/TextOutputter.cpp
         src/WebProgressListener.cpp)
 
@@ -72,7 +72,7 @@ else()
         include/rtf/TestResultCollector.h
         include/rtf/TestResult.h
         include/rtf/TestRunner.h
-        include/rtf/TestSuit.h
+        include/rtf/TestSuite.h
         include/rtf/TextOutputter.h)
 
     set(RTF_HDRS_IMPL)
@@ -87,7 +87,7 @@ else()
         src/TestResultCollector.cpp
         src/TestResult.cpp
         src/TestRunner.cpp
-        src/TestSuit.cpp
+        src/TestSuite.cpp
         src/TextOutputter.cpp)
 
     include_directories(${RTF_TREE_INCLUDE_DIRS}

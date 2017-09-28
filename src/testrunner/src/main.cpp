@@ -17,7 +17,7 @@
 #include <JUnitOutputter.h>
 
 #include <cmdline.h>
-#include <SuitRunner.h>
+#include <SuiteRunner.h>
 #include <ErrorLogger.h>
 #include <Version.h>
 
@@ -57,12 +57,12 @@ void addOptions(cmdline::parser &cmd) {
                     "Runs multiple tests from the given folder which contains plugins.",
                     false);
 
-    cmd.add<string>("suit", 's',
-                    "Runs a single test suit from the given XMl file.",
+    cmd.add<string>("suite", 's',
+                    "Runs a single test suite from the given XMl file.",
                     false);
 
-    cmd.add<string>("suits", '\0',
-                    "Runs multiple test suits from the given folder which contains XML files.",
+    cmd.add<string>("suites", '\0',
+                    "Runs multiple test suites from the given folder which contains XML files.",
                     false);
 
     cmd.add("no-output", '\0',
@@ -93,7 +93,7 @@ void addOptions(cmdline::parser &cmd) {
                     "Sets the web reporter server port. (The default port number is 8080.)",
                     false, 8080);
     cmd.add("recursive", 'r',
-            "Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
+            "Searches into subfolders for plugins or XML files. (Can be used with --tests or --suites options.)");
     cmd.add("detail", 'd',
             "Enables verbose mode of test assertions.");
     cmd.add("verbose", 'v',
@@ -163,17 +163,17 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    // exit if no test or suit is given
+    // exit if no test or suite is given
     if(!cmd.get<string>("test").size() &&
             !cmd.get<string>("tests").size() &&
-            !cmd.get<string>("suit").size() &&
-            !cmd.get<string>("suits").size()) {
+            !cmd.get<string>("suite").size() &&
+            !cmd.get<string>("suites").size()) {
         cout<<cmd.usage();
-		return EXIT_FAILURE;
+        return EXIT_FAILURE;
     }
 
     // create a test runner
-    SuitRunner runner(cmd.exist("verbose"));
+    SuiteRunner runner(cmd.exist("verbose"));
     currentRunner = &runner;
 
     // load a single plugin
@@ -195,15 +195,15 @@ int main(int argc, char *argv[]) {
         }
 
     // load a single suit
-    if(cmd.get<string>("suit").size())
-        if(!runner.loadSuit(cmd.get<string>("suit"))) {
+    if(cmd.get<string>("suite").size())
+        if(!runner.loadSuite(cmd.get<string>("suite"))) {
             reportErrors();
             return EXIT_FAILURE;
         }
 
-    // load multiple suits
-    if(cmd.get<string>("suits").size())
-        if(!runner.loadMultipleSuits(cmd.get<string>("suits"),
+    // load multiple suites
+    if(cmd.get<string>("suites").size())
+        if(!runner.loadMultipleSuites(cmd.get<string>("suites"),
                                        cmd.exist("recursive"))) {
             reportErrors();
             return EXIT_FAILURE;
@@ -266,10 +266,10 @@ int main(int argc, char *argv[]) {
     if(!cmd.exist("no-summary")) {
         // print out some simple statistics
         cout<<endl<<"---------- results -----------"<<endl;
-        if(collector.suitCount()) {
-        cout<<"Total number of test suites  : "<<collector.suitCount()<<endl;
-        cout<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
-        cout<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+        if(collector.suiteCount()) {
+        cout<<"Total number of test suites  : "<<collector.suiteCount()<<endl;
+        cout<<"Number of passed test suites : "<<collector.passedSuiteCount()<<endl;
+        cout<<"Number of failed test suites : "<<collector.failedSuiteCount()<<endl;
         }
         cout<<"Total number of test cases   : "<<collector.testCount()<<endl;
         cout<<"Number of passed test cases  : "<<collector.passedCount()<<endl;
@@ -280,7 +280,7 @@ int main(int argc, char *argv[]) {
 
     int exitCode;
     if( (collector.failedCount() == 0)  &&
-        (collector.failedSuitCount() == 0))
+        (collector.failedSuiteCount() == 0))
         exitCode = EXIT_SUCCESS;
     else
         exitCode = EXIT_FAILURE;

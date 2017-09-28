@@ -13,7 +13,7 @@
 
 #include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 
 using namespace RTF;
 
@@ -47,22 +47,22 @@ public:
         TestResult result;
         result.addListener(&collector);
 
-        // create a test suit and the test cases
-        TestSuit suit("MyTestSuit");
+        // create a test suite and the test cases
+        TestSuite suite("MyTestSuite");
         MyTest1 test1;
         MyTest2 test2;
-        suit.addTest(&test1);
-        suit.addTest(&test2);
+        suite.addTest(&test1);
+        suite.addTest(&test2);
 
         // create a test runner
         TestRunner runner;
-        runner.addTest(&suit);
+        runner.addTest(&suite);
         runner.run(result);
 
         //RTF_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
-        RTF_TEST_CHECK(collector.suitCount() == 1, "Checking suit count");
-        RTF_TEST_CHECK(collector.passedSuitCount() == 0, "Checking passed suit count");
-        RTF_TEST_CHECK(collector.failedSuitCount() == 1, "Checking failed suit count");
+        RTF_TEST_CHECK(collector.suiteCount() == 1, "Checking suite count");
+        RTF_TEST_CHECK(collector.passedSuiteCount() == 0, "Checking passed suite count");
+        RTF_TEST_CHECK(collector.failedSuiteCount() == 1, "Checking failed suite count");
         RTF_TEST_CHECK(collector.testCount() == 2, "Checking tests count");
         RTF_TEST_CHECK(collector.passedCount() == 1, "Checking passed test count");
         RTF_TEST_CHECK(collector.failedCount() == 1, "Checking failed test count");

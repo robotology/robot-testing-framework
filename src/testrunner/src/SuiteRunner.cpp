@@ -8,7 +8,7 @@
  */
 
 #include <rtf/Asserter.h> // used to format the string message
-#include <SuitRunner.h>
+#include <SuiteRunner.h>
 #include <ErrorLogger.h>
 #include <PlatformDir.h>
 #include <tinyxml.h>
@@ -19,23 +19,23 @@ using namespace std;
 using namespace RTF;
 using namespace RTF::plugin;
 
-SuitRunner::SuitRunner(bool verbose)
+SuiteRunner::SuiteRunner(bool verbose)
     : PluginRunner(verbose),
       verbose(verbose) {
 }
 
-SuitRunner::~SuitRunner() {
+SuiteRunner::~SuiteRunner() {
     reset();
 }
 
-void SuitRunner::reset() {
+void SuiteRunner::reset() {
     // first reset the PluginRunner
     PluginRunner::reset();
 
-    // delete all the suits which was created
-    for(unsigned int i=0; i<suits.size(); i++)
-        delete suits[i];
-    suits.clear();
+    // delete all the suites which was created
+    for(unsigned int i=0; i<suites.size(); i++)
+        delete suites[i];
+    suites.clear();
 
     // delete all the fixture plugin loader which was created
     for(unsigned int i=0; i<fixtureLoaders.size(); i++)
@@ -43,7 +43,7 @@ void SuitRunner::reset() {
     fixtureLoaders.clear();
 }
 
-bool SuitRunner::loadSuit(std::string filename) {
+bool SuiteRunner::loadSuite(std::string filename) {
     if(verbose)
         cout<<"Loading "<<filename<<endl;
 
@@ -59,7 +59,7 @@ bool SuitRunner::loadSuit(std::string filename) {
         bOK = doc.LoadFile();
     }
     catch(...) {
-        string error = Asserter::format("Caught an exception while trying to open suit '%s'. (Is it a XML file?)",
+        string error = Asserter::format("Caught an exception while trying to open suite '%s'. (Is it a XML file?)",
                                         filename.c_str());
         logger.addError(error);
         return false;
@@ -81,15 +81,15 @@ bool SuitRunner::loadSuit(std::string filename) {
         return false;
     }
 
-    if(!PluginFactory::compare(root->Value(), "suit")) {
+    if(!PluginFactory::compare(root->Value(), "suite")) {
         if(verbose)
-            cout<<filename<<" is not a test suit file!"<<endl;
+            cout<<filename<<" is not a test suite file!"<<endl;
         return false;
     }
 
     std::string environment;
     std::string name = (root->Attribute("name")) ? root->Attribute("name") : "unknown";
-    TestSuit* suit = new TestSuit(name);
+    TestSuite* suite = new TestSuite(name);
 
     // retrieving test cases
     for(TiXmlElement* test = root->FirstChildElement(); test;
@@ -97,7 +97,7 @@ bool SuitRunner::loadSuit(std::string filename) {
     {
         if(PluginFactory::compare(test->Value(), "description")) {
             if(test->GetText() != NULL)
-                suit->setDescription(test->GetText());
+                suite->setDescription(test->GetText());
         }
         else if(PluginFactory::compare(test->Value(), "environment")) {
             if(test->GetText() != NULL)
@@ -120,7 +120,7 @@ bool SuitRunner::loadSuit(std::string filename) {
                     if(test->Attribute("param"))
                         fixture->setParam(test->Attribute("param"));
                     // set the fixture manager for the current suit
-                    suit->addFixtureManager(fixture);
+                    suite->addFixtureManager(fixture);
                     // keep track of the created plugin loaders
                     fixtureLoaders.push_back(loader);
                 }
@@ -128,7 +128,7 @@ bool SuitRunner::loadSuit(std::string filename) {
                     logger.addError(loader->getLastError());
                     delete loader;
                     // stop going on if the fixture manager cannot be loaded
-                    delete suit;
+                    delete suite;
                     return false;
                 }
         }
@@ -178,7 +178,7 @@ bool SuitRunner::loadSuit(std::string filename) {
                     }
                 }
                 // add the test to the suit
-                suit->addTest(testcase);
+                suite->addTest(testcase);
                 // keep track of the created plugin loaders
                 dllLoaders.push_back(loader);
             }
@@ -189,17 +189,17 @@ bool SuitRunner::loadSuit(std::string filename) {
         }
     }
 
-    // add the test suit to the TestRunner
-    addTest(suit);
-    // keep tracks of the created suits
-    suits.push_back(suit);
+    // add the test suite to the TestRunner
+    addTest(suite);
+    // keep tracks of the created suites
+    suites.push_back(suite);
     return true;
 }
 
-bool SuitRunner::loadMultipleSuits(std::string path,
+bool SuiteRunner::loadMultipleSuites(std::string path,
                                          bool recursive) {
     if(!recursive)
-        return loadSuitsFromPath(path);
+        return loadSuitesFromPath(path);
 
     // load from subfolders
     if((path.rfind(PATH_SEPERATOR)==string::npos) ||
@@ -213,7 +213,7 @@ bool SuitRunner::loadMultipleSuits(std::string path,
         return false;
     }
 
-    loadSuitsFromPath(path);
+    loadSuitesFromPath(path);
 
     while((entry = readdir(dir))) {
         if((entry->d_type == DT_DIR) &&
@@ -221,16 +221,16 @@ bool SuitRunner::loadMultipleSuits(std::string path,
                 (string(entry->d_name) != string("..")))
         {
             string name = path + string(entry->d_name);
-            loadMultipleSuits(name, recursive);
+            loadMultipleSuites(name, recursive);
         }
     }
     closedir(dir);
     return true;
 }
 
-bool SuitRunner::loadSuitsFromPath(std::string path) {
+bool SuiteRunner::loadSuitesFromPath(std::string path) {
     if(verbose)
-        cout<<"Loading suits from "<<path<<endl;
+        cout<<"Loading suites from "<<path<<endl;
 
     if((path.rfind(PATH_SEPERATOR)==string::npos) ||
         (path.rfind(PATH_SEPERATOR)!=path.size()-1))
@@ -249,7 +249,7 @@ bool SuitRunner::loadSuitsFromPath(std::string path) {
             // check for xml file
             string ext = name.substr(name.size()-4,4);
             if(PluginFactory::compare(ext.c_str(), ".xml"))
-                loadSuit(path+name);
+                loadSuite(path+name);
         }
     }
     closedir(dir);

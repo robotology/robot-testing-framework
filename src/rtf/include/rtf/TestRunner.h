@@ -24,7 +24,7 @@ namespace RTF {
 /**
  * \ingroup key_class
  *
- * \brief The TestRunner class runs the tests added as TestCase or TestSuit.
+ * \brief The TestRunner class runs the tests added as TestCase or TestSuite.
  * It simply goes through a list of the tests and run them one after each other.
  *
  * Here's an example of using a TestRunner:

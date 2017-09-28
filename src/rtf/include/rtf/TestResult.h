@@ -104,16 +104,16 @@ public:
     void endTest(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is started
+     * This is called when a TestSuite is started
      * @param test pointer to the corresponding test
      */
-    void startTestSuit(const RTF::Test* test);
+    void startTestSuite(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is finished
+     * This is called when a TestSuite is finished
      * @param test pointer to the corresponding test
      */
-    void endTestSuit(const RTF::Test *test);
+    void endTestSuite(const RTF::Test *test);
 
     /**
      * This is called when the TestRunner is started
