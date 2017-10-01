@@ -1,9 +1,0 @@
-<map id="RTF::ResultEvent" name="RTF::ResultEvent">
-<area shape="rect" id="node2" href="$classRTF_1_1ResultEventEndSuit.html" title="The ResultEventEndSuit class keeps a test suit ending event. " alt="" coords="189,5,367,32"/>
-<area shape="rect" id="node3" href="$classRTF_1_1ResultEventEndTest.html" title="The ResultEventEndTest class keeps a test ending event. " alt="" coords="187,56,369,83"/>
-<area shape="rect" id="node4" href="$classRTF_1_1ResultEventError.html" title="The ResultEventError class keeps a test error event. " alt="" coords="197,107,359,133"/>
-<area shape="rect" id="node5" href="$classRTF_1_1ResultEventFailure.html" title="The ResultEventFailure class keeps a failure event. " alt="" coords="192,157,364,184"/>
-<area shape="rect" id="node6" href="$classRTF_1_1ResultEventReport.html" title="The ResultEventReport class keeps a test report event. " alt="" coords="191,208,365,235"/>
-<area shape="rect" id="node7" href="$classRTF_1_1ResultEventStartSuit.html" title="The ResultEventStartSuit class keeps a test suit starting event. " alt="" coords="187,259,369,285"/>
-<area shape="rect" id="node8" href="$classRTF_1_1ResultEventStartTest.html" title="The ResultEventStartTest class keeps a test starting event. " alt="" coords="184,309,372,336"/>
-</map>

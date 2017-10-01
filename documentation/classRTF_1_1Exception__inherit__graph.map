@@ -1,6 +1,0 @@
-<map id="RTF::Exception" name="RTF::Exception">
-<area shape="rect" id="node3" href="$classRTF_1_1FixtureException.html" title="The RTF::FixtureException class Ficture exception is used when a there is a probleme during fixture s..." alt="" coords="5,155,164,181"/>
-<area shape="rect" id="node4" href="$classRTF_1_1TestErrorException.html" title="The RTF::TestErrorException class Error exception is used when test breakdown due to an error in setu..." alt="" coords="188,155,365,181"/>
-<area shape="rect" id="node5" href="$classRTF_1_1TestFailureException.html" title="The RTF::FailureException class Failure exception is used when a test or subtests fail..." alt="" coords="390,155,577,181"/>
-<area shape="rect" id="node2" title="STL class. " alt="" coords="223,5,331,32"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title="STL class. " alt="" coords="5,56,113,83"/>
-<area shape="rect" id="node2" href="$classRTF_1_1Exception.html" title="The RTF::Exception is a generic exception. " alt="" coords="161,56,279,83"/>
-<area shape="rect" id="node3" href="$classRTF_1_1FixtureException.html" title="The RTF::FixtureException class Ficture exception is used when a there is a probleme during fixture s..." alt="" coords="341,5,499,32"/>
-<area shape="rect" id="node4" href="$classRTF_1_1TestErrorException.html" title="The RTF::TestErrorException class Error exception is used when test breakdown due to an error in setu..." alt="" coords="331,56,509,83"/>
-<area shape="rect" id="node5" href="$classRTF_1_1TestFailureException.html" title="The RTF::FailureException class Failure exception is used when a test or subtests fail..." alt="" coords="327,107,513,133"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classRTF_1_1FixtureEvents.html" title="class FixtureEvents " alt="" coords="5,13,145,40"/>
-<area shape="rect" id="node2" href="$classRTF_1_1TestSuit.html" title="The TestSuit holds a group of tests. " alt="" coords="198,13,305,40"/>
-<area shape="rect" id="node3" href="$classRTF_1_1Test.html" title="The simplest form of a test unit. " alt="" coords="34,64,117,91"/>
-<area shape="rect" id="node4" href="$classRTF_1_1TestCase.html" title="The base class to implememnt a test case. " alt="" coords="193,64,309,91"/>
-<area shape="rect" id="node5" href="$classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="361,5,592,32"/>
-<area shape="rect" id="node6" href="$classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html" title="The PythonPluginLoaderImpl loads a Pthyon test case plug&#45;in and gives the direct access to the TestCa..." alt="" coords="387,57,567,98"/>
-<area shape="rect" id="node7" href="$classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html" title="The RubyPluginLoaderImpl loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="357,123,596,149"/>
-</map>

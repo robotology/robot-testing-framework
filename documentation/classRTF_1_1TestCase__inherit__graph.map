@@ -1,6 +1,0 @@
-<map id="RTF::TestCase" name="RTF::TestCase">
-<area shape="rect" id="node3" href="$classRTF_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="304,5,535,32"/>
-<area shape="rect" id="node4" href="$classRTF_1_1plugin_1_1PythonPluginLoaderImpl.html" title="The PythonPluginLoaderImpl loads a Pthyon test case plug&#45;in and gives the direct access to the TestCa..." alt="" coords="329,57,509,98"/>
-<area shape="rect" id="node5" href="$classRTF_1_1plugin_1_1RubyPluginLoaderImpl.html" title="The RubyPluginLoaderImpl loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="300,123,539,149"/>
-<area shape="rect" id="node2" href="$classRTF_1_1Test.html" title="The simplest form of a test unit. " alt="" coords="5,64,88,91"/>
-</map>

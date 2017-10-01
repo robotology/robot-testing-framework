@@ -1,6 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classRTF_1_1TestListener.html" title="The base class of any test result listeners. " alt="" coords="5,56,140,83"/>
-<area shape="rect" id="node2" href="$classRTF_1_1ConsoleListener.html" title="class ConsoleListener listens to any messages reported by the tests during the test run..." alt="" coords="204,5,363,32"/>
-<area shape="rect" id="node3" href="$classRTF_1_1TestResultCollector.html" title="The TestResultCollector class can be used to store all the events issued by the test cases..." alt="" coords="194,56,373,83"/>
-<area shape="rect" id="node4" href="$classRTF_1_1WebProgressListener.html" title="class WebProgressListener listens to any messages reported by the tests during the test run..." alt="" coords="188,107,379,133"/>
-</map>
