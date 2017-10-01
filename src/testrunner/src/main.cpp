@@ -65,6 +65,14 @@ void addOptions(cmdline::parser &cmd) {
                     "Runs multiple test suites from the given folder which contains XML files.",
                     false);
 
+    cmd.add<string>("suit", '\0',
+                    "Runs a single test suite from the given XMl file (legacy option that will be removed in RTF 1.5, do not use).",
+                    false);
+
+    cmd.add<string>("suits", '\0',
+                    "Runs multiple test suites from the given folder which contains XML files (legacy option that will be removed in RTF 1.5, do not use).",
+                    false);
+
     cmd.add("no-output", '\0',
             "Avoids generating any output file");
 
@@ -167,7 +175,9 @@ int main(int argc, char *argv[]) {
     if(!cmd.get<string>("test").size() &&
             !cmd.get<string>("tests").size() &&
             !cmd.get<string>("suite").size() &&
-            !cmd.get<string>("suites").size()) {
+            !cmd.get<string>("suites").size() &&
+            !cmd.get<string>("suit").size() &&
+            !cmd.get<string>("suits").size()) {
         cout<<cmd.usage();
         return EXIT_FAILURE;
     }
@@ -194,16 +204,28 @@ int main(int argc, char *argv[]) {
             return EXIT_FAILURE;
         }
 
-    // load a single suit
-    if(cmd.get<string>("suite").size())
-        if(!runner.loadSuite(cmd.get<string>("suite"))) {
+    // load a single suite
+    string suiteFileName = cmd.get<string>("suite");
+    if(suiteFileName.empty())
+    {
+        suiteFileName = cmd.get<string>("suit");
+    }
+
+    if(suiteFileName.size())
+        if(!runner.loadSuite(suiteFileName)) {
             reportErrors();
             return EXIT_FAILURE;
         }
 
     // load multiple suites
-    if(cmd.get<string>("suites").size())
-        if(!runner.loadMultipleSuites(cmd.get<string>("suites"),
+    string suitesDirectoryName = cmd.get<string>("suites");
+    if(suitesDirectoryName.empty())
+    {
+        suitesDirectoryName = cmd.get<string>("suits");
+    }
+
+    if(suitesDirectoryName.size())
+        if(!runner.loadMultipleSuites(suitesDirectoryName,
                                        cmd.exist("recursive"))) {
             reportErrors();
             return EXIT_FAILURE;

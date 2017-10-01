@@ -81,7 +81,17 @@ bool SuiteRunner::loadSuite(std::string filename) {
         return false;
     }
 
-    if(!PluginFactory::compare(root->Value(), "suite")) {
+    bool rootTagIsSuite = PluginFactory::compare(root->Value(), "suite");
+    bool rootTagIsSuit = PluginFactory::compare(root->Value(), "suit");
+
+    if(rootTagIsSuit)
+    {
+        logger.addWarning(Asserter::format("Root tag of the xml file is the \" suit \" tag, that is deprecated since RTF 1.3, and will be removed in RTF 1.5 .",
+                                           "Please use the \" suite \" tag instead."));
+    }
+
+
+    if(!(rootTagIsSuit || rootTagIsSuite)) {
         if(verbose)
             cout<<filename<<" is not a test suite file!"<<endl;
         return false;
