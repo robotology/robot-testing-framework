@@ -5,8 +5,11 @@
 #  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
 #
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.1)
 project(RTF)
+
+# enforce the use of C++11
+set(CMAKE_CXX_STANDARD 11)
 
 
 # Pick up our CMake scripts - they are all in the conf subdirectory.
