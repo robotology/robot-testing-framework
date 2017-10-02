@@ -23,8 +23,10 @@ void Asserter::fail(RTF::TestMessage msg) {
 
 void Asserter::fail(bool condition,
                     RTF::TestMessage msg) {
-    if(!condition)
-        throw TestFailureException(msg);
+    if (!condition)
+    {
+        Asserter::fail(msg);
+    }
 }
 
 
@@ -36,8 +38,10 @@ void Asserter::error(RTF::TestMessage msg) {
 void Asserter::error(bool condition,
                      RTF::TestMessage msg)
 {
-    if(!condition)
-        throw TestErrorException(msg);
+    if (!condition)
+    {
+        Asserter::error(msg);
+    }
 }
 
 void Asserter::report(RTF::TestMessage msg,

@@ -45,7 +45,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding failure message
      */
-    static RTF_API void fail RTF_NORETURN (bool condition,
+    static RTF_API void fail(bool condition,
                        RTF::TestMessage msg);
 
     /**
@@ -61,7 +61,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding error message
      */
-    static RTF_API void error RTF_NORETURN (bool condition,
+    static RTF_API void error(bool condition,
                        RTF::TestMessage msg);
 
     /**
