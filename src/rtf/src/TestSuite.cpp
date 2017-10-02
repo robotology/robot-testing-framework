@@ -10,6 +10,7 @@
 #include <rtf/TestMessage.h>
 #include <rtf/TestSuite.h>
 #include <rtf/Exception.h>
+#include <algorithm>
 
 using namespace RTF;
 
@@ -26,7 +27,10 @@ TestSuite::~TestSuite() {
 }
 
 void TestSuite::addTest(RTF::Test* test) {
-    tests.push_back(test);
+    if (std::find(tests.begin(), tests.end(), test) == tests.end())
+    {
+        tests.push_back(test);
+    }
 }
 
 

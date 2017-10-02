@@ -15,7 +15,7 @@
 #include <rtf/Test.h>
 #include <rtf/TestResult.h>
 
-#include <set>
+#include <vector>
 
 namespace RTF {
     class TestRunner;
@@ -32,8 +32,8 @@ namespace RTF {
  */
 class RTF_API RTF::TestRunner {
 
-    typedef std::set<RTF::Test*> TestContainer;
-    typedef std::set<RTF::Test*>::iterator TestIterator;
+    typedef std::vector<RTF::Test*> TestContainer;
+    typedef std::vector<RTF::Test*>::iterator TestIterator;
 
 
 public:
