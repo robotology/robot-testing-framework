@@ -158,7 +158,7 @@ WebProgressListenerImpl::WebProgressListenerImpl(unsigned int port,
         mg_set_option(server,
                       "listening_port", port_str.c_str());
         shouldStop = false;
-        updater = new tthread::thread(update, this);
+        updater = new std::thread(update, this);
     }
 }
 

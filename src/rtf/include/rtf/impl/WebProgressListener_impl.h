@@ -13,8 +13,9 @@
 
 #include <rtf/rtf_config.h>
 #include <rtf/TestListener.h>
+#include <thread>
+#include <mutex>
 #include <mongoose.h>
-#include <tinythread.h>
 
 namespace RTF {
     class WebProgressListenerImpl;
@@ -104,7 +105,7 @@ public:
 
 public:
     struct mg_server *server;
-    tthread::mutex critical;
+    std::mutex critical;
     bool shouldStop;
     std::string result;
     std::string suite_name;
@@ -122,7 +123,7 @@ private:
                           enum mg_event ev);
 
 private:
-    tthread::thread *updater;
+    std::thread *updater;
     bool verbose;
     unsigned int port;
 };
