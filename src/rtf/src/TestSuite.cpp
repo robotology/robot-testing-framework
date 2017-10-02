@@ -63,8 +63,8 @@ bool TestSuite::setup() {
 
 
 void TestSuite::tearDown() {
-    FixtureIterator itr;
-    for(itr=fixtureManagers.begin(); itr!=fixtureManagers.end(); itr++)
+    FixtureRIterator itr;
+    for(itr=fixtureManagers.rbegin(); itr!=fixtureManagers.rend(); itr++)
         (*itr)->tearDown();
 }
 

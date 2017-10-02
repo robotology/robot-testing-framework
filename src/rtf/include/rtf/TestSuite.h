@@ -47,6 +47,7 @@ class RTF_API RTF::TestSuite : public RTF::Test, public RTF::FixtureEvents {
     typedef std::vector<RTF::Test*>::iterator TestIterator;
     typedef std::vector<RTF::FixtureManager*> FixtureContainer;
     typedef std::vector<RTF::FixtureManager*>::iterator FixtureIterator;
+    typedef std::vector<RTF::FixtureManager*>::reverse_iterator FixtureRIterator;
 
 public:
 
