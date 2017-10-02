@@ -30,7 +30,7 @@ JUnitOutputter::~JUnitOutputter() { }
 bool JUnitOutputter::write(std::string filename,
                           RTF::TestMessage* errorMsg) {
     if(filename.empty()) {
-        if(errorMsg != NULL) {
+        if(errorMsg != nullptr) {
             errorMsg->setMessage("Cannot open the file.");
             errorMsg->setDetail("Empty file name.");
         }
@@ -44,8 +44,8 @@ bool JUnitOutputter::write(std::string filename,
     root->SetAttribute("failures", collector.failedCount());
     doc.LinkEndChild(root);
 
-    TiXmlElement* testsuite = NULL;
-    TiXmlElement* testcase = NULL;
+    TiXmlElement* testsuite = nullptr;
+    TiXmlElement* testcase = nullptr;
     string classname;
 
     // If there is not any test suite, add one!
@@ -75,7 +75,7 @@ bool JUnitOutputter::write(std::string filename,
 
        // start test case
        else if(dynamic_cast<ResultEventStartTest*>(e)) {
-           if(testsuite == NULL) continue;
+           if(testsuite == nullptr) continue;
            testcase = new TiXmlElement("testcase");
            testcase->SetAttribute("name", e->getTest()->getName());
            testcase->SetAttribute("classname", classname+"."+e->getTest()->getName());
@@ -87,7 +87,7 @@ bool JUnitOutputter::write(std::string filename,
 
        // end test case
        else if(dynamic_cast<ResultEventEndTest*>(e)) {
-           if(testcase == NULL) continue;
+           if(testcase == nullptr) continue;
            // adding falures
            if(failureMessages.size()) {
                TiXmlElement * failure = new TiXmlElement("failure");
@@ -163,7 +163,7 @@ bool JUnitOutputter::write(std::string filename,
     } // end for
 
     if(!doc.SaveFile(filename.c_str())) {
-        if(errorMsg != NULL) {
+        if(errorMsg != nullptr) {
             errorMsg->setMessage("Cannot write to the " + filename);
             if (doc.Error())
                 errorMsg->setDetail(Asserter::format("%s (line: %d, column %d)", doc.ErrorDesc(), doc.ErrorRow(), doc.ErrorCol()));

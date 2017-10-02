@@ -15,7 +15,7 @@ using namespace RTF;
 
 
 TestRunner::TestRunner()
-    : current(NULL) { }
+    : current(nullptr) { }
 
 
 TestRunner::~TestRunner() {
@@ -54,7 +54,7 @@ void TestRunner::run(RTF::TestResult &result) {
         (*it)->run(result);
     }
     result.endTestRunner();
-    current = NULL;
+    current = nullptr;
 }
 
 void TestRunner::interrupt() {

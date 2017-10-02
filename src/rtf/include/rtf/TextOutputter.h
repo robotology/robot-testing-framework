@@ -59,7 +59,7 @@ public:
      * @return true or false uppoun success or failure
      */
     bool write(std::string filename, bool summary,
-               RTF::TestMessage* errorMsg=NULL);
+               RTF::TestMessage* errorMsg=nullptr);
 
 private:
     bool verbose;

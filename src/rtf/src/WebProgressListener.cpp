@@ -168,14 +168,14 @@ WebProgressListenerImpl::~WebProgressListenerImpl() {
     if(updater) {
         updater->join();
         delete updater;
-        updater = NULL;
+        updater = nullptr;
     }
     // delete the web server
     if(server) {
         // ensure the last message delivery (?)
         mg_poll_server(server, 1000);
         mg_destroy_server(&server);
-        server = NULL;
+        server = nullptr;
     }
 }
 

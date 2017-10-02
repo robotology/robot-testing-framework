@@ -29,7 +29,7 @@ TextOutputter::~TextOutputter() { }
 bool TextOutputter::write(std::string filename, bool summary,
                           RTF::TestMessage* errorMsg) {
     if(filename.empty()) {
-        if(errorMsg != NULL) {
+        if(errorMsg != nullptr) {
             errorMsg->setMessage("Cannot open the file.");
             errorMsg->setDetail("Empty file name.");
         }
@@ -39,7 +39,7 @@ bool TextOutputter::write(std::string filename, bool summary,
     ofstream outputter;
     outputter.open(filename.c_str());
     if (!outputter.is_open() || !outputter.good()) {
-        if(errorMsg != NULL) {
+        if(errorMsg != nullptr) {
             errorMsg->setMessage("Cannot open the file.");
             const char* errorStr = strerror(errno);
             errorMsg->setDetail(errorStr);

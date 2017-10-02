@@ -12,7 +12,7 @@
 using namespace std;
 
 // Global static pointer used to ensure a single instance of the class.
-ErrorLogger* ErrorLogger::pInstance = NULL;
+ErrorLogger* ErrorLogger::pInstance = nullptr;
 
 
 ErrorLogger& ErrorLogger::Instance() {

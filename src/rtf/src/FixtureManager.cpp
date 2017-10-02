@@ -16,7 +16,7 @@ using namespace RTF;
 using namespace std;
 
 FixtureManager::FixtureManager(std::string param)
-    : dispatcher(NULL), param(param) {
+    : dispatcher(nullptr), param(param) {
 }
 
 

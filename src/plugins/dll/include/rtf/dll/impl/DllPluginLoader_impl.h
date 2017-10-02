@@ -33,7 +33,7 @@ public:
     /**
      * DllPluginLoaderImpl constructor
      */
-    DllPluginLoaderImpl() : plugin(NULL) { }
+    DllPluginLoaderImpl() : plugin(nullptr) { }
 
     /**
      *  DllPluginLoaderImpl destructor
@@ -70,8 +70,8 @@ public:
                    plugin->factory.getLastNativeError();
            }
             delete plugin;
-            plugin = NULL;
-            return NULL;
+            plugin = nullptr;
+            return nullptr;
         }
 
         // TODO: check if this is neccessary!!!
@@ -83,8 +83,8 @@ public:
             //error = RTF::Asserter::format("cannot create an instance of TestCase from %s",
             //                                filename.c_str());
             delete plugin;
-            plugin = NULL;
-            return NULL;
+            plugin = nullptr;
+            return nullptr;
         }
 
         return &plugin->test.getContent();
@@ -98,7 +98,7 @@ public:
     void close() {
         if(plugin)
             delete plugin;
-        plugin = NULL;
+        plugin = nullptr;
         error.clear();
     }
 

@@ -37,7 +37,7 @@ public:
     /**
      * @brief ResultEvent constructor
      */
-    ResultEvent() : test(NULL) {
+    ResultEvent() : test(nullptr) {
     }
 
     /**

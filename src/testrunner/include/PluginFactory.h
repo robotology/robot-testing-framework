@@ -48,7 +48,7 @@ public:
         if(compare(type.c_str(), "ruby"))
             return new RTF::plugin::RubyPluginLoader();
 #endif
-        return NULL;
+        return nullptr;
     }
 
     static RTF::plugin::PluginLoader* createByName(std::string name) {
@@ -86,7 +86,7 @@ public:
             if(PluginFactory::compare(ext.c_str(), ".so"))
                 return new RTF::plugin::DllPluginLoader();
         }
-        return NULL;
+        return nullptr;
     }
 
     static bool compare(const char*first,

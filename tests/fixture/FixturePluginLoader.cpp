@@ -84,23 +84,23 @@ public:
         runner.addTest(&suite);
         runner.run(result);
 
-        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_SETUP") != NULL &&
+        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_SETUP") != nullptr &&
             std::string(getenv("MY_FIXTURE_TEST_SETUP")) == "OK",
             "Checking FixtureManager::setup()");
 
-        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_CHECK") != NULL &&
+        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_CHECK") != nullptr &&
             std::string(getenv("MY_FIXTURE_TEST_CHECK")) == "OK",
             "Checking FixtureManager::check()");
 
         RTF_TEST_CHECK(suite.colapseReason == "COLAPSED", "FixtureManager::fixtureCollapsed()");
 
-        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_TEARDOWN") != NULL &&
+        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_TEARDOWN") != nullptr &&
             std::string(getenv("MY_FIXTURE_TEST_TEARDOWN")) == "OK",
             "Checking FixtureManager::tearDown()");
 
 //        delete fixture;
 //        delete loader;
-//        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_DELETE") != NULL &&
+//        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_DELETE") != nullptr &&
 //            std::string(getenv("MY_FIXTURE_TEST_DELETE")) == "OK",
 //            "Checking deleteing FixtureManager");
 

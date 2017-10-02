@@ -20,7 +20,7 @@ using namespace shlibpp;
  * @brief DllPluginLoader
  */
 DllPluginLoader::DllPluginLoader()
-    : implementaion(NULL) { }
+    : implementaion(nullptr) { }
 
 DllPluginLoader::~DllPluginLoader() {
     close();
@@ -29,7 +29,7 @@ DllPluginLoader::~DllPluginLoader() {
 void DllPluginLoader::close() {
     if(implementaion)
         delete ((DllPluginLoaderImpl<TestCase>*)implementaion);
-    implementaion = NULL;
+    implementaion = nullptr;
 }
 
 TestCase* DllPluginLoader::open(const std::string filename) {

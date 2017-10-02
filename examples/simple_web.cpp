@@ -32,7 +32,7 @@ public:
     MyTest1() : TestCase("MyTest1") { }
 
     virtual void run() {
-        srand(time(NULL));
+        srand(time(nullptr));
         for (int i=0; i< 10; i++) {
             int a = rand() % 10;
             int b = rand() % 10;
@@ -52,7 +52,7 @@ public:
     MyTest2() : TestCase("MyTest2") { }
 
     virtual void run() {
-        srand(time(NULL));
+        srand(time(nullptr));
         for (int i=0; i< 10; i++) {
             int a = rand() % 10;
             int b = rand() % 10;
