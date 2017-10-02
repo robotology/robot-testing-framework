@@ -8,49 +8,49 @@
  */
 
 #include <rtf/TestMessage.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 #include <rtf/Exception.h>
 
 using namespace RTF;
 
-TestSuit::TestSuit(std::string name)
+TestSuite::TestSuite(std::string name)
     : RTF::Test(name),
     successful(true),
     fixtureOK(true),
-    fixtureMesssage(""),    
+    fixtureMesssage(""),
     result(NULL),
     current(NULL) { }
 
-TestSuit::~TestSuit() {
+TestSuite::~TestSuite() {
 
 }
 
-void TestSuit::addTest(RTF::Test* test) {
+void TestSuite::addTest(RTF::Test* test) {
     tests.insert(test);
 }
 
 
-void TestSuit::removeTest(RTF::Test* test) {
+void TestSuite::removeTest(RTF::Test* test) {
     tests.erase(test);
 }
 
-void TestSuit::reset() {
+void TestSuite::reset() {
     tests.clear();
     successful = fixtureOK =  true;
-    fixtureMesssage.clear();    
+    fixtureMesssage.clear();
     result = NULL;
 }
 
 
-bool TestSuit::succeeded() const {
+bool TestSuite::succeeded() const {
     return successful;
 }
 
-TestResult* TestSuit::getResult() {
+TestResult* TestSuite::getResult() {
     return result;
 }
 
-bool TestSuit::setup() {
+bool TestSuite::setup() {
     bool ret = true;
     FixtureIterator itr;
     for(itr=fixtureManagers.begin(); (itr!=fixtureManagers.end()) && ret; itr++)
@@ -59,25 +59,25 @@ bool TestSuit::setup() {
 }
 
 
-void TestSuit::tearDown() {
+void TestSuite::tearDown() {
     FixtureIterator itr;
     for(itr=fixtureManagers.begin(); itr!=fixtureManagers.end(); itr++)
         (*itr)->tearDown();
 }
 
 
-void TestSuit::run(TestResult &rsl) {
+void TestSuite::run(TestResult &rsl) {
     this->result = &rsl;
     successful = fixtureOK = true;
     interrupted = false;
     fixtureMesssage.clear();
     try {
-        result->startTestSuit(this);
-        // calling test suit setup
+        result->startTestSuite(this);
+        // calling test suite setup
         if (!setup()) {
             result->addError(this, RTF::TestMessage("setup() failed!"));
             successful = false;
-            result->endTestSuit(this);
+            result->endTestSuite(this);
             return;
         }
 
@@ -159,27 +159,27 @@ void TestSuit::run(TestResult &rsl) {
         result->addError(this, RTF::TestMessage(e.what()));
     }
 
-    result->endTestSuit(this);
+    result->endTestSuite(this);
     current = NULL;
 }
 
 
-void TestSuit::addFixtureManager(RTF::FixtureManager* manager) {
+void TestSuite::addFixtureManager(RTF::FixtureManager* manager) {
     manager->setDispatcher(this);
     fixtureManagers.insert(manager);
 }
 
-void TestSuit::fixtureCollapsed(RTF::TestMessage reason) {
+void TestSuite::fixtureCollapsed(RTF::TestMessage reason) {
 
     // we do not want to throw any exception here.
     // The reason is that if fixtureCollapsed is called
     // within other threads, the exception cannot be caught
-    // by the TestSuit.
+    // by the TestSuite.
     fixtureOK = false;
     fixtureMesssage = reason;
 }
 
-void TestSuit::interrupt() {
+void TestSuite::interrupt() {
     if(current)
         current->interrupt();
     interrupted = true;

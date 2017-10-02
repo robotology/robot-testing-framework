@@ -12,7 +12,7 @@
 #include <rtf/TestResult.h>
 #include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 #include <rtf/FixtureManager.h>
 #include <rtf/ConsoleListener.h>
 #include <rtf/TestAssert.h>
@@ -82,22 +82,22 @@ int main(int argc, char** argv)
     result.addListener(&listener);
     result.addListener(&collector);
 
-    // create a test suit
-    TestSuit suit("MyTestSuit");
+    // create a test suite
+    TestSuite suite("MyTestSuite");
 
     // create a fixture manager for the test suit
-    MyFixture fixture(&suit);
-    suit.addFixtureManager(&fixture);
+    MyFixture fixture(&suite);
+    suite.addFixtureManager(&fixture);
 
     // creates test cases and add them to the suit
     MyTest1 test1;
     MyTest2 test2;
-    suit.addTest(&test1);
-    suit.addTest(&test2);
+    suite.addTest(&test1);
+    suite.addTest(&test2);
 
     // create a test runner and run the tests
     TestRunner runner;
-    runner.addTest(&suit);
+    runner.addTest(&suite);
     runner.run(result);
 
     // return the number of failed tests

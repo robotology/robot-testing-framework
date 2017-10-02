@@ -29,7 +29,7 @@ class RTF::FixtureEvents {
 public:
     /**
      * @brief fixtureCollapsed is called by a fixture manager
-     *        to inform the test suit that the corresponding
+     *        to inform the test suite that the corresponding
      *        fixture has been collapsed.
      * @param reason An error message indicates the reason for
      *        collapsing the fixture.
@@ -42,7 +42,7 @@ public:
  * \ingroup key_class
  *
  * \brief The FixtureManager can be used to to setup any fixture which
- * is required for the tests before executing the tests by a TestSuit.
+ * is required for the tests before executing the tests by a TestSuite.
  *
  * The \c fixtureCollapsed method of the FixtureEvents class is used by a
  * fixture manager to inform any class  which inherited from FixtureEvents
@@ -79,7 +79,7 @@ public:
     virtual ~FixtureManager();
 
     /**
-     * @brief setup is called by a test suit.
+     * @brief setup is called by a test suite.
      * The setup() function parses the fixture paramteres
      * and call the setup(int argc, char**argv) which can be
      * ovveriden by the user customized fixture manager.
@@ -102,7 +102,7 @@ public:
 
     /**
      * @brief check if the fixture is okay. This is called
-     * automatically from the corresponding test suit to ensure
+     * automatically from the corresponding test suite to ensure
      * the correctness of the fixture before running each test case.
      * @return true or false depending of correctness of the fixture
      */

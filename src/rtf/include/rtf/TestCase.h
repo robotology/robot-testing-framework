@@ -64,7 +64,7 @@ public:
      * @brief run is called by the TestCase class
      * if setup is successfull;
      */
-	virtual void run() = 0;
+    virtual void run() = 0;
 
     /**
      * @brief interrupt interrupts the current test run

@@ -60,12 +60,12 @@ void TestResult::endTest(const Test *test) {
     CALL_LISTENERS(endTest, test);
 }
 
-void TestResult::startTestSuit(const RTF::Test* test) {
-    CALL_LISTENERS(startTestSuit, test);
+void TestResult::startTestSuite(const RTF::Test* test) {
+    CALL_LISTENERS(startTestSuite, test);
 }
 
-void TestResult::endTestSuit(const RTF::Test* test) {
-    CALL_LISTENERS(endTestSuit, test);
+void TestResult::endTestSuite(const RTF::Test* test) {
+    CALL_LISTENERS(endTestSuite, test);
 }
 
 void TestResult::startTestRunner() {

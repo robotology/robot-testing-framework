@@ -14,12 +14,12 @@
 
 class MyFixManager : public RTF::FixtureManager {
 public:
-	MyFixManager() { }
-	virtual ~MyFixManager();
+    MyFixManager() { }
+    virtual ~MyFixManager();
 
     virtual bool setup(int argc, char** argv);
 
-	virtual bool check();
+    virtual bool check();
 
     virtual void tearDown();
 

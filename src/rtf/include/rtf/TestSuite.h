@@ -8,8 +8,8 @@
  */
 
 
-#ifndef _RTF_TESTSUIT_H
-#define _RTF_TESTSUIT_H
+#ifndef _RTF_TESTSUITE_H
+#define _RTF_TESTSUITE_H
 
 #include <rtf/rtf_config.h>
 #include <rtf/Test.h>
@@ -19,29 +19,29 @@
 #include <set>
 
 namespace RTF {
-    class TestSuit;
+    class TestSuite;
 }
 
 
 /**
  * \ingroup key_class
  *
- * \brief The TestSuit holds a group of tests. When the \c run() method of a
- * TestSuit is called, it executes all its tests. A TestSuit can also has a FixtureManager.
+ * \brief The TestSuite holds a group of tests. When the \c run() method of a
+ * TestSuite is called, it executes all its tests. A TestSuite can also has a FixtureManager.
  * In this case, it calls the \c setup() method of FixtureManager to setup any fixture which
  * is required for the tests before executing the tests. After running all the tests, the \c tearDown()
  * method of the FixtureManager is called to tear down the fixture.
  *
  * The \c fixtureCollapsed method is used by a fixture manager to inform the test suit
  * that the corresponding fixture has been collapsed. In this case, an exception is thrown
- * by the TestSuit and the remaining tests will not be executed any more.  This method can be
+ * by the TestSuite and the remaining tests will not be executed any more.  This method can be
  * also overriden by a subclass if any specific action is required to be taken (such as retrying
  * to setup the fixture and runing the reamining tests) upon collapsing the fixture.
  *
- * Here's an example of using a TestSuit:
- * \include examples/simple_suit.cpp
+ * Here's an example of using a TestSuite:
+ * \include examples/simple_suite.cpp
  */
-class RTF_API RTF::TestSuit : public RTF::Test, public RTF::FixtureEvents {
+class RTF_API RTF::TestSuite : public RTF::Test, public RTF::FixtureEvents {
 
     typedef std::set<RTF::Test*> TestContainer;
     typedef std::set<RTF::Test*>::iterator TestIterator;
@@ -51,15 +51,15 @@ class RTF_API RTF::TestSuit : public RTF::Test, public RTF::FixtureEvents {
 public:
 
     /**
-     * TestSuit constructor
-     * @param  name The TestSuit name
+     * TestSuite constructor
+     * @param  name The TestSuite name
      */
-    TestSuit(std::string name);
+    TestSuite(std::string name);
 
     /**
-     *  TestSuit destructor
+     *  TestSuite destructor
      */
-    virtual ~TestSuit();
+    virtual ~TestSuite();
 
     /**
      * Adding a new test
@@ -80,7 +80,7 @@ public:
 
     /**
      * @brief addFixtureManager  add a fixture manager for
-     * the current test suit.
+     * the current test suite.
      * @param manager an instance of FixtureManager
      */
     void addFixtureManager(RTF::FixtureManager* manager);
@@ -95,7 +95,7 @@ public:
     virtual void fixtureCollapsed(RTF::TestMessage reason);
 
     /**
-     * the main caller of a TestSuit inherited from Test Class.
+     * the main caller of a TestSuite inherited from Test Class.
      * @param result an instance of a TestResult
      * to collect the result of the test.
      */
@@ -143,4 +143,4 @@ private:
     FixtureContainer fixtureManagers;
     TestContainer tests;
 };
-#endif // _RTF_TESTSUIT_H
+#endif // _RTF_TESTSUITE_H

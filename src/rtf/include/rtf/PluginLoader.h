@@ -8,7 +8,7 @@
  */
 
 #if defined(WIN32)
-#	pragma once
+#    pragma once
 #endif
 
 #ifndef _RTF_PLUGINLOADER_H

@@ -87,16 +87,16 @@ void ConsoleListener::endTest(const RTF::Test* test) {
         cout<<" failed!"<<ENDC<<endl;
 }
 
-void ConsoleListener::startTestSuit(const RTF::Test* test) {
+void ConsoleListener::startTestSuite(const RTF::Test* test) {
     if(hideUncritical) return;
 
-    cout<<BLUE<<"Test suit "<<test->getName()<<" started..."<<ENDC<<endl;
+    cout<<BLUE<<"Test suite "<<test->getName()<<" started..."<<ENDC<<endl;
 }
 
-void ConsoleListener::endTestSuit(const RTF::Test* test) {
+void ConsoleListener::endTestSuite(const RTF::Test* test) {
     if(hideUncritical) return;
 
-    cout<<BLUE<<"Test suit "<<test->getName();
+    cout<<BLUE<<"Test suite "<<test->getName();
     if(test->succeeded())
         cout<<" passed!"<<ENDC<<endl;
     else

@@ -54,11 +54,11 @@ bool TextOutputter::write(std::string filename, bool summary,
        ResultEvent* e = *itr;
 
        // start suit
-       if(dynamic_cast<ResultEventStartSuit*>(e))
-           outputter<<"Test suit "<<e->getTest()->getName()<<" started..."<<endl;
+       if(dynamic_cast<ResultEventStartSuite*>(e))
+           outputter<<"Test suite "<<e->getTest()->getName()<<" started..."<<endl;
        // end suit
-       else if(dynamic_cast<ResultEventEndSuit*>(e)) {
-           outputter<<"Test suit "<<e->getTest()->getName();
+       else if(dynamic_cast<ResultEventEndSuite*>(e)) {
+           outputter<<"Test suite "<<e->getTest()->getName();
            if(e->getTest()->succeeded())
                outputter<<" passed!"<<endl;
            else
@@ -112,10 +112,10 @@ bool TextOutputter::write(std::string filename, bool summary,
     if(summary) {
         // write some simple statistics
         outputter<<endl<<"---------- summary -----------"<<endl;
-        if(collector.suitCount()) {
-            outputter<<"Total number of test suites  : "<<collector.suitCount()<<endl;
-            outputter<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
-            outputter<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+        if(collector.suiteCount()) {
+            outputter<<"Total number of test suites  : "<<collector.suiteCount()<<endl;
+            outputter<<"Number of passed test suites : "<<collector.passedSuiteCount()<<endl;
+            outputter<<"Number of failed test suites : "<<collector.failedSuiteCount()<<endl;
         }
         outputter<<"Total number of test cases   : "<<collector.testCount()<<endl;
         outputter<<"Number of passed test cases  : "<<collector.passedCount()<<endl;

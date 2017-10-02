@@ -15,7 +15,7 @@
 #include <rtf/Exception.h>
 #include <rtf/TestMessage.h>
 #include <rtf/TestCase.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 
 namespace RTF {
     class Asserter;
@@ -68,11 +68,11 @@ public:
      * @brief report report a message to the
      * result collector of the given TestSuit
      * @param msg The corresponding message
-     * @param testsuit The owner of the message (reporter)
+     * @param testsuite The owner of the message (reporter)
      * @note report does not throw any exception!
      */
     static RTF_API void report(RTF::TestMessage msg,
-                        RTF::TestSuit* testsuit);
+                        RTF::TestSuite* testsuite);
 
     /**
      * @brief report report a message to the

@@ -54,9 +54,9 @@ void Asserter::report(RTF::TestMessage msg,
 }
 
 void Asserter::report(RTF::TestMessage msg,
-                      RTF::TestSuit* testsuit)
+                      RTF::TestSuite* testsuite)
 {
-    testsuit->getResult()->addReport(testsuit, msg);
+    testsuite->getResult()->addReport(testsuite, msg);
 }
 
 void Asserter::testFail(bool condition,

@@ -81,16 +81,16 @@ public:
     virtual void endTest(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is started
+     * This is called when a TestSuite is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTestSuit(const RTF::Test* test);
+    virtual void startTestSuite(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is finished
+     * This is called when a TestSuite is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTestSuit(const RTF::Test* test);
+    virtual void endTestSuite(const RTF::Test* test);
 
     /**
      * This is called when the TestRunner is started
@@ -107,7 +107,7 @@ public:
     tthread::mutex critical;
     bool shouldStop;
     std::string result;
-    std::string suit_name;
+    std::string suite_name;
     unsigned int nTests;
     unsigned int nFailures;
     unsigned int nPasses;

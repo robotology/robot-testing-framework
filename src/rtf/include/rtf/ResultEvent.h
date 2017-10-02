@@ -22,8 +22,8 @@ namespace RTF {
     class ResultEventError;
     class ResultEventStartTest;
     class ResultEventEndTest;
-    class ResultEventStartSuit;
-    class ResultEventEndSuit;
+    class ResultEventStartSuite;
+    class ResultEventEndSuite;
 }
 
 
@@ -124,21 +124,21 @@ public:
 };
 
 /**
- * @brief The ResultEventStartSuit class keeps a test suit starting event
+ * @brief The ResultEventStartSuite class keeps a test suite starting event
  */
-class RTF_API RTF::ResultEventStartSuit : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventStartSuite : public RTF::ResultEvent {
 public:
-    ResultEventStartSuit(const RTF::Test* test, RTF::TestMessage msg)
+    ResultEventStartSuite(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
 };
 
 
 /**
- * @brief The ResultEventEndSuit class keeps a test suit ending event
+ * @brief The ResultEventEndSuite class keeps a test suite ending event
  */
-class RTF_API RTF::ResultEventEndSuit : public RTF::ResultEvent {
+class RTF_API RTF::ResultEventEndSuite : public RTF::ResultEvent {
 public:
-    ResultEventEndSuit(const RTF::Test* test, RTF::TestMessage msg)
+    ResultEventEndSuite(const RTF::Test* test, RTF::TestMessage msg)
         : ResultEvent(test, msg) {}
 };
 
