@@ -10,6 +10,7 @@
 #include <rtf/TestMessage.h>
 #include <rtf/TestSuite.h>
 #include <rtf/Exception.h>
+#include <algorithm>
 
 using namespace RTF;
 
@@ -26,12 +27,18 @@ TestSuite::~TestSuite() {
 }
 
 void TestSuite::addTest(RTF::Test* test) {
-    tests.insert(test);
+    if (std::find(tests.begin(), tests.end(), test) == tests.end())
+    {
+        tests.push_back(test);
+    }
 }
 
 
 void TestSuite::removeTest(RTF::Test* test) {
-    tests.erase(test);
+    for (int i = 0; i < tests.size(); i++)
+    {
+        if(tests[i] == test) tests.erase(tests.begin()+i);
+    }
 }
 
 void TestSuite::reset() {
@@ -60,8 +67,8 @@ bool TestSuite::setup() {
 
 
 void TestSuite::tearDown() {
-    FixtureIterator itr;
-    for(itr=fixtureManagers.begin(); itr!=fixtureManagers.end(); itr++)
+    FixtureRIterator itr;
+    for(itr=fixtureManagers.rbegin(); itr!=fixtureManagers.rend(); itr++)
         (*itr)->tearDown();
 }
 
@@ -166,7 +173,7 @@ void TestSuite::run(TestResult &rsl) {
 
 void TestSuite::addFixtureManager(RTF::FixtureManager* manager) {
     manager->setDispatcher(this);
-    fixtureManagers.insert(manager);
+    fixtureManagers.push_back(manager);
 }
 
 void TestSuite::fixtureCollapsed(RTF::TestMessage reason) {
