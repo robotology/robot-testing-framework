@@ -37,7 +37,7 @@ public:
      * given message.
      * @param msg The corresponding failure message
      */
-    static RTF_API void fail RTF_NORETURN (RTF::TestMessage msg);
+    RTF_NORETURN static RTF_API void fail(RTF::TestMessage msg);
 
     /**
      * @brief fail Throw a failure exception if the
@@ -53,7 +53,7 @@ public:
      * given message.
      * @param msg The corresponding error message
      */
-    static RTF_API void error RTF_NORETURN (RTF::TestMessage msg);
+    RTF_NORETURN static RTF_API void error (RTF::TestMessage msg);
 
     /**
      * @brief error Throw an error exception if the
