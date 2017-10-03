@@ -106,6 +106,8 @@ else()
     target_link_libraries(${PROJECT_NAME})
 endif()
 
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+
 
 # choose which header files should be installed
 set_property(TARGET ${PROJECT_NAME} PROPERTY PUBLIC_HEADER ${RTF_HDRS})

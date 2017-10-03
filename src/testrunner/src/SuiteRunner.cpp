@@ -106,15 +106,15 @@ bool SuiteRunner::loadSuite(std::string filename) {
         test = test->NextSiblingElement())
     {
         if(PluginFactory::compare(test->Value(), "description")) {
-            if(test->GetText() != NULL)
+            if(test->GetText() != nullptr)
                 suite->setDescription(test->GetText());
         }
         else if(PluginFactory::compare(test->Value(), "environment")) {
-            if(test->GetText() != NULL)
+            if(test->GetText() != nullptr)
                 environment = test->GetText();
         }
         else if(PluginFactory::compare(test->Value(), "fixture") &&
-                test->GetText() != NULL) {
+                test->GetText() != nullptr) {
                 // load the fixture manager plugin
                 DllFixturePluginLoader* loader = new DllFixturePluginLoader();
                 std::string pluginName = test->GetText();
@@ -125,7 +125,7 @@ bool SuiteRunner::loadSuite(std::string filename) {
                 pluginName =  pluginName + ".so";
 #endif
                 FixtureManager* fixture = loader->open(pluginName);
-                if(fixture != NULL) {
+                if(fixture != nullptr) {
                     // set the fixture manager param
                     if(test->Attribute("param"))
                         fixture->setParam(test->Attribute("param"));
@@ -143,7 +143,7 @@ bool SuiteRunner::loadSuite(std::string filename) {
                 }
         }
         else if(PluginFactory::compare(test->Value(), "test") &&
-                test->GetText() != NULL) {
+                test->GetText() != nullptr) {
 
             PluginLoader* loader;
             std::string pluginName = test->GetText();
@@ -160,14 +160,14 @@ bool SuiteRunner::loadSuite(std::string filename) {
             else
                 loader = PluginFactory::createByName(test->GetText());
 
-            if(loader == NULL) {
+            if(loader == nullptr) {
                 ErrorLogger::Instance().addError("cannot create any known plug-in loader for " +
                                                  pluginName);
                 continue;
             }
             TestCase* testcase = loader->open(pluginName);
 
-            if(testcase != NULL) {
+            if(testcase != nullptr) {
                 // set the test case environment
                 testcase->setEnvironment(environment);
                 // set the test case param
@@ -218,7 +218,7 @@ bool SuiteRunner::loadMultipleSuites(std::string path,
 
     DIR *dir;
     struct dirent *entry;
-    if ((dir = opendir(path.c_str())) == NULL) {
+    if ((dir = opendir(path.c_str())) == nullptr) {
         ErrorLogger::Instance().addError("cannot access " + path);
         return false;
     }
@@ -248,7 +248,7 @@ bool SuiteRunner::loadSuitesFromPath(std::string path) {
 
     DIR *dir;
     struct dirent *entry;
-    if ((dir = opendir(path.c_str())) == NULL) {
+    if ((dir = opendir(path.c_str())) == nullptr) {
         ErrorLogger::Instance().addError("cannot access " + path);
         return false;
     }

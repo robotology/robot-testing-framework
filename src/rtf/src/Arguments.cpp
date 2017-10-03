@@ -26,7 +26,7 @@ void Arguments::split(char *line, char **args)
             pTmp++;
         }
         if (*pTmp == '\0') {
-            pTmp = NULL;
+            pTmp = nullptr;
         }
     }
     *args = pTmp;
@@ -59,11 +59,11 @@ void Arguments::parse(char *azParam ,
     *argc = 1;
     argv[0] = azParam ;
 
-    while ((NULL != pNext) && (*argc < C_MAXARGS)) {
+    while ((nullptr != pNext) && (*argc < C_MAXARGS)) {
         split(pNext, &(argv[*argc]));
         pNext = argv[*argc];
 
-        if (NULL != argv[*argc]) {
+        if (nullptr != argv[*argc]) {
             *argc += 1;
         }
     }

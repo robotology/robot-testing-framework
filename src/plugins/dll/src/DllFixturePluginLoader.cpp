@@ -21,7 +21,7 @@ using namespace shlibpp;
  * @brief DllFixturePluginLoader
  */
 DllFixturePluginLoader::DllFixturePluginLoader()
-    : implementation(NULL) { }
+    : implementation(nullptr) { }
 
 DllFixturePluginLoader::~DllFixturePluginLoader() {
     close();
@@ -30,7 +30,7 @@ DllFixturePluginLoader::~DllFixturePluginLoader() {
 void DllFixturePluginLoader::close() {
     if(implementation)
         delete ((DllPluginLoaderImpl<TestCase>*)implementation);
-    implementation = NULL;
+    implementation = nullptr;
 }
 
 FixtureManager* DllFixturePluginLoader::open(const std::string filename) {

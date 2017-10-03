@@ -19,8 +19,8 @@ TestSuite::TestSuite(std::string name)
     successful(true),
     fixtureOK(true),
     fixtureMesssage(""),
-    result(NULL),
-    current(NULL) { }
+    result(nullptr),
+    current(nullptr) { }
 
 TestSuite::~TestSuite() {
 
@@ -45,7 +45,7 @@ void TestSuite::reset() {
     tests.clear();
     successful = fixtureOK =  true;
     fixtureMesssage.clear();
-    result = NULL;
+    result = nullptr;
 }
 
 
@@ -167,7 +167,7 @@ void TestSuite::run(TestResult &rsl) {
     }
 
     result->endTestSuite(this);
-    current = NULL;
+    current = nullptr;
 }
 
 

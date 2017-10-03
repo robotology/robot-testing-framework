@@ -86,7 +86,7 @@ public:
 #endif
         RTF_ASSERT_FAIL_IF(sockfd >= 0, "opening socket");
         server = gethostbyname("localhost");
-        RTF_ASSERT_FAIL_IF(server != NULL, "no such host");
+        RTF_ASSERT_FAIL_IF(server != nullptr, "no such host");
 
         bzero((char *) &serv_addr, sizeof(serv_addr));
         serv_addr.sin_family = AF_INET;

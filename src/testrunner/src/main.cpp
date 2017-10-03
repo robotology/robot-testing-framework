@@ -111,7 +111,7 @@ void addOptions(cmdline::parser &cmd) {
 }
 
 
-static TestRunner* currentRunner = NULL;
+static TestRunner* currentRunner = nullptr;
 void signalHandler(int signum) {
     static int interuptCount = 1;
     cout<<endl<<"[testrunner] ("<<interuptCount<<") interrupted..."<<endl<<endl;
@@ -150,15 +150,15 @@ int main(int argc, char *argv[]) {
     new_action.sa_handler = signalHandler;
     sigemptyset (&new_action.sa_mask);
     new_action.sa_flags = 0;
-    sigaction (SIGINT, NULL, &old_action);
+    sigaction (SIGINT, nullptr, &old_action);
     if (old_action.sa_handler != SIG_IGN)
-        sigaction (SIGINT, &new_action, NULL);
-    sigaction (SIGHUP, NULL, &old_action);
+        sigaction (SIGINT, &new_action, nullptr);
+    sigaction (SIGHUP, nullptr, &old_action);
     if (old_action.sa_handler != SIG_IGN)
-        sigaction (SIGHUP, &new_action, NULL);
-    sigaction (SIGTERM, NULL, &old_action);
+        sigaction (SIGHUP, &new_action, nullptr);
+    sigaction (SIGTERM, nullptr, &old_action);
     if (old_action.sa_handler != SIG_IGN)
-        sigaction (SIGTERM, &new_action, NULL);
+        sigaction (SIGTERM, &new_action, nullptr);
 #endif
 
     cmdline::parser cmd;
@@ -249,7 +249,7 @@ int main(int argc, char *argv[]) {
 
     // create web listener if enabled
 #if defined(ENABLE_WEB_LISTENER)
-    WebProgressListener* webListener = NULL;
+    WebProgressListener* webListener = nullptr;
 #endif
 
     if(cmd.exist("web-reporter")) {
@@ -298,7 +298,7 @@ int main(int argc, char *argv[]) {
         cout<<"Number of failed test cases  : "<<collector.failedCount()<<endl;
     }
 
-    currentRunner = NULL;
+    currentRunner = nullptr;
 
     int exitCode;
     if( (collector.failedCount() == 0)  &&

@@ -68,11 +68,9 @@
 //  always export symbols
 //#define RTF_API RTF_EXPORT
 #define RTF_API
-
-#if (__cplusplus >= 201103L)
-#  define RTF_NORETURN //TODO [[noreturn]] see issue #66
+#if defined _MSC_VER && _MSC_VER <= 1800 //Visual Studio 12 or earlier has not [[noreturn]]
+#  define RTF_NORETURN __declspec(noreturn)
 #else
-#  define RTF_NORETURN
+#  define RTF_NORETURN [[ noreturn ]]
 #endif
-
 #endif //_RTF_CONFIG_

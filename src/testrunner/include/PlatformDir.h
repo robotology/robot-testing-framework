@@ -139,18 +139,18 @@
        DIR *dirp;
 
        /* ensure that the resulting search pattern will be a valid file name */
-       if (dirname == NULL) {
+       if (dirname == nullptr) {
           DIRENT_SET_ERRNO (ENOENT);
-          return NULL;
+          return nullptr;
        }
        if (strlen (dirname) + 3 >= MAX_PATH) {
           DIRENT_SET_ERRNO (ENAMETOOLONG);
-          return NULL;
+          return nullptr;
        }
 
        /* construct new DIR structure */
        dirp = (DIR*) malloc (sizeof (struct DIR));
-       if (dirp != NULL) {
+       if (dirp != nullptr) {
           int error;
 
           /*
@@ -158,7 +158,7 @@
            * allows rewinddir() to function correctly when the current working
            * directory is changed between opendir() and rewinddir().
            */
-          if (GetFullPathNameA (dirname, MAX_PATH, dirp->patt, NULL)) {
+          if (GetFullPathNameA (dirname, MAX_PATH, dirp->patt, nullptr)) {
              char *p;
 
              /* append the search pattern "\\*\0" to the directory name */
@@ -188,7 +188,7 @@
 
           if (error) {
              free (dirp);
-             dirp = NULL;
+             dirp = nullptr;
           }
        }
 
@@ -206,10 +206,10 @@
     static struct dirent *readdir(DIR *dirp)
     {
        DWORD attr;
-       if (dirp == NULL) {
+       if (dirp == nullptr) {
           /* directory stream did not open */
           DIRENT_SET_ERRNO (EBADF);
-          return NULL;
+          return nullptr;
        }
 
        /* get next directory entry */
@@ -219,13 +219,13 @@
        } else {
           /* get the next directory entry from stream */
           if (dirp->search_handle == INVALID_HANDLE_VALUE) {
-             return NULL;
+             return nullptr;
           }
           if (FindNextFileA (dirp->search_handle, &dirp->find_data) == FALSE) {
              /* the very last entry has been processed or an error occured */
              FindClose (dirp->search_handle);
              dirp->search_handle = INVALID_HANDLE_VALUE;
-             return NULL;
+             return nullptr;
           }
        }
 
@@ -258,7 +258,7 @@
      */
     static int closedir(DIR *dirp)
     {
-       if (dirp == NULL) {
+       if (dirp == nullptr) {
           /* invalid directory stream */
           DIRENT_SET_ERRNO (EBADF);
           return -1;
@@ -285,7 +285,7 @@
      */
     static void rewinddir(DIR* dirp)
     {
-       if (dirp != NULL) {
+       if (dirp != nullptr) {
           /* release search handle */
           if (dirp->search_handle != INVALID_HANDLE_VALUE) {
              FindClose (dirp->search_handle);
