@@ -11,7 +11,7 @@ image:
 
 configuration:
   - Release
-  #- Debug #on master the plugin loader is bugged(missing "d" in the dll name)
+  - Debug
 
 environment:
   CTEST_OUTPUT_ON_FAILURE: 1
