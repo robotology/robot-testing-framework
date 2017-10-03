@@ -140,7 +140,7 @@ private:
     bool successful;
     bool fixtureOK;
     bool interrupted;
-    RTF::TestMessage fixtureMesssage;
+    RTF::TestMessage fixtureMessage;
     FixtureContainer fixtureManagers;
     TestContainer tests;
 };

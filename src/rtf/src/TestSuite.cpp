@@ -18,9 +18,10 @@ TestSuite::TestSuite(std::string name)
     : RTF::Test(name),
     successful(true),
     fixtureOK(true),
-    fixtureMesssage(""),
     result(nullptr),
+    fixtureMessage(""),
     current(nullptr) { }
+
 
 TestSuite::~TestSuite() {
 
@@ -44,8 +45,8 @@ void TestSuite::removeTest(RTF::Test* test) {
 void TestSuite::reset() {
     tests.clear();
     successful = fixtureOK =  true;
-    fixtureMesssage.clear();
     result = nullptr;
+    fixtureMessage.clear();
 }
 
 
@@ -77,7 +78,7 @@ void TestSuite::run(TestResult &rsl) {
     this->result = &rsl;
     successful = fixtureOK = true;
     interrupted = false;
-    fixtureMesssage.clear();
+    fixtureMessage.clear();
     try {
         result->startTestSuite(this);
         // calling test suite setup
@@ -96,7 +97,7 @@ void TestSuite::run(TestResult &rsl) {
                 throw TestFailureException(RTF::TestMessage("interrupted!"));
 
             if(!fixtureOK)
-                result->addError(this, fixtureMesssage);
+                result->addError(this, fixtureMessage);
 
             bool checkOk = true;
             FixtureIterator itr;
@@ -183,7 +184,7 @@ void TestSuite::fixtureCollapsed(RTF::TestMessage reason) {
     // within other threads, the exception cannot be caught
     // by the TestSuite.
     fixtureOK = false;
-    fixtureMesssage = reason;
+    fixtureMessage = reason;
 }
 
 void TestSuite::interrupt() {
