@@ -14,15 +14,8 @@ if (ENABLE_PLUGIN)
     target_link_libraries(myfixture RTF RTF_dll)
 
     # add the FixturePluginLoader test
-    if (UNIX)
-        set(param "${TEST_TARGET_PATH}/myfixture.so")
-    elseif(WIN32)
-        set(param "${TEST_TARGET_PATH}/${CMAKE_BUILD_TYPE}/myfixture.dll")
-    else()
-        set(param "${TEST_TARGET_PATH}/myfixture.dylib")
-    endif()
 
     ADD_RTF_CPPTEST(NAME FixturePluginLoader
                     SRCS FixturePluginLoader.cpp
-                PARAM ${param})
+                    PARAM "$<TARGET_FILE:myfixture>")
 endif()
