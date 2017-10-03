@@ -25,7 +25,7 @@
     #include <rtf/WebProgressListener.h>
 #endif
 
-#if defined(WIN32)
+#if defined(_WIN32)
     #include <windows.h>
 #else
     #include <unistd.h>
@@ -124,7 +124,7 @@ void signalHandler(int signum) {
         currentRunner->interrupt();
 }
 
-#if defined(WIN32)
+#if defined(_WIN32)
 BOOL CtrlHandler( DWORD fdwCtrlType ) {
   switch( fdwCtrlType ) {
     // Handle the CTRL-C signal.
@@ -143,7 +143,7 @@ BOOL CtrlHandler( DWORD fdwCtrlType ) {
 int main(int argc, char *argv[]) {
 
 // setup signal handler to cathc ctrl+c
-#if defined(WIN32)
+#if defined(_WIN32)
      SetConsoleCtrlHandler((PHANDLER_ROUTINE) CtrlHandler, TRUE);
 #else
     struct sigaction new_action, old_action;

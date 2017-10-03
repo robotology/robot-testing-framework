@@ -11,7 +11,7 @@
 #ifndef _RTF_CONFIG_
 #define _RTF_CONFIG_
 
-#if defined(WIN32)
+#if defined(_WIN32)
 #    define RTF_FILTER_API
 #endif
 
