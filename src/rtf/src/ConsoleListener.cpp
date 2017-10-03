@@ -13,7 +13,7 @@
 using namespace std;
 using namespace RTF;
 
-#if defined(WIN32) || defined(NO_COLORED_CONSOLE)
+#if defined(_WIN32) || defined(NO_COLORED_CONSOLE)
 #define BLUE    ""
 #define GREEN   ""
 #define ORANGE  ""

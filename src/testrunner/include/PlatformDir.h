@@ -15,7 +15,7 @@
 #define _PLATFORMDIR_
 
 
-#if defined(WIN32)
+#if defined(_WIN32)
 
     #define PATH_SEPERATOR      "\\"
 

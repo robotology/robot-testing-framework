@@ -202,7 +202,7 @@ int WebProgressListenerImpl::handler(struct mg_connection *conn,
         else if (strcmp(conn->uri, "/status") == 0) {
             char json[512];
             web->critical.lock();
-#if defined(WIN32)
+#if defined(_WIN32)
             _snprintf(json, 512, "{\"name\":%s,\"ntest\":%d,\"nfail\":%d,\"npass\":%d}",
                      web->suite_name.c_str(), web->nTests, web->nFailures, web->nPasses);
 #else

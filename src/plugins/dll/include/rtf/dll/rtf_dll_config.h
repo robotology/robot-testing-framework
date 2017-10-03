@@ -11,7 +11,7 @@
 #ifndef _SHLIBPP_CONFIG_
 #define _SHLIBPP_CONFIG_
 
-#if defined(WIN32)
+#if defined(_WIN32)
 #    define SHLIBPP_FILTER_API
 #endif
 
