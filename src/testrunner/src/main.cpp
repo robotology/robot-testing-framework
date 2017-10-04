@@ -58,7 +58,7 @@ void addOptions(cmdline::parser &cmd) {
                     false);
 
     cmd.add<string>("suite", 's',
-                    "Runs a single test suite from the given XMl file.",
+                    "Runs a single test suite from the given XML file.",
                     false);
 
     cmd.add<string>("suites", '\0',
@@ -66,7 +66,7 @@ void addOptions(cmdline::parser &cmd) {
                     false);
 
     cmd.add<string>("suit", '\0',
-                    "Runs a single test suite from the given XMl file (legacy option that will be removed in RTF 1.5, do not use).",
+                    "Runs a single test suite from the given XML file (legacy option that will be removed in RTF 1.5, do not use).",
                     false);
 
     cmd.add<string>("suits", '\0',

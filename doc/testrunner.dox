@@ -140,7 +140,7 @@ usage: testrunner [options] ...
 options:
   -t, --test            Runs a single test from the given plugin file. (string [=])
       --tests           Runs multiple tests from the given folder which contains plugins. (string [=])
-  -s, --suite           Runs a single test suite from the given XMl file. (string [=])
+  -s, --suite           Runs a single test suite from the given XML file. (string [=])
       --suites          Runs multiple test suites from the given folder which contains XML files. (string [=])
   -o, --output          The output file to save the result. Default is result.txt (string [=])
       --output-type     The output file type (text, junit) (string [=text])
