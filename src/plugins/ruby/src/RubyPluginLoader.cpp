@@ -69,7 +69,7 @@ VALUE RubyPluginLoaderImpl::wrapRun(VALUE args) {
 VALUE RubyPluginLoaderImpl::protectedRun(VALUE testcase, ID id,
                            RubyPluginLoaderImpl* impl) {
     int state;
-    VALUE args[1];
+    VALUE args[2];
     args[0] = testcase;
     args[1] = id;
     rb_protect(RubyPluginLoaderImpl::wrapRun, (VALUE)args, &state);
@@ -90,7 +90,7 @@ VALUE RubyPluginLoaderImpl::wrapTearDown(VALUE args) {
 VALUE RubyPluginLoaderImpl::protectedTearDown(VALUE testcase, ID id,
                            RubyPluginLoaderImpl* impl) {
     int state;
-    VALUE args[1];
+    VALUE args[2];
     args[0] = testcase;
     args[1] = id;
     rb_protect(RubyPluginLoaderImpl::wrapTearDown, (VALUE)args, &state);
