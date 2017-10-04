@@ -68,8 +68,8 @@ public:
             }
             else {
                 error = "cannot load plugin " + filename + "; error (" +
-                    shlibpp::Vocab::decode(plugin->factory.getStatus()) + ") : " +
-                    plugin->factory.getLastNativeError();
+                        shlibpp::Vocab::decode(plugin->factory.getStatus()) + ") : " +
+                        plugin->factory.getError();
             }
             delete plugin;
             plugin = nullptr;
