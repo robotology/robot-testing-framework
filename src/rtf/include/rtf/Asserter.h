@@ -11,11 +11,17 @@
 #ifndef _RTF_ASSERTER_H
 #define _RTF_ASSERTER_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/Exception.h>
 #include <rtf/TestMessage.h>
 #include <rtf/TestCase.h>
 #include <rtf/TestSuite.h>
+
+#if defined _MSC_VER && _MSC_VER <= 1800 //Visual Studio 12 or earlier has not [[noreturn]]
+#  define RTF_NORETURN __declspec(noreturn)
+#else
+#  define RTF_NORETURN [[ noreturn ]]
+#endif
+
 
 namespace RTF {
     class Asserter;
@@ -37,7 +43,7 @@ public:
      * given message.
      * @param msg The corresponding failure message
      */
-    RTF_NORETURN static RTF_API void fail(RTF::TestMessage msg);
+    RTF_NORETURN static void fail(RTF::TestMessage msg);
 
     /**
      * @brief fail Throw a failure exception if the
@@ -45,7 +51,7 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding failure message
      */
-    static RTF_API void fail(bool condition,
+    static void fail(bool condition,
                        RTF::TestMessage msg);
 
     /**
@@ -53,7 +59,7 @@ public:
      * given message.
      * @param msg The corresponding error message
      */
-    RTF_NORETURN static RTF_API void error (RTF::TestMessage msg);
+    RTF_NORETURN static void error (RTF::TestMessage msg);
 
     /**
      * @brief error Throw an error exception if the
@@ -61,8 +67,8 @@ public:
      * @param condition The boolean expression
      * @param msg The corresponding error message
      */
-    static RTF_API void error(bool condition,
-                       RTF::TestMessage msg);
+    static void error(bool condition,
+                      RTF::TestMessage msg);
 
     /**
      * @brief report report a message to the
@@ -71,8 +77,8 @@ public:
      * @param testsuite The owner of the message (reporter)
      * @note report does not throw any exception!
      */
-    static RTF_API void report(RTF::TestMessage msg,
-                        RTF::TestSuite* testsuite);
+    static void report(RTF::TestMessage msg,
+                       RTF::TestSuite* testsuite);
 
     /**
      * @brief report report a message to the
@@ -81,8 +87,8 @@ public:
      * @param testcase The owner of the message (reporter)
      * @note report does not throw any exception!
      */
-    static RTF_API void report(RTF::TestMessage msg,
-                        RTF::TestCase* testcase);
+    static void report(RTF::TestMessage msg,
+                       RTF::TestCase* testcase);
 
     /**
      * @brief Checks the given boolean condition
@@ -93,9 +99,9 @@ public:
      * @param testcase The owner of the message (reporter)
      * @note This does not throw any exception!
      */
-    static RTF_API void testFail(bool condition,
-                      RTF::TestMessage msg,
-                      RTF::TestCase* testcase);
+    static void testFail(bool condition,
+                         RTF::TestMessage msg,
+                         RTF::TestCase* testcase);
 
     /**
      * @brief Checks the given boolean condition
@@ -107,9 +113,9 @@ public:
      * @param testcase The owner of the message (reporter)
      * @note This does not throw any exception!
      */
-    static RTF_API void testCheck(bool condition,
-                      RTF::TestMessage msg,
-                      RTF::TestCase* testcase);
+    static void testCheck(bool condition,
+                          RTF::TestMessage msg,
+                          RTF::TestCase* testcase);
 
     /**
      * @brief format can be used to format data to in
@@ -117,7 +123,7 @@ public:
      * @param msg a format-control string
      * @return the formated std::string
      */
-    static RTF_API std::string format(const char* msg, ...);
+    static std::string format(const char* msg, ...);
 };
 
 #endif // _RTF_ASSERTER_H

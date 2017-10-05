@@ -11,7 +11,7 @@
 #ifndef _RTF_WEBPROGRESSLISTENER_H
 #define _RTF_WEBPROGRESSLISTENER_H
 
-#include <rtf/rtf_config.h>
+
 #include <rtf/TestListener.h>
 
 namespace RTF {
@@ -26,7 +26,7 @@ namespace RTF {
  * \ingroup key_class
  *
  */
-class RTF_API RTF::WebProgressListener : public RTF::TestListener {
+class RTF::WebProgressListener : public RTF::TestListener {
 public:
 
     /**

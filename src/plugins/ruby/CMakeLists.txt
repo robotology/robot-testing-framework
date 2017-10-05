@@ -30,12 +30,8 @@ include_directories(${RTF_TREE_INCLUDE_DIRS}
                     ./include/impl
                     ${RUBY_INCLUDE_DIR}
                     ${RUBY_CONFIG_INCLUDE_DIR})
-if(WIN32)
-    add_library(RTF_ruby STATIC ${folder_source} ${folder_header} )
-else()
-    add_library(RTF_ruby SHARED ${folder_source} ${folder_header} )
-endif()
 
+add_library(RTF_ruby ${folder_source} ${folder_header} )
 target_link_libraries(RTF_ruby ${RTF_LIBS} ${RUBY_LIBRARY})
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)

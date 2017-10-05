@@ -11,7 +11,6 @@
 #ifndef _RTF_TESTLISTENER_H
 #define _RTF_TESTLISTENER_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/Test.h>
 #include <rtf/TestMessage.h>
 
@@ -23,7 +22,7 @@ namespace RTF {
 /**
  * @brief The base class of any test result listeners
  */
-class RTF_API RTF::TestListener {
+class RTF::TestListener {
 public:
 
     /**

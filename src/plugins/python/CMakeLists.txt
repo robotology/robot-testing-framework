@@ -40,11 +40,9 @@ include_directories(${RTF_TREE_INCLUDE_DIRS}
                     ${RTF_INTERNAL_INCLUDE_DIRS}
                     ./include/rtf/python/impl
                     ${PYTHON_INCLUDE_DIR})
-if(WIN32)
-    add_library(RTF_python STATIC ${folder_source} ${folder_header} )
-else()
-    add_library(RTF_python SHARED ${folder_source} ${folder_header} )
-endif()
+
+add_library(RTF_python ${folder_source} ${folder_header} )
+
 
 link_libraries(${PYTHON_LIBRARY})
 target_link_libraries(RTF_python ${RTF_LIBS} ${PYTHON_LIBRARY})

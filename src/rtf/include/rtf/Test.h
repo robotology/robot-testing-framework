@@ -11,7 +11,6 @@
 #ifndef _RTF_TEST_H
 #define _RTF_TEST_H
 
-#include <rtf/rtf_config.h>
 #include <string>
 
 namespace RTF {
@@ -23,7 +22,7 @@ namespace RTF {
 /**
  * @brief The simplest form of a test unit
  */
-class RTF_API RTF::Test {
+class RTF::Test {
 public:
 
     /**

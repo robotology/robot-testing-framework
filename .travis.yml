@@ -24,7 +24,7 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew outdated cmake || brew upgrade cmake; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then if !  brew ls --versions python > /dev/null; then brew install python; fi; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml lua51; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev lcov; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake3 libtinyxml-dev liblua5.1-dev python-dev lcov; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo gem install coveralls-lcov; fi
 
 before_script:

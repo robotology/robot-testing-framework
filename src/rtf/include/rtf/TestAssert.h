@@ -30,7 +30,7 @@
 #ifndef _RTF_TESTASSERTER_H
 #define _RTF_TESTASSERTER_H
 
-#include <rtf/rtf_config.h>
+
 #include <rtf/Asserter.h>
 
 

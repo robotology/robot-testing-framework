@@ -21,7 +21,6 @@ if(ENABLE_WEB_LISTENER)
         include/rtf/FixtureManager.h
         include/rtf/PluginLoader.h
         include/rtf/ResultEvent.h
-        include/rtf/rtf_config.h
         include/rtf/TestAssert.h
         include/rtf/TestCase.h
         include/rtf/Test.h
@@ -63,7 +62,6 @@ else()
         include/rtf/FixtureManager.h
         include/rtf/PluginLoader.h
         include/rtf/ResultEvent.h
-        include/rtf/rtf_config.h
         include/rtf/TestAssert.h
         include/rtf/TestCase.h
         include/rtf/Test.h
@@ -94,11 +92,7 @@ else()
                         ${RTF_INTERNAL_INCLUDE_DIRS})
 endif()
 
-if(WIN32)
-    add_library(${PROJECT_NAME} STATIC ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
-else()
-    add_library(${PROJECT_NAME} SHARED ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
-endif()
+add_library(${PROJECT_NAME} ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
 
 if(ENABLE_WEB_LISTENER)
     target_link_libraries(${PROJECT_NAME} RTF_mongoose)
