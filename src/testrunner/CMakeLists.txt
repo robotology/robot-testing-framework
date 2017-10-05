@@ -37,3 +37,5 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_nullptr)
 install(TARGETS ${PROJECT_NAME}
         EXPORT ${PROJECT_NAME}
         RUNTIME DESTINATION bin)
+
+set_property(GLOBAL APPEND PROPERTY RTF_TOOLS ${PROJECT_NAME})
