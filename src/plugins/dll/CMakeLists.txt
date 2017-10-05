@@ -30,8 +30,13 @@ add_library(RTF_dll SHARED ${folder_source} ${folder_header} )
 if(NOT WIN32)
   target_link_libraries(RTF_dll dl)
 else()
-    target_link_libraries(RTF_dll)
+  target_link_libraries(RTF_dll)
 endif()
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+
+target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 
 # choose which header files should be installed
