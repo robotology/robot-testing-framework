@@ -49,7 +49,7 @@ public:
 
     virtual bool setup(int argc, char**argv)  {
         RTF_TEST_REPORT(Asserter::format("argc %d", argc));
-        RTF_ASSERT_ERROR_IF(argc >= 1, "missing fixture filename in the paramater");
+        RTF_ASSERT_ERROR_IF_FALSE(argc >= 1, "missing fixture filename in the paramater");
         fixtureFilename = argv[1];
         RTF_TEST_REPORT(fixtureFilename);
         return true;

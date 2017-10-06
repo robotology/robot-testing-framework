@@ -50,12 +50,12 @@ public:
 PREPARE_PLUGIN(AdaTest);
 
 extern "C" void rtf_test_setname(char* name) {
-    RTF_ASSERT_ERROR_IF(testInstance, "testInstance is surprisingly NULL!");
+    RTF_ASSERT_ERROR_IF_FALSE(testInstance, "testInstance is surprisingly NULL!");
     ((AdaTest*)testInstance)->setTestName(name);
 }
 
 extern "C" void rtf_test_report(char* message) {
-    RTF_ASSERT_ERROR_IF(testInstance, "testInstance is surprisingly NULL!");
+    RTF_ASSERT_ERROR_IF_FALSE(testInstance, "testInstance is surprisingly NULL!");
     RTF::Asserter::report(RTF::TestMessage("reports",
                                             message,
                                             RTF_SOURCEFILE(),
@@ -64,7 +64,7 @@ extern "C" void rtf_test_report(char* message) {
 
 
 extern "C" void rtf_test_check(unsigned int condtion, char* message) {
-    RTF_ASSERT_ERROR_IF(testInstance, "testInstance is surprisingly NULL!");
+    RTF_ASSERT_ERROR_IF_FALSE(testInstance, "testInstance is surprisingly NULL!");
     RTF::Asserter::testCheck(condtion != 0, RTF::TestMessage("checks",
                                             message,
                                             RTF_SOURCEFILE(),
@@ -73,7 +73,7 @@ extern "C" void rtf_test_check(unsigned int condtion, char* message) {
 
 
 extern "C" void rtf_test_fail_if(unsigned int condtion, char* message) {
-    RTF_ASSERT_ERROR_IF(testInstance, "testInstance is surprisingly NULL!");
+    RTF_ASSERT_ERROR_IF_FALSE(testInstance, "testInstance is surprisingly NULL!");
     RTF::Asserter::testFail(condtion != 0, RTF::TestMessage("checking condition",
                                             message,
                                             RTF_SOURCEFILE(),
