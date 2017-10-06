@@ -59,7 +59,8 @@ set(INSTALL_RTF_RUBY_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
 install_basic_package_files(${PROJECT_NAME}
                             VERSION ${RTF_VERSION}
                             COMPATIBILITY AnyNewerVersion
-                            TARGETS_PROPERTY RTF_LIBS
+                            TARGETS_PROPERTIES RTF_LIBS
+                                               RTF_TOOLS
                             EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR
                                                    LUA_INCLUDEDIR
                                                    PYTHON_INCLUDEDIR

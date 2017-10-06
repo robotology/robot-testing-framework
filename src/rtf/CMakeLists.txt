@@ -108,6 +108,8 @@ endif()
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
 
+target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # choose which header files should be installed
 set_property(TARGET ${PROJECT_NAME} PROPERTY PUBLIC_HEADER ${RTF_HDRS})

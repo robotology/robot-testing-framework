@@ -32,6 +32,10 @@ source_group("Header Files" FILES ${folder_header})
 add_executable(${PROJECT_NAME} ${folder_source} ${folder_header})
 target_link_libraries(${PROJECT_NAME} ${RTF_LIBS} ${RTF_INTERNAL_LIBS} ${TinyXML_LIBRARIES})
 
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_nullptr)
+
 install(TARGETS ${PROJECT_NAME}
         EXPORT ${PROJECT_NAME}
         RUNTIME DESTINATION bin)
+
+set_property(GLOBAL APPEND PROPERTY RTF_TOOLS ${PROJECT_NAME})

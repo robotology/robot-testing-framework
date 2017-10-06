@@ -44,6 +44,11 @@ endif()
 
 target_link_libraries(RTF_lua ${RTF_LIBS} ${LUA_LIBRARY})
 
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+
+target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+
 
 # choose which header files should be installed
 file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/lua/*.h)
