@@ -40,7 +40,7 @@ public:
         RTF_TEST_CHECK(2==3, "two is equal to three");
         int a = 5;
         int b = 3;
-        RTF_TEST_FAIL_IF(a<b, Asserter::format("%d is not smaller than %d.", a, b));
+        RTF_TEST_FAIL_IF_FALSE(a<b, Asserter::format("%d is not smaller than %d.", a, b));
     }
 
 };

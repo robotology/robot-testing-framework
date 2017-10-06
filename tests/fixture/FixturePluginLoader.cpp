@@ -49,7 +49,7 @@ public:
 
     virtual bool setup(int argc, char**argv)  {
         RTF_TEST_REPORT(Asserter::format("argc %d", argc));
-        RTF_ASSERT_ERROR_IF(argc >= 1, "missing fixture filename in the paramater");
+        RTF_ASSERT_ERROR_IF_FALSE(argc >= 1, "missing fixture filename in the paramater");
         fixtureFilename = argv[1];
         RTF_TEST_REPORT(fixtureFilename);
         return true;
@@ -71,12 +71,12 @@ public:
         RTF_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
         DllFixturePluginLoader* loader = new DllFixturePluginLoader();
         FixtureManager* fixture = loader->open(fixtureFilename);
-        RTF_ASSERT_FAIL_IF(fixture, loader->getLastError());
+        RTF_ASSERT_FAIL_IF_FALSE(fixture, loader->getLastError());
 
         suite.addFixtureManager(fixture);
         suite.addTest(&test1);
 
-        RTF_TEST_FAIL_IF(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
+        RTF_TEST_FAIL_IF_FALSE(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
         fixture->setParam("MY_FIXTURE_TEST_PARAM");
 
         // create a test runner
