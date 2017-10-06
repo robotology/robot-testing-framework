@@ -76,7 +76,7 @@ public:
         suite.addFixtureManager(fixture);
         suite.addTest(&test1);
 
-        RTF_TEST_FAIL_IF(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
+        RTF_TEST_FAIL_IF_FALSE(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
         fixture->setParam("MY_FIXTURE_TEST_PARAM");
 
         // create a test runner
