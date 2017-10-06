@@ -84,24 +84,24 @@ public:
         tv.tv_usec = 0;
         setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
 #endif
-        RTF_ASSERT_FAIL_IF(sockfd >= 0, "opening socket");
+        RTF_ASSERT_FAIL_IF_FALSE(sockfd >= 0, "opening socket");
         server = gethostbyname("localhost");
-        RTF_ASSERT_FAIL_IF(server != nullptr, "no such host");
+        RTF_ASSERT_FAIL_IF_FALSE(server != nullptr, "no such host");
 
         bzero((char *) &serv_addr, sizeof(serv_addr));
         serv_addr.sin_family = AF_INET;
         bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
         serv_addr.sin_port = htons(6543);
         RTF_TEST_REPORT("Conneting to the web listener server");
-        RTF_ASSERT_FAIL_IF(connect(sockfd,(struct sockaddr *)
+        RTF_ASSERT_FAIL_IF_FALSE(connect(sockfd,(struct sockaddr *)
                                    &serv_addr,sizeof(serv_addr)) >= 0, "connecting");
 
         char buffer[256] = "GET /status HTTP/1.0\r\n\r\n";
         RTF_TEST_REPORT("Writing to web listener server");
-        RTF_ASSERT_FAIL_IF(write(sockfd, buffer, strlen(buffer)) >= 0, "writing to socket");
+        RTF_ASSERT_FAIL_IF_FALSE(write(sockfd, buffer, strlen(buffer)) >= 0, "writing to socket");
         bzero(buffer,256);
         RTF_TEST_REPORT("Reading from web listener server");
-        RTF_ASSERT_FAIL_IF(read(sockfd,buffer,255) >0, "reading from socket");
+        RTF_ASSERT_FAIL_IF_FALSE(read(sockfd,buffer,255) >0, "reading from socket");
 
         std::stringstream ssbuff(buffer);
         std::string line;

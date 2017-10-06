@@ -71,7 +71,7 @@ public:
         RTF_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
         DllFixturePluginLoader* loader = new DllFixturePluginLoader();
         FixtureManager* fixture = loader->open(fixtureFilename);
-        RTF_ASSERT_FAIL_IF(fixture, loader->getLastError());
+        RTF_ASSERT_FAIL_IF_FALSE(fixture, loader->getLastError());
 
         suite.addFixtureManager(fixture);
         suite.addTest(&test1);
