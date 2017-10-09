@@ -19,13 +19,18 @@ add_definitions(${RTF_INTERNAL_DEFS})
 if(ENABLE_WEB_LISTENER)
     add_definitions("-DENABLE_WEB_LISTENER")
 endif()
-include_directories(./include
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
+                    ${CMAKE_CURRENT_BINARY_DIR}/include
                     ${RTF_TREE_INCLUDE_DIRS}
                     ${TinyXML_INCLUDE_DIRS}
                     ${RTF_INTERNAL_INCLUDE_DIRS})
 
 file(GLOB folder_source ./src/*.cpp)
 file(GLOB_RECURSE folder_header ./include/*.h)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/include/Version.h.in"
+               "${CMAKE_CURRENT_BINARY_DIR}/include/Version.h"
+               @ONLY)
+list(APPEND folder_header "${CMAKE_CURRENT_BINARY_DIR}/include/Version.h")
 source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})
 
