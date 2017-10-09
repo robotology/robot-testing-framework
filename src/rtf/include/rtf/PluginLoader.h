@@ -14,7 +14,6 @@
 #ifndef _RTF_PLUGINLOADER_H
 #define _RTF_PLUGINLOADER_H
 
-#include <rtf/rtf_config.h>
 #include <string>
 #include <rtf/TestCase.h>
 
@@ -29,7 +28,7 @@ namespace RTF {
  * gives the direct access to the TestCase. The PluginLoader class needs to be implemented
  * by a plugin-specific loader.
  */
-class RTF_API RTF::plugin::PluginLoader {
+class RTF::plugin::PluginLoader {
 
 public:
 

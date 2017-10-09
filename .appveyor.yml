@@ -14,7 +14,12 @@ configuration:
   - Debug
 
 environment:
-  CTEST_OUTPUT_ON_FAILURE: 1
+  matrix:
+    - CTEST_OUTPUT_ON_FAILURE: 1
+      BUILD_SHARED_LIBS: ON
+
+    - CTEST_OUTPUT_ON_FAILURE: 1
+      BUILD_SHARED_LIBS: OFF
 
 clone_folder: c:\dev\RTF
 
@@ -30,7 +35,7 @@ build_script:
   - cd c:\dev\RTF
   - md build
   - cd build
-  - cmake -G"%CMAKE_GENERATOR%" ..
+  - cmake -G"%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=%BUILD_SHARED_LIBS% ..
   - msbuild /m /p:Configuration="%CONFIGURATION%" /p:Platform="%platform%" RTF.sln
 
 test_script:

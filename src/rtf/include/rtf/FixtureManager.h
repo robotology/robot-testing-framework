@@ -11,7 +11,6 @@
 #ifndef _RTF_FixtureManager_H
 #define _RTF_FixtureManager_H
 
-#include <rtf/rtf_config.h>
 #include <string>
 #include <rtf/TestResult.h>
 #include <rtf/TestMessage.h>

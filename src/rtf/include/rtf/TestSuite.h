@@ -11,7 +11,6 @@
 #ifndef _RTF_TESTSUITE_H
 #define _RTF_TESTSUITE_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/Test.h>
 #include <rtf/TestResult.h>
 #include <rtf/TestMessage.h>
@@ -41,7 +40,7 @@ namespace RTF {
  * Here's an example of using a TestSuite:
  * \include examples/simple_suite.cpp
  */
-class RTF_API RTF::TestSuite : public RTF::Test, public RTF::FixtureEvents {
+class RTF::TestSuite : public RTF::Test, public RTF::FixtureEvents {
 
     typedef std::vector<RTF::Test*> TestContainer;
     typedef std::vector<RTF::Test*>::iterator TestIterator;

@@ -15,10 +15,9 @@ macro(ENABLE_RTF_TESTS)
     #get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
     include_directories(${CMAKE_SOURCE_DIR}
                         ${RTF_TREE_INCLUDE_DIRS})
-
     set(TESTRUNNER_PATH ${CMAKE_BINARY_DIR}/bin/testrunner)
     # set the output plugin directory to collect all tests
-    set(TEST_TARGET_PATH ${CMAKE_BINARY_DIR}/bin/tests)
+    set(TEST_TARGET_PATH ${CMAKE_BINARY_DIR}/bin)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${TEST_TARGET_PATH})
     set(CMAKE_SHARED_MODULE_PREFIX "")
     # running test units

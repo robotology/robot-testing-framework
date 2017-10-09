@@ -11,7 +11,6 @@
 #ifndef _RTF_TESTCASE_H
 #define _RTF_TESTCASE_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/Test.h>
 #include <rtf/TestResult.h>
 
@@ -31,7 +30,7 @@ namespace RTF {
  * Here's an example of using a TestCase:
  * \include examples/simple.cpp
  */
-class RTF_API RTF::TestCase : public RTF::Test {
+class RTF::TestCase : public RTF::Test {
 public:
 
     /**

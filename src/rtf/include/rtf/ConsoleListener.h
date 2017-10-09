@@ -11,7 +11,6 @@
 #ifndef _RTF_CONSOLELISTENER_H
 #define _RTF_CONSOLELISTENER_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/TestListener.h>
 
 namespace RTF {
@@ -28,7 +27,7 @@ namespace RTF {
  * Here's an example of using a ConsoleListener:
  * \include examples/simple.cpp
  */
-class RTF_API RTF::ConsoleListener : public RTF::TestListener {
+class RTF::ConsoleListener : public RTF::TestListener {
 public:
 
     /**

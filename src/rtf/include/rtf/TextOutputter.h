@@ -11,7 +11,7 @@
 #ifndef _RTF_TEXTOUTPUTTER_H
 #define _RTF_TEXTOUTPUTTER_H
 
-#include <rtf/rtf_config.h>
+
 #include <string>
 #include <rtf/TestMessage.h>
 #include <rtf/TestResultCollector.h>
@@ -30,7 +30,7 @@ namespace RTF {
  * Here's an example of using a TextOutputter:
  * \include examples/simple_collector.cpp
  */
-class RTF_API RTF::TextOutputter {
+class RTF::TextOutputter {
 public:
 
     /**
