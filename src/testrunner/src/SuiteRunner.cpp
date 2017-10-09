@@ -119,11 +119,6 @@ bool SuiteRunner::loadSuite(std::string filename) {
                 DllFixturePluginLoader* loader = new DllFixturePluginLoader();
                 std::string pluginName = test->GetText();
 
-#ifdef _WIN32
-                pluginName =  pluginName + ".dll";
-#else
-                pluginName =  pluginName + ".so";
-#endif
                 FixtureManager* fixture = loader->open(pluginName);
                 if(fixture != nullptr) {
                     // set the fixture manager param
@@ -147,16 +142,8 @@ bool SuiteRunner::loadSuite(std::string filename) {
 
             PluginLoader* loader;
             std::string pluginName = test->GetText();
-            if(test->Attribute("type")) {
+            if(test->Attribute("type"))
                 loader = PluginFactory::createByType(test->Attribute("type"));
-                if(PluginFactory::compare(test->Attribute("type"), "dll")) {
-#ifdef _WIN32
-                   pluginName =  pluginName + ".dll";
-#else
-                    pluginName =  pluginName + ".so";
-#endif
-                }
-            }
             else
                 loader = PluginFactory::createByName(test->GetText());
 

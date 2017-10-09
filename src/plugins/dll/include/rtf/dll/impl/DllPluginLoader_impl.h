@@ -125,13 +125,23 @@ private:
 #else
         std::string ext = ".so";
 #endif
-        std::string basename = (filename.find(ext) != std::string::npos) ? filename.substr(0, filename.size() - ext.size()) : filename;
+        std::string basename;
+        bool has_ext;
+        if (filename.find(ext) != std::string::npos) {
+            basename = filename.substr(0, filename.size() - ext.size());
+            has_ext = true;
+        } else {
+            basename = filename;
+            has_ext = false;
+        }
 
 #if defined(_MSC_VER) && !defined(NDEBUG)
         // MSVC DEBUG build: try debug name before basic name
-        fullpath = basename + "d" + ext;
-        if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
-            return;
+        if (!has_ext) {
+            fullpath = basename + "d" + ext;
+            if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
+                return;
+        }
 #endif
 
         // Basic name
@@ -141,9 +151,11 @@ private:
 
 #if defined(_MSC_VER) && defined(NDEBUG)
         // MSVC RELEASE build: try debug name after basic name
-        fullpath = basename + "d" + ext;
-        if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
-            return;
+        if (!has_ext) {
+            fullpath = basename + "d" + ext;
+            if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
+                return;
+        }
 #endif
 
 
@@ -153,9 +165,11 @@ private:
 
 # if defined(_MSC_VER) && !defined(NDEBUG)
         // MSVC DEBUG build: try debug name before basic name
-        fullpath = std::string(CMAKE_INTDIR) + "/" + basename + "d" + ext;
-        if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
-            return;
+        if (!has_ext) {
+            fullpath = std::string(CMAKE_INTDIR) + "/" + basename + "d" + ext;
+            if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
+                return;
+        }
 # endif
 
         // Basic name
@@ -165,9 +179,11 @@ private:
 
 # if defined(_MSC_VER) && defined(NDEBUG)
         // MSVC RELEASE build: try debug name after basic name
-        fullpath = std::string(CMAKE_INTDIR) + "/" + basename + "d" + ext;
-        if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
-            return;
+        if (!has_ext) {
+            fullpath = std::string(CMAKE_INTDIR) + "/" + basename + "d" + ext;
+            if (plugin->factory.open(fullpath.c_str(), factory_name.c_str()))
+                return;
+        }
 # endif
 
 #endif
