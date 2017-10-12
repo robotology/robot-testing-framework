@@ -64,22 +64,26 @@ check_required_components(RTF)
 #
 #   rtf_add_plugin(<plugin name>
 #                       OUTPUT_NAME <output_name>
-#                       srcs
-#                       hdrs)
+#                       SOURCES     <srcs>
+#                       HEADERS     <hdrs>)
 #
 # This macro converts a plugin declaration to code, and to set up a CMake option
 # for enabling or disabling the compilation of that plugin.
 #
 # The ``OUTPUT_NAME`` is the base name for output files created for the library target.
-
 macro(RTF_ADD_PLUGIN _library_name)
 
   set(_options)
   set(_oneValueArgs OUTPUT_NAME)
-  set(_multiValueArgs)
+  set(_multiValueArgs SOURCES HEADERS)
   cmake_parse_arguments(_RAP "${_options}" "${_oneValueArgs}" "${_multiValueArgs}" ${ARGN} )
 
-  add_library(${_library_name} MODULE ${_RAP_UNPARSED_ARGUMENTS})
+  if(NOT DEFINED _RAP_SOURCES AND NOT DEFINED _RAP_HEADERS)
+    message(SEND_ERROR "rtf_add_plugin: No SOURCES and HEADERS specified for library ${_library_name}.")
+    return()
+  endif()
+
+  add_library(${_library_name} MODULE ${_RAP_SOURCES} ${_RAP_HEADERS})
 
   set_property(TARGET ${_library_name} PROPERTY PREFIX "")
   if(DEFINED _RAP_OUTPUT_NAME)
