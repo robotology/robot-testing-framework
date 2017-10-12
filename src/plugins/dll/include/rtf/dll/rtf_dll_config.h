@@ -14,7 +14,11 @@
 #if defined _WIN32 || defined __CYGWIN__
 #  define SHLIBPP_EXPORT __declspec(dllexport)
 #else 
-#  define SHLIBPP_EXPORT    
+#  if defined SHLIBPP_FILTER_API && __GNUC__ >= 4
+#    define SHLIBPP_EXPORT __attribute__ ((visibility("default")))
+#  else
+#    define SHLIBPP_EXPORT
+#  endif
 #endif
 
 #define SHLIBPP_POINTER_SIZE    8
