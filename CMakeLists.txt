@@ -9,8 +9,9 @@ cmake_minimum_required(VERSION 3.5)
 project(RTF)
 
 # enforce the use of C++11
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 11)
-
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Pick up our CMake scripts - they are all in the conf subdirectory.
 set(RTF_MODULE_PATH ${PROJECT_SOURCE_DIR}/conf)
