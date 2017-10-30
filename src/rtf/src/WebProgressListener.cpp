@@ -328,7 +328,7 @@ void WebProgressListenerImpl::endTestSuite(const RTF::Test* test) {
 }
 
 void WebProgressListenerImpl::startTestRunner() {
-    string text = Asserter::format("<br> %s Staring test runner. %s",
+    string text = Asserter::format("<br> %s Starting test runner. %s",
                                   BLUE, ENDC);
     critical.lock();
     result += text;

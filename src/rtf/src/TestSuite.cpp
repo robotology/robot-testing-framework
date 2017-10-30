@@ -115,7 +115,7 @@ void TestSuite::run(TestResult &rsl) {
             if(!fixtureOK) {
                 successful = false;
                 result->addReport(this, TestMessage("reports",
-                                                    "restaring fixture setup",
+                                                    "restarting fixture setup",
                                                     RTF_SOURCEFILE(),
                                                     RTF_SOURCELINE()));
                 tearDown();
