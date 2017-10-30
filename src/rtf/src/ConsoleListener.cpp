@@ -106,7 +106,7 @@ void ConsoleListener::endTestSuite(const RTF::Test* test) {
 void ConsoleListener::startTestRunner() {
     if(hideUncritical) return;
 
-    cout<<BLUE<<"Staring test runner."<<ENDC<<endl;
+    cout<<BLUE<<"Starting test runner."<<ENDC<<endl;
 }
 
 void ConsoleListener::endTestRunner() {
