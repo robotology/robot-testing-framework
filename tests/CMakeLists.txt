@@ -34,5 +34,8 @@ if (BUILD_TESTING)
 
         # adding testrunner tests
         add_subdirectory(testrunner)
+
+        # adding rtf_add_suite tests
+        add_subdirectory(rtf_add_suite)
     endif()
 endif()
