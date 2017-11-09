@@ -12,8 +12,11 @@ os:
   - osx
 
 env:
-  - TRAVIS_BUILD_TYPE=Debug
-  - TRAVIS_BUILD_TYPE=Release
+  global:
+    - CTEST_OUTPUT_ON_FAILURE=1
+  matrix:
+    - TRAVIS_BUILD_TYPE=Debug
+    - TRAVIS_BUILD_TYPE=Release
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
@@ -29,7 +32,7 @@ install:
 
 before_script:
   - python --version
-  - ruby --version  
+  - ruby --version
 
 script:
   # configure robot-testing framework
@@ -39,10 +42,10 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "osx" ];   then cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi
   - make
   - make test
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then  make RTF_coverage ; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make RTF_coverage ; fi
   - sudo make install
 
-after_success:  
+after_success:
   - coveralls-lcov --repo-token Gcfb0Rzm9kFpzrwyT5NiQQivi2oWvvjdm coverage.info.cleaned
 #  - bash <(curl -s https://codecov.io/bash)
 
