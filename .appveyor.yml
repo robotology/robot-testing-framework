@@ -39,4 +39,4 @@ build_script:
   - msbuild /m /p:Configuration="%CONFIGURATION%" /p:Platform="%platform%" RTF.sln
 
 test_script:
-  - cmd: cmake --build %APPVEYOR_BUILD_FOLDER%\build --target RUN_TESTS --config %CONFIGURATION%
+  - cmd: ctest --output-on-failure --build-config %CONFIGURATION%
