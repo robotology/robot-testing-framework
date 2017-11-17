@@ -121,6 +121,12 @@ public:
      */
     RTF::TestResult* getResult();
 
+    /**
+     * @brief returns the number of tests in this suite
+     * @return the number of tests in this suite
+     */
+    std::size_t size() const;
+
 protected:
     /**
      * @brief setup is called before the test run

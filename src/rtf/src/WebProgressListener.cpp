@@ -13,6 +13,7 @@
 #include <rtf/Asserter.h>
 #include <rtf/WebProgressListener.h>
 #include <rtf/impl/WebProgressListener_impl.h>
+#include <sstream>
 
 using namespace std;
 using namespace RTF;
@@ -74,50 +75,47 @@ static std::string html_page =
 "\n"
 "    var xmlStatus;\n"
 "    if (window.XMLHttpRequest) {\n"
-"      xmlStatus=new XMLHttpRequest();\n"
+"        xmlStatus=new XMLHttpRequest();\n"
 "    }\n"
 "    else {\n"
 "        xmlStatus=new ActiveXObject(\"Microsoft.XMLHTTP\");\n"
 "    }\n"
 "    xmlStatus.onreadystatechange=function() {\n"
 "        if (xmlStatus.readyState==4 && xmlStatus.status==200) {\n"
-"           var status = JSON.parse(xmlStatus.responseText);\n"
-"           document.getElementById(\"suite_name\").innerHTML=status.name;\n"
-"           var c = document.getElementById(\"progress\");\n"
-"           var ctx = c.getContext(\"2d\");\n"
-"           ctx.clearRect(0, 0, c.width, c.height);\n"
-"           var xpos = 20;\n"
-"           for (i=1; i<=status.ntest; i++) {\n"
-"               ctx.beginPath();\n"
-"               ctx.arc(xpos, c.height/2, 7, 0, 2 * Math.PI);\n"
-"               ctx.lineWidth = 2;\n"
-"               ctx.strokeStyle=\"#708090\";\n"
-"               ctx.fillStyle=\"#778899\";\n"
-"               ctx.stroke();\n"
-"               ctx.fill();\n"
-"               xpos = xpos + 20;\n"
-"           }\n"
-"           xpos = 20;\n"
-"           for (i=1; i<=status.npass; i++) {\n"
-"               ctx.beginPath();\n"
-"               ctx.arc(xpos, c.height/2, 7, 0, 2 * Math.PI);\n"
-"               ctx.lineWidth = 2;\n"
-"               ctx.strokeStyle=\"#008000\";\n"
-"               ctx.fillStyle=\"#228B22\";\n"
-"               ctx.stroke();\n"
-"               ctx.fill();\n"
-"               xpos = xpos + 20;\n"
-"           }\n"
-"           for (i=1; i<=status.nfail; i++) {\n"
-"               ctx.beginPath();\n"
-"               ctx.arc(xpos, c.height/2, 7, 0, 2 * Math.PI);\n"
-"               ctx.lineWidth = 2;\n"
-"               ctx.strokeStyle=\"#FF0000\";\n"
-"               ctx.fillStyle=\"#DC143C\";\n"
-"               ctx.stroke();\n"
-"               ctx.fill();\n"
-"               xpos = xpos + 20;\n"
-"           }\n"
+"            var status = JSON.parse(xmlStatus.responseText);\n"
+"            document.getElementById(\"suite_name\").innerHTML=status.name;\n"
+"            var c = document.getElementById(\"progress\");\n"
+"            var ctx = c.getContext(\"2d\");\n"
+"            ctx.clearRect(0, 0, c.width, c.height);\n"
+"            var xpos = 20;\n"
+"            for (i = 0; i < status.testStatus.length; i++) {\n"
+"                ctx.beginPath();\n"
+"                ctx.arc(xpos, c.height/2, 7, 0, 2 * Math.PI);\n"
+"                ctx.lineWidth = 2;\n"
+"                switch (status.testStatus[i]) {\n"
+"                case 0:\n"
+"                    ctx.strokeStyle=\"#B0C0D0\";\n"
+"                    ctx.fillStyle=\"#BBCCDD\";\n"
+"                    break;\n"
+"                case 1:\n"
+"                    ctx.strokeStyle=\"#708090\";\n"
+"                    ctx.fillStyle=\"#778899\";\n"
+"                    break;\n"
+"                case 2:\n"
+"                    ctx.strokeStyle=\"#FF0000\";\n"
+"                    ctx.fillStyle=\"#DC143C\";\n"
+"                    break;\n"
+"                case 3:\n"
+"                    ctx.strokeStyle=\"#008000\";\n"
+"                    ctx.fillStyle=\"#228B22\";\n"
+"                    break;\n"
+"                default:\n"
+"                    break;\n"
+"                }\n"
+"                ctx.stroke();\n"
+"                ctx.fill();\n"
+"                xpos = xpos + 20;\n"
+"            }\n"
 "        }\n"
 "    }\n"
 "    xmlStatus.open(\"GET\",document.URL+\"status\",true);\n"
@@ -148,8 +146,8 @@ RTF::WebProgressListenerImpl &WebProgressListenerImpl::create(unsigned int port,
 }
 
 WebProgressListenerImpl::WebProgressListenerImpl(unsigned int port,
-                                         bool verbose) {
-    nTests = nFailures = nPasses = 0;
+                                                 bool verbose) {
+    suite_size = 0;
     this->verbose = verbose;
     this->port = port;
     server = mg_create_server(this, WebProgressListenerImpl::handler);
@@ -200,19 +198,25 @@ int WebProgressListenerImpl::handler(struct mg_connection *conn,
             mg_printf_data(conn, "%s", data.c_str());
         }
         else if (strcmp(conn->uri, "/status") == 0) {
-            char json[512];
             web->critical.lock();
-#if defined(_WIN32)
-            _snprintf(json, 512, "{\"name\":%s,\"ntest\":%d,\"nfail\":%d,\"npass\":%d}",
-                     web->suite_name.c_str(), web->nTests, web->nFailures, web->nPasses);
-#else
-            snprintf(json, 512, "{\"name\":\"%s\",\"ntest\":%d,\"nfail\":%d,\"npass\":%d}",
-                     web->suite_name.c_str(), web->nTests, web->nFailures, web->nPasses);
-#endif
+            std::stringstream ss;
+            ss << "{\"name\":\"" << web->suite_name;
+            ss << "\",\"testStatus\":[";
+            for (auto it = web->testStatus.begin(); it != web->testStatus.end(); ++it) {
+                ss << (int)(*it);
+                if (std::next(it) != web->testStatus.end()) {
+                    ss << ",";
+                }
+            }
+            for (int i = web->testStatus.size(); i < web->suite_size; ++i) {
+                ss << ",0";
+            }
+            ss << "]}";
+
             web->critical.unlock();
             mg_send_header(conn, "Content-Type", "text/turtle");
             mg_send_header(conn, "Access-Control-Allow-Origin", "*");
-            mg_printf_data(conn, "%s", json);
+            mg_printf_data(conn, "%s", ss.str().c_str());
         }
         else {
             mg_send_data(conn, html_page.c_str(), strlen(html_page.c_str()));
@@ -288,7 +292,7 @@ void WebProgressListenerImpl::startTest(const RTF::Test* test) {
     // if there is no test suite, use the test case's name
     if(suite_name.size()==0)
         suite_name = test->getName();
-    nTests++;
+    testStatus.push_back(TestStatus::Running);
     result += text;
     critical.unlock();
 }
@@ -300,7 +304,7 @@ void WebProgressListenerImpl::endTest(const RTF::Test* test) {
                                   (test->succeeded()) ? "passed!" : "failed!",
                                   ENDC);
     critical.lock();
-    (test->succeeded()) ?  nPasses++ : nFailures++;
+    testStatus.back() = (test->succeeded()) ? TestStatus::Success : TestStatus::Failed;
     result += text;
     critical.unlock();
 }
@@ -313,6 +317,10 @@ void WebProgressListenerImpl::startTestSuite(const RTF::Test* test) {
     critical.lock();
     result += text;
     suite_name = test->getName();
+    auto suite = dynamic_cast<const RTF::TestSuite*>(test);
+    if (suite) {
+        suite_size = suite->size();
+    }
     critical.unlock();
 }
 
