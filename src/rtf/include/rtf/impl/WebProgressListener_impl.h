@@ -109,9 +109,18 @@ public:
     bool shouldStop;
     std::string result;
     std::string suite_name;
-    unsigned int nTests;
-    unsigned int nFailures;
-    unsigned int nPasses;
+    std::size_t suite_size;
+
+    enum class TestStatus
+    {
+        NotRun = 0,
+        Running = 1,
+        Failed = 2,
+        Success = 3
+    };
+
+    std::vector<TestStatus> testStatus;
+
 private:
     WebProgressListenerImpl(WebProgressListenerImpl const&);    // Don't Implement
     void operator=(WebProgressListenerImpl const&);             // Don't implement

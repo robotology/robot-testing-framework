@@ -58,6 +58,10 @@ TestResult* TestSuite::getResult() {
     return result;
 }
 
+std::size_t TestSuite::size() const {
+    return tests.size();
+}
+
 bool TestSuite::setup() {
     bool ret = true;
     FixtureIterator itr;
