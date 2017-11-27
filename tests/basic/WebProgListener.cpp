@@ -112,7 +112,7 @@ public:
 
         RTF_TEST_CHECK(line.size()>2,"Cheking the json result size returned by web listener");
         line = line.substr(0, line.size()-1);
-        RTF_TEST_CHECK(line=="{\"name\":\"MyTestSuite\",\"ntest\":2,\"nfail\":1,\"npass\":1}",
+        RTF_TEST_CHECK(line=="{\"name\":\"MyTestSuite\",\"testStatus\":[3,2]}",
                        "Cheking the json result returned by web listener");
         close(sockfd);
     }
