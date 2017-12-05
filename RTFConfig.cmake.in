@@ -85,6 +85,8 @@ macro(RTF_ADD_PLUGIN _library_name)
 
   add_library(${_library_name} MODULE ${_RAP_SOURCES} ${_RAP_HEADERS})
 
+  target_compile_definitions(${_library_name} PUBLIC SHLIBPP_FILTER_API)
+
   set_property(TARGET ${_library_name} PROPERTY PREFIX "")
   if(DEFINED _RAP_OUTPUT_NAME)
     set_property(TARGET ${_library_name} PROPERTY OUTPUT_NAME ${_RAP_OUTPUT_NAME})
