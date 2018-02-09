@@ -29,6 +29,7 @@ if(ENABLE_WEB_LISTENER)
         include/rtf/TestResultCollector.h
         include/rtf/TestResult.h
         include/rtf/TestRunner.h
+        include/rtf/TestSuit.h
         include/rtf/TestSuite.h
         include/rtf/TextOutputter.h
         include/rtf/WebProgressListener.h)
