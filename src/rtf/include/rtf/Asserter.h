@@ -16,6 +16,9 @@
 #include <rtf/TestCase.h>
 #include <rtf/TestSuite.h>
 
+// TODO(traversaro): For backcompatibility 1.2 --> 1.4 . To be removed in 1.6
+#include <rtf/TestSuit.h>
+
 #if defined _MSC_VER && _MSC_VER <= 1800 //Visual Studio 12 or earlier has not [[noreturn]]
 #  define RTF_NORETURN __declspec(noreturn)
 #else
