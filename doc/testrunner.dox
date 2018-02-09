@@ -13,20 +13,20 @@
 \li \ref desc
 \li \ref single
 \li \ref multiple
-\li \ref suit
-\li \ref single-suit
-\li \ref multiple-suit
+\li \ref suite
+\li \ref single-suite
+\li \ref multiple-suite
 \li \ref weblistener
 \li \ref stress-test
 \li \ref options
 
 <br>
 \section desc Description
-The \c testrunner is a command line tool to load and run multiple tests which has been developed as RTF plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as \c *.so, \c *.dll or *.dylib or using Lua, Python, Ruby and other scripting languages (e.g., .lua, .py, .rb). The \c testrunner can be used to run a single test case, multiple test cases from a given path, a \ref suit or multiple test suits from a given path.  
+The \c testrunner is a command line tool to load and run multiple tests which has been developed as RTF plug-ins. The test case plug-ins are built as dynamic loadable libraries and depending on the target platform can be found as \c *.so, \c *.dll or *.dylib or using Lua, Python, Ruby and other scripting languages (e.g., .lua, .py, .rb). The \c testrunner can be used to run a single test case, multiple test cases from a given path, a \ref suite or multiple test suites from a given path.
 
 <br>
-\section single Running a single test case  
-To run a single test case plug-in, it is enough to give the name of the corresponding plug-ing file to the \c testrunner using \c --test option. For example on a Linux machine:  
+\section single Running a single test case
+To run a single test case plug-in, it is enough to give the name of the corresponding plug-ing file to the \c testrunner using \c --test option. For example on a Linux machine:
 
 \verbatim
  $ testrunner --verbose --test libmytest.so
@@ -38,7 +38,7 @@ The \c testrunner follows the platform policy to look for the plug-in file. On a
  $ testrunner --verbose --test ~/my-plugins/libmytest.so
 \endverbatim
 
-In the similar way you can run a test case which has been developed using Lua, Python, Ruby or other languages: 
+In the similar way you can run a test case which has been developed using Lua, Python, Ruby or other languages:
 
 \verbatim
  $ testrunner --verbose --test ~/my-plugins/mytest.lua
@@ -46,26 +46,26 @@ In the similar way you can run a test case which has been developed using Lua, P
  $ testrunner --verbose --test ~/my-plugins/mytest.rb
 \endverbatim
 
-The \c `--verbose` enables the verbose mode which allows that the result of the tests to be also written to the standard out put. By default the result of the test are stored in the \c `result.txt` which can be changed by using \c `--output` option. 
+The \c `--verbose` enables the verbose mode which allows that the result of the tests to be also written to the standard out put. By default the result of the test are stored in the \c `result.txt` which can be changed by using \c `--output` option.
 
 <br>
-\section multiple Running all test cases from a given path 
-Multiple test cases can be easily loaded and run using \c `--tests` option. The expected value for this option is a directory where test case plug-ins are stored.  
+\section multiple Running all test cases from a given path
+Multiple test cases can be easily loaded and run using \c `--tests` option. The expected value for this option is a directory where test case plug-ins are stored.
 
 \verbatim
  $ testrunner --verbose --tests ~/my-plugins
 \endverbatim
 
-If the \c `--recursive` switch is given with the \c `--tests` option, the sub-folders are also searched for plug-ins. 
+If the \c `--recursive` switch is given with the \c `--tests` option, the sub-folders are also searched for plug-ins.
 
 <br>
-\section suit Test suit
-By definition, a test suit is a set of test cases which share the same test fixture. In RTF a set of test cases (plug-ins) can be grouped in a test suit using a XML file. Here is an example of test suit:
+\section suite Test suite
+By definition, a test suite is a set of test cases which share the same test fixture. In RTF a set of test cases (plug-ins) can be grouped in a test suite using a XML file. Here is an example of test suite:
 
 \htmlonly
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 
-<span style="color: #007700">&lt;suit</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;my suit&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #007700">&lt;suite</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;my suite&quot;</span><span style="color: #007700">&gt;</span>
     <span style="color: #007700">&lt;description&gt;</span> a simple example <span style="color: #007700">&lt;/description&gt;</span>
     <span style="color: #007700">&lt;environment&gt;</span> --robot simulator <span style="color: #007700">&lt;/environment&gt;</span>
     <span style="color: #007700">&lt;fixture</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;--from myfixture.ini&quot;</span><span style="color: #007700">&gt;</span> libfixture.so <span style="color: #007700">&lt;/fixture&gt;</span>
@@ -78,52 +78,52 @@ By definition, a test suit is a set of test cases which share the same test fixt
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test4.py <span style="color: #007700">&lt;/test&gt;</span>
     <span style="color: #007700">&lt;test</span> <span style="color: #0000CC">param=</span><span style="background-color: #fff0f0">&quot;&quot;</span><span style="color: #007700">&gt;</span> ~/mytest/test5.rb <span style="color: #007700">&lt;/test&gt;</span>
     ...
-<span style="color: #007700">&lt;/suit&gt;</span>
+<span style="color: #007700">&lt;/suite&gt;</span>
 </pre></div>
 \endhtmlonly
 
-The example demonstrates a test suit which includes two test cases (\c libmytest1.so and \c libmytest2.so). An optional string parameter can be also specified for each test using \c param attribute in the \c test tag. ​The parameter string is parsed into (argc/argv) format and will be passed to the test case using RTF::TestCase::setup(int argc, char** argv). Alternatively, the raw value of the parameter can be access in the test plug-in implementation using RTF::TestCase::getParam method.
+The example demonstrates a test suite which includes two test cases (\c libmytest1.so and \c libmytest2.so). An optional string parameter can be also specified for each test using \c param attribute in the \c test tag. ​The parameter string is parsed into (argc/argv) format and will be passed to the test case using RTF::TestCase::setup(int argc, char** argv). Alternatively, the raw value of the parameter can be access in the test plug-in implementation using RTF::TestCase::getParam method.
 
 The environment can be used in the implementation of the test cases to know in which setup (e.g., simulation, real world environment) the test case is employed. The environment value can also be accessed in the test plug-in implementation using RTF::TestCase::getEnvironment method.
 
-If a fixture manager plug-in is specified using \c <fixture> tag, it will be loaded by the \c testrunner and is set for the current test suit. When suit is executed, the fixture manager will be called automatically to setup and monitor the test fixture which is implemented in the fixture plug-in. (Please see the \c examples/fixture-plugin folder for an example of implementing fixture plug-ins.) 
- 
+If a fixture manager plug-in is specified using \c <fixture> tag, it will be loaded by the \c testrunner and is set for the current test suite. When suite is executed, the fixture manager will be called automatically to setup and monitor the test fixture which is implemented in the fixture plug-in. (Please see the \c examples/fixture-plugin folder for an example of implementing fixture plug-ins.)
+
 Notice that, for \c libtest2.so,  a complete path to the plug-in file is given. Thus, the \c testrunner does not look into system default paths (e.g., LD_LIBRARY_PATH) for the plug-in file and it expects to find the plug-in file using the given path. However, this is not the case for \c libtest1.so.
 
-The `testrunner` usually checks for the extension of the plug-in file name to recognize the type of the plug-in. There is also possibility to explicitly indicate the type of the plug-in using the `type` attribute. For example if `type="dll"`, then the plug-in test should be given without the extension. Depending on which platform (Windows, Linux or Mac) the test is running, the `testrunner` looks for the correct (shared library) plug-in name (.dll, .so or .dylib). 
+The `testrunner` usually checks for the extension of the plug-in file name to recognize the type of the plug-in. There is also possibility to explicitly indicate the type of the plug-in using the `type` attribute. For example if `type="dll"`, then the plug-in test should be given without the extension. Depending on which platform (Windows, Linux or Mac) the test is running, the `testrunner` looks for the correct (shared library) plug-in name (.dll, .so or .dylib).
 
 <br>
-\section single-suit Running a single test suit
-A single test suit (XML file) can be run using \c `--suit` option. For example:
+\section single-suite Running a single test suite
+A single test suite (XML file) can be run using \c `--suite` option. For example:
 \verbatim
- $ testrunner --verbose --suit ~/my-suits/suit.xml
+ $ testrunner --verbose --suite ~/my-suites/suite.xml
 \endverbatim
 
 <br>
-\section multiple-suit Running multiple test suits
-Multiple test suits can be loaded and rune using \c `--suits` option. The expected value for this option is a directory where test suits (XML files) are stored.  
+\section multiple-suite Running multiple test suites
+Multiple test suites can be loaded and rune using \c `--suites` option. The expected value for this option is a directory where test suites (XML files) are stored.
 
 \verbatim
- $ testrunner --verbose --suits ~/my-suits
+ $ testrunner --verbose --suites ~/my-suites
 \endverbatim
 
-If the \c `--recursive` switch is given with the \c `--suits` option, the sub-folders are also searched for test suits. 
+If the \c `--recursive` switch is given with the \c `--suites` option, the sub-folders are also searched for test suites.
 
 <br>
 \section weblistener Monitoring tests from your browser
-The `testrunner` uses RTF::WebProgressListener to provide a simple web server which allows you to monitor the test's running progress from a browser. To do that, you need to run a test/suite by the `testrunner` using `--web-reporter` option.  
+The `testrunner` uses RTF::WebProgressListener to provide a simple web server which allows you to monitor the test's running progress from a browser. To do that, you need to run a test/suite by the `testrunner` using `--web-reporter` option.
 
 \verbatim
- $ testrunner --web-reporter --verbose --suits ~/my-suits
+ $ testrunner --web-reporter --verbose --suites ~/my-suites
 \endverbatim
 
-Then open a web browser and type `http://127.0.0.1:8080` or the remote address where the `testrunner` has been launched. You can also change the `testrunner` default port by using `--web-port <port number>` option. 
+Then open a web browser and type `http://127.0.0.1:8080` or the remote address where the `testrunner` has been launched. You can also change the `testrunner` default port by using `--web-port <port number>` option.
 
-Notice that, the web reporting functionality may not be available by default and you need to enable it when building the RTF by turning on the `ENABLE_WEB_LISTENER` from the cmake. 
+Notice that, the web reporting functionality may not be available by default and you need to enable it when building the RTF by turning on the `ENABLE_WEB_LISTENER` from the cmake.
 
 <br>
 \section stress-test Using RTF for stress testing
-For stress testing, it is possible to repeat a test case for desired iterations. This can be easily done by providing the number of the test runs as the parameter (e.g., `--repetition 5`) for the `testrunner` or setting as the attribute of the test case within a test suite XML file. The `testrunner` repeats running the test for the desired iterations if the test does not fail. Notice that, only the `RTF::TestCase::run()` will be called repeatedly.   
+For stress testing, it is possible to repeat a test case for desired iterations. This can be easily done by providing the number of the test runs as the parameter (e.g., `--repetition 5`) for the `testrunner` or setting as the attribute of the test case within a test suite XML file. The `testrunner` repeats running the test for the desired iterations if the test does not fail. Notice that, only the `RTF::TestCase::run()` will be called repeatedly.
 
 \verbatim
  $ testrunner --verbose --test ~/my-plugins/mytest.lua --repetition 5
@@ -132,16 +132,16 @@ For stress testing, it is possible to repeat a test case for desired iterations.
 
 
 <br>
-\section options The testrunner options  
-Here is the full list of \c testrunner options: 
+\section options The testrunner options
+Here is the full list of \c testrunner options:
 
 \verbatim
-usage: testrunner [options] ... 
+usage: testrunner [options] ...
 options:
   -t, --test            Runs a single test from the given plugin file. (string [=])
       --tests           Runs multiple tests from the given folder which contains plugins. (string [=])
-  -s, --suit            Runs a single test suit from the given XMl file. (string [=])
-      --suits           Runs multiple test suits from the given folder which contains XML files. (string [=])
+  -s, --suite           Runs a single test suite from the given XML file. (string [=])
+      --suites          Runs multiple test suites from the given folder which contains XML files. (string [=])
   -o, --output          The output file to save the result. Default is result.txt (string [=])
       --output-type     The output file type (text, junit) (string [=text])
   -p, --param           Sets the test case parameters. (Can be used only with --test option.) (string [=])
@@ -149,13 +149,13 @@ options:
       --repetition      Sets the test run repetition. (Can be used only with --test option.) (j [=0])
   -w, --web-reporter    Enables web reporter
       --web-port        Sets the web reporter server port. (The default port number is 8080.) (i [=8080])
-  -r, --recursive       Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)
+  -r, --recursive       Searches into subfolders for plugins or XML files. (Can be used with --tests or --suites options.)
   -d, --detail          Enables verbose mode of test assertions.
   -v, --verbose         Enables verbose mode.
       --version         Shows version information.
   -?, --help            print this message
 \endverbatim
-  
+
 \author Ali Paikan
 
 */

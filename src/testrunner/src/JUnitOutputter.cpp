@@ -30,30 +30,30 @@ JUnitOutputter::~JUnitOutputter() { }
 bool JUnitOutputter::write(std::string filename,
                           RTF::TestMessage* errorMsg) {
     if(filename.empty()) {
-        if(errorMsg != NULL) {
+        if(errorMsg != nullptr) {
             errorMsg->setMessage("Cannot open the file.");
             errorMsg->setDetail("Empty file name.");
         }
         return false;
     }
 
-    TiXmlDocument doc;   
+    TiXmlDocument doc;
     TiXmlElement* root = new TiXmlElement("testsuites");
-    root->SetAttribute("suites", collector.suitCount());
+    root->SetAttribute("suites", collector.suiteCount());
     root->SetAttribute("tests", collector.testCount());
     root->SetAttribute("failures", collector.failedCount());
     doc.LinkEndChild(root);
 
-    TiXmlElement* testsuit = NULL;
-    TiXmlElement* testcase = NULL;
+    TiXmlElement* testsuite = nullptr;
+    TiXmlElement* testcase = nullptr;
     string classname;
 
     // If there is not any test suite, add one!
-    if(collector.suitCount() == 0) {
+    if(collector.suiteCount() == 0) {
         classname = "default";
-        testsuit = new TiXmlElement("testsuite");
-        testsuit->SetAttribute("name", classname.c_str());
-        root->LinkEndChild(testsuit);
+        testsuite = new TiXmlElement("testsuite");
+        testsuite->SetAttribute("name", classname.c_str());
+        root->LinkEndChild(testsuite);
     }
 
     TestResultCollector::EventResultIterator itr;
@@ -64,22 +64,22 @@ bool JUnitOutputter::write(std::string filename,
        ResultEvent* e = *itr;
 
        // start suit
-       if(dynamic_cast<ResultEventStartSuit*>(e)) {
+       if(dynamic_cast<ResultEventStartSuite*>(e)) {
            classname = e->getTest()->getName();
-           testsuit = new TiXmlElement("testsuite");
-           testsuit->SetAttribute("name", classname.c_str());
-           root->LinkEndChild(testsuit);
+           testsuite = new TiXmlElement("testsuite");
+           testsuite->SetAttribute("name", classname.c_str());
+           root->LinkEndChild(testsuite);
        }
        // end suit
-       //else if(dynamic_cast<ResultEventEndSuit*>(e)) { }
+       //else if(dynamic_cast<ResultEventEndSuite*>(e)) { }
 
-       // start test case       
+       // start test case
        else if(dynamic_cast<ResultEventStartTest*>(e)) {
-           if(testsuit == NULL) continue;
+           if(testsuite == nullptr) continue;
            testcase = new TiXmlElement("testcase");
            testcase->SetAttribute("name", e->getTest()->getName());
            testcase->SetAttribute("classname", classname+"."+e->getTest()->getName());
-           testsuit->LinkEndChild(testcase);
+           testsuite->LinkEndChild(testcase);
            errorMessages.clear();
            failureMessages.clear();
            reportsMessages.clear();
@@ -87,7 +87,7 @@ bool JUnitOutputter::write(std::string filename,
 
        // end test case
        else if(dynamic_cast<ResultEventEndTest*>(e)) {
-           if(testcase == NULL) continue;
+           if(testcase == nullptr) continue;
            // adding falures
            if(failureMessages.size()) {
                TiXmlElement * failure = new TiXmlElement("failure");
@@ -163,7 +163,7 @@ bool JUnitOutputter::write(std::string filename,
     } // end for
 
     if(!doc.SaveFile(filename.c_str())) {
-        if(errorMsg != NULL) {
+        if(errorMsg != nullptr) {
             errorMsg->setMessage("Cannot write to the " + filename);
             if (doc.Error())
                 errorMsg->setDetail(Asserter::format("%s (line: %d, column %d)", doc.ErrorDesc(), doc.ErrorRow(), doc.ErrorCol()));

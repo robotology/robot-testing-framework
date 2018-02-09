@@ -11,7 +11,6 @@
 #ifndef _RTF_TESTRESULT_H
 #define _RTF_TESTRESULT_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/Test.h>
 #include <rtf/TestMessage.h>
 #include <rtf/TestListener.h>
@@ -34,7 +33,7 @@ namespace RTF {
  * Here's an example of using a TestResult:
  * \include examples/simple.cpp
  */
-class RTF_API RTF::TestResult {
+class RTF::TestResult {
 
     typedef std::set<RTF::TestListener*>  ListenerContainer;
     typedef std::set<RTF::TestListener*>::iterator ListenerIterator;
@@ -104,16 +103,16 @@ public:
     void endTest(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is started
+     * This is called when a TestSuite is started
      * @param test pointer to the corresponding test
      */
-    void startTestSuit(const RTF::Test* test);
+    void startTestSuite(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is finished
+     * This is called when a TestSuite is finished
      * @param test pointer to the corresponding test
      */
-    void endTestSuit(const RTF::Test *test);
+    void endTestSuite(const RTF::Test *test);
 
     /**
      * This is called when the TestRunner is started

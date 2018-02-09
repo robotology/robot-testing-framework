@@ -11,7 +11,6 @@
 #ifndef _RTF_CONSOLELISTENER_H
 #define _RTF_CONSOLELISTENER_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/TestListener.h>
 
 namespace RTF {
@@ -28,7 +27,7 @@ namespace RTF {
  * Here's an example of using a ConsoleListener:
  * \include examples/simple.cpp
  */
-class RTF_API RTF::ConsoleListener : public RTF::TestListener {
+class RTF::ConsoleListener : public RTF::TestListener {
 public:
 
     /**
@@ -86,16 +85,16 @@ public:
     virtual void endTest(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is started
+     * This is called when a TestSuite is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTestSuit(const RTF::Test* test);
+    virtual void startTestSuite(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is finished
+     * This is called when a TestSuite is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTestSuit(const RTF::Test* test);
+    virtual void endTestSuite(const RTF::Test* test);
 
     /**
      * This is called when the TestRunner is started

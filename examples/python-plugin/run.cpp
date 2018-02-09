@@ -21,11 +21,11 @@ using namespace RTF::plugin;
 
 int main(int argc, char *argv[]) {
 
-	if(argc < 2) {
+    if(argc < 2) {
         printf("Usage: %s <pyhton plugin file name>\n", argv[0]);
         printf("for example: %s mytest.py\n", argv[0]);
-		return 0;
-	}
+        return 0;
+    }
 
     // load the test case plugin
     printf("Loading the plugin... \n");
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
     if(test == NULL) {
         printf("%s\n", loader.getLastError().c_str());
         return 0;
-	}
+    }
 
     // create a test listener to collect the result
     ConsoleListener listener(false);

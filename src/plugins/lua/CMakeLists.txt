@@ -36,13 +36,16 @@ include_directories(${RTF_TREE_INCLUDE_DIRS}
                     ${RTF_INTERNAL_INCLUDE_DIRS}
                     ./include/rtf/lua/impl
                     ${LUA_INCLUDE_DIR})
-if(WIN32)
-    add_library(RTF_lua STATIC ${folder_source} ${folder_header} )
-else()
-    add_library(RTF_lua SHARED ${folder_source} ${folder_header} )
-endif()
+
+add_library(RTF_lua ${folder_source} ${folder_header} )
+
 
 target_link_libraries(RTF_lua ${RTF_LIBS} ${LUA_LIBRARY})
+
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+
+target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 
 # choose which header files should be installed

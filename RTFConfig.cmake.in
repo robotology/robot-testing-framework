@@ -56,3 +56,301 @@ endif()
 
 check_required_components(RTF)
 
+################################################################################
+#.rst:
+# .. command:: rtf_add_plugin
+#
+# Declare a plugin::
+#
+#   rtf_add_plugin(<plugin name>
+#                       OUTPUT_NAME <output_name>
+#                       SOURCES     <srcs>
+#                       HEADERS     <hdrs>)
+#
+# This macro converts a plugin declaration to code, and to set up a CMake option
+# for enabling or disabling the compilation of that plugin.
+#
+# The ``OUTPUT_NAME`` is the base name for output files created for the library target.
+macro(RTF_ADD_PLUGIN _library_name)
+
+  set(_options)
+  set(_oneValueArgs OUTPUT_NAME)
+  set(_multiValueArgs SOURCES HEADERS)
+  cmake_parse_arguments(_RAP "${_options}" "${_oneValueArgs}" "${_multiValueArgs}" ${ARGN} )
+
+  if(NOT DEFINED _RAP_SOURCES AND NOT DEFINED _RAP_HEADERS)
+    message(SEND_ERROR "rtf_add_plugin: No SOURCES and HEADERS specified for library ${_library_name}.")
+    return()
+  endif()
+
+  add_library(${_library_name} MODULE ${_RAP_SOURCES} ${_RAP_HEADERS})
+
+  target_compile_definitions(${_library_name} PUBLIC SHLIBPP_FILTER_API)
+
+  set_property(TARGET ${_library_name} PROPERTY PREFIX "")
+  if(DEFINED _RAP_OUTPUT_NAME)
+    set_property(TARGET ${_library_name} PROPERTY OUTPUT_NAME ${_RAP_OUTPUT_NAME})
+  endif()
+endmacro()
+
+
+################################################################################
+# Used by RTF_ADD_SUITE.
+# Parse a RTF_FIXTURE and add content to the _suite_content variable
+function(_RTF_ADD_SUITE_RTF_FIXTURE_CB _name)
+  string(APPEND _suite_content "    <!-- ${_name} fixture -->\n")
+  if (TARGET "${_name}")
+    set(_file "$<TARGET_FILE:${_name}>")
+  else()
+    set(_file "${_name}")
+  endif()
+  if("${ARGN}" STREQUAL "")
+    string(APPEND _suite_content "    <fixture> ${_file} </fixture>\n")
+  else()
+    string(REPLACE ";" " " _args "${ARGN}")
+    string(APPEND _suite_content "    <fixture param=\"${_args}\"> ${_file} </fixture>\n")
+  endif()
+  string(APPEND _suite_content "\n")
+
+  set(_suite_content "${_suite_content}" PARENT_SCOPE)
+endfunction()
+
+################################################################################
+# Used by RTF_ADD_SUITE.
+# Parse a RTF_TEST and add content to the _suite_content variable
+function(_RTF_ADD_SUITE_RTF_TEST_CB _name)
+  string(APPEND _suite_content "    <!-- ${_name} test -->\n")
+  set(_options)
+  set(_oneValueArgs TYPE)
+  set(_multiValueArgs)
+  cmake_parse_arguments(_RASPT "${_options}" "${_oneValueArgs}" "${_multiValueArgs}" ${ARGN} )
+
+  if(NOT DEFINED _RASPT_TYPE)
+    message(FATAL_ERROR "RTF_ADD_SUITE: The \"TYPE\" argument is required for each test")
+  endif()
+
+  if (TARGET "${_name}")
+    set(_file "$<TARGET_FILE:${_name}>")
+  else()
+    set(_file "${_name}")
+  endif()
+
+  if("${_RASPT_UNPARSED_ARGUMENTS}" STREQUAL "")
+    string(APPEND _suite_content "    <test type=\"${_RASPT_TYPE}\"> ${_file} </test>\n")
+  else()
+    string(REPLACE ";" " " _args "${_RASPT_UNPARSED_ARGUMENTS}")
+    string(REGEX REPLACE " ARGS " ";" _args "${_args}") # Matches all except the first
+    string(REGEX REPLACE "^ARGS ?" "" _args "${_args}") # Matches the first
+    string(REGEX REPLACE "^;;" ";" _args "${_args}")
+    foreach(_val IN LISTS _args)
+      if("${_val}" STREQUAL "")
+        string(APPEND _suite_content "    <test type=\"${_RASPT_TYPE}\"> ${_file} </test>\n")
+      else()
+        string(APPEND _suite_content "    <test type=\"${_RASPT_TYPE}\" param=\"${_val}\"> ${_file} </test>\n")
+      endif()
+    endforeach()
+  endif()
+
+  string(APPEND _suite_content "\n")
+
+  set(_suite_content "${_suite_content}" PARENT_SCOPE)
+endfunction()
+
+################################################################################
+# Used by RTF_ADD_SUITE.
+# Forward the callback to the right function depending on the key
+function(_RTF_ADD_SUITE_CB _key)
+  if("${_key}" MATCHES "RTF_FIXTURE")
+    _rtf_add_suite_rtf_fixture_cb(${ARGN})
+  elseif("${_key}" MATCHES "RTF_TEST")
+    _rtf_add_suite_rtf_test_cb(${ARGN})
+  endif()
+  set(_suite_content "${_suite_content}" PARENT_SCOPE)
+endfunction()
+
+################################################################################
+# Used by RTF_ADD_SUITE.
+# Similar to cmake_parse_arguments but calls _rtf_add_suite_cb whenever a
+# _callbackArgs argument is terminated
+macro(_RTF_PARSE_ARGUMENTS_WITH_CALLBACK _pref _options _oneValueArgs _multiValueArgs _callbackArgs)
+
+  set(_options_regex "^(${_options})$")
+  string(REPLACE ";" "|" _options_regex "${_options_regex}")
+
+  set(_oneValueArgs_regex "^(${_oneValueArgs})$")
+  string(REPLACE ";" "|" _oneValueArgs_regex "${_oneValueArgs_regex}")
+
+  set(_multiValueArgs_regex "^(${_multiValueArgs})$")
+  string(REPLACE ";" "|" _multiValueArgs_regex "${_multiValueArgs_regex}")
+
+  set(_callbackArgs_regex "^(${_callbackArgs})$")
+  string(REPLACE ";" "|" _callbackArgs_regex "${_callbackArgs_regex}")
+
+  set(_all_regex "^(${_options}|${_oneValueArgs}|${_multiValueArgs}|${_callbackArgs})$")
+  string(REPLACE ";" "|" _all_regex "${_all_regex}")
+
+  foreach(_arg ${_options})
+    set(${_pref}_${_arg} 0)
+  endforeach()
+  foreach(_arg ${_oneValueArgs} ${_multiValueArgs} ${_callbackArgs})
+    unset(${_pref}_${_arg})
+  endforeach()
+  unset(${_pref}_UNPARSED_ARGUMENTS)
+
+  set(_status 0)
+  set(_key "")
+
+  set(_args "${ARGN}")
+  foreach(_arg IN LISTS _args)
+    if(_status EQUAL 3 AND "${_arg}" MATCHES "${_all_regex}")
+      _rtf_add_suite_cb(${_key} ${${_pref}_${_key}})
+      unset(${_pref}_${_key})
+    endif()
+
+    if("${_arg}" MATCHES "${_options_regex}")
+      set(${_pref}_${_arg} 1)
+      set(_status 0)
+      set(_key "")
+    elseif("${_arg}" MATCHES "${_oneValueArgs_regex}")
+      set(_status 1)
+      set(_key "${_arg}")
+    elseif("${_arg}" MATCHES "${_multiValueArgs_regex}")
+      set(_status 2)
+      set(_key "${_arg}")
+    elseif("${_arg}" MATCHES "${_callbackArgs_regex}")
+      set(_status 3)
+      set(_key "${_arg}")
+    else()
+      if(NOT _status)
+        list(APPEND ${_pref}_UNPARSED_ARGUMENTS "${_arg}")
+      elseif(_status EQUAL 1)
+        set(${_pref}_${_key} "${_arg}")
+        set(_status 0)
+        set(_key "")
+      else()
+        list(APPEND ${_pref}_${_key} "${_arg}")
+      endif()
+    endif()
+  endforeach()
+
+  if(_status EQUAL 3)
+    _rtf_add_suite_cb(${_key} ${${_pref}_${_key}})
+    unset(${_pref}_${_key})
+  endif()
+
+  unset(_status)
+  unset(_key)
+  unset(_options_regex)
+  unset(_oneValueArgs_regex)
+  unset(_multiValueArgs_regex)
+  unset(_callbackArgs_regex)
+  unset(_all_regex)
+endmacro()
+
+################################################################################
+#.rst:
+# .. command:: RTF_ADD_SUITE
+#
+# Declare a suite::
+#
+#   rtf_add_suite(NAME <name>
+#                 [RTF_FIXTURE fixture1 [args1...]
+#                 [RTF_FIXTURE fixture2 [args2...]] ...]
+#                 [RTF_TEST test1 TYPE type [ARGS <args1>...
+#                                           [ARGS <args2>...] ...]
+#                 [RTF_TEST test2 TYPE type [ARGS <args3>...] ...] ...]
+#                 [CONFIGURATIONS <config>...]
+#                 [WORKING_DIRECTORY <dir>]
+#                 [WEB_REPORTER]
+#                 [WEB_PORT <port>]
+#                 [DETAIL]
+#                 [VERBOSE]
+#                 [OUTPUT <output>]
+#                 [OUTPUT_TYPE <output_type>])
+#
+# This command creates a suite xml file for each configuration and add a test
+# that runs the created suite using testrunner.
+# The suite contains one ``fixture`` line for each ``RTF_FIXTURE`` and one
+# ``test`` for each ``ARGS`` in each ``RTF_TEST``.
+# Both ``RTF_FIXTURE`` and ``RTF_TEST`` can be target names, and in that case
+# they will be replaced with the full path to the module in each configuration.
+#
+# ``CONFIGURATIONS`` and ``WORKING_DIRECTORY`` are forwarded to
+# :command:`add_test`
+#
+# ``WEB_REPORTER``, ``WEB_PORT``, ``DETAIL``, ``VERBOSE``, ``OUTPUT``, and
+# ``OUTPUT_TYPE`` are passed to testrunner. See ``testrunner --help`` for
+# details.
+function(RTF_ADD_SUITE)
+
+  unset(_suite_content)
+
+  set(_options WEB_REPORTER
+               DETAIL
+               VERBOSE)
+  set(_oneValueArgs NAME
+                    WORKING_DIRECTORY
+                    WEB_PORT
+                    OUTPUT
+                    OUTPUT_TYPE)
+  set(_multiValueArgs CONFIGURATIONS)
+  set(_callbackArgs RTF_FIXTURE
+                    RTF_TEST)
+
+  _rtf_parse_arguments_with_callback(_RAS "${_options}" "${_oneValueArgs}" "${_multiValueArgs}" "${_callbackArgs}" ${ARGN})
+
+  if (NOT DEFINED _RAS_NAME)
+    message(FATAL_ERROR "RTF_ADD_SUITE: The \"NAME\" argument is required")
+  endif()
+
+  set(_file "${CMAKE_CURRENT_BINARY_DIR}/foo.xml")
+  set(_content "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<suite name=\"${_RAS_NAME}\">\n\n${_suite_content}</suite>\n")
+
+  if(RTF_ADD_SUITE_DEBUG)
+    message(STATUS "RTF_ADD_SUITE - File content:\n-----\n${_content}-----")
+  endif()
+  file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_RAS_NAME}-$<CONFIG>.xml
+                CONTENT "${_content}")
+
+  # Prepare extra arguments for add_test()
+  unset(_extra_ctest_args)
+  if(DEFINED _RAS_WORKING_DIRECTORY)
+    list(APPEND _extra_ctest_args WORKING_DIRECTORY ${_RAS_WORKING_DIRECTORY})
+  endif()
+  if(DEFINED _RAS_CONFIGURATIONS)
+    list(APPEND _extra_ctest_args CONFIGURATIONS ${_RAS_CONFIGURATIONS})
+  endif()
+
+  # Prepare extra arguments for testrunner
+  unset(_extra_args)
+  if(_RAS_WEB_REPORTER)
+    list(APPEND _extra_args --web-reporter)
+  endif()
+  if(DEFINED _RAS_WEB_PORT)
+    list(APPEND _extra_args --web-port ${_RAS_WEB_PORT})
+  endif()
+  if(_RAS_DETAIL)
+    list(APPEND _extra_args --detail)
+  endif()
+  if(_RAS_VERBOSE)
+    list(APPEND _extra_args --verbose)
+  endif()
+  if(DEFINED _RAS_OUTPUT)
+    list(APPEND _extra_args --output ${_RAS_OUTPUT})
+  endif()
+  if(DEFINED _RAS_OUTPUT_TYPE)
+    list(APPEND _extra_args --output-type ${_RAS_OUTPUT_TYPE})
+  endif()
+
+  # Add the test to cmake
+  if(RTF_ADD_SUITE_DEBUG)
+    message(STATUS "RTF_ADD_SUITE - add_test command:\n-----
+  add_test(NAME ${_RAS_NAME}
+           COMMAND RTF::testrunner --suite ${CMAKE_CURRENT_BINARY_DIR}/${_RAS_NAME}-$<CONFIG>.xml ${_extra_args}
+           ${_extra_ctest_args})\n-----")
+  endif()
+  add_test(NAME ${_RAS_NAME}
+           COMMAND RTF::testrunner --suite ${CMAKE_CURRENT_BINARY_DIR}/${_RAS_NAME}-$<CONFIG>.xml ${_extra_args}
+           ${_extra_ctest_args})
+
+endfunction()

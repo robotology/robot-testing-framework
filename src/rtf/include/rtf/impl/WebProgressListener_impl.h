@@ -11,10 +11,11 @@
 #ifndef _RTF_WEBPROGRESSLISTENER_IMPL_H
 #define _RTF_WEBPROGRESSLISTENER_IMPL_H
 
-#include <rtf/rtf_config.h>
+
 #include <rtf/TestListener.h>
+#include <thread>
+#include <mutex>
 #include <mongoose.h>
-#include <tinythread.h>
 
 namespace RTF {
     class WebProgressListenerImpl;
@@ -28,7 +29,7 @@ namespace RTF {
  * \ingroup key_class
  *
  */
-class RTF_API RTF::WebProgressListenerImpl {
+class RTF::WebProgressListenerImpl {
 public:
 
     /**
@@ -81,16 +82,16 @@ public:
     virtual void endTest(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is started
+     * This is called when a TestSuite is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTestSuit(const RTF::Test* test);
+    virtual void startTestSuite(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is finished
+     * This is called when a TestSuite is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTestSuit(const RTF::Test* test);
+    virtual void endTestSuite(const RTF::Test* test);
 
     /**
      * This is called when the TestRunner is started
@@ -104,13 +105,22 @@ public:
 
 public:
     struct mg_server *server;
-    tthread::mutex critical;
+    std::mutex critical;
     bool shouldStop;
     std::string result;
-    std::string suit_name;
-    unsigned int nTests;
-    unsigned int nFailures;
-    unsigned int nPasses;
+    std::string suite_name;
+    std::size_t suite_size;
+
+    enum class TestStatus
+    {
+        NotRun = 0,
+        Running = 1,
+        Failed = 2,
+        Success = 3
+    };
+
+    std::vector<TestStatus> testStatus;
+
 private:
     WebProgressListenerImpl(WebProgressListenerImpl const&);    // Don't Implement
     void operator=(WebProgressListenerImpl const&);             // Don't implement
@@ -122,7 +132,7 @@ private:
                           enum mg_event ev);
 
 private:
-    tthread::thread *updater;
+    std::thread *updater;
     bool verbose;
     unsigned int port;
 };

@@ -20,7 +20,7 @@ test cases are developed as independent plug-ins (i.e., using scripting language
 loaded and executed by an automated test runner. Moreover, a fixture manager prepares the setup (e.g., running robot interfaces,
 simulator) and actively monitors that all the requirements for running the tests are satisfied during the execution of the tests.
 These functionalities along with other facilities such as the test result collector, result formatter and remote interface allow
-for rapid development of test units to cover different levels of system testing (see the block diagram). 
+for rapid development of test units to cover different levels of system testing (see the block diagram).
 
 ![rtf-arch](/doc/rtf_arch.png)
 
@@ -28,7 +28,7 @@ for rapid development of test units to cover different levels of system testing 
 Installation
 ------------
 RTF library does not depend on any external library. The RTF framework has a testrunner utility (see Running test case plug-ins
-using testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suits using simple XML files. The testrunner uses TinyXml library for parsing the suit XML files. RTF build system check for the installation
+using testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suites using simple XML files. The testrunner uses TinyXml library for parsing the suite XML files. RTF build system check for the installation
 of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered
 with the RTF.
 
@@ -41,7 +41,7 @@ with the RTF.
     $ make install  # Optional!
 ```
 
-- **On Windows:** The installation is easy, straightforward and uses the CMake build system. Get [Cmake for windows](https://cmake.org/download/) if you have not yet installed. Then simply run the Cmake and, set the project (robot-testing) root folder and the desired build folder. Configure and generate project solution for your favorite IDE (e.g. Visual Studio 13). Then open the solution from your IDE and build the project.   
+- **On Windows:** The installation is easy, straightforward and uses the CMake build system. Get [Cmake for windows](https://cmake.org/download/) if you have not yet installed. Then simply run the Cmake and, set the project (robot-testing) root folder and the desired build folder. Configure and generate project solution for your favorite IDE (e.g. Visual Studio 13). Then open the solution from your IDE and build the project.
 
 Configuration
 -------------
@@ -59,16 +59,16 @@ The only thing you need to configure is the RTF_DIR environment variable so that
     C:\> setx.exe PATH "%PATH%;%RTF_DIR%/<Release/Debug>/bin"
 ```
 
-*Notice:* If you have **not** installed RTF in the statndard system path (e.g., on Linx without `make install`) then You need to exapnd your system `PATH` environment variable. 
+*Notice:* If you have **not** installed RTF in the statndard system path (e.g., on Linx without `make install`) then You need to exapnd your system `PATH` environment variable.
 
 
-Enabling Python, Ruby, Lua, ... Plugins 
+Enabling Python, Ruby, Lua, ... Plugins
 ----------------------------------------
-To use RTF with other languages, 
- - first you need to install their development packages (e.g. for Python on Linux you need `python-dev`, for Ruby: `ruby-dev` or for Lua: `liblua5.x-dev`). 
+To use RTF with other languages,
+ - first you need to install their development packages (e.g. for Python on Linux you need `python-dev`, for Ruby: `ruby-dev` or for Lua: `liblua5.x-dev`).
  - then you can enable the desired language into RTF Cmake (e.g. ENABLE_PYTHON_PLUGIN=ON for enabling python)
- - compile and build RTF 
- 
+ - compile and build RTF
+
 
 Tutorials and Examples
 -----------------------

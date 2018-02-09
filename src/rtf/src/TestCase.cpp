@@ -26,7 +26,7 @@ using namespace std;
  * catch the abortion signal and add the proper messege
  * to the result collector.
  */
-static RTF::TestCase* _currentTestCase = NULL;
+static RTF::TestCase* _currentTestCase = nullptr;
 static void run_signal_handler(int) {
     if(_currentTestCase) {
         _currentTestCase->getResult()->addError(_currentTestCase,
@@ -45,7 +45,7 @@ TestCase::TestCase(std::string name, std::string param)
     : RTF::Test(name),
       param(param),
       successful(true),
-      result(NULL),
+      result(nullptr),
       repetition(0)
 {
     _currentTestCase = this;
@@ -132,11 +132,11 @@ void TestCase::run(TestResult &rsl) {
             // clear allocated memory for arguments
             if(szcmd) {
                 delete [] szcmd;
-                szcmd = NULL;
+                szcmd = nullptr;
             }
             if(szarg) {
                 delete [] szarg;
-                szarg = NULL;
+                szarg = nullptr;
             }
             return;
         }
@@ -179,11 +179,11 @@ void TestCase::run(TestResult &rsl) {
     // clear allocated memory for arguments if it is not cleared
     if(szcmd) {
         delete [] szcmd;
-        szcmd = NULL;
+        szcmd = nullptr;
     }
     if(szarg) {
         delete [] szarg;
-        szarg = NULL;
+        szarg = nullptr;
     }
 }
 

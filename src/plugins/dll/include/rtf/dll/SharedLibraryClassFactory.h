@@ -1,7 +1,6 @@
-// -*- mode:C++; tab-width:4; c-basic-offset:4; indent-tabs-mode:nil -*-
 
 /*
- * Copyright (C) 2013 iCub Facility
+ * Copyright (C) 2013 Istituto Italiano di Tecnologia (IIT)
  * Authors: Paul Fitzpatrick
  * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
  *
@@ -32,11 +31,11 @@ public:
     SharedLibraryClassFactory() {
     }
 
-    SharedLibraryClassFactory(const char *dll_name, const char *fn_name = 0/*NULL*/) : SharedLibraryFactory(dll_name,fn_name) {
+    SharedLibraryClassFactory(const char *dll_name, const char *fn_name = 0/*nullptr*/) : SharedLibraryFactory(dll_name,fn_name) {
     }
 
     T *create() {
-        if (!isValid()) return 0/*NULL*/;
+        if (!isValid()) return nullptr;
         return (T *)getApi().create();
     }
 

@@ -43,13 +43,13 @@ bool PluginRunner::loadPlugin(std::string filename,
                               const std::string param,
                               const string environment) {
     PluginLoader* loader = PluginFactory::createByName(filename);
-    if(loader == NULL) {
+    if(loader == nullptr) {
         ErrorLogger::Instance().addError("cannot create any known plug-in loader for " + filename);
         return false;
     }
 
     TestCase* test = loader->open(filename);
-    if(test == NULL) {
+    if(test == nullptr) {
         ErrorLogger::Instance().addError(loader->getLastError());
         return false;
     }
@@ -80,7 +80,7 @@ bool PluginRunner::loadMultiplePlugins(std::string path,
 
     DIR *dir;
     struct dirent *entry;
-    if ((dir = opendir(path.c_str())) == NULL) {
+    if ((dir = opendir(path.c_str())) == nullptr) {
         ErrorLogger::Instance().addError("cannot access " + path);
         return false;
     }
@@ -110,7 +110,7 @@ bool PluginRunner::loadPluginsFromPath(std::string path) {
 
     DIR *dir;
     struct dirent *entry;
-    if ((dir = opendir(path.c_str())) == NULL) {
+    if ((dir = opendir(path.c_str())) == nullptr) {
         ErrorLogger::Instance().addError("cannot access " + path);
         return false;
     }

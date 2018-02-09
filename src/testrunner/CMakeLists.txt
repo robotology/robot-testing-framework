@@ -19,19 +19,28 @@ add_definitions(${RTF_INTERNAL_DEFS})
 if(ENABLE_WEB_LISTENER)
     add_definitions("-DENABLE_WEB_LISTENER")
 endif()
-include_directories(./include
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
+                    ${CMAKE_CURRENT_BINARY_DIR}/include
                     ${RTF_TREE_INCLUDE_DIRS}
                     ${TinyXML_INCLUDE_DIRS}
                     ${RTF_INTERNAL_INCLUDE_DIRS})
 
 file(GLOB folder_source ./src/*.cpp)
 file(GLOB_RECURSE folder_header ./include/*.h)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/include/Version.h.in"
+               "${CMAKE_CURRENT_BINARY_DIR}/include/Version.h"
+               @ONLY)
+list(APPEND folder_header "${CMAKE_CURRENT_BINARY_DIR}/include/Version.h")
 source_group("Source Files" FILES ${folder_source})
 source_group("Header Files" FILES ${folder_header})
 
 add_executable(${PROJECT_NAME} ${folder_source} ${folder_header})
 target_link_libraries(${PROJECT_NAME} ${RTF_LIBS} ${RTF_INTERNAL_LIBS} ${TinyXML_LIBRARIES})
 
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_nullptr)
+
 install(TARGETS ${PROJECT_NAME}
-        EXPORT ${PROJECT_NAME}
+        EXPORT RTF
         RUNTIME DESTINATION bin)
+
+set_property(GLOBAL APPEND PROPERTY RTF_TOOLS ${PROJECT_NAME})

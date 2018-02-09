@@ -21,7 +21,6 @@ if(ENABLE_WEB_LISTENER)
         include/rtf/FixtureManager.h
         include/rtf/PluginLoader.h
         include/rtf/ResultEvent.h
-        include/rtf/rtf_config.h
         include/rtf/TestAssert.h
         include/rtf/TestCase.h
         include/rtf/Test.h
@@ -30,7 +29,7 @@ if(ENABLE_WEB_LISTENER)
         include/rtf/TestResultCollector.h
         include/rtf/TestResult.h
         include/rtf/TestRunner.h
-        include/rtf/TestSuit.h
+        include/rtf/TestSuite.h
         include/rtf/TextOutputter.h
         include/rtf/WebProgressListener.h)
 
@@ -47,7 +46,7 @@ if(ENABLE_WEB_LISTENER)
         src/TestResultCollector.cpp
         src/TestResult.cpp
         src/TestRunner.cpp
-        src/TestSuit.cpp
+        src/TestSuite.cpp
         src/TextOutputter.cpp
         src/WebProgressListener.cpp)
 
@@ -63,7 +62,6 @@ else()
         include/rtf/FixtureManager.h
         include/rtf/PluginLoader.h
         include/rtf/ResultEvent.h
-        include/rtf/rtf_config.h
         include/rtf/TestAssert.h
         include/rtf/TestCase.h
         include/rtf/Test.h
@@ -72,7 +70,7 @@ else()
         include/rtf/TestResultCollector.h
         include/rtf/TestResult.h
         include/rtf/TestRunner.h
-        include/rtf/TestSuit.h
+        include/rtf/TestSuite.h
         include/rtf/TextOutputter.h)
 
     set(RTF_HDRS_IMPL)
@@ -87,18 +85,14 @@ else()
         src/TestResultCollector.cpp
         src/TestResult.cpp
         src/TestRunner.cpp
-        src/TestSuit.cpp
+        src/TestSuite.cpp
         src/TextOutputter.cpp)
 
     include_directories(${RTF_TREE_INCLUDE_DIRS}
                         ${RTF_INTERNAL_INCLUDE_DIRS})
 endif()
 
-if(WIN32)
-    add_library(${PROJECT_NAME} STATIC ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
-else()
-    add_library(${PROJECT_NAME} SHARED ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
-endif()
+add_library(${PROJECT_NAME} ${RTF_SRCS} ${RTF_HDRS} ${RTF_HDRS_IMPL})
 
 if(ENABLE_WEB_LISTENER)
     target_link_libraries(${PROJECT_NAME} RTF_mongoose)
@@ -106,6 +100,10 @@ else()
     target_link_libraries(${PROJECT_NAME})
 endif()
 
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+
+target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # choose which header files should be installed
 set_property(TARGET ${PROJECT_NAME} PROPERTY PUBLIC_HEADER ${RTF_HDRS})

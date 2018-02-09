@@ -9,12 +9,10 @@ project(${PROJECTNAME})
 
 set(mongoose_SRCS
     src/mongoose.c
-    src/tinythread.cpp
 )
 
 set(mongoose_HDRS
     src/mongoose.h
-    src/tinythread.h
 )
 
 #add_definitions("-DMONGOOSE_ENABLE_THREADS")

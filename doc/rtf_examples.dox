@@ -15,21 +15,21 @@ subdirectory of RTF.
 /**
  * \example simple.cpp
 
-This example shows a simple way of using TestCase, TestResult and ConsoleListener.  
+This example shows a simple way of using TestCase, TestResult and ConsoleListener.
 
 */
 
 /**
- * \example simple_suit.cpp
+ * \example simple_suite.cpp
 
-This example shows how to use a TestSuit to run multiple test cases. 
+This example shows how to use a TestSuite to run multiple test cases.
 
 */
 
 /**
  * \example simple_runner.cpp
 
-This example shows how to use a TestRunner to run the tests. 
+This example shows how to use a TestRunner to run the tests.
 
 */
 
@@ -37,7 +37,7 @@ This example shows how to use a TestRunner to run the tests.
 /**
  * \example simple_collector.cpp
 
-This example shows how to use a TestResultCollector to collect the result of the test run. 
+This example shows how to use a TestResultCollector to collect the result of the test run.
 
 */
 
@@ -45,7 +45,7 @@ This example shows how to use a TestResultCollector to collect the result of the
 /**
  * \example simple_fixture.cpp
 
-This example shows using a FixtureManager to setup any fixture required for a TestSuit.
+This example shows using a FixtureManager to setup any fixture required for a TestSuite.
 
 */
 

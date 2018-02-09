@@ -77,7 +77,7 @@ public:
             Asserter::fail(false, TestMessage("FALSE"));
         }
         catch(RTF::TestFailureException& e) {
-            RTF_TEST_FAIL_IF(std::string(e.what())==std::string("FALSE"), "exception message");
+            RTF_TEST_FAIL_IF_FALSE(std::string(e.what())==std::string("FALSE"), "exception message");
         }
         catch(std::exception& e) {
             RTF_ASSERT_FAIL("Got wrong exception std::exception");
@@ -89,7 +89,7 @@ public:
             Asserter::error(false, TestMessage("FALSE"));
         }
         catch(RTF::TestErrorException& e) {
-            RTF_TEST_FAIL_IF(std::string(e.what())==std::string("FALSE"), "exception message");
+            RTF_TEST_FAIL_IF_FALSE(std::string(e.what())==std::string("FALSE"), "exception message");
         }
         catch(std::exception& e) {
             RTF_ASSERT_FAIL("Got wrong exception std::exception");

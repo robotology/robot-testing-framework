@@ -11,7 +11,6 @@
 #ifndef _RTF_TESTRESULTCOLLECTOR_H
 #define _RTF_TESTRESULTCOLLECTOR_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/TestListener.h>
 #include <rtf/ResultEvent.h>
 
@@ -26,14 +25,14 @@ namespace RTF {
  * \ingroup key_class
  *
  * \brief The TestResultCollector class can be used to store all the events
- * issued by the test cases, suits and runner during the test run.
+ * issued by the test cases, suites and runner during the test run.
  * The collected events later can be used by a proper result formatter
  * to be exported as HTML, XML or other desired formats.
  *
  * Here's an example of using a TestResultCollector:
  * \include examples/simple_collector.cpp
  */
-class RTF_API RTF::TestResultCollector : public RTF::TestListener {
+class RTF::TestResultCollector : public RTF::TestListener {
 
 public:
     typedef std::vector<RTF::ResultEvent*> EventResultContainer;
@@ -58,42 +57,42 @@ public:
 
     /**
      * @brief testCount gets the number of test cases. The test
-     * suits are not counted.
+     * suites are not counted.
      * @return the number of tests
      */
     unsigned int testCount();
 
     /**
      * @brief failedCount gets the number of failed test cases.
-     * The test suits are not counted.
+     * The test suites are not counted.
      * @return the number of failed tests.
      */
     unsigned int failedCount();
 
     /**
      * @brief passedCount gets the number of passed test cases.
-     * The test suits are not counted.
+     * The test suites are not counted.
      * @return the number of passed tests.
      */
     unsigned int passedCount();
 
     /**
-     * @brief suitCount gets the number of test suits.
-     * @return the number of test suits
+     * @brief suiteCount gets the number of test suites.
+     * @return the number of test suites
      */
-    unsigned int suitCount();
+    unsigned int suiteCount();
 
     /**
-     * @brief failedCount gets the number of failed test suits.
-     * @return the number of failed test suits.
+     * @brief failedCount gets the number of failed test suites.
+     * @return the number of failed test suites.
      */
-    unsigned int failedSuitCount();
+    unsigned int failedSuiteCount();
 
     /**
-     * @brief passedCount gets the number of passed test suits.
-     * @return the number of passed test suits.
+     * @brief passedCount gets the number of passed test suites.
+     * @return the number of passed test suites.
      */
-    unsigned int passedSuitCount();
+    unsigned int passedSuiteCount();
 
     /**
      * @brief getResults return any result event caught by
@@ -140,24 +139,24 @@ public:
     virtual void endTest(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is started
+     * This is called when a TestSuite is started
      * @param test pointer to the corresponding test
      */
-    virtual void startTestSuit(const RTF::Test* test);
+    virtual void startTestSuite(const RTF::Test* test);
 
     /**
-     * This is called when a TestSuit is finished
+     * This is called when a TestSuite is finished
      * @param test pointer to the corresponding test
      */
-    virtual void endTestSuit(const RTF::Test* test);
+    virtual void endTestSuite(const RTF::Test* test);
 
 private:
     EventResultContainer events;
     unsigned int nTests;
     unsigned int nFailures;
     unsigned int nPasses;
-    unsigned int nTestSuits;
-    unsigned int nSuitFailures;
-    unsigned int nSuitPasses;
+    unsigned int nTestSuites;
+    unsigned int nSuiteFailures;
+    unsigned int nSuitePasses;
 };
 #endif // _RTF_TESTRESULTCOLLECTOR_H

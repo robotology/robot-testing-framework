@@ -1,4 +1,4 @@
-version: 1.2.{build}
+version: 1.4.{build}
 
 platform:
   - Win32
@@ -14,7 +14,17 @@ configuration:
   - Debug
 
 environment:
-  CTEST_OUTPUT_ON_FAILURE: 1
+  global:
+    CTEST_OUTPUT_ON_FAILURE: 1
+
+  matrix:
+    - BUILD_SHARED_LIBS: ON
+    - BUILD_SHARED_LIBS: OFF
+
+matrix:
+  exclude:
+    - image: Visual Studio 2013
+      BUILD_SHARED_LIBS: OFF
 
 clone_folder: c:\dev\RTF
 
@@ -30,8 +40,8 @@ build_script:
   - cd c:\dev\RTF
   - md build
   - cd build
-  - cmake -G"%CMAKE_GENERATOR%" ..
+  - cmake -G"%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=%BUILD_SHARED_LIBS% ..
   - msbuild /m /p:Configuration="%CONFIGURATION%" /p:Platform="%platform%" RTF.sln
 
 test_script:
-  - cmd: cmake --build %APPVEYOR_BUILD_FOLDER%\build --target RUN_TESTS --config %CONFIGURATION%
+  - cmd: ctest --output-on-failure --build-config %CONFIGURATION%

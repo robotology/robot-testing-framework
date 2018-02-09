@@ -12,8 +12,11 @@ os:
   - osx
 
 env:
-  - TRAVIS_BUILD_TYPE=Debug
-  - TRAVIS_BUILD_TYPE=Release
+  global:
+    - CTEST_OUTPUT_ON_FAILURE=1
+  matrix:
+    - TRAVIS_BUILD_TYPE=Debug
+    - TRAVIS_BUILD_TYPE=Release
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
@@ -24,12 +27,12 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew outdated cmake || brew upgrade cmake; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then if !  brew ls --versions python > /dev/null; then brew install python; fi; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install tinyxml lua51; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake libtinyxml-dev liblua5.1-dev python-dev lcov; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y cmake3 libtinyxml-dev liblua5.1-dev python-dev lcov; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo gem install coveralls-lcov; fi
 
 before_script:
   - python --version
-  - ruby --version  
+  - ruby --version
 
 script:
   # configure robot-testing framework
@@ -39,10 +42,10 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "osx" ];   then cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi
   - make
   - ctest --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then  make RTF_coverage ; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make RTF_coverage ; fi
   - sudo make install
 
-after_success:  
+after_success:
   - coveralls-lcov --repo-token Gcfb0Rzm9kFpzrwyT5NiQQivi2oWvvjdm coverage.info.cleaned
 #  - bash <(curl -s https://codecov.io/bash)
 

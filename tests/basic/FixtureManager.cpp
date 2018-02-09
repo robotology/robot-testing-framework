@@ -13,7 +13,7 @@
 
 #include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 
 using namespace RTF;
 
@@ -74,29 +74,29 @@ public:
 
         MyTest1 test1;
 
-        // create a test suits
-        TestSuit suit("MyTestSuit");
+        // create a test suites
+        TestSuite suite("MyTestSuite");
         // create a fixture manager for the test suit
-        MyFixture fixture(&suit);
-        suit.addFixtureManager(&fixture);
-        suit.addTest(&test1);
+        MyFixture fixture(&suite);
+        suite.addFixtureManager(&fixture);
+        suite.addTest(&test1);
 
-        TestSuit suit2("MyTestSuit");
+        TestSuite suite2("MyTestSuite");
         // create a fixture manager for the test suit
-        MyFixture2 fixture2(&suit);
-        suit2.addFixtureManager(&fixture2);
-        suit2.addTest(&test1);
+        MyFixture2 fixture2(&suite);
+        suite2.addFixtureManager(&fixture2);
+        suite2.addTest(&test1);
 
         // create a test runner
         TestRunner runner;
-        runner.addTest(&suit);
-        runner.addTest(&suit2);
+        runner.addTest(&suite);
+        runner.addTest(&suite2);
         runner.run(result);
 
         //RTF_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
-        RTF_TEST_CHECK(collector.suitCount() == 2, "Checking suit count");
-        RTF_TEST_CHECK(collector.passedSuitCount() == 1, "Checking passed suit count");
-        RTF_TEST_CHECK(collector.failedSuitCount() == 1, "Checking failed suit count");
+        RTF_TEST_CHECK(collector.suiteCount() == 2, "Checking suite count");
+        RTF_TEST_CHECK(collector.passedSuiteCount() == 1, "Checking passed suite count");
+        RTF_TEST_CHECK(collector.failedSuiteCount() == 1, "Checking failed suite count");
         RTF_TEST_CHECK(collector.testCount() == 1, "Checking tests count");
         RTF_TEST_CHECK(collector.passedCount() == 1, "Checking passed test count");
         RTF_TEST_CHECK(collector.failedCount() == 0, "Checking failed test count");

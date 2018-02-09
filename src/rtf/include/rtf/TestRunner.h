@@ -11,11 +11,10 @@
 #ifndef _RTF_TESTRUNNER_H
 #define _RTF_TESTRUNNER_H
 
-#include <rtf/rtf_config.h>
 #include <rtf/Test.h>
 #include <rtf/TestResult.h>
 
-#include <set>
+#include <vector>
 
 namespace RTF {
     class TestRunner;
@@ -24,16 +23,16 @@ namespace RTF {
 /**
  * \ingroup key_class
  *
- * \brief The TestRunner class runs the tests added as TestCase or TestSuit.
+ * \brief The TestRunner class runs the tests added as TestCase or TestSuite.
  * It simply goes through a list of the tests and run them one after each other.
  *
  * Here's an example of using a TestRunner:
  * \include examples/simple_runner.cpp
  */
-class RTF_API RTF::TestRunner {
+class RTF::TestRunner {
 
-    typedef std::set<RTF::Test*> TestContainer;
-    typedef std::set<RTF::Test*>::iterator TestIterator;
+    typedef std::vector<RTF::Test*> TestContainer;
+    typedef std::vector<RTF::Test*>::iterator TestIterator;
 
 
 public:

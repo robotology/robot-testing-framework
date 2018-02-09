@@ -17,7 +17,7 @@
 #include <JUnitOutputter.h>
 
 #include <cmdline.h>
-#include <SuitRunner.h>
+#include <SuiteRunner.h>
 #include <ErrorLogger.h>
 #include <Version.h>
 
@@ -25,7 +25,7 @@
     #include <rtf/WebProgressListener.h>
 #endif
 
-#if defined(WIN32)
+#if defined(_WIN32)
     #include <windows.h>
 #else
     #include <unistd.h>
@@ -57,12 +57,20 @@ void addOptions(cmdline::parser &cmd) {
                     "Runs multiple tests from the given folder which contains plugins.",
                     false);
 
-    cmd.add<string>("suit", 's',
-                    "Runs a single test suit from the given XMl file.",
+    cmd.add<string>("suite", 's',
+                    "Runs a single test suite from the given XML file.",
+                    false);
+
+    cmd.add<string>("suites", '\0',
+                    "Runs multiple test suites from the given folder which contains XML files.",
+                    false);
+
+    cmd.add<string>("suit", '\0',
+                    "Runs a single test suite from the given XML file (legacy option that will be removed in RTF 1.5, do not use).",
                     false);
 
     cmd.add<string>("suits", '\0',
-                    "Runs multiple test suits from the given folder which contains XML files.",
+                    "Runs multiple test suites from the given folder which contains XML files (legacy option that will be removed in RTF 1.5, do not use).",
                     false);
 
     cmd.add("no-output", '\0',
@@ -93,7 +101,7 @@ void addOptions(cmdline::parser &cmd) {
                     "Sets the web reporter server port. (The default port number is 8080.)",
                     false, 8080);
     cmd.add("recursive", 'r',
-            "Searches into subfolders for plugins or XML files. (Can be used with --tests or --suits options.)");
+            "Searches into subfolders for plugins or XML files. (Can be used with --tests or --suites options.)");
     cmd.add("detail", 'd',
             "Enables verbose mode of test assertions.");
     cmd.add("verbose", 'v',
@@ -103,7 +111,7 @@ void addOptions(cmdline::parser &cmd) {
 }
 
 
-static TestRunner* currentRunner = NULL;
+static TestRunner* currentRunner = nullptr;
 void signalHandler(int signum) {
     static int interuptCount = 1;
     cout<<endl<<"[testrunner] ("<<interuptCount<<") interrupted..."<<endl<<endl;
@@ -116,7 +124,7 @@ void signalHandler(int signum) {
         currentRunner->interrupt();
 }
 
-#if defined(WIN32)
+#if defined(_WIN32)
 BOOL CtrlHandler( DWORD fdwCtrlType ) {
   switch( fdwCtrlType ) {
     // Handle the CTRL-C signal.
@@ -135,22 +143,22 @@ BOOL CtrlHandler( DWORD fdwCtrlType ) {
 int main(int argc, char *argv[]) {
 
 // setup signal handler to cathc ctrl+c
-#if defined(WIN32)
+#if defined(_WIN32)
      SetConsoleCtrlHandler((PHANDLER_ROUTINE) CtrlHandler, TRUE);
 #else
     struct sigaction new_action, old_action;
     new_action.sa_handler = signalHandler;
     sigemptyset (&new_action.sa_mask);
     new_action.sa_flags = 0;
-    sigaction (SIGINT, NULL, &old_action);
+    sigaction (SIGINT, nullptr, &old_action);
     if (old_action.sa_handler != SIG_IGN)
-        sigaction (SIGINT, &new_action, NULL);
-    sigaction (SIGHUP, NULL, &old_action);
+        sigaction (SIGINT, &new_action, nullptr);
+    sigaction (SIGHUP, nullptr, &old_action);
     if (old_action.sa_handler != SIG_IGN)
-        sigaction (SIGHUP, &new_action, NULL);
-    sigaction (SIGTERM, NULL, &old_action);
+        sigaction (SIGHUP, &new_action, nullptr);
+    sigaction (SIGTERM, nullptr, &old_action);
     if (old_action.sa_handler != SIG_IGN)
-        sigaction (SIGTERM, &new_action, NULL);
+        sigaction (SIGTERM, &new_action, nullptr);
 #endif
 
     cmdline::parser cmd;
@@ -163,17 +171,19 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    // exit if no test or suit is given
+    // exit if no test or suite is given
     if(!cmd.get<string>("test").size() &&
             !cmd.get<string>("tests").size() &&
+            !cmd.get<string>("suite").size() &&
+            !cmd.get<string>("suites").size() &&
             !cmd.get<string>("suit").size() &&
             !cmd.get<string>("suits").size()) {
         cout<<cmd.usage();
-		return EXIT_FAILURE;
+        return EXIT_FAILURE;
     }
 
     // create a test runner
-    SuitRunner runner(cmd.exist("verbose"));
+    SuiteRunner runner(cmd.exist("verbose"));
     currentRunner = &runner;
 
     // load a single plugin
@@ -194,16 +204,28 @@ int main(int argc, char *argv[]) {
             return EXIT_FAILURE;
         }
 
-    // load a single suit
-    if(cmd.get<string>("suit").size())
-        if(!runner.loadSuit(cmd.get<string>("suit"))) {
+    // load a single suite
+    string suiteFileName = cmd.get<string>("suite");
+    if(suiteFileName.empty())
+    {
+        suiteFileName = cmd.get<string>("suit");
+    }
+
+    if(suiteFileName.size())
+        if(!runner.loadSuite(suiteFileName)) {
             reportErrors();
             return EXIT_FAILURE;
         }
 
-    // load multiple suits
-    if(cmd.get<string>("suits").size())
-        if(!runner.loadMultipleSuits(cmd.get<string>("suits"),
+    // load multiple suites
+    string suitesDirectoryName = cmd.get<string>("suites");
+    if(suitesDirectoryName.empty())
+    {
+        suitesDirectoryName = cmd.get<string>("suits");
+    }
+
+    if(suitesDirectoryName.size())
+        if(!runner.loadMultipleSuites(suitesDirectoryName,
                                        cmd.exist("recursive"))) {
             reportErrors();
             return EXIT_FAILURE;
@@ -227,7 +249,7 @@ int main(int argc, char *argv[]) {
 
     // create web listener if enabled
 #if defined(ENABLE_WEB_LISTENER)
-    WebProgressListener* webListener = NULL;
+    WebProgressListener* webListener = nullptr;
 #endif
 
     if(cmd.exist("web-reporter")) {
@@ -266,21 +288,21 @@ int main(int argc, char *argv[]) {
     if(!cmd.exist("no-summary")) {
         // print out some simple statistics
         cout<<endl<<"---------- results -----------"<<endl;
-        if(collector.suitCount()) {
-        cout<<"Total number of test suites  : "<<collector.suitCount()<<endl;
-        cout<<"Number of passed test suites : "<<collector.passedSuitCount()<<endl;
-        cout<<"Number of failed test suites : "<<collector.failedSuitCount()<<endl;
+        if(collector.suiteCount()) {
+        cout<<"Total number of test suites  : "<<collector.suiteCount()<<endl;
+        cout<<"Number of passed test suites : "<<collector.passedSuiteCount()<<endl;
+        cout<<"Number of failed test suites : "<<collector.failedSuiteCount()<<endl;
         }
         cout<<"Total number of test cases   : "<<collector.testCount()<<endl;
         cout<<"Number of passed test cases  : "<<collector.passedCount()<<endl;
         cout<<"Number of failed test cases  : "<<collector.failedCount()<<endl;
     }
 
-    currentRunner = NULL;
+    currentRunner = nullptr;
 
     int exitCode;
     if( (collector.failedCount() == 0)  &&
-        (collector.failedSuitCount() == 0))
+        (collector.failedSuiteCount() == 0))
         exitCode = EXIT_SUCCESS;
     else
         exitCode = EXIT_FAILURE;

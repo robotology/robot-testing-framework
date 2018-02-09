@@ -12,7 +12,7 @@
 #include <rtf/dll/Plugin.h>
 #include <rtf/WebProgressListener.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 
 #include <sstream>
 
@@ -59,16 +59,16 @@ public:
         TestResult result;
         result.addListener(&web);
 
-        // create a test suit and the test cases
-        TestSuit suit("MyTestSuit");
+        // create a test suite and the test cases
+        TestSuite suite("MyTestSuite");
         MyTest1 test1;
         MyTest2 test2;
-        suit.addTest(&test1);
-        suit.addTest(&test2);
+        suite.addTest(&test1);
+        suite.addTest(&test2);
 
         // create a test runner
         TestRunner runner;
-        runner.addTest(&suit);
+        runner.addTest(&suite);
         runner.run(result);
 
         // checking the web socket
@@ -84,24 +84,24 @@ public:
         tv.tv_usec = 0;
         setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv,sizeof(struct timeval));
 #endif
-        RTF_ASSERT_FAIL_IF(sockfd >= 0, "opening socket");
+        RTF_ASSERT_FAIL_IF_FALSE(sockfd >= 0, "opening socket");
         server = gethostbyname("localhost");
-        RTF_ASSERT_FAIL_IF(server != NULL, "no such host");
+        RTF_ASSERT_FAIL_IF_FALSE(server != nullptr, "no such host");
 
         bzero((char *) &serv_addr, sizeof(serv_addr));
         serv_addr.sin_family = AF_INET;
         bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
         serv_addr.sin_port = htons(6543);
         RTF_TEST_REPORT("Conneting to the web listener server");
-        RTF_ASSERT_FAIL_IF(connect(sockfd,(struct sockaddr *)
+        RTF_ASSERT_FAIL_IF_FALSE(connect(sockfd,(struct sockaddr *)
                                    &serv_addr,sizeof(serv_addr)) >= 0, "connecting");
 
         char buffer[256] = "GET /status HTTP/1.0\r\n\r\n";
         RTF_TEST_REPORT("Writing to web listener server");
-        RTF_ASSERT_FAIL_IF(write(sockfd, buffer, strlen(buffer)) >= 0, "writing to socket");
+        RTF_ASSERT_FAIL_IF_FALSE(write(sockfd, buffer, strlen(buffer)) >= 0, "writing to socket");
         bzero(buffer,256);
         RTF_TEST_REPORT("Reading from web listener server");
-        RTF_ASSERT_FAIL_IF(read(sockfd,buffer,255) >0, "reading from socket");
+        RTF_ASSERT_FAIL_IF_FALSE(read(sockfd,buffer,255) >0, "reading from socket");
 
         std::stringstream ssbuff(buffer);
         std::string line;
@@ -112,7 +112,7 @@ public:
 
         RTF_TEST_CHECK(line.size()>2,"Cheking the json result size returned by web listener");
         line = line.substr(0, line.size()-1);
-        RTF_TEST_CHECK(line=="{\"name\":\"MyTestSuit\",\"ntest\":2,\"nfail\":1,\"npass\":1}",
+        RTF_TEST_CHECK(line=="{\"name\":\"MyTestSuite\",\"testStatus\":[3,2]}",
                        "Cheking the json result returned by web listener");
         close(sockfd);
     }

@@ -11,7 +11,7 @@
 #ifndef _RTF_JUNITOUTPUTTER_H
 #define _RTF_JUNITOUTPUTTER_H
 
-#include <rtf/rtf_config.h>
+
 #include <string>
 #include <rtf/TestMessage.h>
 #include <rtf/TestResultCollector.h>
@@ -24,7 +24,7 @@ namespace RTF {
  * \brief Class JUnitOutputter saves the results of the test collected by
  * a TestResultCollector in a JUnit XML file.
  */
-class RTF_API RTF::JUnitOutputter {
+class RTF::JUnitOutputter {
 public:
 
     /**
@@ -53,7 +53,7 @@ public:
      * @return true or false uppoun success or failure
      */
     bool write(std::string filename,
-               RTF::TestMessage* errorMsg=NULL);
+               RTF::TestMessage* errorMsg=nullptr);
 
 private:
     bool verbose;

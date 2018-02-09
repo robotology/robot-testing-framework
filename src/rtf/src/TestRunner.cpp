@@ -9,12 +9,13 @@
 
 
 #include <rtf/TestRunner.h>
+#include <algorithm>
 
 using namespace RTF;
 
 
 TestRunner::TestRunner()
-    : current(NULL) { }
+    : current(nullptr) { }
 
 
 TestRunner::~TestRunner() {
@@ -23,12 +24,19 @@ TestRunner::~TestRunner() {
 
 
 void TestRunner::addTest(RTF::Test* test) {
-    tests.insert(test);
+    if (std::find(tests.begin(), tests.end(), test) == tests.end())
+    {
+        tests.push_back(test);
+    }
 }
 
 
 void TestRunner::removeTest(RTF::Test* test) {
-    tests.erase(test);
+    for (size_t i = 0; i < tests.size(); i++)
+    {
+        tests.erase(tests.begin() + i);
+    }
+    
 }
 
 void TestRunner::reset() {
@@ -46,7 +54,7 @@ void TestRunner::run(RTF::TestResult &result) {
         (*it)->run(result);
     }
     result.endTestRunner();
-    current = NULL;
+    current = nullptr;
 }
 
 void TestRunner::interrupt() {

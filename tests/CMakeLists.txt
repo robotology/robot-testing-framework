@@ -31,5 +31,11 @@ if (BUILD_TESTING)
 
         # adding python tests
         add_subdirectory(ruby)
+
+        # adding testrunner tests
+        add_subdirectory(testrunner)
+
+        # adding rtf_add_suite tests
+        add_subdirectory(rtf_add_suite)
     endif()
 endif()

@@ -51,7 +51,7 @@ VALUE RubyPluginLoaderImpl::protectedSetup(VALUE testcase, ID id,
     args[1] = id;
     args[2] = param;
     rb_protect(RubyPluginLoaderImpl::wrapSetup, (VALUE)args, &state);
-    RTF_ASSERT_ERROR_IF(state == 0,
+    RTF_ASSERT_ERROR_IF_FALSE(state == 0,
                         Asserter::format("Error in calling setup() within %s because %s",
                                          impl->getFileName().c_str(),
                                          RubyPluginLoaderImpl::getRubyErrorMessage().c_str()));
@@ -69,11 +69,11 @@ VALUE RubyPluginLoaderImpl::wrapRun(VALUE args) {
 VALUE RubyPluginLoaderImpl::protectedRun(VALUE testcase, ID id,
                            RubyPluginLoaderImpl* impl) {
     int state;
-    VALUE args[1];
+    VALUE args[2];
     args[0] = testcase;
     args[1] = id;
     rb_protect(RubyPluginLoaderImpl::wrapRun, (VALUE)args, &state);
-    RTF_ASSERT_ERROR_IF(state == 0,
+    RTF_ASSERT_ERROR_IF_FALSE(state == 0,
                         Asserter::format("Error in calling run() within %s because %s",
                                          impl->getFileName().c_str(),
                                          RubyPluginLoaderImpl::getRubyErrorMessage().c_str()));
@@ -90,11 +90,11 @@ VALUE RubyPluginLoaderImpl::wrapTearDown(VALUE args) {
 VALUE RubyPluginLoaderImpl::protectedTearDown(VALUE testcase, ID id,
                            RubyPluginLoaderImpl* impl) {
     int state;
-    VALUE args[1];
+    VALUE args[2];
     args[0] = testcase;
     args[1] = id;
     rb_protect(RubyPluginLoaderImpl::wrapTearDown, (VALUE)args, &state);
-    RTF_ASSERT_ERROR_IF(state == 0,
+    RTF_ASSERT_ERROR_IF_FALSE(state == 0,
                         Asserter::format("Error in calling tearDown() within %s because %s",
                                          impl->getFileName().c_str(),
                                          RubyPluginLoaderImpl::getRubyErrorMessage().c_str()));
@@ -180,7 +180,7 @@ void RubyPluginLoaderImpl::run() {
 VALUE RubyPluginLoaderImpl::setName(VALUE self, VALUE obj) {
     char* name = StringValueCStr(obj);
     RubyPluginLoaderImpl* impl = RubyPluginLoaderImpl::getImpFromRuby();
-    RTF_ASSERT_ERROR_IF(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
+    RTF_ASSERT_ERROR_IF_FALSE(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
     impl->setTestName(name);
     return self;
 }
@@ -188,7 +188,7 @@ VALUE RubyPluginLoaderImpl::setName(VALUE self, VALUE obj) {
 VALUE RubyPluginLoaderImpl::assertError(VALUE self, VALUE obj) {
     char* msg = StringValueCStr(obj);
     RubyPluginLoaderImpl* impl = RubyPluginLoaderImpl::getImpFromRuby();
-    RTF_ASSERT_ERROR_IF(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
+    RTF_ASSERT_ERROR_IF_FALSE(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
     RTF::Asserter::error(RTF::TestMessage("asserts error with exception",
                                           msg, impl->getFileName(), 0));
     return self;
@@ -197,7 +197,7 @@ VALUE RubyPluginLoaderImpl::assertError(VALUE self, VALUE obj) {
 VALUE RubyPluginLoaderImpl::assertFail(VALUE self, VALUE obj) {
     char* msg = StringValueCStr(obj);
     RubyPluginLoaderImpl* impl = RubyPluginLoaderImpl::getImpFromRuby();
-    RTF_ASSERT_ERROR_IF(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
+    RTF_ASSERT_ERROR_IF_FALSE(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
     RTF::Asserter::fail(RTF::TestMessage("asserts failure with exception",
                                           msg, impl->getFileName(), 0));
     return self;
@@ -206,7 +206,7 @@ VALUE RubyPluginLoaderImpl::assertFail(VALUE self, VALUE obj) {
 VALUE RubyPluginLoaderImpl::testReport(VALUE self, VALUE obj) {
     char* msg = StringValueCStr(obj);
     RubyPluginLoaderImpl* impl = RubyPluginLoaderImpl::getImpFromRuby();
-    RTF_ASSERT_ERROR_IF(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
+    RTF_ASSERT_ERROR_IF_FALSE(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
     RTF::Asserter::report(RTF::TestMessage("reports",
                                            msg, impl->getFileName(), 0), (TestCase*)impl);
     return self;
@@ -216,7 +216,7 @@ VALUE RubyPluginLoaderImpl::testReport(VALUE self, VALUE obj) {
 VALUE RubyPluginLoaderImpl::testCheck(VALUE self, VALUE cond, VALUE message) {
     char* msg = StringValueCStr(message);
     RubyPluginLoaderImpl* impl = RubyPluginLoaderImpl::getImpFromRuby();
-    RTF_ASSERT_ERROR_IF(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
+    RTF_ASSERT_ERROR_IF_FALSE(impl, "error in RubyPluginLoaderImpl::getImpFromRuby()");
     //std::string str_cond = "false";
     RTF::Asserter::testCheck(RTEST(cond), RTF::TestMessage("checks",
                                            msg, impl->getFileName(), 0), (TestCase*)impl);

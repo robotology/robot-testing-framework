@@ -15,12 +15,12 @@
 #include <rtf/TestResult.h>
 #include <rtf/TestResultCollector.h>
 #include <rtf/TestRunner.h>
-#include <rtf/TestSuit.h>
+#include <rtf/TestSuite.h>
 #include <rtf/WebProgressListener.h>
 #include <rtf/TestAssert.h>
 
 #ifdef _WIN32
-	#include <Windows.h>
+    #include <Windows.h>
 #else
     #include <unistd.h>
 #endif
@@ -32,12 +32,12 @@ public:
     MyTest1() : TestCase("MyTest1") { }
 
     virtual void run() {
-		srand(time(NULL));
+        srand(time(nullptr));
         for (int i=0; i< 10; i++) {
-			int a = rand() % 10;
-			int b = rand() % 10;
+            int a = rand() % 10;
+            int b = rand() % 10;
             RTF_TEST_REPORT("testing smaller...");
-            RTF_TEST_FAIL_IF(a<b, "is not smaller");
+            RTF_TEST_FAIL_IF_FALSE(a<b, "is not smaller");
 #ifdef _WIN32
             Sleep(1000);
 #else
@@ -52,18 +52,18 @@ public:
     MyTest2() : TestCase("MyTest2") { }
 
     virtual void run() {
-		srand(time(NULL));
+        srand(time(nullptr));
         for (int i=0; i< 10; i++) {
-			int a = rand() % 10;
-			int b = rand() % 10;
+            int a = rand() % 10;
+            int b = rand() % 10;
             RTF_TEST_REPORT("testing equality...");
-            RTF_TEST_FAIL_IF(a==b, "are not equal");
+            RTF_TEST_FAIL_IF_FALSE(a==b, "are not equal");
 #ifdef _WIN32
             Sleep(1000);
 #else
             sleep(1);
 #endif
-		}
+        }
     }
 };
 
@@ -83,16 +83,16 @@ int main(int argc, char** argv)
     result.addListener(&collector);
     printf("To see the test result, open a web browser and type 'http://127.0.0.1:8080'...\n");
 
-    // create a test suit and the test cases
-    TestSuit suit("MyTestSuit");
+    // create a test suite and the test cases
+    TestSuite suite("MyTestSuite");
     MyTest1 test1;
     MyTest2 test2;
-    suit.addTest(&test1);
-    suit.addTest(&test2);
+    suite.addTest(&test1);
+    suite.addTest(&test2);
 
     // create a test runner
     TestRunner runner;
-    runner.addTest(&suit);
+    runner.addTest(&suite);
     runner.run(result);
 
     // return the number of failed tests

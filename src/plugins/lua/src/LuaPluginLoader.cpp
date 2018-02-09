@@ -211,7 +211,7 @@ int LuaPluginLoaderImpl::setName(lua_State* L) {
         }
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
         owner->setTestName(cst);
     }
     return 0;
@@ -228,7 +228,7 @@ int LuaPluginLoaderImpl::assertError(lua_State* L) {
         }
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
         RTF::Asserter::error(RTF::TestMessage("asserts error with exception",
                                               cst, owner->getFileName(), 0));
     }
@@ -246,7 +246,7 @@ int LuaPluginLoaderImpl::assertFail(lua_State* L) {
         }
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
         RTF::Asserter::fail(RTF::TestMessage("asserts failure with exception",
                                               cst, owner->getFileName(), 0));
     }
@@ -264,7 +264,7 @@ int LuaPluginLoaderImpl::testReport(lua_State* L) {
         }
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
         RTF::Asserter::report(RTF::TestMessage("reports",
                                                cst, owner->getFileName(), 0), (TestCase*)owner);
     }
@@ -283,7 +283,7 @@ int LuaPluginLoaderImpl::testFail(lua_State* L) {
         }
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
         RTF::Asserter::testFail(false, RTF::TestMessage("checking ("+string(cond)+")",
                                                cst, owner->getFileName(), 0), (TestCase*)owner);
     }
@@ -302,7 +302,7 @@ int LuaPluginLoaderImpl::testCheck(lua_State* L) {
         }
         LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+        RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
         RTF::Asserter::testCheck(cond, RTF::TestMessage("checks",
                                                cst, owner->getFileName(), 0), (TestCase*)owner);
     }
@@ -318,7 +318,7 @@ int LuaPluginLoaderImpl::getTestEnvironment(lua_State* L) {
     }
     LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
     lua_pop(L, 1);
-    RTF_ASSERT_ERROR_IF(owner!=NULL, "A null instance of TestCase_Owner");
+    RTF_ASSERT_ERROR_IF_FALSE(owner!=NULL, "A null instance of TestCase_Owner");
     lua_pushstring(L, owner->getEnvironment().c_str());
     return 1;
 }

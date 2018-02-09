@@ -26,10 +26,10 @@ public:
     PythonPlugin() : TestCase("PythonPlugin") {}
 
     virtual bool setup(int argc, char**argv) {
-        RTF_ASSERT_ERROR_IF(argc>=2, "Missing python test file as argument");
+        RTF_ASSERT_ERROR_IF_FALSE(argc>=2, "Missing python test file as argument");
         RTF_TEST_REPORT(Asserter::format("Loading python file %s", argv[1]));
         test = loader.open(argv[1]);
-        RTF_ASSERT_ERROR_IF(test!=NULL, Asserter::format("Cannot load %s", argv[1]));
+        RTF_ASSERT_ERROR_IF_FALSE(test!=NULL, Asserter::format("Cannot load %s", argv[1]));
         return true;
     }
 
