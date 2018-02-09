@@ -72,22 +72,22 @@ To use RTF with other languages,
 
 Tutorials and Examples
 -----------------------
-* [*Some example codes for using RTF classes.*](http://robotology.github.io/robot-testing/documentation/examples.html)
+* [*Some example codes for using RTF classes.*]( http://robotology.gitlab.io/docs/rtf/master/examples.html)
 
-* [*Using plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_plugin_example.html)
+* [*Using plug-in to develop test cases.*](http://robotology.gitlab.io/docs/rtf/master/rtf_plugin_example.html)
 
-* [*Using Lua plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_lua_plugin_example.html)
+* [*Using Lua plug-in to develop test cases.*](http://robotology.gitlab.io/docs/rtf/master/rtf_lua_plugin_example.html)
 
-* [*Using Python plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_python_plugin_example.html)
+* [*Using Python plug-in to develop test cases.*](http://robotology.gitlab.io/docs/rtf/master/rtf_python_plugin_example.html)
 
-* [*Using Ruby plug-in to develop test cases.*](http://robotology.github.io/robot-testing/documentation/rtf_ruby_plugin_example.html)
-
-* [*Running test case plug-ins using testrunner*](http://robotology.github.io/robot-testing/documentation/testrunner.html)
+* [*Using Ruby plug-in to develop test cases.*](http://robotology.gitlab.io/docs/rtf/master/rtf_ruby_plugin_example.html)
+ 
+* [*Running test case plug-ins using testrunner*](http://robotology.gitlab.io/docs/rtf/master/testrunner.html)
 
 
 Documentation
 -------------
-* [*See Doxygen generated documentation*](http://robotology.github.io/robot-testing/documentation/index.html)
+* [*See Doxygen generated documentation*](http://robotology.gitlab.io/docs/rtf/master/index.html)
 * [*See RTF website*](http://robotology.github.io/robot-testing/index.html)
 
 Authors
