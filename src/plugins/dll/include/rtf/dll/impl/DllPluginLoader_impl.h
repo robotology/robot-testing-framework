@@ -62,7 +62,7 @@ public:
         open_internal(filename, factory_name);
 
         if (!plugin->factory.isValid()) {
-            if (plugin->factory.getStatus() == VOCAB4('f', 'a', 'c', 't')) {
+            if (plugin->factory.getStatus() == shlibpp::VOCAB4('f', 'a', 'c', 't')) {
                 std::string plug_type = (factory_name == RTF_PLUGIN_FACTORY_NAME) ? "test case" : "fixture manager";
                 error = "cannot load plugin " + filename + "; (it is not a RTF " + plug_type + " plugin!)";
             }
