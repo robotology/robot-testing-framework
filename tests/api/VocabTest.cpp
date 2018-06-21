@@ -23,9 +23,9 @@ public:
     virtual void run() {        
         RTF_TEST_CHECK(Vocab::encode("RTF") == (int)4609106, "checking Vocab::encode()");
         RTF_TEST_CHECK(Vocab::decode( Vocab::encode("RRTF")) == "RRTF", "checking Vocab::decode()");
-        RTF_TEST_CHECK(Vocab::decode( VOCAB2('R','T')) == "RT", "checking VOCAB2");
-        RTF_TEST_CHECK(Vocab::decode( VOCAB3('R','T', 'F')) == "RTF", "checking VOCAB3");
-        RTF_TEST_CHECK(Vocab::decode( VOCAB4('R','T', 'F', 'R')) == "RTFR", "checking VOCAB4");
+        RTF_TEST_CHECK(Vocab::decode( VOCAB('R','T')) == "RT", "checking VOCAB");
+        RTF_TEST_CHECK(Vocab::decode( VOCAB('R','T', 'F')) == "RTF", "checking VOCAB");
+        RTF_TEST_CHECK(Vocab::decode( VOCAB('R','T', 'F', 'R')) == "RTFR", "checking VOCAB");
     }
 };
 
