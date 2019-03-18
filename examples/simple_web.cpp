@@ -27,9 +27,9 @@
 #include <robottestingframework/TestSuite.h>
 #include <robottestingframework/WebProgressListener.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 
 #ifdef _WIN32
 #    include <Windows.h>

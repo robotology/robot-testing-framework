@@ -28,7 +28,7 @@
 #include <robottestingframework/TestSuite.h>
 #include <robottestingframework/TextOutputter.h>
 
-#include <stdio.h>
+#include <cstdio>
 
 using namespace robottestingframework;
 

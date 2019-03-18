@@ -38,9 +38,7 @@ TestSuite::TestSuite(std::string name) :
 }
 
 
-TestSuite::~TestSuite()
-{
-}
+TestSuite::~TestSuite() = default;
 
 void TestSuite::addTest(Test* test)
 {
@@ -117,8 +115,8 @@ void TestSuite::run(TestResult& rsl)
         }
 
         // calling all test's run
-        for (TestIterator it = tests.begin(); it != tests.end(); ++it) {
-            current = *it;
+        for (auto& test : tests) {
+            current = test;
             // interrupted?
             if (interrupted)
                 throw TestFailureException(TestMessage("interrupted!"));
@@ -154,8 +152,8 @@ void TestSuite::run(TestResult& rsl)
                                                        ROBOTTESTINGFRAMEWORK_SOURCELINE()));
                 fixtureOK = true;
             }
-            (*it)->run(*result);
-            successful &= (*it)->succeeded();
+            test->run(*result);
+            successful &= test->succeeded();
         }
     } catch (TestFailureException& e) {
         successful = false;

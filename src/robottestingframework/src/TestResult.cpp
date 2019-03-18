@@ -24,12 +24,10 @@
 using namespace robottestingframework;
 
 #define CALL_LISTENERS(method, ...)                                            \
-    for (ListenerIterator it = listeners.begin(); it != listeners.end(); ++it) \
-        (*it)->method(__VA_ARGS__);
+    for (const auto& listener : listeners) \
+        listener->method(__VA_ARGS__);
 
-TestResult::TestResult()
-{
-}
+TestResult::TestResult() = default;
 
 
 TestResult::~TestResult()

@@ -23,7 +23,7 @@
 #include <robottestingframework/TestAssert.h>
 #include <robottestingframework/dll/Plugin.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <string>
 
 using namespace std;

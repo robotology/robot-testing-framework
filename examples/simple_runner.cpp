@@ -26,7 +26,7 @@
 #include <robottestingframework/TestResultCollector.h>
 #include <robottestingframework/TestRunner.h>
 
-#include <stdio.h>
+#include <cstdio>
 
 using namespace robottestingframework;
 

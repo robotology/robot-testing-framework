@@ -85,7 +85,7 @@ public:
     SHLIBPP_SHARED_CLASS_FN void* factoryname##_create()                                           \
     {                                                                                              \
         classname* cn = new classname;                                                             \
-        basename* bn = dynamic_cast<basename*>(cn);                                                \
+        auto* bn = dynamic_cast<basename*>(cn);                                                    \
         if (!bn)                                                                                   \
             delete cn;                                                                             \
         return static_cast<void*>(bn);                                                             \

@@ -25,7 +25,8 @@
 #include <robottestingframework/TestMessage.h>
 
 #include <csignal>
-#include <string.h>
+#include <cstring>
+#include <utility>
 
 #define C_MAXARGS 128 // max number of the command parametes
 
@@ -57,7 +58,7 @@ static void run_signal_handler(int)
 
 TestCase::TestCase(std::string name, std::string param) :
         Test(name),
-        param(param),
+        param(std::move(param)),
         successful(true),
         result(nullptr),
         repetition(0)
@@ -65,9 +66,7 @@ TestCase::TestCase(std::string name, std::string param) :
     _currentTestCase = this;
 }
 
-TestCase::~TestCase()
-{
-}
+TestCase::~TestCase() = default;
 
 void TestCase::failed()
 {
@@ -149,7 +148,7 @@ void TestCase::run(TestResult& rsl)
         int nargs = 0;
         szarg = new char*[C_MAXARGS + 1];
         Arguments::parse(szcmd, &nargs, szarg);
-        szarg[nargs] = 0;
+        szarg[nargs] = nullptr;
         // call the setup
         if (!setup(nargs, szarg)) {
             result->addError(this, TestMessage("setup() failed!"));

@@ -22,13 +22,14 @@
 #include <robottestingframework/Arguments.h>
 #include <robottestingframework/FixtureManager.h>
 
-#include <string.h>
+#include <cstring>
+#include <utility>
 
 using namespace robottestingframework;
 using namespace std;
 
 FixtureManager::FixtureManager(std::string param) :
-        dispatcher(nullptr), param(param)
+        dispatcher(nullptr), param(std::move(param))
 {
 }
 
@@ -36,13 +37,11 @@ FixtureManager::FixtureManager(std::string param) :
 FixtureManager::FixtureManager(FixtureEvents* dispatcher,
                                string param) :
         dispatcher(dispatcher),
-        param(param)
+        param(std::move(param))
 {
 }
 
-FixtureManager::~FixtureManager()
-{
-}
+FixtureManager::~FixtureManager() = default;
 
 bool FixtureManager::setup()
 {
@@ -51,7 +50,7 @@ bool FixtureManager::setup()
     int argc = 0;
     char** argv = new char*[128]; // maximum 128
     Arguments::parse(szenv, &argc, argv);
-    argv[argc] = 0;
+    argv[argc] = nullptr;
     bool ret = setup(argc, argv);
     delete[] szenv;
     delete[] argv;

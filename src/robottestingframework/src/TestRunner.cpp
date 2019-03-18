@@ -63,11 +63,11 @@ void TestRunner::run(TestResult& result)
 {
     interrupted = false;
     result.startTestRunner();
-    for (TestIterator it = tests.begin(); it != tests.end(); ++it) {
+    for (auto& test : tests) {
         if (interrupted)
             break;
-        current = *it;
-        (*it)->run(result);
+        current = test;
+        test->run(result);
     }
     result.endTestRunner();
     current = nullptr;

@@ -52,7 +52,7 @@ void RubyPluginLoaderImpl::close()
 
 VALUE RubyPluginLoaderImpl::wrapSetup(VALUE args)
 {
-    VALUE* values = (VALUE*)args;
+    auto* values = (VALUE*)args;
     VALUE setup = values[0];
     ID id_setup = values[1];
     VALUE param = values[2];
@@ -77,7 +77,7 @@ VALUE RubyPluginLoaderImpl::protectedSetup(VALUE testcase, ID id, VALUE param, R
 
 VALUE RubyPluginLoaderImpl::wrapRun(VALUE args)
 {
-    VALUE* values = (VALUE*)args;
+    auto* values = (VALUE*)args;
     VALUE run = values[0];
     ID id_run = values[1];
     return rb_funcall(run, id_run, 0);
@@ -99,7 +99,7 @@ VALUE RubyPluginLoaderImpl::protectedRun(VALUE testcase, ID id, RubyPluginLoader
 
 VALUE RubyPluginLoaderImpl::wrapTearDown(VALUE args)
 {
-    VALUE* values = (VALUE*)args;
+    auto* values = (VALUE*)args;
     VALUE teardown = values[0];
     ID id_teardown = values[1];
     return rb_funcall(teardown, id_teardown, 0);
@@ -143,14 +143,14 @@ TestCase* RubyPluginLoaderImpl::open(const std::string filename)
         error = Asserter::format("Cannot load %s because %s.",
                                  filename.c_str(),
                                  RubyPluginLoaderImpl::getRubyErrorMessage().c_str());
-        return NULL;
+        return nullptr;
     }
 
     // get an instance of TestCase
     // TODO: check the availablities!!!!!
     VALUE cls = rb_const_get(rb_cObject, rb_intern("TestCase"));
     rb_define_const(cls, "TESTCASE_IMPL", Data_Wrap_Struct(cls, 0, 0, this));
-    testcase = rb_class_new_instance(0, 0, cls);
+    testcase = rb_class_new_instance(0, nullptr, cls);
 
     setTestName(bname);
     return this;
@@ -247,7 +247,7 @@ RubyPluginLoaderImpl* RubyPluginLoaderImpl::getImpFromRuby()
 {
     VALUE cls = rb_const_get(rb_cObject, rb_intern("TestCase"));
     VALUE testcase_impl = rb_const_get(cls, rb_intern("TESTCASE_IMPL"));
-    RubyPluginLoaderImpl* impl = NULL;
+    RubyPluginLoaderImpl* impl = nullptr;
     Data_Get_Struct(testcase_impl, RubyPluginLoaderImpl, impl);
     return impl;
 }
@@ -288,7 +288,7 @@ std::string RubyPluginLoaderImpl::extractFileName(const std::string& path)
  * @brief RubyPluginLoader
  */
 RubyPluginLoader::RubyPluginLoader() :
-        implementaion(NULL)
+        implementaion(nullptr)
 {
 }
 
@@ -301,7 +301,7 @@ void RubyPluginLoader::close()
 {
     if (implementaion)
         delete ((RubyPluginLoaderImpl*)implementaion);
-    implementaion = NULL;
+    implementaion = nullptr;
 }
 
 TestCase* RubyPluginLoader::open(const std::string filename)

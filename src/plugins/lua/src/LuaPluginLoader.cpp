@@ -51,13 +51,13 @@ const struct luaL_reg LuaPluginLoaderImpl::luaPluginLib[] = {
     { "testFail", LuaPluginLoaderImpl::testFail },
     { "testCheck", LuaPluginLoaderImpl::testCheck },
     { "getEnvironment", LuaPluginLoaderImpl::getTestEnvironment },
-    { NULL, NULL }
+    { nullptr, nullptr }
 };
 
 
 LuaPluginLoaderImpl::LuaPluginLoaderImpl() :
         TestCase(""),
-        L(NULL)
+        L(nullptr)
 {
 }
 
@@ -70,7 +70,7 @@ void LuaPluginLoaderImpl::close()
 {
     if (L) {
         lua_close(L);
-        L = NULL;
+        L = nullptr;
     }
 }
 
@@ -95,7 +95,7 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename)
         error = Asserter::format("Cannot load LUA_TEST_CHECK because %s",
                                  lua_tostring(L, -1));
         close();
-        return NULL;
+        return nullptr;
     }
 
     if (luaL_loadfile(L, filename.c_str())) {
@@ -103,7 +103,7 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename)
                                  filename.c_str(),
                                  lua_tostring(L, -1));
         close();
-        return NULL;
+        return nullptr;
     }
 
     if (lua_pcall(L, 0, LUA_MULTRET, 0)) {
@@ -111,7 +111,7 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename)
                                  filename.c_str(),
                                  lua_tostring(L, -1));
         close();
-        return NULL;
+        return nullptr;
     }
 
 
@@ -124,7 +124,7 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename)
         error = Asserter::format("The script %s  does not contain any valid \'TestCase\' object.",
                                  filename.c_str());
         close();
-        return NULL;
+        return nullptr;
     }
 
     // check for obligatory functions
@@ -134,7 +134,7 @@ TestCase* LuaPluginLoaderImpl::open(const std::string filename)
                                  filename.c_str());
         lua_pop(L, 1);
         close();
-        return NULL;
+        return nullptr;
     }
     lua_pop(L, 1);
 
@@ -233,9 +233,9 @@ int LuaPluginLoaderImpl::setName(lua_State* L)
             ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
             return 0;
         }
-        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
         owner->setTestName(cst);
     }
     return 0;
@@ -251,9 +251,9 @@ int LuaPluginLoaderImpl::assertError(lua_State* L)
             ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
             return 0;
         }
-        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
         Asserter::error(TestMessage("asserts error with exception",
                                     cst,
                                     owner->getFileName(),
@@ -272,9 +272,9 @@ int LuaPluginLoaderImpl::assertFail(lua_State* L)
             ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
             return 0;
         }
-        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
         Asserter::fail(TestMessage("asserts failure with exception",
                                    cst,
                                    owner->getFileName(),
@@ -293,9 +293,9 @@ int LuaPluginLoaderImpl::testReport(lua_State* L)
             ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
             return 0;
         }
-        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
         Asserter::report(TestMessage("reports",
                                      cst,
                                      owner->getFileName(),
@@ -316,9 +316,9 @@ int LuaPluginLoaderImpl::testFail(lua_State* L)
             ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
             return 0;
         }
-        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
         Asserter::testFail(false, TestMessage("checking (" + string(cond) + ")", cst, owner->getFileName(), 0), (TestCase*)owner);
     }
     return 0;
@@ -335,9 +335,9 @@ int LuaPluginLoaderImpl::testCheck(lua_State* L)
             ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
             return 0;
         }
-        LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+        auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
         lua_pop(L, 1);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
         Asserter::testCheck(cond, TestMessage("checks", cst, owner->getFileName(), 0), (TestCase*)owner);
     }
     return 0;
@@ -351,9 +351,9 @@ int LuaPluginLoaderImpl::getTestEnvironment(lua_State* L)
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR("Cannot get TestCase_Owner");
         return 0;
     }
-    LuaPluginLoaderImpl* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
+    auto* owner = static_cast<LuaPluginLoaderImpl*>(lua_touserdata(L, -1));
     lua_pop(L, 1);
-    ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != NULL, "A null instance of TestCase_Owner");
+    ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(owner != nullptr, "A null instance of TestCase_Owner");
     lua_pushstring(L, owner->getEnvironment().c_str());
     return 1;
 }
@@ -376,7 +376,7 @@ std::string LuaPluginLoaderImpl::extractFileName(const std::string& path)
  * @brief LuaPluginLoader
  */
 LuaPluginLoader::LuaPluginLoader() :
-        implementaion(NULL)
+        implementaion(nullptr)
 {
 }
 
@@ -389,7 +389,7 @@ void LuaPluginLoader::close()
 {
     if (implementaion)
         delete ((LuaPluginLoaderImpl*)implementaion);
-    implementaion = NULL;
+    implementaion = nullptr;
 }
 
 TestCase* LuaPluginLoader::open(const std::string filename)

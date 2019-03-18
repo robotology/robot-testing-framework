@@ -22,8 +22,8 @@
 #include <robottestingframework/Asserter.h>
 #include <robottestingframework/Exception.h>
 
-#include <stdarg.h>
-#include <stdio.h>
+#include <cstdarg>
+#include <cstdio>
 
 using namespace robottestingframework;
 
@@ -60,7 +60,7 @@ void Asserter::error(bool condition,
 void Asserter::report(TestMessage msg,
                       TestCase* testcase)
 {
-    if (testcase == 0) {
+    if (testcase == nullptr) {
         Asserter::error(TestMessage("asserts error with exception",
                                     "Asserter::report is called outside a TestCase!",
                                     msg.getSourceFileName(),
@@ -80,7 +80,7 @@ void Asserter::testFail(bool condition,
                         TestMessage msg,
                         TestCase* testcase)
 {
-    if (testcase == 0) {
+    if (testcase == nullptr) {
         Asserter::error(TestMessage("asserts error with exception",
                                     "Asserter::testFail is called outside a TestCase!",
                                     msg.getSourceFileName(),
@@ -97,7 +97,7 @@ void Asserter::testCheck(bool condition,
                          TestMessage msg,
                          TestCase* testcase)
 {
-    if (testcase == 0) {
+    if (testcase == nullptr) {
         Asserter::error(TestMessage("asserts error with exception",
                                     "Asserter::testCheck is called outside a TestCase!",
                                     msg.getSourceFileName(),

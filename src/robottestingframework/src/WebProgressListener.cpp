@@ -23,10 +23,10 @@
 #include <robottestingframework/WebProgressListener.h>
 #include <robottestingframework/impl/WebProgressListener_impl.h>
 
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <sstream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 using namespace std;
 using namespace robottestingframework;
@@ -195,7 +195,7 @@ WebProgressListenerImpl::~WebProgressListenerImpl()
 
 void WebProgressListenerImpl::update(void* param)
 {
-    WebProgressListenerImpl* web = (WebProgressListenerImpl*)param;
+    auto* web = (WebProgressListenerImpl*)param;
     while (!web->shouldStop) {
         mg_poll_server(web->server, 1000);
     }
@@ -204,7 +204,7 @@ void WebProgressListenerImpl::update(void* param)
 int WebProgressListenerImpl::handler(struct mg_connection* conn,
                                      enum mg_event ev)
 {
-    WebProgressListenerImpl* web = (WebProgressListenerImpl*)conn->server_param;
+    auto* web = (WebProgressListenerImpl*)conn->server_param;
     if (ev == MG_REQUEST) {
         if (strcmp(conn->uri, "/update") == 0) {
             web->critical.lock();
@@ -217,8 +217,8 @@ int WebProgressListenerImpl::handler(struct mg_connection* conn,
         } else if (strcmp(conn->uri, "/status") == 0) {
             web->critical.lock();
             std::stringstream ss;
-            ss << "{\"name\":\"" << web->suite_name;
-            ss << "\",\"testStatus\":[";
+            ss << R"({"name":")" << web->suite_name;
+            ss << R"(","testStatus":[)";
             for (auto it = web->testStatus.begin(); it != web->testStatus.end(); ++it) {
                 ss << (int)(*it);
                 if (std::next(it) != web->testStatus.end()) {
@@ -400,9 +400,7 @@ WebProgressListener::WebProgressListener(unsigned int port,
     implement = &WebProgressListenerImpl::create(port, verbose);
 }
 
-WebProgressListener::~WebProgressListener()
-{
-}
+WebProgressListener::~WebProgressListener() = default;
 
 void WebProgressListener::addReport(const Test* test,
                                     TestMessage msg)

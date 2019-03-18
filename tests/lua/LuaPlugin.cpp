@@ -45,7 +45,7 @@ public:
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(argc >= 2, "Missing lua test file as argument");
         ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("Loading lua file %s", argv[1]));
         test = loader.open(argv[1]);
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(test != NULL, Asserter::format("Cannot load %s", argv[1]));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(test != nullptr, Asserter::format("Cannot load %s", argv[1]));
         return true;
     }
 

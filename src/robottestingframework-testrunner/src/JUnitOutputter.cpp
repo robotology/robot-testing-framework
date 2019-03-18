@@ -23,8 +23,8 @@
 #include <robottestingframework/ResultEvent.h>
 
 #include <JUnitOutputter.h>
-#include <errno.h>
-#include <string.h>
+#include <cerrno>
+#include <cstring>
 #include <tinyxml.h>
 
 using namespace robottestingframework;
@@ -39,9 +39,7 @@ JUnitOutputter::JUnitOutputter(TestResultCollector& collector, bool verbose) :
 {
 }
 
-JUnitOutputter::~JUnitOutputter()
-{
-}
+JUnitOutputter::~JUnitOutputter() = default;
 
 bool JUnitOutputter::write(std::string filename,
                            TestMessage* errorMsg)
@@ -55,7 +53,7 @@ bool JUnitOutputter::write(std::string filename,
     }
 
     TiXmlDocument doc;
-    TiXmlElement* root = new TiXmlElement("testsuites");
+    auto* root = new TiXmlElement("testsuites");
     root->SetAttribute("suites", collector.suiteCount());
     root->SetAttribute("tests", collector.testCount());
     root->SetAttribute("failures", collector.failedCount());
@@ -109,7 +107,7 @@ bool JUnitOutputter::write(std::string filename,
                 continue;
             // adding falures
             if (failureMessages.size()) {
-                TiXmlElement* failure = new TiXmlElement("failure");
+                auto* failure = new TiXmlElement("failure");
                 failure->SetAttribute("message", "Something went wrong. See Stacktrace for detail.");
                 failure->LinkEndChild(new TiXmlText(failureMessages.c_str()));
                 testcase->LinkEndChild(failure);
@@ -117,7 +115,7 @@ bool JUnitOutputter::write(std::string filename,
 
             // adding errors
             if (errorMessages.size()) {
-                TiXmlElement* error = new TiXmlElement("error");
+                auto* error = new TiXmlElement("error");
                 error->SetAttribute("message", "Something went wrong. See Stacktrace for detail.");
                 error->LinkEndChild(new TiXmlText(errorMessages.c_str()));
                 testcase->LinkEndChild(error);
@@ -125,7 +123,7 @@ bool JUnitOutputter::write(std::string filename,
 
             // adding reports
             if (reportsMessages.size()) {
-                TiXmlElement* report = new TiXmlElement("system-out");
+                auto* report = new TiXmlElement("system-out");
                 report->SetAttribute("message", "See Standard Output for detail.");
                 report->LinkEndChild(new TiXmlText(reportsMessages.c_str()));
                 testcase->LinkEndChild(report);

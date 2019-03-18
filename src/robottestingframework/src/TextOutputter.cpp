@@ -22,9 +22,9 @@
 #include <robottestingframework/ResultEvent.h>
 #include <robottestingframework/TextOutputter.h>
 
-#include <errno.h>
+#include <cerrno>
+#include <cstring>
 #include <fstream>
-#include <string.h>
 
 using namespace robottestingframework;
 using namespace std;
@@ -38,9 +38,7 @@ TextOutputter::TextOutputter(TestResultCollector& collector, bool verbose) :
 {
 }
 
-TextOutputter::~TextOutputter()
-{
-}
+TextOutputter::~TextOutputter() = default;
 
 bool TextOutputter::write(std::string filename, bool summary, TestMessage* errorMsg)
 {

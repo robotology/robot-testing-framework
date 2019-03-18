@@ -27,7 +27,7 @@
 #include <robottestingframework/TestRunner.h>
 #include <robottestingframework/TestSuite.h>
 
-#include <stdio.h>
+#include <cstdio>
 
 using namespace robottestingframework;
 
@@ -39,7 +39,7 @@ public:
     {
     }
 
-    virtual void run() override
+    void run() override
     {
         ROBOTTESTINGFRAMEWORK_TEST_REPORT("testing smaller");
         ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(3 < 5, "is not smaller");
@@ -54,7 +54,7 @@ public:
     {
     }
 
-    virtual void run() override
+    void run() override
     {
         ROBOTTESTINGFRAMEWORK_TEST_REPORT("testing equality");
         ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(5 == 3, "are not equal");

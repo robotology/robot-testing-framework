@@ -21,7 +21,7 @@
 
 #include <robottestingframework/Arguments.h>
 
-#include <string.h>
+#include <cstring>
 
 #define C_MAXARGS 128 // max number of the command parametes
 

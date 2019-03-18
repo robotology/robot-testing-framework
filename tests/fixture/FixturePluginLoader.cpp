@@ -26,7 +26,7 @@
 #include <robottestingframework/dll/DllFixturePluginLoader.h>
 #include <robottestingframework/dll/Plugin.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <string>
 
 using namespace robottestingframework;
@@ -97,7 +97,7 @@ public:
 
         // create a fixture manager from the plugin for the test suit
         ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
-        DllFixturePluginLoader* loader = new DllFixturePluginLoader();
+        auto* loader = new DllFixturePluginLoader();
         FixtureManager* fixture = loader->open(fixtureFilename);
         ROBOTTESTINGFRAMEWORK_ASSERT_FAIL_IF_FALSE(fixture, loader->getLastError());
 

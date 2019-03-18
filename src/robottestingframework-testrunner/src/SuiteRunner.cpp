@@ -49,13 +49,13 @@ void SuiteRunner::reset()
     PluginRunner::reset();
 
     // delete all the suites which was created
-    for (unsigned int i = 0; i < suites.size(); i++)
-        delete suites[i];
+    for (auto& suite : suites)
+        delete suite;
     suites.clear();
 
     // delete all the fixture plugin loader which was created
-    for (unsigned int i = 0; i < fixtureLoaders.size(); i++)
-        delete fixtureLoaders[i];
+    for (auto& fixtureLoader : fixtureLoaders)
+        delete fixtureLoader;
     fixtureLoaders.clear();
 }
 
@@ -129,7 +129,7 @@ bool SuiteRunner::loadSuite(std::string filename)
                 environment = test->GetText();
         } else if (PluginFactory::compare(test->Value(), "fixture") && test->GetText() != nullptr) {
             // load the fixture manager plugin
-            DllFixturePluginLoader* loader = new DllFixturePluginLoader();
+            auto* loader = new DllFixturePluginLoader();
             std::string pluginName = test->GetText();
 
             FixtureManager* fixture = loader->open(pluginName);
@@ -172,8 +172,8 @@ bool SuiteRunner::loadSuite(std::string filename)
                 // set the test case repetition
                 if (test->Attribute("repetition")) {
                     char* endptr;
-                    unsigned int rep = (unsigned int)strtol(test->Attribute("repetition"), &endptr, 10);
-                    if (endptr == 0) {
+                    auto rep = (unsigned int)strtol(test->Attribute("repetition"), &endptr, 10);
+                    if (endptr == nullptr) {
                         testcase->setRepetition(rep);
                     } else {
                         string error = Asserter::format("Invalid repetition attribute while loading '%s' at line %d. (%s)",

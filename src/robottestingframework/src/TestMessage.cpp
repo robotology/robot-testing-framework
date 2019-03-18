@@ -55,9 +55,7 @@ TestMessage::TestMessage(const std::string msg,
     lineNumber = line;
 }
 
-TestMessage::~TestMessage()
-{
-}
+TestMessage::~TestMessage() = default;
 
 
 void TestMessage::setMessage(const std::string message)

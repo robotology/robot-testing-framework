@@ -29,8 +29,8 @@
 #include <SuiteRunner.h>
 #include <Version.h>
 #include <cmdline.h>
+#include <cstdio>
 #include <cstdlib>
-#include <stdio.h>
 
 #if defined(ENABLE_WEB_LISTENER)
 #    include <robottestingframework/WebProgressListener.h>
@@ -39,8 +39,8 @@
 #if defined(_WIN32)
 #    include <windows.h>
 #else
-#    include <errno.h>
-#    include <signal.h>
+#    include <cerrno>
+#    include <csignal>
 #    include <sys/types.h>
 #    include <sys/wait.h>
 #    include <unistd.h>
@@ -50,7 +50,7 @@
 using namespace robottestingframework;
 using namespace std;
 
-void reportErrors(void)
+void reportErrors()
 {
     ErrorLogger& logger = ErrorLogger::Instance();
     for (unsigned int i = 0; i < logger.errorCount(); i++)
@@ -170,7 +170,7 @@ int main(int argc, char* argv[])
     currentRunner = &runner;
 
     // load a single plugin
-    if (cmd.get<string>("test").size())
+    if (cmd.get<string>("test").size()) {
         if (!runner.loadPlugin(cmd.get<string>("test"),
                                (cmd.get<int>("repetition") < 0) ? 0 : cmd.get<int>("repetition"),
                                cmd.get<string>("param"),
@@ -178,14 +178,16 @@ int main(int argc, char* argv[])
             reportErrors();
             return EXIT_FAILURE;
         }
+    }
 
     // load multiple plugins
-    if (cmd.get<string>("tests").size())
+    if (cmd.get<string>("tests").size()) {
         if (!runner.loadMultiplePlugins(cmd.get<string>("tests"),
                                         cmd.exist("recursive"))) {
             reportErrors();
             return EXIT_FAILURE;
         }
+    }
 
     // load a single suite
     string suiteFileName = cmd.get<string>("suite");
@@ -193,11 +195,12 @@ int main(int argc, char* argv[])
         suiteFileName = cmd.get<string>("suit");
     }
 
-    if (suiteFileName.size())
+    if (suiteFileName.size()) {
         if (!runner.loadSuite(suiteFileName)) {
             reportErrors();
             return EXIT_FAILURE;
         }
+    }
 
     // load multiple suites
     string suitesDirectoryName = cmd.get<string>("suites");
@@ -205,12 +208,13 @@ int main(int argc, char* argv[])
         suitesDirectoryName = cmd.get<string>("suits");
     }
 
-    if (suitesDirectoryName.size())
+    if (suitesDirectoryName.size()) {
         if (!runner.loadMultipleSuites(suitesDirectoryName,
                                        cmd.exist("recursive"))) {
             reportErrors();
             return EXIT_FAILURE;
         }
+    }
 
     // report any warning or errors
     reportErrors();
@@ -251,22 +255,24 @@ int main(int argc, char* argv[])
         string outptType = cmd.get<string>("output-type");
         if (outptType == "text") {
             TextOutputter outputter(collector, cmd.exist("detail"));
-            string output = (cmd.get<string>("output").size() == 0) ? "result.txt" : cmd.get<string>("output");
+            string output = (cmd.get<string>("output").empty()) ? "result.txt" : cmd.get<string>("output");
             TestMessage msg;
-            if (!outputter.write(output, true, &msg))
+            if (!outputter.write(output, true, &msg)) {
                 cout << endl
                      << msg.getMessage() << ". " << msg.getDetail() << endl;
+            }
         } else if (outptType == "junit") {
             JUnitOutputter outputter(collector, cmd.exist("detail"));
-            string output = (cmd.get<string>("output").size() == 0) ? "result.xml" : cmd.get<string>("output");
+            string output = (cmd.get<string>("output").empty()) ? "result.xml" : cmd.get<string>("output");
             TestMessage msg;
             if (!outputter.write(output, &msg)) {
                 cout << endl
                      << msg.getMessage() << ". " << msg.getDetail() << endl;
             }
-        } else
+        } else {
             cout << endl
                  << "Results are not saved! Unknown output type " << outptType << "." << endl;
+        }
     }
 
     if (!cmd.exist("no-summary")) {

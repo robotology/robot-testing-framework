@@ -38,9 +38,7 @@ shlibpp::SharedLibraryFactory::SharedLibraryFactory(const char* dll_name,
     open(dll_name, fn_name);
 }
 
-shlibpp::SharedLibraryFactory::~SharedLibraryFactory()
-{
-}
+shlibpp::SharedLibraryFactory::~SharedLibraryFactory() = default;
 
 bool shlibpp::SharedLibraryFactory::open(const char* dll_name, const char* fn_name)
 {

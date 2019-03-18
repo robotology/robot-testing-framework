@@ -52,9 +52,7 @@ ConsoleListener::ConsoleListener(bool verbose)
     hideUncritical = false;
 }
 
-ConsoleListener::~ConsoleListener()
-{
-}
+ConsoleListener::~ConsoleListener() = default;
 
 void ConsoleListener::hideUncriticalMessages()
 {
