@@ -1,13 +1,21 @@
-#  Sharedlib++
-#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-cmake_minimum_required(VERSION 3.0)
-
-project(RTF_lua)
 
 find_package(Lua)
 if(NOT LUA_FOUND)
@@ -18,47 +26,36 @@ elseif(NOT LUA_FOUND)
     find_package(Lua51 REQUIRED)
 endif()
 
-set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_DEFS " -DENABLE_LUA_PLUGIN")
-set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
-get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+set(RTF_lua_HDRS include/robottestingframework/lua/LuaPluginLoader.h)
 
-get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
-get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
-get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
+set(RTF_lua_IMPL_HDRS include/robottestingframework/lua/impl/LuaPluginLoader_impl.h)
 
-# Create the library
-file(GLOB folder_source ./src/*.cpp)
-file(GLOB_RECURSE folder_header ./include/rtf/lua/*.h ./include/rtf/lua/impl/*.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
+set(RTF_lua_SRCS src/LuaPluginLoader.cpp)
 
-include_directories(${RTF_TREE_INCLUDE_DIRS}
-                    ${RTF_INTERNAL_INCLUDE_DIRS}
-                    ./include/rtf/lua/impl
-                    ${LUA_INCLUDE_DIR})
+add_library(RTF_lua ${RTF_lua_SRCS}
+                    ${RTF_lua_HDRS}
+                    ${RTF_lua_IMPL_HDRS})
+add_library(RobotTestingFramework::RTF_lua ALIAS RTF_lua)
 
-add_library(RTF_lua ${folder_source} ${folder_header} )
+target_include_directories(RTF_lua PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+                                   PRIVATE ${LUA_INCLUDE_DIR})
 
+target_link_libraries(RTF_lua PUBLIC RobotTestingFramework::RTF
+                                     RobotTestingFramework::RTF_dll
+                              PRIVATE ${LUA_LIBRARY})
 
-target_link_libraries(RTF_lua ${RTF_LIBS} ${LUA_LIBRARY})
+target_compile_features(RTF_lua PUBLIC cxx_nullptr)
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+set_property(TARGET RTF_lua PROPERTY PUBLIC_HEADER ${RTF_lua_HDRS})
 
-target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-
-
-# choose which header files should be installed
-file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/lua/*.h)
-set_property(TARGET RTF_lua PROPERTY PUBLIC_HEADER ${RTF_DLL_HEADERS})
+set_property(TARGET RTF_lua PROPERTY OUTPUT_NAME robottestingframework-lua)
+set_property(TARGET RTF_lua PROPERTY SOVERSION 2)
 
 install(TARGETS RTF_lua
-        EXPORT RTF
-        COMPONENT runtime
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/rtf/lua)
-
-set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_lua)
-set_property(TARGET RTF_lua PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
+        EXPORT RobotTestingFramework
+        COMPONENT librobottestingframework-lua
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/robottestingframework/lua)

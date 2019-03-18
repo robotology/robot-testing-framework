@@ -1,50 +1,77 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+
+#include <robottestingframework/ConsoleListener.h>
+#include <robottestingframework/FixtureManager.h>
+#include <robottestingframework/TestAssert.h>
+#include <robottestingframework/TestCase.h>
+#include <robottestingframework/TestResult.h>
+#include <robottestingframework/TestResultCollector.h>
+#include <robottestingframework/TestRunner.h>
+#include <robottestingframework/TestSuite.h>
+
 #include <stdio.h>
-#include <rtf/TestCase.h>
-#include <rtf/TestResult.h>
-#include <rtf/TestResultCollector.h>
-#include <rtf/TestRunner.h>
-#include <rtf/TestSuite.h>
-#include <rtf/FixtureManager.h>
-#include <rtf/ConsoleListener.h>
-#include <rtf/TestAssert.h>
 
-using namespace RTF;
+using namespace robottestingframework;
 
-class MyTest1 : public TestCase {
+class MyTest1 : public TestCase
+{
 public:
-    MyTest1() : TestCase("MyTest1") { }
+    MyTest1() :
+            TestCase("MyTest1")
+    {
+    }
 
-    virtual void run() {
-        RTF_TEST_REPORT("testing smaller");
-        RTF_TEST_FAIL_IF_FALSE(3<5, "is not smaller");
+    virtual void run() override
+    {
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("testing smaller");
+        ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(3 < 5, "is not smaller");
     }
 };
 
-class MyTest2 : public TestCase {
+class MyTest2 : public TestCase
+{
 public:
-    MyTest2() : TestCase("MyTest2") { }
+    MyTest2() :
+            TestCase("MyTest2")
+    {
+    }
 
-    virtual void run() {
-        RTF_TEST_REPORT("testing equality");
-        RTF_TEST_FAIL_IF_FALSE(3==3, "are not equal");
+    virtual void run() override
+    {
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("testing equality");
+        ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(3 == 3, "are not equal");
     }
 };
 
-class MyFixture : public FixtureManager {
+class MyFixture : public FixtureManager
+{
 public:
-    MyFixture(RTF::FixtureEvents* dispatcher)
-        : FixtureManager(dispatcher) { }
+    MyFixture(FixtureEvents* dispatcher) :
+            FixtureManager(dispatcher)
+    {
+    }
 
-    bool setup(int argc, char**argv) {
+    bool setup(int argc, char** argv) override
+    {
         // setup and initialize the fixture
         // ...
         printf("Myfixture setup!\n");
@@ -52,12 +79,14 @@ public:
         return true;
     }
 
-    bool check() {
+    bool check() override
+    {
         printf("Myfixture checking ...\n");
         return true;
     }
 
-    void tearDown() {
+    void tearDown() override
+    {
         // uninitialize the fixture
         // ...
         printf("Myfixture tear down!\n");
@@ -65,7 +94,6 @@ public:
         // throw an exception.
         throw FixtureException(TestMessage("MyFixture cannot tear down!"));
     }
-
 };
 
 int main(int argc, char** argv)

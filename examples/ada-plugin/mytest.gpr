@@ -1,10 +1,28 @@
+-- Robot Testing Framework
+--
+-- Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+--
+-- This library is free software; you can redistribute it and/or
+-- modify it under the terms of the GNU Lesser General Public
+-- License as published by the Free Software Foundation; either
+-- version 2.1 of the License, or (at your option) any later version.
+--
+-- This library is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-- Lesser General Public License for more details.
+--
+-- You should have received a copy of the GNU Lesser General Public
+-- License along with this library; if not, write to the Free Software
+-- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
 Project MyTest is
 
-    RTF_SrcDir := external("RTF_ROOT");
-   
+    RobotTestingFramework_SrcDir := external("RobotTestingFramework_ROOT");
+
    ----------------
    -- Attributes --
-   ----------------   
+   ----------------
    -- set the library  attributes
    for Library_Name use "mytest";
    for Library_Interface use ("mytest");
@@ -14,10 +32,10 @@ Project MyTest is
 
 
    -- set the source files and language attributes
-   for Languages use ("Ada", "C++");   
-   for Source_Dirs use ("./src", 
-                        RTF_SrcDir & "/src/plugins/ada/src_ada", 
-                        RTF_SrcDir & "/src/plugins/ada/src_cpp");
+   for Languages use ("Ada", "C++");
+   for Source_Dirs use ("./src",
+                        RobotTestingFramework_SrcDir & "/src/plugins/ada/src_ada",
+                        RobotTestingFramework_SrcDir & "/src/plugins/ada/src_cpp");
 
    --------------
    -- Packages --
@@ -26,19 +44,19 @@ Project MyTest is
       for Specification_Suffix ("C++") use ".h";
       for Implementation_Suffix ("C++") use ".cpp";
    end Naming;
-  
+
    package Compiler is
       --  This attributes contains the switches used by default for the Ada
       --for Default_Switches ("Ada") use ("-O2", "-gnat05", "-gnatwcfkmruv");
       for Default_Switches ("Ada") use ("-O2", "-gnatwcfkmruv");
       --  This attributes contains the switches used by default for the C++
-      for Default_Switches ("C++") use ("-O2", 
-                                        "-I" & RTF_SrcDIR & "/src/rtf/include",
-                                        "-I" & RTF_SrcDIR & "/src/plugins/dll/include");
+      for Default_Switches ("C++") use ("-O2",
+                                        "-I" & RobotTestingFramework_SrcDIR & "/src/robottestingframework/include",
+                                        "-I" & RobotTestingFramework_SrcDIR & "/src/plugins/dll/include");
    end Compiler;
 
    package Binder is
-      for Objects_Path ("Ada") use "ADA_OBJECTS_PATH"; 
+      for Objects_Path ("Ada") use "ADA_OBJECTS_PATH";
       for Objects_Path_File ("Ada") use "ADA_PRJ_OBJECTS_FILE";
     end Binder;
 

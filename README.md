@@ -27,8 +27,8 @@ for rapid development of test units to cover different levels of system testing 
 
 Installation
 ------------
-RTF library does not depend on any external library. The RTF framework has a testrunner utility (see Running test case plug-ins
-using testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suites using simple XML files. The testrunner uses TinyXml library for parsing the suite XML files. RTF build system check for the installation
+RTF library does not depend on any external library. The RTF framework has a robottestingframework-testrunner utility (see Running test case plug-ins
+using robottestingframework-testrunner) to easily run the test cases which are built as plug-ins. Test cases can be organized in test suites using simple XML files. The robottestingframework-testrunner uses TinyXml library for parsing the suite XML files. RTF build system check for the installation
 of TinyXml and, in case, it cannot find any installed version of TinyXml library, it uses the internal version which is delivered
 with the RTF.
 
@@ -81,8 +81,8 @@ Tutorials and Examples
 * [*Using Python plug-in to develop test cases.*](http://robotology.gitlab.io/docs/rtf/master/rtf_python_plugin_example.html)
 
 * [*Using Ruby plug-in to develop test cases.*](http://robotology.gitlab.io/docs/rtf/master/rtf_ruby_plugin_example.html)
- 
-* [*Running test case plug-ins using testrunner*](http://robotology.gitlab.io/docs/rtf/master/testrunner.html)
+
+* [*Running test case plug-ins using robottestingframework-testrunner*](http://robotology.gitlab.io/docs/rtf/master/robottestingframework-testrunner.html)
 
 
 Documentation

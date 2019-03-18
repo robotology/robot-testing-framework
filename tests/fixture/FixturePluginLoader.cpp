@@ -1,61 +1,89 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 
+#include <robottestingframework/TestAssert.h>
+#include <robottestingframework/TestResultCollector.h>
+#include <robottestingframework/TestRunner.h>
+#include <robottestingframework/TestSuite.h>
+#include <robottestingframework/dll/DllFixturePluginLoader.h>
+#include <robottestingframework/dll/Plugin.h>
+
 #include <stdlib.h>
 #include <string>
-#include <rtf/TestAssert.h>
-#include <rtf/dll/Plugin.h>
 
-#include <rtf/TestResultCollector.h>
-#include <rtf/TestRunner.h>
-#include <rtf/TestSuite.h>
-#include <rtf/dll/DllFixturePluginLoader.h>
+using namespace robottestingframework;
+using namespace robottestingframework::plugin;
 
-using namespace RTF;
-using namespace RTF::plugin;
-
-class MyTest1 : public TestCase {
+class MyTest1 : public TestCase
+{
 public:
-    MyTest1() : TestCase("MyTest1") { }
+    MyTest1() :
+            TestCase("MyTest1")
+    {
+    }
 
-    virtual void run() {
-        RTF_TEST_CHECK(3<5, "smaller");
+    void run() override
+    {
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(3 < 5, "smaller");
     }
 };
 
-class MyTestSuite : public TestSuite {
+class MyTestSuite : public TestSuite
+{
 public:
-    MyTestSuite() : TestSuite("MyTestSuite") { }
+    MyTestSuite() :
+            TestSuite("MyTestSuite")
+    {
+    }
 
-    virtual void fixtureCollapsed(RTF::TestMessage reason) {
+    void fixtureCollapsed(TestMessage reason) override
+    {
         colapseReason = reason.getMessage();
     }
+
 public:
     std::string colapseReason;
 };
 
-class MyFixturePluginLoader : public RTF::TestCase {
+class MyFixturePluginLoader : public TestCase
+{
     std::string fixtureFilename;
 
 public:
-    MyFixturePluginLoader() : TestCase("FixturePluginLoader") {}
+    MyFixturePluginLoader() :
+            TestCase("FixturePluginLoader")
+    {
+    }
 
-    virtual bool setup(int argc, char**argv)  {
-        RTF_TEST_REPORT(Asserter::format("argc %d", argc));
-        RTF_ASSERT_ERROR_IF_FALSE(argc >= 1, "missing fixture filename in the paramater");
+    bool setup(int argc, char** argv) override
+    {
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("argc %d", argc));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(argc >= 1, "missing fixture filename in the paramater");
         fixtureFilename = argv[1];
-        RTF_TEST_REPORT(fixtureFilename);
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT(fixtureFilename);
         return true;
     }
 
-    virtual void run() {
+    void run() override
+    {
         TestResultCollector collector;
 
         // create a test result and add the listeners
@@ -68,15 +96,15 @@ public:
         MyTestSuite suite;
 
         // create a fixture manager from the plugin for the test suit
-        RTF_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
         DllFixturePluginLoader* loader = new DllFixturePluginLoader();
         FixtureManager* fixture = loader->open(fixtureFilename);
-        RTF_ASSERT_FAIL_IF_FALSE(fixture, loader->getLastError());
+        ROBOTTESTINGFRAMEWORK_ASSERT_FAIL_IF_FALSE(fixture, loader->getLastError());
 
         suite.addFixtureManager(fixture);
         suite.addTest(&test1);
 
-        RTF_TEST_FAIL_IF_FALSE(fixture->getDispatcher() == (RTF::FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
+        ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(fixture->getDispatcher() == (FixtureEvents*)(&suite), "FixtureEvents dispatcher is not set");
         fixture->setParam("MY_FIXTURE_TEST_PARAM");
 
         // create a test runner
@@ -84,35 +112,31 @@ public:
         runner.addTest(&suite);
         runner.run(result);
 
-        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_SETUP") != nullptr &&
-            std::string(getenv("MY_FIXTURE_TEST_SETUP")) == "OK",
-            "Checking FixtureManager::setup()");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(getenv("MY_FIXTURE_TEST_SETUP") != nullptr && std::string(getenv("MY_FIXTURE_TEST_SETUP")) == "OK",
+                                         "Checking FixtureManager::setup()");
 
-        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_CHECK") != nullptr &&
-            std::string(getenv("MY_FIXTURE_TEST_CHECK")) == "OK",
-            "Checking FixtureManager::check()");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(getenv("MY_FIXTURE_TEST_CHECK") != nullptr && std::string(getenv("MY_FIXTURE_TEST_CHECK")) == "OK",
+                                         "Checking FixtureManager::check()");
 
-        RTF_TEST_CHECK(suite.colapseReason == "COLAPSED", "FixtureManager::fixtureCollapsed()");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(suite.colapseReason == "COLAPSED", "FixtureManager::fixtureCollapsed()");
 
-        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_TEARDOWN") != nullptr &&
-            std::string(getenv("MY_FIXTURE_TEST_TEARDOWN")) == "OK",
-            "Checking FixtureManager::tearDown()");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(getenv("MY_FIXTURE_TEST_TEARDOWN") != nullptr && std::string(getenv("MY_FIXTURE_TEST_TEARDOWN")) == "OK",
+                                         "Checking FixtureManager::tearDown()");
 
-//        delete fixture;
-//        delete loader;
-//        RTF_TEST_CHECK(getenv("MY_FIXTURE_TEST_DELETE") != nullptr &&
-//            std::string(getenv("MY_FIXTURE_TEST_DELETE")) == "OK",
-//            "Checking deleteing FixtureManager");
+        //        delete fixture;
+        //        delete loader;
+        //        ROBOTTESTINGFRAMEWORK_TEST_CHECK(getenv("MY_FIXTURE_TEST_DELETE") != nullptr &&
+        //            std::string(getenv("MY_FIXTURE_TEST_DELETE")) == "OK",
+        //            "Checking deleteing FixtureManager");
 
-        //RTF_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
-        RTF_TEST_CHECK(collector.suiteCount() == 1, "Checking suite count");
-        RTF_TEST_CHECK(collector.passedSuiteCount() == 1, "Checking passed suite count");
-        RTF_TEST_CHECK(collector.failedSuiteCount() == 0, "Checking failed suite count");
-        RTF_TEST_CHECK(collector.testCount() == 1, "Checking tests count");
-        RTF_TEST_CHECK(collector.passedCount() == 1, "Checking passed test count");
-        RTF_TEST_CHECK(collector.failedCount() == 0, "Checking failed test count");
-
+        //ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.suiteCount() == 1, "Checking suite count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.passedSuiteCount() == 1, "Checking passed suite count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.failedSuiteCount() == 0, "Checking failed suite count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.testCount() == 1, "Checking tests count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.passedCount() == 1, "Checking passed test count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.failedCount() == 0, "Checking failed test count");
     }
 };
 
-PREPARE_PLUGIN(MyFixturePluginLoader)
+ROBOTTESTINGFRAMEWORK_PREPARE_PLUGIN(MyFixturePluginLoader)

@@ -1,57 +1,53 @@
-#  Sharedlib++
-#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
-
-cmake_minimum_required(VERSION 3.0)
-
-project(RTF_ruby)
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 find_package(Ruby REQUIRED)
 
-set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_DEFS " -DENABLE_RUBY_PLUGIN")
-set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
-get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+set(RTF_ruby_HDRS include/robottestingframework/ruby/RubyPluginLoader.h)
 
-get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
-get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
-get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
+set(RTF_ruby_IMPL_HDRS include/robottestingframework/ruby/impl/RubyPluginLoader_impl.h)
 
-# Create the library
-file(GLOB folder_source ./src/*.cpp)
-file(GLOB_RECURSE folder_header ./include/*.h ./include/impl/*.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
+set(RTF_ruby_SRCS src/RubyPluginLoader.cpp)
 
-include_directories(${RTF_TREE_INCLUDE_DIRS}
-                    ${RTF_INTERNAL_INCLUDE_DIRS}
-                    ./include/impl
-                    ${RUBY_INCLUDE_DIR}
-                    ${RUBY_CONFIG_INCLUDE_DIR})
+add_library(RTF_ruby ${RTF_ruby_SRCS}
+                     ${RTF_ruby_HDRS}
+                     ${RTF_ruby_IMPL_HDRS})
+add_library(RobotTestingFramework::RTF_ruby ALIAS RTF_ruby)
 
-add_library(RTF_ruby ${folder_source} ${folder_header} )
-target_link_libraries(RTF_ruby ${RTF_LIBS} ${RUBY_LIBRARY})
+target_include_directories(RTF_ruby PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                           $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+                                    PRIVATE ${RUBY_INCLUDE_DIRS})
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+target_link_libraries(RTF_ruby PUBLIC RobotTestingFramework::RTF
+                                      RobotTestingFramework::RTF_dll
+                               PRIVATE ${RUBY_LIBRARY})
 
-target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+target_compile_features(RTF_ruby PUBLIC cxx_nullptr)
 
+set_property(TARGET RTF_ruby PROPERTY PUBLIC_HEADER ${RTF_ruby_HDRS})
 
-# choose which header files should be installed
-file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/ruby/*.h)
-set_property(TARGET RTF_ruby PROPERTY PUBLIC_HEADER ${RTF_DLL_HEADERS})
+set_property(TARGET RTF_ruby PROPERTY OUTPUT_NAME robottestingframework-ruby)
+set_property(TARGET RTF_ruby PROPERTY SOVERSION 2)
 
 install(TARGETS RTF_ruby
-        EXPORT RTF
-        COMPONENT runtime
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/rtf/ruby)
-
-set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_ruby)
-set_property(TARGET RTF_ruby PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
-
+        EXPORT RobotTestingFramework
+        COMPONENT librobottestingframework-ruby
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/robottestingframework/ruby)

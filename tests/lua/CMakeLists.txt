@@ -1,22 +1,33 @@
-#  Robot Testing Framework
-#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 # adding lua tests
 if(ENABLE_LUA_PLUGIN)
 
     # LuaPlugin depends on LuaTestCase.lua
-    ADD_RTF_CPPTEST(NAME LuaPlugin
-                    SRCS LuaPlugin.cpp
-                    PARAM "${TEST_TARGET_PATH}/LuaTestCase.lua"
-                    ENV "bar")
+    add_robottestingframework_cpptest(NAME LuaPlugin
+                                      SRCS LuaPlugin.cpp
+                                      PARAM "${TEST_TARGET_PATH}/LuaTestCase.lua"
+                                      ENV "bar")
 
     # LuaTestCase
-    ADD_RTF_LUATEST(LuaTestCase.lua)
+    add_robottestingframework_luatest(LuaTestCase.lua)
 
 endif()
 

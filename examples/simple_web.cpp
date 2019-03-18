@@ -1,43 +1,60 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
 
-#include <rtf/TestCase.h>
-#include <rtf/TestResult.h>
-#include <rtf/TestResultCollector.h>
-#include <rtf/TestRunner.h>
-#include <rtf/TestSuite.h>
-#include <rtf/WebProgressListener.h>
-#include <rtf/TestAssert.h>
+#include <robottestingframework/TestAssert.h>
+#include <robottestingframework/TestCase.h>
+#include <robottestingframework/TestResult.h>
+#include <robottestingframework/TestResultCollector.h>
+#include <robottestingframework/TestRunner.h>
+#include <robottestingframework/TestSuite.h>
+#include <robottestingframework/WebProgressListener.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #ifdef _WIN32
-    #include <Windows.h>
+#    include <Windows.h>
 #else
-    #include <unistd.h>
+#    include <unistd.h>
 #endif
 
-using namespace RTF;
+using namespace robottestingframework;
 
-class MyTest1 : public TestCase {
+class MyTest1 : public TestCase
+{
 public:
-    MyTest1() : TestCase("MyTest1") { }
+    MyTest1() :
+            TestCase("MyTest1")
+    {
+    }
 
-    virtual void run() {
+    void run() override
+    {
         srand(time(nullptr));
-        for (int i=0; i< 10; i++) {
+        for (int i = 0; i < 10; i++) {
             int a = rand() % 10;
             int b = rand() % 10;
-            RTF_TEST_REPORT("testing smaller...");
-            RTF_TEST_FAIL_IF_FALSE(a<b, "is not smaller");
+            ROBOTTESTINGFRAMEWORK_TEST_REPORT("testing smaller...");
+            ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(a < b, "is not smaller");
 #ifdef _WIN32
             Sleep(1000);
 #else
@@ -47,17 +64,22 @@ public:
     }
 };
 
-class MyTest2 : public TestCase {
+class MyTest2 : public TestCase
+{
 public:
-    MyTest2() : TestCase("MyTest2") { }
+    MyTest2() :
+            TestCase("MyTest2")
+    {
+    }
 
-    virtual void run() {
+    void run() override
+    {
         srand(time(nullptr));
-        for (int i=0; i< 10; i++) {
+        for (int i = 0; i < 10; i++) {
             int a = rand() % 10;
             int b = rand() % 10;
-            RTF_TEST_REPORT("testing equality...");
-            RTF_TEST_FAIL_IF_FALSE(a==b, "are not equal");
+            ROBOTTESTINGFRAMEWORK_TEST_REPORT("testing equality...");
+            ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(a == b, "are not equal");
 #ifdef _WIN32
             Sleep(1000);
 #else
