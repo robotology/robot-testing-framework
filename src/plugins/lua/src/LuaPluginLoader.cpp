@@ -68,7 +68,7 @@ LuaPluginLoaderImpl::~LuaPluginLoaderImpl()
 
 void LuaPluginLoaderImpl::close()
 {
-    if (L) {
+    if (L != nullptr) {
         lua_close(L);
         L = nullptr;
     }
@@ -226,7 +226,7 @@ bool LuaPluginLoaderImpl::registerExtraFunctions()
 int LuaPluginLoaderImpl::setName(lua_State* L)
 {
     const char* cst = luaL_checkstring(L, 1);
-    if (cst) {
+    if (cst != nullptr) {
         lua_getglobal(L, "TestCase_Owner");
         if (!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -244,7 +244,7 @@ int LuaPluginLoaderImpl::setName(lua_State* L)
 int LuaPluginLoaderImpl::assertError(lua_State* L)
 {
     const char* cst = luaL_checkstring(L, 1);
-    if (cst) {
+    if (cst != nullptr) {
         lua_getglobal(L, "TestCase_Owner");
         if (!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -265,7 +265,7 @@ int LuaPluginLoaderImpl::assertError(lua_State* L)
 int LuaPluginLoaderImpl::assertFail(lua_State* L)
 {
     const char* cst = luaL_checkstring(L, 1);
-    if (cst) {
+    if (cst != nullptr) {
         lua_getglobal(L, "TestCase_Owner");
         if (!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -286,7 +286,7 @@ int LuaPluginLoaderImpl::assertFail(lua_State* L)
 int LuaPluginLoaderImpl::testReport(lua_State* L)
 {
     const char* cst = luaL_checkstring(L, 1);
-    if (cst) {
+    if (cst != nullptr) {
         lua_getglobal(L, "TestCase_Owner");
         if (!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -309,7 +309,7 @@ int LuaPluginLoaderImpl::testFail(lua_State* L)
 {
     const char* cond = luaL_checkstring(L, 1);
     const char* cst = luaL_checkstring(L, 2);
-    if (cond && cst) {
+    if ((cond != nullptr) && (cst != nullptr)) {
         lua_getglobal(L, "TestCase_Owner");
         if (!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -327,8 +327,8 @@ int LuaPluginLoaderImpl::testFail(lua_State* L)
 int LuaPluginLoaderImpl::testCheck(lua_State* L)
 {
     const char* cst = luaL_checkstring(L, 2);
-    if (lua_isboolean(L, 1) && cst) {
-        bool cond = lua_toboolean(L, 1);
+    if (lua_isboolean(L, 1) && (cst != nullptr)) {
+        bool cond = lua_toboolean(L, 1) != 0;
         lua_getglobal(L, "TestCase_Owner");
         if (!lua_islightuserdata(L, -1)) {
             lua_pop(L, 1);
@@ -367,8 +367,9 @@ std::string LuaPluginLoaderImpl::extractFileName(const std::string& path)
 #else
     size_t i = path.rfind('/', path.length());
 #endif
-    if (i != string::npos)
+    if (i != string::npos) {
         return (path.substr(i + 1, path.length() - i));
+    }
     return (path);
 }
 
@@ -387,8 +388,9 @@ LuaPluginLoader::~LuaPluginLoader()
 
 void LuaPluginLoader::close()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         delete ((LuaPluginLoaderImpl*)implementation);
+    }
     implementation = nullptr;
 }
 
@@ -401,7 +403,8 @@ TestCase* LuaPluginLoader::open(const std::string filename)
 
 std::string LuaPluginLoader::getLastError()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         return ((LuaPluginLoaderImpl*)implementation)->getLastError();
+    }
     return string("");
 }

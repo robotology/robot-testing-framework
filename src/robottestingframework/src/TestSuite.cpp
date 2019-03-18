@@ -51,8 +51,9 @@ void TestSuite::addTest(Test* test)
 void TestSuite::removeTest(Test* test)
 {
     for (int i = 0; i < tests.size(); i++) {
-        if (tests[i] == test)
+        if (tests[i] == test) {
             tests.erase(tests.begin() + i);
+        }
     }
 }
 
@@ -84,8 +85,9 @@ bool TestSuite::setup()
 {
     bool ret = true;
     FixtureIterator itr;
-    for (itr = fixtureManagers.begin(); (itr != fixtureManagers.end()) && ret; itr++)
+    for (itr = fixtureManagers.begin(); (itr != fixtureManagers.end()) && ret; itr++) {
         ret &= (*itr)->setup();
+    }
     return ret;
 }
 
@@ -93,8 +95,9 @@ bool TestSuite::setup()
 void TestSuite::tearDown()
 {
     FixtureRIterator itr;
-    for (itr = fixtureManagers.rbegin(); itr != fixtureManagers.rend(); itr++)
+    for (itr = fixtureManagers.rbegin(); itr != fixtureManagers.rend(); itr++) {
         (*itr)->tearDown();
+    }
 }
 
 
@@ -118,16 +121,19 @@ void TestSuite::run(TestResult& rsl)
         for (auto& test : tests) {
             current = test;
             // interrupted?
-            if (interrupted)
+            if (interrupted) {
                 throw TestFailureException(TestMessage("interrupted!"));
+            }
 
-            if (!fixtureOK)
+            if (!fixtureOK) {
                 result->addError(this, fixtureMessage);
+            }
 
             bool checkOk = true;
             FixtureIterator itr;
-            for (itr = fixtureManagers.begin(); (itr != fixtureManagers.end()) && checkOk; itr++)
+            for (itr = fixtureManagers.begin(); (itr != fixtureManagers.end()) && checkOk; itr++) {
                 checkOk &= (*itr)->check();
+            }
             if (!checkOk) {
                 result->addError(this, TestMessage("Fixture collapsed", "check() failed", ROBOTTESTINGFRAMEWORK_SOURCEFILE(), ROBOTTESTINGFRAMEWORK_SOURCELINE()));
                 fixtureOK = false;
@@ -138,18 +144,21 @@ void TestSuite::run(TestResult& rsl)
                 successful = false;
                 result->addReport(this, TestMessage("reports", "restarting fixture setup", ROBOTTESTINGFRAMEWORK_SOURCEFILE(), ROBOTTESTINGFRAMEWORK_SOURCELINE()));
                 tearDown();
-                if (!setup())
+                if (!setup()) {
                     throw FixtureException(TestMessage("setup() failed!"));
+                }
 
                 bool checkOk = true;
                 FixtureIterator itr;
-                for (itr = fixtureManagers.begin(); (itr != fixtureManagers.end()) && checkOk; itr++)
+                for (itr = fixtureManagers.begin(); (itr != fixtureManagers.end()) && checkOk; itr++) {
                     checkOk &= (*itr)->check();
-                if (!checkOk)
+                }
+                if (!checkOk) {
                     throw FixtureException(TestMessage("Fixture collapsed",
                                                        "check() failed",
                                                        ROBOTTESTINGFRAMEWORK_SOURCEFILE(),
                                                        ROBOTTESTINGFRAMEWORK_SOURCELINE()));
+                }
                 fixtureOK = true;
             }
             test->run(*result);
@@ -204,7 +213,8 @@ void TestSuite::fixtureCollapsed(TestMessage reason)
 
 void TestSuite::interrupt()
 {
-    if (current)
+    if (current != nullptr) {
         current->interrupt();
+    }
     interrupted = true;
 }

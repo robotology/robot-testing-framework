@@ -43,8 +43,9 @@ DllPluginLoader::~DllPluginLoader()
 
 void DllPluginLoader::close()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         delete ((DllPluginLoaderImpl<TestCase>*)implementation);
+    }
     implementation = nullptr;
 }
 
@@ -57,7 +58,8 @@ TestCase* DllPluginLoader::open(const std::string filename)
 
 std::string DllPluginLoader::getLastError()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         return ((DllPluginLoaderImpl<TestCase>*)implementation)->getLastError();
+    }
     return string("");
 }

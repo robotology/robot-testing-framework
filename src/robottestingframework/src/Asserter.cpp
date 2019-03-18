@@ -107,8 +107,9 @@ void Asserter::testCheck(bool condition,
     if (!condition) {
         testcase->failed();
         testcase->getResult()->addFailure(testcase, msg);
-    } else
+    } else {
         Asserter::report(msg, testcase);
+    }
 }
 
 std::string Asserter::format(const char* msg, ...)
@@ -116,7 +117,7 @@ std::string Asserter::format(const char* msg, ...)
     va_list args;
     va_start(args, msg);
     std::string str;
-    if (msg) {
+    if (msg != nullptr) {
         char buf[255];
         int w = vsnprintf(buf, 255, msg, args);
         str = buf;

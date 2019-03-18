@@ -62,14 +62,16 @@ void ConsoleListener::hideUncriticalMessages()
 void ConsoleListener::addReport(const Test* test,
                                 TestMessage msg)
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << MSG_REPORT << "(" << test->getName() << ") "
          << msg.getMessage() << ": " << msg.getDetail() << endl;
-    if (verbose && msg.getSourceLineNumber() != 0)
+    if (verbose && msg.getSourceLineNumber() != 0) {
         cout << GRAY << msg.getSourceFileName() << " at " << msg.getSourceLineNumber() << "." << ENDC << endl
              << endl;
+    }
 }
 
 void ConsoleListener::addError(const Test* test,
@@ -77,9 +79,10 @@ void ConsoleListener::addError(const Test* test,
 {
     cout << MSG_ERROR << "(" << test->getName() << ") "
          << msg.getMessage() << ": " << msg.getDetail() << endl;
-    if (verbose && msg.getSourceLineNumber() != 0)
+    if (verbose && msg.getSourceLineNumber() != 0) {
         cout << GRAY << msg.getSourceFileName() << " at " << msg.getSourceLineNumber() << "." << ENDC << endl
              << endl;
+    }
 }
 
 void ConsoleListener::addFailure(const Test* test,
@@ -87,63 +90,72 @@ void ConsoleListener::addFailure(const Test* test,
 {
     cout << MSG_FAIL << "(" << test->getName() << ") "
          << msg.getMessage() << ": " << msg.getDetail() << endl;
-    if (verbose && msg.getSourceLineNumber() != 0)
+    if (verbose && msg.getSourceLineNumber() != 0) {
         cout << GRAY << msg.getSourceFileName() << " at " << msg.getSourceLineNumber() << "." << ENDC << endl
              << endl;
+    }
 }
 
 void ConsoleListener::startTest(const Test* test)
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << BLUE << "Test case " << test->getName() << " started..." << ENDC << endl;
 }
 
 void ConsoleListener::endTest(const Test* test)
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << BLUE << "Test case " << test->getName();
-    if (test->succeeded())
+    if (test->succeeded()) {
         cout << " passed!" << ENDC << endl;
-    else
+    } else {
         cout << " failed!" << ENDC << endl;
+    }
 }
 
 void ConsoleListener::startTestSuite(const Test* test)
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << BLUE << "Test suite " << test->getName() << " started..." << ENDC << endl;
 }
 
 void ConsoleListener::endTestSuite(const Test* test)
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << BLUE << "Test suite " << test->getName();
-    if (test->succeeded())
+    if (test->succeeded()) {
         cout << " passed!" << ENDC << endl;
-    else
+    } else {
         cout << " failed!" << ENDC << endl;
+    }
 }
 
 void ConsoleListener::startTestRunner()
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << BLUE << "Starting test runner." << ENDC << endl;
 }
 
 void ConsoleListener::endTestRunner()
 {
-    if (hideUncritical)
+    if (hideUncritical) {
         return;
+    }
 
     cout << BLUE << "Ending test runner." << ENDC << endl;
 }

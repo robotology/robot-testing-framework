@@ -48,8 +48,9 @@ void PluginRunner::reset()
     TestRunner::reset();
 
     // delete all the plugin loader which was created
-    for (auto& dllLoader : dllLoaders)
+    for (auto& dllLoader : dllLoaders) {
         delete dllLoader;
+    }
     dllLoaders.clear();
 }
 
@@ -88,12 +89,14 @@ bool PluginRunner::loadPlugin(std::string filename,
 bool PluginRunner::loadMultiplePlugins(std::string path,
                                        bool recursive)
 {
-    if (!recursive)
+    if (!recursive) {
         return loadPluginsFromPath(path);
+    }
 
     // load from subfolders
-    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1))
+    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1)) {
         path = path + string(PATH_SEPERATOR);
+    }
 
     DIR* dir;
     struct dirent* entry;
@@ -104,7 +107,7 @@ bool PluginRunner::loadMultiplePlugins(std::string path,
 
     loadPluginsFromPath(path);
 
-    while ((entry = readdir(dir))) {
+    while ((entry = readdir(dir)) != nullptr) {
         if ((entry->d_type == DT_DIR) && (string(entry->d_name) != string(".")) && (string(entry->d_name) != string(".."))) {
             string name = path + string(entry->d_name);
             loadMultiplePlugins(name, recursive);
@@ -116,11 +119,13 @@ bool PluginRunner::loadMultiplePlugins(std::string path,
 
 bool PluginRunner::loadPluginsFromPath(std::string path)
 {
-    if (verbose)
+    if (verbose) {
         cout << "Loading plug-ins from " << path << endl;
+    }
 
-    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1))
+    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1)) {
         path = path + string(PATH_SEPERATOR);
+    }
 
     DIR* dir;
     struct dirent* entry;
@@ -129,39 +134,44 @@ bool PluginRunner::loadPluginsFromPath(std::string path)
         return false;
     }
 
-    while ((entry = readdir(dir))) {
+    while ((entry = readdir(dir)) != nullptr) {
         string name = entry->d_name;
         if (name.size() > 4) {
             // check for windows .dll
             string ext = name.substr(name.size() - 4, 4);
-            if (PluginFactory::compare(ext.c_str(), ".dll"))
+            if (PluginFactory::compare(ext.c_str(), ".dll")) {
                 loadPlugin(path + name, 0);
-                // check for .lua plugin files
+            }
+            // check for .lua plugin files
 #ifdef ENABLE_LUA_PLUGIN
-            if (PluginFactory::compare(ext.c_str(), ".lua"))
+            if (PluginFactory::compare(ext.c_str(), ".lua")) {
                 loadPlugin(path + name, 0);
+            }
 #endif
         }
         if (name.size() > 3) {
             // check for unix .so
             string ext = name.substr(name.size() - 3, 3);
-            if (PluginFactory::compare(ext.c_str(), ".so"))
+            if (PluginFactory::compare(ext.c_str(), ".so")) {
                 loadPlugin(path + name, 0);
+            }
         }
 #ifdef ENABLE_PYTHON_PLUGIN
         // check for .py
         if (name.size() > 2) {
             string ext = name.substr(name.size() - 3, 3);
-            if (PluginFactory::compare(ext.c_str(), ".py"))
+            if (PluginFactory::compare(ext.c_str(), ".py")) {
                 loadPlugin(path + name, 0);
+            }
         }
 #endif
 #ifdef ENABLE_RUBY_PLUGIN
         // check for .rb
         if (name.size() > 2) {
             string ext = name.substr(name.size() - 3, 3);
-            if (PluginFactory::compare(ext.c_str(), ".rb"))
+            if (PluginFactory::compare(ext.c_str(), ".rb")) {
                 loadPlugin(path + name, 0);
+            }
         }
 #endif
     }

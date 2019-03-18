@@ -83,7 +83,7 @@ public:
      * @param result an instance of a TestResult
      * to collect the result of the test.
      */
-    void run(TestResult& result) override;
+    void run(TestResult& rsl) override;
 
     /**
      * @brief succeeded

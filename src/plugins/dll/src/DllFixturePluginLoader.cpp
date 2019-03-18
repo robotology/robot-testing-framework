@@ -44,8 +44,9 @@ DllFixturePluginLoader::~DllFixturePluginLoader()
 
 void DllFixturePluginLoader::close()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         delete ((DllPluginLoaderImpl<TestCase>*)implementation);
+    }
     implementation = nullptr;
 }
 
@@ -58,7 +59,8 @@ FixtureManager* DllFixturePluginLoader::open(const std::string filename)
 
 std::string DllFixturePluginLoader::getLastError()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         return ((DllPluginLoaderImpl<FixtureManager>*)implementation)->getLastError();
+    }
     return string("");
 }

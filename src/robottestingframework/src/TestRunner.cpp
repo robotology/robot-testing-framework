@@ -64,8 +64,9 @@ void TestRunner::run(TestResult& result)
     interrupted = false;
     result.startTestRunner();
     for (auto& test : tests) {
-        if (interrupted)
+        if (interrupted) {
             break;
+        }
         current = test;
         test->run(result);
     }
@@ -75,7 +76,8 @@ void TestRunner::run(TestResult& result)
 
 void TestRunner::interrupt()
 {
-    if (current)
+    if (current != nullptr) {
         current->interrupt();
+    }
     interrupted = true;
 }

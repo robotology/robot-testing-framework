@@ -74,12 +74,14 @@ bool JUnitOutputter::write(std::string filename,
     TestResultCollector::EventResultIterator itr;
     TestResultCollector::EventResultContainer events = collector.getResults();
 
-    string errorMessages, failureMessages, reportsMessages;
+    string errorMessages;
+    string failureMessages;
+    string reportsMessages;
     for (itr = events.begin(); itr != events.end(); ++itr) {
         ResultEvent* e = *itr;
 
         // start suit
-        if (dynamic_cast<ResultEventStartSuite*>(e)) {
+        if (dynamic_cast<ResultEventStartSuite*>(e) != nullptr) {
             classname = e->getTest()->getName();
             testsuite = new TiXmlElement("testsuite");
             testsuite->SetAttribute("name", classname.c_str());
@@ -89,9 +91,10 @@ bool JUnitOutputter::write(std::string filename,
         //else if(dynamic_cast<ResultEventEndSuite*>(e)) { }
 
         // start test case
-        else if (dynamic_cast<ResultEventStartTest*>(e)) {
-            if (testsuite == nullptr)
+        else if (dynamic_cast<ResultEventStartTest*>(e) != nullptr) {
+            if (testsuite == nullptr) {
                 continue;
+            }
             testcase = new TiXmlElement("testcase");
             testcase->SetAttribute("name", e->getTest()->getName());
             testcase->SetAttribute("classname", classname + "." + e->getTest()->getName());
@@ -102,9 +105,10 @@ bool JUnitOutputter::write(std::string filename,
         }
 
         // end test case
-        else if (dynamic_cast<ResultEventEndTest*>(e)) {
-            if (testcase == nullptr)
+        else if (dynamic_cast<ResultEventEndTest*>(e) != nullptr) {
+            if (testcase == nullptr) {
                 continue;
+            }
             // adding falures
             if (failureMessages.size()) {
                 auto* failure = new TiXmlElement("failure");
@@ -131,7 +135,7 @@ bool JUnitOutputter::write(std::string filename,
         }
 
         // failure event
-        else if (dynamic_cast<ResultEventFailure*>(e)) {
+        else if (dynamic_cast<ResultEventFailure*>(e) != nullptr) {
             string msg;
             if (verbose) {
                 msg = Asserter::format("%s : %s (%s at %d) <br>",
@@ -139,14 +143,15 @@ bool JUnitOutputter::write(std::string filename,
                                        e->getMessage().getDetail().c_str(),
                                        e->getMessage().getSourceFileName().c_str(),
                                        e->getMessage().getSourceLineNumber());
-            } else
+            } else {
                 msg = e->getMessage().getMessage() + ": " + e->getMessage().getDetail() + "\n";
+            }
             failureMessages += msg;
             reportsMessages += MSG_FAIL + e->getTest()->getName() + ") " + msg;
         }
 
         // error event
-        else if (dynamic_cast<ResultEventError*>(e)) {
+        else if (dynamic_cast<ResultEventError*>(e) != nullptr) {
             string msg;
             if (verbose) {
                 msg = Asserter::format("%s : %s (%s at %d) <br>",
@@ -154,14 +159,15 @@ bool JUnitOutputter::write(std::string filename,
                                        e->getMessage().getDetail().c_str(),
                                        e->getMessage().getSourceFileName().c_str(),
                                        e->getMessage().getSourceLineNumber());
-            } else
+            } else {
                 msg = e->getMessage().getMessage() + ": " + e->getMessage().getDetail() + "\n";
+            }
             errorMessages += msg;
             reportsMessages += MSG_ERROR + e->getTest()->getName() + ") " + msg;
         }
 
         // report event
-        else if (dynamic_cast<ResultEventReport*>(e)) {
+        else if (dynamic_cast<ResultEventReport*>(e) != nullptr) {
             string msg;
             if (verbose) {
                 msg = Asserter::format("%s : %s (%s at %d) <br>",
@@ -169,8 +175,9 @@ bool JUnitOutputter::write(std::string filename,
                                        e->getMessage().getDetail().c_str(),
                                        e->getMessage().getSourceFileName().c_str(),
                                        e->getMessage().getSourceLineNumber());
-            } else
+            } else {
                 msg = e->getMessage().getMessage() + ": " + e->getMessage().getDetail() + "\n";
+            }
             reportsMessages += MSG_REPORT + e->getTest()->getName() + ") " + msg;
         }
 
@@ -179,8 +186,9 @@ bool JUnitOutputter::write(std::string filename,
     if (!doc.SaveFile(filename.c_str())) {
         if (errorMsg != nullptr) {
             errorMsg->setMessage("Cannot write to the " + filename);
-            if (doc.Error())
+            if (doc.Error()) {
                 errorMsg->setDetail(Asserter::format("%s (line: %d, column %d)", doc.ErrorDesc(), doc.ErrorRow(), doc.ErrorCol()));
+            }
         }
         return false;
     }

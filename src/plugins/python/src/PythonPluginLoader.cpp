@@ -65,19 +65,19 @@ PythonPluginLoaderImpl::~PythonPluginLoaderImpl()
 void PythonPluginLoaderImpl::close()
 {
     // Clean up
-    if (pyCapsuleRobotTestingFramework) {
+    if (pyCapsuleRobotTestingFramework != nullptr) {
         Py_DECREF(pyCapsuleRobotTestingFramework);
         pyName = nullptr;
     }
-    if (pyModuleRobotTestingFramework) {
+    if (pyModuleRobotTestingFramework != nullptr) {
         Py_DECREF(pyModuleRobotTestingFramework);
         pyName = nullptr;
     }
-    if (pyModule) {
+    if (pyModule != nullptr) {
         Py_DECREF(pyModule);
         pyModule = nullptr;
     }
-    if (pyName) {
+    if (pyName != nullptr) {
         Py_DECREF(pyName);
         pyName = nullptr;
     }
@@ -178,7 +178,7 @@ TestCase* PythonPluginLoaderImpl::open(const std::string filename)
     }
 
     // Create an instance of the class
-    if (!PyCallable_Check(pyClass) || (pyInstance = PyObject_CallObject(pyClass, nullptr)) == nullptr) {
+    if ((PyCallable_Check(pyClass) == 0) || (pyInstance = PyObject_CallObject(pyClass, nullptr)) == nullptr) {
         error = Asserter::format("TestCase is not defined as a class");
         close();
         return nullptr;
@@ -192,25 +192,31 @@ std::string PythonPluginLoaderImpl::getPythonErrorString()
 {
     std::string strError;
     // Extra paranoia...
-    if (!PyErr_Occurred())
+    if (PyErr_Occurred() == nullptr) {
         return strError;
+    }
 
     //PyErr_Print();
-    PyObject *type, *value, *traceback, *pyString;
+    PyObject* type;
+    PyObject* value;
+    PyObject* traceback;
+    PyObject* pyString;
     type = value = traceback = pyString = nullptr;
 
     PyErr_Fetch(&type, &value, &traceback);
     PyErr_Clear();
     if (value != nullptr && (pyString = PyObject_Str(value)) != nullptr && (PyString_Check(pyString))) {
         strError = PyString_AsString(pyString);
-    } else
+    } else {
         strError = "<unknown exception value>";
+    }
     Py_XDECREF(pyString);
 
-    if (type != nullptr && (pyString = PyObject_Str(type)) != nullptr && (PyString_Check(pyString)))
+    if (type != nullptr && (pyString = PyObject_Str(type)) != nullptr && (PyString_Check(pyString))) {
         strError += string("; ") + PyString_AsString(pyString);
-    else
+    } else {
         strError = " <unknown exception type>";
+    }
     Py_XDECREF(pyString);
 
     if (traceback != nullptr && PyTraceBack_Check(traceback)) {
@@ -240,8 +246,9 @@ std::string PythonPluginLoaderImpl::getFileName()
 bool PythonPluginLoaderImpl::setup(int argc, char** argv)
 {
     PyObject* func = PyObject_GetAttrString(pyInstance, "setup");
-    if (func == nullptr)
+    if (func == nullptr) {
         return true;
+    }
 
 
     PyObject* arglist = PyTuple_New(argc);
@@ -279,8 +286,9 @@ bool PythonPluginLoaderImpl::setup(int argc, char** argv)
 void PythonPluginLoaderImpl::tearDown()
 {
     PyObject* func = PyObject_GetAttrString(pyInstance, "tearDown");
-    if (func == nullptr)
+    if (func == nullptr) {
         return;
+    }
 
     char method[] = "tearDown";
     PyObject* pyValue = PyObject_CallMethod(pyInstance, method, nullptr);
@@ -313,7 +321,7 @@ PyObject* PythonPluginLoaderImpl::setName(PyObject* self,
     const char* name;
     auto* impl = (PythonPluginLoaderImpl*)PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
-    if (!PyArg_ParseTuple(args, "s", &name)) {
+    if (PyArg_ParseTuple(args, "s", &name) == 0) {
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("setName() is called with the wrong paramters."));
     }
     impl->setTestName(name);
@@ -328,7 +336,7 @@ PyObject* PythonPluginLoaderImpl::assertError(PyObject* self,
     auto* impl = (PythonPluginLoaderImpl*)PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
-    if (!PyArg_ParseTuple(args, "s", &message)) {
+    if (PyArg_ParseTuple(args, "s", &message) == 0) {
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
     }
     //impl->close();
@@ -347,7 +355,7 @@ PyObject* PythonPluginLoaderImpl::assertFail(PyObject* self,
     auto* impl = (PythonPluginLoaderImpl*)PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
-    if (!PyArg_ParseTuple(args, "s", &message)) {
+    if (PyArg_ParseTuple(args, "s", &message) == 0) {
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
     }
     Asserter::fail(TestMessage("asserts failure with exception",
@@ -365,7 +373,7 @@ PyObject* PythonPluginLoaderImpl::testReport(PyObject* self,
     auto* impl = (PythonPluginLoaderImpl*)PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
-    if (!PyArg_ParseTuple(args, "s", &message)) {
+    if (PyArg_ParseTuple(args, "s", &message) == 0) {
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
     }
     Asserter::report(TestMessage("reports",
@@ -384,12 +392,12 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
     auto* impl = (PythonPluginLoaderImpl*)PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
-    if (!PyArg_ParseTuple(args, "Os", &cond, &message)) {
+    if (PyArg_ParseTuple(args, "Os", &cond, &message) == 0) {
         ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
     }
     //const char* str_cond = PyString_AsString(cond);
     //char str_cond[] = "False";
-    Asserter::testCheck(PyObject_IsTrue(cond), TestMessage("checks", message, impl->getFileName(), 0), (TestCase*)impl);
+    Asserter::testCheck(PyObject_IsTrue(cond) != 0, TestMessage("checks", message, impl->getFileName(), 0), (TestCase*)impl);
     Py_RETURN_NONE;
 }
 
@@ -409,8 +417,9 @@ PythonPluginLoader::~PythonPluginLoader()
 
 void PythonPluginLoader::close()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         delete ((PythonPluginLoaderImpl*)implementation);
+    }
     implementation = nullptr;
 }
 
@@ -423,7 +432,8 @@ TestCase* PythonPluginLoader::open(const std::string filename)
 
 std::string PythonPluginLoader::getLastError()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         return ((PythonPluginLoaderImpl*)implementation)->getLastError();
+    }
     return string("");
 }

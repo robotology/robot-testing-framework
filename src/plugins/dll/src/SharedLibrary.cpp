@@ -73,8 +73,9 @@ bool SharedLibrary::open(const char* filename)
 #else
     implementation = dlopen(filename, RTLD_LAZY);
     char* msg = dlerror();
-    if (msg)
+    if (msg != nullptr) {
         err_message = msg;
+    }
     return implementation != nullptr;
 #endif
 }
@@ -105,8 +106,9 @@ bool SharedLibrary::close()
         result = dlclose(implementation);
         if (result != 0) {
             char* msg = dlerror();
-            if (msg)
+            if (msg != nullptr) {
                 err_message = msg;
+            }
         }
 #endif
         implementation = nullptr;
@@ -122,8 +124,9 @@ std::string SharedLibrary::error()
 void* SharedLibrary::getSymbol(const char* symbolName)
 {
     err_message.clear();
-    if (implementation == nullptr)
+    if (implementation == nullptr) {
         return nullptr;
+    }
 #if defined(_WIN32)
     FARPROC proc = GetProcAddress((HINSTANCE)implementation, symbolName);
     LPTSTR msg = nullptr;
@@ -147,8 +150,9 @@ void* SharedLibrary::getSymbol(const char* symbolName)
     dlerror();
     void* func = dlsym(implementation, symbolName);
     char* msg = dlerror();
-    if (msg)
+    if (msg != nullptr) {
         err_message = msg;
+    }
     return func;
 #endif
 }

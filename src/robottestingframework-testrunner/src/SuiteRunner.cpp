@@ -49,20 +49,23 @@ void SuiteRunner::reset()
     PluginRunner::reset();
 
     // delete all the suites which was created
-    for (auto& suite : suites)
+    for (auto& suite : suites) {
         delete suite;
+    }
     suites.clear();
 
     // delete all the fixture plugin loader which was created
-    for (auto& fixtureLoader : fixtureLoaders)
+    for (auto& fixtureLoader : fixtureLoaders) {
         delete fixtureLoader;
+    }
     fixtureLoaders.clear();
 }
 
 bool SuiteRunner::loadSuite(std::string filename)
 {
-    if (verbose)
+    if (verbose) {
         cout << "Loading " << filename << endl;
+    }
 
     ErrorLogger& logger = ErrorLogger::Instance();
 
@@ -92,7 +95,7 @@ bool SuiteRunner::loadSuite(std::string filename)
 
     //retrieving root element
     TiXmlElement* root = doc.RootElement();
-    if (!root) {
+    if (root == nullptr) {
         string error = Asserter::format("Syntax error while loading '%s'. (No root element)",
                                         filename.c_str());
         logger.addError(error);
@@ -109,24 +112,27 @@ bool SuiteRunner::loadSuite(std::string filename)
 
 
     if (!(rootTagIsSuit || rootTagIsSuite)) {
-        if (verbose)
+        if (verbose) {
             cout << filename << " is not a test suite file!" << endl;
+        }
         return false;
     }
 
     std::string environment;
-    std::string name = (root->Attribute("name")) ? root->Attribute("name") : "unknown";
+    std::string name = (root->Attribute("name")) != nullptr ? root->Attribute("name") : "unknown";
     TestSuite* suite = new TestSuite(name);
 
     // retrieving test cases
-    for (TiXmlElement* test = root->FirstChildElement(); test;
+    for (TiXmlElement* test = root->FirstChildElement(); test != nullptr;
          test = test->NextSiblingElement()) {
         if (PluginFactory::compare(test->Value(), "description")) {
-            if (test->GetText() != nullptr)
+            if (test->GetText() != nullptr) {
                 suite->setDescription(test->GetText());
+            }
         } else if (PluginFactory::compare(test->Value(), "environment")) {
-            if (test->GetText() != nullptr)
+            if (test->GetText() != nullptr) {
                 environment = test->GetText();
+            }
         } else if (PluginFactory::compare(test->Value(), "fixture") && test->GetText() != nullptr) {
             // load the fixture manager plugin
             auto* loader = new DllFixturePluginLoader();
@@ -135,8 +141,9 @@ bool SuiteRunner::loadSuite(std::string filename)
             FixtureManager* fixture = loader->open(pluginName);
             if (fixture != nullptr) {
                 // set the fixture manager param
-                if (test->Attribute("param"))
+                if (test->Attribute("param") != nullptr) {
                     fixture->setParam(test->Attribute("param"));
+                }
                 // set the fixture manager for the current suit
                 suite->addFixtureManager(fixture);
                 // keep track of the created plugin loaders
@@ -152,10 +159,11 @@ bool SuiteRunner::loadSuite(std::string filename)
 
             PluginLoader* loader;
             std::string pluginName = test->GetText();
-            if (test->Attribute("type"))
+            if (test->Attribute("type") != nullptr) {
                 loader = PluginFactory::createByType(test->Attribute("type"));
-            else
+            } else {
                 loader = PluginFactory::createByName(test->GetText());
+            }
 
             if (loader == nullptr) {
                 ErrorLogger::Instance().addError("cannot create any known plug-in loader for " + pluginName);
@@ -167,10 +175,11 @@ bool SuiteRunner::loadSuite(std::string filename)
                 // set the test case environment
                 testcase->setEnvironment(environment);
                 // set the test case param
-                if (test->Attribute("param"))
+                if (test->Attribute("param") != nullptr) {
                     testcase->setParam(test->Attribute("param"));
+                }
                 // set the test case repetition
-                if (test->Attribute("repetition")) {
+                if (test->Attribute("repetition") != nullptr) {
                     char* endptr;
                     auto rep = (unsigned int)strtol(test->Attribute("repetition"), &endptr, 10);
                     if (endptr == nullptr) {
@@ -205,12 +214,14 @@ bool SuiteRunner::loadSuite(std::string filename)
 bool SuiteRunner::loadMultipleSuites(std::string path,
                                      bool recursive)
 {
-    if (!recursive)
+    if (!recursive) {
         return loadSuitesFromPath(path);
+    }
 
     // load from subfolders
-    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1))
+    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1)) {
         path = path + string(PATH_SEPERATOR);
+    }
 
     DIR* dir;
     struct dirent* entry;
@@ -221,7 +232,7 @@ bool SuiteRunner::loadMultipleSuites(std::string path,
 
     loadSuitesFromPath(path);
 
-    while ((entry = readdir(dir))) {
+    while ((entry = readdir(dir)) != nullptr) {
         if ((entry->d_type == DT_DIR) && (string(entry->d_name) != string(".")) && (string(entry->d_name) != string(".."))) {
             string name = path + string(entry->d_name);
             loadMultipleSuites(name, recursive);
@@ -233,11 +244,13 @@ bool SuiteRunner::loadMultipleSuites(std::string path,
 
 bool SuiteRunner::loadSuitesFromPath(std::string path)
 {
-    if (verbose)
+    if (verbose) {
         cout << "Loading suites from " << path << endl;
+    }
 
-    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1))
+    if ((path.rfind(PATH_SEPERATOR) == string::npos) || (path.rfind(PATH_SEPERATOR) != path.size() - 1)) {
         path = path + string(PATH_SEPERATOR);
+    }
 
     DIR* dir;
     struct dirent* entry;
@@ -246,13 +259,14 @@ bool SuiteRunner::loadSuitesFromPath(std::string path)
         return false;
     }
 
-    while ((entry = readdir(dir))) {
+    while ((entry = readdir(dir)) != nullptr) {
         string name = entry->d_name;
         if (name.size() > 4) {
             // check for xml file
             string ext = name.substr(name.size() - 4, 4);
-            if (PluginFactory::compare(ext.c_str(), ".xml"))
+            if (PluginFactory::compare(ext.c_str(), ".xml")) {
                 loadSuite(path + name);
+            }
         }
     }
     closedir(dir);

@@ -68,32 +68,34 @@ bool TextOutputter::write(std::string filename, bool summary, TestMessage* error
         ResultEvent* e = *itr;
 
         // start suit
-        if (dynamic_cast<ResultEventStartSuite*>(e))
+        if (dynamic_cast<ResultEventStartSuite*>(e) != nullptr) {
             outputter << "Test suite " << e->getTest()->getName() << " started..." << endl;
-        // end suit
-        else if (dynamic_cast<ResultEventEndSuite*>(e)) {
+            // end suit
+        } else if (dynamic_cast<ResultEventEndSuite*>(e) != nullptr) {
             outputter << "Test suite " << e->getTest()->getName();
-            if (e->getTest()->succeeded())
+            if (e->getTest()->succeeded()) {
                 outputter << " passed!" << endl;
-            else
+            } else {
                 outputter << " failed!" << endl;
+            }
         }
 
         // start test case
-        else if (dynamic_cast<ResultEventStartTest*>(e))
+        else if (dynamic_cast<ResultEventStartTest*>(e) != nullptr) {
             outputter << "Test case " << e->getTest()->getName() << " started..." << endl;
 
-        // end test case
-        else if (dynamic_cast<ResultEventEndTest*>(e)) {
+            // end test case
+        } else if (dynamic_cast<ResultEventEndTest*>(e) != nullptr) {
             outputter << "Test case " << e->getTest()->getName();
-            if (e->getTest()->succeeded())
+            if (e->getTest()->succeeded()) {
                 outputter << " passed!" << endl;
-            else
+            } else {
                 outputter << " failed!" << endl;
+            }
         }
 
         // report event
-        else if (dynamic_cast<ResultEventReport*>(e)) {
+        else if (dynamic_cast<ResultEventReport*>(e) != nullptr) {
             outputter << MSG_REPORT << "(" << e->getTest()->getName() << ") "
                       << e->getMessage().getMessage() << ": " << e->getMessage().getDetail() << endl;
             if (verbose && e->getMessage().getSourceLineNumber() != 0) {
@@ -104,7 +106,7 @@ bool TextOutputter::write(std::string filename, bool summary, TestMessage* error
         }
 
         // failure event
-        else if (dynamic_cast<ResultEventFailure*>(e)) {
+        else if (dynamic_cast<ResultEventFailure*>(e) != nullptr) {
             outputter << MSG_FAIL << "(" << e->getTest()->getName() << ") "
                       << e->getMessage().getMessage() << ": " << e->getMessage().getDetail() << endl;
             if (verbose && e->getMessage().getSourceLineNumber() != 0) {
@@ -115,7 +117,7 @@ bool TextOutputter::write(std::string filename, bool summary, TestMessage* error
         }
 
         // error event
-        else if (dynamic_cast<ResultEventError*>(e)) {
+        else if (dynamic_cast<ResultEventError*>(e) != nullptr) {
             outputter << MSG_ERROR << "(" << e->getTest()->getName() << ") "
                       << e->getMessage().getMessage() << ": " << e->getMessage().getDetail() << endl;
             if (verbose && e->getMessage().getSourceLineNumber() != 0) {

@@ -53,10 +53,12 @@ using namespace std;
 void reportErrors()
 {
     ErrorLogger& logger = ErrorLogger::Instance();
-    for (unsigned int i = 0; i < logger.errorCount(); i++)
+    for (unsigned int i = 0; i < logger.errorCount(); i++) {
         cout << "[robottestingframework-testrunner] " << logger.getLastError() << endl;
-    for (unsigned int i = 0; i < logger.warningCount(); i++)
+    }
+    for (unsigned int i = 0; i < logger.warningCount(); i++) {
         cout << "[robottestingframework-testrunner] " << logger.getLastWarning() << endl;
+    }
 }
 
 void addOptions(cmdline::parser& cmd)
@@ -106,8 +108,9 @@ void signalHandler(int signum)
         exit(EXIT_FAILURE);
     }
 
-    if (currentRunner)
+    if (currentRunner != nullptr) {
         currentRunner->interrupt();
+    }
 }
 
 #if defined(_WIN32)
@@ -134,19 +137,23 @@ int main(int argc, char* argv[])
 #if defined(_WIN32)
     SetConsoleCtrlHandler((PHANDLER_ROUTINE)CtrlHandler, TRUE);
 #else
-    struct sigaction new_action, old_action;
+    struct sigaction new_action;
+    struct sigaction old_action;
     new_action.sa_handler = signalHandler;
     sigemptyset(&new_action.sa_mask);
     new_action.sa_flags = 0;
     sigaction(SIGINT, nullptr, &old_action);
-    if (old_action.sa_handler != SIG_IGN)
+    if (old_action.sa_handler != SIG_IGN) {
         sigaction(SIGINT, &new_action, nullptr);
+    }
     sigaction(SIGHUP, nullptr, &old_action);
-    if (old_action.sa_handler != SIG_IGN)
+    if (old_action.sa_handler != SIG_IGN) {
         sigaction(SIGHUP, &new_action, nullptr);
+    }
     sigaction(SIGTERM, nullptr, &old_action);
-    if (old_action.sa_handler != SIG_IGN)
+    if (old_action.sa_handler != SIG_IGN) {
         sigaction(SIGTERM, &new_action, nullptr);
+    }
 #endif
 
     cmdline::parser cmd;
@@ -160,7 +167,7 @@ int main(int argc, char* argv[])
     }
 
     // exit if no test or suite is given
-    if (!cmd.get<string>("test").size() && !cmd.get<string>("tests").size() && !cmd.get<string>("suite").size() && !cmd.get<string>("suites").size() && !cmd.get<string>("suit").size() && !cmd.get<string>("suits").size()) {
+    if (cmd.get<string>("test").empty() && cmd.get<string>("tests").empty() && cmd.get<string>("suite").empty() && cmd.get<string>("suites").empty() && cmd.get<string>("suit").empty() && cmd.get<string>("suits").empty()) {
         cout << cmd.usage();
         return EXIT_FAILURE;
     }
@@ -229,10 +236,11 @@ int main(int argc, char* argv[])
     // create a test listener to collect the result
     ConsoleListener listener(cmd.exist("detail"));
     result.addListener(&listener);
-    if (!cmd.exist("verbose"))
+    if (!cmd.exist("verbose")) {
         listener.hideUncriticalMessages();
+    }
 
-        // create web listener if enabled
+    // create web listener if enabled
 #if defined(ENABLE_WEB_LISTENER)
     WebProgressListener* webListener = nullptr;
 #endif
@@ -292,14 +300,14 @@ int main(int argc, char* argv[])
     currentRunner = nullptr;
 
     int exitCode;
-    if ((collector.failedCount() == 0) && (collector.failedSuiteCount() == 0))
+    if ((collector.failedCount() == 0) && (collector.failedSuiteCount() == 0)) {
         exitCode = EXIT_SUCCESS;
-    else
+    } else {
         exitCode = EXIT_FAILURE;
+    }
 
 #if defined(ENABLE_WEB_LISTENER)
-    if (webListener)
-        delete webListener;
+    delete webListener;
 #endif
 
     return exitCode;

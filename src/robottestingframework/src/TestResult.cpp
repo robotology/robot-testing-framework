@@ -23,7 +23,7 @@
 
 using namespace robottestingframework;
 
-#define CALL_LISTENERS(method, ...)                                            \
+#define CALL_LISTENERS(method, ...)        \
     for (const auto& listener : listeners) \
         listener->method(__VA_ARGS__);
 

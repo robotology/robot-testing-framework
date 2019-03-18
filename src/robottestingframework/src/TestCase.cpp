@@ -40,9 +40,9 @@ using namespace std;
  * to the result collector.
  */
 static TestCase* _currentTestCase = nullptr;
-static void run_signal_handler(int)
+static void run_signal_handler(int /*unused*/)
 {
-    if (_currentTestCase) {
+    if (_currentTestCase != nullptr) {
         _currentTestCase->getResult()->addError(_currentTestCase,
                                                 TestMessage("asserts error with exception",
                                                             "Terminated due to segmentation violation/abortion within the test case!",
@@ -155,11 +155,11 @@ void TestCase::run(TestResult& rsl)
             successful = false;
             result->endTest(this);
             // clear allocated memory for arguments
-            if (szcmd) {
+            if (szcmd != nullptr) {
                 delete[] szcmd;
                 szcmd = nullptr;
             }
-            if (szarg) {
+            if (szarg != nullptr) {
                 delete[] szarg;
                 szarg = nullptr;
             }
@@ -197,11 +197,11 @@ void TestCase::run(TestResult& rsl)
     result->endTest(this);
 
     // clear allocated memory for arguments if it is not cleared
-    if (szcmd) {
+    if (szcmd != nullptr) {
         delete[] szcmd;
         szcmd = nullptr;
     }
-    if (szarg) {
+    if (szarg != nullptr) {
         delete[] szarg;
         szarg = nullptr;
     }

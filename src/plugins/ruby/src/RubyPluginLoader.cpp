@@ -175,8 +175,9 @@ std::string RubyPluginLoaderImpl::getFileName()
 bool RubyPluginLoaderImpl::setup(int argc, char** argv)
 {
     VALUE param = rb_ary_new();
-    for (int i = 0; i < argc; i++)
+    for (int i = 0; i < argc; i++) {
         rb_ary_push(param, rb_str_new_cstr(argv[i]));
+    }
     ID id = rb_intern("setup");
     // TODO: check the return value
     int state = protectedSetup(testcase, id, param, this);
@@ -266,8 +267,9 @@ std::string RubyPluginLoaderImpl::getRubyBackTrace()
         VALUE ary = rb_funcall(
             rb_errinfo(), rb_intern("backtrace"), 0);
         int c;
-        for (c = 0; c < (RARRAY_LEN(ary)); c++)
+        for (c = 0; c < (RARRAY_LEN(ary)); c++) {
             btrace += Asserter::format("%s, ", StringValueCStr(RARRAY_PTR(ary)[c]));
+        }
     }
     return btrace;
 }
@@ -279,8 +281,9 @@ std::string RubyPluginLoaderImpl::extractFileName(const std::string& path)
 #else
     size_t i = path.rfind('/', path.length());
 #endif
-    if (i != string::npos)
+    if (i != string::npos) {
         return (path.substr(i + 1, path.length() - i));
+    }
     return (path);
 }
 
@@ -299,8 +302,9 @@ RubyPluginLoader::~RubyPluginLoader()
 
 void RubyPluginLoader::close()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         delete ((RubyPluginLoaderImpl*)implementation);
+    }
     implementation = nullptr;
 }
 
@@ -313,7 +317,8 @@ TestCase* RubyPluginLoader::open(const std::string filename)
 
 std::string RubyPluginLoader::getLastError()
 {
-    if (implementation)
+    if (implementation != nullptr) {
         return ((RubyPluginLoaderImpl*)implementation)->getLastError();
+    }
     return string("");
 }

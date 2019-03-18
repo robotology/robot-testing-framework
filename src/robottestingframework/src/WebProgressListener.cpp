@@ -165,7 +165,7 @@ WebProgressListenerImpl::WebProgressListenerImpl(unsigned int port,
     this->verbose = verbose;
     this->port = port;
     server = mg_create_server(this, WebProgressListenerImpl::handler);
-    if (server) {
+    if (server != nullptr) {
         std::string port_str = Asserter::format("%d", port);
         mg_set_option(server,
                       "listening_port",
@@ -179,13 +179,13 @@ WebProgressListenerImpl::~WebProgressListenerImpl()
 {
     shouldStop = true;
     // stop the pooling thread
-    if (updater) {
+    if (updater != nullptr) {
         updater->join();
         delete updater;
         updater = nullptr;
     }
     // delete the web server
-    if (server) {
+    if (server != nullptr) {
         // ensure the last message delivery (?)
         mg_poll_server(server, 1000);
         mg_destroy_server(&server);
@@ -238,10 +238,11 @@ int WebProgressListenerImpl::handler(struct mg_connection* conn,
             mg_send_data(conn, html_page.c_str(), strlen(html_page.c_str()));
         }
         return MG_TRUE;
-    } else if (ev == MG_AUTH)
+    }
+    if (ev == MG_AUTH) {
         return MG_TRUE;
-    else
-        return MG_FALSE;
+    }
+    return MG_FALSE;
 }
 
 std::string WebProgressListenerImpl::encode(const std::string& data)
@@ -322,8 +323,9 @@ void WebProgressListenerImpl::startTest(const Test* test)
                                    ENDC);
     critical.lock();
     // if there is no test suite, use the test case's name
-    if (suite_name.size() == 0)
+    if (suite_name.empty()) {
         suite_name = test->getName();
+    }
     testStatus.push_back(TestStatus::Running);
     result += text;
     critical.unlock();
@@ -352,7 +354,7 @@ void WebProgressListenerImpl::startTestSuite(const Test* test)
     result += text;
     suite_name = test->getName();
     auto suite = dynamic_cast<const TestSuite*>(test);
-    if (suite) {
+    if (suite != nullptr) {
         suite_size = suite->size();
     }
     critical.unlock();

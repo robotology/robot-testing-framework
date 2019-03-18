@@ -31,10 +31,10 @@ void Arguments::split(char* line, char** args)
 {
     char* pTmp = strchr(line, ' ');
 
-    if (pTmp) {
+    if (pTmp != nullptr) {
         *pTmp = '\0';
         pTmp++;
-        while ((*pTmp) && (*pTmp == ' ')) {
+        while (((*pTmp) != 0) && (*pTmp == ' ')) {
             pTmp++;
         }
         if (*pTmp == '\0') {
@@ -56,13 +56,13 @@ void Arguments::parse(char* azParam,
 
     // Protect spaces inside quotes, but lose the quotes
     for (i = 0; i < len; i++) {
-        if ((!quoted) && ('"' == azParam[i])) {
+        if ((quoted == 0) && ('"' == azParam[i])) {
             quoted = 1;
             azParam[i] = ' ';
-        } else if ((quoted) && ('"' == azParam[i])) {
+        } else if (((quoted) != 0) && ('"' == azParam[i])) {
             quoted = 0;
             azParam[i] = ' ';
-        } else if ((quoted) && (' ' == azParam[i])) {
+        } else if (((quoted) != 0) && (' ' == azParam[i])) {
             azParam[i] = '\1';
         }
     }

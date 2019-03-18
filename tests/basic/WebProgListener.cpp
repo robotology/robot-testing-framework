@@ -131,8 +131,9 @@ public:
         std::stringstream ssbuff(buffer);
         std::string line;
         while (std::getline(ssbuff, line, '\n')) {
-            if (line.size() && line[0] == '{')
+            if (line.size() && line[0] == '{') {
                 break;
+            }
         }
 
         ROBOTTESTINGFRAMEWORK_TEST_CHECK(line.size() > 2, "Cheking the json result size returned by web listener");

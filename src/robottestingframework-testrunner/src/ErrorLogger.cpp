@@ -29,8 +29,9 @@ ErrorLogger* ErrorLogger::pInstance = nullptr;
 
 ErrorLogger& ErrorLogger::Instance()
 {
-    if (!pInstance)
+    if (pInstance == nullptr) {
         pInstance = new ErrorLogger;
+    }
     return *pInstance;
 }
 
@@ -48,8 +49,9 @@ void ErrorLogger::addError(const std::string message)
 
 std::string ErrorLogger::getLastError()
 {
-    if (errors.empty())
+    if (errors.empty()) {
         return "";
+    }
     static string msg;
     msg = errors.back();
     errors.pop_back();
@@ -58,8 +60,9 @@ std::string ErrorLogger::getLastError()
 
 std::string ErrorLogger::getLastWarning()
 {
-    if (warnings.empty())
+    if (warnings.empty()) {
         return "";
+    }
     static string msg;
     msg = warnings.back();
     warnings.pop_back();
