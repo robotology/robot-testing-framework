@@ -182,7 +182,7 @@ bool LuaPluginLoaderImpl::setup(int argc, char** argv)
 
 // TODO: in the Lua test plugin, the teardown will not be called
 //       after any exception. This is not coherent with the c++
-//       implementaion of test cases.
+//       implementation of test cases.
 void LuaPluginLoaderImpl::tearDown()
 {
     if (getLocalFunction("tearDown")) {
@@ -376,7 +376,7 @@ std::string LuaPluginLoaderImpl::extractFileName(const std::string& path)
  * @brief LuaPluginLoader
  */
 LuaPluginLoader::LuaPluginLoader() :
-        implementaion(nullptr)
+        implementation(nullptr)
 {
 }
 
@@ -387,21 +387,21 @@ LuaPluginLoader::~LuaPluginLoader()
 
 void LuaPluginLoader::close()
 {
-    if (implementaion)
-        delete ((LuaPluginLoaderImpl*)implementaion);
-    implementaion = nullptr;
+    if (implementation)
+        delete ((LuaPluginLoaderImpl*)implementation);
+    implementation = nullptr;
 }
 
 TestCase* LuaPluginLoader::open(const std::string filename)
 {
     close();
-    implementaion = new LuaPluginLoaderImpl();
-    return ((LuaPluginLoaderImpl*)implementaion)->open(filename);
+    implementation = new LuaPluginLoaderImpl();
+    return ((LuaPluginLoaderImpl*)implementation)->open(filename);
 }
 
 const std::string LuaPluginLoader::getLastError()
 {
-    if (implementaion)
-        return ((LuaPluginLoaderImpl*)implementaion)->getLastError();
+    if (implementation)
+        return ((LuaPluginLoaderImpl*)implementation)->getLastError();
     return string("");
 }

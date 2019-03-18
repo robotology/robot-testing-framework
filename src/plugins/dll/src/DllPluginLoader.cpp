@@ -32,7 +32,7 @@ using namespace shlibpp;
  * @brief DllPluginLoader
  */
 DllPluginLoader::DllPluginLoader() :
-        implementaion(nullptr)
+        implementation(nullptr)
 {
 }
 
@@ -43,21 +43,21 @@ DllPluginLoader::~DllPluginLoader()
 
 void DllPluginLoader::close()
 {
-    if (implementaion)
-        delete ((DllPluginLoaderImpl<TestCase>*)implementaion);
-    implementaion = nullptr;
+    if (implementation)
+        delete ((DllPluginLoaderImpl<TestCase>*)implementation);
+    implementation = nullptr;
 }
 
 TestCase* DllPluginLoader::open(const std::string filename)
 {
     close();
-    implementaion = new DllPluginLoaderImpl<TestCase>();
-    return ((DllPluginLoaderImpl<TestCase>*)implementaion)->open(filename, ROBOTTESTINGFRAMEWORK_PLUGIN_FACTORY_NAME);
+    implementation = new DllPluginLoaderImpl<TestCase>();
+    return ((DllPluginLoaderImpl<TestCase>*)implementation)->open(filename, ROBOTTESTINGFRAMEWORK_PLUGIN_FACTORY_NAME);
 }
 
 const std::string DllPluginLoader::getLastError()
 {
-    if (implementaion)
-        return ((DllPluginLoaderImpl<TestCase>*)implementaion)->getLastError();
+    if (implementation)
+        return ((DllPluginLoaderImpl<TestCase>*)implementation)->getLastError();
     return string("");
 }

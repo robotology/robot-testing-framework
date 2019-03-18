@@ -398,7 +398,7 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
  * @brief PythonPluginLoader
  */
 PythonPluginLoader::PythonPluginLoader() :
-        implementaion(nullptr)
+        implementation(nullptr)
 {
 }
 
@@ -409,21 +409,21 @@ PythonPluginLoader::~PythonPluginLoader()
 
 void PythonPluginLoader::close()
 {
-    if (implementaion)
-        delete ((PythonPluginLoaderImpl*)implementaion);
-    implementaion = nullptr;
+    if (implementation)
+        delete ((PythonPluginLoaderImpl*)implementation);
+    implementation = nullptr;
 }
 
 TestCase* PythonPluginLoader::open(const std::string filename)
 {
     close();
-    implementaion = new PythonPluginLoaderImpl();
-    return ((PythonPluginLoaderImpl*)implementaion)->open(filename);
+    implementation = new PythonPluginLoaderImpl();
+    return ((PythonPluginLoaderImpl*)implementation)->open(filename);
 }
 
 const std::string PythonPluginLoader::getLastError()
 {
-    if (implementaion)
-        return ((PythonPluginLoaderImpl*)implementaion)->getLastError();
+    if (implementation)
+        return ((PythonPluginLoaderImpl*)implementation)->getLastError();
     return string("");
 }

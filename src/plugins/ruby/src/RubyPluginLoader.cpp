@@ -288,7 +288,7 @@ std::string RubyPluginLoaderImpl::extractFileName(const std::string& path)
  * @brief RubyPluginLoader
  */
 RubyPluginLoader::RubyPluginLoader() :
-        implementaion(nullptr)
+        implementation(nullptr)
 {
 }
 
@@ -299,21 +299,21 @@ RubyPluginLoader::~RubyPluginLoader()
 
 void RubyPluginLoader::close()
 {
-    if (implementaion)
-        delete ((RubyPluginLoaderImpl*)implementaion);
-    implementaion = nullptr;
+    if (implementation)
+        delete ((RubyPluginLoaderImpl*)implementation);
+    implementation = nullptr;
 }
 
 TestCase* RubyPluginLoader::open(const std::string filename)
 {
     close();
-    implementaion = new RubyPluginLoaderImpl();
-    return ((RubyPluginLoaderImpl*)implementaion)->open(filename);
+    implementation = new RubyPluginLoaderImpl();
+    return ((RubyPluginLoaderImpl*)implementation)->open(filename);
 }
 
 const std::string RubyPluginLoader::getLastError()
 {
-    if (implementaion)
-        return ((RubyPluginLoaderImpl*)implementaion)->getLastError();
+    if (implementation)
+        return ((RubyPluginLoaderImpl*)implementation)->getLastError();
     return string("");
 }

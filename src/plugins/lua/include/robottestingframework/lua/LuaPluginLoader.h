@@ -68,7 +68,7 @@ public:
     const std::string getLastError() override;
 
 private:
-    void* implementaion;
+    void* implementation;
 };
 
 } // namespace robottestingframework
