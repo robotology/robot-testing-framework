@@ -69,12 +69,12 @@ void TestMessage::setDetail(const std::string detail)
     strDetail = detail;
 }
 
-const std::string TestMessage::getMessage()
+std::string TestMessage::getMessage()
 {
     return strMessage;
 }
 
-const std::string TestMessage::getDetail()
+std::string TestMessage::getDetail()
 {
     return strDetail;
 }
@@ -97,7 +97,7 @@ void TestMessage::setSourceFileName(const std::string filename)
     strFileName = filename;
 }
 
-const std::string TestMessage::getSourceFileName()
+std::string TestMessage::getSourceFileName()
 {
     return strFileName;
 }

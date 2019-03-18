@@ -92,13 +92,13 @@ public:
      * @brief getMessage returns the message string
      * @return string
      */
-    const std::string getMessage();
+    std::string getMessage();
 
     /**
      * @brief getMessage returns the detail string
      * @return string
      */
-    const std::string getDetail();
+    std::string getDetail();
 
 
     /**
@@ -129,7 +129,7 @@ public:
      * @return the source file name of the code for
      *         the corresponding message
      */
-    const std::string getSourceFileName();
+    std::string getSourceFileName();
 
     /**
      * @brief clears the test message

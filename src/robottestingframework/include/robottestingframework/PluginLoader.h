@@ -64,7 +64,7 @@ public:
      * @brief getLastError gets the last error if any.
      * @return returns the last error string.
      */
-    virtual const std::string getLastError() = 0;
+    virtual std::string getLastError() = 0;
 };
 
 } // namespace plugin

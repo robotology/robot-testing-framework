@@ -64,7 +64,7 @@ public:
      * @brief getLastError gets the last error if any.
      * @return returns the last error string.
      */
-    const std::string getLastError();
+    std::string getLastError();
 
 private:
     void* implementation;

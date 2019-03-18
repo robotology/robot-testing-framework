@@ -148,13 +148,13 @@ void LuaPluginLoaderImpl::setTestName(const std::string name)
     Test::setName(name);
 }
 
-const std::string LuaPluginLoaderImpl::getLastError()
+std::string LuaPluginLoaderImpl::getLastError()
 {
 
     return error;
 }
 
-const std::string LuaPluginLoaderImpl::getFileName()
+std::string LuaPluginLoaderImpl::getFileName()
 {
     return filename;
 }
@@ -399,7 +399,7 @@ TestCase* LuaPluginLoader::open(const std::string filename)
     return ((LuaPluginLoaderImpl*)implementation)->open(filename);
 }
 
-const std::string LuaPluginLoader::getLastError()
+std::string LuaPluginLoader::getLastError()
 {
     if (implementation)
         return ((LuaPluginLoaderImpl*)implementation)->getLastError();

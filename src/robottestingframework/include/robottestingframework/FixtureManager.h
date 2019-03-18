@@ -141,7 +141,7 @@ public:
      * for the fixture manager
      * @return a string parameter
      */
-    const std::string getParam();
+    std::string getParam();
 
 private:
     std::string param;

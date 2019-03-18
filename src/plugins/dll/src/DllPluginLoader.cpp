@@ -55,7 +55,7 @@ TestCase* DllPluginLoader::open(const std::string filename)
     return ((DllPluginLoaderImpl<TestCase>*)implementation)->open(filename, ROBOTTESTINGFRAMEWORK_PLUGIN_FACTORY_NAME);
 }
 
-const std::string DllPluginLoader::getLastError()
+std::string DllPluginLoader::getLastError()
 {
     if (implementation)
         return ((DllPluginLoaderImpl<TestCase>*)implementation)->getLastError();

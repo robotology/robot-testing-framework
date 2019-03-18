@@ -227,12 +227,12 @@ void PythonPluginLoaderImpl::setTestName(const std::string name)
     Test::setName(name);
 }
 
-const std::string PythonPluginLoaderImpl::getLastError()
+std::string PythonPluginLoaderImpl::getLastError()
 {
     return error;
 }
 
-const std::string PythonPluginLoaderImpl::getFileName()
+std::string PythonPluginLoaderImpl::getFileName()
 {
     return filename;
 }
@@ -421,7 +421,7 @@ TestCase* PythonPluginLoader::open(const std::string filename)
     return ((PythonPluginLoaderImpl*)implementation)->open(filename);
 }
 
-const std::string PythonPluginLoader::getLastError()
+std::string PythonPluginLoader::getLastError()
 {
     if (implementation)
         return ((PythonPluginLoaderImpl*)implementation)->getLastError();

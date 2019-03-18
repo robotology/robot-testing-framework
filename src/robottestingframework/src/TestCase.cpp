@@ -88,7 +88,7 @@ void TestCase::setParam(const std::string param)
     this->param = param;
 }
 
-const std::string TestCase::getParam()
+std::string TestCase::getParam()
 {
     return param;
 }
@@ -99,7 +99,7 @@ void TestCase::setEnvironment(const std::string environment)
     this->environment = environment;
 }
 
-const std::string TestCase::getEnvironment()
+std::string TestCase::getEnvironment()
 {
     return environment;
 }

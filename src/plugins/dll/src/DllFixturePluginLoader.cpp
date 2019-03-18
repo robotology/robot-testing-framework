@@ -56,7 +56,7 @@ FixtureManager* DllFixturePluginLoader::open(const std::string filename)
     return ((DllPluginLoaderImpl<FixtureManager>*)implementation)->open(filename, ROBOTTESTINGFRAMEWORK_FIXTURE_FACTORY_NAME);
 }
 
-const std::string DllFixturePluginLoader::getLastError()
+std::string DllFixturePluginLoader::getLastError()
 {
     if (implementation)
         return ((DllPluginLoaderImpl<FixtureManager>*)implementation)->getLastError();

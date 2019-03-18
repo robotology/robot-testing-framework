@@ -91,7 +91,7 @@ void FixtureManager::setParam(const std::string param)
     this->param = param;
 }
 
-const std::string FixtureManager::getParam()
+std::string FixtureManager::getParam()
 {
     return param;
 }

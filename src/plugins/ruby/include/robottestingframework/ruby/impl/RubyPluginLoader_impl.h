@@ -66,13 +66,13 @@ public:
      * @brief getLastError gets the last error if any.
      * @return returns the last error string.
      */
-    const std::string getLastError();
+    std::string getLastError();
 
     /**
      * @brief getFileName returns the loaded script file name
      * @return the script file name
      */
-    const std::string getFileName();
+    std::string getFileName();
 
     /**
      * @brief setTestName set the test case name

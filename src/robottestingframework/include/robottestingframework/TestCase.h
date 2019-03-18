@@ -119,7 +119,7 @@ public:
      * for the test case
      * @return a string paramter
      */
-    const std::string getParam();
+    std::string getParam();
 
 
     /**
@@ -137,7 +137,7 @@ public:
      * for the test case
      * @return A environment string
      */
-    const std::string getEnvironment();
+    std::string getEnvironment();
 
     /**
      * @brief setRepetition sets the run repetition

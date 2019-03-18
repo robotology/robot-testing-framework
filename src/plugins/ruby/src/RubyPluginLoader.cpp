@@ -161,12 +161,12 @@ void RubyPluginLoaderImpl::setTestName(const std::string name)
     Test::setName(name);
 }
 
-const std::string RubyPluginLoaderImpl::getLastError()
+std::string RubyPluginLoaderImpl::getLastError()
 {
     return error;
 }
 
-const std::string RubyPluginLoaderImpl::getFileName()
+std::string RubyPluginLoaderImpl::getFileName()
 {
     return extractFileName(filename);
 }
@@ -311,7 +311,7 @@ TestCase* RubyPluginLoader::open(const std::string filename)
     return ((RubyPluginLoaderImpl*)implementation)->open(filename);
 }
 
-const std::string RubyPluginLoader::getLastError()
+std::string RubyPluginLoader::getLastError()
 {
     if (implementation)
         return ((RubyPluginLoaderImpl*)implementation)->getLastError();
