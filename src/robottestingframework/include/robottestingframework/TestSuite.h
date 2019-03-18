@@ -40,7 +40,7 @@ namespace robottestingframework {
  * is required for the tests before executing the tests. After running all the tests, the \c tearDown()
  * method of the FixtureManager is called to tear down the fixture.
  *
- * The \c fixtureCollapsed method is used by a fixture manager to inform the test suit
+ * The \c fixtureCollapsed method is used by a fixture manager to inform the test suite
  * that the corresponding fixture has been collapsed. In this case, an exception is thrown
  * by the TestSuite and the remaining tests will not be executed any more.  This method can be
  * also overriden by a subclass if any specific action is required to be taken (such as retrying
@@ -98,7 +98,7 @@ public:
 
     /**
      * @brief fixtureCollapsed is called by a fixture manager
-     *        (if it is already setup) to inform the test suit
+     *        (if it is already setup) to inform the test suite
      *        that the corresponding fixture has been collapsed.
      * @param reason An error message indicates the reason for
      *        collapsing the fixture.

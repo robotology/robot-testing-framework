@@ -113,11 +113,11 @@ int main(int argc, char** argv)
     // create a test suite
     TestSuite suite("MyTestSuite");
 
-    // create a fixture manager for the test suit
+    // create a fixture manager for the test suite
     MyFixture fixture(&suite);
     suite.addFixtureManager(&fixture);
 
-    // creates test cases and add them to the suit
+    // creates test cases and add them to the suite
     MyTest1 test1;
     MyTest2 test2;
     suite.addTest(&test1);

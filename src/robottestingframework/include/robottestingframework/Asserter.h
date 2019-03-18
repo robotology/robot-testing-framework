@@ -81,7 +81,7 @@ public:
 
     /**
      * @brief report report a message to the
-     * result collector of the given TestSuit
+     * result collector of the given TestSuite
      * @param msg The corresponding message
      * @param testsuite The owner of the message (reporter)
      * @note report does not throw any exception!

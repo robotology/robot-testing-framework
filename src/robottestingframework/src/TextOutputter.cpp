@@ -67,10 +67,10 @@ bool TextOutputter::write(std::string filename, bool summary, TestMessage* error
     for (itr = events.begin(); itr != events.end(); ++itr) {
         ResultEvent* e = *itr;
 
-        // start suit
+        // start suite
         if (dynamic_cast<ResultEventStartSuite*>(e) != nullptr) {
             outputter << "Test suite " << e->getTest()->getName() << " started..." << endl;
-            // end suit
+            // end suite
         } else if (dynamic_cast<ResultEventEndSuite*>(e) != nullptr) {
             outputter << "Test suite " << e->getTest()->getName();
             if (e->getTest()->succeeded()) {

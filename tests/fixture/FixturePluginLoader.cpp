@@ -95,7 +95,7 @@ public:
         // create a test suites
         MyTestSuite suite;
 
-        // create a fixture manager from the plugin for the test suit
+        // create a fixture manager from the plugin for the test suite
         ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("Loading the fixture manager plugin (%s)", fixtureFilename.c_str()));
         auto* loader = new DllFixturePluginLoader();
         FixtureManager* fixture = loader->open(fixtureFilename);

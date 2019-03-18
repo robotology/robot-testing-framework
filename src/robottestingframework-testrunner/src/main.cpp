@@ -71,10 +71,6 @@ void addOptions(cmdline::parser& cmd)
 
     cmd.add<string>("suites", '\0', "Runs multiple test suites from the given folder which contains XML files.", false);
 
-    cmd.add<string>("suit", '\0', "Runs a single test suite from the given XML file (legacy option that will be removed in RTF 1.5, do not use).", false);
-
-    cmd.add<string>("suits", '\0', "Runs multiple test suites from the given folder which contains XML files (legacy option that will be removed in RTF 1.5, do not use).", false);
-
     cmd.add("no-output", '\0', "Avoids generating any output file");
 
     cmd.add("no-summary", '\0', "Avoids reporting test summary");
@@ -167,7 +163,10 @@ int main(int argc, char* argv[])
     }
 
     // exit if no test or suite is given
-    if (cmd.get<string>("test").empty() && cmd.get<string>("tests").empty() && cmd.get<string>("suite").empty() && cmd.get<string>("suites").empty() && cmd.get<string>("suit").empty() && cmd.get<string>("suits").empty()) {
+    if (cmd.get<string>("test").empty() &&
+        cmd.get<string>("tests").empty() &&
+        cmd.get<string>("suite").empty() &&
+        cmd.get<string>("suites").empty()) {
         cout << cmd.usage();
         return EXIT_FAILURE;
     }
@@ -198,9 +197,6 @@ int main(int argc, char* argv[])
 
     // load a single suite
     string suiteFileName = cmd.get<string>("suite");
-    if (suiteFileName.empty()) {
-        suiteFileName = cmd.get<string>("suit");
-    }
 
     if (suiteFileName.size()) {
         if (!runner.loadSuite(suiteFileName)) {
@@ -211,9 +207,6 @@ int main(int argc, char* argv[])
 
     // load multiple suites
     string suitesDirectoryName = cmd.get<string>("suites");
-    if (suitesDirectoryName.empty()) {
-        suitesDirectoryName = cmd.get<string>("suits");
-    }
 
     if (suitesDirectoryName.size()) {
         if (!runner.loadMultipleSuites(suitesDirectoryName,

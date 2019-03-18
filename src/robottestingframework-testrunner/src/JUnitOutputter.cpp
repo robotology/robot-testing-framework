@@ -80,14 +80,14 @@ bool JUnitOutputter::write(std::string filename,
     for (itr = events.begin(); itr != events.end(); ++itr) {
         ResultEvent* e = *itr;
 
-        // start suit
+        // start suite
         if (dynamic_cast<ResultEventStartSuite*>(e) != nullptr) {
             classname = e->getTest()->getName();
             testsuite = new TiXmlElement("testsuite");
             testsuite->SetAttribute("name", classname.c_str());
             root->LinkEndChild(testsuite);
         }
-        // end suit
+        // end suite
         //else if(dynamic_cast<ResultEventEndSuite*>(e)) { }
 
         // start test case

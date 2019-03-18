@@ -103,15 +103,8 @@ bool SuiteRunner::loadSuite(std::string filename)
     }
 
     bool rootTagIsSuite = PluginFactory::compare(root->Value(), "suite");
-    bool rootTagIsSuit = PluginFactory::compare(root->Value(), "suit");
 
-    if (rootTagIsSuit) {
-        logger.addWarning(Asserter::format("Root tag of the xml file is the \" suit \" tag, that is deprecated since RTF 1.3, and will be removed in RTF 1.5 .",
-                                           "Please use the \" suite \" tag instead."));
-    }
-
-
-    if (!(rootTagIsSuit || rootTagIsSuite)) {
+    if (!rootTagIsSuite) {
         if (verbose) {
             cout << filename << " is not a test suite file!" << endl;
         }
@@ -144,7 +137,7 @@ bool SuiteRunner::loadSuite(std::string filename)
                 if (test->Attribute("param") != nullptr) {
                     fixture->setParam(test->Attribute("param"));
                 }
-                // set the fixture manager for the current suit
+                // set the fixture manager for the current suite
                 suite->addFixtureManager(fixture);
                 // keep track of the created plugin loaders
                 fixtureLoaders.push_back(loader);
@@ -193,7 +186,7 @@ bool SuiteRunner::loadSuite(std::string filename)
                         continue;
                     }
                 }
-                // add the test to the suit
+                // add the test to the suite
                 suite->addTest(testcase);
                 // keep track of the created plugin loaders
                 dllLoaders.push_back(loader);

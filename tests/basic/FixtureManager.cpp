@@ -112,13 +112,13 @@ public:
 
         // create a test suites
         TestSuite suite("MyTestSuite");
-        // create a fixture manager for the test suit
+        // create a fixture manager for the test suite
         MyFixture fixture(&suite);
         suite.addFixtureManager(&fixture);
         suite.addTest(&test1);
 
         TestSuite suite2("MyTestSuite");
-        // create a fixture manager for the test suit
+        // create a fixture manager for the test suite
         MyFixture2 fixture2(&suite);
         suite2.addFixtureManager(&fixture2);
         suite2.addTest(&test1);
