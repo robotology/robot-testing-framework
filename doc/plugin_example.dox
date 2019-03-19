@@ -1,25 +1,49 @@
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 /**
 
-@page rtf_plugin_example Using plug-in to develop test cases
+@page robottestingframework_plugin_example Using plug-in to develop test cases
 
 \author Ali Paikan
 
 <br>
 \section desc Description
-Test cases can be written as dynamic loadable libraries (e.g., .so, .dll) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
+Test cases can be written as dynamic loadable libraries (e.g., .so, .dll) to be
+loaded and executed as separate plug-ins.
+This allows to have a simple test runner which loads and run the tests at run
+time without any needs to recompile the test runner.
+Using a simple example, we show how this can be done.
 
-\note The source code of the tutorial can be also found in the \c 'examples/plugin' folder within the RTF project directory. To compile it, you just need to enable the BUILD_EXAMPLES=ON flag of the cmake (if it is not already enabled) and build the RTF. 
+\note The source code of the tutorial can be also found in the
+\c 'examples/plugin' folder within the Robot Testing Framework project
+directory. To compile it, you just need to enable the \c BUILD_EXAMPLES=ON flag
+of the CMake (if it is not already enabled) and build the
+Robot Testing Framework.
 
 <br>
 \section req Requirements
-You do not need any external library to use the plug-ins. All you need is to simply enable the plug-in system in the RTF and recompile it if it is not already enabled (it should be enabled by default). 
+You do not need any external library to use the plug-ins.
+All you need is to simply enable the plug-in system in the
+Robot Testing Framework and recompile it if it is not already enabled (it should
+be enabled by default).
 
 \verbatim
    $ cd robot-testing-framework/build
@@ -27,38 +51,73 @@ You do not need any external library to use the plug-ins. All you need is to sim
 \endverbatim
 
 <br>
-\section write Writing the plug-in 
-Create a class which inherited from the TestCase class. Override the \c run() method and/or \c setup(int argc, char** argv) , \c tearDown() if needed. 
-The paramters set for the test case using RTF::TestCase::setParam are parsed into standard \c `(int argc, char**argv)` format and are passed to the \c setup method.
-The original string parameter is also accessible using RTF::TestCase::getParam. Here is an example: 
+\section write Writing the plug-in
+Create a class which inherited from the TestCase class.
+Override the \c run() method and/or \c setup(int argc, char** argv) ,
+\c tearDown() if needed.
+The paramters set for the test case using
+\c robottestingframework::TestCase::setParam are parsed into standard
+\c `(int argc, char**argv)` format and are passed to the \c setup method.
+The original string parameter is also accessible using
+\c robottestingframework::TestCase::getParam.
+Here is an example:
 
 \include plugin/MyTest.h
 
-Implement the test body in the \c run() method and add use the \c 'PREPARE_PLUGIN(...)' macro to prepare the plug-in. The macro implements the necessary functionalities to make your test class be accessible from a shared library. 
+Implement the test body in the \c run() method and add use the
+\c 'PREPARE_PLUGIN(...)' macro to prepare the plug-in.
+The macro implements the necessary functionalities to make your test class be
+accessible from a shared library.
 
 \include plugin/MyTest.cpp
 
 <br>
 \section runner Writing the test runner
-\note Basically you do not need to develop a test runner. There is the \c testrunner utility (see \ref testrunner) already implemented in RTF which does the job for you. However, the following example is just for your reference and to understand better how a test plug-ing can be loaded and executed from the code. 
+\note Basically you do not need to develop a test runner.
+There is the \c robottestingframework-testrunner utility (see
+\ref robottestingframework-testrunner) already implemented in
+Robot Testing Framework which does the job for you.
+However, the following example is just for your reference and to understand
+better how a test plug-ing can be loaded and executed from the code.
 
-Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::DllPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::DllPluginLoader class and call its \c open() method with the plug-in library (.dll, .so, ...) filename as its paramter.  The RTF::plugin::DllPluginLoader loads the library and return a pointer to the RTF::TestCase implemented into the plug-in.
-If the plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::plugin::DllPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::DllPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
+Your plug-in is ready and can be compiled and built. Before doing, that we show
+how to use \c robottestingframework::DllPluginLoader to develop a simple test
+runner for loading the plug-in and running the test.
+It is quite simple.
+First create an instance of \c robottestingframework::plugin::DllPluginLoader
+class and call its \c open() method with the plug-in library (.dll, .so, ...)
+filename as its paramter.
+The \c robottestingframework::plugin::DllPluginLoader loads the library and
+return a pointer to the \c robottestingframework::TestCase implemented into the
+plug-in.
+If the plug-in cannot be loaded or it is not an Robot Testing Framework plug-in
+file, the \c robottestingframework::plugin::DllPluginLoader::open() returns a
+null pointer and the error message can be gotten using
+\c robottestingframework::plugin::DllPluginLoader::getLastError().
+When you have an instance of your test case, it can be used to run the test as
+usual (see \ref robottestingframework_examples if you are not familiar with
+running a test case). In the following example we use a
+\c robottestingframework::TestRunner to execute our test:
 
 \include plugin/run.cpp
 
 <br>
-\section build Build and run the test 
-Now you can compile and build the plug-in and the runner. There is a Cmake file in the \c examples/plugin folder which helps you to compile and build your test plugin and the simple test runner. Make sure that \c RTF_DIR environment variable is correctly set to point your RTF build or installed directory so that Cmake can find the required modules to configure the project. 
+\section build Build and run the test
+Now you can compile and build the plug-in and the runner.
+There is a CMake file in the \c examples/plugin folder which helps you to
+compile and build your test plugin and the simple test runner.
+Make sure that \c RobotTestingFramework_DIR environment variable is correctly
+set to point your Robot Testing Framework build or installed directory so that
+CMake can find the required modules to configure the project.
 
 \include plugin/CMakeLists.txt
 <br>
-Now you can build and run the test as follows: 
+Now you can build and run the test as follows:
 \verbatim
 $ cd examples/plugin; mkdir build
 $ cd build; cmake ../; make;
-$ ./simple_run libmytest.so 
- Loading the plugin... 
+$ ./simple_run libmytest.so
+ Loading the plugin...
  Starting test runner.
  Test case MyTest started...
  [INFO]  (MyTest) reports: running MyTest::setup...
@@ -71,4 +130,3 @@ $ ./simple_run libmytest.so
 \endverbatim
 
 */
-
