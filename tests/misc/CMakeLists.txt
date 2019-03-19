@@ -16,39 +16,9 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-
-# build tests
-include(RobotTestingFrameworkTestHelpers)
-
-if (BUILD_TESTING)
-  # enable Robot Testing Framework testing
-  enable_robottestingframework_tests()
-
-  # adding api c++ tests
-  add_subdirectory(api)
-
-  if (BUILD_TESTRUNNER)
-    # adding basic tests
-    add_subdirectory(basic)
-
-    # adding basic tests
-    add_subdirectory(fixture)
-
-    # adding lua tests
-    add_subdirectory(lua)
-
-    # adding python tests
-    add_subdirectory(python)
-
-    # adding python tests
-    add_subdirectory(ruby)
-
-    # adding robottestingframework-testrunner tests
-    add_subdirectory(robottestingframework-testrunner)
-
-    # adding robottestingframework_add_suite tests
-    add_subdirectory(robottestingframework_add_suite)
-  endif()
-
-  add_subdirectory(misc)
+find_package(Perl QUIET)
+if(PERL_FOUND)
+  add_test(NAME misc::check_license
+           COMMAND "${PERL_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/check_license.pl"
+           WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 endif()
