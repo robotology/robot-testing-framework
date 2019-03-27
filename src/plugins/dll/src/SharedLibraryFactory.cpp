@@ -1,11 +1,25 @@
-
 /*
- * Copyright (C) 2013 Istituto Italiano di Tecnologia (IIT)
- * Authors: Paul Fitzpatrick <paulfitz@alum.mit.edu>
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
+ *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <rtf/dll/SharedLibraryFactory.h>
+#include <robottestingframework/dll/SharedLibraryFactory.h>
+
 #include <sys/stat.h>
 
 shlibpp::SharedLibraryFactory::SharedLibraryFactory() :
@@ -15,20 +29,18 @@ shlibpp::SharedLibraryFactory::SharedLibraryFactory() :
 {
 }
 
-shlibpp::SharedLibraryFactory::SharedLibraryFactory(const char *dll_name,
-                                                     const char *fn_name) :
+shlibpp::SharedLibraryFactory::SharedLibraryFactory(const char* dll_name,
+                                                    const char* fn_name) :
         status(STATUS_NONE),
         returnValue(0),
         rct(1)
 {
-    open(dll_name,fn_name);
+    open(dll_name, fn_name);
 }
 
-shlibpp::SharedLibraryFactory::~SharedLibraryFactory()
-{
-}
+shlibpp::SharedLibraryFactory::~SharedLibraryFactory() = default;
 
-bool shlibpp::SharedLibraryFactory::open(const char *dll_name, const char *fn_name)
+bool shlibpp::SharedLibraryFactory::open(const char* dll_name, const char* fn_name)
 {
     returnValue = 0;
     name = "";
@@ -52,7 +64,7 @@ bool shlibpp::SharedLibraryFactory::open(const char *dll_name, const char *fn_na
         error = lib.error();
         return false;
     }
-    void *fn = lib.getSymbol((fn_name != nullptr)?fn_name:SHLIBPP_DEFAULT_FACTORY_NAME);
+    void* fn = lib.getSymbol((fn_name != nullptr) ? fn_name : SHLIBPP_DEFAULT_FACTORY_NAME);
     if (fn == nullptr) {
         status = STATUS_FACTORY_NOT_FOUND;
         error = lib.error();
@@ -61,7 +73,7 @@ bool shlibpp::SharedLibraryFactory::open(const char *dll_name, const char *fn_na
     }
     if (!useFactoryFunction(fn)) {
         status = STATUS_FACTORY_NOT_FUNCTIONAL;
-        error = "RTF hook in shared library misbehaved";
+        error = "Robot Testing Framework hook in shared library misbehaved";
         return false;
     }
     status = STATUS_OK;
@@ -78,10 +90,10 @@ bool shlibpp::SharedLibraryFactory::open(const char *dll_name, const char *fn_na
 
 bool shlibpp::SharedLibraryFactory::isValid() const
 {
-    if (returnValue != VOCAB('S','H','P','P')) {
+    if (returnValue != VOCAB('S', 'H', 'P', 'P')) {
         return false;
     }
-    if (api.startCheck != VOCAB('S','H','P','P')) {
+    if (api.startCheck != VOCAB('S', 'H', 'P', 'P')) {
         return false;
     }
     if (api.structureSize != sizeof(SharedLibraryClassApi)) {
@@ -90,7 +102,7 @@ bool shlibpp::SharedLibraryFactory::isValid() const
     if (api.systemVersion != 5) {
         return false;
     }
-    if (api.endCheck != VOCAB('P','L','U','G')) {
+    if (api.endCheck != VOCAB('P', 'L', 'U', 'G')) {
         return false;
     }
     return true;
@@ -147,13 +159,12 @@ std::string shlibpp::SharedLibraryFactory::getBaseClassName() const
 }
 
 
-bool shlibpp::SharedLibraryFactory::useFactoryFunction(void *factory)
+bool shlibpp::SharedLibraryFactory::useFactoryFunction(void* factory)
 {
     api.startCheck = 0;
     if (factory == nullptr) {
         return false;
     }
-    returnValue =
-        ((int (*)(void *ptr,int len)) factory)(&api,sizeof(SharedLibraryClassApi));
+    returnValue = ((int (*)(void* ptr, int len))factory)(&api, sizeof(SharedLibraryClassApi));
     return isValid();
 }

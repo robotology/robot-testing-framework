@@ -1,116 +1,138 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+
+#include <robottestingframework/Asserter.h>
+#include <robottestingframework/ConsoleListener.h>
+#include <robottestingframework/TestAssert.h>
+#include <robottestingframework/TestCase.h>
+#include <robottestingframework/TestResult.h>
+#include <robottestingframework/TestResultCollector.h>
+
 #include <iostream>
-#include <rtf/TestCase.h>
-#include <rtf/TestResult.h>
-#include <rtf/TestResultCollector.h>
-#include <rtf/ConsoleListener.h>
-#include <rtf/Asserter.h>
-#include <rtf/TestAssert.h>
 
 
-using namespace RTF;
+using namespace robottestingframework;
 
-class TestCheck : public TestCase {
+class TestCheck : public TestCase
+{
 
 public:
     size_t exCount;
-    TestCheck() : TestCase("TestCheck") { exCount = 0;}
-    virtual void run() {
+    TestCheck() :
+            TestCase("TestCheck")
+    {
+        exCount = 0;
+    }
+    void run() override
+    {
 
         try {
-            Asserter::testCheck(true, RTF::TestMessage("true"), this);
-        }
-        catch(std::exception& e) {
+            Asserter::testCheck(true, TestMessage("true"), this);
+        } catch (std::exception& e) {
             exCount++;
         }
 
         try {
-            Asserter::testCheck(false, RTF::TestMessage("false"), this);
-        }
-        catch(std::exception& e) {
+            Asserter::testCheck(false, TestMessage("false"), this);
+        } catch (std::exception& e) {
             exCount++;
         }
     }
 };
 
-class TestFail : public TestCase {
+class TestFail : public TestCase
+{
 
 public:
     size_t exCount;
-    TestFail() : TestCase("TestFail") { exCount = 0;}
-    virtual void run() {
+    TestFail() :
+            TestCase("TestFail")
+    {
+        exCount = 0;
+    }
+    void run() override
+    {
 
         try {
-            Asserter::testFail(true, RTF::TestMessage("true"), this);
-        }
-        catch(std::exception& e) {
+            Asserter::testFail(true, TestMessage("true"), this);
+        } catch (std::exception& e) {
             exCount++;
         }
 
         try {
-            Asserter::testFail(false, RTF::TestMessage("false"), this);
-        }
-        catch(std::exception& e) {
+            Asserter::testFail(false, TestMessage("false"), this);
+        } catch (std::exception& e) {
             exCount++;
         }
     }
 };
 
 
-class MyTest : public TestCase {
+class MyTest : public TestCase
+{
 public:
-    MyTest() : TestCase("AsserterTest") { }
+    MyTest() :
+            TestCase("AsserterTest")
+    {
+    }
 
-    virtual void run() {
+    void run() override
+    {
 
-        RTF_TEST_REPORT("Cheking Asserter::fail");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking Asserter::fail");
         try {
             Asserter::fail(true, TestMessage("TRUE"));
             Asserter::fail(false, TestMessage("FALSE"));
-        }
-        catch(RTF::TestFailureException& e) {
-            RTF_TEST_FAIL_IF_FALSE(std::string(e.what())==std::string("FALSE"), "exception message");
-        }
-        catch(std::exception& e) {
-            RTF_ASSERT_FAIL("Got wrong exception std::exception");
+        } catch (TestFailureException& e) {
+            ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(std::string(e.what()) == std::string("FALSE"), "exception message");
+        } catch (std::exception& e) {
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Got wrong exception std::exception");
         }
 
-        RTF_TEST_REPORT("Cheking Asserter::error");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking Asserter::error");
         try {
             Asserter::error(true, TestMessage("TRUE"));
             Asserter::error(false, TestMessage("FALSE"));
-        }
-        catch(RTF::TestErrorException& e) {
-            RTF_TEST_FAIL_IF_FALSE(std::string(e.what())==std::string("FALSE"), "exception message");
-        }
-        catch(std::exception& e) {
-            RTF_ASSERT_FAIL("Got wrong exception std::exception");
+        } catch (TestErrorException& e) {
+            ROBOTTESTINGFRAMEWORK_TEST_FAIL_IF_FALSE(std::string(e.what()) == std::string("FALSE"), "exception message");
+        } catch (std::exception& e) {
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Got wrong exception std::exception");
         }
 
-        RTF_TEST_REPORT("Cheking Asserter::testCheck");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking Asserter::testCheck");
         TestResultCollector collector;
         TestResult result;
         result.addListener(&collector);
         TestCheck check;
         check.TestCase::run(result);
-        RTF_TEST_CHECK(collector.failedCount()==1, "Cheking Asserter::testCheck for failures count");
-        RTF_TEST_CHECK(check.exCount==0, "Cheking Asserter::testCheck for exceptions count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.failedCount() == 1, "Cheking Asserter::testCheck for failures count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(check.exCount == 0, "Cheking Asserter::testCheck for exceptions count");
 
-        RTF_TEST_REPORT("Cheking Asserter::testFail");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking Asserter::testFail");
         collector.reset();
-        RTF_TEST_CHECK(collector.failedCount()==0, "Cheking collector.reset()");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.failedCount() == 0, "Cheking collector.reset()");
         TestFail fail;
         fail.TestCase::run(result);
-        RTF_TEST_CHECK(collector.failedCount()==1, "Cheking Asserter::testFail for failures count");
-        RTF_TEST_CHECK(fail.exCount==0, "Cheking Asserter::testFail for exceptions count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.failedCount() == 1, "Cheking Asserter::testFail for failures count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(fail.exCount == 0, "Cheking Asserter::testFail for exceptions count");
     }
 };
 

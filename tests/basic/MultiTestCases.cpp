@@ -1,48 +1,72 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 
-#include <rtf/TestAssert.h>
-#include <rtf/dll/Plugin.h>
+#include <robottestingframework/TestAssert.h>
+#include <robottestingframework/TestResultCollector.h>
+#include <robottestingframework/TestRunner.h>
+#include <robottestingframework/dll/Plugin.h>
 
-#include <rtf/TestResultCollector.h>
-#include <rtf/TestRunner.h>
-
-using namespace RTF;
+using namespace robottestingframework;
 
 
-class MyTest : public TestCase {
+class MyTest : public TestCase
+{
 public:
-    MyTest() : TestCase("MyTest") { }
+    MyTest() :
+            TestCase("MyTest")
+    {
+    }
 
-    virtual void run() {
-        RTF_TEST_CHECK(2<3, "two is less than three");
+    void run() override
+    {
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(2 < 3, "two is less than three");
     }
 };
 
 
-class MyTest2 : public TestCase {
+class MyTest2 : public TestCase
+{
 public:
-    MyTest2() : TestCase("MyTest") { }
+    MyTest2() :
+            TestCase("MyTest")
+    {
+    }
 
-    virtual void run() {
-        RTF_TEST_CHECK(2==3, "two is equal to three");
+    void run() override
+    {
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(2 == 3, "two is equal to three");
     }
 };
 
 
-
-class MultiTestCases : public RTF::TestCase {
+class MultiTestCases : public TestCase
+{
 public:
-    MultiTestCases() : TestCase("MultiTestCases") {}
+    MultiTestCases() :
+            TestCase("MultiTestCases")
+    {
+    }
 
-    virtual void run() {
+    void run() override
+    {
         TestResultCollector collector;
 
         // create a test result and add the listeners
@@ -57,11 +81,11 @@ public:
         runner.addTest(&test2);
         runner.run(result);
 
-        //RTF_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
-        RTF_TEST_CHECK(collector.testCount() == 2, "Checking tests count");
-        RTF_TEST_CHECK(collector.passedCount() == 1, "Checking passed count");
-        RTF_TEST_CHECK(collector.failedCount() == 1, "Checking failed count");
+        //ROBOTTESTINGFRAMEWORK_TEST_REPORT(Asserter::format("count: %d", collector.failedCount()));
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.testCount() == 2, "Checking tests count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.passedCount() == 1, "Checking passed count");
+        ROBOTTESTINGFRAMEWORK_TEST_CHECK(collector.failedCount() == 1, "Checking failed count");
     }
 };
 
-PREPARE_PLUGIN(MultiTestCases)
+ROBOTTESTINGFRAMEWORK_PREPARE_PLUGIN(MultiTestCases)

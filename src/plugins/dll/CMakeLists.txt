@@ -1,56 +1,65 @@
-#  Sharedlib++
-#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-cmake_minimum_required(VERSION 3.0)
 
-project(RTF_dll)
+set(RTF_dll_HDRS include/robottestingframework/dll/DllFixturePluginLoader.h
+                 include/robottestingframework/dll/DllPluginLoader.h
+                 include/robottestingframework/dll/Plugin.h
+                 include/robottestingframework/dll/SharedLibrary.h
+                 include/robottestingframework/dll/SharedLibraryClass.h
+                 include/robottestingframework/dll/SharedLibraryClassApi.h
+                 include/robottestingframework/dll/SharedLibraryClassFactory.h
+                 include/robottestingframework/dll/SharedLibraryFactory.h
+                 include/robottestingframework/dll/Vocab.h
+                 include/robottestingframework/dll/robottestingframework_dll_config.h)
 
-set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
-get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+set(RTF_dll_IMPL_HDRS include/robottestingframework/dll/impl/DllPluginLoader_impl.h)
 
-get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
-get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
-get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
+set(RTF_dll_SRCS src/DllFixturePluginLoader.cpp
+                 src/DllPluginLoader.cpp
+                 src/SharedLibrary.cpp
+                 src/SharedLibraryFactory.cpp)
 
-# Create the library
-file(GLOB folder_source ./src/*.cpp)
-file(GLOB_RECURSE folder_header ./include/rtf/dll/*.h ./include/rtf/dll/impl/*.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
+add_library(RTF_dll ${RTF_dll_SRCS}
+                    ${RTF_dll_HDRS}
+                    ${RTF_dll_IMPL_HDRS})
+add_library(RobotTestingFramework::RTF_dll ALIAS RTF_dll)
 
-include_directories(${RTF_TREE_INCLUDE_DIRS}
-                    ${RTF_INTERNAL_INCLUDE_DIRS}
-                    ./include/rtf/dll/impl)
+target_include_directories(RTF_dll PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-add_library(RTF_dll SHARED ${folder_source} ${folder_header} )
+target_link_libraries(RTF_dll PUBLIC RobotTestingFramework::RTF)
+
 if(NOT WIN32)
-  target_link_libraries(RTF_dll dl)
-else()
-  target_link_libraries(RTF_dll)
+  target_link_libraries(RTF_dll PRIVATE dl)
 endif()
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+target_compile_features(RTF_dll PUBLIC cxx_nullptr)
 
-target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+set_property(TARGET RTF_dll PROPERTY PUBLIC_HEADER ${RTF_dll_HDRS})
 
-
-# choose which header files should be installed
-file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/dll/*.h)
-set_property(TARGET RTF_dll PROPERTY PUBLIC_HEADER ${RTF_DLL_HEADERS})
+set_property(TARGET RTF_dll PROPERTY OUTPUT_NAME robottestingframework-dll)
+set_property(TARGET RTF_dll PROPERTY SOVERSION 2)
 
 install(TARGETS RTF_dll
-        EXPORT RTF
-        COMPONENT runtime
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/rtf/dll)
-
-set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_dll)
-set_property(TARGET RTF_dll PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
-
+        EXPORT RobotTestingFramework
+        COMPONENT librobottestingframework-dll
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/robottestingframework/dll)
