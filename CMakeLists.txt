@@ -81,7 +81,6 @@ install_basic_package_files(RobotTestingFramework
                             VERSION ${RobotTestingFramework_VERSION}
                             COMPATIBILITY SameMajorVersion
                             EXPORT RobotTestingFramework
-                            FIRST_TARGET RTF
                             EXTRA_PATH_VARS_SUFFIX DLL_INCLUDEDIR
                                                    LUA_INCLUDEDIR
                                                    PYTHON_INCLUDEDIR
