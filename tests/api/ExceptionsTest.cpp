@@ -1,75 +1,82 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 
-#include <rtf/TestCase.h>
-#include <rtf/TestResult.h>
-#include <rtf/TestResultCollector.h>
-#include <rtf/ConsoleListener.h>
-#include <rtf/TestAssert.h>
-#include <rtf/Exception.h>
+#include <robottestingframework/ConsoleListener.h>
+#include <robottestingframework/Exception.h>
+#include <robottestingframework/TestAssert.h>
+#include <robottestingframework/TestCase.h>
+#include <robottestingframework/TestResult.h>
+#include <robottestingframework/TestResultCollector.h>
 
 
-using namespace RTF;
+using namespace robottestingframework;
 
-class MyTest : public TestCase {
+class MyTest : public TestCase
+{
 public:
-    MyTest() : TestCase("ExceptionTest") { }
+    MyTest() :
+            TestCase("ExceptionTest")
+    {
+    }
 
-    virtual void run() {
+    void run() override
+    {
 
-        RTF_TEST_REPORT("Cheking TestFailureException");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking TestFailureException");
         try {
-            throw RTF::TestFailureException(TestMessage("FAILURE"));
-        }
-        catch(RTF::TestFailureException& e) {
-            RTF_TEST_CHECK(std::string(e.what())==std::string("FAILURE"), "exception message");
-        }
-        catch(std::exception& e) {
-            RTF_ASSERT_FAIL("Got wrong exception std::exception");
+            throw TestFailureException(TestMessage("FAILURE"));
+        } catch (TestFailureException& e) {
+            ROBOTTESTINGFRAMEWORK_TEST_CHECK(std::string(e.what()) == std::string("FAILURE"), "exception message");
+        } catch (std::exception& e) {
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Got wrong exception std::exception");
         }
 
-        RTF_TEST_REPORT("Cheking TestErrorException");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking TestErrorException");
         try {
-            throw RTF::TestErrorException(TestMessage("ERROR"));
-        }
-        catch(RTF::TestErrorException& e) {
-            RTF_TEST_CHECK(std::string(e.what())==std::string("ERROR"), "exception message");
-        }
-        catch(std::exception& e) {
-            RTF_ASSERT_FAIL("Got wrong exception std::exception");
+            throw TestErrorException(TestMessage("ERROR"));
+        } catch (TestErrorException& e) {
+            ROBOTTESTINGFRAMEWORK_TEST_CHECK(std::string(e.what()) == std::string("ERROR"), "exception message");
+        } catch (std::exception& e) {
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Got wrong exception std::exception");
         }
 
-        RTF_TEST_REPORT("Cheking FixtureException");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking FixtureException");
         try {
-            throw RTF::FixtureException(TestMessage("FIXTURE"));
-        }
-        catch(RTF::FixtureException& e) {
-            RTF_TEST_CHECK(std::string(e.what())==std::string("FIXTURE"), "exception message");
-        }
-        catch(std::exception& e) {
-            RTF_ASSERT_FAIL("Got wrong exception std::exception");
+            throw FixtureException(TestMessage("FIXTURE"));
+        } catch (FixtureException& e) {
+            ROBOTTESTINGFRAMEWORK_TEST_CHECK(std::string(e.what()) == std::string("FIXTURE"), "exception message");
+        } catch (std::exception& e) {
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Got wrong exception std::exception");
         }
 
-        RTF_TEST_REPORT("Cheking generic Exception");
+        ROBOTTESTINGFRAMEWORK_TEST_REPORT("Cheking generic Exception");
         try {
-            throw RTF::Exception(TestMessage("GENERIC", "DETAIL", "", 0));
+            throw Exception(TestMessage("GENERIC", "DETAIL", "", 0));
+        } catch (Exception& e) {
+            TestMessage msg = e.message();
+            ROBOTTESTINGFRAMEWORK_TEST_CHECK(msg.getMessage() == std::string("GENERIC"), "exception message");
+            ROBOTTESTINGFRAMEWORK_TEST_CHECK(msg.getDetail() == std::string("DETAIL"), "exception detalied message");
+        } catch (std::exception& e) {
+            ROBOTTESTINGFRAMEWORK_ASSERT_FAIL("Got wrong exception std::exception");
         }
-        catch(RTF::Exception& e) {
-            RTF::TestMessage msg = e.message();
-            RTF_TEST_CHECK(msg.getMessage()==std::string("GENERIC"), "exception message");
-            RTF_TEST_CHECK(msg.getDetail() ==std::string("DETAIL"), "exception detalied message");
-        }
-        catch(std::exception& e) {
-            RTF_ASSERT_FAIL("Got wrong exception std::exception");
-        }
-
     }
 };
 

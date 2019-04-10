@@ -1,28 +1,43 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <stdio.h>
-#include <rtf/dll/Plugin.h>
+
 #include "MyFixManager.h"
+#include <robottestingframework/dll/Plugin.h>
 
-using namespace RTF;
+#include <stdio.h>
 
-PREPARE_FIXTURE_PLUGIN(MyFixManager)
+using namespace robottestingframework;
 
-bool MyFixManager::setup(int argc, char** argv) {
+ROBOTTESTINGFRAMEWORK_PREPARE_FIXTURE_PLUGIN(MyFixManager)
+
+bool MyFixManager::setup(int argc, char** argv)
+{
     printf("Called from fixture plugin: setupping fixture...\n");
     // do the setup here
     // ...
     return true;
 }
 
-void MyFixManager::tearDown() {
+void MyFixManager::tearDown()
+{
     printf("Called from fixture plugin: tearing down the fixture...\n");
     // do the tear down here
     // ...

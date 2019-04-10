@@ -1,35 +1,47 @@
+-- Robot Testing Framework
 --
--- Copyright (C) 2015 iCub Facility
--- Authors: Ali Paikan
--- CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+-- Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 --
- 
+-- This library is free software; you can redistribute it and/or
+-- modify it under the terms of the GNU Lesser General Public
+-- License as published by the Free Software Foundation; either
+-- version 2.1 of the License, or (at your option) any later version.
+--
+-- This library is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-- Lesser General Public License for more details.
+--
+-- You should have received a copy of the GNU Lesser General Public
+-- License along with this library; if not, write to the Free Software
+-- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
 --
 -- The TestCase table is used by the lua plugin loader
 -- to invoke the corresponding methods:
 --
 -- TestCase.setup = function(options) ... return true end
--- TestCase.run = function() ... end 
--- TestCase.tearDown = function() ... end 
+-- TestCase.run = function() ... end
+-- TestCase.tearDown = function() ... end
 --
--- The following methods are for reporting, failures or assertions: 
+-- The following methods are for reporting, failures or assertions:
 --
--- RTF.setName(name)              : sets the test name (defualt is the test filename)
--- RTF.testReport(msg)            : reports a informative message
--- RTF.testCheck(condition, msg)  : reports the test message and marks the test as failed if condition is false 
--- RTF.testFailIf(condition, msg) : marks the test as failed and reports failure message (the reason) if condition is false
--- RTF.assertError(msg)           : throws an error exception with message
--- RTF.asserFail(msg)             : throws a failure exception with message
--- RTF.getEnvironment()           : returns the test environment params
+-- robottestingframework.setName(name)              : sets the test name (defualt is the test filename)
+-- robottestingframework.testReport(msg)            : reports a informative message
+-- robottestingframework.testCheck(condition, msg)  : reports the test message and marks the test as failed if condition is false
+-- robottestingframework.testFailIf(condition, msg) : marks the test as failed and reports failure message (the reason) if condition is false
+-- robottestingframework.assertError(msg)           : throws an error exception with message
+-- robottestingframework.asserFail(msg)             : throws a failure exception with message
+-- robottestingframework.getEnvironment()           : returns the test environment params
 --
 
 --
--- setup is called before the test's run to setup 
+-- setup is called before the test's run to setup
 -- the user defined fixture
 -- @return Boolean (true/false uppon success or failure)
 --
 TestCase.setup = function(parameter)
-    RTF.setName("LuaTestCase")
+    robottestingframework.setName("LuaTestCase")
     return true;
 end
 
@@ -37,9 +49,9 @@ end
 -- The implementation of the test goes here
 --
 TestCase.run = function()
-    RTF.testCheck(5>3, "Cheking RTF.testCheck")
-    RTF.testReport("Cheking RTF.testFailIf")
-    RTF.testFailIf(true, "testFailIf")
+    robottestingframework.testCheck(5>3, "Cheking robottestingframework.testCheck")
+    robottestingframework.testReport("Cheking robottestingframework.testFailIf")
+    robottestingframework.testFailIf(true, "testFailIf")
 end
 
 
@@ -49,4 +61,3 @@ end
 --
 TestCase.tearDown = function()
 end
-
