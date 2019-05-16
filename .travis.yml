@@ -35,7 +35,7 @@ before_script:
   - ruby --version
 
 script:
-  # configure robot-testing framework
+  # configure robot-testing-framework
   - mkdir build
   - cd build
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cmake -DENABLE_CODE_PROFILING:BOOL=ON -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi

@@ -60,13 +60,13 @@ Robot Testing Framework build system check for the installation of TinyXml and,
 in case, it cannot find any installed version of TinyXml library, it uses the
 internal version which is delivered with the Robot Testing Framework.
 The source code of the Robot Testing Framework is vailable at
-https://github.com/robotology/robot-testing.
+https://github.com/robotology/robot-testing-framework.
 
 \subsection compile Compile and Build
 The installation is easy, straightforward and uses \c CMake building system.
 \verbatim
-    $ git clone https://github.com/robotology/robot-testing.git
-    $ cd robot-testing
+    $ git clone https://github.com/robotology/robot-testing-framework.git
+    $ cd robot-testing-framework
     $ mkdir build; cd build
     $ cmake ../; make
 \endverbatim

@@ -51,7 +51,7 @@ After installing the Ruby development package, you need to enable the Ruby
 plug-in system in the Robot Testing Framework and recompile it:
 
 \verbatim
-   $ cd robot-testing/build
+   $ cd robot-testing-framework/build
    $ cmake ../ -DENABLE_RUBY_PLUGIN=ON
 \endverbatim
 

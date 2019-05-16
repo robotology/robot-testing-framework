@@ -50,7 +50,7 @@ After installing the Python development package, you need to enable the Python
 plug-in system in the Robot Testing Framework and recompile it:
 
 \verbatim
-   $ cd robot-testing/build
+   $ cd robot-testing-framework/build
    $ cmake ../ -DENABLE_PYTHON_PLUGIN=ON
 \endverbatim
 

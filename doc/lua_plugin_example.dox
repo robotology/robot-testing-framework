@@ -50,7 +50,7 @@ After installing the Lua development package, you need to enable the Lua plug-in
 system in the Robot Testing Framework and recompile it:
 
 \verbatim
-   $ cd robot-testing/build
+   $ cd robot-testing-framework/build
    $ cmake ../ -DENABLE_LUA_PLUGIN=ON
 \endverbatim
 

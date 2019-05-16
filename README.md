@@ -1,13 +1,13 @@
-[![Release](https://img.shields.io/github/tag/robotology/robot-testing.svg?label=Release)](https://github.com/robotology/robot-testing/tags)
-[![License](https://img.shields.io/badge/Licence-LGPL-blue.svg)](http://robotology.github.io/robot-testing/index.html)
-[![Build Status](https://travis-ci.org/robotology/robot-testing.svg?branch=master)](https://travis-ci.org/robotology/robot-testing)
-[![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing?branch=master)
+[![Release](https://img.shields.io/github/tag/robotology/robot-testing-framework.svg?label=Release)](https://github.com/robotology/robot-testing-framework/tags)
+[![License](https://img.shields.io/badge/Licence-LGPL-blue.svg)](http://robotology.github.io/robot-testing-framework/index.html)
+[![Build Status](https://travis-ci.org/robotology/robot-testing-framework.svg?branch=master)](https://travis-ci.org/robotology/robot-testing-framework)
+[![Coverage Status](https://coveralls.io/repos/github/robotology/robot-testing-framework/badge.svg?branch=master)](https://coveralls.io/github/robotology/robot-testing-framework?branch=master)
 
-[![Language](https://img.shields.io/badge/Language-C%2B%2B-blue.svg)](http://robotology.github.io/robot-testing/documentation/robottestingframework_plugin_example.html)
-[![Language](https://img.shields.io/badge/Language-ADA-blue.svg)](https://github.com/robotology/robot-testing/tree/master/examples/ada-plugin)
-[![Language](https://img.shields.io/badge/Language-Python-blue.svg)](http://robotology.github.io/robot-testing/documentation/robottestingframework_python_plugin_example.html)
-[![Language](https://img.shields.io/badge/Language-Ruby-blue.svg)](http://robotology.github.io/robot-testing/documentation/robottestingframework_ruby_plugin_example.html)
-[![Language](https://img.shields.io/badge/Language-Lua-blue.svg)](http://robotology.github.io/robot-testing/documentation/robottestingframework_lua_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-C%2B%2B-blue.svg)](http://robotology.github.io/robot-testing-framework/documentation/robottestingframework_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-ADA-blue.svg)](https://github.com/robotology/robot-testing-framework/tree/master/examples/ada-plugin)
+[![Language](https://img.shields.io/badge/Language-Python-blue.svg)](http://robotology.github.io/robot-testing-framework/documentation/robottestingframework_python_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-Ruby-blue.svg)](http://robotology.github.io/robot-testing-framework/documentation/robottestingframework_ruby_plugin_example.html)
+[![Language](https://img.shields.io/badge/Language-Lua-blue.svg)](http://robotology.github.io/robot-testing-framework/documentation/robottestingframework_lua_plugin_example.html)
 
 
 
@@ -47,8 +47,8 @@ internal version which is delivered with the Robot Testing Framework.
 - **On Linux/Mac:** The installation is easy, straightforward and uses the CMake
   build system.
 ```
-    $ git clone https://github.com/robotology/robot-testing.git
-    $ cd robot-testing
+    $ git clone https://github.com/robotology/robot-testing-framework.git
+    $ cd robot-testing-framework
     $ mkdir build; cd build
     $ cmake ../; make
     $ make install  # Optional!
@@ -58,8 +58,8 @@ internal version which is delivered with the Robot Testing Framework.
   build system.
   Get [CMake for windows](https://cmake.org/download/) if you have not yet
   installed.
-  Then simply run the CMake and, set the project (robot-testing) root folder and
-  the desired build folder.
+  Then simply run the CMake and, set the project (robot-testing-framework) root
+  folder and the desired build folder.
   Configure and generate project solution for your favorite IDE (e.g. Visual
   Studio 17).
   Then open the solution from your IDE and build the project.
@@ -116,7 +116,7 @@ Tutorials and Examples
 Documentation
 -------------
 * [*See Doxygen generated documentation*](http://robotology.gitlab.io/docs/rtf/master/index.html)
-* [*See Robot Testing Framework website*](http://robotology.github.io/robot-testing/index.html)
+* [*See Robot Testing Framework website*](http://robotology.github.io/robot-testing-framework/index.html)
 
 Authors
 -------
