@@ -1,46 +1,65 @@
-// -*- mode:C++ { } tab-width:4 { } c-basic-offset:4 { } indent-tabs-mode:nil -*-
-
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <rtf/dll/Plugin.h>
-#include <rtf/dll/DllPluginLoader.h>
-#include <rtf/dll/impl/DllPluginLoader_impl.h>
+
+#include <robottestingframework/dll/DllPluginLoader.h>
+#include <robottestingframework/dll/Plugin.h>
+#include <robottestingframework/dll/impl/DllPluginLoader_impl.h>
 
 using namespace std;
-using namespace RTF;
-using namespace RTF::plugin;
+using namespace robottestingframework;
+using namespace robottestingframework::plugin;
 using namespace shlibpp;
 
 /**
  * @brief DllPluginLoader
  */
-DllPluginLoader::DllPluginLoader()
-    : implementaion(nullptr) { }
+DllPluginLoader::DllPluginLoader() :
+        implementation(nullptr)
+{
+}
 
-DllPluginLoader::~DllPluginLoader() {
+DllPluginLoader::~DllPluginLoader()
+{
     close();
 }
 
-void DllPluginLoader::close() {
-    if(implementaion)
-        delete ((DllPluginLoaderImpl<TestCase>*)implementaion);
-    implementaion = nullptr;
+void DllPluginLoader::close()
+{
+    if (implementation != nullptr) {
+        delete ((DllPluginLoaderImpl<TestCase>*)implementation);
+    }
+    implementation = nullptr;
 }
 
-TestCase* DllPluginLoader::open(const std::string filename) {
+TestCase* DllPluginLoader::open(const std::string filename)
+{
     close();
-    implementaion = new DllPluginLoaderImpl<TestCase>();
-    return ((DllPluginLoaderImpl<TestCase>*)implementaion)->open(filename,
-                                                                 RTF_PLUGIN_FACTORY_NAME);
+    implementation = new DllPluginLoaderImpl<TestCase>();
+    return ((DllPluginLoaderImpl<TestCase>*)implementation)->open(filename, ROBOTTESTINGFRAMEWORK_PLUGIN_FACTORY_NAME);
 }
 
-const std::string DllPluginLoader::getLastError() {
-    if(implementaion)
-        return ((DllPluginLoaderImpl<TestCase>*)implementaion)->getLastError();
+std::string DllPluginLoader::getLastError()
+{
+    if (implementation != nullptr) {
+        return ((DllPluginLoaderImpl<TestCase>*)implementation)->getLastError();
+    }
     return string("");
 }

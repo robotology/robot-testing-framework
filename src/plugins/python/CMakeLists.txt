@@ -1,70 +1,67 @@
-#  Sharedlib++
-#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-cmake_minimum_required(VERSION 3.0)
 
-project(RTF_python)
+set(RobotTestingFramework_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use (only Python 2 is supported at the moment)" )
 
-
-# option (RTF_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use")
-set(RTF_USE_PYTHON_VERSION "" CACHE STRING "Specify python version to use (only Python 2 is supported at the moment)" )
-
-#find_package(PythonInterp ${YARP_USE_PYTHON_VERSION} REQUIRED)
-if(RTF_USE_PYTHON_VERSION)
-    find_package(PythonInterp ${RTF_USE_PYTHON_VERSION} REQUIRED)
-    find_package(PythonLibs ${RTF_USE_PYTHON_VERSION} EXACT REQUIRED)
+if(RobotTestingFramework_USE_PYTHON_VERSION)
+  if("${RobotTestingFramework_USE_PYTHON_VERSION}" MATCHES "^3")
+    message(SEND_ERROR "Python 3 not supported. Only Python 2 is supported at the moment.")
+  endif()
+  find_package(PythonInterp ${RobotTestingFramework_USE_PYTHON_VERSION} REQUIRED)
+  find_package(PythonLibs ${RobotTestingFramework_USE_PYTHON_VERSION} EXACT REQUIRED)
 else()
-    find_package(PythonInterp REQUIRED)
-    find_package(PythonLibs REQUIRED)
+  find_package(PythonInterp REQUIRED)
+  find_package(PythonLibs REQUIRED)
 endif()
 
-set_property(GLOBAL APPEND PROPERTY RTF_INTERNAL_DEFS " -DENABLE_PYTHON_PLUGIN")
-set_property(GLOBAL APPEND PROPERTY RTF_TREE_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
-get_property(RTF_TREE_INCLUDE_DIRS GLOBAL PROPERTY RTF_TREE_INCLUDE_DIRS)
+set(RTF_python_HDRS include/robottestingframework/python/PythonPluginLoader.h)
 
-get_property(RTF_LIBS GLOBAL PROPERTY RTF_LIBS)
-get_property(RTF_INTERNAL_INCLUDE_DIRS GLOBAL PROPERTY RTF_INTERNAL_INCLUDE_DIRS)
-get_property(RTF_INTERNAL_LIBS GLOBAL PROPERTY RTF_INTERNAL_LIBS)
+set(RTF_python_IMPL_HDRS include/robottestingframework/python/impl/PythonPluginLoader_impl.h)
 
-# Create the library
-file(GLOB folder_source ./src/*.cpp)
-file(GLOB_RECURSE folder_header ./include/rtf/python/*.h ./include/rtf/python/impl/*.h)
-source_group("Source Files" FILES ${folder_source})
-source_group("Header Files" FILES ${folder_header})
+set(RTF_python_SRCS src/PythonPluginLoader.cpp)
 
-include_directories(${RTF_TREE_INCLUDE_DIRS}
-                    ${RTF_INTERNAL_INCLUDE_DIRS}
-                    ./include/rtf/python/impl
-                    ${PYTHON_INCLUDE_DIR})
+add_library(RTF_python ${RTF_python_SRCS}
+                       ${RTF_python_HDRS}
+                       ${RTF_python_IMPL_HDRS})
+add_library(RobotTestingFramework::RTF_python ALIAS RTF_python)
 
-add_library(RTF_python ${folder_source} ${folder_header} )
+target_include_directories(RTF_python PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                                             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+                                      PRIVATE ${PYTHON_INCLUDE_DIRS})
 
+target_link_libraries(RTF_python PUBLIC RobotTestingFramework::RTF
+                                        RobotTestingFramework::RTF_dll
+                                 PRIVATE ${PYTHON_LIBRARY})
 
-link_libraries(${PYTHON_LIBRARY})
-target_link_libraries(RTF_python ${RTF_LIBS} ${PYTHON_LIBRARY})
+target_compile_features(RTF_python PUBLIC cxx_nullptr)
 
-target_compile_features(${PROJECT_NAME} PUBLIC cxx_nullptr)
+set_property(TARGET RTF_python PROPERTY PUBLIC_HEADER ${RTF_python_HDRS})
 
-target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-
-# choose which header files should be installed
-file(GLOB RTF_DLL_HEADERS ${PROJECT_SOURCE_DIR}/include/rtf/python/*.h)
-set_property(TARGET RTF_python PROPERTY PUBLIC_HEADER ${RTF_DLL_HEADERS})
+set_property(TARGET RTF_python PROPERTY OUTPUT_NAME robottestingframework-python)
+set_property(TARGET RTF_python PROPERTY SOVERSION 2)
 
 install(TARGETS RTF_python
-        EXPORT RTF
-        COMPONENT runtime
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/rtf/python)
-
-set_property(GLOBAL APPEND PROPERTY RTF_LIBS RTF_python)
-set_property(TARGET RTF_python PROPERTY INCLUDE_DIRS ${RTF_TREE_INCLUDE_DIRS})
+        EXPORT RobotTestingFramework
+        COMPONENT robottestingframework-python
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/robottestingframework/python)
 
 

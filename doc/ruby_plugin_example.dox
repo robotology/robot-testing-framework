@@ -1,39 +1,72 @@
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 /**
 
-@page rtf_ruby_plugin_example Using Ruby to develop test cases
+@page robottestingframework_ruby_plugin_example Using Ruby to develop test cases
 
 \author Ali Paikan
 
 <br>
 \section ruby-desc Description
-Test cases can be written using Ruby scripting language (e.g., .rb) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
+Test cases can be written using Ruby scripting language (e.g., .rb) to be loaded
+and executed as separate plug-ins.
+This allows to have a simple test runner which loads and run the tests at run
+time without any needs to recompile the test runner.
+Using a simple example, we  show how this can be done.
 
-\note The source code of the tutorial can be also found in the \c 'examples/ruby-plugin' folder within the RTF project directory.
+
+\note The source code of the tutorial can be also found in the
+\c 'examples/ruby-plugin' folder within the Robot Testing Framework project
+directory.
 
 <br>
 \section ruby-req Requirements
-You need the Ruby development library to use the plug-ins. On most of the Linux distribution it can be easily installed using the package manager (e.g., `   $ sudo apt-get install ruby-dev`). If you use Windows, try <a href="https://http://rubyinstaller.org/">Ruby Installer for Windows</a>. OSX users can also follow the instruction from https://www.ruby-lang.org/en/downloads/. 
+You need the Ruby development library to use the plug-ins.
+On most of the Linux distribution it can be easily installed using the package
+manager (e.g., `   $ sudo apt-get install ruby-dev`).
+If you use Windows, try
+<a href="https://http://rubyinstaller.org/">Ruby Installer for Windows</a>.
+OSX users can also follow the instruction from
+https://www.ruby-lang.org/en/downloads/
 
-After installing the Ruby development package, you need to enable the Ruby plug-in system in the RTF and recompile it: 
+After installing the Ruby development package, you need to enable the Ruby
+plug-in system in the Robot Testing Framework and recompile it:
 
 \verbatim
-   $ cd robot-testing/build
+   $ cd robot-testing-framework/build
    $ cmake ../ -DENABLE_RUBY_PLUGIN=ON
 \endverbatim
 
 <br>
-\section ruby-write Writing the test case in Ruby 
-Writing test cases in Ruby is simple. All you need is to declare a `TestCase` class and implement your test functional code inside the `run()` method. The `setup()` and `tearDown()` can be also optionally defined to setup or tear down the user defined fixture. By default, the name of the test case is the name of its plug-in file. This cane be changed by using using `setName()`.
+\section ruby-write Writing the test case in Ruby.
+Writing test cases in Ruby is simple.
+All you need is to declare a `TestCase` class and implement your test functional
+code inside the `run()` method.
+The `setup()` and `tearDown()` can be also optionally defined to setup or tear
+down the user defined fixture.
+By default, the name of the test case is the name of its plug-in file.
+This cane be changed by using using `setName()`.
 
 \htmlonly
-<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic"># RTF module is automatically imported by the ruby plugin loader</span>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic"># Robot Testing Framework module is automatically imported by the ruby plugin loader</span>
 <span style="color: #408080; font-style: italic"># to invoke the corresponding test case methods. To develop a new </span>
 <span style="color: #408080; font-style: italic"># test case simply implement the following class; (setup and tearDown </span>
 <span style="color: #408080; font-style: italic"># methods are optional) :</span>
@@ -51,11 +84,11 @@ Writing test cases in Ruby is simple. All you need is to declare a `TestCase` cl
 <span style="color: #408080; font-style: italic">#</span>
 <span style="color: #408080; font-style: italic"># The following methods are for reporting, failure or assertions: </span>
 <span style="color: #408080; font-style: italic">#</span>
-<span style="color: #408080; font-style: italic"># RTF::setName(name)             : sets the test name (defualt is the test filename)</span>
-<span style="color: #408080; font-style: italic"># RTF::testReport(msg)           : reports a informative message</span>
-<span style="color: #408080; font-style: italic"># RTF::testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false</span>
-<span style="color: #408080; font-style: italic"># RTF::assertError(msg)          : throws an error exception with message</span>
-<span style="color: #408080; font-style: italic"># RTF::asserFail(msg)            : throws a failure exception with message</span>
+<span style="color: #408080; font-style: italic"># RobotTestingFramework::setName(name)             : sets the test name (defualt is the test filename)</span>
+<span style="color: #408080; font-style: italic"># RobotTestingFramework::testReport(msg)           : reports a informative message</span>
+<span style="color: #408080; font-style: italic"># RobotTestingFramework::testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false</span>
+<span style="color: #408080; font-style: italic"># RobotTestingFramework::assertError(msg)          : throws an error exception with message</span>
+<span style="color: #408080; font-style: italic"># RobotTestingFramework::asserFail(msg)            : throws a failure exception with message</span>
 <span style="color: #408080; font-style: italic">#</span>
 
 <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">TestCase</span>
@@ -63,20 +96,20 @@ Writing test cases in Ruby is simple. All you need is to declare a `TestCase` cl
     <span style="color: #408080; font-style: italic"># the user defined fixture</span>
     <span style="color: #408080; font-style: italic"># @return Boolean (True/False uppon success or failure)</span>
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">setup</span>(param)
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testReport</span>(<span style="color: #BA2121">&quot;Preparing setup...&quot;</span>)
+        <span style="color: #19177C">robottestingframework</span>:<span style="color: #19177C">:testReport</span>(<span style="color: #BA2121">&quot;Preparing setup...&quot;</span>)
         <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">true</span>
     <span style="color: #008000; font-weight: bold">end</span>
 
     <span style="color: #408080; font-style: italic"># The implementation of the test goes here</span>
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">run</span>
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&gt;3</span>, <span style="color: #BA2121">&quot;5 is bigger than 3.&quot;</span>)
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&lt;3</span>, <span style="color: #BA2121">&quot;5 is smaller than 3.&quot;</span>)
+        <span style="color: #19177C">robottestingframework</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&gt;3</span>, <span style="color: #BA2121">&quot;5 is bigger than 3.&quot;</span>)
+        <span style="color: #19177C">robottestingframework</span>:<span style="color: #19177C">:testCheck</span>(<span style="color: #666666">5&lt;3</span>, <span style="color: #BA2121">&quot;5 is smaller than 3.&quot;</span>)
     <span style="color: #008000; font-weight: bold">end</span>
 
     <span style="color: #408080; font-style: italic"># tearDown is called after the test&#39;s run to tear down</span>
     <span style="color: #408080; font-style: italic"># the user defined fixture</span>
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">tearDown</span>
-        <span style="color: #19177C">RTF</span>:<span style="color: #19177C">:testReport</span>(<span style="color: #BA2121">&quot;Tearing down...&quot;</span>)
+        <span style="color: #19177C">robottestingframework</span>:<span style="color: #19177C">:testReport</span>(<span style="color: #BA2121">&quot;Tearing down...&quot;</span>)
     <span style="color: #008000; font-weight: bold">end</span>
 <span style="color: #008000; font-weight: bold">end</span>
 </pre></div>
@@ -85,25 +118,54 @@ Writing test cases in Ruby is simple. All you need is to declare a `TestCase` cl
 
 <br>
 \section ruby-runner Writing the test runner
-\note Basically you do not need to develop a test runner. There is the \c testrunner utility (see \ref testrunner) already implemented in RTF which does the job for you. However, the following example is just for your reference and to understand better how a Ruby test plug-ing can be loaded and executed from the code. 
+\note Basically you do not need to develop a test runner.
+There is the \c robottestingframework-testrunner utility (see
+\ref robottestingframework-testrunner) already implemented in
+Robot Testing Framework which does the job for you.
+However, the following example is just for your reference and to understand
+better how a Ruby test plug-ing can be loaded and executed from the code.
 
-Your plug-in is ready and can be simply executed using the \c testrunner utility. However, we show how to use RTF::RubyPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::RubyPluginLoader class and call its \c open() method with the plug-in library (i.e., .rb) filename as its parameter.  The RTF::plugin::RubyPluginLoader loads the library and returns a pointer to the RTF::TestCase implemented into the plug-in.
-If the Ruby plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::plugin::RubyPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::RubyPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
+Your plug-in is ready and can be simply executed using the
+\c robottestingframework-testrunner utility.
+However, we show how to use \c RobotTestingFramework::RubyPluginLoader to
+develop a simple test runner for loading the plug-in and running the test.
+It is quite simple.
+First create an instance of \c RobotTestingFramework::plugin::RubyPluginLoader
+class and call its \c open() method with the plug-in library (i.e., .rb)
+filename as its parameter.
+The \c RobotTestingFramework::plugin::RubyPluginLoader loads the library and
+returns a pointer to the \c RobotTestingFramework::TestCase implemented into the
+plug-in.
+If the Ruby plug-in cannot be loaded or it is not an Robot Testing Framework
+plug-in file, the \c RobotTestingFramework::plugin::RubyPluginLoader::open()
+returns a null pointer and the error message can be gotten using
+\c RobotTestingFramework::plugin::RubyPluginLoader::getLastError().
+When you have an instance of your test case, it can be used to run the test as
+usual (see \ref robottestingframework_examples if you are not familiar with
+running a test case).
+In the following example we use a \c RobotTestingFramework::TestRunner to
+execute our test:.
 
 \include ruby-plugin/run.cpp
 
 <br>
-\section ruby-build Building the test runner and run the test 
-Now you can compile and build the the runner. There is a Cmake file in the \c examples/ruby-plugin folder which helps you to compile and build your simple test runner. Make sure that \c RTF_DIR environment variable is correctly set to point your RTF build or installed directory so that Cmake can find the required modules to configure the project. 
+\section ruby-build Building the test runner and run the test.
+Now you can compile and build the the runner.
+There is a CMake file in the \c examples/ruby-plugin folder which helps you to
+compile and build your simple test runner.
+Make sure that \c RobotTestingFramework_DIR environment variable is correctly
+set to point your Robot Testing Framework build or installed directory so that
+CMake can find the required modules to configure the project.
+
 
 \include ruby-plugin/CMakeLists.txt
 <br>
-Now you can build and run the test as follows: 
+Now you can build and run the test as follows:.
 \verbatim
 $ cd examples/ruby-plugin; mkdir build
 $ cd build; cmake ../; make;
 $ ./simple_run ../mytest.rb
-Loading the plugin... 
+Loading the plugin....
 Starting test runner.
 Test case  started...
 [INFO]  (mytest.rb) reports: Preparing setup...
@@ -115,4 +177,3 @@ Ending test runner.
 \endverbatim
 
 */
-

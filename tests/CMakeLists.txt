@@ -1,41 +1,54 @@
-#  Robot Testing Framework
-#  Copyright: (C) 2015 iCub Facility, Istituto Italiano di Tecnologia
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 # build tests
-include(RTFTestHelpers)
+include(RobotTestingFrameworkTestHelpers)
 
 if (BUILD_TESTING)
-    # enable RTF testing
-    ENABLE_RTF_TESTS()
+  # enable Robot Testing Framework testing
+  enable_robottestingframework_tests()
 
-    # adding api c++ tests
-    add_subdirectory(api)
+  # adding api c++ tests
+  add_subdirectory(api)
 
-    if (BUILD_TESTRUNNER)
-        # adding basic tests
-        add_subdirectory(basic)
+  if (BUILD_TESTRUNNER)
+    # adding basic tests
+    add_subdirectory(basic)
 
-        # adding basic tests
-        add_subdirectory(fixture)
+    # adding basic tests
+    add_subdirectory(fixture)
 
-        # adding lua tests
-        add_subdirectory(lua)
+    # adding lua tests
+    add_subdirectory(lua)
 
-        # adding python tests
-        add_subdirectory(python)
+    # adding python tests
+    add_subdirectory(python)
 
-        # adding python tests
-        add_subdirectory(ruby)
+    # adding python tests
+    add_subdirectory(ruby)
 
-        # adding testrunner tests
-        add_subdirectory(testrunner)
+    # adding robottestingframework-testrunner tests
+    add_subdirectory(robottestingframework-testrunner)
 
-        # adding rtf_add_suite tests
-        add_subdirectory(rtf_add_suite)
-    endif()
+    # adding robottestingframework_add_suite tests
+    add_subdirectory(robottestingframework_add_suite)
+  endif()
+
+  add_subdirectory(misc)
 endif()

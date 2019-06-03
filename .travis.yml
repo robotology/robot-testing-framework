@@ -35,14 +35,14 @@ before_script:
   - ruby --version
 
 script:
-  # configure robot-testing framework
+  # configure robot-testing-framework
   - mkdir build
   - cd build
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then cmake -DENABLE_CODE_PROFILING:BOOL=ON -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ];   then cmake -DCMAKE_BUILD_TYPE=${TRAVIS_BUILD_TYPE} -DENABLE_LUA_PLUGIN:BOOL=ON -DENABLE_PYTHON_PLUGIN:BOOL=ON -DENABLE_WEB_LISTENER:BOOL=ON ..; fi
   - make
   - ctest --output-on-failure --build . -C ${TRAVIS_BUILD_TYPE}
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make RTF_coverage ; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make coverage ; fi
   - sudo make install
 
 after_success:

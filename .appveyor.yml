@@ -1,4 +1,4 @@
-version: 1.4.{build}
+version: 1.6.51.{build}
 
 platform:
   - Win32
@@ -21,7 +21,7 @@ environment:
     - BUILD_SHARED_LIBS: OFF
 
 
-clone_folder: c:\dev\RTF
+clone_folder: c:\dev\robot-testing-framework
 
 init:
   # System related variables
@@ -31,11 +31,11 @@ init:
   - cmd: echo CMAKE_GENERATOR=%CMAKE_GENERATOR%
 
 build_script:
-  - cd c:\dev\RTF
+  - cd c:\dev\robot-testing-framework
   - md build
   - cd build
   - cmake -G"%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=%BUILD_SHARED_LIBS% ..
-  - msbuild /m /p:Configuration="%CONFIGURATION%" /p:Platform="%platform%" RTF.sln
+  - msbuild /m /p:Configuration="%CONFIGURATION%" /p:Platform="%platform%" RobotTestingFramework.sln
 
 test_script:
   - cmd: ctest --output-on-failure --build-config %CONFIGURATION%

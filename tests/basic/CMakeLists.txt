@@ -1,28 +1,38 @@
-#  RTF
-#  Copyright: (C) 2015 Ali Paikan
-#  Authors: Ali Paikan <ali.paikan@gmail.com>
+# Robot Testing Framework
 #
-#  Copy Policy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+# Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
 #
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-if (ENABLE_PLUGIN)        
+
+if(ENABLE_PLUGIN)
+    # SingleTestCase
+    add_robottestingframework_cpptest(NAME SingleTestCase SRCS SingleTestCase.cpp)
 
     # SingleTestCase
-    ADD_RTF_CPPTEST(NAME SingleTestCase SRCS SingleTestCase.cpp)
-
-    # SingleTestCase
-    ADD_RTF_CPPTEST(NAME MultiTestCases SRCS MultiTestCases.cpp)
+    add_robottestingframework_cpptest(NAME MultiTestCases SRCS MultiTestCases.cpp)
 
     # SingleTestSuite
-    ADD_RTF_CPPTEST(NAME SingleTestSuite SRCS SingleTestSuite.cpp)
+    add_robottestingframework_cpptest(NAME SingleTestSuite SRCS SingleTestSuite.cpp)
 
     # SingleTestSuite
-    ADD_RTF_CPPTEST(NAME FixtureManager SRCS FixtureManager.cpp)
+    add_robottestingframework_cpptest(NAME FixtureManager SRCS FixtureManager.cpp)
 
     if (UNIX)
         # WebProgListener
-        ADD_RTF_CPPTEST(NAME WebProgListener SRCS WebProgListener.cpp)
+        add_robottestingframework_cpptest(NAME WebProgListener SRCS WebProgListener.cpp)
     endif (UNIX)
-
 endif()
 

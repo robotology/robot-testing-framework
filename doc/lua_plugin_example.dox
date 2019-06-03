@@ -1,36 +1,67 @@
 /*
- * Copyright (C) 2015 iCub Facility
- * Authors: Ali Paikan
- * CopyPolicy: Released under the terms of the LGPLv2.1 or later, see LGPL.TXT
+ * Robot Testing Framework
  *
+ * Copyright (C) 2015-2019 Istituto Italiano di Tecnologia (IIT)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 /**
 
-@page rtf_lua_plugin_example Using Lua to develop test cases
+@page robottestingframework_lua_plugin_example Using Lua to develop test cases
 
 \author Ali Paikan
 
 <br>
 \section lua-desc Description
-Test cases can be written using Lua scripting language (e.g., .lua) to be loaded and executed as separate plug-ins. This allows to have a simple test runner which loads and run the tests at run time without any needs to recompile the test runner. Using a simple example, we  show how this can be done. 
+Test cases can be written using Lua scripting language (e.g., .lua) to be loaded
+and executed as separate plug-ins.
+This allows to have a simple test runner which loads and run the tests at run
+time without any needs to recompile the test runner.
+Using a simple example, we  show how this can be done.
 
-\note The source code of the tutorial can be also found in the \c 'examples/lua-plugin' folder within the RTF project directory.
+\note The source code of the tutorial can be also found in the
+\c 'examples/lua-plugin' folder within the Robot Testing Framework project
+directory.
 
 <br>
 \section lua-req Requirements
-You need the Lua development library to use the plug-ins. On most of the Linux distribution it can be easily installed using the package manager (e.g., `   $ sudo apt-get install liblua5.1-0-dev`). If you use Windows, try <a href="https://code.google.com/p/luaforwindows/">Lua for Windows</a>, an easy-to-use distribution of Lua packed with several useful libraries. OSX users can also uses Lua binaries from http://lua-users.org/wiki/LuaBinaries. 
+You need the Lua development library to use the plug-ins.
+On most of the Linux distribution it can be easily installed using the package
+manager (e.g., `   $ sudo apt-get install liblua5.1-0-dev`).
+If you use Windows, try
+<a href="https://code.google.com/p/luaforwindows/">Lua for Windows</a>, an
+easy-to-use distribution of Lua packed with several useful libraries.
+OSX users can also uses Lua binaries from http://lua-users.org/wiki/LuaBinaries.
 
-After installing the Lua development package, you need to enable the Lua plug-in system in the RTF and recompile it: 
+After installing the Lua development package, you need to enable the Lua plug-in
+system in the Robot Testing Framework and recompile it:
 
 \verbatim
-   $ cd robot-testing/build
+   $ cd robot-testing-framework/build
    $ cmake ../ -DENABLE_LUA_PLUGIN=ON
 \endverbatim
 
 <br>
-\section lua-write Writing the test case in Lua 
-Writing test cases in Lua is simple. All you need is to declare the `TestCase.run()` function and implement you test body. The `TestCase.setup` and `TestCase.tearDown` can be also optionally defined to setup or tear down the user defined fixture. It is also a good practice to provide a name for the test case using `TestCase.setName()`. 
+\section lua-write Writing the test case in Lua
+Writing test cases in Lua is simple. All you need is to declare the
+`TestCase.run()` function and implement you test body.
+The `TestCase.setup` and `TestCase.tearDown` can be also optionally defined to
+setup or tear down the user defined fixture.
+It is also a good practice to provide a name for the test case using
+`TestCase.setName()`.
 
 \htmlonly
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">--</span>
@@ -43,11 +74,11 @@ Writing test cases in Lua is simple. All you need is to declare the `TestCase.ru
 <span style="color: #888888">--</span>
 <span style="color: #888888">-- The following methods are for reporting, failure or assertions: </span>
 <span style="color: #888888">--</span>
-<span style="color: #888888">-- RTF.setName(name)             : sets the test name</span>
-<span style="color: #888888">-- RTF.testReport(msg)           : reports a informative message</span>
-<span style="color: #888888">-- RTF.testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false</span>
-<span style="color: #888888">-- RTF.assertError(msg)          : throws an error exception with message</span>
-<span style="color: #888888">-- RTF.asserFail(msg)            : throws a failure exception with message</span>
+<span style="color: #888888">-- robottestingframework.setName(name)             : sets the test name</span>
+<span style="color: #888888">-- robottestingframework.testReport(msg)           : reports a informative message</span>
+<span style="color: #888888">-- robottestingframework.testCheck(condition, msg) : reports the test message and marks the test as failed if condition is false</span>
+<span style="color: #888888">-- robottestingframework.assertError(msg)          : throws an error exception with message</span>
+<span style="color: #888888">-- robottestingframework.asserFail(msg)            : throws a failure exception with message</span>
 <span style="color: #888888">--</span>
 <span style="color: #888888">--</span>
 <span style="color: #888888">-- setup is called before the test run to setup </span>
@@ -55,8 +86,8 @@ Writing test cases in Lua is simple. All you need is to declare the `TestCase.ru
 <span style="color: #888888">-- @return Boolean (true/false uppon success or failure)</span>
 <span style="color: #888888">--</span>
 TestCase.setup = <span style="color: #008800; font-weight: bold">function</span>(parameter)
-    RTF.setName(<span style="color: #dd2200; background-color: #fff0f0">&quot;MyTest&quot;</span>)
-    RTF.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Preparing setup...&quot;</span>)
+    robottestingframework.setName(<span style="color: #dd2200; background-color: #fff0f0">&quot;MyTest&quot;</span>)
+    robottestingframework.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Preparing setup...&quot;</span>)
     <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">true</span>;
 <span style="color: #008800; font-weight: bold">end</span>
 <span style="color: #888888">--</span>
@@ -64,15 +95,15 @@ TestCase.setup = <span style="color: #008800; font-weight: bold">function</span>
 <span style="color: #888888">-- @return Boolean</span>
 <span style="color: #888888">--</span>
 TestCase.run = <span style="color: #008800; font-weight: bold">function</span>()
-    RTF.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&gt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is bigger than 3.&quot;</span>)
-    RTF.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&lt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is smaller than 3.&quot;</span>)
+    robottestingframework.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&gt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is bigger than 3.&quot;</span>)
+    robottestingframework.testCheck(<span style="color: #0000DD; font-weight: bold">5</span>&lt;<span style="color: #0000DD; font-weight: bold">3</span>, <span style="color: #dd2200; background-color: #fff0f0">&quot;5 is smaller than 3.&quot;</span>)
 <span style="color: #008800; font-weight: bold">end</span>
 <span style="color: #888888">--</span>
 <span style="color: #888888">-- tearDown is called after the test run to tear down</span>
 <span style="color: #888888">-- user defined fixture</span>
 <span style="color: #888888">--</span>
 TestCase.tearDown = <span style="color: #008800; font-weight: bold">function</span>()
-    RTF.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Tearing down...&quot;</span>)
+    robottestingframework.testReport(<span style="color: #dd2200; background-color: #fff0f0">&quot;Tearing down...&quot;</span>)
 <span style="color: #008800; font-weight: bold">end</span>
 </pre></div>
 
@@ -81,25 +112,50 @@ TestCase.tearDown = <span style="color: #008800; font-weight: bold">function</sp
 
 <br>
 \section lua-runner Writing the test runner
-\note Basically you do not need to develop a test runner. There is the \c testrunner utility (see \ref testrunner) already implemented in RTF which does the job for you. However, the following example is just for your reference and to understand better how a Lua test plug-ing can be loaded and executed from the code. 
+\note Basically you do not need to develop a test runner.
+There is the \c robottestingframework-testrunner utility (see
+\ref robottestingframework-testrunner) already implemented in
+Robot Testing Framework which does the job for you.
+However, the following example is just for your reference and to understand
+better how a Lua test plug-ing can be loaded and executed from the code.
 
-Your plug-in is ready and can be compiled and built. Before doing, that we show how to use RTF::LuaPluginLoader to develop a simple test runner for loading the plug-in and running the test. It is quite simple. First create an instance of \c RTF::plugin::LuaPluginLoader class and call its \c open() method with the plug-in library (i.e., .lua) filename as its paramter.  The RTF::plugin::LuaPluginLoader loads the library and returns a pointer to the RTF::TestCase implemented into the plug-in.
-If the Lua plug-in cannot be loaded or it is not an RTF plug-in file, the RTF::plugin::LuaPluginLoader::open() returns a null pointer and the error message can be gotten using RTF::plugin::LuaPluginLoader::getLastError(). When you have an instance of your test case, it can be used to run the test as usual (see \ref rtf_examples if you are not familiar with running a test case). In the following example we use a RTF::TestRunner to execute our test: 
+Your plug-in is ready and can be compiled and built.
+Before doing, that we show how to use \c robottestingframework::LuaPluginLoader
+to develop a simple test runner for loading the plug-in and running the test.
+It is quite simple. First create an instance of
+\c robottestingframework::plugin::LuaPluginLoader class and call its \c open()
+method with the plug-in library (i.e., .lua) filename as its paramter.
+The \c robottestingframework::plugin::LuaPluginLoader loads the library and
+returns a pointer to the \c robottestingframework::TestCase implemented into the
+plug-in.
+If the Lua plug-in cannot be loaded or it is not a Robot Testing Framework
+plug-in file, the \c robottestingframework::plugin::LuaPluginLoader::open()
+returns a null pointer and the error message can be gotten using
+\c robottestingframework::plugin::LuaPluginLoader::getLastError().
+When you have an instance of your test case, it can be used to run the test as
+usual (see \ref robottestingframework_examples if you are not familiar with
+running a test case). In the following example we use a
+\c robottestingframework::TestRunner to execute our test:
 
 \include lua-plugin/run.cpp
 
 <br>
-\section lua-build Building the test runner and run the test 
-Now you can compile and build the the runner. There is a Cmake file in the \c examples/lua-plugin folder which helps you to compile and build your simple test runner. Make sure that \c RTF_DIR environment variable is correctly set to point your RTF build or installed directory so that Cmake can find the required modules to configure the project. 
+\section lua-build Building the test runner and run the test
+Now you can compile and build the the runner. There is a CMake file in the
+\c examples/lua-plugin folder which helps you to compile and build your simple
+test runner.
+Make sure that \c RobotTestingFramework_DIR environment variable is correctly
+set to point your Robot Testing Framework build or installed directory so that
+CMake can find the required modules to configure the project.
 
 \include lua-plugin/CMakeLists.txt
 <br>
-Now you can build and run the test as follows: 
+Now you can build and run the test as follows:
 \verbatim
 $ cd examples/lua-plugin; mkdir build
 $ cd build; cmake ../; make;
 $ ./simple_run ../mytest.lua
-Loading the plugin... 
+Loading the plugin...
 Starting test runner.
 Test case  started...
 [INFO]  (mytest.lua) reports: Preparing setup...
@@ -111,4 +167,3 @@ Ending test runner.
 \endverbatim
 
 */
-
