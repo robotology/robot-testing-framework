@@ -245,6 +245,12 @@ std::string PythonPluginLoaderImpl::getFileName()
 
 bool PythonPluginLoaderImpl::setup(int argc, char** argv)
 {
+    // reopen the test plugin
+    // This is a quick hack which allows loading multiple python plugins
+    // together to solve the issues of robottestingframework-testrunner
+    // not being able running a test suite with multiple python test cases
+    open(filename);
+
     PyObject* func = PyObject_GetAttrString(pyInstance, "setup");
     if (func == nullptr) {
         return true;
