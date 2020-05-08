@@ -22,6 +22,8 @@ doc/release/v1_4_1.md
 doc/release/v1_6_0.md
 doc/release/v1_6_1.md
 doc/release/v2_0_0.md
+doc/release/v2_0_1.md
+doc/release/v2_0_2.md
 doc/robottestingframework.png
 doc/robottestingframework.svg
 doc/robottestingframework_arch.png
