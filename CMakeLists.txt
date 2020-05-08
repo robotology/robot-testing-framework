@@ -19,7 +19,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 project(RobotTestingFramework
-        VERSION 2.0.100
+        VERSION 2.0.101
         LANGUAGES C CXX)
 # FIXME CMake 3.9 these variables are handled by "project"
 set(CMAKE_PROJECT_DESCRIPTION "Robot Testing Framework")
