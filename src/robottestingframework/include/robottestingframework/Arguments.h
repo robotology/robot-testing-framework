@@ -33,7 +33,7 @@ class Arguments
 {
 public:
     /**
-     * @brief parse Parses a string paramters into argc, argv format
+     * @brief parse Parses a string parameters into argc, argv format
      * @param azParam Input string parmater
      * @param argc  The parsed argument count
      * @param argv The parsed arguments
