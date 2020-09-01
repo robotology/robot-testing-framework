@@ -322,7 +322,7 @@ PyObject* PythonPluginLoaderImpl::setName(PyObject* self,
     auto* impl = (PythonPluginLoaderImpl*)PyCapsule_GetPointer(self, "PythonPluginLoaderImpl");
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
     if (PyArg_ParseTuple(args, "s", &name) == 0) {
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("setName() is called with the wrong paramters."));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("setName() is called with the wrong parameters."));
     }
     impl->setTestName(name);
     Py_RETURN_NONE;
@@ -337,7 +337,7 @@ PyObject* PythonPluginLoaderImpl::assertError(PyObject* self,
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (PyArg_ParseTuple(args, "s", &message) == 0) {
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong parameters."));
     }
     //impl->close();
     Asserter::error(TestMessage("asserts error with exception",
@@ -356,7 +356,7 @@ PyObject* PythonPluginLoaderImpl::assertFail(PyObject* self,
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (PyArg_ParseTuple(args, "s", &message) == 0) {
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong parameters."));
     }
     Asserter::fail(TestMessage("asserts failure with exception",
                                message,
@@ -374,7 +374,7 @@ PyObject* PythonPluginLoaderImpl::testReport(PyObject* self,
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (PyArg_ParseTuple(args, "s", &message) == 0) {
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong parameters."));
     }
     Asserter::report(TestMessage("reports",
                                  message,
@@ -393,7 +393,7 @@ PyObject* PythonPluginLoaderImpl::testCheck(PyObject* self,
     ROBOTTESTINGFRAMEWORK_ASSERT_ERROR_IF_FALSE(impl != nullptr, "The setName cannot find the instance of PythonPluginLoaderImpl");
 
     if (PyArg_ParseTuple(args, "Os", &cond, &message) == 0) {
-        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong paramters."));
+        ROBOTTESTINGFRAMEWORK_ASSERT_ERROR(Asserter::format("assertError() is called with the wrong parameters."));
     }
     //const char* str_cond = PyString_AsString(cond);
     //char str_cond[] = "False";

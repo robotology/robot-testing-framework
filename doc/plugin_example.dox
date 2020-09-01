@@ -55,7 +55,7 @@ be enabled by default).
 Create a class which inherited from the TestCase class.
 Override the \c run() method and/or \c setup(int argc, char** argv) ,
 \c tearDown() if needed.
-The paramters set for the test case using
+The parameters set for the test case using
 \c robottestingframework::TestCase::setParam are parsed into standard
 \c `(int argc, char**argv)` format and are passed to the \c setup method.
 The original string parameter is also accessible using

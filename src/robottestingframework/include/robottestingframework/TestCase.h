@@ -44,7 +44,7 @@ public:
     /**
      * TestCase constructor
      * @param name The TestCase name
-     * @param param The optional paramters for the test case
+     * @param param The optional parameters for the test case
      */
     TestCase(std::string name, std::string param = "");
 
@@ -107,7 +107,7 @@ public:
     TestResult* getResult();
 
     /**
-     * @brief setParam Sets the optional paramters of the test.
+     * @brief setParam Sets the optional parameters of the test.
      * The parameter string is parsed into (argc/argv) format
      * and will be passed to the test case using setup(int argc, char** argv).
      * @param param the paramter string

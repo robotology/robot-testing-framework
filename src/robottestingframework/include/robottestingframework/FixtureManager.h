@@ -129,7 +129,7 @@ public:
     FixtureEvents* getDispatcher();
 
     /**
-     * @brief setParam Sets the optional paramters of the fixture manager.
+     * @brief setParam Sets the optional parameters of the fixture manager.
      * The parameter string is parsed into (argc/argv) format
      * and will be passed to the fixture manager using setup(int argc, char** argv).
      * @param param the parameter string
