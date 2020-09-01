@@ -66,15 +66,15 @@ add_subdirectory(tests)
 
 # installation
 set(BUILD_RobotTestingFramework_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/robottestingframework/include)
-set(INSTALL_RobotTestingFramework_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+set(INSTALL_RobotTestingFramework_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 set(BUILD_RobotTestingFramework_DLL_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/dll/include)
-set(INSTALL_RobotTestingFramework_DLL_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+set(INSTALL_RobotTestingFramework_DLL_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 set(BUILD_RobotTestingFramework_LUA_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/lua/include)
-set(INSTALL_RobotTestingFramework_LUA_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+set(INSTALL_RobotTestingFramework_LUA_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 set(BUILD_RobotTestingFramework_PYTHON_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/python/include)
-set(INSTALL_RobotTestingFramework_PYTHON_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+set(INSTALL_RobotTestingFramework_PYTHON_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 set(BUILD_RobotTestingFramework_RUBY_INCLUDEDIR ${CMAKE_SOURCE_DIR}/src/plugins/ruby/include)
-set(INSTALL_RobotTestingFramework_RUBY_INCLUDEDIR ${CMAKE_INSTALL_PREFIX}/include)
+set(INSTALL_RobotTestingFramework_RUBY_INCLUDEDIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 
 
 install_basic_package_files(RobotTestingFramework
