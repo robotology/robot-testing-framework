@@ -1,0 +1,6 @@
+<map id="src/robottestingframework/include/robottestingframework/PluginLoader.h" name="src/robottestingframework/include/robottestingframework/PluginLoader.h">
+<area shape="rect" id="node2" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/robottestingframework\l/dll/DllPluginLoader.h" alt="" coords="5,109,160,165"/>
+<area shape="rect" id="node3" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/robottestingframework\l/lua/LuaPluginLoader.h" alt="" coords="184,109,339,165"/>
+<area shape="rect" id="node4" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/robottestingframework\l/python/PythonPluginLoader.h" alt="" coords="363,109,563,165"/>
+<area shape="rect" id="node5" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/robottestingframework\l/ruby/RubyPluginLoader.h" alt="" coords="587,109,759,165"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="robottestingframework::Exception" name="robottestingframework::Exception">
+<area shape="rect" id="node3" href="$classrobottestingframework_1_1FixtureException.html" title="The FixtureException class Ficture exception is used when a there is a probleme during fixture setup..." alt="" coords="357,5,508,47"/>
+<area shape="rect" id="node4" href="$classrobottestingframework_1_1TestErrorException.html" title="The TestErrorException class Error exception is used when test breakdown due to an error in setup..." alt="" coords="357,71,508,112"/>
+<area shape="rect" id="node5" href="$classrobottestingframework_1_1TestFailureException.html" title="The FailureException class Failure exception is used when a test or subtests fail. " alt="" coords="356,136,509,177"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="5,78,109,105"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="robottestingframework::ResultEvent" name="robottestingframework::ResultEvent">
+<area shape="rect" id="node2" href="$classrobottestingframework_1_1ResultEventEndSuite.html" title="The ResultEventEndSuite class keeps a test suite ending event. " alt="" coords="207,5,361,47"/>
+<area shape="rect" id="node3" href="$classrobottestingframework_1_1ResultEventEndTest.html" title="The ResultEventEndTest class keeps a test ending event. " alt="" coords="209,71,359,112"/>
+<area shape="rect" id="node4" href="$classrobottestingframework_1_1ResultEventError.html" title="The ResultEventError class keeps a test error event. " alt="" coords="209,136,359,177"/>
+<area shape="rect" id="node5" href="$classrobottestingframework_1_1ResultEventFailure.html" title="The ResultEventFailure class keeps a failure event. " alt="" coords="209,201,359,243"/>
+<area shape="rect" id="node6" href="$classrobottestingframework_1_1ResultEventReport.html" title="The ResultEventReport class keeps a test report event. " alt="" coords="209,267,359,308"/>
+<area shape="rect" id="node7" href="$classrobottestingframework_1_1ResultEventStartSuite.html" title="The ResultEventStartSuite class keeps a test suite starting event. " alt="" coords="204,332,364,373"/>
+<area shape="rect" id="node8" href="$classrobottestingframework_1_1ResultEventStartTest.html" title="The ResultEventStartTest class keeps a test starting event. " alt="" coords="206,397,362,439"/>
+</map>

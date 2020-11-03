@@ -1,0 +1,17 @@
+<map id="src/robottestingframework/include/robottestingframework/TestResult.h" name="src/robottestingframework/include/robottestingframework/TestResult.h">
+<area shape="rect" id="node2" href="$FixtureManager_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/FixtureManager.h" alt="" coords="1309,109,1509,165"/>
+<area shape="rect" id="node3" href="$TestSuite_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/TestSuite.h" alt="" coords="1241,213,1441,269"/>
+<area shape="rect" id="node7" href="$TestCase_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/TestCase.h" alt="" coords="787,109,987,165"/>
+<area shape="rect" id="node16" href="$TestRunner_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/TestRunner.h" alt="" coords="1533,109,1733,165"/>
+<area shape="rect" id="node6" href="$DllFixturePluginLoader_8h.html" title="src/plugins/dll/include\l/robottestingframework\l/dll/DllFixturePluginLoader.h" alt="" coords="1466,213,1651,269"/>
+<area shape="rect" id="node4" href="$Asserter_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/Asserter.h" alt="" coords="1244,317,1444,373"/>
+<area shape="rect" id="node5" href="$TestAssert_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/TestAssert.h" alt="" coords="1244,421,1444,477"/>
+<area shape="rect" id="node8" href="$PluginLoader_8h.html" title="src/robottestingframework\l/include/robottestingframework\l/PluginLoader.h" alt="" coords="855,213,1055,269"/>
+<area shape="rect" id="node9" href="$DllPluginLoader_8h.html" title="src/plugins/dll/include\l/robottestingframework\l/dll/DllPluginLoader.h" alt="" coords="1065,317,1220,373"/>
+<area shape="rect" id="node10" href="$LuaPluginLoader_8h.html" title="src/plugins/lua/include\l/robottestingframework\l/lua/LuaPluginLoader.h" alt="" coords="192,317,347,373"/>
+<area shape="rect" id="node11" href="$PythonPluginLoader_8h.html" title="src/plugins/python\l/include/robottestingframework\l/python/PythonPluginLoader.h" alt="" coords="644,317,844,373"/>
+<area shape="rect" id="node12" href="$RubyPluginLoader_8h.html" title="src/plugins/ruby/include\l/robottestingframework\l/ruby/RubyPluginLoader.h" alt="" coords="869,317,1041,373"/>
+<area shape="rect" id="node13" href="$LuaPluginLoader__impl_8h.html" title="src/plugins/lua/include\l/robottestingframework\l/lua/impl/LuaPluginLoader_impl.h" alt="" coords="32,213,245,269"/>
+<area shape="rect" id="node14" href="$PythonPluginLoader__impl_8h.html" title="src/plugins/python\l/include/robottestingframework\l/python/impl/PythonPluginLoader_impl.h" alt="" coords="270,213,525,269"/>
+<area shape="rect" id="node15" href="$RubyPluginLoader__impl_8h.html" title="src/plugins/ruby/include\l/robottestingframework\l/ruby/impl/RubyPluginLoader_impl.h" alt="" coords="549,213,779,269"/>
+</map>

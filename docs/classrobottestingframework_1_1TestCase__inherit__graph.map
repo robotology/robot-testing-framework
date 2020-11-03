@@ -1,0 +1,6 @@
+<map id="robottestingframework::TestCase" name="robottestingframework::TestCase">
+<area shape="rect" id="node3" href="$classrobottestingframework_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="413,5,606,47"/>
+<area shape="rect" id="node4" href="$classrobottestingframework_1_1plugin_1_1PythonPluginLoaderImpl.html" title="The PythonPluginLoaderImpl loads a Pthyon test case plug&#45;in and gives the direct access to the TestCa..." alt="" coords="403,71,616,112"/>
+<area shape="rect" id="node5" href="$classrobottestingframework_1_1plugin_1_1RubyPluginLoaderImpl.html" title="The RubyPluginLoaderImpl loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="408,136,611,177"/>
+<area shape="rect" id="node2" href="$classrobottestingframework_1_1Test.html" title="The simplest form of a test unit. " alt="" coords="5,71,156,112"/>
+</map>

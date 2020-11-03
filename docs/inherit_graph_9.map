@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classrobottestingframework_1_1FixtureEvents.html" title="class FixtureEvents " alt="" coords="5,5,156,47"/>
+<area shape="rect" id="node2" href="$classrobottestingframework_1_1TestSuite.html" title="The TestSuite holds a group of tests. " alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node3" href="$classrobottestingframework_1_1Test.html" title="The simplest form of a test unit. " alt="" coords="5,71,156,112"/>
+<area shape="rect" id="node4" href="$classrobottestingframework_1_1TestCase.html" title="The base class to implememnt a test case. " alt="" coords="204,71,355,112"/>
+<area shape="rect" id="node5" href="$classrobottestingframework_1_1plugin_1_1LuaPluginLoaderImpl.html" title="The LuaPluginLoaderImpl loads an test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="413,5,606,47"/>
+<area shape="rect" id="node6" href="$classrobottestingframework_1_1plugin_1_1PythonPluginLoaderImpl.html" title="The PythonPluginLoaderImpl loads a Pthyon test case plug&#45;in and gives the direct access to the TestCa..." alt="" coords="403,71,616,112"/>
+<area shape="rect" id="node7" href="$classrobottestingframework_1_1plugin_1_1RubyPluginLoaderImpl.html" title="The RubyPluginLoaderImpl loads a ruby test case plug&#45;in and gives the direct access to the TestCase..." alt="" coords="408,136,611,177"/>
+</map>
