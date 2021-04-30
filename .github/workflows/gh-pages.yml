@@ -1,0 +1,45 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+    - 'master'
+    - 'gh-pages-base'
+  schedule:
+  - cron:  '0 2 * * *'
+
+jobs:
+  docs:
+    name: "Publish"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y doxygen doxygen-doc texlive ghostscript graphviz plantuml cmake
+
+      - name: Configure Git
+        run: |
+          git config --global push.default upstream
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Build Doxygen documentation
+        run: |
+          mkdir build
+          (cd build && cmake ..)
+          (cd build && make dox)
+          cp -a build/dox/html docs
+
+      - name: Push gh-pages
+        run: |
+          git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin gh-pages-base
+          git checkout --no-track -b gh-pages origin/gh-pages-base
+          git add docs
+          git commit -m "Generate gh-pages"
+          git push --force origin gh-pages:gh-pages
